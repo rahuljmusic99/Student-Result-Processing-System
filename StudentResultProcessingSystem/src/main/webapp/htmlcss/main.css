@@ -10,10 +10,9 @@
     background-image: linear-gradient(rgba(1,1,1,0),rgba(0,0,1,1)),url(images/c1.png);
 }
 
-
 .maindiv{
     background-color:white;
-    width: 50%;
+    width: 49%;
     float: right;
     height: 100%;
     box-shadow: 10px 10px 100px 10px;
@@ -22,6 +21,7 @@
     border: 1px solid white;
     border-radius: 10%; 
 }
+
 
 h1{
     color: grey;
@@ -61,4 +61,13 @@ img{
     color: white;
     box-shadow: none; 
 }
+
+.leftdiv{
+    float: left;
+    width: 50%;
+    height: 100%;
+
+}
+
+
 
