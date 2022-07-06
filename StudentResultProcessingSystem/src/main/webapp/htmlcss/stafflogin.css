@@ -19,14 +19,37 @@
     box-shadow: 10px 10px 100px 10px; 
     padding-top: 40px;
     border: 1px solid white;
-    border-radius: 10%;
+    border-radius: 100px;
+}
+
+.leftdiv{
+    float: left;
+    width: 250px;
+    height: 250px;
+    margin-top: 400px;
+    margin-left: 250px;   
+}
+
+.edu{
+    color: green;
+   /* opacity: 0.4;*/
+    color: white;
+    height: 250px;
+}
+
+.title{
+    text-align: center;
+    font-size: 25px;
+    font-family: serif;
+    color:white;
+    margin-top: 10px;   
 }
 
 h1{
     color: grey;
-    font-size: 35px;
+    font-size: 25px;
     font-family: 'Poppins', sans-serif;
-    padding-right:50px; 
+    margin-right: 120px; 
 }
 
 .login1{
@@ -34,13 +57,22 @@ h1{
     width: 100%;
 }
 
+.login1 i{
+    position: fixed;
+    padding-left: 230px;
+    padding-top: 10px;
+}
+
+i{
+    color: grey;
+}
+
 .lable{
     display:block;
     text-align:left;
-    padding-left: 270px;
+    padding-left: 253px;
     clear: both;
-    color: grey;
-      
+    color: grey;     
 }
 
 .field1{
@@ -61,7 +93,7 @@ h1{
 
 .btn{
     width: 260px;
-    height: 30;
+    height: 30px;
     background-color: blue;
     color: #ffff;
     border: none;
@@ -69,19 +101,18 @@ h1{
 
 .btn:active{
     cursor: progress;
-
 }
 
-.field1:hover{
-    border: 1px soild blue;
+.field1:active{
+    border: 10px solid blue;
+    transition: 1s;
+}
+
+.field2:active{
+    border: 10px solid blue;
+    transition: 1s;
 }
     
-.login1 i{
-    position: fixed;
-    padding-left: 230;
-    padding-top: 10;
-}
-
 .divback{
     float: left;
     padding-left:60px;
@@ -89,6 +120,3 @@ h1{
     font-size: 18px;        
 }
 
-i{
-    color: grey;
-}
