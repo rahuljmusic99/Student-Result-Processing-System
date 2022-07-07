@@ -5,11 +5,7 @@
     overflow: hidden;     
 }
 
-body{
-    @media screen and (max-width:1200px) and (min-width:730px) {
-        
-    }
-}
+
 
 .header{
     height: 100%;
@@ -20,12 +16,14 @@ body{
     background-color:white;
     width: 50%;
     float: right;
-    height: 100%;
+    
     box-shadow: 10px 10px 100px 10px;
     text-align: center;
     padding-top: 50px;
     border: 1px solid white;
-    border-radius: 100px;  
+    border-radius: 100px;
+    height: 100%;
+    
 }
 
 .leftdiv{
@@ -88,26 +86,72 @@ img{
     margin-top: 10px;  
 }
 
-@media (max-width: 1200px) {
+
+
+
+
+@media (max-width: 1200px) {   
     .row{
-        border-spacing: 45px;
+        border-spacing:45px;
         padding-left: 35px;
         padding-top:25px;
     }
+   
+    
 }
 
-@media (max-width: 1265px) and (min-width: 1200px) {
+
+
+
+@media (max-width: 1265px) and (min-width: 1200px) { 
     .row{
         border-spacing: 60px;
         padding-left: 40px;
         padding-top:35px;
     }
+    .column{
+        height: 170px;
+        
+    }
+    .edu{
+        height: 200px
+    }
+    .leftdiv{
+        margin-top: 300px;
+        margin-left: 160px;
+    }
+   
+    h1{
+        font-size:30px;
+    }
+    img{
+        height: 120px;
+    } 
 }
 
 @media (max-width: 1465px) and (min-width: 1265px) {
     .row{
         border-spacing: 75px;
         padding-left: 50px;
-        padding-top:45px;
+        padding-top:45px;  
+    }
+     .column{
+        height: 170px;   
+    }
+    .edu{
+        height: 200px;
+    }
+    .leftdiv{
+        margin-top: 350px;
+        margin-left: 200px; 
+    }
+    .title{
+        font-size: 20px;
+    }
+    h1{
+        font-size:30px;
+    }
+    img{
+        height: 120px;
     }
 }

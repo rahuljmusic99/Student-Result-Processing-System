@@ -121,4 +121,21 @@ i{
     color: grey;
 }
 
+@media (max-width: 1265px) and (min-width: 1200px){
+    .lable{
+        padding-left: 175px;
+    }
+    
+    .login1{
+        margin-top: 150px;
+    }
+    .edu{
+        height: 200px;
+    }
+    .leftdiv{
+        margin-top: 300px;
+        margin-left: 160px;
+    }
+}
+
 

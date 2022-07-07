@@ -101,6 +101,7 @@ i{
 
 .btn:active{
     cursor: progress;
+
 }
 
 .field1:active{
@@ -118,5 +119,22 @@ i{
     padding-left:60px;
     padding-top: 50px;
     font-size: 18px;        
+}
+
+@media (max-width: 1265px) and (min-width: 1200px){
+    .lable{
+        padding-left: 175px;
+    }
+    
+    .login1{
+        margin-top: 150px;
+    }
+    .edu{
+        height: 200px;
+    }
+    .leftdiv{
+        margin-top: 300px;
+        margin-left: 160px;
+    }
 }
 
