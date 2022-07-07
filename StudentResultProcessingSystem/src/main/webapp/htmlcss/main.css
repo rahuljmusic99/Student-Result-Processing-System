@@ -96,6 +96,24 @@ img{
         padding-left: 35px;
         padding-top:25px;
     }
+    .column{
+        height: 170px;
+        
+    }
+    .edu{
+        height: 187px
+    }
+    .leftdiv{
+        margin-top: 291px;
+        margin-left: 187px;
+    }
+   
+    h1{
+        font-size:30px;
+    }
+    img{
+        height: 120px;
+    } 
    
     
 }
@@ -114,11 +132,11 @@ img{
         
     }
     .edu{
-        height: 200px
+        height: 208px
     }
     .leftdiv{
-        margin-top: 300px;
-        margin-left: 160px;
+        margin-top: 327px;
+        margin-left: 209px;
     }
    
     h1{
@@ -139,14 +157,14 @@ img{
         height: 170px;   
     }
     .edu{
-        height: 200px;
+        height: 234px;
     }
     .leftdiv{
-        margin-top: 350px;
-        margin-left: 200px; 
+        margin-top: 373px;
+        margin-left: 235px; 
     }
     .title{
-        font-size: 20px;
+        font-size: 25px;
     }
     h1{
         font-size:30px;
