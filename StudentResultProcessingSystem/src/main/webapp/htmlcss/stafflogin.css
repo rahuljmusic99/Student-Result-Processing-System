@@ -121,20 +121,22 @@ i{
     font-size: 18px;        
 }
 
-@media (max-width: 1265px) and (min-width: 1200px){
+@media (max-width: 1200px){
     .lable{
-        padding-left: 175px;
-    }
-    
+        padding-left: 160px;
+    }  
     .login1{
-        margin-top: 150px;
+        margin-top: 125px;
     }
     .edu{
-        height: 200px;
+        height: 187px;
     }
     .leftdiv{
-        margin-top: 300px;
+        margin-top: 291px;
         margin-left: 160px;
+    }
+    .title{
+        font-size: 25px;
     }
 }
 
