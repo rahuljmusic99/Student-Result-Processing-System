@@ -1,0 +1,175 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;     
+}
+
+
+
+.header{
+    height: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0),rgba(1,1,1,1)),url(images/c1.png);  
+}
+
+.maindiv{
+    background-color:white;
+    width: 50%;
+    float: right;
+    
+    box-shadow: 10px 10px 100px 10px;
+    text-align: center;
+    padding-top: 50px;
+    border: 1px solid white;
+    border-radius: 100px;
+    height: 100%;
+    
+}
+
+.leftdiv{
+    float: left;
+    width: 250px;
+    height: 250px;
+    margin-top: 400px;
+    margin-left: 250px;   
+}
+
+.edu{
+    color: green;
+    /*opacity: 0.4;*/
+    color: white;
+    height: 250px;
+}
+
+h1{
+    color: grey;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.row{
+    display: table;
+    width: 90%;
+    table-layout: fixed;
+    border-spacing: 100px;
+    padding-top:55px;
+    padding-left: 50px;
+}
+
+.column{
+    display: table-cell;
+    height: 190px;
+    border: 3px solid blue;
+    border-radius: 60px;
+    transition: 0.5s;
+    font-size: 20px;
+    box-shadow:10px 10px 10px black;
+    color: blue;
+    cursor: pointer;
+}
+
+.column:hover{
+    background-color: blue;
+    color: white;
+    box-shadow: none; 
+}
+
+img{
+    height: 150px;   
+}
+
+.title{
+    text-align: center;
+    font-size: 25px;
+    font-family: serif;
+    color:white;
+    margin-top: 10px;  
+}
+
+
+
+
+
+@media (max-width: 1200px) {   
+    .row{
+        border-spacing:45px;
+        padding-left: 35px;
+        padding-top:25px;
+    }
+    .column{
+        height: 170px;
+        
+    }
+    .edu{
+        height: 187px;
+    }
+    .leftdiv{
+        margin-top: 291px;
+        margin-left: 187px;
+    }
+   
+    h1{
+        font-size:30px;
+    }
+    img{
+        height: 120px;
+    } 
+   
+    
+}
+
+
+
+
+@media (max-width: 1265px) and (min-width: 1200px) { 
+    .row{
+        border-spacing: 60px;
+        padding-left: 40px;
+        padding-top:35px;
+    }
+    .column{
+        height: 170px;
+        
+    }
+    .edu{
+        height: 208px
+    }
+    .leftdiv{
+        margin-top: 327px;
+        margin-left: 209px;
+    }
+   
+    h1{
+        font-size:30px;
+    }
+    img{
+        height: 120px;
+    } 
+}
+
+@media (max-width: 1465px) and (min-width: 1265px) {
+    .row{
+        border-spacing: 75px;
+        padding-left: 50px;
+        padding-top:45px;  
+    }
+     .column{
+        height: 170px;   
+    }
+    .edu{
+        height: 234px;
+    }
+    .leftdiv{
+        margin-top: 373px;
+        margin-left: 235px; 
+    }
+    .title{
+        font-size: 25px;
+    }
+    h1{
+        font-size:30px;
+    }
+    img{
+        height: 120px;
+    }
+}
