@@ -16,7 +16,6 @@
     background-color:white;
     width: 50%;
     float: right;
-    
     box-shadow: 10px 10px 100px 10px;
     text-align: center;
     padding-top: 50px;
@@ -39,6 +38,7 @@
     /*opacity: 0.4;*/
     color: white;
     height: 250px;
+    position: fixed;
 }
 
 h1{
@@ -51,8 +51,8 @@ h1{
     display: table;
     width: 90%;
     table-layout: fixed;
-    border-spacing: 100px;
-    padding-top:55px;
+    border-spacing: 35px;
+    padding-top:100px;
     padding-left: 50px;
 }
 
@@ -66,6 +66,7 @@ h1{
     box-shadow:10px 10px 10px black;
     color: blue;
     cursor: pointer;
+    transition-duration: 0.4s;
 }
 
 .column:hover{
@@ -90,7 +91,7 @@ img{
 
 
 
-@media (max-width: 1200px) {   
+/*@media (max-width: 1200px) {   
     .row{
         border-spacing:45px;
         padding-left: 35px;
@@ -116,27 +117,30 @@ img{
     } 
    
     
-}
+}*/
 
 
 
 
-@media (max-width: 1265px) and (min-width: 1200px) { 
+@media (max-width: 1280px) and (min-width: 1200px) { 
     .row{
-        border-spacing: 60px;
+        border-spacing: 15px;
         padding-left: 40px;
         padding-top:35px;
     }
     .column{
         height: 170px;
+        box-shadow: 5px 5px 5px black;
+        border-radius: 50px;
+        height: 170px;
         
     }
     .edu{
-        height: 208px
+        height: 200px;
     }
     .leftdiv{
-        margin-top: 327px;
-        margin-left: 209px;
+        margin-top: 300px;
+        margin-left: 160px;
     }
    
     h1{
@@ -147,7 +151,7 @@ img{
     } 
 }
 
-@media (max-width: 1465px) and (min-width: 1265px) {
+/*@media (max-width: 1465px) and (min-width: 1265px) {
     .row{
         border-spacing: 75px;
         padding-left: 50px;
@@ -172,4 +176,4 @@ img{
     img{
         height: 120px;
     }
-}
+}*/
