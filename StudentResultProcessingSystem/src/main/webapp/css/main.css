@@ -5,38 +5,32 @@
     overflow: hidden;     
 }
 
-
-
 .header{
     height: 100%;
     background-image: linear-gradient(rgba(0,0,0,0),rgba(1,1,1,1)),url(images/c1.png);  
 }
 
 .maindiv{
-    background-color:white;
     width: 50%;
-    float: right;
+    height: 100%;
+    background-color:white;
+    border: 1px solid white;
+    border-radius: 100px;
     box-shadow: 10px 10px 100px 10px;
     text-align: center;
     padding-top: 50px;
-    border: 1px solid white;
-    border-radius: 100px;
-    height: 100%;
-    
+    float: right;   
 }
 
 .leftdiv{
-    float: left;
     width: 250px;
     height: 250px;
     margin-top: 400px;
-    margin-left: 250px;   
+    margin-left: 250px;
+    float: left;
 }
 
 .edu{
-    color: green;
-    /*opacity: 0.4;*/
-    color: white;
     height: 250px;
     position: fixed;
 }
@@ -48,8 +42,8 @@ h1{
 }
 
 .row{
-    display: table;
     width: 90%;
+    display: table;
     table-layout: fixed;
     border-spacing: 35px;
     padding-top:100px;
@@ -57,21 +51,26 @@ h1{
 }
 
 .column{
-    display: table-cell;
     height: 190px;
+    display: table-cell;
     border: 3px solid blue;
     border-radius: 60px;
-    transition: 0.5s;
+    box-shadow: 8px 8px 8px black;
     font-size: 20px;
-    box-shadow:10px 10px 10px black;
     color: blue;
     cursor: pointer;
-    transition-duration: 0.4s;
+    transition: 0.5s;
+    transition-duration: 0.8s;
+}
+
+.column:active{
+    border: 5px solid red; 
 }
 
 .column:hover{
     background-color: blue;
     color: white;
+    border: 3px solid darkblue;
     box-shadow: none; 
 }
 
@@ -87,93 +86,3 @@ img{
     margin-top: 10px;  
 }
 
-
-
-
-
-/*@media (max-width: 1200px) {   
-    .row{
-        border-spacing:45px;
-        padding-left: 35px;
-        padding-top:25px;
-    }
-    .column{
-        height: 170px;
-        
-    }
-    .edu{
-        height: 187px;
-    }
-    .leftdiv{
-        margin-top: 291px;
-        margin-left: 187px;
-    }
-   
-    h1{
-        font-size:30px;
-    }
-    img{
-        height: 120px;
-    } 
-   
-    
-}*/
-
-
-
-
-@media (max-width: 1280px) and (min-width: 1200px) { 
-    .row{
-        border-spacing: 15px;
-        padding-left: 40px;
-        padding-top:35px;
-    }
-    .column{
-        height: 170px;
-        box-shadow: 5px 5px 5px black;
-        border-radius: 50px;
-        height: 170px;
-        
-    }
-    .edu{
-        height: 200px;
-    }
-    .leftdiv{
-        margin-top: 300px;
-        margin-left: 160px;
-    }
-   
-    h1{
-        font-size:30px;
-    }
-    img{
-        height: 120px;
-    } 
-}
-
-/*@media (max-width: 1465px) and (min-width: 1265px) {
-    .row{
-        border-spacing: 75px;
-        padding-left: 50px;
-        padding-top:45px;  
-    }
-     .column{
-        height: 170px;   
-    }
-    .edu{
-        height: 234px;
-    }
-    .leftdiv{
-        margin-top: 373px;
-        margin-left: 235px; 
-    }
-    .title{
-        font-size: 25px;
-    }
-    h1{
-        font-size:30px;
-    }
-    img{
-        height: 120px;
-    }
-}*/
