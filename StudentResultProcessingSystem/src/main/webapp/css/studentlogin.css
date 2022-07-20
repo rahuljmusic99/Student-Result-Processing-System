@@ -60,30 +60,36 @@ h1{
 .lable{
     display:block;
     text-align:left;
-    padding-left: 253px;
+    font-size: 18px;
+    padding-left: 225px;
     clear: both;
     color: grey;   
+    
 }
 
+
+
 .field1{
-    height: 40px;
+    height: 50px;
+    font-size: 15px;
     padding-left:10px;
-    padding-right: 50px;
-    width: 260px;
+    padding-right: 60px;
+    width: 320px;
     border: 1px solid #ccc;
 }
 
 .field2{
-    height: 40px;
+    height: 50px;
+    font-size: 15px;
     padding-left:10px;
-    padding-right: 50px;
-    width: 260px;
+    padding-right: 60px;
+    width: 320px;
     border: 1px solid #ccc;
 }
 
 .btn{
-    width: 260px;
-    height: 30px;
+    width: 320px;
+    height: 32px;
     background-color: blue;
     color: #ffff;
     border: none;
@@ -93,27 +99,33 @@ h1{
     cursor:progress;
 }
 
-.field1:active{
-    border: 10px solid blue;
-    transition: 1s;
+.btn:hover{
+    cursor: pointer;
+}
+.field1:focus{
+    outline-style:ridge;
+    outline-color:blue;
+    outline-width: 1.4px;
 }
 
-.field2:active{
-    border: 10px solid blue;
-    transition: 1s;
+.field2:focus{
+   outline-style: ridge;
+    outline-color: blue;
+   /* outline-width: 1.4px;*/
 }
     
 
 .login1 i{
+    font-size: 20px;
     position: fixed;
-    padding-left: 230;
-    padding-top: 10;
+    padding-left: 270px;
+    padding-top: 10px;
 }
 
 .divback{
     float: left;
-    padding-left:60px;
-    padding-top: 50px;
+    margin-left:60px;
+    margin-top: 50px;
     font-size: 18px;      
 }
 
@@ -121,24 +133,21 @@ i{
     color: grey;
 }
 
-@media (max-width: 1200px){
+@media (max-width: 1265px) and (min-width: 1200px){
     .lable{
-        padding-left: 160px;
-    }  
+        padding-left: 175px;
+    }
+    
     .login1{
-        margin-top: 125px;
+        margin-top: 150px;
     }
     .edu{
-        height: 187px;
+        height: 200px;
     }
     .leftdiv{
-        margin-top: 291px;
+        margin-top: 300px;
         margin-left: 160px;
     }
-    .title{
-        font-size: 25px;
-    }
 }
-
 
 

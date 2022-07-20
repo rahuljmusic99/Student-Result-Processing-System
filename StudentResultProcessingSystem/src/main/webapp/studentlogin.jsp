@@ -20,11 +20,11 @@
         <section class="header"> 
             <div class="maindiv2">
                 <a href="main.html"><div class="divback"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Back</div></a>
-               <h1>Login as Student</h1> 
+               <h1>Login as <span style="color: blue">Student</span></h1> 
                 
                 
                 <form action="StudentLogin" method="post" class="login1">
-                    <legend><label class="lable">Email<br></label></legend>
+                    <label class="lable">Email<br></label>
                     <i class="fa fa-user-o"></i>
                     <input name="username" class="field1" type="text" placeholder="username"><br><br>
                     <label class="lable">password<br></label>
