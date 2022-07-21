@@ -12,8 +12,8 @@ public class DBConnection {
 		//My SQL URL followed by the database name
 		String urlString = "jdbc:mysql://localhost:3306/canaradatabase"; 
 		
-		String userNameDBString = "root"; //MySQL user name
-		String passwordDBString = "Canara@575001"; //MySQL password
+		String userNameString = "root"; //MySQL user name
+		String passwordString = "Canara@575001"; //MySQL password
 		
 		try {
 			try {
@@ -24,7 +24,7 @@ public class DBConnection {
 				
 			}
 			//Attempting to connect to MySQL database
-			con=DriverManager.getConnection(urlString,userNameDBString,passwordDBString);
+			con=DriverManager.getConnection(urlString,userNameString,passwordString);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -31,14 +31,7 @@ public class LoginDao {
 			//Statement is used to write queries.
 			statement = con.createStatement();
 			
-			switch (key) {
-			case value: {
-				resultset = statement.executeQuery("");
-				yield type;
-			}
-			default:
-				throw new IllegalArgumentException("Unexpected value: " + key);
-			}
+			resultset = statement.executeQuery("select reg_no,password from student");
 			
 			
 		}catch (Exception e) {

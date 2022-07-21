@@ -1,5 +1,4 @@
-                    <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
     
@@ -45,15 +44,15 @@
             	var status=document.getElementById("status").value;
             	if(status=="failed"){
             		
-            		swal("Sorry","Wrong username and password","error")
+            		swal("Sorry","Wrong username and password","warning")
             	}
             	else if(status=="InvalidUsername"){
             		
-            		swal("Sorry","Please enter username","error");
+            		swal("Sorry","Please enter username","warning");
             	}
             	else if(status=="InvalidPassword"){
             		
-            		swal("Sorry","please enter password","error");
+            		swal("Sorry","please enter password","warning");
             	}
             
             </script>  

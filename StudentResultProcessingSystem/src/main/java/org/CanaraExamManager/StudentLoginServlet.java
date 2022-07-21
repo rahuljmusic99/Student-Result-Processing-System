@@ -1,6 +1,6 @@
 package org.CanaraExamManager;
 
-import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 
@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -34,7 +33,7 @@ public class StudentLoginServlet extends HttpServlet {
 		String upwd = request.getParameter("password");
 		HttpSession session = request.getSession();
 		RequestDispatcher dispatcher;
-		PrintWriter out = response.getWriter();
+		
 		
 		if(uname == null || uname.equals("")) {
 			
