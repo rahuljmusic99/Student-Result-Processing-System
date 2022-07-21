@@ -67,8 +67,6 @@ h1{
     
 }
 
-
-
 .field1{
     height: 50px;
     font-size: 15px;
@@ -110,8 +108,8 @@ h1{
 
 .field2:focus{
    outline-style: ridge;
-    outline-color: blue;
-   /* outline-width: 1.4px;*/
+   outline-color: blue;
+   outline-width: 1.4px;
 }
     
 
@@ -133,21 +131,5 @@ i{
     color: grey;
 }
 
-@media (max-width: 1265px) and (min-width: 1200px){
-    .lable{
-        padding-left: 175px;
-    }
-    
-    .login1{
-        margin-top: 150px;
-    }
-    .edu{
-        height: 200px;
-    }
-    .leftdiv{
-        margin-top: 300px;
-        margin-left: 160px;
-    }
-}
 
 
