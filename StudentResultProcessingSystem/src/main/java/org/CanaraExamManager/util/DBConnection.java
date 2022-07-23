@@ -9,15 +9,14 @@ public class DBConnection {
 		
 		Connection con = null;
 		
-		//My SQL URL followed by the database name
-		String urlString = "jdbc:mysql://localhost:3306/canaradatabase"; 
-		
+		String urlString = "jdbc:mysql://localhost:3306/canaradatabase"; //My SQL URL followed by the database name
 		String userNameString = "root"; //MySQL user name
 		String passwordString = "Canara@575001"; //MySQL password
 		
 		try {
 			try {
 				Class.forName("com.mysql.jdbc.Driver"); //loading the MySQL Driver
+				//optional method.
 				
 			} catch (Exception e) {
 				e.printStackTrace();

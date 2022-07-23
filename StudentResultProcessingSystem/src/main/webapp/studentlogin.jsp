@@ -13,23 +13,22 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
      </head>
     <body>
-    	<input type="hidden" id="status"
-    		value=<%=request.getAttribute("status") %> />
-    		
         <section class="header"> 
             <div class="maindiv2">
                 <a href="main.html"><div class="divback"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;<span style="color: blue;font-size: 24px"></span>Back</div></a>
                <h1>Login as <span style="color: blue">Student</span></h1> 
                 
                 
-                <form action="StudentLogin" method="post" class="login1">
+                <form name="studentLoginForm" action="LoginServlet" method="post" class="login1" onsubmit="return validate();">
                     <label class="lable">Reg.no<br></label>
                     <i class="fa fa-user-o"></i>
                     <input name="username" class="field1" type="text" placeholder="Register number"><br><br>
                     <label class="lable">password<br></label>
                     <i class="fa fa-lock" aria-hidden="true"></i>
                     <input name="password" class="field2" type="password" placeholder="password"><br><br>
-                    <button class="btn">login</button>
+                    <span style="color:red"><%=(request.getAttribute("errMessage") == null) ? ""
+         										: request.getAttribute("errMessage")%></span><br/>
+                    <input type="submit" value="Login" class="btn"/>
                 </form>
                 </div>   
             <section class="header2">
@@ -38,22 +37,27 @@
            </section>
             </section>   
             
-            
+    		
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script type="text/javascript">
-            	var status=document.getElementById("status").value;
-            	if(status=="failed"){
+
+            	
+            	function validate(){
+            		var username = document.studentLoginForm.username.value; 
+	                var password = document.studentLoginForm.password.value;
+	           
+	                
+	                if(username == null || username == ""){
+            			swal("Sorry","please enter username","warning");
+            			return false;
+            		}
+            		else if(password == null || password == ""){
+            			swal("Sorry","please enter password","warning");
+            			return false;
+            		}
             		
-            		swal("Sorry","Wrong username and password","warning")
             	}
-            	else if(status=="InvalidUsername"){
-            		
-            		swal("Sorry","Please enter username","warning");
-            	}
-            	else if(status=="InvalidPassword"){
-            		
-            		swal("Sorry","please enter password","warning");
-            	}
+            	
             
             </script>  
     </body>
