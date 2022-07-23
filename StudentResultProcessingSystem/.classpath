@@ -5,9 +5,6 @@
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
-		<accessrules>
-			<accessrule kind="accessible" pattern="com.google.gson.*"/>
-		</accessrules>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/rahul/Downloads/gson-2.2.2.jar/gson-2.2.2.jar">
 		<attributes>
