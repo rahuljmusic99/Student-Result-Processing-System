@@ -5,7 +5,58 @@
 <%@ page import="com.google.gson.Gson"%>
 <%@ page import="com.google.gson.JsonObject"%>
  
-
+ <%
+                   Gson gsonObj = new Gson();
+                   Map<Object,Object> map = null;
+                   List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
+ 
+                    map = new HashMap<Object,Object>(); map.put("label", "1973"); map.put("y", 1883.96); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1974"); map.put("y", 1814.907); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1975"); map.put("y", 1679.773); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1976"); map.put("y", 1794.96); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1977"); map.put("y", 1844.13); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1978"); map.put("y", 1829.944); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1979"); map.put("y", 1911.103); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1980"); map.put("y", 1776.497); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1981"); map.put("y", 1698.761); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1982"); map.put("y", 1501.657); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1983"); map.put("y", 1473.308); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1984"); map.put("y", 1603.901); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1985"); map.put("y", 1558.17); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1986"); map.put("y", 1510.808); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1987"); map.put("y", 1568.088); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1988"); map.put("y", 1647.77); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1989"); map.put("y", 1675.294); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1990"); map.put("y", 1695.454); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1991"); map.put("y", 1650.595); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1992"); map.put("y", 1720.721); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1993"); map.put("y", 1718.338); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1994"); map.put("y", 1748.211); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1995"); map.put("y", 1752.434); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1996"); map.put("y", 1804.221); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1997"); map.put("y", 1823.662); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1998"); map.put("y", 1811.003); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "1999"); map.put("y", 1779.849); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2000"); map.put("y", 1787.086); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2001"); map.put("y", 1711.619); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2002"); map.put("y", 1684.157); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2003"); map.put("y", 1693.878); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2004"); map.put("y", 1731.715); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2005"); map.put("y", 1676.595); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2006"); map.put("y", 1664.477); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2007"); map.put("y", 1666.223); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2008"); map.put("y", 1608.085); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2009"); map.put("y", 1399.889); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2010"); map.put("y", 1507.555); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2011"); map.put("y", 1497.764); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2012"); map.put("y", 1487.709); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2013"); map.put("y", 1505.784); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2014"); map.put("y", 1511.255); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2015"); map.put("y", 1457.119); list.add(map);
+                    map = new HashMap<Object,Object>(); map.put("label", "2016"); map.put("y", 1424.077); list.add(map);
+ 
+                    String dataPoints = gsonObj.toJson(list);
+                    %>
     
 <!DOCTYPE html5>
 <html>
@@ -90,58 +141,7 @@ chart.render();
             
             <div class="tabs__content" data-tab="3">
                 <div id="chartContainer">
-                   <%
-                   Gson gsonObj = new Gson();
-                   Map<Object,Object> map = null;
-                   List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
- 
-                    map = new HashMap<Object,Object>(); map.put("label", "1973"); map.put("y", 1883.96); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1974"); map.put("y", 1814.907); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1975"); map.put("y", 1679.773); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1976"); map.put("y", 1794.96); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1977"); map.put("y", 1844.13); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1978"); map.put("y", 1829.944); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1979"); map.put("y", 1911.103); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1980"); map.put("y", 1776.497); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1981"); map.put("y", 1698.761); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1982"); map.put("y", 1501.657); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1983"); map.put("y", 1473.308); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1984"); map.put("y", 1603.901); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1985"); map.put("y", 1558.17); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1986"); map.put("y", 1510.808); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1987"); map.put("y", 1568.088); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1988"); map.put("y", 1647.77); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1989"); map.put("y", 1675.294); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1990"); map.put("y", 1695.454); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1991"); map.put("y", 1650.595); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1992"); map.put("y", 1720.721); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1993"); map.put("y", 1718.338); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1994"); map.put("y", 1748.211); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1995"); map.put("y", 1752.434); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1996"); map.put("y", 1804.221); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1997"); map.put("y", 1823.662); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1998"); map.put("y", 1811.003); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "1999"); map.put("y", 1779.849); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2000"); map.put("y", 1787.086); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2001"); map.put("y", 1711.619); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2002"); map.put("y", 1684.157); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2003"); map.put("y", 1693.878); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2004"); map.put("y", 1731.715); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2005"); map.put("y", 1676.595); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2006"); map.put("y", 1664.477); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2007"); map.put("y", 1666.223); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2008"); map.put("y", 1608.085); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2009"); map.put("y", 1399.889); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2010"); map.put("y", 1507.555); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2011"); map.put("y", 1497.764); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2012"); map.put("y", 1487.709); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2013"); map.put("y", 1505.784); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2014"); map.put("y", 1511.255); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2015"); map.put("y", 1457.119); list.add(map);
-                    map = new HashMap<Object,Object>(); map.put("label", "2016"); map.put("y", 1424.077); list.add(map);
- 
-                    String dataPoints = gsonObj.toJson(list);
-                    %>
+                  
                  </div>
             </div>
         </div>
