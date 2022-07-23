@@ -18,7 +18,7 @@
                 <div class="space2"><i class="fa fa-angle-left"></i></div>
                 <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-bullseye"></i>Result</button>
-                <button class="tabs__button" data-for-tab="3"  id="perform" onclick="myFunction()"><i class="fa fa-bar-chart"></i>Performance</button>
+                <button class="tabs__button" data-for-tab="3"><i class="fa fa-bar-chart"></i>Performance</button>
                 <button class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
             </div>
         
