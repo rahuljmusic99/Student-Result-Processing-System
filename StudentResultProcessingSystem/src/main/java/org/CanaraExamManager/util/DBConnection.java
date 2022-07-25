@@ -2,6 +2,7 @@ package org.CanaraExamManager.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DBConnection {
 
@@ -18,15 +19,15 @@ public class DBConnection {
 				Class.forName("com.mysql.jdbc.Driver"); //loading the MySQL Driver
 				//optional method.
 				
-			} catch (Exception e) {
+			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 				
 			}
 			//Attempting to connect to MySQL database
 			con=DriverManager.getConnection(urlString,userNameString,passwordString);
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();	
 			
 		}
 		

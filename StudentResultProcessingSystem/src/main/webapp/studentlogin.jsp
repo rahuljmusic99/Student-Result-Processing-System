@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%session.setAttribute("LoginUser", "StudentLogin"); %> 
+   
+<% 
+	if((request.getSession(false).getAttribute("student")!=null) )
+	{
+%> 
+<jsp:forward page="/studdashboard.jsp"></jsp:forward>
+<%} %> 
 
-
-    
 <!DOCTYPE html5>
 <html>
     <head>
@@ -15,7 +21,7 @@
     <body>
         <section class="header"> 
             <div class="maindiv2">
-                <a href="main.html"><div class="divback"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;<span style="color: blue;font-size: 24px"></span>Back</div></a>
+                <a href="home.jsp"><div class="divback"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;<span style="color: blue;font-size: 24px"></span>Back</div></a>
                <h1>Login as <span style="color: blue">Student</span></h1> 
                 
                 
@@ -43,6 +49,7 @@
 
             	
             	function validate(){
+            		
             		var username = document.studentLoginForm.username.value; 
 	                var password = document.studentLoginForm.password.value;
 	           

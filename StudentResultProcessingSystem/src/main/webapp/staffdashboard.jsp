@@ -1,13 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<% //In case, if User session is not set, redirect to Login page.
+	if((request.getSession(false).getAttribute("staff")== null) )
+	{
+%> 
+<jsp:forward page="/stafflogin.jsp"></jsp:forward>
+<%} %>   
+
 <!DOCTYPE html5>
 <html>
     <head>
-        <title>Student dashboard</title>
+        <title>Staff dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/staffdashboard.css"> 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+    
     </head> 
     <body>
         <div class="tabs">
@@ -17,7 +26,7 @@
                 <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-bullseye"></i>Result</button>
                 <button class="tabs__button" data-for-tab="3" ><i class="fa fa-bar-chart"></i>Performance</button>
-                <button class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
+                <button onclick="return logoutConfirm();" class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
             </div>
     
             
@@ -52,6 +61,31 @@
            </div>
         </div>
     
+       <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+       <script type="text/javascript">
+    	
+    		function logoutConfirm(){
+    			
+    			swal({title: "Confirm Logout",
+    				 text: "Are you shure you want to Logout?",
+    				 icon: "warning",
+    				 buttons: {
+    					 cancel: "Cancel",
+    					 logout: "Log Out",
+    				 },	 
+    			})
+    			.then((value) => {	
+    				if(value == "logout"){
+    					document.location.href="LogoutServlet";
+    				}
+    			});
+    			return true;
+    		}
+    	
+    	</script>
+    	
+    	
         <script>
             function setupTabs () {
                 document.querySelectorAll(".tabs__button").forEach(button => {

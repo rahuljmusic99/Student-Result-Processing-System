@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<% //In case, if User session is not set, redirect to Login page.
+	if((request.getSession(false).getAttribute("student")== null) )
+	{
+%> 
+<jsp:forward page="/studentlogin.jsp"></jsp:forward>
+<%} %>    
+     
 <!DOCTYPE html5>
 <html>
     <head>
@@ -14,12 +21,12 @@
     <body>
         <div class="tabs">
             <div class="tabs__sidebar">
-                <div class="space"><img src="images/education.png" class="edu"></div>
+                <div class="space"><img src="css/images/education.png" class="edu"></div>
                 <div class="space2"><i class="fa fa-angle-left"></i></div>
                 <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-bullseye"></i>Result</button>
                 <button class="tabs__button" data-for-tab="3"><i class="fa fa-bar-chart"></i>Performance</button>
-                <button class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
+                <button onclick="return logoutConfirm();" class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
             </div>
         
             
@@ -55,9 +62,30 @@
                 
             </div>
         </div>
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    
         
+       <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+       <script type="text/javascript">
+    	
+    		function logoutConfirm(){
+    			
+    			swal({title: "Confirm Logout",
+    				 text: "Are you shure you want to Logout?",
+    				 icon: "warning",
+    				 buttons: {
+    					 cancel: "Cancel",
+    					 logout: "Log Out",
+    				 },	 
+    			})
+    			.then((value) => {	
+    				if(value == "logout"){
+    					document.location.href="LogoutServlet";
+    				}
+    			});
+    			return true;
+    		}
+    		
+        </script>
         
         <script>
             function setupTabs () {
@@ -105,7 +133,7 @@
         
         <script type="text/javascript">
             let image = document.getElementById("image");
-            let images = ['images/can1.jpg','images/can2.jpg','images/can3.jpg','images/can4.jpg','images/can5.jpg','images/can6.jpg','images/can7.jpg']
+            let images = ['css/images/can1.jpg','css/images/can2.jpg','css/images/can3.jpg','css/images/can4.jpg','css/images/can5.jpg','css/images/can6.jpg','css/images/can7.jpg']
             setInterval(function(){
                 let random = Math.floor(Math.random()*7);
                 image.src = images[random];

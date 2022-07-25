@@ -5,10 +5,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 import org.CanaraExamManager.bean.LoginBean;
-import org.CanaraExamManager.dao.StudentLoginDao;
+import org.CanaraExamManager.dao.LoginDao;
 
 
 @WebServlet("/LoginServlet")
@@ -32,26 +34,62 @@ public class LoginServlet extends HttpServlet {
 		loginBean.setPassword(passwordString);
 		
 		//creating object for LoginDao which contains the main logic of the application.
-		StudentLoginDao loginDao = new StudentLoginDao();
+		LoginDao loginDao = new LoginDao();
 		
-		//calling authenticate user method.
-		String userValidateString = loginDao.authenticateUser(loginBean); 
+		HttpSession session = request.getSession();
+		String sessionString = (String) session.getAttribute("LoginUser");
 		
-		//If the method returns success string then the user will be rooted to his/her page.
-		if(userValidateString.equals("SUCCESS")) {
+		if(sessionString == "StudentLogin") {
+			//calling authenticate user method.
+			String userValidateString = loginDao.authenticateUser(loginBean); 
+		
+			//If the method returns success string then the user will be rooted to his/her page.
+			if(userValidateString.equals("SUCCESS")) {
+				
+				session.setAttribute("student",userNameString );
+				request.setAttribute("userName",userNameString);
+				request.getRequestDispatcher("/studdashboard.jsp").forward(request, response);
 			
-			request.setAttribute("userName",userNameString);
-			request.setAttribute("errMessage",userValidateString);
-			request.getRequestDispatcher("/studdashboard.jsp").forward(request, response);
+			}else {
 			
-		}else {
-			
-			request.setAttribute("errMessage",userValidateString);
-			request.getRequestDispatcher("/studentlogin.jsp").forward(request, response);
-			
+				request.setAttribute("errMessage",userValidateString);
+				request.getRequestDispatcher("/studentlogin.jsp").forward(request, response);
+			}
+		
 		}
 		
+		else if(sessionString == "StaffLogin") {
+			
+			String staffValidateString = loginDao.authenticateStaff(loginBean);
+			
+			if(staffValidateString.equals("SUCCESS")) {
+				
+				session.setAttribute("staff",userNameString );
+				request.setAttribute("userName", userNameString);
+				request.getRequestDispatcher("/staffdashboard.jsp").forward(request,response);
+			}else {
+				
+				request.setAttribute("errMessage", staffValidateString);
+				request.getRequestDispatcher("/stafflogin.jsp").forward(request, response);
+			}
+		}
 		
+
+		else if(sessionString == "AdminLogin") {
+			
+			String adminValidateString = loginDao.authenticateAdmin(loginBean);
+			
+			if(adminValidateString.equals("SUCCESS")) {
+				
+				session.setAttribute("admin",userNameString );
+				request.setAttribute("userName", userNameString);
+				request.getRequestDispatcher("/admindashboard.jsp").forward(request,response);
+			}else {
+				
+				request.setAttribute("errMessage", adminValidateString);
+				request.getRequestDispatcher("/adminlogin.jsp").forward(request, response);
+			}
+		}
 		
 	}
 
