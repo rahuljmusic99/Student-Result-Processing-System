@@ -1,0 +1,147 @@
+Rahul@MySQL762
+#Creating new schema
+CREATE SCHEMA `canaradatabase' ;
+
+
+
+#Creating student table
+
+CREATE TABLE student(
+
+	reg_no int(10) PRIMARY KEY NOT NULL,
+	first_name varchar(225) NOT NULL,
+	last_name varchar(225) NOT NULL,
+	gender varchar(225) NOT NULL,
+	dob DATE NOT NULL,
+	email varchar(225) NOT NULL,
+	phone bigint(20) NOT NULL,
+	address varchar(225) NOT NULL,
+	blood_group varchar(225) NOT NULL,
+	caste varchar(225) NOT NULL,
+	religion varchar(225) NOT NULL,
+	aadhar_no bigint(20) NOT NULL,
+	birth_place varchar(225) NOT NULL,
+	birth_district varchar(225) NOT NULL,
+	country varchar(225) NOT NULL,
+	identity_mark varchar(225),
+	pincode int(11) NOT NULL,
+	password varchar(225) NOT NULL,
+	f_name varchar(225) NOT NULL,
+	f_occupation varchar(225) NOT NULL,
+	f_phone bigint(20) NOT NULL,
+	m_name varchar(225) NOT NULL,
+	m_occupation varchar(225) NOT NULL,
+	m_phone bigint(20) NOT NULL,
+	course_id int(10) NOT NULL,
+	joining_year int(10) NOT NULL,
+	semester int(3) NOT NULL,
+	status varchar(255) NOT NULL,
+	FOREIGN KEY (course_id) REFERENCES course(course_id)
+);
+
+
+
+# adding dummy records to the student table
+
+INSERT INTO student (reg_no,first_name,last_name,gender,dob,email,phone,address,blood_group,caste,religion,aadhar_no,birth_place,birth_district,country,identity_mark,pincode,password,f_name,f_occupation,f_phone,m_name,m_occupation,m_phone,course_id,joining_year,semester,status)
+VALUES(191132718,"Rahul","J","male","2001-02-27","rahuljmusic99@gmail.com",7760207762,"Twin House, Morgan's Gate, J.V Roche Road","O +ve","billava","hindu",772633211411,"Mangalore","Dakshina kannada","India","mole near forehead",575001,"Rahul@123","Vijaya J","Business",9148853476,"Laxmi","House Wife",6363772024,231,2019,6,"true");
+
+
+#creating studentImage table to store student images
+
+CREATE TABLE studentimage(
+	reg_no int(10) NOT NULL,
+	profile_image longblob,
+	FOREIGN KEY(reg_no) REFERENCES student(reg_no)
+);
+
+#inserting records into studentimage table
+INSERT INTO studentimage(reg_no,profile_image)
+VALUES (191132718,"LOAD_FILE(E:/Images/Album/RahulLegend.png)");
+
+
+
+#Creating Staff Table
+
+CREATE TABLE staff(
+	
+	staff_id int(10) PRIMARY KEY NOT NULL,
+	first_name varchar(225) NOT NULL,
+	last_name varchar(225) NOT NULL,
+	gender varchar(225) NOT NULL,
+	dob DATE NOT NULL,
+	email varchar(225) NOT NULL,
+	phone bigint(20) NOT NULL,
+	address varchar(225) NOT NULL,
+	blood_group varchar(225) NOT NULL,
+	caste varchar(225) NOT NULL,
+	religion varchar(225) NOT NULL,
+	identity_mark varchar(225),
+	password varchar(225) NOT NULL,
+	staff_status varchar(225) NOT NULL
+);
+
+
+
+#adding dummy records to the staff table
+
+INSERT INTO staff (staff_id,first_name,last_name,gender,dob,email,phone,address,blood_group,caste,religion,identity_mark,password,staff_status)
+VALUES(191132718,"Shailaja","Kumari","female","1987-03-27","shailajakumari@gmail.com",8923982198,"Twin House, Morgan's Gate, J.V Roche Road","O +ve","billava","hindu","mole near forehead","Shailaja@123","true");                                                                                                                                                                                                                                                                              ");
+
+#creating staffImage table to store student images
+
+CREATE TABLE staffimage(
+	staff_id int(10) NOT NULL,
+	profile_image longblob,
+	FOREIGN KEY(staff_id) REFERENCES staff(staff_id)
+);
+
+#inserting values into staffimage table
+INSERT INTO staffimage(staff_id,profile_image)
+VALUES (191132718,"LOAD_FILE(E:/Images/Album/RahulLegend.png)");
+
+
+
+
+#creating Admin table
+
+CREATE TABLE admin(
+
+	admin_id int(10) PRIMARY KEY NOT NULL,
+	first_name varchar(225) NOT NULL,
+	last_name varchar(225) NOT NULL,
+	email varchar(225) NOT NULL,
+	phone bigint(20) NOT NULL,
+	password varchar(225) NOT NULL
+);
+
+
+#Inserting records into admin table
+
+INSERT INTO admin (admin_id,first_name,last_name,email,phone,password)
+VALUES(200127227,"Canara","College","canaracollege@gmail.com",08242492366,"Canara@123");
+
+
+
+#Create course table
+
+CREATE TABLE course(
+
+	course_id int(10) PRIMARY KEY NOT NULL,
+	course_name varchar(225) NOT NULL,
+	course_duration int(10) NOT NULL,
+	course_sem int(10) NOT NULL
+);
+
+
+#inserting records into course table
+
+INSERT INTO course(course_id,course_name,course_duration,course_sem)
+VALUES(231,"BCA",3,6);
+
+
+
+#mysql inner join example
+SELECT * FROM student 
+JOIN course
+where student.course_id = course.course_id;
