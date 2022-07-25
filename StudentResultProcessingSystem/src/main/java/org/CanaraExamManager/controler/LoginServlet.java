@@ -2,7 +2,6 @@ package org.CanaraExamManager.controler;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -49,9 +48,6 @@ public class LoginServlet extends HttpServlet {
 				
 				session.invalidate();
 				
-				Cookie loginCookie = new Cookie("student", userNameString);
-				response.addCookie(loginCookie);
-				
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("student",userNameString );
 				
@@ -73,10 +69,7 @@ public class LoginServlet extends HttpServlet {
 			if(staffValidateString.equals("SUCCESS")) {
 				
 				session.invalidate();
-				
-				Cookie loginCookie = new Cookie("staff", userNameString);
-				response.addCookie(loginCookie);
-				
+		
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("staff",userNameString );
 				
@@ -97,9 +90,6 @@ public class LoginServlet extends HttpServlet {
 			if(adminValidateString.equals("SUCCESS")) {
 				
 				session.invalidate();
-				
-				Cookie loginCookie = new Cookie("admin", userNameString);
-				response.addCookie(loginCookie);
 				
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("admin",userNameString );
