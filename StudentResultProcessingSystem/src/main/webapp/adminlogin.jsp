@@ -13,7 +13,7 @@
     <body>   		
         <section class="header"> 
             <div class="maindiv2">
-                <a href="main.html"><div class="divback"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;<span style="color: blue;font-size: 24px"></span>Back</div></a>
+                <a href="home.jsp"><div class="divback"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;<span style="color: blue;font-size: 24px"></span>Back</div></a>
                <h1>Login as <span style="color: blue">Admin</span></h1> 
                 
                 

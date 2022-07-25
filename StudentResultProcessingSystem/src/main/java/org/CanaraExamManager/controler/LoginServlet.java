@@ -2,6 +2,7 @@ package org.CanaraExamManager.controler;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -46,7 +47,14 @@ public class LoginServlet extends HttpServlet {
 			//If the method returns success string then the user will be rooted to his/her page.
 			if(userValidateString.equals("SUCCESS")) {
 				
-				session.setAttribute("student",userNameString );
+				session.invalidate();
+				
+				Cookie loginCookie = new Cookie("student", userNameString);
+				response.addCookie(loginCookie);
+				
+				HttpSession session2 = request.getSession();
+				session2.setAttribute("student",userNameString );
+				
 				request.setAttribute("userName",userNameString);
 				request.getRequestDispatcher("/studdashboard.jsp").forward(request, response);
 			
@@ -64,7 +72,14 @@ public class LoginServlet extends HttpServlet {
 			
 			if(staffValidateString.equals("SUCCESS")) {
 				
-				session.setAttribute("staff",userNameString );
+				session.invalidate();
+				
+				Cookie loginCookie = new Cookie("staff", userNameString);
+				response.addCookie(loginCookie);
+				
+				HttpSession session2 = request.getSession();
+				session2.setAttribute("staff",userNameString );
+				
 				request.setAttribute("userName", userNameString);
 				request.getRequestDispatcher("/staffdashboard.jsp").forward(request,response);
 			}else {
@@ -81,7 +96,14 @@ public class LoginServlet extends HttpServlet {
 			
 			if(adminValidateString.equals("SUCCESS")) {
 				
-				session.setAttribute("admin",userNameString );
+				session.invalidate();
+				
+				Cookie loginCookie = new Cookie("admin", userNameString);
+				response.addCookie(loginCookie);
+				
+				HttpSession session2 = request.getSession();
+				session2.setAttribute("admin",userNameString );
+				
 				request.setAttribute("userName", userNameString);
 				request.getRequestDispatcher("/admindashboard.jsp").forward(request,response);
 			}else {
