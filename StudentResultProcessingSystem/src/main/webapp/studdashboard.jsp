@@ -7,6 +7,8 @@
 %> 
 <jsp:forward page="/studentlogin.jsp"></jsp:forward>
 <%} %>    
+
+<%request.getAttribute("username");%>
      
 <!DOCTYPE html5>
 <html>
