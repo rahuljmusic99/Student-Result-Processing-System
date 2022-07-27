@@ -26,7 +26,7 @@
                 <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-bullseye"></i>Result</button>
                 <button class="tabs__button" data-for-tab="3" ><i class="fa fa-bar-chart"></i>Performance</button>
-                <button onclick="return logoutConfirm();" class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
+                <button onclick="logoutConfirm();" class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
             </div>
     
             
@@ -143,7 +143,7 @@
     					document.location.href="LogoutServlet";
     				}
     			});
-    			return true;
+    		
     		}
     	
     	</script>
@@ -200,8 +200,6 @@
             setInterval(function(){
                 let random = Math.floor(Math.random()*7);
                 image.src = images[random];
-                
-                
             },2500);
         </script>  
     </body>

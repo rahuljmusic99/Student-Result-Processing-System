@@ -16,7 +16,7 @@ public class DBConnection {
 		
 		try {
 			try {
-				Class.forName("com.mysql.jdbc.Driver"); //loading the MySQL Driver
+				Class.forName("com.mysql.cj.jdbc.Driver"); //loading the MySQL Driver
 				//optional method.
 				
 			} catch (ClassNotFoundException e) {
