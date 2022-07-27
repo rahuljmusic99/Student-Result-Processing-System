@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/ResultServlet")
 public class ResultServlet extends HttpServlet {
@@ -14,6 +15,10 @@ public class ResultServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String semesterString = (String) request.getAttribute("semester");
+		
+		PrintWriter out = response.getWriter();
+		out.println(semesterString);
 	}
 
 }
