@@ -59,9 +59,7 @@
             
             <div class="tabs__content" data-tab="3">
                
-                
-                
-                
+                  
             </div>
         </div>
         
