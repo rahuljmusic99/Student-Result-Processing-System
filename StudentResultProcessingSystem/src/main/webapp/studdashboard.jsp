@@ -47,12 +47,12 @@
             
             <div class="tabs__content" data-tab="2">
                 <div class="space3">
-                <div class="space4">semester 1</div>
-                <div class="space4">semester 2</div>
-                <div class="space4">semester 3</div>
-                <div class="space4">semester 4</div>
-                <div class="space4">semester 5</div>
-                <div class="space4">semester 6</div>
+                <div onclick="callServlet1();" class="space4">semester 1</div>
+                <div onclick="callServlet2();" class="space4">semester 2</div>
+                <div onclick="callServlet3();" class="space4">semester 3</div>
+                <div onclick="callServlet4();" class="space4">semester 4</div>
+                <div onclick="callServlet5();" class="space4">semester 5</div>
+                <div onclick="callServlet6();" class="space4">semester 6</div>
                 </div> 
             </div>
             
@@ -64,6 +64,70 @@
                 
             </div>
         </div>
+        
+        <script>
+        
+        	function callServlet1(){
+        		
+        		$.post("/ResultServlet",
+        		        {
+        		        semester : '1',
+        		     
+        		    }
+        		
+        	}
+        	
+        	function callServlet2(){
+        		
+        		$.post("/ResultServlet",
+        		        {
+        		        semester : '2',
+        		     
+        		    }
+        		
+        	}
+        	
+        	function callServlet3(){
+        		
+        		$.post("/ResultServlet",
+        		        {
+        		        semester : '3',
+        		     
+        		    }
+        		
+        	}
+        	
+        	function callServlet4(){
+        		
+        		$.post("/ResultServlet",
+        		        {
+        		        semester : '4',
+        		     
+        		    }
+        	
+        	}
+        	
+        	function callServlet5(){
+        		
+        		$.post("/ResultServlet",
+        		        {
+        		        semester : '5',
+        		     
+        		    }
+        		
+        	}
+        	
+        	function callServlet6(){
+        		
+        		$.post("/ResultServlet",
+        		        {
+        		        semester : '6',
+        		     
+        		    }
+        		
+        	}
+        	
+        </script>
         
        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
