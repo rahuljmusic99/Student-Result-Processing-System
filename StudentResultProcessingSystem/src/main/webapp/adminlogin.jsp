@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    
+<%session.setAttribute("LoginUser", "AdminLogin"); %>
+
 <!DOCTYPE html5>
 <html>
     <head>
@@ -41,7 +42,7 @@
             
             function validate(){
         		
-        		<%session.setAttribute("LoginUser", "AdminLogin"); %>
+        		
         		var username = document.adminLoginForm.username.value; 
                 var password = document.adminLoginForm.password.value;
            

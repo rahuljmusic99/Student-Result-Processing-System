@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<% //In case, if User session is not set, redirect to Login page.
+<% 
+	response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+
+	//In case, if User session is not set, redirect to Login page.
 	if((request.getSession(false).getAttribute("staff")== null) )
 	{
 %> 
@@ -16,6 +19,9 @@
         <link rel="stylesheet" href="css/staffdashboard.css"> 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/tabsgenerator.js"></script>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     </head> 
     <body>
@@ -59,140 +65,13 @@
                 
                 
            </div>
-        </div>
+        </div>   
         
-     <script>
         
-        	function callServlet1(){
-        		
-        		$.post("/ResultServlet",
-        		        {
-        		        semester : '1',
-        		     
-        		    }
-        		
-        	}
-        	
-        	function callServlet2(){
-        		
-        		$.post("/ResultServlet",
-        		        {
-        		        semester : '2',
-        		     
-        		    }
-        		
-        	}
-        	
-        	function callServlet3(){
-        		
-        		$.post("/ResultServlet",
-        		        {
-        		        semester : '3',
-        		     
-        		    }
-        		
-        	}
-        	
-        	function callServlet4(){
-        		
-        		$.post("/ResultServlet",
-        		        {
-        		        semester : '4',
-        		     
-        		    }
-        	
-        	}
-        	
-        	function callServlet5(){
-        		
-        		$.post("/ResultServlet",
-        		        {
-        		        semester : '5',
-        		     
-        		    }
-        		
-        	}
-        	
-        	function callServlet6(){
-        		
-        		$.post("/ResultServlet",
-        		        {
-        		        semester : '6',
-        		     
-        		    }
-        		
-        	}
-        	
-        </script>
-       <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-       <script type="text/javascript">
-    	
-    		function logoutConfirm(){
-    			
-    			swal({title: "Confirm Logout",
-    				 text: "Are you shure you want to Logout?",
-    				 icon: "warning",
-    				 buttons: {
-    					 cancel: "Cancel",
-    					 logout: "Log Out",
-    				 },	 
-    			})
-    			.then((value) => {	
-    				if(value == "logout"){
-    					document.location.href="LogoutServlet";
-    				}
-    			});
-    		
-    		}
-    	
-    	</script>
-    	
-    	
-        <script>
-            function setupTabs () {
-                document.querySelectorAll(".tabs__button").forEach(button => {
-                    
-                    button.addEventListener("click", () => {
-                        
-                       const sideBar = button.parentElement;
-                       const tabsContainer = sideBar.parentElement;
-                       const tabNumber = button.dataset.forTab;
-                       const tabToActivate =tabsContainer.querySelector(`.tabs__content[data-tab ="${tabNumber}"]`);
-                        
-                        sideBar.querySelectorAll(".tabs__button").forEach(button => { 
-                            button.classList.remove("tabs__button--active");
-                            
-                        });
-                        
-                        
-                        
-                        tabsContainer.querySelectorAll(".tabs__content").forEach(tab => { 
-                            tab.classList.remove("tabs__content--active");
-                            
-                        });
-                        
-                        button.classList.add("tabs__button--active");
-                        tabToActivate.classList.add("tabs__content--active");
-                        
-                    });
-                    
-                });
-                                                                    
-             }
-            
-            document.addEventListener("DOMContentLoaded", () => {
-                setupTabs();
-                
-                
-                document.querySelectorAll(".tabs").forEach(tabsContainer =>{
-                    tabsContainer.querySelector(".tabs__sidebar .tabs__button").click();
-                    
-                    
-                });
-            });
-        </script>
-        
+         <form action="ResultServlet" method="get" id="semesterForm">
+            	<input name="semester" id="semester" value="1" type="hidden" />
+            	<input name="userName" type="hidden" value=<%=request.getSession(false).getAttribute("staff")%>>
+         </form>
         
         <script type="text/javascript">
             let image = document.getElementById("image");

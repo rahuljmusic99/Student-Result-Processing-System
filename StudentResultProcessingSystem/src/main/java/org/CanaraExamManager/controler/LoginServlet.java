@@ -50,9 +50,7 @@ public class LoginServlet extends HttpServlet {
 				
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("student",userNameString );
-				
-				request.setAttribute("userName",userNameString);
-				request.getRequestDispatcher("/studdashboard.jsp").forward(request, response);
+				response.sendRedirect("studdashboard.jsp");
 			
 			}else {
 			
@@ -73,8 +71,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("staff",userNameString );
 				
-				request.setAttribute("userName", userNameString);
-				request.getRequestDispatcher("/staffdashboard.jsp").forward(request,response);
+				response.sendRedirect("staffdashboard.jsp");
 			}else {
 				
 				request.setAttribute("errMessage", staffValidateString);
@@ -94,8 +91,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("admin",userNameString );
 				
-				request.setAttribute("userName", userNameString);
-				request.getRequestDispatcher("/admindashboard.jsp").forward(request,response);
+				response.sendRedirect("admindashboard.jsp");
 			}else {
 				
 				request.setAttribute("errMessage", adminValidateString);
