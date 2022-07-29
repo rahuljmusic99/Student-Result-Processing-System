@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%session.setAttribute("LoginUser", "StudentLogin"); %> 
    
-
+<% 
+	if((request.getSession(false).getAttribute("student")!=null) )
+	{
+%> 
+<jsp:forward page="/staffdashboard.jsp"></jsp:forward>
+<%} %> 
 
 <!DOCTYPE html5>
 <html>

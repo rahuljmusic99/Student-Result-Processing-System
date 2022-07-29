@@ -66,7 +66,7 @@
             <div class="tabs__content" data-tab="3">
             
             
-            <form action="ResultServlet" method="get" id="semesterForm">
+            <form action="ResultServlet" method="post" id="semesterForm">
             	<input name="semester" id="semester" value="1" type="hidden" />
             	<input name="userName" type="hidden" value=<%=request.getSession(false).getAttribute("student") %>>
             </form>

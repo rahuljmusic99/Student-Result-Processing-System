@@ -196,5 +196,11 @@ CREATE TABLE final_marks(
 	obtained_marks int(10) NOT NULL,
 	IA_marks int(10) NOT NULL,
 	total_marks int(10) NOT NULL,
+	grade varchar(4) NOT NULL,
+	credit int(3) NOT NULL,
+	grade_point int(3) NOT NULL,
+	grade_point_weightage int(3) NOT NULL,
+	result varchar(10) NOT NULL,
+	FOREIGN KEY (reg_no) REFERENCES student(reg_no),
 	FOREIGN KEY (course_code) REFERENCES course(course_code)
 );
