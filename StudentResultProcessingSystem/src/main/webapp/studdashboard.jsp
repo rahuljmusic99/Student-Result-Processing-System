@@ -10,8 +10,7 @@
 %> 
 <jsp:forward page="/studentlogin.jsp"></jsp:forward>
 <%} %>    
-
-<%request.getAttribute("username");%>
+ 
      
 <!DOCTYPE html5>
 <html>
@@ -21,7 +20,7 @@
         <link rel="stylesheet" href="css/studdashboard.css"> 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/tabsgenerator.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/dashboard.js"></script>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         
@@ -60,7 +59,7 @@
                 	int i;
                 	for(i=1; i <= semesterInt ;i++){
                 %>
-                <div onclick="callResultServlet()" id="div1" class="space4">Semester <%=Integer.toString(i) %></div>
+                <div onclick="callResultServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>" class="space4">Semester <%=Integer.toString(i) %></div>
                <%} %>
                 </div> 
             </div>
@@ -70,9 +69,10 @@
             
             
             <form action="ResultServlet" method="post" id="semesterForm">
-            	<input name="semester" id="semester" value="1" type="hidden" />
+            	<input name="semester" type="hidden" value=""/>
             	<input name="userName" type="hidden" value=<%=request.getSession(false).getAttribute("student") %>>
             </form>
+            
                 
              <script type="text/javascript">
              

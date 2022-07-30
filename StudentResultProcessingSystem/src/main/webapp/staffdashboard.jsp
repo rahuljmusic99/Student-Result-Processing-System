@@ -11,6 +11,8 @@
 <jsp:forward page="/stafflogin.jsp"></jsp:forward>
 <%} %>   
 
+<%request.getAttribute("username");%>
+
 <!DOCTYPE html5>
 <html>
     <head>
@@ -19,7 +21,7 @@
         <link rel="stylesheet" href="css/staffdashboard.css"> 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/tabsgenerator.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/dashboard.js"></script>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
@@ -51,12 +53,8 @@
             
             <div class="tabs__content" data-tab="2">
                 <div class="space3">
-                <div onclick="callServlet1();" class="space4">semester 1</div>
-                <div onclick="callServlet2();" class="space4">semester 2</div>
-                <div onclick="callServlet3();" class="space4">semester 3</div>
-                <div onclick="callServlet4();" class="space4">semester 4</div>
-                <div onclick="callServlet5();" class="space4">semester 5</div>
-                <div onclick="callServlet6();" class="space4">semester 6</div>
+                <div  class="space4">semester 1</div>
+       
                 </div>   
             </div>
             

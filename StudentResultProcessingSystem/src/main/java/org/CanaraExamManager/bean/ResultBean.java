@@ -23,5 +23,4 @@ public class ResultBean {
 		this.semesterString = semesterString;
 	}
 	
-	
 }

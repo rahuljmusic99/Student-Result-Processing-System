@@ -2,6 +2,7 @@
 <%session.setAttribute("LoginUser", "StaffLogin"); %>    
 
 <% 
+	response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
 	if((request.getSession(false).getAttribute("staff")!=null) )
 	{
 %> 

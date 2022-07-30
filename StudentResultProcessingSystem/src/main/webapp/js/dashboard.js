@@ -59,13 +59,77 @@
     			});
     		}
     		
+    		
+    		
+    		
     		    document.getElementById("div1");
-        		
-        	function callResultServlet(){
+    		    document.getElementById("div2");
+    		    document.getElementById("div3");
+    		    document.getElementById("div4");
+    		    document.getElementById("div5");
+    		    document.getElementById("div6");    		    
+    		    document.getElementById("div7");
+    		    document.getElementById("div8");
+    		    
+        	function callResultServlet1(){
+						
+				document.forms['semesterForm']['semester'].value = "1";
+			    document.getElementById("semesterForm").submit();
 				
-				var semester = document.getElementById(div1).value;	
-				semester.match(/^(\S+)\s(.*)/).slice(1);
-				document.getElementById("semester").value=semester.trim();
+				
+			}
+			
+			function callResultServlet2(){
+						
+				document.forms['semesterForm']['semester'].value = "2";
+			    document.getElementById("semesterForm").submit();
+				
+				
+			}
+			
+			function callResultServlet3(){
+						
+				document.forms['semesterForm']['semester'].value = "3";
+				document.getElementById("semesterForm").submit();
+				
+				
+			}
+			
+			function callResultServlet4(){
+						
+				document.forms['semesterForm']['semester'].value = "4";
+			    document.getElementById("semesterForm").submit();
+				
+				
+			}
+			
+			function callResultServlet5(){
+						
+				document.forms['semesterForm']['semester'].value = "5";
+			    document.getElementById("semesterForm").submit();
+				
+				
+			}
+			
+			function callResultServlet6(){
+						
+				document.forms['semesterForm']['semester'].value = "6";
+			    document.getElementById("semesterForm").submit();
+				
+				
+			}
+			
+			function callResultServlet7(){
+						
+				document.forms['semesterForm']['semester'].value = "7";
+			    document.getElementById("semesterForm").submit();
+				
+				
+			}
+			
+			function callResultServlet8(){
+						
+				document.forms['semesterForm']['semester'].value = "8";
 			    document.getElementById("semesterForm").submit();
 				
 				

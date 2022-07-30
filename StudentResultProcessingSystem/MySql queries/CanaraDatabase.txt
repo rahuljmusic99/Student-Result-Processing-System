@@ -172,9 +172,17 @@ CREATE TABLE course(
 
 
 #inserting records into course table
-INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,min_marks,programme_id)
+INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,min_marks,max_IA,programme_id)
 VALUES("BCACAC231","operating systems and linux","theory","core",3,80,28,231);
 
+INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,min_marks,max_IA,programme_id)
+VALUES("BCACAC181","Basic Mathematics","theory","core",2,80,28,20,231);
+
+INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,min_marks,max_IA,programme_id)
+VALUES("BCACAC232","Data Structures","theory","core",3,80,28,20,231);
+
+INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,min_marks,max_IA,programme_id)
+VALUES("BCACAC233","Visual Basic.Net Programming","theory","core",3,80,28,20,231);
 
 #creating marks table of students
 
@@ -221,11 +229,14 @@ CREATE TABLE final_marks(
 	FOREIGN KEY (programme_id) REFERENCES programme(programme_id)
 );
 
-INSERT INTO final_marks(reg_no,course_code,obtained_marks,IA_marks,total_marks,grade,credit,grade_point,grade_point_weightage,result)
-VALUES(191132718,"BCACAC231",53,14,67,"AB+",2,7,14,"pass");
+INSERT INTO final_marks(reg_no,course_code,programme_id,obtained_marks,IA_marks,total_marks,grade,credit,grade_point,grade_point_weightage,result)
+VALUES(191132718,"BCACAC181",231,78,15,67,"AB+",2,7,14,"pass");
 
+INSERT INTO final_marks(reg_no,course_code,programme_id,obtained_marks,IA_marks,total_marks,grade,credit,grade_point,grade_point_weightage,result)
+VALUES(191132718,"BCACAC232",231,39,14,58,"BB+",2,6,12,"pass");
 
-
+INSERT INTO final_marks(reg_no,course_code,programme_id,obtained_marks,IA_marks,total_marks,grade,credit,grade_point,grade_point_weightage,result)
+VALUES(191132718,"BCACAC233",231,44,15,59,"BB+",2,6,12,"pass");
 
 SELECT * from final_marks((
 INNER JOIN course ON final_marks.course_code = course.course_code)
@@ -236,7 +247,7 @@ SELECT *
 FROM ((final_marks
 INNER JOIN course ON final_marks.course_code = course.course_code)
 INNER JOIN programme ON final_marks.programme_id = programme.programme_id)
-WHERE final_marks.reg_no = 191132718;
+WHERE course.course_sem = "3";
 
 SELECT reg_no, first_name, last_name from student WHERE reg_no = "191132718"; 
 

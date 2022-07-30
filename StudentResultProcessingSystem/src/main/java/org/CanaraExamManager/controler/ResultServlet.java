@@ -8,10 +8,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
 
 @WebServlet("/ResultServlet")
 public class ResultServlet extends HttpServlet {
@@ -25,7 +24,7 @@ public class ResultServlet extends HttpServlet {
 		
 		ResultBean resultBean = new ResultBean();
 		resultBean.setUserName(userNameString);
-		resultBean.setSemester(semesterString);        
+		resultBean.setSemester(semesterString);      
 		
 		ResultDao resultDao = new ResultDao();
 		ResultSet resultSet = resultDao.getResult(resultBean);
@@ -36,7 +35,7 @@ public class ResultServlet extends HttpServlet {
 			
 		}else {
 			request.setAttribute("semesterMarks", resultSet);
-			request.getRequestDispatcher("home.jsp").forward(request, response);
+			request.getRequestDispatcher("finalmarks.jsp").forward(request, response);
 		}
 		
 	}
