@@ -1,0 +1,73 @@
+body{
+    margin: 0;
+    padding: 0;
+    
+}
+.sec2{
+    width: 100%;
+    height: 100%;  
+}
+.div2{
+    border: 2px solid black;
+    margin: 20px;
+    margin-left: 40px;
+    width: 95%;
+    height:100%;
+    background:#1d1740;  
+    padding-bottom: 40px;
+}
+h1{
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+}
+h3{
+    text-align: center;
+    color: white;
+}
+h4{
+    text-align: center;
+    color: white;
+    margin-left: -10rem;
+}
+.logo{
+    height: 50px;
+}
+.img{
+    width: 7rem;
+    height: 7rem;
+    background: white;
+    margin-left: 9rem;  
+}
+.studimg{
+    width: 6rem;
+    height: 6rem;
+    margin:0.5rem;
+}
+.table1{
+    border:2px solid grey;
+    margin-top: 1rem;
+    width: 80%;
+    background-color:azure;
+}
+td{
+    text-align: center;  
+}
+
+.avg{
+    text-align: left;
+}
+
+h6{
+    margin-left: 9rem;
+    font-size: 16px;
+}
+
+h5{
+    margin-left: 70rem;
+    margin-bottom: -0.5rem;
+    font-size: 16px;
+}
+
+
+
