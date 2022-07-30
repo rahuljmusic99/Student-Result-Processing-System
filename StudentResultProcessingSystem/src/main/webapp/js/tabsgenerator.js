@@ -60,50 +60,13 @@
     		}
     		
     		    document.getElementById("div1");
-            	document.getElementById("div2");
-            	document.getElementById("div3");
-            	document.getElementById("div4");
-            	document.getElementById("div5");
-            	document.getElementById("div6");
-            	
-				function callServlet1(){
-					
-					document.getElementById("semester").value="1";
-					document.getElementById("semesterForm").submit();
-        			
-        		}
+        		
+        	function callResultServlet(){
 				
-				function callServlet2(){
-					
-					document.getElementById("semester").value="2";
-					document.getElementById("semesterForm").submit();
-					
-        		}
+				var semester = document.getElementById(div1).value;	
+				semester.match(/^(\S+)\s(.*)/).slice(1);
+				document.getElementById("semester").value=semester.trim();
+			    document.getElementById("semesterForm").submit();
 				
-				function callServlet3(){
-					
-					document.getElementById("semester").value="3";
-					document.getElementById("semesterForm").submit();
-					
-        		}
 				
-				function callServlet4(){
-					
-					document.getElementById("semester").value="4";
-					document.getElementById("semesterForm").submit();
-					
-        		}
-				
-				function callServlet5(){
-					
-					document.getElementById("semester").value="5";
-					document.getElementById("semesterForm").submit();
-					
-        		}
-				
-				function callServlet6(){
-					
-					document.getElementById("semester").value="6";
-					document.getElementById("semesterForm").submit();
-					
-        		}
+			}

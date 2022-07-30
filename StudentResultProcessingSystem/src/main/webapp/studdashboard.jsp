@@ -53,12 +53,15 @@
             
             <div class="tabs__content" data-tab="2">
                 <div class="space3">
-                <div onclick="callServlet1()" id="div1" class="space4">semester 1</div>
-                <div onclick="callServlet2()" id="div2" class="space4">semester 2</div>
-                <div onclick="callServlet3()" id="div3" class="space4">semester 3</div>
-                <div onclick="callServlet4()" id="div4" class="space4">semester 4</div>
-                <div onclick="callServlet5()" id="div5" class="space4">semester 5</div>
-                <div onclick="callServlet6()" id="div6" class="space4">semester 6</div>
+                <%  
+                	String semesterString = (String) session.getAttribute("semester"); 
+                	int semesterInt = Integer.parseInt(semesterString);
+                    
+                	int i;
+                	for(i=1; i <= semesterInt ;i++){
+                %>
+                <div onclick="callResultServlet()" id="div1" class="space4">Semester <%=Integer.toString(i) %></div>
+               <%} %>
                 </div> 
             </div>
             

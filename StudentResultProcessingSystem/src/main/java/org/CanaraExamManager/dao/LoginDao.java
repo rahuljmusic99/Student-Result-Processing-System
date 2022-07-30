@@ -6,6 +6,8 @@ import org.CanaraExamManager.bean.LoginBean;
 
 import org.CanaraExamManager.util.DBConnection;
 
+import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
+import jakarta.servlet.http.HttpSession;
 
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -26,6 +28,8 @@ public class LoginDao {
 		String userNameDBString = "";
 		String passwordDBString = "";
 		String statusString = "";
+		String semesterString = "";
+		String nameString = "";
 		
 		try {
 			//Fetch database connection object
@@ -33,13 +37,22 @@ public class LoginDao {
 			//Statement is used to write queries.
 			statement = con.createStatement();
 			
-			resultset = statement.executeQuery("select reg_no,password,status from student");
+			resultset = statement.executeQuery("select reg_no,password,status,semester,first_name,last_name from student");
 			
 			while(resultset.next()) {
 				
 				userNameDBString = resultset.getString("reg_no");
 				passwordDBString = resultset.getString("password");
 				statusString = resultset.getString("status");
+				semesterString = resultset.getString("semester");
+				String firstString = resultset.getString("first_name");
+				String secondString = resultset.getString("last_name");
+				
+				nameString = firstString +" "+ secondString;
+				
+				loginBean.setSemester(semesterString);
+				loginBean.setName(nameString);
+				
 				statusString.toLowerCase();
 				
 				if(userNameString.equals(userNameDBString) && passwordString.equals(passwordDBString) && statusString.equals("true") ) {

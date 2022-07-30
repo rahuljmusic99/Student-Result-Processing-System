@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @WebServlet("/ResultServlet")
 public class ResultServlet extends HttpServlet {
@@ -28,9 +29,15 @@ public class ResultServlet extends HttpServlet {
 		
 		ResultDao resultDao = new ResultDao();
 		ResultSet resultSet = resultDao.getResult(resultBean);
-					
-		request.setAttribute("semesterMarks", resultSet);
-		request.getRequestDispatcher("admindashboard.jsp").forward(request, response);
-	
+		
+		if(resultSet==null) {
+			request.setAttribute("semesterMarks", "empty");
+			request.getRequestDispatcher("home.jsp").forward(request, response);
+			
+		}else {
+			request.setAttribute("semesterMarks", resultSet);
+			request.getRequestDispatcher("home.jsp").forward(request, response);
 		}
+		
+	}
 }

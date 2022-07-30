@@ -5,7 +5,7 @@
 	if((request.getSession(false).getAttribute("student")!=null) )
 	{
 %> 
-<jsp:forward page="/staffdashboard.jsp"></jsp:forward>
+<jsp:forward page="/studdashboard.jsp"></jsp:forward>
 <%} %> 
 
 <!DOCTYPE html5>

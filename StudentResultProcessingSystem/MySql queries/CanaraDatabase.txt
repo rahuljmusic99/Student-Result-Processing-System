@@ -47,6 +47,12 @@ INSERT INTO student (reg_no,first_name,last_name,gender,dob,email,phone,address,
 VALUES(191132718,"Rahul","J","male","2001-02-27","rahuljmusic99@gmail.com",7760207762,"Twin House, Morgan's Gate, J.V Roche Road","O +ve","billava","hindu",772633211411,"Mangalore","Dakshina kannada","India","mole near forehead",575001,"Rahul@123","Vijaya J","Business",9148853476,"Laxmi","House Wife",6363772024,231,2019,6,"true");
 
 
+INSERT INTO student (reg_no,first_name,last_name,gender,dob,email,phone,address,blood_group,caste,religion,aadhar_no,birth_place,birth_district,country,identity_mark,pincode,password,f_name,f_occupation,f_phone,m_name,m_occupation,m_phone,programme_id,joining_year,semester,status)
+VALUES(191132717,"Seenu","Vasan","male","2001-05-20","seenuvasan2051@gmail.com",9845123684,"Chillimbi","O +ve","devanga","hindu",293233594324,"Mangalore","Dakshina kannada","India","tatoo in left hand",575006,"Seenu@123","Govinda Raj","Business",7204342751,"Naga Ratnam","House Wife",8050128545,231,2019,6,"true");
+
+
+
+
 #creating studentImage table to store student images
 
 CREATE TABLE studentimage(
@@ -176,16 +182,24 @@ CREATE TABLE first_internal_marks(
 
 	reg_no int(10)NOT NULL,
 	course_code varchar(255) NOT NULL,
+	programme_id int(10) NOT NULL,
+	max_marks int(10) NOT NULL,
 	total_marks int(10) NOT NULL,
-	FOREIGN KEY (course_code) REFERENCES course(course_code)
+	FOREIGN KEY (course_code) REFERENCES course(course_code),
+	FOREIGN KEY (reg_no) REFERENCES student(reg_no),
+	FOREIGN KEY (programme_id) REFERENCES programme(programme_id)
 );
 
 CREATE TABLE second_internal_marks(
 
 	reg_no int(10)NOT NULL,
 	course_code varchar(255) NOT NULL,
+	programme_id int (10) NOT NULL,
+	max_marks int(10) NOT NULL,
 	total_marks int(10) NOT NULL,
-	FOREIGN KEY (course_code) REFERENCES course(course_code)
+	FOREIGN KEY (course_code) REFERENCES course(course_code),
+	FOREIGN KEY (reg_no) REFERENCES student(reg_no),
+	FOREIGN KEY (programme_id) REFERENCES programme(programme_id)
 );
 
 
@@ -193,6 +207,7 @@ CREATE TABLE final_marks(
 	
 	reg_no int(10) NOT NULL,
 	course_code varchar(255) NOT NULL,
+	programme_id int(10) NOT NULL,
 	obtained_marks int(10) NOT NULL,
 	IA_marks int(10) NOT NULL,
 	total_marks int(10) NOT NULL,
@@ -202,5 +217,27 @@ CREATE TABLE final_marks(
 	grade_point_weightage int(3) NOT NULL,
 	result varchar(10) NOT NULL,
 	FOREIGN KEY (reg_no) REFERENCES student(reg_no),
-	FOREIGN KEY (course_code) REFERENCES course(course_code)
+	FOREIGN KEY (course_code) REFERENCES course(course_code),
+	FOREIGN KEY (programme_id) REFERENCES programme(programme_id)
 );
+
+INSERT INTO final_marks(reg_no,course_code,obtained_marks,IA_marks,total_marks,grade,credit,grade_point,grade_point_weightage,result)
+VALUES(191132718,"BCACAC231",53,14,67,"AB+",2,7,14,"pass");
+
+
+
+
+SELECT * from final_marks((
+INNER JOIN course ON final_marks.course_code = course.course_code)
+INNER JOIN programme ON final_marks.programme_id = programme.programme_id);
+
+
+SELECT *
+FROM ((final_marks
+INNER JOIN course ON final_marks.course_code = course.course_code)
+INNER JOIN programme ON final_marks.programme_id = programme.programme_id)
+WHERE final_marks.reg_no = 191132718;
+
+SELECT reg_no, first_name, last_name from student WHERE reg_no = "191132718"; 
+
+

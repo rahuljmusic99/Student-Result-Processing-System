@@ -25,6 +25,8 @@ public class LoginServlet extends HttpServlet {
 		
 		String userNameString = request.getParameter("username");
 		String passwordString = request.getParameter("password");
+		String semesterString = "";
+		String nameString = "";
 		
 		//creating an object for LoginBean class which setter and getter methods
 		LoginBean loginBean = new LoginBean();
@@ -48,8 +50,12 @@ public class LoginServlet extends HttpServlet {
 				
 				session.invalidate();
 				
+				semesterString = loginBean.getSemester();
+				
 				HttpSession session2 = request.getSession();
-				session2.setAttribute("student",userNameString );
+				session2.setAttribute("student", userNameString);
+				session2.setAttribute("StudentName", nameString);
+				session2.setAttribute("semester", semesterString);
 				response.sendRedirect("studdashboard.jsp");
 			
 			}else {
@@ -69,8 +75,8 @@ public class LoginServlet extends HttpServlet {
 				session.invalidate();
 		
 				HttpSession session2 = request.getSession();
-				session2.setAttribute("staff",userNameString );
-				
+				session2.setAttribute("staff",userNameString);
+				session2.setAttribute("StaffName", nameString);
 				response.sendRedirect("staffdashboard.jsp");
 			}else {
 				
@@ -90,7 +96,7 @@ public class LoginServlet extends HttpServlet {
 				
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("admin",userNameString );
-				
+				session2.setAttribute("StaffName", nameString);
 				response.sendRedirect("admindashboard.jsp");
 			}else {
 				
