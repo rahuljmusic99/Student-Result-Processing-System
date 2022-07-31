@@ -15,35 +15,33 @@
 //	base64Image	= base64Image + (String)session.getAttribute("userImage");
 %>
 <!DOCTYPE html5>
-<html>
-<head>
-    <link rel="stylesheet" href="css/semester.css">
-</head>
-<body>
-    <scetion class="mainsec">
 
-    <scetion class="sec2">
-        
-        
-        
-        <div class="div2">
-            <h1>
-                <span>Canara&nbsp;</span><img class="logo" src="css/images/canlogo.png"><span>&nbsp;College</span>
-            </h1>
-            <h3>Marks Sheet</h3>
-            <h4><span>Programme: </span><%=session.getAttribute("programme")%><span></span></h4>
-            <div class="img"><img class="studimg " src=""></div>       <!-- Add image here -->
-            <h6><span style="color: white">Name:&nbsp;</span><span style="color: white"><%=session.getAttribute("studentName")%></span></h6>
-            <h5><span style="color: white">Date:&nbsp;</span><span style="color: white"></span></h5>
-            <h5><span style="color: white">Reg No :&nbsp;</span><span style="color: white"><%=session.getAttribute("student")%></span></h5>
+<html>
+    <head>
+    <link rel="stylesheet" href="css/semester.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="pdf.js"></script>
+    </head>
+    <body>
+        <button id="btn">Print PDF</button><br>
+        <div class="main">
+            
+            <div class="inner">
+             <h1><span style="color: palegoldenrod">CANARA&nbsp;</span><img src="images/canlogo.png" class="logo"><span style="color: palegoldenrod">&nbsp;COLLEGE</span></h1>
+            <h5>Marks Sheet</h5>
+            <h6><span style="color: palegoldenrod">Programme:&nbsp;&nbsp;</span><span><%=session.getAttribute("programme")%></span></h6>
+             <div class="img"><img src="" class="studimg"></div>
+             <div class="right"><h3><br><br><span >Date:&nbsp;</span><span>12-10-2000</span></h3><h4><span>Reg No:&nbsp;</span><span><%=session.getAttribute("student")%></span></h4></div>
+             <h2><span style="color: white;">Name:&nbsp;</span><span><%=session.getAttribute("studentName")%></span></h2>
+            </div>
             <table class="table1" border="1" cellspacing="0"  rules="" align="center">
-                <tr bgcolor="lightblue">
+                <tr bgcolor="#7dace4">
                     <th colspan="2">Courses</th>
                     <th colspan="4">Marks</th>
                     <th colspan="4">Credit Calculation</th>
                     <th rowspan="2" colspan="0">result</th>
                 </tr>
-                <tr bgcolor="lightblue">
+                <tr bgcolor="#7dace4">
                     <th>Name</th>  
                     <th>Code</th>
                     <th></th>
@@ -112,10 +110,8 @@
     	
             </table>
         </div>
-        
-       
-    	
-    </scetion> 
- </scetion>
-</body>
+    </body>
+
 </html>
+
+

@@ -1,34 +1,38 @@
 body{
-    margin: 0;
-    padding: 0;
-    
+    margin: 1;
+    padding: 0.2;
 }
-.sec2{
-    width: 100%;
-    height: 100%;  
+.main{
+    width: 92%;
+    height: auto;
+    border: 2px solid #1d1740;
+    margin-left: 4.5rem;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    background-image: url(images/t4.jpg);
 }
-.div2{
-    border: 2px solid black;
-    margin: 20px;
-    margin-left: 40px;
-    width: 95%;
-    height:100%;
-    background:#1d1740;  
-    padding-bottom: 40px;
+.inner{
+    width: auto;
+    height: auto;
+    background: #1d1740;
+    position: relative;
+    margin-top: -34px;
+    margin-right: -0.5px;
+    padding-bottom: 1rem;
+}
+.table1{
+    width: 56rem;
+    height: auto;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    border: 1px solid black;
+    text-align: center;
+    padding: auto;
 }
 h1{
-    text-align: center;
     color: white;
-    font-size: 3rem;
-}
-h3{
     text-align: center;
-    color: white;
-}
-h4{
-    text-align: center;
-    color: white;
-    margin-left: -10rem;
+    font-size: 50px;
 }
 .logo{
     height: 50px;
@@ -37,37 +41,66 @@ h4{
     width: 7rem;
     height: 7rem;
     background: white;
-    margin-left: 9rem;  
+    margin-left: 4rem;
+    margin-top: 5rem;   
 }
 .studimg{
     width: 6rem;
     height: 6rem;
-    margin:0.5rem;
-}
-.table1{
-    border:2px solid grey;
-    margin-top: 1rem;
-    width: 80%;
-    background-color:azure;
-}
-td{
-    text-align: center;  
+    margin: 0.5rem;
 }
 
+h2{
+    margin-left: 4rem;
+    color: white;
+    font-size: 16px;
+}
+.right{
+    width: 13rem;
+    height: 7rem;
+    background: transparent;
+    margin-right: 4rem;
+    margin-top: -5rem;
+    float: right;  
+}
+h3{
+    font-size: 16px;
+    color: white;
+    
+}
+h4{
+    font-size: 16px;
+    color: white;
+}
+.tr1{
+    text-align: left;
+    
+}
+.tr2{
+    text-align: left;
+}
+#btn{
+    background: red;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+tr{
+    height: 30px;
+}
+h5{
+    text-align: center;
+    color: white;
+    margin-left: -2rem;
+    font-size: 25px;
+}
+h6{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-left: -12rem;
+}
 .avg{
     text-align: left;
 }
-
-h6{
-    margin-left: 9rem;
-    font-size: 16px;
-}
-
-h5{
-    margin-left: 70rem;
-    margin-bottom: -0.5rem;
-    font-size: 16px;
-}
-
-
-
