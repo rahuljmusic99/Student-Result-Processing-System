@@ -68,7 +68,7 @@
                 	int j;
                 	for(j=1; j <= semesterInt ;j++){
                 %> 
-                    <div onclick="callResultServlet<%=Integer.toString(j)%>()" id="div<%=Integer.toString(j)%>" class="space6">Semester <%=Integer.toString(j)%></div>
+                    <div onclick="callInternalServlet<%=Integer.toString(j)%>()" id="div<%=Integer.toString(j)%>" class="space6">Semester <%=Integer.toString(j)%></div>
  				<%} %>
                    </div>        
             </div>
@@ -78,6 +78,11 @@
             
             
             <form action="ResultServlet" method="post" id="semesterForm">
+            	<input name="semester" type="hidden" value=""/>
+            	<input name="userName" type="hidden" value=<%=request.getSession(false).getAttribute("student") %>>
+            </form>
+            
+            <form action="InternalServlet" method="post" id=internalForm>
             	<input name="semester" type="hidden" value=""/>
             	<input name="userName" type="hidden" value=<%=request.getSession(false).getAttribute("student") %>>
             </form>

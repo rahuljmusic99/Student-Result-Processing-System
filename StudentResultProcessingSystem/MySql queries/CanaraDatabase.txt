@@ -140,18 +140,10 @@ CREATE TABLE programme(
 );
 
 
-#inserting records into course table
+#inserting records into programme table
 
 INSERT INTO programme(programme_id,programme_name,programme_duration,programme_sem)
 VALUES(231,"BCA",3,6);
-
-
-
-#mysql inner join example
-SELECT * FROM student 
-JOIN course
-where student.course_id = course.course_id;
-
 
 
 #creating subject table
@@ -191,19 +183,40 @@ INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,m
 VALUES("BCACAP235","VB.Net Lab","practical","core",3,80,28,20,231);
 
 
-#creating marks table of students
+#creating internal marks table of students
 
 CREATE TABLE first_internal_marks(
 
 	reg_no int(10)NOT NULL,
 	course_code varchar(255) NOT NULL,
-	programme_id int(10) NOT NULL,
+	programme_id int (10) NOT NULL,
 	max_marks int(10) NOT NULL,
-	total_marks int(10) NOT NULL,
+	min_marks int(10)NOT NULL,
+	obtained_marks int(10) NOT NULL,
+	grade varchar(4) NOT NULL,
+	result varchar(10) NOT NULL,
 	FOREIGN KEY (course_code) REFERENCES course(course_code),
 	FOREIGN KEY (reg_no) REFERENCES student(reg_no),
 	FOREIGN KEY (programme_id) REFERENCES programme(programme_id)
 );
+
+
+#inserting values into first internal table
+
+INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
+VALUES(191132718,"BCACAC231",231,25,8,19,"pass");
+
+INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
+VALUES(191132718,"BCACAC232",231,25,8,24,"pass");
+
+INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
+VALUES(191132718,"BCACAC233",231,25,8,20,"pass");
+
+INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
+VALUES(191132718,"BCACAP234",231,25,8,21,"pass");
+
+INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
+VALUES(191132718,"BCACAP235",231,25,8,23,"pass");
 
 CREATE TABLE second_internal_marks(
 
@@ -211,13 +224,31 @@ CREATE TABLE second_internal_marks(
 	course_code varchar(255) NOT NULL,
 	programme_id int (10) NOT NULL,
 	max_marks int(10) NOT NULL,
-	total_marks int(10) NOT NULL,
+	min_marks int(10)NOT NULL,
+	obtained_marks int(10) NOT NULL,
+	grade varchar(4) NOT NULL,
+	result varchar(10) NOT NULL,
 	FOREIGN KEY (course_code) REFERENCES course(course_code),
 	FOREIGN KEY (reg_no) REFERENCES student(reg_no),
 	FOREIGN KEY (programme_id) REFERENCES programme(programme_id)
 );
 
+INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
+VALUES(191132718,"BCACAC231",231,25,8,20,"pass");
 
+INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
+VALUES(191132718,"BCACAC232",231,25,8,24,"pass");
+
+INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
+VALUES(191132718,"BCACAC233",231,25,8,19,"pass");
+
+INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
+VALUES(191132718,"BCACAP234",231,25,8,22,"pass");
+
+INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
+VALUES(191132718,"BCACAP235",231,25,8,23,"pass");
+
+#creating final semester marks table of students
 CREATE TABLE final_marks(
 	
 	reg_no int(10) NOT NULL,

@@ -139,10 +139,66 @@
 			
 //		JavaScript function to call InternalServlet based on which semester client selects
 
-				function callInternalServlet(){
+			function callInternalServlet1(){
 						
-				document.forms['semesterForm']['semester'].value = "1";
-			    document.getElementById("semesterForm").submit();
+				document.forms['internalForm']['semester'].value = "1";
+			    document.getElementById("internalForm").submit();
+				
+				
+			}
+			
+			function callInternalServlet2(){
+						
+				document.forms['internalForm']['semester'].value = "2";
+			    document.getElementById("internalForm").submit();
+				
+				
+			}
+			
+			function callInternalServlet3(){
+						
+				document.forms['internalForm']['semester'].value = "3";
+			    document.getElementById("internalForm").submit();
+				
+				
+			}
+			
+			function callInternalServlet4(){
+						
+				document.forms['internalForm']['semester'].value = "4";
+			    document.getElementById("internalForm").submit();
+				
+				
+			}
+			
+			function callInternalServlet5(){
+						
+				document.forms['internalForm']['semester'].value = "5";
+			    document.getElementById("internalForm").submit();
+				
+				
+			}
+			
+			function callInternalServlet6(){
+						
+				document.forms['internalForm']['semester'].value = "6";
+			    document.getElementById("internalForm").submit();
+				
+				
+			}
+			
+			function callInternalServlet7(){
+						
+				document.forms['internalForm']['semester'].value = "7";
+			    document.getElementById("internalForm").submit();
+				
+				
+			}
+			
+			function callInternalServlet8(){
+						
+				document.forms['internalForm']['semester'].value = "8";
+			    document.getElementById("internalForm").submit();
 				
 				
 			}
