@@ -6,14 +6,18 @@
     pageEncoding="UTF-8"%>
 <%	
 	ResultSet resultSet = (ResultSet) request.getAttribute("semesterMarks");
-	
+
 	int grandTotalObtained = 0;
 	int grandTotalMax = 0;
 	int grandTotalIA = 0;
 
 //	String base64Image = "data:image/png;base64,";
 //	base64Image	= base64Image + (String)session.getAttribute("userImage");
+
+	if(resultSet == null){
 %>
+<jsp:forward page="/studentdashboard.jsp"></jsp:forward>
+<%} %>
     
 <!--<!DOCTYPE html5>-->
 <html>
