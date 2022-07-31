@@ -62,6 +62,15 @@
                 <div onclick="callResultServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>" class="space4">Semester <%=Integer.toString(i) %></div>
                <%} %>
                 </div> 
+                    
+                  <div class="space5">
+                    <div class="space6">Semester 1</div>
+                    <div class="space6">Semester 2</div>
+                    <div class="space6">Semester 3</div>
+                    <div class="space6">Semester 4</div>
+                    <div class="space6">Semester 5</div>
+                    <div class="space6">Semester 6</div> 
+                    </div>        
             </div>
             
             

@@ -9,6 +9,7 @@
     border:1px solid #cccccc;
     display:flex;
     height: 100%;  
+    width: 100%;
 }
 
 .tabs__sidebar{
@@ -40,7 +41,7 @@
 
 .tabs__button--active{
     font-weight: bold;
-    border-right: 3px solid red;  /* #009879  */
+    border-right: 3px solid red;  
     background: blue;
     color: #ffffff;
 }
@@ -82,7 +83,7 @@ img{
 .space3{
     background: blue;
     height: 90%;
-    width: 500px;   /*500px*/
+    width: 500px;   
     border-radius: 20px;
     padding: 15px;
     box-shadow: 10px 10px 10px;
@@ -140,18 +141,6 @@ i{
     margin-top: 40px;
 }
 
-
-.space5{
-    float: right;
-    width:800px;
-    height: 100%;
-    margin-left:550px;
-    display: flex;
-    justify-content: center;  
-}
-
-
-
 h2{
     font-size:25px;
 }
@@ -163,6 +152,60 @@ p{
 h3{
     font-size: 20px;
 }
+
+.space5{
+    margin-top: -41.3rem;
+    height: 90%;
+    width: 500px; 
+    margin-left:700px;
+    justify-content: center; 
+    background: blue; 
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: -10px 10px 10px 0px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+
+.space6{
+    text-align:end;
+    background:#ffffff;
+    height: 50px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 25px;
+    font-size: 18px;  
+    margin-left: 60px;
+    margin-right: 60px;
+    box-shadow: 10px 10px 20px 0px black;
+    padding-top: 17px;
+    display: inline-grid;
+    display: flex;
+    padding-left: 10rem;
+    
+}
+
+.space6:hover{
+    text-align: center;
+    box-shadow: none;
+    background-image: linear-gradient(to right,#8A2387,#E94057);
+    transition: 1s;
+    color:white;
+    margin-left: 80px;
+    margin-right: 80px;
+    cursor: pointer;
+    font-weight: bold;
+    padding-left: 8.6rem;
+}
+
+.space6:active{
+    height: 65px;
+    margin-left: 60px;
+    margin-right: 60px;
+    padding-left: 10rem;
+}
+
 
 
 
