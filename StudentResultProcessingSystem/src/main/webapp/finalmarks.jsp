@@ -9,20 +9,20 @@
 	String programmeName = "";
 	String base64Image = (String)session.getAttribute("userImage");
 %>
-<!DOCTYPE html5>
-
+    
+<!--<!DOCTYPE html5>-->
 <html>
     <head>
-    <link rel="stylesheet" href="css/semester.css">
+    <link rel="stylesheet" href="semester.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="pdf.js"></script>
+    <script src="js/pdf.js"></script>
     </head>
     <body>
         <button id="btn">Print PDF</button><br>
         <div class="main">
             
             <div class="inner">
-             <h1><span style="color: palegoldenrod">CANARA&nbsp;</span><img src="images/canlogo.png" class="logo"><span style="color: palegoldenrod">&nbsp;COLLEGE</span></h1>
+             <h1><span style="color: palegoldenrod">CANARA&nbsp;</span><img src="css/images/canlogo.png" class="logo"><span style="color: palegoldenrod">&nbsp;COLLEGE</span></h1>
             <h5>Marks Sheet</h5>
             <h6><span style="color: palegoldenrod">Programme:&nbsp;&nbsp;</span><span><%=session.getAttribute("programme")%></span></h6>
              <div class="img"><img src="" class="studimg"></div>
