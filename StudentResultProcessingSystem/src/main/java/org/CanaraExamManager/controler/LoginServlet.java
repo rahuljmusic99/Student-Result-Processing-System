@@ -9,11 +9,11 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Blob;
-import java.sql.SQLException;
+//import java.sql.SQLException;
 
 import org.CanaraExamManager.bean.LoginBean;
-import org.CanaraExamManager.dao.LoginDao;
 import org.CanaraExamManager.util.ImageConverter;
+import org.CanaraExamManager.dao.LoginDao;
 
 
 @WebServlet("/LoginServlet")
@@ -60,12 +60,12 @@ public class LoginServlet extends HttpServlet {
 				semesterString = loginBean.getSemester();
 				programmeName = loginBean.getProgramme();
 				nameString = loginBean.getName();
-				try {
-					imageConverter.base64Converter(loginBean);
-				} catch (SQLException | IOException e) {
-					e.printStackTrace();
-				}
-				userImageString  = loginBean.getUserImageString();
+//				try {
+//					imageConverter.base64Converter(loginBean);
+//				} catch (SQLException | IOException e) {
+//					e.printStackTrace();
+//				}
+//				userImageString  = loginBean.getUserImageString();
 
 				
 				HttpSession session2 = request.getSession();
@@ -73,7 +73,7 @@ public class LoginServlet extends HttpServlet {
 				session2.setAttribute("studentName", nameString);
 				session2.setAttribute("semester", semesterString);
 				session2.setAttribute("programme", programmeName);
-				session2.setAttribute("userImage", userImageString);
+//				session2.setAttribute("userImage", userImageString);
 				response.sendRedirect("studdashboard.jsp");
 			
 			}else {

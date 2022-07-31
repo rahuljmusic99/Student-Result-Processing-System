@@ -29,7 +29,7 @@ public class LoginDao {
 		String statusString = "";
 		String semesterString = "";
 		String nameString = "";
-		Blob userImage = null;
+//		Blob userImage = null;
 		
 		try {
 			//Fetch database connection object
@@ -49,7 +49,7 @@ public class LoginDao {
 				passwordDBString = resultset.getString("password");
 				statusString = resultset.getString("status");
 				semesterString = resultset.getString("semester");
-				userImage = resultset.getBlob("profile_image");
+//				userImage = resultset.getBlob("profile_image");
 				
 				String firstNameeString = resultset.getString("first_name");
 				String secondNameString = resultset.getString("last_name");
@@ -60,7 +60,8 @@ public class LoginDao {
 				loginBean.setSemester(semesterString);
 				loginBean.setName(nameString);
 				loginBean.setProgramme(programmeName);
-				loginBean.setUserImage(userImage);
+				
+//				loginBean.setUserImage(userImage);
 				
 				statusString.toLowerCase();
 				
