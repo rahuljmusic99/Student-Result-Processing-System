@@ -1,0 +1,111 @@
+body{
+    margin: 1;
+    padding: 0.5;
+}
+
+.main{
+    width: 92%;
+    height: auto;
+    border: 2px solid #1d1740;
+    margin-left: 4.5rem;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    background-image: url(images/t1.jpg);
+}
+
+.inner{
+    width: auto;
+    height: 20rem;
+    background: #1d1740;
+    position: relative;
+    margin-top: -34px;
+    margin-right: -0.5px;
+}
+.table1{
+    width: 54rem;
+    height: 25rem;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    border: 1px solid black;
+    text-align: center;
+    padding: auto;
+   
+}
+
+.table2{
+    width: 54rem;
+    height: 25rem;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+h1{
+    color: white;
+    text-align: center;
+    font-size: 50px;
+}
+
+.logo{
+    height: 50px;
+}
+
+.img{
+    width: 7rem;
+    height: 7rem;
+    background: white;
+    margin-left: 4rem;
+    margin-top: 5rem;
+    
+}
+.studimg{
+    width: 6rem;
+    height: 6rem;
+    margin: 0.5rem;
+}
+
+h2{
+    margin-left: 4rem;
+    color: white;
+    font-size: 16px;
+}
+
+.right{
+    width: 13rem;
+    height: 7rem;
+    background: transparent;
+    margin-right: 4rem;
+    margin-top: -5rem;
+    float: right;
+    
+    
+}
+
+h3{
+    font-size: 16px;
+    color: white;
+    
+}
+
+h4{
+    font-size: 16px;
+    color: white;
+}
+
+.tr1{
+    text-align: left;
+    
+}
+
+.tr2{
+    text-align: left;
+}
+
+#btn{
+    background: red;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
