@@ -59,18 +59,18 @@
                 	int i;
                 	for(i=1; i <= semesterInt ;i++){
                 %>
-                <div onclick="callResultServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>" class="space4">Semester <%=Integer.toString(i) %></div>
+                <div onclick="callResultServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>" class="space4">Semester <%=Integer.toString(i)%></div>
                <%} %>
                 </div> 
                     
                   <div class="space5">
-                    <div class="space6">Semester 1</div>
-                    <div class="space6">Semester 2</div>
-                    <div class="space6">Semester 3</div>
-                    <div class="space6">Semester 4</div>
-                    <div class="space6">Semester 5</div>
-                    <div class="space6">Semester 6</div> 
-                    </div>        
+                 <% 
+                	int j;
+                	for(j=1; j <= semesterInt ;j++){
+                %> 
+                    <div onclick="callResultServlet<%=Integer.toString(j)%>()" id="div<%=Integer.toString(j)%>" class="space6">Semester <%=Integer.toString(j)%></div>
+ 				<%} %>
+                   </div>        
             </div>
             
             
