@@ -22,7 +22,6 @@
 <!DOCTYPE html5>
 <html>
     <head>
-<<<<<<< HEAD
 
     <link rel="stylesheet" href="css/semester.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -32,11 +31,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/pdf.js"></script>
 
-=======
+
     <link rel="stylesheet" href="css/semester.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/pdf.js"></script>
->>>>>>> 2d66aede3f951137ff78ea43f4b9a913fc49cbb2
+
     </head>
     <body>
         <button id="btn">Print PDF</button><br>
