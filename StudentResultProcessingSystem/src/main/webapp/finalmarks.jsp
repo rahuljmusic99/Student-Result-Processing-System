@@ -1,3 +1,4 @@
+<%@page import="com.mysql.cj.util.Base64Decoder"%>
 <%@page import="java.sql.ResultSetMetaData"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.SQLException"%>
@@ -5,6 +6,8 @@
     pageEncoding="UTF-8"%>
 <%	
 	ResultSet resultSet = (ResultSet) request.getAttribute("semesterMarks");
+	String programmeName = "";
+	String base64Image = (String)session.getAttribute("userImage");
 %>
 <!DOCTYPE html5>
 <html>
@@ -23,11 +26,11 @@
                 <span>Canara&nbsp;</span><img class="logo" src="css/images/canlogo.png"><span>&nbsp;College</span>
             </h1>
             <h3>Marks Sheet</h3>
-            <h4><span>Programme: </span><span></span></h4>
+            <h4><span>Programme: </span><%=session.getAttribute("programme")%><span></span></h4>
             <div class="img"><img class="studimg " src=""></div>       <!-- Add image here -->
-            <h6><span style="color: white">Name:&nbsp;</span><span style="color: white">  </span></h6>
-            <h5><span style="color: white">Date:&nbsp;</span><span style="color: white">  </span></h5>
-            <h5><span style="color: white">Reg No :&nbsp;</span><span style="color: white">  </span></h5>
+            <h6><span style="color: white">Name:&nbsp;</span><span style="color: white"><%=session.getAttribute("studentName")%></span></h6>
+            <h5><span style="color: white">Date:&nbsp;</span><span style="color: white"></span></h5>
+            <h5><span style="color: white">Reg No :&nbsp;</span><span style="color: white"><%=session.getAttribute("student")%></span></h5>
             <table class="table1" border="1" cellspacing="0"  rules="" align="center">
                 <tr bgcolor="lightblue">
                     <th colspan="2">Courses</th>
@@ -50,6 +53,8 @@
                 <%
                 try{
                 	while(resultSet.next()){
+                		
+                		programmeName = resultSet.getString("programme_name");
     	 		%>
                 <tr>
                     <td rowspan="3"><%=resultSet.getString("course_name")%></td> <!--course name-->   <!-- comment specifies-you have to add value  -->

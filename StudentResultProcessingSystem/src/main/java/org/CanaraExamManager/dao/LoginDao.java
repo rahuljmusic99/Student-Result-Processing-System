@@ -1,13 +1,12 @@
 package org.CanaraExamManager.dao;
 
+import java.sql.Blob;
 import java.sql.Connection;
 
 import org.CanaraExamManager.bean.LoginBean;
 
 import org.CanaraExamManager.util.DBConnection;
 
-import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
-import jakarta.servlet.http.HttpSession;
 
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -30,6 +29,7 @@ public class LoginDao {
 		String statusString = "";
 		String semesterString = "";
 		String nameString = "";
+		Blob userImage = null;
 		
 		try {
 			//Fetch database connection object
@@ -37,7 +37,11 @@ public class LoginDao {
 			//Statement is used to write queries.
 			statement = con.createStatement();
 			
-			resultset = statement.executeQuery("select reg_no,password,status,semester,first_name,last_name from student");
+			resultset = statement.executeQuery(""
+			+ "select A.reg_no,password,status,semester,first_name,last_name,A.programme_id,B.programme_id,B.programme_name,C.reg_no,C.profile_image FROM ((student A "
+			+ "INNER JOIN programme B ON A.programme_id = B.programme_id) "
+			+ "INNER JOIN studentimage C ON A.reg_no = C.reg_no) "
+			+ "WHERE A.reg_no = "+userNameString+"");
 			
 			while(resultset.next()) {
 				
@@ -45,13 +49,18 @@ public class LoginDao {
 				passwordDBString = resultset.getString("password");
 				statusString = resultset.getString("status");
 				semesterString = resultset.getString("semester");
-				String firstString = resultset.getString("first_name");
-				String secondString = resultset.getString("last_name");
+				userImage = resultset.getBlob("profile_image");
 				
-				nameString = firstString +" "+ secondString;
+				String firstNameeString = resultset.getString("first_name");
+				String secondNameString = resultset.getString("last_name");
+				String programmeName = resultset.getString("programme_name");
+				
+				nameString = firstNameeString +" "+ secondNameString;
 				
 				loginBean.setSemester(semesterString);
 				loginBean.setName(nameString);
+				loginBean.setProgramme(programmeName);
+				loginBean.setUserImage(userImage);
 				
 				statusString.toLowerCase();
 				

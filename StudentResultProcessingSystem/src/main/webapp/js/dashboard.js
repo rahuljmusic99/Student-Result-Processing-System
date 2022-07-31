@@ -1,4 +1,4 @@
-
+//		JavaScript function to create tabs on the left and contents on right
             function setupTabs() {
                 document.querySelectorAll(".tabs__button").forEach(button => {
                     
@@ -41,6 +41,8 @@
                 });
             });
      
+ 
+ //		Logout confirmation code
             
             function logoutConfirm(){
     			
@@ -60,7 +62,7 @@
     		}
     		
     		
-    		
+//		JavaScript function to call ResultServlet based on which semester client selects
     		
     		    document.getElementById("div1");
     		    document.getElementById("div2");

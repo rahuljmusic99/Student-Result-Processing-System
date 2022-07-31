@@ -1,12 +1,16 @@
 package org.CanaraExamManager.bean;
 
+import java.sql.Blob;
+
 public class LoginBean {
 	
 	private String userNameString;
 	private String passwordString;
 	private String semesterString;
 	private String nameString;
-	
+	private String programmeName;
+	private Blob userImage;
+	private String userImageString;
 	
 	public String getUserName() {
 		return userNameString;
@@ -42,5 +46,31 @@ public class LoginBean {
 	
 	public void setSemester(String semesterString) {
 		this.semesterString = semesterString;
+	}
+	
+	public String getProgramme() {
+		return programmeName;
+		
+	}
+	
+	public void setProgramme(String programmeName) {
+		
+		this.programmeName = programmeName;
+	}
+	
+	public Blob getUserImage() {
+		return userImage;
+	}
+	
+	public void setUserImage(Blob userImage) {
+		this.userImage = userImage;
+	}
+	
+	public String getUserImageString() {
+		return userImageString;
+	}
+	
+	public void setUserImageString(String userImageString) {
+		this.userImageString = userImageString;
 	}
 }
