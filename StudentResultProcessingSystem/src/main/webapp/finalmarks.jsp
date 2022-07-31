@@ -19,9 +19,10 @@
 <jsp:forward page="/studentdashboard.jsp"></jsp:forward>
 <%} %>
     
-<!--<!DOCTYPE html5>-->
+<!DOCTYPE html5>
 <html>
     <head>
+<<<<<<< HEAD
 
     <link rel="stylesheet" href="css/semester.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -31,6 +32,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/pdf.js"></script>
 
+=======
+    <link rel="stylesheet" href="css/semester.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/pdf.js"></script>
+>>>>>>> 2d66aede3f951137ff78ea43f4b9a913fc49cbb2
     </head>
     <body>
         <button id="btn">Print PDF</button><br>
@@ -70,7 +76,7 @@
 						grandTotalMax = grandTotalMax + resultSet.getInt("max_marks");
 						grandTotalIA = grandTotalIA + resultSet.getInt("max_IA");
     	 		%>
-                <tr>
+                <tr bgcolor="whitesmoke">
                     <td rowspan="3"><%=resultSet.getString("course_name").toUpperCase()%></td> <!--course name-->   <!-- comment specifies-you have to add value  -->
                     <td rowspan="3"><%=resultSet.getString("course_code")%></td>         <!--code-->
                     <td><%=resultSet.getString("course_type")%></td>                       
@@ -83,13 +89,13 @@
                     <td rowspan="3"><%=resultSet.getString("grade_point_weightage")%></td>                 <!--  gpw  -->
                     <td colspan="1" rowspan="3"><%=resultSet.getString("result").toUpperCase()%></td>     <!--  result  -->
                 </tr>
-                  <tr>
+                  <tr bgcolor="whitesmoke">
                     <td>IA</td>   
                     <td><%=resultSet.getString("max_IA")%></td>
                     <td>-</td>    
                     <td><%=resultSet.getString("IA_marks")%></td>       <!-- IA obtained   -->
-                </tr>
-                  <tr>
+                </tr >
+                  <tr bgcolor="whitesmoke">
                     <td>Total</td>
                     <td><%=resultSet.getInt("max_marks")+resultSet.getInt("max_IA")%></td>
                     <td><%=(int)Math.ceil((resultSet.getInt("max_marks")+resultSet.getInt("max_IA")) * 35 / 100)%></td>
@@ -100,7 +106,7 @@
                 	 e.printStackTrace();
                  }%>
     		
-                <tr>
+                <tr bgcolor="whitesmoke">
                     <th colspan="2">Grand Total</th>
                     <th></th>
                     <td><%=grandTotalMax + grandTotalIA%></td>     <!--Max total   -->   <!-- This should be genarated according to number of subjects   -->
@@ -112,7 +118,7 @@
                     <td></td>     <!-- gpw total   -->
                     <td></td>
                 </tr>
-                <tr >
+                <tr bgcolor="whitesmoke">
                     <td colspan="11" class="avg">&nbsp;Semester Grade Point Average:</td> <!-- try to add sgpa value after : inside the tag   -->
                 
                 </tr> 
