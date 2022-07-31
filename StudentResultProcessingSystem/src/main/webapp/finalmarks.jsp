@@ -5,7 +5,6 @@
     pageEncoding="UTF-8"%>
 <%	
 	ResultSet resultSet = (ResultSet) request.getAttribute("semesterMarks");
-	
 %>
 <!DOCTYPE html5>
 <html>
@@ -51,7 +50,6 @@
                 <%
                 try{
                 	while(resultSet.next()){
-    				
     	 		%>
                 <tr>
                     <td rowspan="3"><%=resultSet.getString("course_name")%></td> <!--course name-->   <!-- comment specifies-you have to add value  -->
@@ -64,7 +62,7 @@
                     <td rowspan="3"><%=resultSet.getString("credit")%></td>                 <!--  cr  -->
                     <td rowspan="3"><%=resultSet.getString("grade_point")%></td>                 <!--  gp  -->
                     <td rowspan="3"><%=resultSet.getString("grade_point_weightage")%></td>                 <!--  gpw  -->
-                    <td colspan="1" rowspan="3"></td>     <!--  result  -->
+                    <td colspan="1" rowspan="3"><%=resultSet.getString("result")%></td>     <!--  result  -->
                 </tr>
                   <tr>
                     <td>IA</td>   
