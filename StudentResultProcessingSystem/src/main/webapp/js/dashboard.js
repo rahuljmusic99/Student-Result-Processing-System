@@ -136,3 +136,13 @@
 				
 				
 			}
+			
+//		JavaScript function to call InternalServlet based on which semester client selects
+
+				function callInternalServlet(){
+						
+				document.forms['semesterForm']['semester'].value = "1";
+			    document.getElementById("semesterForm").submit();
+				
+				
+			}
