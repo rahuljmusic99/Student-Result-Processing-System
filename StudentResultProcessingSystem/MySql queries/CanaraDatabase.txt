@@ -63,7 +63,7 @@ CREATE TABLE studentimage(
 
 #inserting records into studentimage table
 INSERT INTO studentimage(reg_no,profile_image)
-VALUES (191132718,"LOAD_FILE(E:/Images/Album/RahulLegend.png)");
+VALUES (191132718,LOAD_FILE("E:/Images/Album/RahulLegend.png"));
 
 
 
@@ -104,7 +104,7 @@ CREATE TABLE staffimage(
 
 #inserting values into staffimage table
 INSERT INTO staffimage(staff_id,profile_image)
-VALUES (191132718,"LOAD_FILE(E:/Images/Album/RahulLegend.png)");
+VALUES (191132718,LOAD_FILE("E:/Images/Album/RahulLegend.png"));
 
 
 
@@ -184,6 +184,13 @@ VALUES("BCACAC232","Data Structures","theory","core",3,80,28,20,231);
 INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,min_marks,max_IA,programme_id)
 VALUES("BCACAC233","Visual Basic.Net Programming","theory","core",3,80,28,20,231);
 
+INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,min_marks,max_IA,programme_id)
+VALUES("BCACAP234","Operating Systems and Data Structures Lab","practical","core",3,80,28,20,231);
+
+INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,min_marks,max_IA,programme_id)
+VALUES("BCACAP235","VB.Net Lab","practical","core",3,80,28,20,231);
+
+
 #creating marks table of students
 
 CREATE TABLE first_internal_marks(
@@ -238,6 +245,12 @@ VALUES(191132718,"BCACAC232",231,39,14,58,"BB+",2,6,12,"pass");
 INSERT INTO final_marks(reg_no,course_code,programme_id,obtained_marks,IA_marks,total_marks,grade,credit,grade_point,grade_point_weightage,result)
 VALUES(191132718,"BCACAC233",231,44,15,59,"BB+",2,6,12,"pass");
 
+INSERT INTO final_marks(reg_no,course_code,programme_id,obtained_marks,IA_marks,total_marks,grade,credit,grade_point,grade_point_weightage,result)
+VALUES(191132718,"BCACAP234",231,80,16,96,"OO+",2,10,20,"pass");
+
+INSERT INTO final_marks(reg_no,course_code,programme_id,obtained_marks,IA_marks,total_marks,grade,credit,grade_point,grade_point_weightage,result)
+VALUES(191132718,"BCACAP235",231,80,18,98,"OO+",2,10,20,"pass");
+
 SELECT * from final_marks((
 INNER JOIN course ON final_marks.course_code = course.course_code)
 INNER JOIN programme ON final_marks.programme_id = programme.programme_id);
@@ -248,7 +261,3 @@ FROM ((final_marks
 INNER JOIN course ON final_marks.course_code = course.course_code)
 INNER JOIN programme ON final_marks.programme_id = programme.programme_id)
 WHERE course.course_sem = "3";
-
-SELECT reg_no, first_name, last_name from student WHERE reg_no = "191132718"; 
-
-

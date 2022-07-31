@@ -6,8 +6,13 @@
     pageEncoding="UTF-8"%>
 <%	
 	ResultSet resultSet = (ResultSet) request.getAttribute("semesterMarks");
-	String programmeName = "";
-	String base64Image = (String)session.getAttribute("userImage");
+	
+	int grandTotalObtained = 0;
+	int grandTotalMax = 0;
+	int grandTotalIA = 0;
+
+//	String base64Image = "data:image/png;base64,";
+//	base64Image	= base64Image + (String)session.getAttribute("userImage");
 %>
 <!DOCTYPE html5>
 <html>
@@ -54,10 +59,11 @@
                 try{
                 	while(resultSet.next()){
                 		
-                		programmeName = resultSet.getString("programme_name");
+						grandTotalMax = grandTotalMax + resultSet.getInt("max_marks");
+						grandTotalIA = grandTotalIA + resultSet.getInt("max_IA");
     	 		%>
                 <tr>
-                    <td rowspan="3"><%=resultSet.getString("course_name")%></td> <!--course name-->   <!-- comment specifies-you have to add value  -->
+                    <td rowspan="3"><%=resultSet.getString("course_name").toUpperCase()%></td> <!--course name-->   <!-- comment specifies-you have to add value  -->
                     <td rowspan="3"><%=resultSet.getString("course_code")%></td>         <!--code-->
                     <td><%=resultSet.getString("course_type")%></td>                       
                     <td><%=resultSet.getString("max_marks")%></td>                           
@@ -67,7 +73,7 @@
                     <td rowspan="3"><%=resultSet.getString("credit")%></td>                 <!--  cr  -->
                     <td rowspan="3"><%=resultSet.getString("grade_point")%></td>                 <!--  gp  -->
                     <td rowspan="3"><%=resultSet.getString("grade_point_weightage")%></td>                 <!--  gpw  -->
-                    <td colspan="1" rowspan="3"><%=resultSet.getString("result")%></td>     <!--  result  -->
+                    <td colspan="1" rowspan="3"><%=resultSet.getString("result").toUpperCase()%></td>     <!--  result  -->
                 </tr>
                   <tr>
                     <td>IA</td>   
@@ -77,8 +83,8 @@
                 </tr>
                   <tr>
                     <td>Total</td>
-                    <td>100</td>
-                    <td>35</td>
+                    <td><%=resultSet.getInt("max_marks")+resultSet.getInt("max_IA")%></td>
+                    <td><%=(int)Math.ceil((resultSet.getInt("max_marks")+resultSet.getInt("max_IA")) * 35 / 100)%></td>
                     <td><%=resultSet.getString("total_marks")%></td>       <!-- Total obtained   -->
                 </tr>
                  <%  }
@@ -89,7 +95,7 @@
                 <tr>
                     <th colspan="2">Grand Total</th>
                     <th></th>
-                    <td></td>     <!--Max total   -->   <!-- This should be genarated according to number of subjects   -->
+                    <td><%=grandTotalMax + grandTotalIA%></td>     <!--Max total   -->   <!-- This should be genarated according to number of subjects   -->
                     <td></td>     
                     <td></td>     <!-- total obtained   -->
                     <td></td>

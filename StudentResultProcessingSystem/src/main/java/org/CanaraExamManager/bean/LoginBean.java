@@ -9,8 +9,8 @@ public class LoginBean {
 	private String semesterString;
 	private String nameString;
 	private String programmeName;
-	private Blob userImage;
-	private String userImageString;
+//	private Blob userImage;
+//	private String userImageString;
 	
 	public String getUserName() {
 		return userNameString;
@@ -58,19 +58,19 @@ public class LoginBean {
 		this.programmeName = programmeName;
 	}
 	
-	public Blob getUserImage() {
-		return userImage;
-	}
-	
-	public void setUserImage(Blob userImage) {
-		this.userImage = userImage;
-	}
-	
-	public String getUserImageString() {
-		return userImageString;
-	}
-	
-	public void setUserImageString(String userImageString) {
-		this.userImageString = userImageString;
-	}
+//	public Blob getUserImage() {
+//		return userImage;
+//	}
+//	
+//	public void setUserImage(Blob userImage) {
+//		this.userImage = userImage;
+//	}
+//	
+//	public String getUserImageString() {
+//		return userImageString;
+//	}
+//	
+//	public void setUserImageString(String userImageString) {
+//		this.userImageString = userImageString;
+//	}
 }
