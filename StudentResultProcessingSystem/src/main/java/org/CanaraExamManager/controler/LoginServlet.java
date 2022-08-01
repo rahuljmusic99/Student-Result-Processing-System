@@ -55,6 +55,8 @@ public class LoginServlet extends HttpServlet {
 			//If the method returns success string then the user will be rooted to his/her page.
 			if(userValidateString.equals("SUCCESS")) {
 				
+				session.invalidate();
+				
 				semesterString = loginBean.getSemester();
 				programmeName = loginBean.getProgramme();
 				nameString = loginBean.getName();
@@ -68,9 +70,11 @@ public class LoginServlet extends HttpServlet {
 				
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("student", userNameString);
+				session2.setAttribute("regNo", userNameString);
 				session2.setAttribute("studentName", nameString);
 				session2.setAttribute("semester", semesterString);
 				session2.setAttribute("programme", programmeName);
+				session2.setAttribute("user", "student");
 //				session2.setAttribute("userImage", userImageString);
 				response.sendRedirect("studdashboard.jsp");
 			
@@ -87,10 +91,13 @@ public class LoginServlet extends HttpServlet {
 			String staffValidateString = loginDao.authenticateStaff(loginBean);
 			
 			if(staffValidateString.equals("SUCCESS")) {
+				
+				session.invalidate();
 		
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("staff",userNameString);
 				session2.setAttribute("StaffName", nameString);
+				session2.setAttribute("user", "staff");
 				response.sendRedirect("staffdashboard.jsp");
 			}else {
 				
@@ -106,9 +113,12 @@ public class LoginServlet extends HttpServlet {
 			
 			if(adminValidateString.equals("SUCCESS")) {
 				
+				session.invalidate();
+				
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("admin",userNameString );
 				session2.setAttribute("StaffName", nameString);
+				session2.setAttribute("user", "admin");
 				response.sendRedirect("admindashboard.jsp");
 			}else {
 				

@@ -34,6 +34,7 @@ public class ResultServlet extends HttpServlet {
 		if(resultSet!=null) {
 			request.setAttribute("semesterMarks", resultSet);
 			request.getRequestDispatcher("finalmarks.jsp").forward(request, response);	
+			
 		}else {
 
 			HttpSession session = request.getSession();

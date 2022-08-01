@@ -25,6 +25,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="css/internal.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/pdf.js"></script>
     </head>
@@ -35,8 +36,8 @@
             <div class="inner">
              <h1><span>CANARA&nbsp;</span><img src="css/images/canlogo.png" class="logo"><span>&nbsp;COLLEGE</span></h1>
              <div class="img"><img src="" class="studimg"></div>
-             <div class="right"><h3><br><br><span >Date:&nbsp;</span><span>12-10-2000</span></h3><h4><span>Reg No:&nbsp;</span><span>191132708</span></h4></div>
-             <h2><span style="color: white;">Name:&nbsp;</span><span>Deeraj</span></h2>
+             <div class="right"><h3><br><br><span >Date:&nbsp;</span><span>12-10-2000</span></h3><h4><span>Reg No:&nbsp;</span><span><%=session.getAttribute("regNo")%></span></h4></div>
+             <h2><span style="color: white;">Name:&nbsp;</span><span><%=session.getAttribute("studentName")%></span></h2>
             </div>
             <table border="1" class="table1" rules="all" align="center"> 
                     <tr bgcolor="#7dace4">
@@ -147,7 +148,76 @@
                  	}catch(SQLException e){
                 		 e.printStackTrace();
                  }%>
+                 
+                    <%if(grandTotalObtained == 0){
                     
+            			String loginUser = (String) session.getAttribute("user");
+            			
+            			
+            			if(loginUser == "student") {
+            			%>
+            			
+            				<script type="text/javascript"> 
+            				
+		            		window.onload = function(){
+		            			swal({title: "Sorry",
+		               				 text: "No Result Data Found!",
+		               				 icon: "warning",
+		               				 buttons: {
+		               					 ok: "OK",
+		               				 },	 
+		               			})
+		               			.then((value) => {	
+		               				if(value == "ok"){
+		               					document.location.href="studdashboard.jsp";
+		               				}
+		               			});
+		            		}
+            					
+            				</script>
+            			
+            			<%}else if(loginUser == "staff") { %>	
+            				
+            				<script type="text/javascript"> 
+            				window.onload = function(){
+		            			swal({title: "Sorry",
+		               				 text: "No Result Data Found!",
+		               				 icon: "warning",
+		               				 buttons: {
+		               					 ok: "OK",
+		               				 },	 
+		               			})
+		               			.then((value) => {	
+		               				if(value == "ok"){
+		               					document.location.href="studdashboard.jsp";
+		               				}
+		               			});
+		            		}
+            					
+            				</script>
+            					
+            			<%}else if(loginUser == "admin") { %>
+            			
+            				<script type="text/javascript"> 
+            				window.onload = function(){
+		            			swal({title: "Sorry",
+		               				 text: "No Result Data Found!",
+		               				 icon: "warning",
+		               				 buttons: {
+		               					 ok: "OK",
+		               				 },	 
+		               			})
+		               			.then((value) => {	
+		               				if(value == "ok"){
+		               					document.location.href="studdashboard.jsp";
+		               				}
+		               			});
+		            		}
+            					
+            				</script>
+            				
+            			<% }
+                    } %>
                     <tr bgcolor="whitesmoke">
                         <th colspan="2">Grand Total</th>
                         <td></td>    
