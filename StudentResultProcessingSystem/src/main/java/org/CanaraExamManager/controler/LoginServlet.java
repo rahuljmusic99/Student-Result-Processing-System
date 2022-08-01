@@ -46,16 +46,14 @@ public class LoginServlet extends HttpServlet {
 		ImageConverter imageConverter = new ImageConverter();
 		
 		HttpSession session = request.getSession();
-		String sessionString = (String) session.getAttribute("LoginUser");
+		String loginUser = (String) session.getAttribute("LoginUser");
 		
-		if(sessionString == "StudentLogin") {
+		if(loginUser == "StudentLogin") {
 			//calling authenticate user method.
 			String userValidateString = loginDao.authenticateUser(loginBean); 
 		
 			//If the method returns success string then the user will be rooted to his/her page.
 			if(userValidateString.equals("SUCCESS")) {
-				
-				session.invalidate();
 				
 				semesterString = loginBean.getSemester();
 				programmeName = loginBean.getProgramme();
@@ -84,13 +82,11 @@ public class LoginServlet extends HttpServlet {
 		
 		}
 		
-		else if(sessionString == "StaffLogin") {
+		else if(loginUser == "StaffLogin") {
 			
 			String staffValidateString = loginDao.authenticateStaff(loginBean);
 			
 			if(staffValidateString.equals("SUCCESS")) {
-				
-				session.invalidate();
 		
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("staff",userNameString);
@@ -104,13 +100,11 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 
-		else if(sessionString == "AdminLogin") {
+		else if(loginUser == "AdminLogin") {
 			
 			String adminValidateString = loginDao.authenticateAdmin(loginBean);
 			
 			if(adminValidateString.equals("SUCCESS")) {
-				
-				session.invalidate();
 				
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("admin",userNameString );

@@ -6,10 +6,14 @@
     pageEncoding="UTF-8"%>
 <%	
 	ResultSet resultSet = (ResultSet) request.getAttribute("semesterMarks");
+	
 
 	int grandTotalObtained = 0;
 	int grandTotalMax = 0;
 	int grandTotalIA = 0;
+	int grandTotalCredit = 0;
+	int grandTotalGp = 0;
+	int grandTotalGpw = 0;
 
 //	String base64Image = "data:image/png;base64,";
 //	base64Image	= base64Image + (String)session.getAttribute("userImage");
@@ -65,6 +69,10 @@
                 		
 						grandTotalMax = grandTotalMax + resultSet.getInt("max_marks");
 						grandTotalIA = grandTotalIA + resultSet.getInt("max_IA");
+						grandTotalObtained = grandTotalObtained + resultSet.getInt("obtained_marks");
+						grandTotalCredit = grandTotalCredit + resultSet.getInt("credit");
+						grandTotalGp = grandTotalGp + resultSet.getInt("grade_point");
+						grandTotalGpw = grandTotalGpw + resultSet.getInt("grade_point_weightage");
     	 		%>
                 <tr bgcolor="whitesmoke">
                     <td rowspan="3"><%=resultSet.getString("course_name").toUpperCase()%></td> <!--course name-->   <!-- comment specifies-you have to add value  -->
@@ -91,21 +99,21 @@
                     <td><%=(int)Math.ceil((resultSet.getInt("max_marks")+resultSet.getInt("max_IA")) * 35 / 100)%></td>
                     <td><%=resultSet.getString("total_marks")%></td>       <!-- Total obtained   -->
                 </tr>
-                 <%  }
+                 <% 	
+                 	}
                  }catch(SQLException e){
                 	 e.printStackTrace();
                  }%>
-    		
                 <tr bgcolor="whitesmoke">
                     <th colspan="2">Grand Total</th>
                     <th></th>
                     <td><%=grandTotalMax + grandTotalIA%></td>     <!--Max total   -->   <!-- This should be genarated according to number of subjects   -->
                     <td></td>     
-                    <td></td>     <!-- total obtained   -->
+                    <td><%=grandTotalObtained%></td>     <!-- total obtained   -->
                     <td></td>
-                    <td></td>     <!-- cr total  -->
-                    <td></td>     <!-- gp total   -->
-                    <td></td>     <!-- gpw total   -->
+                    <td><%=grandTotalCredit%></td>     <!-- cr total  -->
+                    <td><%=grandTotalGp%></td>     <!-- gp total   -->
+                    <td><%=grandTotalGpw%></td>     <!-- gpw total   -->
                     <td></td>
                 </tr>
                 <tr bgcolor="whitesmoke">

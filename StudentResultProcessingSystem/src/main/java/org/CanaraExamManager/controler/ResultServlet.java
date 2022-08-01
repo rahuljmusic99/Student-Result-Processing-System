@@ -8,6 +8,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.ResultSet;
 
@@ -29,13 +31,24 @@ public class ResultServlet extends HttpServlet {
 		ResultDao resultDao = new ResultDao();
 		ResultSet resultSet = resultDao.getResult(resultBean);
 		
-		if(resultSet==null) {
-			request.setAttribute("semesterMarks", "empty");
-			request.getRequestDispatcher("home.jsp").forward(request, response);
-			
-		}else {
+		if(resultSet!=null) {
 			request.setAttribute("semesterMarks", resultSet);
-			request.getRequestDispatcher("finalmarks.jsp").forward(request, response);
+			request.getRequestDispatcher("finalmarks.jsp").forward(request, response);	
+		}else {
+
+			HttpSession session = request.getSession();
+			String loginUser = (String) session.getAttribute("UserLogin");
+			request.setAttribute("resultError", "No Data Found!" );
+			
+			if(loginUser == "StudentLogin") {
+				request.getRequestDispatcher("studdashboard.jsp").forward(request,response);
+				
+			}else if(loginUser == "StaffLogin") {
+				request.getRequestDispatcher("staffdashboard.jsp").forward(request,response);
+				
+			}else if(loginUser == "AdminLogin") {
+				request.getRequestDispatcher("admindashboard.jsp").forward(request,response);
+			}
 		}
 		
 	}

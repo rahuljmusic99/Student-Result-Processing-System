@@ -33,10 +33,12 @@ CREATE TABLE student(
 	m_occupation varchar(225) NOT NULL,
 	m_phone bigint(20) NOT NULL,
 	programme_id int(10) NOT NULL,
+	class_id int(10) NOT NULL,
 	joining_year int(10) NOT NULL,
 	semester int(3) NOT NULL,
 	status varchar(255) NOT NULL,
-	FOREIGN KEY (programme_id) REFERENCES programme(programme_id)
+	FOREIGN KEY (programme_id) REFERENCES programme(programme_id),
+	FOREIGN KEY (class_id) REFERENCES class(class_id)
 );
 
 
@@ -292,3 +294,20 @@ FROM ((final_marks
 INNER JOIN course ON final_marks.course_code = course.course_code)
 INNER JOIN programme ON final_marks.programme_id = programme.programme_id)
 WHERE course.course_sem = "3";
+
+
+
+
+#creating table class
+
+CREATE TABLE class (
+class_id int(10)  PRIMARY KEY NOT NULL,
+programme_id int(10) NOT NULL,
+class_year int(2) NOT NULL,
+class_section varchar(2),
+FOREIGN KEY (programme_id) REFERENCES programme (programme_id)
+);
+
+#insert values into class
+
+INSERT INTO class(class_id,programme_id,class_year,class_section)VALUES(2311,231,1,)
