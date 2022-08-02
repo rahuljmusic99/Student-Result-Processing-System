@@ -1,5 +1,13 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%
+	ResultSet programmeResultSet = (ResultSet) session.getAttribute("ProgrammeData");
+
+%>
+
     
 <!DOCTYPE html5>
 <html>
@@ -64,14 +72,35 @@
                             <th>Edit Course<br>(subject)</th>
                             <th>Action</th>
                         </tr>
+                        
+                        <%
+                        	try{
+                        		if(programmeResultSet!=null){
+                        			while(programmeResultSet.next()){
+                        	
+                        				for(int i=1; i<= programmeResultSet.getInt("programme_sem"); i++){
+                        	
+                        %>
                         <tr>
-                            <td></td>   <!--Programme name-->
-                            <td></td>   <!--Semseter-->
+                            <td><%=programmeResultSet.getString("programme_name")%></td>   <!--Programme name-->
+                            <td><%=Integer.toString(i)%></td>   <!--Semseter-->
                             <td></td>   <!--Course-->
                             <td class="td1"><button class="btn__course"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
                             <td class="td2"><button class="btn__edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
                             <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
+                        
+                        <%
+                        				}
+								
+                        			}
+                        		}
+                        	}catch(SQLException e){
+                        		e.printStackTrace();
+                        		
+                        	}	
+                           
+                        %>
                     </table>
                     </div>
                 </div>
