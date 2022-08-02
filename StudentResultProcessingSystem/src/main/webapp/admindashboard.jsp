@@ -108,7 +108,7 @@
         
         <script type="text/javascript">
             let image = document.getElementById("image");
-            let images = ['images/can1.jpg','images/can2.jpg','images/can3.jpg','images/can4.jpg','images/can5.jpg','images/can6.jpg','images/can7.jpg']
+            let images = ['css/images/can1.jpg','css/images/can2.jpg','css/images/can3.jpg','css/images/can4.jpg','css/images/can5.jpg','css/images/can6.jpg','css/images/can7.jpg']
             setInterval(function(){
                 let random = Math.floor(Math.random()*7);
                 image.src = images[random];
