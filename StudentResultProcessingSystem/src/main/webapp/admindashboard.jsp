@@ -17,7 +17,7 @@
     <body>
         <div class="tabs">
             <div class="tabs__sidebar">
-                <div class="space"><img src="images/education.png" class="edu"></div>
+                <div class="space"><img src="css/images/education.png" class="edu"></div>
                 <div class="space2"><i class="fa fa-angle-left"></i></div>
                 <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Users</button>
@@ -108,7 +108,7 @@
         
         <script type="text/javascript">
             let image = document.getElementById("image");
-            let images = ['images/can1.jpg','images/can2.jpg','images/can3.jpg','images/can4.jpg','images/can5.jpg','images/can6.jpg','images/can7.jpg']
+            let images = ['css/images/can1.jpg','css/images/can2.jpg','css/images/can3.jpg','css/images/can4.jpg','css/images/can5.jpg','css/images/can6.jpg','css/images/can7.jpg']
             setInterval(function(){
                 let random = Math.floor(Math.random()*7);
                 image.src = images[random];
