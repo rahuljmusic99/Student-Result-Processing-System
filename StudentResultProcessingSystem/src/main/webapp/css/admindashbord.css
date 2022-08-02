@@ -146,10 +146,7 @@ h3{
     width: 1130px;
 }
 
-.tb2{
-    
-    
-}
+
 tr{
     height: 4rem;
 }
@@ -235,7 +232,6 @@ h6{
     background-color: darkgoldenrod;
     cursor: pointer;
 }
-
 .circle2{
     width: 2rem;
     height: 2rem;
@@ -244,14 +240,12 @@ h6{
     background-color: red;
     cursor: pointer;
 }
-
 .fa-times{
     text-align: center;
     color: white;
     margin-top: 0.5rem;
     margin-left: 0.6rem;
 }
-
 .fa-pencil
 {
     color: white;
@@ -260,7 +254,6 @@ h6{
     margin-left: 0.5rem;
     
 }
-
 .fa-plus{
     float: right;
     margin-right: -1.5rem;
@@ -269,7 +262,6 @@ h6{
     font-weight: bold;
     cursor: pointer;
 }
-
 .protab .refresh{
     float: right;
     margin: 1rem;
@@ -281,12 +273,93 @@ h6{
     cursor: pointer;
     
 }
-
 .edu{
     height: 60px;
 }
+.divmarks{
+    width: 1210px;
+    height: auto;
+    background: #f6f7f5;
+    padding-bottom: 1rem;
+    border: 1px solid #dddddd;
+    
+}
+.tb2{
+    margin: 10px;
+    border: 1px solid #dddddd;
+    width: 1130px;
+    margin-top: 2rem;
+}
+.innermarks{
+    width: 1150px;
+    height: auto;
+    margin-left: 1.4rem;
+    margin-top: 1.5rem;
+    box-shadow: 0px 0px 4px 1px; 
+    background: white;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+.tb2{
+    padding: 1px;
+    margin: 10px;
+    border: 1px solid #dddddd;
+    width: 1130px;
+}
 
+.marks1{
+    text-align: center;
+    padding: 15px;
+    width: 21rem;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.marks2{
+    text-align: center;
+    padding: 15px;
+    width: 21rem;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.innerdiv{
+    border: 1px solid blue;
+    padding: 15px;
+    width: 19rem;
+    margin-left: 70px;
+    margin-right: 70px;
+    transition: 2sec;
+}
+.innerdiv2{
+    border: 1px solid blue;
+    padding: 15px;
+    width: 19rem;
+    margin-left: 70px;
+    margin-right: 70px;
+    
+}
+.innerdiv:hover{
+   width: 17rem;
+   margin-left: 90px;
+   margin-right: 90px;
+    cursor: pointer;
+    
+}
+.innerdiv2:hover{
+   width: 17rem;
+   margin-left: 90px;
+   margin-right: 90px;
+    cursor: pointer;
+}
 
+.make{
+    width: 33rem;
+}
+
+.head2{
+    font-size: 20px;
+}
 
 
 

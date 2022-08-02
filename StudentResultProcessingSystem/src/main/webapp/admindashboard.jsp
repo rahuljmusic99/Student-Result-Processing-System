@@ -155,21 +155,21 @@
             
             
             <div class="tabs__content" data-tab="6">
-                <div class="space3">
-                <div class="space4">semester 1</div>
-                <div class="space4">semester 2</div>
-                <div class="space4">semester 3</div>
-                <div class="space4">semester 4</div>
-                <div class="space4">semester 5</div>
-                <div class="space4">semester 6</div>
-                </div>
-                <div class="space5">
-                    <div class="space6">Semester 1</div>
-                    <div class="space6">Semester 2</div>
-                    <div class="space6">Semester 3</div>
-                    <div class="space6">Semester 4</div>
-                    <div class="space6">Semester 5</div>
-                    <div class="space6">Semester 6</div> 
+                <div class="divmarks">
+                    <div class="innermarks">
+                        
+                        <table class="tb2" border="1" cellspacing="0" padding="10" rules="all">
+                            <tr class="head2">
+                                <th>Semester Marks</th>
+                                <th>Internal Marks</th>
+                            </tr>
+                            
+                            <tr >
+                                <td class="make"><div class="marks1"><div class="innerdiv" onclick="" id="">Semester1</div></div></td>
+                                <td class="make"><div class="marks2"><div class="innerdiv2" onclick="" id="">Semester1</div></div></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>  
             </div>
         </div>
@@ -180,8 +180,7 @@
             setInterval(function(){
                 let random = Math.floor(Math.random()*7);
                 image.src = images[random];
-                
-                
+                   
             },2500);
         </script>
     </body>
