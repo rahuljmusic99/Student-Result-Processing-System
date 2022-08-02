@@ -104,6 +104,7 @@
                         					String coursesString = "";
                         %>
                         <tr>
+<<<<<<< HEAD
                             <td><%=programmeResultSet.getString("programme_name")%></td>   <!--Programme name-->
                             <td><%=Integer.toString(i)%></td>  <!--Semseter-->
                             <%try{
@@ -120,6 +121,11 @@
                             	
                             }%>  
                             <td><%=coursesString%></td>   <!--Course-->
+=======
+                            <td class="td1"></td>   <!--Programme name-->
+                            <td class="td2"></td>   <!--Semseter-->
+                            <td></td>   <!--Course-->
+>>>>>>> 097549aac0c4e052cc7c6d8f75dbf094d59f3124
                             <td class="td1"><button class="btn__course"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
                             <td class="td2"><button class="btn__edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
                             <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
