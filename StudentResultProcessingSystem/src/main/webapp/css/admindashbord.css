@@ -286,6 +286,7 @@ h6{
 }
 .tb2{
     margin: 10px;
+    padding: 1px;
     border: 1px solid #dddddd;
     width: 1130px;
     margin-top: 2rem;
@@ -300,12 +301,7 @@ h6{
     padding-bottom: 1rem;
     padding-top: 1rem;
 }
-.tb2{
-    padding: 1px;
-    margin: 10px;
-    border: 1px solid #dddddd;
-    width: 1130px;
-}
+
 
 .marks1{
     text-align: center;
