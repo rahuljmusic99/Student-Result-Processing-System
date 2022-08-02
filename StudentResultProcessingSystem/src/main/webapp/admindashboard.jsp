@@ -53,7 +53,7 @@
                     <h4>Programme Management</h4>
                     <div class="inner__protab">
                         
-                    <div class="inner1"><h6>Programme list</h6><div class="add"></div><i class="fa fa-plus" aria-hidden="true"></i></div>
+                    <div class="inner1"><h6>Programme list</h6><div class="add" title="Add programme"></div><i class="fa fa-plus" aria-hidden="true" title="Add programme"></i></div>
                     <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
                         <tr class="tb2">
                             <th>Programme Name</th>
@@ -69,7 +69,7 @@
                             <td></td>   <!--Course-->
                             <td class="td1"><button class="btn__course"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
                             <td class="td2"><button class="btn__edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
-                            <td class="td3"><div class="circle1"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
                     </table>
                     </div>
