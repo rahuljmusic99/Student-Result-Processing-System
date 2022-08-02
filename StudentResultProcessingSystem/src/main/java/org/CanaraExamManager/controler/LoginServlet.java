@@ -46,9 +46,9 @@ public class LoginServlet extends HttpServlet {
 		ImageConverter imageConverter = new ImageConverter();
 		
 		HttpSession session = request.getSession();
-		String sessionString = (String) session.getAttribute("LoginUser");
+		String loginUser = (String) session.getAttribute("LoginUser");
 		
-		if(sessionString == "StudentLogin") {
+		if(loginUser == "StudentLogin") {
 			//calling authenticate user method.
 			String userValidateString = loginDao.authenticateUser(loginBean); 
 		
@@ -70,9 +70,11 @@ public class LoginServlet extends HttpServlet {
 				
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("student", userNameString);
+				session2.setAttribute("regNo", userNameString);
 				session2.setAttribute("studentName", nameString);
 				session2.setAttribute("semester", semesterString);
 				session2.setAttribute("programme", programmeName);
+				session2.setAttribute("user", "student");
 //				session2.setAttribute("userImage", userImageString);
 				response.sendRedirect("studdashboard.jsp");
 			
@@ -84,7 +86,7 @@ public class LoginServlet extends HttpServlet {
 		
 		}
 		
-		else if(sessionString == "StaffLogin") {
+		else if(loginUser == "StaffLogin") {
 			
 			String staffValidateString = loginDao.authenticateStaff(loginBean);
 			
@@ -95,6 +97,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("staff",userNameString);
 				session2.setAttribute("StaffName", nameString);
+				session2.setAttribute("user", "staff");
 				response.sendRedirect("staffdashboard.jsp");
 			}else {
 				
@@ -104,7 +107,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 
-		else if(sessionString == "AdminLogin") {
+		else if(loginUser == "AdminLogin") {
 			
 			String adminValidateString = loginDao.authenticateAdmin(loginBean);
 			
@@ -115,6 +118,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("admin",userNameString );
 				session2.setAttribute("StaffName", nameString);
+				session2.setAttribute("user", "admin");
 				response.sendRedirect("admindashboard.jsp");
 			}else {
 				

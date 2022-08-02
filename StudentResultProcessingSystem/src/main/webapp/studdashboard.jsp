@@ -9,8 +9,20 @@
 	{
 %> 
 <jsp:forward page="/studentlogin.jsp"></jsp:forward>
-<%} %>    
- 
+<%} 
+
+	if((String)request.getAttribute("resultError") == "No Data Found!"){
+%> 		
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script type="text/javascript"> 
+            				
+         		window.onload = function(){
+         			swal("Sorry","No Data Foune!","warning");
+         		}
+            					
+ 		</script>
+	
+<%} %>
      
 <!DOCTYPE html5>
 <html>
