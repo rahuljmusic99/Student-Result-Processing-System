@@ -4,5 +4,14 @@
   <welcome-file-list>
     <welcome-file>home.jsp</welcome-file>
   </welcome-file-list>
-
+  <servlet>
+    <description></description>
+    <display-name>ProgrammeAndCoursesServlet</display-name>
+    <servlet-name>ProgrammeAndCoursesServlet</servlet-name>
+    <servlet-class>org.CanaraExamManager.controler.ProgrammeAndCoursesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProgrammeAndCoursesServlet</servlet-name>
+    <url-pattern>/ProgrammeAndCoursesServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

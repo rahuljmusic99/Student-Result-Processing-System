@@ -203,6 +203,11 @@
 				
 			}
 					
-//Result Error handling code
+//Programme and Courses function
+			document.getElementById("button3");
+			function callPCServlet(){
+				
+				document.location.href="home.jsp";
+			}
 
 			

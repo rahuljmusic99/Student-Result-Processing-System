@@ -21,7 +21,7 @@
                 <div class="space2"><i class="fa fa-angle-left"></i></div>
                 <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Users</button>
-                <button class="tabs__button" data-for-tab="3"><i class="fa fa-bar-chart"></i>Programme and courses</button>
+                <button class="tabs__button" data-for-tab="3" onload="callPCServlet();" id="button3"><i class="fa fa-bar-chart"></i>Programme and courses</button>
                 <button class="tabs__button" data-for-tab="4"><i class="fa fa-bar-chart"></i>classes</button>
                 <button class="tabs__button" data-for-tab="5"><i class="fa fa-bullseye"></i>Update Results</button>
                 <button class="tabs__button" data-for-tab="6"><i class="fa fa-bullseye"></i>Student Result</button>
@@ -58,7 +58,7 @@
                         <tr class="tb2">
                             <th>Programme Name</th>
                             <th>Semester</th>
-                            <th>Course(subject)</th>
+                            <th>Courses (subjects)</th>
                             <th>Add Course<br>(subject)</th>
                             <th>Edit Course<br>(subject)</th>
                             <th>Action</th>
