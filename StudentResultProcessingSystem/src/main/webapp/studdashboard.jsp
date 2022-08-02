@@ -45,6 +45,7 @@
                 <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-bullseye"></i>Result</button>
                 <button class="tabs__button" data-for-tab="3"><i class="fa fa-bar-chart"></i>Performance</button>
+                <button class="tabs__button" data-for-tab="4"><i class="fa fa-bar-chart"></i>Result</button>
                 <button onclick="logoutConfirm();" class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
             </div>
         
@@ -113,6 +114,27 @@
                 
                 
             </div>
+                     
+                      <div class="tabs__content" data-tab="4">
+                          <div class="divmarks">
+                    <div class="innermarks">
+                        
+                        <table class="tb2" border="1" cellspacing="0" padding="10" rules="all">
+                            <tr class="head2">
+                                <th>Semester Marks</th>
+                                <th>Internal Marks</th>
+                            </tr>
+                            
+                            <tr >
+                                <td class="make"><div class="marks1"><div class="innerdiv" onclick="" id="">Semester1</div></div></td>
+                                <td class="make"><div class="marks2"><div class="innerdiv2" onclick="" id="">Semester1</div></div></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div> 
+             </div>
+                      
+                
         </div>
      
     </body>
