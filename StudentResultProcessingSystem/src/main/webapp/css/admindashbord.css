@@ -276,7 +276,7 @@ h4{
     float: right;
     margin-right: 2rem;
     margin-top: -1.5rem;
-    background: blue;
+    background: green;
     cursor: pointer;
 }
 
@@ -368,6 +368,17 @@ h6{
     cursor: pointer;
 }
 
+.refresh{
+    float: right;
+    margin: 1rem;
+    font-weight: bold;
+    background: blue;
+    color: white;
+    border: none;
+    padding: 0.2rem;
+    cursor: pointer;
+    
+}
 
 
 
