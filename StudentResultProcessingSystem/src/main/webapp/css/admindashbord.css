@@ -179,7 +179,6 @@ h3{
     text-align: center;
 }
 
-
 .space6{
     text-align:end;
     background:#ffffff;
@@ -222,19 +221,19 @@ h3{
     width: 1210px;
     height: auto;
     background: #f6f7f5;
-    box-shadow: 0px 0px 4px 1px;
-    position: fixed;
     padding-bottom: 1rem;
+    border: 1px solid #dddddd;
    
 }
 
 .inner__protab{
     width: 1150px;
-    height: 580px;
+    height: auto;
     margin-left: 1.4rem;
     margin-top: 1.5rem;
     box-shadow: 0px 0px 4px 1px; 
     background: white;
+    padding-bottom: 1rem;
     
     
 }
@@ -242,8 +241,7 @@ h3{
 .tb1{
     
     margin: 10px;
-   box-shadow: 0px 0px 2px 1px;
-
+    border: 1px solid #dddddd;
     width: 1130px;
 }
 
@@ -258,8 +256,6 @@ td{
     padding: 0.2rem;
     
 }
-
-
 
 h4{
     margin-top: 2rem;
@@ -279,7 +275,7 @@ h4{
     border-radius: 50%;
     float: right;
     margin-right: 2rem;
-    margin-top: -1rem;
+    margin-top: -1.5rem;
     background: blue;
     cursor: pointer;
 }
@@ -288,6 +284,7 @@ h6{
     padding: 5px;
     font-size: 16px;
     color: white;
+    padding-top: 1rem;
 }
 
 .btn__course{
@@ -365,7 +362,7 @@ h6{
 .fa-plus{
     float: right;
     margin-right: -1.5rem;
-    margin-top: -0.1rem;
+    margin-top: -0.6rem;
     color: white;
     font-weight: bold;
     cursor: pointer;
