@@ -46,13 +46,13 @@
                 <div class="space2"><i class="fa fa-angle-left"></i></div>
                 <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Users</button>
-                <button class="tabs__button" data-for-tab="3" onload="callPCServlet();" id="button3"><i class="fa fa-bar-chart"></i>Programme and courses</button>
+                <button class="tabs__button" data-for-tab="3"><i class="fa fa-bar-chart" id="button3"></i>Programme and courses</button>
                 <button class="tabs__button" data-for-tab="4"><i class="fa fa-bar-chart"></i>classes</button>
                 <button class="tabs__button" data-for-tab="5"><i class="fa fa-bullseye"></i>Update Results</button>
                 <button class="tabs__button" data-for-tab="6"><i class="fa fa-bullseye"></i>Student Result</button>
                 
                 
-                <button class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
+                <button class="tabs__button" onclick="logoutConfirm();" ><i class="fa fa-power-off"></i>Logout</button>
             </div>
         
             
@@ -75,7 +75,7 @@
             
             <div class="tabs__content" data-tab="3">
                 <div class="protab"> 
-                    <button class="refresh" id="ref" onclick="">Refresh page</button>
+                    <button class="refresh" id="refProgramme" onclick="refreshProgramme();">Refresh page</button>
                     <h4>Programme Management</h4>
                     <div class="inner__protab">
                         
@@ -105,14 +105,14 @@
                         %>
                         <tr>
 							<td class="td1"><%=programmeResultSet.getString("programme_name")%></td>   <!--Programme name-->
-                            <td class="td2"><%=Integer.toString(i)%></td>   <!--Semseter-->
+                            <td class="td2"><%=Integer.toString(i)%></td>   <!--Semester-->
                             
                             <%try{
                             	if(coursesData!=null){
                             		
                             		while(coursesData.next()){
                         				
-                            	coursesString = coursesString +",  "+ coursesData.getString("course_name");	
+                            			coursesString = coursesString +",  "+ coursesData.getString("course_name");	
                              		}
                             	}
                             	
@@ -123,7 +123,7 @@
                             <td><%=coursesString%></td>   <!--Course-->
 
 
-							<td class="td1"><button class="btn__course"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
+							<td class="td1"><button class="btn__course" onclick=""><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
                             <td class="td2"><button class="btn__edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
                             <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
