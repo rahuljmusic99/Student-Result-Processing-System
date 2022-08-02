@@ -17,7 +17,7 @@
     <body>
         <div class="tabs">
             <div class="tabs__sidebar">
-                <div class="space"><img src="images/education.png" class="edu"></div>
+                <div class="space"><img src="css/images/education.png" class="edu"></div>
                 <div class="space2"><i class="fa fa-angle-left"></i></div>
                 <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Users</button>
