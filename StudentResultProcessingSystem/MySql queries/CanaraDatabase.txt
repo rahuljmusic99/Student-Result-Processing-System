@@ -310,4 +310,4 @@ FOREIGN KEY (programme_id) REFERENCES programme (programme_id)
 
 #insert values into class
 
-INSERT INTO class(class_id,programme_id,class_year,class_section)VALUES(2311,231,1,)
+INSERT INTO class(class_id,programme_id,class_year)VALUES(2311,231,1);
