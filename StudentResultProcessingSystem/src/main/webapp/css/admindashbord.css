@@ -368,7 +368,7 @@ h6{
     cursor: pointer;
 }
 
-.refresh{
+#refresh{
     float: right;
     margin: 1rem;
     font-weight: bold;
