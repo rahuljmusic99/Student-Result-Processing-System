@@ -302,6 +302,7 @@ WHERE course.course_sem = "3";
 
 CREATE TABLE class (
 class_id int(10)  PRIMARY KEY NOT NULL,
+class_name varchar(255) UNIQUE NOT NULL,
 programme_id int(10) NOT NULL,
 class_year int(2) NOT NULL,
 class_section varchar(2),
