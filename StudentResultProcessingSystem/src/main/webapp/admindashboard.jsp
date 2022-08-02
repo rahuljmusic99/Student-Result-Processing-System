@@ -65,8 +65,8 @@
                             <th>Action</th>
                         </tr>
                         <tr>
-                            <td></td>   <!--Programme name-->
-                            <td></td>   <!--Semseter-->
+                            <td class="td1"></td>   <!--Programme name-->
+                            <td class="td2"></td>   <!--Semseter-->
                             <td></td>   <!--Course-->
                             <td class="td1"><button class="btn__course"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
                             <td class="td2"><button class="btn__edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
