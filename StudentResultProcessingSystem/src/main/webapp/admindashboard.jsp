@@ -58,7 +58,7 @@
             
             <div class="tabs__content" data-tab="3">
                 <div class="protab"> 
-                    <button id="refresh" onclick="">Refresh page</button>
+                    <button class="refresh" id="ref" onclick="">Refresh page</button>
                     <h4>Programme Management</h4>
                     <div class="inner__protab">
                         
