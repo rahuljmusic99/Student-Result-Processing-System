@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 		//creating object for LoginDao which contains the main logic of the application.
 		LoginDao loginDao = new LoginDao();
 		ImageConverter imageConverter = new ImageConverter();
-		LoadDataDao loadDataDao = new LoadDataDao();
+		
 		
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("LoginUser");
@@ -115,7 +115,7 @@ public class LoginServlet extends HttpServlet {
 			
 			String adminValidateString = loginDao.authenticateAdmin(loginBean);
 			
-			ResultSet resultSet = loadDataDao.loadProgrammeData();
+			
 			
 			if(adminValidateString.equals("SUCCESS")) {
 				
@@ -125,7 +125,6 @@ public class LoginServlet extends HttpServlet {
 				session2.setAttribute("admin",userNameString );
 				session2.setAttribute("StaffName", nameString);
 				session2.setAttribute("user", "admin");
-				session2.setAttribute("ProgrammeData", resultSet);
 				response.sendRedirect("admindashboard.jsp");
 			}else {
 				

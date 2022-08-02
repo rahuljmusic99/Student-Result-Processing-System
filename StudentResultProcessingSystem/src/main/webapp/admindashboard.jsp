@@ -1,10 +1,27 @@
+<%@page import="jakarta.servlet.jsp.tagext.TryCatchFinally"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.ResultSet"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="org.CanaraExamManager.util.DBConnection" %>
+<%@page import="org.CanaraExamManager.dao.LoadDataDao" %>
+<%@page import="java.sql.Connection" %>
+<%@page import="java.sql.Statement" %>
+
+<% 
+	
+	response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+	
+	//In case, if User session is not set, redirect to Login page.
+	if((request.getSession(false).getAttribute("admin")== null) )
+	{
+%> 
+<jsp:forward page="/adminlogin.jsp"></jsp:forward>
+<%}%>
 
 <%
-	ResultSet programmeResultSet = (ResultSet) session.getAttribute("ProgrammeData");
+	LoadDataDao loadData = new LoadDataDao(); 
+	ResultSet programmeResultSet = loadData.loadProgrammeData();
 
 %>
 
@@ -79,12 +96,30 @@
                         			while(programmeResultSet.next()){
                         	
                         				for(int i=1; i<= programmeResultSet.getInt("programme_sem"); i++){
-                        	
+                        					
+                        					Connection con = DBConnection.createConnection();;
+                        					Statement statement = con.createStatement();
+                        					ResultSet coursesData = statement.executeQuery(""
+                        						+"SELECT * FROM course where course_sem = "+Integer.toString(i)+"");
+                        					String coursesString = "";
                         %>
                         <tr>
                             <td><%=programmeResultSet.getString("programme_name")%></td>   <!--Programme name-->
-                            <td><%=Integer.toString(i)%></td>   <!--Semseter-->
-                            <td></td>   <!--Course-->
+                            <td><%=Integer.toString(i)%></td>  <!--Semseter-->
+                            <%try{
+                            	if(coursesData!=null){
+                            		
+                            		while(coursesData.next()){
+                        				
+                            	coursesString = coursesString +",  "+ coursesData.getString("course_name");	
+                             		}
+                            	}
+                            	
+                            }catch(SQLException e){
+                            	e.printStackTrace();
+                            	
+                            }%>  
+                            <td><%=coursesString%></td>   <!--Course-->
                             <td class="td1"><button class="btn__course"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
                             <td class="td2"><button class="btn__edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
                             <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
