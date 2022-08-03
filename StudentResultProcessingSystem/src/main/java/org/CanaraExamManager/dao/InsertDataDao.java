@@ -21,7 +21,9 @@ public class InsertDataDao {
 		ResultSet resultSet = null;
 		StudentStaffDataBean studentDataBean = new StudentStaffDataBean();
 		
-		String programmeNameString = "";
+		String programmeId = "";
+		String classIdString = "";
+		
 		try {
 			
 			con = DBConnection.createConnection();
