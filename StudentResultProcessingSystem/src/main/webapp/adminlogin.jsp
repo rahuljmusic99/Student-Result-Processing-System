@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%session.setAttribute("LoginUser", "AdminLogin"); %>
-
+<% 
+	response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+	if((request.getSession(false).getAttribute("admin")!=null) )
+	{
+%> 
+<jsp:forward page="/admindashboard.jsp"></jsp:forward>
+<%} %> 
 <!DOCTYPE html5>
 <html>
     <head>

@@ -83,6 +83,7 @@
                 %> 
                     <div onclick="callInternalServlet<%=Integer.toString(j)%>()" id="div<%=Integer.toString(j)%>" class="space6">Semester <%=Integer.toString(j)%></div>
  				<%} %>
+ 			
                    </div>        
             </div>
             
