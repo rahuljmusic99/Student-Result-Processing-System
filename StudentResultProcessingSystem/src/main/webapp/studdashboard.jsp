@@ -35,6 +35,7 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/dashboard.js"></script>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="js/pdf.js"></script>
         
     </head> 
     <body onload="setupTabs()">
