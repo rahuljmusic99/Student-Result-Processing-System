@@ -187,6 +187,9 @@ h6{
     padding-top: 1rem;
 }
 
+.left{
+    text-align: left;
+}
 .btn__course{
     background-color: blue;
     color: #fff;
@@ -260,6 +263,10 @@ h6{
     
 }
 
+
+
+
+
 .fa-plus{
     align-items: center;
     justify-content: center;
@@ -267,10 +274,6 @@ h6{
     margin:0.7rem;
     color: white;
       
-}
-
-.left{
-    text-align: center;
 }
 
 .protab .refresh{
@@ -737,6 +740,70 @@ option{
     cursor: pointer;
 }
 
+
+.bg-model5{
+    width: 80%;
+    height:100% ;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    
+}
+
+
+.model-content5{
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+}
+
+.model-content5 .header5{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.close5{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button3{
+    background-color: forestgreen;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    cursor: pointer;
+}
+
+#button3:hover{
+    opacity: 0.9;
+}
+
+select{
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+    height: 2.3rem;
+}
+
+option{
+    background: whitesmoke;
+}
 
 
 
