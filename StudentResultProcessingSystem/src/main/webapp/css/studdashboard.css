@@ -1,8 +1,6 @@
 *{
     margin: 0;
-    padding: 0;
-    /*overflow: hidden;*/
-    
+    padding: 0; 
 }
 
 .tabs{
@@ -10,8 +8,6 @@
     display:flex;
     height: 100%;  
     width: 100%;
-    
-    
 }
 
 .tabs__sidebar{
@@ -20,12 +16,7 @@
     background: blue;
     box-shadow: 0 3px 10px rgb(0,0,0,0.5);
     height: 100%;
-    position: fixed;
-    
-}
-
-.tabs__sidebar::after{
-    
+    position: fixed; 
 }
 
 .tabs__button{
@@ -94,7 +85,6 @@ img{
 }
 
 
-
 i{
     margin-right: 5px;
     color: purple;
@@ -119,34 +109,6 @@ h3{
 }
 
 
-.protab{
-    width: 1210px;
-    height: auto;
-    background: #f6f7f5;
-    padding-bottom: 1rem;
-    border: 1px solid #dddddd;
-   
-}
-
-.inner__protab{
-    width: 1150px;
-    height: auto;
-    margin-left: 1.4rem;
-    margin-top: 1.5rem;
-    box-shadow: 0px 0px 4px 1px; 
-    background: white;
-    padding-bottom: 1rem;
-    
-    
-}
-
-.tb1{
-    
-    margin: 10px;
-    border: 1px solid #dddddd;
-    width: 1130px;
-}
-
 
 tr{
     height: 4rem;
@@ -155,130 +117,12 @@ td{
     padding: 0.2rem;
     
 }
-
 h4{
     margin-top: 2rem;
     margin-left: 3rem;
     font-size: 20px;
 }
 
-.inner1{
-    width: 1150px;
-    height: 4rem;
-    background: grey;  
-}
-
-.add{
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    float: right;
-    margin-right: 2rem;
-    margin-top: -1.5rem;
-    background: green;
-    cursor: pointer;
-}
-
-h6{
-    padding: 5px;
-    font-size: 16px;
-    color: white;
-    padding-top: 1rem;
-}
-
-.btn__course{
-    background-color: blue;
-    color: #fff;
-    border: none;
-    padding: 0.4rem;
-    font-size: 13px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn__edit{
-    background-color: grey;
-    color: #fff;
-    border: none;
-    padding: 0.6rem;
-    font-size: 13px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.fa-pencil-square-o{
-    color: white;
-    width: 4rem;
-    font-size: 16px;
-}
-
-
-.td1{
-    text-align: center;
-}
-
-.td2{
-    text-align: center;
-}
-.td3{
-    margin-left: 3rem;
-}
-.circle1{
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    margin-left: 1rem;
-    background-color: darkgoldenrod;
-    cursor: pointer;
-}
-
-.circle2{
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    margin-left: 2rem;
-    background-color: red;
-    cursor: pointer;
-}
-
-.fa-times{
-    text-align: center;
-    color: white;
-    margin-top: 0.5rem;
-    margin-left: 0.6rem;
-}
-
-.fa-pencil
-{
-    color: white;
-    font-size: 16px;
-    margin-top: 0.5rem;
-    margin-left: 0.5rem;
-    
-}
-
-.fa-plus{
-    float: right;
-    margin-right: 1rem;
-    margin-top: 1rem;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.protab .refresh{
-    float: right;
-    margin: 1rem;
-    font-weight: bold;
-    background: blue;
-    color: white;
-    border: none;
-    padding: 0.2rem;
-    cursor: pointer;
-    
-}
 
 .edu{
     height: 60px;
@@ -293,12 +137,6 @@ h6{
     
 }
 
-.tb2{
-    margin: 10px;
-    border: 1px solid #dddddd;
-    width: 1130px;
-    margin-top: 2rem;
-}
 
 .innermarks{
     width: 1150px;
@@ -369,151 +207,12 @@ h6{
 }
 
 
-
 .make{
     width: 33rem;
 }
 
 .head2{
     font-size: 20px;
-}
-/*----pop up-----*/
-
-.bg-model{
-    width: 80%;
-    height:100% ;
-    background-color: rgba(0,0,0,0.8);
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: none;
-}
-
-
-.model-content{
-    width: 500px;
-    height: 300px;
-    background-color: white;
-    border-radius: 4px;
-    padding: 20px;
-    position: relative;
-}
-
-.model-content .header{
-    text-align: center;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #dddddd;
-}
-
-input{
-    width: 50%;
-    display: block;
-    margin: 15px auto;
-    height: 2.3rem;
-}
-
-.close{
-    position: absolute;
-    top: 0;
-    right: 14px;
-    font-size: 42px;
-    transform: rotate(45deg);
-    cursor: pointer;
-}
-
-#button{
-    background-color: forestgreen;
-    color: white;
-    padding: 10px;
-    width: 5rem;
-    border: none;
-    float: right;
-    margin-top: 0.2rem;
-    cursor: pointer;
-}
-
-#button:hover{
-    opacity: 0.9;
-}
-
-.bg-model1{
-    width: 80%;
-    height:100% ;
-    background-color: rgba(0,0,0,0.7);
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: none;
-}
-
-
-.model-content1{
-    width: 500px;
-    height: 450px;
-    background-color: white;
-    border-radius: 4px;
-    padding: 20px;
-    position: relative;
-}
-
-.model-content1 .header1{
-    text-align: center;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #dddddd;
-}
-
-input{
-    width: 50%;
-    display: block;
-    margin: 15px auto;
-    height: 2.3rem;
-    color: black;
-    padding-left: 0.2rem;
-}
-
-.close1{
-    position: absolute;
-    top: 0;
-    right: 14px;
-    font-size: 42px;
-    transform: rotate(45deg);
-    cursor: pointer;
-}
-
-#button1{
-    background-color: blue;
-    color: white;
-    padding: 10px;
-    width: 5rem;
-    border: none;
-    float: right;
-    cursor: pointer;
-}
-
-#button1:hover{
-    opacity: 0.9;
-}
-
-select{
-    width: 50%;
-    display: block;
-    margin: 15px auto;
-    height: 2.3rem;
-}
-
-option{
-    background: whitesmoke;
-}
-
-.select2{
-    margin: 0;
-    width: 10%;
-    display: inline-flex;
-    border-spacing: 10px;
 }
 
 
