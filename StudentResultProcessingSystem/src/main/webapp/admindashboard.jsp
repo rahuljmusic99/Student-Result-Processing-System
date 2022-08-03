@@ -114,20 +114,21 @@
 							<td class="td1"><%=programmeResultSet.getString("programme_name")%></td>   <!--Programme name-->
                             <td class="td2"><%=Integer.toString(i)%></td>   <!--Semester-->
                             
-                            <%try{
+                            
+                            <td><%try{
                             	if(coursesData!=null){
                             		
                             		while(coursesData.next()){
                         				
-                            			coursesString = coursesString +",  "+ coursesData.getString("course_name");	
+                            			out.println(coursesData.getString("course_name"));
+                            			out.println("<br/>");
                              		}
                             	}
                             	
                             }catch(SQLException e){
                             	e.printStackTrace();
                             	
-                            }%>  
-                            <td><%=coursesString%></td>   <!--Course-->
+                            }%>  </td>   <!--Course-->
 
 
 							<td class="td1"><button class="btn__course" id="btn__course" onclick="myFunction3()"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
@@ -249,16 +250,41 @@
                 <th>View Result</th>
                 <th>Action</th>
             </tr>
-                        
+              
+            <%
+            
+            	try{
+            		
+            		Connection con = DBConnection.createConnection();;
+					Statement statement = con.createStatement();
+					ResultSet studentData = statement.executeQuery(""
+						+"SELECT * FROM ((student " 
+						+"INNER JOIN programme ON student.programme_id = programme.programme_id) "
+						+"INNER JOIN class ON student.class_id = class.class_id)"
+						+"ORDER BY programme.programme_name ASC");	
+            		
+					if(studentData!=null){
+                		
+                		while(studentData.next()){
+                			int i = 1;
+            %>	       
            <tr>
-              <td class="td1"></td>   <!--Programme -->
-              <td class="td2"></td>   <!--class-->
-              <td></td>   <!--Student Name-->
-              <td></td>   <!--Register number-->
-              <td class="td1"><button class="btn__course" id="btn__course1" onclick="myFunction4()"><span style="font-size: 16px;">+</span> Add</button></td>  <!--Add Result-->
+              <td class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme -->
+              <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
+              <td><%=studentData.getString("first_name") +" "+ studentData.getString("last_name")%></td>   <!--Student Name-->
+              <td><%=studentData.getString("reg_no")%></td>   <!--Register number-->
+              <td class="td1"><button class="btn__course" id="btn__course<%=i%>" onclick="myFunction4()"><span style="font-size: 16px;">+</span> Add</button></td>  <!--Add Result-->
               <td class="td2"><button class="btn__edit" id="btn-edit1" onclick="myFunction5()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Result</button></td> <!--View Result-->
               <td class="td3"><div class="circle1" title="Edit Result" id="circle1" onclick="myFunction6()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Result" id="circle2" onclick="myFunction7()"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
             </tr>
+            
+            
+            
+			<% 	i++;	}	
+                		}	
+               	}catch(SQLException e){}
+            
+            %>     
             </table>
             </div>
             
