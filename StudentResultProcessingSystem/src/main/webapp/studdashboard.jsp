@@ -43,9 +43,8 @@
                 <div class="space"><img src="css/images/education.png" class="edu"></div>
                 <div class="space2"><i class="fa fa-angle-left"></i></div>
                 <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
-                <button class="tabs__button" data-for-tab="2"><i class="fa fa-bullseye"></i>Result</button>
+                <button class="tabs__button" data-for-tab="2"><i class="fa fa-bar-chart"></i>Result</button>
                 <button class="tabs__button" data-for-tab="3"><i class="fa fa-bar-chart"></i>Performance</button>
-                <button class="tabs__button" data-for-tab="4"><i class="fa fa-bar-chart"></i>Result</button>
                 <button onclick="logoutConfirm();" class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
             </div>
         
@@ -64,36 +63,20 @@
             </div>
             
             
-            <div class="tabs__content" data-tab="3">
             
-            
-            <form action="ResultServlet" method="post" id="semesterForm">
-            	<input name="semester" type="hidden" value=""/>
-            	<input name="userName" type="hidden" value=<%=request.getSession(false).getAttribute("student") %>>
-            </form>
-            
-            <form action="InternalServlet" method="post" id=internalForm>
-            	<input name="semester" type="hidden" value=""/>
-            	<input name="userName" type="hidden" value=<%=request.getSession(false).getAttribute("student") %>>
-            </form>
-            
-                
-             <script type="text/javascript">
-             
-             	let image = document.getElementById("image");
-             	let images = ['css/images/can1.jpg','css/images/can2.jpg','css/images/can3.jpg','css/images/can4.jpg','css/images/can5.jpg','css/images/can6.jpg','css/images/can7.jpg']
-             	setInterval(function(){
-                 	let random = Math.floor(Math.random()*7);
-                 	image.src = images[random];  
-             	},2500);
-             
-             </script>
-                
-                
-            </div>
                      
-                      <div class="tabs__content" data-tab="4">
-                          <div class="divmarks">
+                      <div class="tabs__content" data-tab="2">
+                         <form action="ResultServlet" method="post" id="semesterForm">
+            	         <input name="semester" type="hidden" value=""/>
+            	         <input name="userName" type="hidden" value=<%=request.getSession(false).getAttribute("student") %>>
+                         </form>
+                         <form action="InternalServlet" method="post" id=internalForm>
+            	         <input name="semester" type="hidden" value=""/>
+            	         <input name="userName" type="hidden" value=<%=request.getSession(false).getAttribute("student") %>>
+                         </form>
+                          
+                          
+                    <div class="divmarks">
                     <div class="innermarks">
                         
                         <table class="tb2" border="1" cellspacing="0" padding="10" rules="all">
@@ -125,9 +108,27 @@
                     </div>
                 </div> 
              </div>
+                              
+                <div class="tabs__content" data-tab="3">
+                    
+                <p>performance</p>
+                
+            </div>
                       
                 
         </div>
+         
+    
+                <script type="text/javascript">
+             	let image = document.getElementById("image");
+             	let images = ['css/images/can1.jpg','css/images/can2.jpg','css/images/can3.jpg','css/images/can4.jpg','css/images/can5.jpg','css/images/can6.jpg','css/images/can7.jpg']
+             	setInterval(function(){
+                 	let random = Math.floor(Math.random()*7);
+                 	image.src = images[random];  
+             	},2500);
+             
+             </script>
+                          
      
     </body>
 </html>    
