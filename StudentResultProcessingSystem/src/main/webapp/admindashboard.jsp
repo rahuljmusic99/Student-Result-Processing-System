@@ -210,7 +210,52 @@
                     
                     
              <div class="tabs__content" data-tab="4">
-                <h1>classes</h1>
+                <div class="protab"> 
+                    <button class="refresh" id="ref" onclick="myFunction()">Refresh page</button>
+                    <h4>Class Management</h4>
+                    <div class="inner__protab">
+                        
+                    <div class="inner1">
+                        <h6 class="left">Class list</h6>
+                        <div id="add1" class="add" title="Add programme" onclick="myFunction8()">
+                        <i class="fa fa-plus" title="Add programme"></i></div></div>
+                    <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
+                        <tr >
+                            <th>Programme Name</th>
+                            <th>Class Name</th>
+                            <th>Class Year</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td class="td1"></td>   <!--Programme name-->
+                            <td class="td2"></td>   <!--Semseter-->
+                            <td></td>
+                            <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+                 
+                 
+                 <div class="bg-model5">
+                    <div class="model-content5">
+                        <div class="close5" id="close" >+</div>
+                        <div class="header5">
+                            <h1>Add Class Data</h1></div>
+                            <form action="">
+                                <select >
+                                <option value="" disabled selected hidden>Select Programme</option>
+                                <option>Bca</option>
+                                <option>Bcom</option>
+                                <option>BBA</option>
+                                </select>
+                                <input type="text" placeholder="Course Code">
+                                <input type="text" placeholder="Course Name">
+                                <input type="text" placeholder="Year (in digits)">
+                                <button id="button3" >ADD</button>
+                        </form>
+                    </div>
+                </div>
             </div>
                     
                     
@@ -373,6 +418,12 @@
                         document.querySelector('.bg-model4').style.display = 'none';
                     })
                 
+                </script>
+                
+                <script>
+                    document.querySelector('.close5').addEventListener('click', function(){
+                       document.querySelector('.bg-model5').style.display = 'none';
+                   })
                 </script>
                   
     </body>
