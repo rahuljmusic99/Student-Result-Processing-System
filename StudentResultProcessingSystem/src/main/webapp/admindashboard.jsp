@@ -161,7 +161,7 @@
                                 <input type="text" placeholder="Programme Name">
                                 <input type="text" placeholder="Duration(In Years)">
                                 <input type="text" placeholder="Total Semester">
-                                <button id="button" >ADD</button>
+                                <button id="button" onclick="callInsertDataServlet();" >ADD</button>
                             
                         </form>
                     </div>
@@ -239,7 +239,16 @@
             <option>  </option>      
             </select>
             </div>
-                
+            
+            
+            <form action="ResultServlet" method="post" id="semesterForm">
+            	         <input name="semester" type="hidden" value=""/>
+            	         <input name="userName" type="hidden" value="">
+			</form>
+			<form action="InternalServlet" method="post" id=internalForm>
+            	         <input name="semester" type="hidden" value=""/>
+            	         <input name="userName" type="hidden" value="">
+			</form>   
             <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
             <tr>
                 <th>Programme</th>
@@ -264,9 +273,9 @@
 						+"ORDER BY programme.programme_name ASC");	
             		
 					if(studentData!=null){
-                		
+						int i = 1;
                 		while(studentData.next()){
-                			int i = 1;
+                			
             %>	       
            <tr>
               <td class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme -->
@@ -274,14 +283,27 @@
               <td><%=studentData.getString("first_name") +" "+ studentData.getString("last_name")%></td>   <!--Student Name-->
               <td><%=studentData.getString("reg_no")%></td>   <!--Register number-->
               <td class="td1"><button class="btn__course" id="btn__course<%=i%>" onclick="myFunction4()"><span style="font-size: 16px;">+</span> Add</button></td>  <!--Add Result-->
-              <td class="td2"><button class="btn__edit" id="btn-edit1" onclick="myFunction5()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Result</button></td> <!--View Result-->
+              <td class="td2"><button class="btn__edit" id="btn-edit<%=i%>" onclick="viewResult<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Result</button></td> <!--View Result-->
               <td class="td3"><div class="circle1" title="Edit Result" id="circle1" onclick="myFunction6()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Result" id="circle2" onclick="myFunction7()"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
             </tr>
             
             
+            	<script type="text/javascript">
+            	
+	            	document.getElementById("btn-edit<%=i%>");
+	            	function viewResult<%=i%>(){
+	            	    document.querySelector('.bg-model2').style.display = 'flex';
+	            	    document.forms['semesterForm']['userName'].value = "<%=studentData.getString("reg_no")%>";
+	            	    document.forms['internalForm']['userName'].value = "<%=studentData.getString("reg_no")%>";
+	            	}
+            	</script>
             
-			<% 	i++;	}	
-                		}	
+            
+            
+			<% 		
+				i = i + 1;
+                	}	
+                }	
                	}catch(SQLException e){}
             
             %>     
@@ -296,17 +318,44 @@
                 <h1>View Student Result </h1></div>
                     
                 <form action="">
-                <table border="1" class="tb3">
+                <table border="1" class="tb3" id="viewResultTable">
                   <tr>
                      <th>Semester</th>
                      <th>Internals</th>
                   </tr>
                                     
-                                    
+                     <%
+                     
+                     	int maxSem = 1;
+                     	try{
+                     
+		                    Connection con = DBConnection.createConnection();;
+		 					Statement statement = con.createStatement();
+		 					ResultSet programmeSem = statement.executeQuery(""
+		 						+"SELECT programme_sem from programme "
+		 						+"WHERE programme_sem = (SELECT MAX(programme_sem)FROM programme)LIMIT 1");	
+		             		
+		 					if(programmeSem!=null){
+		 						
+		                 		while(programmeSem.next()){
+									maxSem = programmeSem.getInt("programme_sem");
+									
+		                 		}
+		 					}
+                     	}catch(SQLException e){
+                     		e.printStackTrace();
+                     	}
+                     
+                     
+                     	for(int i = 1 ;i <= maxSem; i++){
+                     %>         
                     <tr class="pop-row">
-                        <td><div class="pop-div"><div class="pop-inner">Semester1</div></div></td>
-                        <td><div class="pop-div"><div class="pop-inner">Semester1</div></div></td>
+                        <td><div class="pop-div"><div class="pop-inner" onclick="callResultServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>">Semester <%=i%></div></div></td>
+                        <td><div class="pop-div"><div class="pop-inner" onclick="callInternalServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>">Semester <%=i%></div></div></td>
+                      
                     </tr>
+                    <%} %>
+                    
                 </table>
                 </form>
                 </div>
@@ -322,10 +371,13 @@
                               <tr>
                                 <th>Semester</th>
                               </tr>
-                                    
+                                <%
+			                     	for(int i = 1 ;i <= maxSem; i++){
+                     			%>     
                                <tr class="pop-row">
-                                   <td><div class="pop-div"><div class="pop-inner2">Semester1</div></div></td>
-                                </tr>      
+                                   <td><div class="pop-div"><div class="pop-inner2">Semester <%=i%></div></div></td>
+                                </tr> 
+                                 <%} %>     
                             </table> 
                         </form>
                     </div>

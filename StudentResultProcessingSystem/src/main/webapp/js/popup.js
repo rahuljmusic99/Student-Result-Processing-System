@@ -14,14 +14,6 @@ function myFunction3(){
 }
         
         
- 
-        
-        
-document.getElementById("btn-edit1");
-function myFunction5(){
-    document.querySelector('.bg-model2').style.display = 'flex';
-}
-        
 
 
         
