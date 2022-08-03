@@ -20,6 +20,8 @@ public class InsertDataDao {
 		Statement statement = null;
 		ResultSet resultSet = null;
 		StudentStaffDataBean studentDataBean = new StudentStaffDataBean();
+		
+		String programmeNameString = "";
 		try {
 			
 			con = DBConnection.createConnection();
@@ -29,6 +31,13 @@ public class InsertDataDao {
 											+ "WHERE A.programme_name = "+studentDataBean.getProgramme()+" "
 											+ "AND B.class_name = "+studentDataBean.getclass()+" "
 											+ "AND B.class_year = "+studentDataBean.getYear()+" ");
+			if(resultSet!=null) {
+				
+				while (resultSet.next()) {
+					
+					
+				}
+			}
 			
 			query = "";
 			preparedStatement = con.prepareStatement(query);

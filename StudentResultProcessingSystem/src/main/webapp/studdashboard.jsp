@@ -85,7 +85,7 @@
                                 <th>Internal Marks</th>
                             </tr>
                             
-                            <tr >
+                            
                             <%  
 			                	String semesterString = (String) session.getAttribute("semester"); 
 			                	int semesterInt = Integer.parseInt(semesterString);
@@ -93,15 +93,11 @@
 			                	int i;
 			                	for(i=1; i <= semesterInt ;i++){
                 			%>
+                				<tr >
                                 <td class="make"><div class="marks1"><div class="innerdiv" onclick="callResultServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>">Semester <%=Integer.toString(i)%></div></div></td>
+                            	<td class="make"><div class="marks2"><div class="innerdiv2" onclick="callInternalServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>">Semester <%=Integer.toString(i)%></div></div></td>
                             <%} %>    
                             
-                            <% 
-			                	int j;
-			                	for(j=1; j <= semesterInt ;j++){
-               				%>    
-                                <td class="make"><div class="marks2"><div class="innerdiv2" onclick="callInternalServlet<%=Integer.toString(j)%>()" id="div<%=Integer.toString(j)%>">Semester<%=Integer.toString(j)%></div></div></td>
-                            <%} %>
                             
                             </tr>
                         </table>
@@ -119,7 +115,7 @@
         </div>
          
     
-                <script type="text/javascript">
+              <script type="text/javascript">
              	let image = document.getElementById("image");
              	let images = ['css/images/can1.jpg','css/images/can2.jpg','css/images/can3.jpg','css/images/can4.jpg','css/images/can5.jpg','css/images/can6.jpg','css/images/can7.jpg']
              	setInterval(function(){
