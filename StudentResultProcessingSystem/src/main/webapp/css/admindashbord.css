@@ -166,6 +166,7 @@ h4{
     width: 1150px;
     height: 4rem;
     background: grey;  
+    text-align: center;
 }
 
 .add{
@@ -260,12 +261,16 @@ h6{
 }
 
 .fa-plus{
-    float: right;
-    margin-right: 1rem;
-    margin-top: 1rem;
+    align-items: center;
+    justify-content: center;
+    display:inline;
+    margin:0.7rem;
     color: white;
-    font-weight: bold;
-    cursor: pointer;
+      
+}
+
+.left{
+    text-align: center;
 }
 
 .protab .refresh{
