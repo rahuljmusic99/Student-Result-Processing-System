@@ -22,6 +22,8 @@ public class StudentStaffDataBean {
 	private String passwordString = "";
 	private String bloodGroupString = "";
 	
+	private String staffId = "";
+	
 	public void setfirstName(String firstNameString) {//1
 		this.firstNameString = firstNameString;
 	}
@@ -166,4 +168,13 @@ public class StudentStaffDataBean {
 		return this.bloodGroupString;
 	}
 	
+	
+	
+	public void setStaffId(String staffId) {
+		this.staffId = staffId;
+	}
+	
+	public String getStaffId() {
+		return this.staffId;
+	}
 }

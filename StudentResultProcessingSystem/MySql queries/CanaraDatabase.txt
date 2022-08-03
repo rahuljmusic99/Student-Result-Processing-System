@@ -331,3 +331,8 @@ INNER JOIN class B ON A.programme_id = B.programme_id)
 WHERE A.programme_name = "BCA"
 AND B.class_name = "BCA"
 AND B.class_year = "3"
+
+
+
+INSERT INTO student (reg_no,first_name,last_name,gender,dob,email,phone,address,blood_group,birth_place,birth_district,pincode,password,programme_id,class_id,joining_year,semester,status)
+VALUES(191132708,"Deeraj","S","Male","2000-10-11","hpdeeraj@gmial.com",8088237969,"Babugudda","O+ve","Mangalore","Dakshina Kannada","575001","Deeraj@123","231","2311","2019","6","true");
