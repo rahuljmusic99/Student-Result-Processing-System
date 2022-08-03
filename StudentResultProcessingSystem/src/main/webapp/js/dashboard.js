@@ -205,4 +205,9 @@
 					
 
 
+//  function to call insertServlet
+
+			function insertProgramme(){
+				document.getElementById("programmeForm").submit();
+			}
 

@@ -22,7 +22,36 @@
 <%
 	LoadDataDao loadData = new LoadDataDao(); 
 	ResultSet programmeResultSet = loadData.loadProgrammeData();
-
+	 
+	String insertionMessage = (String)request.getAttribute("insertionMessage");
+	if(insertionMessage!=null){
+		if(insertionMessage=="SUCCESS"){
+%>		
+		
+	<script type="text/javascript">
+		window.onload = function(){
+			swal("Success","Records Inserted Successfully","success");
+			
+		}
+	
+	
+	</script>
+<% 		
+		}else{
+			
+%>			
+			<script type="text/javascript">
+				window.onload = function(){
+					swal("Sorry","<%=insertionMessage%>","warning");
+					
+				}
+			
+			
+			</script>
+			
+<% 		
+		}
+	}
 %>
 
     
@@ -156,12 +185,13 @@
                         <div class="close" id="close" onclick="myFuction()2">+</div>
                         <div class="header">
                             <h1>Add Programme Data</h1></div>
-                            <form action="">
-                                <input type="text" placeholder="Programme Id">
-                                <input type="text" placeholder="Programme Name">
-                                <input type="text" placeholder="Duration(In Years)">
-                                <input type="text" placeholder="Total Semester">
-                                <button id="button" onclick="callInsertDataServlet();" >ADD</button>
+                            <form id="programmeForm" action="InsertDataServlet" method="post">
+                            	<input type="hidden" value="programme" name="Data" />
+                                <input type="text" placeholder="Programme Id" name="programmeId">
+                                <input type="text" placeholder="Programme Name" name="programmeName">
+                                <input type="text" placeholder="Duration(In Years)" name="duration">
+                                <input type="text" placeholder="Total Semester" name="totalSemester">
+                                <button id="button" onclick="insertProgramme();" >ADD</button>
                             
                         </form>
                     </div>

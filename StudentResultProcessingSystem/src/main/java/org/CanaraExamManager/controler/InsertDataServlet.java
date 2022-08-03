@@ -68,21 +68,21 @@ public class InsertDataServlet extends HttpServlet {
 				String dataValidateString = insertDataDao.insertStaffData(staffDataBean) ;
 				 
 				request.setAttribute("insertionMessage",dataValidateString);
-				request.getRequestDispatcher("/admindashboard.jsp").forward(request, response);
+				request.getRequestDispatcher("admindashboard.jsp").forward(request, response);
 				
 			}case "programme": {
 				
 				ProgrammeCourseClassBean programmeBean = new ProgrammeCourseClassBean();
 				
-				programmeBean.setProgrammeId(request.getParameter(""));//1
-				programmeBean.setProgrammeName(request.getParameter(""));//2
-				programmeBean.setProgrammeDuration(request.getParameter(""));//3;
-				programmeBean.setSemester(request.getParameter(""));//4
+				programmeBean.setProgrammeId(request.getParameter("programmeId"));//1
+				programmeBean.setProgrammeName(request.getParameter("programmeName"));//2
+				programmeBean.setProgrammeDuration(request.getParameter("duration"));//3;
+				programmeBean.setSemester(request.getParameter("totalSemester"));//4
 				
 				String dataValidateString = insertDataDao.insertProgrammeData(programmeBean);
 				 
 				request.setAttribute("insertionMessage",dataValidateString);
-				request.getRequestDispatcher("/admindashboard.jsp").forward(request, response);
+				request.getRequestDispatcher("admindashboard.jsp").forward(request, response);
 				
 			}case "course": {
 				
