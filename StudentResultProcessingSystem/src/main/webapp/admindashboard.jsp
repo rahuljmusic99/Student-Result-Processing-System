@@ -86,7 +86,7 @@
                     <h4>Programme Management</h4>
                     <div class="inner__protab">
                         
-                    <div class="inner1"><h6>Programme list</h6><div id="add" class="add" title="Add programme" onclick="myFunction1()"></div><i class="fa fa-plus" aria-hidden="true" title="Add programme"></i></div>
+                    <div class="inner1"><h6 class="left">Programme list</h6><div id="add" class="add" title="Add programme" onclick="myFunction1()"></div><i class="fa fa-plus" aria-hidden="true" title="Add programme"></i></div>
                     <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
                         <tr class="tb2">
                             <th>Programme Name</th>
@@ -229,7 +229,7 @@
             <button class="refresh" id="ref" onclick="">Refresh page</button>
             <h4>Student Result Management</h4>
             <div class="inner__protab">
-            <div class="inner1"><h6>Student Result</h6>
+            <div class="inner1"><h6 class="left">Student Result</h6>
             <select class="select2">
             <option value="" disabled selected hidden>Class</option>
             <option>  </option>
