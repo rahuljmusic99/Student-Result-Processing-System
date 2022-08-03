@@ -11,6 +11,7 @@
     height: 100%;  
     width: 100%;
     
+    
 }
 
 .tabs__sidebar{
@@ -232,6 +233,7 @@ h6{
     background-color: darkgoldenrod;
     cursor: pointer;
 }
+
 .circle2{
     width: 2rem;
     height: 2rem;
@@ -240,12 +242,14 @@ h6{
     background-color: red;
     cursor: pointer;
 }
+
 .fa-times{
     text-align: center;
     color: white;
     margin-top: 0.5rem;
     margin-left: 0.6rem;
 }
+
 .fa-pencil
 {
     color: white;
@@ -254,14 +258,16 @@ h6{
     margin-left: 0.5rem;
     
 }
+
 .fa-plus{
     float: right;
-    margin-right: -1.5rem;
-    margin-top: -0.6rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
     color: white;
     font-weight: bold;
     cursor: pointer;
 }
+
 .protab .refresh{
     float: right;
     margin: 1rem;
@@ -273,9 +279,11 @@ h6{
     cursor: pointer;
     
 }
+
 .edu{
     height: 60px;
 }
+
 .divmarks{
     width: 1210px;
     height: auto;
@@ -284,13 +292,14 @@ h6{
     border: 1px solid #dddddd;
     
 }
+
 .tb2{
     margin: 10px;
-    padding: 1px;
     border: 1px solid #dddddd;
     width: 1130px;
     margin-top: 2rem;
 }
+
 .innermarks{
     width: 1150px;
     height: auto;
@@ -302,6 +311,12 @@ h6{
     padding-top: 1rem;
 }
 
+.tb2{
+    padding: 1px;
+    margin: 10px;
+    border: 1px solid #dddddd;
+    width: 1130px;
+}
 
 .marks1{
     text-align: center;
@@ -319,6 +334,7 @@ h6{
     border-radius: 10px;
     font-size: 20px;
 }
+
 .innerdiv{
     border: 1px solid blue;
     padding: 15px;
@@ -327,6 +343,7 @@ h6{
     margin-right: 70px;
     transition: 2sec;
 }
+
 .innerdiv2{
     border: 1px solid blue;
     padding: 15px;
@@ -335,6 +352,7 @@ h6{
     margin-right: 70px;
     
 }
+
 .innerdiv:hover{
    width: 17rem;
    margin-left: 90px;
@@ -342,12 +360,15 @@ h6{
     cursor: pointer;
     
 }
+
 .innerdiv2:hover{
    width: 17rem;
    margin-left: 90px;
    margin-right: 90px;
     cursor: pointer;
 }
+
+
 
 .make{
     width: 33rem;
@@ -356,11 +377,144 @@ h6{
 .head2{
     font-size: 20px;
 }
+/*----pop up-----*/
+
+.bg-model{
+    width: 80%;
+    height:100% ;
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
 
 
+.model-content{
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+}
+
+.model-content .header{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+input{
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+    height: 2.3rem;
+}
+
+.close{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button{
+    background-color: forestgreen;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    margin-top: 0.2rem;
+    cursor: pointer;
+}
+
+#button:hover{
+    opacity: 0.9;
+}
+
+.bg-model1{
+    width: 80%;
+    height:100% ;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
 
 
+.model-content1{
+    width: 500px;
+    height: 450px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+}
 
+.model-content1 .header1{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+input{
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+    height: 2.3rem;
+    color: black;
+    padding-left: 0.2rem;
+}
+
+.close1{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button1{
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    cursor: pointer;
+}
+
+#button1:hover{
+    opacity: 0.9;
+}
+
+select{
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+    height: 2.3rem;
+}
+
+option{
+    background: whitesmoke;
+}
+
+.select2{
+    margin: 0;
+    width: 10%;
+    display: inline-flex;
+    border-spacing: 10px;
+}
 
 
 
