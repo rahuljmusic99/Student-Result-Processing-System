@@ -338,6 +338,38 @@
                    
             },2500);
         </script>
+                
+                <script>
+                    document.querySelector('.close').addEventListener('click', function(){
+                        document.querySelector('.bg-model').style.display = 'none';
+                     });
+                </script>
+                
+                <script>
+                    document.querySelector('.close1').addEventListener('click', function(){
+                        document.querySelector('.bg-model1').style.display = 'none';
+                    });
+                </script>
+                
+                <script>
+                    document.querySelector('.close2').addEventListener('click', function(){
+                        document.querySelector('.bg-model2').style.display = 'none';
+                    })
+                </script>
+                
+                <script>
+                    document.querySelector('.close3').addEventListener('click', function(){
+                        document.querySelector('.bg-model3').style.display = 'none';
+                    })
+                </script>
+                
+                <script>
+                    document.querySelector('.close4').addEventListener('click', function(){
+                        document.querySelector('.bg-model4').style.display = 'none';
+                    })
+                
+                </script>
+                  
     </body>
 </html>
     
