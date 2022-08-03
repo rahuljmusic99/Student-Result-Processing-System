@@ -230,8 +230,13 @@
             <h4>Student Result Management</h4>
             <div class="inner__protab">
             <div class="inner1"><h6>Student Result</h6>
-            <select class="select2"><option value="" disabled selected hidden>Class</option></select>
-            <select class="select2"><option value="" disabled selected hidden>Programme</option></select>
+            <select class="select2">
+            <option value="" disabled selected hidden>Class</option>
+            <option>  </option>
+            </select>
+            <select class="select2"><option value="" disabled selected hidden>Programme</option>
+            <option>  </option>      
+            </select>
             </div>
                 
             <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
