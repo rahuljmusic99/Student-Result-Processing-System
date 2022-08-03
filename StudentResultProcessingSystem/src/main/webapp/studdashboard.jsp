@@ -63,30 +63,6 @@
                 </p> 
             </div>
             
-            <div class="tabs__content" data-tab="2">
-                <div class="space3">
-                <%  
-                	String semesterString = (String) session.getAttribute("semester"); 
-                	int semesterInt = Integer.parseInt(semesterString);
-                    
-                	int i;
-                	for(i=1; i <= semesterInt ;i++){
-                %>
-                <div onclick="callResultServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>" class="space4">Semester <%=Integer.toString(i)%></div>
-               <%} %>
-                </div> 
-                    
-                  <div class="space5">
-                 <% 
-                	int j;
-                	for(j=1; j <= semesterInt ;j++){
-                %> 
-                    <div onclick="callInternalServlet<%=Integer.toString(j)%>()" id="div<%=Integer.toString(j)%>" class="space6">Semester <%=Integer.toString(j)%></div>
- 				<%} %>
- 			
-                   </div>        
-            </div>
-            
             
             <div class="tabs__content" data-tab="3">
             
@@ -127,8 +103,23 @@
                             </tr>
                             
                             <tr >
-                                <td class="make"><div class="marks1"><div class="innerdiv" onclick="" id="">Semester1</div></div></td>
-                                <td class="make"><div class="marks2"><div class="innerdiv2" onclick="" id="">Semester1</div></div></td>
+                            <%  
+			                	String semesterString = (String) session.getAttribute("semester"); 
+			                	int semesterInt = Integer.parseInt(semesterString);
+			                    
+			                	int i;
+			                	for(i=1; i <= semesterInt ;i++){
+                			%>
+                                <td class="make"><div class="marks1"><div class="innerdiv" onclick="callResultServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>">Semester <%=Integer.toString(i)%></div></div></td>
+                            <%} %>    
+                            
+                            <% 
+			                	int j;
+			                	for(j=1; j <= semesterInt ;j++){
+               				%>    
+                                <td class="make"><div class="marks2"><div class="innerdiv2" onclick="callInternalServlet<%=Integer.toString(j)%>()" id="div<%=Integer.toString(j)%>">Semester<%=Integer.toString(j)%></div></div></td>
+                            <%} %>
+                            
                             </tr>
                         </table>
                     </div>
