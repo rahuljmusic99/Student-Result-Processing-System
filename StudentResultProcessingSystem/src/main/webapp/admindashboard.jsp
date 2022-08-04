@@ -86,21 +86,43 @@
                         <i class="fa fa-plus" title="Add programme"></i></div></div>
                     <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
                         <tr >
-                            <th>Programme Name</th>
+                          <th>Programme Name</th>
                             <th>Class</th>
                             <th>Student Name</th>
                             <th>Register Number</th>
                             <th>View Student Details</th>
                             <th>Action</th>
                         </tr>
+                        <%
+                        	try{			
+                        		
+               					Connection con = DBConnection.createConnection();;
+               					Statement statement = con.createStatement();
+               					ResultSet studentData = statement.executeQuery(""
+               						+"SELECT * FROM ((student "
+               						+"INNER JOIN programme ON student.programme_id = programme.programme_id)"
+               						+"INNER JOIN class ON student.class_id = class.class_id)"
+               						+"ORDER BY programme.programme_name ASC");
+               					while(studentData.next()){
+               						int i = 1;
+                        %>
                         <tr>
-                            <td class="td1"></td>   <!--Programme name-->
-                            <td class="td2"></td>   <!--Semseter-->
-                            <td></td>   <!--Course-->
-                            <td></td>
-                            <td class="td2"><button class="btn__edit" id="btn-edit2" onclick="myFunction10()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
+                            <td id="pName" class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme name-->
+                            <td id="cName" class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
+                            <td id="sName" ><%=studentData.getString("first_name")+" "+studentData.getString("last_name")%></td>  <!-- register number -->
+                            <td id="rNo" ><%=studentData.getString("reg_no")%></td>
+                            <td class="td2"><button id="viewStudent" class="btn__edit" id="btn-edit2" onclick="myFunction10()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
                             <td class="td3"><div class="circle1" title="Edit Programme" id="edit1" onclick="myFunction11()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
+                        <%
+               				i++;
+               					}
+                        	}catch(SQLException e){
+                        		e.printStackTrace();
+                        	}
+                        
+                        %>
+                        
                     </table>
                     </div>
                 </div>

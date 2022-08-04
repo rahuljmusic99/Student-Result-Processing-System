@@ -291,7 +291,7 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 					if(resultSet.next()==false) { //check whether class with that class ID already exists
 							
 							resultSet = null;
-							resultSet = statement.executeQuery("SELECT * FROM class WHERE class_name = '"+classDataBean.getClassName()+"' "
+							resultSet = statement.executeQuery("SELECT * FROM class WHERE class_name = '"+classDataBean.getClassName().toUpperCase()+"' "
 															+ "AND class_year = "+classDataBean.getClassYear()+"");
 							
 							if(resultSet.next()==false) {
@@ -301,7 +301,7 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 								preparedStatement = con.prepareStatement(query);
 								
 								preparedStatement.setString(1, classDataBean.getClassId());
-								preparedStatement.setString(2, classDataBean.getClassName());
+								preparedStatement.setString(2, classDataBean.getClassName().toUpperCase());
 								preparedStatement.setString(3, programmeId);
 								preparedStatement.setString(4, classDataBean.getClassYear());
 							
