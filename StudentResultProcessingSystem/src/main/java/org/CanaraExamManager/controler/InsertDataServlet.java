@@ -88,7 +88,7 @@ public class InsertDataServlet extends HttpServlet {
 				
 				ProgrammeCourseClassBean courseDataBean = new ProgrammeCourseClassBean();
 				
-				courseDataBean.setProgrammeName(request.getParameter(""));//1
+				courseDataBean.setProgrammeName(request.getParameter("programmeNameInCourse"));//1
 				courseDataBean.setCourseCode(request.getParameter(""));//2
 				courseDataBean.setCourseName(request.getParameter(""));//3
 				courseDataBean.setCourseType(request.getParameter(""));//4

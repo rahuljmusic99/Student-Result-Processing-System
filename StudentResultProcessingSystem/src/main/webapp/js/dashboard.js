@@ -210,4 +210,8 @@
 			function insertProgramme(){
 				document.getElementById("programmeForm").submit();
 			}
+			
+			function insertCourse(){
+				document.getElementById("courseForm").submit();
+			}
 

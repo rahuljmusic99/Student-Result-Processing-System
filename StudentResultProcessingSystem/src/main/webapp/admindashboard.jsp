@@ -195,21 +195,28 @@
                         <div class="close1" id="close" >+</div>
                         <div class="header1">
                             <h1>Add Course Data</h1></div>
-                            <form action="">
+                            <form id="courseForm" action="InsertDataServlet" method="post">
                                 <input type="text" id="programmeNameInCourse" readonly="readonly" value=""/>
-                                <input type="text" placeholder="Course Code">
-                                <input type="text" placeholder="Course Name">
+                                <input type="text" id="courseCode" placeholder="Course Code">
+                                <input type="text" id="courseName" placeholder="Course Name">
+                                <select>
+                                <option id="" value="" disabled selected hidden>Type</option>
+                                <option>Theory</option>
+                                <option>Practical</option>
+                                </select>
                                 <select >
-                                <option value="" disabled selected hidden>Type</option>
-                                <option>Core Course</option>
-                                <option>Elective Course</option>
-                                <option>Foundation Course</option>
+                                <option id="" value="" disabled selected hidden>Group</option>
+                                <option>Group 1 Core Course</option>
+                                <option>Group 2 Elective Course</option>
+                                <option>Group 3 a)Compulsary Foundation</option>
+                                <option>Group 3 b)Elective Foundation</option>
+                                <option>Group 4</option>
                                 
                                 </select>
                                 <input type="text" placeholder="Max marks">
                                 <input type="text" placeholder="Min Marks">
                                 <input type="text" placeholder="Max Internal Assesment Marks">
-                                <button id="button1" >ADD</button>
+                                <button id="button1" onclick="">ADD</button>
                           </form>
                     </div>
                 </div>          
