@@ -341,7 +341,7 @@
                     <div class="model-content11">
                         <div class="close11" id="close" >+</div>
                         <div class="header11">
-                            <h1>Staff Details</h1></div>
+                            <h1>Edit Staff Details</h1></div>
                              <img class="student" src="images/studenticon.svg">
                             <form action="" >
                                 <input type="text" placeholder="First Name" class="merge4">
@@ -425,7 +425,7 @@
 
 
 							<td class="td1"><button class="btn__course" id="btn__course<%=i + j%>>" onclick="insertCourseData<%=i + j%>()"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
-                            <td class="td2"><button class="btn__edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
+                            <td class="td2"><button class="btn__edit" id="btn-edit4" onclick="myFunction15()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
                             <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
                         
