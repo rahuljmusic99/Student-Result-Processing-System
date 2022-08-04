@@ -32,111 +32,111 @@ public class ProgrammeCourseClassBean {
 		return this.semester;
 	}
 	
-	public void setProgrammeId(String semester) {
-		this.semester = semester;
+	public void setProgrammeId(String programmeId) {
+		this.programmeId = programmeId;
 	}
 	
 	public String getProgrammeId() {
-		return this.semester;
+		return this.programmeId;
 	}
 	
-	public void setCourseCode(String semester) {
-		this.semester = semester;
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
 	}
 	
 	public String getCourseCode() {
-		return this.semester;
+		return this.courseCode;
 	}
 	
 	
-	public void setProgrammeName(String semester) {
-		this.semester = semester;
+	public void setProgrammeName(String programmeName) {
+		this.programmeName = programmeName;
 	}
 	
 	public String getProgrammeName() {
-		return this.semester;
+		return this.programmeName;
 	}
 	
-	public void setProgrammeDuration(String semester) {
-		this.semester = semester;
+	public void setProgrammeDuration(String programmeDuration) {
+		this.programmeDuration = programmeDuration;
 	}
 	
 	public String getProgrammeDuration() {
-		return this.semester;
+		return this.programmeDuration;
 	}
 	
-	public void setCourseName(String semester) {
-		this.semester = semester;
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
 	
 	public String getCourseName() {
-		return this.semester;
+		return this.courseName;
 	}
 	
-	public void setCourseType(String semester) {
-		this.semester = semester;
+	public void setCourseType(String courseType) {
+		this.courseType = courseType;
 	}
 	
 	public String getCourseType() {
-		return this.semester;
+		return this.courseType;
 	}
 	
-	public void setCourseGroup(String semester) {
-		this.semester = semester;
+	public void setCourseGroup(String courseGroup) {
+		this.courseGroup = courseGroup;
 	}
 	
 	public String getCourseGroup() {
-		return this.semester;
+		return this.courseGroup;
 	}
 	
-	public void setMaxMarks(String semester) {
-		this.semester = semester;
+	public void setMaxMarks(String maxMarks) {
+		this.maxMarks = maxMarks;
 	}
 	
 	public String getMaxMarks() {
-		return this.semester;
+		return this.maxMarks;
 	}
 	
-	public void setMinMarks(String semester) {
-		this.semester = semester;
+	public void setMinMarks(String minMarks) {
+		this.minMarks = minMarks;
 	}
 	
 	public String getMinMarks() {
-		return this.semester;
+		return this.minMarks;
 	}
 	
-	public void setMaxIA(String semester) {
-		this.semester = semester;
+	public void setMaxIA(String maxIA) {
+		this.maxIA = maxIA;
 	}
 	
 	public String getMaxIA() {
-		return this.semester;
+		return this.maxIA;
 	}
 	
 	
 	
 	
-	public void setClassId(String semester) {
-		this.semester = semester;
+	public void setClassId(String classId) {
+		this.classId = classId;
 	}
 	
 	public String getClassId() {
-		return this.semester;
+		return this.classId;
 	}
 	
-	public void setClassName(String semester) {
-		this.semester = semester;
+	public void setClassName(String className) {
+		this.className = className;
 	}
 	
 	public String getClassName() {
-		return this.semester;
+		return this.className;
 	}
 	
-	public void setClassYear(String semester) {
-		this.semester = semester;
+	public void setClassYear(String classYear) {
+		this.classYear = classYear;
 	}
 	
 	public String getClassYear() {
-		return this.semester;
+		return this.classYear;
 	}
 }

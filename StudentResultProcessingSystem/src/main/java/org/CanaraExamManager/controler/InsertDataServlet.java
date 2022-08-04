@@ -48,7 +48,7 @@ public class InsertDataServlet extends HttpServlet {
 				 String dataValidateString = insertDataDao.insertStudentData(studentDataBean) ;
 				 
 				 request.setAttribute("insertionMessage",dataValidateString);
-				 request.getRequestDispatcher("/admindashboard.jsp").forward(request, response); 
+				 request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response); 
 				
 				 
 			}case "staff": {
@@ -68,7 +68,7 @@ public class InsertDataServlet extends HttpServlet {
 				String dataValidateString = insertDataDao.insertStaffData(staffDataBean) ;
 				 
 				request.setAttribute("insertionMessage",dataValidateString);
-				request.getRequestDispatcher("admindashboard.jsp").forward(request, response);
+				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 			}case "programme": {
 				
@@ -80,9 +80,9 @@ public class InsertDataServlet extends HttpServlet {
 				programmeBean.setSemester(request.getParameter("totalSemester"));//4
 				
 				String dataValidateString = insertDataDao.insertProgrammeData(programmeBean);
-				 
+				
 				request.setAttribute("insertionMessage",dataValidateString);
-				request.getRequestDispatcher("admindashboard.jsp").forward(request, response);
+				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 			}case "course": {
 				
@@ -101,7 +101,7 @@ public class InsertDataServlet extends HttpServlet {
 				String dataValidateString = insertDataDao.insertCourseData(courseDataBean);
 				 
 				request.setAttribute("insertionMessage",dataValidateString);
-				request.getRequestDispatcher("/admindashboard.jsp").forward(request, response);
+				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 				
 			}case "class": {
@@ -117,7 +117,7 @@ public class InsertDataServlet extends HttpServlet {
 				String dataValidateString = insertDataDao.insertProgrammeData(classDataBean);
 				 
 				request.setAttribute("insertionMessage",dataValidateString);
-				request.getRequestDispatcher("/admindashboard.jsp").forward(request, response);
+				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 				
 			}case "finalResult": {

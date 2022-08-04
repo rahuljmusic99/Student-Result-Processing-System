@@ -189,7 +189,7 @@
 		               			})
 		               			.then((value) => {	
 		               				if(value == "ok"){
-		               					document.location.href="studdashboard.jsp";
+		               					document.location.href="staffdashboard.jsp";
 		               				}
 		               			});
 		            		}
@@ -209,7 +209,7 @@
 		               			})
 		               			.then((value) => {	
 		               				if(value == "ok"){
-		               					document.location.href="studdashboard.jsp";
+		               					document.location.href="admindashboard.jsp";
 		               				}
 		               			});
 		            		}

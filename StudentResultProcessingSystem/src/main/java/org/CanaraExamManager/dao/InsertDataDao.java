@@ -33,8 +33,8 @@ public class InsertDataDao {
 											+ "WHERE A.programme_name = "+studentDataBean.getProgramme()+" "
 											+ "AND B.class_name = "+studentDataBean.getclass()+" "
 											+ "AND B.class_year = "+studentDataBean.getYear()+" ");
-			if(resultSet!=null) {
-				
+			if(resultSet.next() == true) {
+				resultSet.first();
 				while (resultSet.next()) {
 					
 					programmeId = resultSet.getString("programme_id");
@@ -44,7 +44,7 @@ public class InsertDataDao {
 				resultSet = null;
 				resultSet = statement.executeQuery("SELECT * FROM student WHERE reg_no =  "+studentDataBean.getRegNo()+"");
 				
-				if(resultSet==null) { //check whether student with that register number already exists
+				if(resultSet.next() == false) { //check whether student with that register number already exists
 					
 					query = "INSERT INTO student(reg_no,first_name,last_name,gender,dob,email,phone,address,"
 							+ "blood_group,birth_place,birth_district,birth_state,pincode,password,programme_id,class_id,"
@@ -112,7 +112,7 @@ public class InsertDataDao {
 			con = DBConnection.createConnection();
 			statement = con.createStatement();
 			resultSet = statement.executeQuery("SELECT * FROM staff WHERE staff_id = "+staffDataBean.getStaffId()+"");
-			if(resultSet==null) {//check whether staff with that staff id already exists
+			if(resultSet.next() == false) {//check whether staff with that staff id already exists
 				
 				query = "INSERT INTO staff(staff_id,first_name,last_name,gender,dob,email,phone,address,blood_group,"
 						+ "password,staff_status)"
@@ -161,16 +161,15 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 		Statement statement = null;
 		ResultSet resultSet = null;
 		
-		
 		try {
 			
 			con = DBConnection.createConnection();
 			statement = con.createStatement();
 			resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_id = "+programmeDataBean.getProgrammeId()+"");
-			if(resultSet==null) {//check whether programme with that programme id already exists
+			if(resultSet.next() == false) {//check whether programme with that programme id already exists
 				
 				query = "INSERT INTO programme(programme_id,programme_name,programme_duration,programme_sem)"
-						+ "VALUES(?,?,?,?)";
+						+"VALUES(?,?,?,?)";
 				preparedStatement = con.prepareStatement(query);
 				
 				preparedStatement.setString(1, programmeDataBean.getProgrammeId());//1
@@ -179,12 +178,10 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 				preparedStatement.setString(4, programmeDataBean.getSemester());
 				
 				preparedStatement.execute();
-					
 				
 			}else {
 				
 				return "Programme with Programme.ID "+programmeDataBean.getProgrammeId()+" Already Exists";
-				
 			}
 					
 		} catch (Exception e) {
@@ -215,8 +212,8 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 			con = DBConnection.createConnection();
 			statement = con.createStatement();
 			resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_id = "+courseDataBean.getProgrammeId()+"");
-			if(resultSet!=null) {
-				
+			if(resultSet.next() == true) {
+				resultSet.first();
 				while (resultSet.next()) {
 					
 					programmeId = resultSet.getString("programme_id");
@@ -226,15 +223,15 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 				resultSet = statement.executeQuery("SELECT * FROM course WHERE course_code =  "+courseDataBean.getCourseCode()+"");
 				
 				
-					if(resultSet==null) { //check whether course with that courseCode already exists
+					if(resultSet.next() == false) { //check whether course with that courseCode already exists
 						
 						query = "INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,"
 								+ "min_marks,max_IA,programme_id)"
 								+ "VALUES(?,?,?,?,?,?,?,?,?)";
 						preparedStatement = con.prepareStatement(query);
 						
-						preparedStatement.setString(1, courseDataBean.getCourseCode());
-						preparedStatement.setString(2, courseDataBean.getCourseName());
+						preparedStatement.setString(1, courseDataBean.getCourseCode().toUpperCase());
+						preparedStatement.setString(2, courseDataBean.getCourseName().toUpperCase());
 						preparedStatement.setString(3, courseDataBean.getCourseType());
 						preparedStatement.setString(4, courseDataBean.getCourseGroup());
 						preparedStatement.setString(5, courseDataBean.getSemester());

@@ -23,35 +23,6 @@
 	LoadDataDao loadData = new LoadDataDao(); 
 	ResultSet programmeResultSet = loadData.loadProgrammeData();
 	 
-	String insertionMessage = (String)request.getAttribute("insertionMessage");
-	if(insertionMessage!=null){
-		if(insertionMessage=="SUCCESS"){
-%>		
-		
-	<script type="text/javascript">
-		window.onload = function(){
-			swal("Success","Records Inserted Successfully","success");
-			
-		}
-	
-	
-	</script>
-<% 		
-		}else{
-			
-%>			
-			<script type="text/javascript">
-				window.onload = function(){
-					swal("Sorry","<%=insertionMessage%>","warning");
-					
-				}
-			
-			
-			</script>
-			
-<% 		
-		}
-	}
 %>
 
     
@@ -116,6 +87,7 @@
                     <div class="inner__protab">
                         
                     <div class="inner1"><h6 class="left">Programme list</h6><div id="add" class="add" title="Add programme" onclick="myFunction1()"></div><i class="fa fa-plus" aria-hidden="true" title="Add programme"></i></div>
+                   
                     <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
                         <tr class="tb2">
                             <th>Programme Name</th>
@@ -129,18 +101,21 @@
                         <%
                         	try{
                         		if(programmeResultSet!=null){
+                        			int j = 0;
                         			while(programmeResultSet.next()){
-                        	
+                        				
+                        				
                         				for(int i=1; i<= programmeResultSet.getInt("programme_sem"); i++){
                         					
                         					Connection con = DBConnection.createConnection();;
                         					Statement statement = con.createStatement();
                         					ResultSet coursesData = statement.executeQuery(""
-                        						+"SELECT * FROM course where course_sem = "+Integer.toString(i)+"");
+                        						+"SELECT * FROM course where course_sem = "+Integer.toString(i)+" "
+                        						+"AND programme_id = "+programmeResultSet.getString("programme_id")+"");
                         					String coursesString = "";
                         %>
                         <tr>
-							<td class="td1"><%=programmeResultSet.getString("programme_name")%></td>   <!--Programme name-->
+							<td id = "<%=programmeResultSet.getString("programme_name")%>"class="td1"><%=programmeResultSet.getString("programme_name")%></td>   <!--Programme name-->
                             <td class="td2"><%=Integer.toString(i)%></td>   <!--Semester-->
                             
                             
@@ -160,14 +135,22 @@
                             }%>  </td>   <!--Course-->
 
 
-							<td class="td1"><button class="btn__course" id="btn__course" onclick="myFunction3()"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
+							<td class="td1"><button class="btn__course" id="btn__course<%=i + j%>>" onclick="insertCourseData<%=i + j%>()"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
                             <td class="td2"><button class="btn__edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
                             <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
                         
+                        
+                        <script type="text/javascript">
+	                        document.getElementById("btn__course<%=i + j%>");
+	                        function insertCourseData<%=i + j%>(){
+	                          document.querySelector('.bg-model1').style.display = 'flex';
+	                          document.getElementById("programmeNameInCourse").value = "<%=programmeResultSet.getString("programme_name")%>";
+	                        }
+                        </script>
                         <%
                         				}
-								
+                        				j = j + programmeResultSet.getInt("programme_sem");//increment j for index
                         			}
                         		}
                         	}catch(SQLException e){
@@ -204,19 +187,15 @@
                         <div class="header1">
                             <h1>Add Course Data</h1></div>
                             <form action="">
-                                <select >
-                                <option value="" disabled selected hidden>Select Programme</option>
-                                <option>Bca</option>
-                                <option>Bcom</option>
-                                <option>BBA</option>
-                                </select>
+                                <input type="text" id="programmeNameInCourse" readonly="readonly" value=""/>
                                 <input type="text" placeholder="Course Code">
                                 <input type="text" placeholder="Course Name">
                                 <select >
                                 <option value="" disabled selected hidden>Type</option>
-                                <option>Bca</option>
-                                <option>Bcom</option>
-                                <option>BBA</option>
+                                <option>Core Course</option>
+                                <option>Elective Course</option>
+                                <option>Foundation Course</option>
+                                
                                 </select>
                                 <input type="text" placeholder="Max marks">
                                 <input type="text" placeholder="Min Marks">
@@ -411,7 +390,6 @@
 		 						+"WHERE programme_sem = (SELECT MAX(programme_sem)FROM programme)LIMIT 1");	
 		             		
 		 					if(programmeSem!=null){
-		 						
 		                 		while(programmeSem.next()){
 									maxSem = programmeSem.getInt("programme_sem");
 									
