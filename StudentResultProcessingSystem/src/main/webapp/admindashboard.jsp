@@ -73,7 +73,86 @@
             
             
             <div class="tabs__content" data-tab="2">
-                <h1>Users</h1>
+                <div class="tabs__content" data-tab="2">
+                <div class="protab"> 
+                    
+                    
+                    <button class="refresh" id="ref" onclick="myFunction()">Refresh page</button>
+                    <h4>Student Details Management</h4>
+                    <div class="inner__protab">
+                        
+                    <div class="inner1">
+                        <h6 class="left">Students list</h6>
+                        <div id="add2" class="add" title="Add programme" onclick="myFunction9()">
+                        <i class="fa fa-plus" title="Add programme"></i></div></div>
+                    <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
+                        <tr >
+                            <th>Programme Name</th>
+                            <th>Class</th>
+                            <th>Student Name</th>
+                            <th>Register Number</th>
+                            <th>View Student Details</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td class="td1"></td>   <!--Programme name-->
+                            <td class="td2"></td>   <!--Semseter-->
+                            <td></td>   <!--Course-->
+                            <td></td>
+                            <td class="td2"><button class="btn__edit" id="edit1" onclick=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
+                            <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+                
+                
+                <div class="bg-model6">
+                    <div class="model-content6">
+                        <div class="close6" id="close" >+</div>
+                        <div class="header6">
+                            <h1>Add Course Data</h1></div>
+                             <img class="student" src="images/studenticon.svg">
+                            <form action="" >
+                                <input type="text" placeholder="First Name" class="merge1">
+                                <input type="text" placeholder="Last Name" class="merge1">
+                                <select class="merge2">
+                                <option value="" disabled selected hidden>Gender</option>
+                                <option>Adimale</option>
+                                </select>
+                                <input type="text" placeholder="Date of Birth" class="merge2">
+                                <input type="text" placeholder="Email" class="merge1">
+                                <input type="text" placeholder="Mobile Number" class="merge1">
+                                <input type="text" placeholder="Address" class="merge1">
+                                <input type="text" placeholder="Pincode" class="merge1">
+                                <input type="text" placeholder="city" class="merge3">
+                                <input type="text" placeholder="District" class="merge3">
+                                <input type="text" placeholder="State" class="merge3">
+                                <input type="text" placeholder="Year Of Joining" class="merge2">
+                                <select class="merge3">
+                                <option value="" disabled selected hidden>Programme</option>
+                                <option>Adimale</option>
+                                </select>
+                                <select class="merge3">
+                                <option value="" disabled selected hidden>class</option>
+                                <option>Adimale</option>
+                                </select>
+                                <select class="merge3">
+                                <option value="" disabled selected hidden>Current Sem</option>
+                                <option>Adimale</option>
+                                </select>
+                                
+                                <input type="text" placeholder="Register Number" class="merge1">
+                                <input type="text" placeholder="Password" class="merge1">
+                                <button id="button6" >ADD</button>
+                                
+                            
+                        </form>
+                    </div>
+                </div>
+                
+                
+            </div>
             </div>
             
             
@@ -199,6 +278,7 @@
                                 <input type="text" id="programmeNameInCourse" readonly="readonly" value=""/>
                                 <input type="text" id="courseCode" placeholder="Course Code">
                                 <input type="text" id="courseName" placeholder="Course Name">
+                                <input type="text" id="courseSemester" readonly="readonly" value=""/>
                                 <select>
                                 <option id="" value="" disabled selected hidden>Type</option>
                                 <option>Theory</option>
@@ -363,6 +443,7 @@
 	            	document.getElementById("btn-edit<%=i%>");
 	            	function viewResult<%=i%>(){
 	            	    document.querySelector('.bg-model2').style.display = 'flex';
+                        document.querySelector('.bg-model2').style.position = 'fixed';
 	            	    document.forms['semesterForm']['userName'].value = "<%=studentData.getString("reg_no")%>";
 	            	    document.forms['internalForm']['userName'].value = "<%=studentData.getString("reg_no")%>";
 	            	}
@@ -527,6 +608,12 @@
                        document.querySelector('.bg-model5').style.display = 'none';
                    })
                 </script>
+                
+                <script>
+                   document.querySelector('.close6').addEventListener('click', function(){
+                      document.querySelector('.bg-model6').style.display = 'none';
+                  })
+               </script>
                   
     </body>
 </html>
