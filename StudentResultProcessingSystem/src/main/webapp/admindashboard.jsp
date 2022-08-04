@@ -46,10 +46,11 @@
                 <div class="space"><img src="css/images/education.png" class="edu"></div>
                 <div class="space2"><i class="fa fa-angle-left"></i></div>
                 <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
-                <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Users</button>
-                <button class="tabs__button" data-for-tab="3"><i class="fa fa-bar-chart" id="button3"></i>Programme and courses</button>
-                <button class="tabs__button" data-for-tab="4"><i class="fa fa-bar-chart"></i>classes</button>
-                <button class="tabs__button" data-for-tab="5"><i class="fa fa-bullseye"></i>Student Result</button>
+                <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Student Details</button>
+                <button class="tabs__button" data-for-tab="3"><i class="fa fa-graduation-cap"></i>Staff Details</button>
+                <button class="tabs__button" data-for-tab="4"><i class="fa fa-bar-chart" id="button3"></i>Programme and courses</button>
+                <button class="tabs__button" data-for-tab="5"><i class="fa fa-bar-chart"></i>classes</button>
+                <button class="tabs__button" data-for-tab="6"><i class="fa fa-bullseye"></i>Student Result</button>
                 <button class="tabs__button" onclick="logoutConfirm();" ><i class="fa fa-power-off"></i>Logout</button>
             </div>
         
@@ -76,11 +77,19 @@
             </div>
             
             
-            
-            
-            
-            
             <div class="tabs__content" data-tab="3">
+                <h1>Users</h1>
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <div class="tabs__content" data-tab="4">
                 <div class="protab"> 
                     <button class="refresh" id="refProgramme" onclick="refreshProgramme();">Refresh page</button>
                     <h4>Programme Management</h4>
@@ -219,7 +228,7 @@
                     
                     
                     
-             <div class="tabs__content" data-tab="4">
+             <div class="tabs__content" data-tab="5">
                 <div class="protab"> 
                     <button class="refresh" id="ref" onclick="myFunction()">Refresh page</button>
                     <h4>Class Management</h4>
@@ -279,7 +288,7 @@
                     
             
             
-            <div class="tabs__content" data-tab="5">
+            <div class="tabs__content" data-tab="6">
             <div class="protab"> 
             <button class="refresh" id="ref" onclick="">Refresh page</button>
             <h4>Student Result Management</h4>
