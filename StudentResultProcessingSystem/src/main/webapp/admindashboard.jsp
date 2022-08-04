@@ -86,21 +86,114 @@
                         <i class="fa fa-plus" title="Add programme"></i></div></div>
                     <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
                         <tr >
-                            <th>Programme Name</th>
+                          <th>Programme Name</th>
                             <th>Class</th>
                             <th>Student Name</th>
                             <th>Register Number</th>
                             <th>View Student Details</th>
                             <th>Action</th>
                         </tr>
+                        <%
+                        	try{			
+                        		
+               					Connection con = DBConnection.createConnection();;
+               					Statement statement = con.createStatement();
+               					ResultSet studentData = statement.executeQuery(""
+               						+"SELECT * FROM ((student "
+               						+"INNER JOIN programme ON student.programme_id = programme.programme_id)"
+               						+"INNER JOIN class ON student.class_id = class.class_id)"
+               						+"ORDER BY programme.programme_name ASC");
+               					
+               					int i = 1;
+               					while(studentData.next()){
+               						
+                        %>
                         <tr>
-                            <td class="td1"></td>   <!--Programme name-->
-                            <td class="td2"></td>   <!--Semseter-->
-                            <td></td>   <!--Course-->
-                            <td></td>
-                            <td class="td2"><button class="btn__edit" id="btn-edit2" onclick="myFunction10()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
-                            <td class="td3"><div class="circle1" title="Edit Programme" id="edit1" onclick="myFunction11()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td  class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme name-->
+                            <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
+                            <td><%=studentData.getString("first_name")+" "+studentData.getString("last_name")%></td>  <!-- register number -->
+                            <td><%=studentData.getString("reg_no")%></td>
+                            <td class="td2"><button id="viewStudent<%=i%>" class="btn__edit"  onclick="viewStudentDetails<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
+                            <td class="td3"><div id="editStudent<%=i%>" class="circle1" title="Edit Programme" onclick="editStudentDetails<%=i%>()" ><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
+                        
+                        <script type="text/javascript">
+	                        document.getElementById("viewStudent<%=i%>");
+	                        function viewStudentDetails<%=i%>(){
+	                            document.querySelector('.bg-model7').style.display = 'flex';
+	                            document.querySelector('.bg-model7').style.position = 'fixed';
+	                            
+	                            document.getElementById("sFirstName").value = "<%=studentData.getString("first_name")%>";
+	                            document.getElementById("sLastName").value = "<%=studentData.getString("last_name")%>";
+	                            document.getElementById("sGender").value = "<%=studentData.getString("gender")%>";
+	                            document.getElementById("sDOB").value = "<%=studentData.getString("dob")%>";
+	                            document.getElementById("sEmail").value = "<%=studentData.getString("email")%>";
+	                            document.getElementById("sPhone").value = "<%=studentData.getString("phone")%>";
+	                            document.getElementById("sAddress").value = "<%=studentData.getString("address")%>";
+	                            document.getElementById("sPincode").value = "<%=studentData.getString("pincode")%>";
+	                            document.getElementById("sCity").value = "<%=studentData.getString("birth_place")%>";
+	                            document.getElementById("sDistrict").value = "<%=studentData.getString("birth_district")%>";
+	                            document.getElementById("sState").value = "<%=studentData.getString("birth_state")%>";
+	                            document.getElementById("sYOF").value = "<%=studentData.getString("joining_year")%>";
+	                            document.getElementById("sProgramme").value = "<%=studentData.getString("programme_name")%>";
+	                            document.getElementById("sClass").value = "<%=studentData.getString("class_name")%>";
+	                            document.getElementById("sClassYear").value = "<%=studentData.getString("class_year")%>";
+	                            document.getElementById("sCurrentSem").value = "<%=studentData.getString("semester")%>";
+	                            document.getElementById("sRegNo").value = "<%=studentData.getInt("reg_no")%>";
+	                            document.getElementById("sPassword").value = "<%=studentData.getString("password")%>";
+	                           
+	                        }
+                        </script>
+                        
+                        <script>
+                        	document.getElementById("viewStudentDiv");
+	                        document.getElementById("editStudent<%=i%>");
+	                        function editStudentDetails<%=i%>(){
+	                            document.querySelector('.bg-model8').style.display = 'flex';
+	                            document.querySelector('.bg-model8').style.position = 'fixed';
+	                            
+	                            document.forms['editStudentForm']['sFirstName'].value = "<%=studentData.getString("first_name")%>";
+	                            document.forms['editStudentForm']['sLastName'].value = "<%=studentData.getString("last_name")%>";
+	                            
+	                            if(<%=studentData.getString("gender").toLowerCase() == "male"%>){
+	                            	document.forms['editStudentForm']['sGender'].options[1].selected=true;
+	                            }
+	                            
+	                            if(<%=studentData.getString("gender").toLowerCase() == "female"%>){
+	                            	document.forms['editStudentForm']['sGender'].options[1].selected=true;
+	                            }
+	                            
+	                            if(<%=studentData.getString("gender").toLowerCase() == "other"%>){
+	                            	document.forms['editStudentForm']['sGender'].options[1].selected=true;
+	                            }
+	                      
+	                            document.forms['editStudentForm']['sDOB'].value = "<%=studentData.getString("dob")%>";
+	                            document.forms['editStudentForm']['sEmail'].value = "<%=studentData.getString("email")%>";
+	                            document.forms['editStudentForm']['sPhone'].value = "<%=studentData.getString("phone")%>";
+	                            document.forms['editStudentForm']['sAddress'].value = "<%=studentData.getString("address")%>";
+	                            document.forms['editStudentForm']['sPincode'].value = "<%=studentData.getString("pincode")%>";
+	                            document.forms['editStudentForm']['sCity'].value = "<%=studentData.getString("birth_place")%>";
+	                            document.forms['editStudentForm']['sDistrict'].value = "<%=studentData.getString("birth_district")%>";
+	                            document.forms['editStudentForm']['sState'].value = "<%=studentData.getString("birth_state")%>";
+	                            document.forms['editStudentForm']['sYOF'].value = "<%=studentData.getString("joining_year")%>";
+	                           
+	                       
+	                           
+	                           
+	                            document.forms['editStudentForm']['sRegNo'].value = "<%=studentData.getString("reg_no")%>";
+	                            document.forms['editStudentForm']['sPassword'].value = "<%=studentData.getString("password")%>";
+	                        }
+                        </script>
+                        
+                        <%
+               				i++;
+               					}
+                        	}catch(SQLException e){
+                        		e.printStackTrace();
+                        	}
+                        
+                        %>
+                        
                     </table>
                     </div>
                 </div>
@@ -163,41 +256,26 @@
                         <div class="header7">
                             <h1>Student Details</h1></div>
                              <img class="student" src="images/studenticon.svg">
-                            <form action="" >
-                                <input type="text" placeholder="First Name" class="merge1">
-                                <input type="text" placeholder="Last Name" class="merge1">
-                                <select class="merge2">
-                                <option value="" disabled selected hidden>Gender</option>
-                                <option>Adimale</option>
-                                </select>
-                                <input type="text" placeholder="Date of Birth" class="merge2">
-                                <input type="text" placeholder="Email" class="merge1">
-                                <input type="text" placeholder="Mobile Number" class="merge1">
-                                <input type="text" placeholder="Address" class="merge1">
-                                <input type="text" placeholder="Pincode" class="merge1">
-                                <input type="text" placeholder="city" class="merge3">
-                                <input type="text" placeholder="District" class="merge3">
-                                <input type="text" placeholder="State" class="merge3">
-                                <input type="text" placeholder="Year Of Joining" class="merge2">
-                                <select class="merge3">
-                                <option value="" disabled selected hidden>Programme</option>
-                                <option>Adimale</option>
-                                </select>
-                                <select class="merge3">
-                                <option value="" disabled selected hidden>class</option>
-                                <option>Adimale</option>
-                                </select>
-                                <select class="merge3">
-                                <option value="" disabled selected hidden>Class Year</option>
-                                <option>Adimale</option>
-                                </select>
-                                <select class="merge2">
-                                <option value="" disabled selected hidden>Current Sem</option>
-                                <option>Adimale</option>
-                                </select>
-                                <input type="text" placeholder="Register Number" class="merge1">
-                                <input type="text" placeholder="Password" class="merge1">
-                        </form>
+                            <div id="viewStudentDiv">
+                                <input type="text" id="sFirstName" placeholder="First Name" class="merge1" readonly="readonly">
+                                <input type="text" id="sLastName" placeholder="Last Name" class="merge1" readonly="readonly">
+                                <input class="merge2" id="sGender" readonly="readonly">
+                                <input type="text" id="sDOB" placeholder="Date of Birth" class="merge2" readonly="readonly">
+                                <input type="text" id="sEmail" placeholder="Email" class="merge1" readonly="readonly">
+                                <input type="text" id="sPhone" placeholder="Mobile Number" class="merge1" readonly="readonly">
+                                <input type="text" id="sAddress" placeholder="Address" class="merge1" readonly="readonly">
+                                <input type="text" id="sPincode" placeholder="Pincode" class="merge1" readonly="readonly">
+                                <input type="text" id="sCity" placeholder="city" class="merge3" readonly="readonly">
+                                <input type="text" id="sDistrict" placeholder="District" class="merge3" readonly="readonly">
+                                <input type="text" id="sState" placeholder="State" class="merge3" readonly="readonly">
+                                <input type="text" id="sYOF" placeholder="Year Of Joining" class="merge2" readonly="readonly">
+                                <input class="merge3" id="sProgramme" readonly="readonly">
+                                <input class="merge3" id="sClass" readonly="readonly">
+                                <input class="merge3" id="sClassYear" readonly="readonly">
+                                <input class="merge2" id="sCurrentSem" readonly="readonly">
+                                <input type="text" id="sRegNo" placeholder="Register Number" class="merge1" readonly="readonly">
+                                <input type="text" id="sPassword" placeholder="Password" class="merge1" readonly="readonly">
+                        	</div>
                     </div>
                 </div>
                 
@@ -207,42 +285,44 @@
                         <div class="header8">
                             <h1>Edit Student Details</h1></div>
                              <img class="student" src="images/studenticon.svg">
-                            <form action="" >
-                                <input type="text" placeholder="First Name" class="merge1">
-                                <input type="text" placeholder="Last Name" class="merge1">
-                                <select class="merge2">
-                                <option value="" disabled selected hidden>Gender</option>
+                            <form id = "editStudentForm" action="" >
+                                <input id="sFirstName" type="text" placeholder="First Name" class="merge1">
+                                <input id="sLastName"  type="text" placeholder="Last Name" class="merge1">
+                                <select id="sGender" class="merge2">
+                                <option value="" disabled hidden>Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                                </select>
+                                <input id="sDOB" type="text" placeholder="Date of Birth" class="merge2">
+                                <input id="sEmail" type="text" placeholder="Email" class="merge1">
+                                <input id="sPhone" type="text" placeholder="Mobile Number" class="merge1">
+                                <input id="sAddress" type="text" placeholder="Address" class="merge1">
+                                <input id="sPincode" type="text" placeholder="Pincode" class="merge1">
+                                <input id="sCity" type="text" placeholder="city" class="merge3">
+                                <input id="sDistrict" type="text" placeholder="District" class="merge3">
+                                <input id="sState" type="text" placeholder="State" class="merge3">
+                                <input id="sYOF" type="text" placeholder="Year Of Joining" class="merge2">
+                                <select id="sProgramme" class="merge3">
+                                <option value="" disabled  hidden>Programme</option>
                                 <option>Adimale</option>
                                 </select>
-                                <input type="text" placeholder="Date of Birth" class="merge2">
-                                <input type="text" placeholder="Email" class="merge1">
-                                <input type="text" placeholder="Mobile Number" class="merge1">
-                                <input type="text" placeholder="Address" class="merge1">
-                                <input type="text" placeholder="Pincode" class="merge1">
-                                <input type="text" placeholder="city" class="merge3">
-                                <input type="text" placeholder="District" class="merge3">
-                                <input type="text" placeholder="State" class="merge3">
-                                <input type="text" placeholder="Year Of Joining" class="merge2">
-                                <select class="merge3">
-                                <option value="" disabled selected hidden>Programme</option>
+                                <select id="sClass" class="merge3">
+                                <option value="" disabled hidden>class</option>
                                 <option>Adimale</option>
                                 </select>
-                                <select class="merge3">
-                                <option value="" disabled selected hidden>class</option>
+                                <select id="sClassYear" class="merge3">
+                                <option value="" disabled hidden>Class Year</option>
                                 <option>Adimale</option>
                                 </select>
-                                <select class="merge3">
-                                <option value="" disabled selected hidden>Class Year</option>
-                                <option>Adimale</option>
-                                </select>
-                                <select class="merge2">
-                                <option value="" disabled selected hidden>Current Sem</option>
+                                <select id="sCurrentSem" class="merge2">
+                                <option value="" disabled hidden>Current Sem</option>
                                 <option>Adimale</option>
                                 </select>
                                 
                                 
-                                <input type="text" placeholder="Register Number" class="merge1">
-                                <input type="text" placeholder="Password" class="merge1">
+                                <input id="sRegNo" type="text" placeholder="Register Number" class="merge1">
+                                <input id="sPassword" type="text" placeholder="Password" class="merge1">
                                 <button id="button8" >UPDATE</button>
                         </form>
                     </div>
