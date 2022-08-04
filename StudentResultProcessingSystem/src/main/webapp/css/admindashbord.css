@@ -462,7 +462,7 @@ input{
 
 .model-content1{
     width: 500px;
-    height: 450px;
+    height: 500px;
     background-color: white;
     border-radius: 4px;
     padding: 20px;
@@ -477,14 +477,7 @@ input{
     border-bottom: 1px solid #dddddd;
 }
 
-input{
-    width: 50%;
-    display: block;
-    margin: 15px auto;
-    height: 2.3rem;
-    color: black;
-    padding-left: 0.2rem;
-}
+
 
 .close1{
     position: absolute;
@@ -761,7 +754,7 @@ option{
     height: 300px;
     background-color: white;
     border-radius: 4px;
-    padding: 20px;
+    padding: 5px;
     position: relative;
 }
 
@@ -780,7 +773,7 @@ option{
     cursor: pointer;
 }
 
-#button3{
+#button5{
     background-color: forestgreen;
     color: white;
     padding: 10px;
@@ -788,9 +781,11 @@ option{
     border: none;
     float: right;
     cursor: pointer;
+    margin-top: -1rem;
+    margin-right: 1rem;
 }
 
-#button3:hover{
+#button5:hover{
     opacity: 0.9;
 }
 
@@ -806,7 +801,133 @@ option{
 }
 
 
+.bg-model6{
+    width: 80%;
+    height:100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    display: none;
+    overflow: hidden;
+    overflow-y: hidden;
 
 
+    
+}
 
+
+.model-content6{
+    width: 400px;
+    height:620px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    
+}
+
+.model-content6 .header6{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.close6{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button6{
+    background-color: forestgreen;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+
+#button6:hover{
+    opacity: 0.9;
+}
+
+select{
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+    height: 2.3rem;
+}
+
+option{
+    background: whitesmoke;
+}
+
+.student{
+    height: 5rem;
+}
+
+.merge1{
+    display: inline-block;
+    width: 40%;
+    margin-left: 2rem;
+    margin: 4px auto;
+    
+    
+}
+
+.merge2{
+    margin-top: -0.5px;
+    margin: 7px auto;
+    margin-left: 1rem;
+    
+}
+
+
+.merge3{
+    display: inline-block;
+    width: 30%;
+    margin-left: 2rem;
+    margin: 7px auto;
+    margin-top: -0.5px;
+    margin: 4px auto;
+}
+.merge1:nth-child(1){
+    margin-left: 0 auto;
+}
+
+.merge1:nth-child(2){
+    margin-left: 2.7rem;
+}
+
+.merge1:nth-child(5){
+    margin-left: 0 auto;
+}
+
+.merge1:nth-child(6){
+    margin-left: 2.7rem;
+}
+
+.merge1:nth-child(7){
+    margin-left:0 auto;
+}
+
+.merge1:nth-child(8){
+    margin-left: 2.7rem;
+}
+
+.merge1:nth-child(17){
+    margin-left: 2.7rem;
+}
+
+.merge1:nth-child(16){
+    margin-left: 0 auto;
+}
 
