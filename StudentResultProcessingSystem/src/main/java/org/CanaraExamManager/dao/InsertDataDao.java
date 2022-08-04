@@ -168,16 +168,26 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 			resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_id = "+programmeDataBean.getProgrammeId()+"");
 			if(resultSet.next() == false) {//check whether programme with that programme id already exists
 				
-				query = "INSERT INTO programme(programme_id,programme_name,programme_duration,programme_sem)"
-						+"VALUES(?,?,?,?)";
-				preparedStatement = con.prepareStatement(query);
+				resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_name = "+programmeDataBean.getProgrammeName().toUpperCase()+"");
 				
-				preparedStatement.setString(1, programmeDataBean.getProgrammeId());//1
-				preparedStatement.setString(2, programmeDataBean.getProgrammeName());
-				preparedStatement.setString(3, programmeDataBean.getProgrammeDuration());
-				preparedStatement.setString(4, programmeDataBean.getSemester());
-				
-				preparedStatement.execute();
+				if(resultSet.next() == false) {
+					
+					query = "INSERT INTO programme(programme_id,programme_name,programme_duration,programme_sem)"
+							+"VALUES(?,?,?,?)";
+					preparedStatement = con.prepareStatement(query);
+					
+					preparedStatement.setString(1, programmeDataBean.getProgrammeId());//1
+					preparedStatement.setString(2, programmeDataBean.getProgrammeName().toUpperCase());
+					preparedStatement.setString(3, programmeDataBean.getProgrammeDuration());
+					preparedStatement.setString(4, programmeDataBean.getSemester());
+					
+					preparedStatement.execute();
+					
+				}else {
+					System.out.println(programmeDataBean.getProgrammeName());
+					return "Programme with Programme Name "+programmeDataBean.getProgrammeName().toUpperCase()+" Already Exists";
+					
+				}
 				
 			}else {
 				
