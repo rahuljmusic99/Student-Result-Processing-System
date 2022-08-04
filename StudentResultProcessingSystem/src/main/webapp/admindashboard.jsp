@@ -73,7 +73,6 @@
             
             
             <div class="tabs__content" data-tab="2">
-                <div class="tabs__content" data-tab="2">
                 <div class="protab"> 
                     
                     
@@ -153,7 +152,24 @@
                 
                 
             </div>
-            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             <div class="tabs__content" data-tab="3">
