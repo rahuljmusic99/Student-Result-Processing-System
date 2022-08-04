@@ -812,6 +812,7 @@ option{
     display: none;
     overflow: hidden;
     overflow-y: hidden;
+    display: none;
 
 
     
@@ -819,8 +820,8 @@ option{
 
 
 .model-content6{
-    width: 400px;
-    height:620px;
+    width: 700px;
+    height:650px;
     background-color: white;
     border-radius: 4px;
     padding: 20px;
@@ -852,13 +853,122 @@ option{
     border: none;
     float: right;
     cursor: pointer;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 #button6:hover{
     opacity: 0.9;
 }
 
+.bg-model7{
+    width: 80%;
+    height:100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    display: none;
+    
+}
+
+
+.model-content7{
+    width: 700px;
+    height:650px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    
+}
+
+.model-content7 .header7{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.close7{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button7{
+    background-color: forestgreen;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+#button7:hover{
+    opacity: 0.9;
+}
+
+.bg-model8{
+    width: 80%;
+    height:100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    display: none;
+    
+    
+}
+
+
+.model-content8{
+    width: 700px;
+    height:650px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    
+}
+
+.model-content8 .header8{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.close8{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button8{
+    background-color: darkgoldenrod;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+#button8:hover{
+    opacity: 0.9;
+}
 select{
     width: 50%;
     display: block;
@@ -904,15 +1014,22 @@ option{
 }
 
 .merge1:nth-child(2){
-    margin-left: 2.7rem;
+    margin-left: 4.5rem;
 }
 
+.merge2:nth-child(3){
+    margin-left: 2rem;
+}
+
+.merge2:nth-child(4){
+    margin-left: 2rem;
+}
 .merge1:nth-child(5){
     margin-left: 0 auto;
 }
 
 .merge1:nth-child(6){
-    margin-left: 2.7rem;
+    margin-left: 4.5rem;
 }
 
 .merge1:nth-child(7){
@@ -920,14 +1037,22 @@ option{
 }
 
 .merge1:nth-child(8){
-    margin-left: 2.7rem;
+    margin-left: 4.5rem;
+}
+.merge2:nth-child(12){
+    margin-left: 2rem;
 }
 
 .merge1:nth-child(17){
-    margin-left: 2.7rem;
+    margin-left: 0 auto;
 }
 
-.merge1:nth-child(16){
-    margin-left: 0 auto;
+.merge1:nth-child(18){
+    margin-left: 4.5rem;
+}
+
+
+.merge2:nth-child(16){
+    margin-left: 2rem;
 }
 
