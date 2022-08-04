@@ -98,8 +98,8 @@
                             <td class="td2"></td>   <!--Semseter-->
                             <td></td>   <!--Course-->
                             <td></td>
-                            <td class="td2"><button class="btn__edit" id="edit1" onclick=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
-                            <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td2"><button class="btn__edit" id="btn-edit2" onclick="myFunction10()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
+                            <td class="td3"><div class="circle1" title="Edit Programme" id="edit1" onclick="myFunction11()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
                     </table>
                     </div>
@@ -110,7 +110,7 @@
                     <div class="model-content6">
                         <div class="close6" id="close" >+</div>
                         <div class="header6">
-                            <h1>Add Course Data</h1></div>
+                            <h1>Add Student Data</h1></div>
                              <img class="student" src="images/studenticon.svg">
                             <form action="" >
                                 <input type="text" placeholder="First Name" class="merge1">
@@ -139,9 +139,14 @@
                                 <option></option>
                                 </select>
                                 <select class="merge3">
+                                <option value="" disabled selected hidden>Class Year</option>
+                                <option>Adimale</option>
+                                </select>
+                                <select class="merge2">
                                 <option value="" disabled selected hidden>Current Sem</option>
                                 <option></option>
                                 </select>
+                                
                                 
                                 <input type="text" placeholder="Register Number" class="merge1">
                                 <input type="text" placeholder="Password" class="merge1">
@@ -152,8 +157,97 @@
                     </div>
                 </div>
                 
+                <div class="bg-model7">
+                    <div class="model-content7">
+                        <div class="close7" id="close" >+</div>
+                        <div class="header7">
+                            <h1>Student Details</h1></div>
+                             <img class="student" src="images/studenticon.svg">
+                            <form action="" >
+                                <input type="text" placeholder="First Name" class="merge1">
+                                <input type="text" placeholder="Last Name" class="merge1">
+                                <select class="merge2">
+                                <option value="" disabled selected hidden>Gender</option>
+                                <option>Adimale</option>
+                                </select>
+                                <input type="text" placeholder="Date of Birth" class="merge2">
+                                <input type="text" placeholder="Email" class="merge1">
+                                <input type="text" placeholder="Mobile Number" class="merge1">
+                                <input type="text" placeholder="Address" class="merge1">
+                                <input type="text" placeholder="Pincode" class="merge1">
+                                <input type="text" placeholder="city" class="merge3">
+                                <input type="text" placeholder="District" class="merge3">
+                                <input type="text" placeholder="State" class="merge3">
+                                <input type="text" placeholder="Year Of Joining" class="merge2">
+                                <select class="merge3">
+                                <option value="" disabled selected hidden>Programme</option>
+                                <option>Adimale</option>
+                                </select>
+                                <select class="merge3">
+                                <option value="" disabled selected hidden>class</option>
+                                <option>Adimale</option>
+                                </select>
+                                <select class="merge3">
+                                <option value="" disabled selected hidden>Class Year</option>
+                                <option>Adimale</option>
+                                </select>
+                                <select class="merge2">
+                                <option value="" disabled selected hidden>Current Sem</option>
+                                <option>Adimale</option>
+                                </select>
+                                <input type="text" placeholder="Register Number" class="merge1">
+                                <input type="text" placeholder="Password" class="merge1">
+                        </form>
+                    </div>
+                </div>
                 
-            </div>
+                <div class="bg-model8">
+                    <div class="model-content8">
+                        <div class="close8" id="close" >+</div>
+                        <div class="header8">
+                            <h1>Edit Student Details</h1></div>
+                             <img class="student" src="images/studenticon.svg">
+                            <form action="" >
+                                <input type="text" placeholder="First Name" class="merge1">
+                                <input type="text" placeholder="Last Name" class="merge1">
+                                <select class="merge2">
+                                <option value="" disabled selected hidden>Gender</option>
+                                <option>Adimale</option>
+                                </select>
+                                <input type="text" placeholder="Date of Birth" class="merge2">
+                                <input type="text" placeholder="Email" class="merge1">
+                                <input type="text" placeholder="Mobile Number" class="merge1">
+                                <input type="text" placeholder="Address" class="merge1">
+                                <input type="text" placeholder="Pincode" class="merge1">
+                                <input type="text" placeholder="city" class="merge3">
+                                <input type="text" placeholder="District" class="merge3">
+                                <input type="text" placeholder="State" class="merge3">
+                                <input type="text" placeholder="Year Of Joining" class="merge2">
+                                <select class="merge3">
+                                <option value="" disabled selected hidden>Programme</option>
+                                <option>Adimale</option>
+                                </select>
+                                <select class="merge3">
+                                <option value="" disabled selected hidden>class</option>
+                                <option>Adimale</option>
+                                </select>
+                                <select class="merge3">
+                                <option value="" disabled selected hidden>Class Year</option>
+                                <option>Adimale</option>
+                                </select>
+                                <select class="merge2">
+                                <option value="" disabled selected hidden>Current Sem</option>
+                                <option>Adimale</option>
+                                </select>
+                                
+                                
+                                <input type="text" placeholder="Register Number" class="merge1">
+                                <input type="text" placeholder="Password" class="merge1">
+                                <button id="button8" >UPDATE</button>
+                        </form>
+                    </div>
+                </div>
+                </div>
             
             
             
@@ -656,6 +750,22 @@
                       document.querySelector('.bg-model6').style.display = 'none';
                   })
                </script>
+                
+         
+        
+        <script>
+            document.querySelector('.close7').addEventListener('click', function(){
+                document.querySelector('.bg-model7').style.display = 'none';
+            })
+        </script>
+        
+        
+        
+        <script>
+            document.querySelector('.close8').addEventListener('click', function(){
+                document.querySelector('.bg-model8').style.display = 'none';
+            })
+        </script>
                   
     </body>
 </html>
