@@ -88,16 +88,16 @@ public class InsertDataServlet extends HttpServlet {
 				
 				ProgrammeCourseClassBean courseDataBean = new ProgrammeCourseClassBean();
 				
-				courseDataBean.setProgrammeName(request.getParameter("programmeNameInCourse"));//1
-				courseDataBean.setCourseCode(request.getParameter(""));//2
-				courseDataBean.setCourseName(request.getParameter(""));//3
-				courseDataBean.setCourseType(request.getParameter(""));//4
-				courseDataBean.setCourseGroup(request.getParameter(""));//5
-				courseDataBean.setSemester(request.getParameter(""));//6
-				courseDataBean.setMaxMarks(request.getParameter(""));//7
-				courseDataBean.setMinMarks(request.getParameter(""));//8
-				courseDataBean.setMaxIA(request.getParameter(""));//9
-				
+				courseDataBean.setProgrammeId(request.getParameter("programmeIdInCourse"));
+				courseDataBean.setCourseCode(request.getParameter("courseCode"));//2
+				courseDataBean.setCourseName(request.getParameter("courseName"));//3
+				courseDataBean.setCourseType(request.getParameter("courseType"));//4
+				courseDataBean.setCourseGroup(request.getParameter("courseGroup"));//5
+				courseDataBean.setSemester(request.getParameter("courseSemester"));//6
+				courseDataBean.setMaxMarks(request.getParameter("maxMarks"));//7
+				courseDataBean.setMinMarks(request.getParameter("minMarks"));//8
+				courseDataBean.setMaxIA(request.getParameter("maxIA"));//9
+		
 				String dataValidateString = insertDataDao.insertCourseData(courseDataBean);
 				 
 				request.setAttribute("insertionMessage",dataValidateString);
@@ -108,13 +108,12 @@ public class InsertDataServlet extends HttpServlet {
 				
 				ProgrammeCourseClassBean classDataBean = new ProgrammeCourseClassBean();
 				
-				classDataBean.setClassId(request.getParameter(""));
-				classDataBean.setClassName(request.getParameter(""));
-				classDataBean.setProgrammeName(request.getParameter(""));
-				classDataBean.setClassYear(request.getParameter(""));
+				classDataBean.setClassId(request.getParameter("classId"));
+				classDataBean.setClassName(request.getParameter("className"));
+				classDataBean.setProgrammeName(request.getParameter("programmeNameInClass"));
+				classDataBean.setClassYear(request.getParameter("classYear"));
 				
-				
-				String dataValidateString = insertDataDao.insertProgrammeData(classDataBean);
+				String dataValidateString = insertDataDao.insertClassData(classDataBean);
 				 
 				request.setAttribute("insertionMessage",dataValidateString);
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);

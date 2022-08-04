@@ -168,7 +168,8 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 			resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_id = "+programmeDataBean.getProgrammeId()+"");
 			if(resultSet.next() == false) {//check whether programme with that programme id already exists
 				
-				resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_name = "+programmeDataBean.getProgrammeName().toUpperCase()+"");
+				resultSet = null;
+				resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_name = '"+programmeDataBean.getProgrammeName().toUpperCase()+"'");
 				
 				if(resultSet.next() == false) {
 					
@@ -215,54 +216,36 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 		Statement statement = null;
 		ResultSet resultSet = null;
 		
-		String programmeId = "";
-		
 		try {
 			
 			con = DBConnection.createConnection();
-			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_id = "+courseDataBean.getProgrammeId()+"");
-			if(resultSet.next() == true) {
-				resultSet.first();
-				while (resultSet.next()) {
-					
-					programmeId = resultSet.getString("programme_id");
-				}
+			statement = con.createStatement();	
 				
-				resultSet = null;
-				resultSet = statement.executeQuery("SELECT * FROM course WHERE course_code =  "+courseDataBean.getCourseCode()+"");
-				
-				
+				resultSet = statement.executeQuery("SELECT * FROM course WHERE course_code =  '"+courseDataBean.getCourseCode()+"'");
+
 					if(resultSet.next() == false) { //check whether course with that courseCode already exists
-						
-						query = "INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,"
-								+ "min_marks,max_IA,programme_id)"
-								+ "VALUES(?,?,?,?,?,?,?,?,?)";
-						preparedStatement = con.prepareStatement(query);
-						
-						preparedStatement.setString(1, courseDataBean.getCourseCode().toUpperCase());
-						preparedStatement.setString(2, courseDataBean.getCourseName().toUpperCase());
-						preparedStatement.setString(3, courseDataBean.getCourseType());
-						preparedStatement.setString(4, courseDataBean.getCourseGroup());
-						preparedStatement.setString(5, courseDataBean.getSemester());
-						preparedStatement.setString(6, courseDataBean.getMaxMarks());
-						preparedStatement.setString(7, courseDataBean.getMinMarks());
-						preparedStatement.setString(8, courseDataBean.getMaxIA());
-						preparedStatement.setString(9, programmeId);
-						
-						preparedStatement.execute();
+							
+							query = "INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,"
+									+ "min_marks,max_IA,programme_id)"
+									+ "VALUES(?,?,?,?,?,?,?,?,?)";
+							preparedStatement = con.prepareStatement(query);
+							
+							preparedStatement.setString(1, courseDataBean.getCourseCode().toUpperCase());
+							preparedStatement.setString(2, courseDataBean.getCourseName().toUpperCase());
+							preparedStatement.setString(3, courseDataBean.getCourseType());
+							preparedStatement.setString(4, courseDataBean.getCourseGroup());
+							preparedStatement.setString(5, courseDataBean.getSemester());
+							preparedStatement.setString(6, courseDataBean.getMaxMarks());
+							preparedStatement.setString(7, courseDataBean.getMinMarks());
+							preparedStatement.setString(8, courseDataBean.getMaxIA());
+							preparedStatement.setString(9, courseDataBean.getProgrammeId());
+							
+							preparedStatement.execute();
 						
 					}else {
 						
 						return "Course with the Course Code "+courseDataBean.getCourseCode()+" Already Exists";
 					}
-				
-				
-			}else {
-				
-				return "No Such Programme Found";
-				
-			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -292,53 +275,55 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 			
 			con = DBConnection.createConnection();
 			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_id = "+classDataBean.getProgrammeId()+"");
-			if(resultSet!=null) {
+			resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_name = '"+classDataBean.getProgrammeName().toUpperCase()+"'");
 				
+				System.out.println(classDataBean.getProgrammeName());
 				while (resultSet.next()) {
 					
 					programmeId = resultSet.getString("programme_id");
 				}
-				
-				resultSet = null;
-				resultSet = statement.executeQuery("SELECT * FROM class WHERE class_id =  "+classDataBean.getClassId()+"");
-				
-				
-				if(resultSet==null) { //check whether class with that class ID already exists
-						
-						resultSet = null;
-						resultSet = statement.executeQuery("SELECT * FROM class WHERE class_name = "+classDataBean.getClassName()+" "
-														+ "AND class_year = "+classDataBean.getClassYear()+"");
-						
-						if(resultSet==null) {
+				if(programmeId != "") {
+					
+					resultSet = null;
+					resultSet = statement.executeQuery("SELECT * FROM class WHERE class_id =  "+classDataBean.getClassId()+"");
+					
+					
+					if(resultSet.next()==false) { //check whether class with that class ID already exists
 							
-							query = "INSERT INTO class(class_id,class_name,programme_id,class_year)"
-									+ "VALUES(?,?,?,?)";
-							preparedStatement = con.prepareStatement(query);
+							resultSet = null;
+							resultSet = statement.executeQuery("SELECT * FROM class WHERE class_name = '"+classDataBean.getClassName()+"' "
+															+ "AND class_year = "+classDataBean.getClassYear()+"");
 							
-							preparedStatement.setString(1, classDataBean.getClassId());
-							preparedStatement.setString(2, classDataBean.getClassName());
-							preparedStatement.setString(3, programmeId);
-							preparedStatement.setString(4, classDataBean.getClassYear());
-						
-							preparedStatement.execute();
+							if(resultSet.next()==false) {
+								
+								query = "INSERT INTO class(class_id,class_name,programme_id,class_year)"
+										+ "VALUES(?,?,?,?)";
+								preparedStatement = con.prepareStatement(query);
+								
+								preparedStatement.setString(1, classDataBean.getClassId());
+								preparedStatement.setString(2, classDataBean.getClassName());
+								preparedStatement.setString(3, programmeId);
+								preparedStatement.setString(4, classDataBean.getClassYear());
+							
+								preparedStatement.execute();
+							}else {
+								
+								return "Class "+classDataBean.getClassName()+" "+classDataBean.getClassYear()+" Year Already Exists";
+								
+							}
+							
 						}else {
 							
-							return "Class "+classDataBean.getClassName()+" "+classDataBean.getClassYear()+" Already Exists";
-							
+							return "Class with the Class.ID "+classDataBean.getClassId()+" Already Exists";
 						}
-						
-					}else {
-						
-						return "Class with the Class.ID "+classDataBean.getClassId()+" Already Exists";
-					}
+					
+					
+				}else {
+					
+					return "No Such Programme Exists";
+					
+				}
 				
-				
-			}else {
-				
-				return "No Such Programme Found";
-				
-			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -104,7 +104,7 @@
                     </table>
                     </div>
                 </div>
-                
+            
                 
                 <div class="bg-model6">
                     <div class="model-content6">
@@ -117,7 +117,9 @@
                                 <input type="text" placeholder="Last Name" class="merge1">
                                 <select class="merge2">
                                 <option value="" disabled selected hidden>Gender</option>
-                                <option>Adimale</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
                                 </select>
                                 <input type="text" placeholder="Date of Birth" class="merge2">
                                 <input type="text" placeholder="Email" class="merge1">
@@ -130,15 +132,15 @@
                                 <input type="text" placeholder="Year Of Joining" class="merge2">
                                 <select class="merge3">
                                 <option value="" disabled selected hidden>Programme</option>
-                                <option>Adimale</option>
+                                <option></option>
                                 </select>
                                 <select class="merge3">
                                 <option value="" disabled selected hidden>class</option>
-                                <option>Adimale</option>
+                                <option></option>
                                 </select>
                                 <select class="merge3">
                                 <option value="" disabled selected hidden>Current Sem</option>
-                                <option>Adimale</option>
+                                <option></option>
                                 </select>
                                 
                                 <input type="text" placeholder="Register Number" class="merge1">
@@ -159,18 +161,7 @@
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+           
             
             <div class="tabs__content" data-tab="3">
                 <h1>Users</h1>
@@ -252,6 +243,7 @@
                               document.querySelector('.bg-model1').style.position = 'fixed';document.querySelector('.bg-model').style.position = 'fixed';
 	                          document.getElementById("programmeNameInCourse").value = "<%=programmeResultSet.getString("programme_name")%>";
 	                          document.getElementById("courseSemester").value = "<%=i%>";
+	                          document.getElementById("programmeIdInCourse").value = "<%=programmeResultSet.getString("programme_id")%>"
 	                        }
                         </script>
                         <%
@@ -293,45 +285,43 @@
                         <div class="header1">
                             <h1>Add Course Data</h1></div>
                             <form id="courseForm" action="InsertDataServlet" method="post">
-                                <input type="text" id="programmeNameInCourse" readonly="readonly" value=""/>
-                                <input type="text" id="courseCode" placeholder="Course Code">
-                                <input type="text" id="courseName" placeholder="Course Name">
-                                <input type="text" id="courseSemester" readonly="readonly" value=""/>
-                                <select>
-                                <option id="" value="" disabled selected hidden>Type</option>
-                                <option>Theory</option>
-                                <option>Practical</option>
+                            	<input type="hidden" value="course" name="Data" />
+                            	<input type="hidden" id = "programmeIdInCourse" name="programmeIdInCourse" value=""/>
+                                <input type="text" id="programmeNameInCourse" name="programmeNameInCourse" readonly="readonly" value=""/>
+                                <input type="text" name="courseCode" placeholder="Course Code">
+                                <input type="text" name="courseName" placeholder="Course Name">
+                                <input type="text" id="courseSemester" name="courseSemester" readonly="readonly" value=""/>
+                                <input type="hidden" id ="courseType" name="courseType"  value=""/>
+                                <input type="hidden" id="courseGroup" name="courseGroup" value=""/>
+                                
+                                <select id="courseTypeD" name="courseTypeD">
+                                <option value="" disabled selected hidden>Type</option>
+                                <option >Theory</option>
+                                <option >Practical</option>
                                 </select>
-                                <select >
-                                <option id="" value="" disabled selected hidden>Group</option>
-                                <option>Group 1 Core Course</option>
-                                <option>Group 2 Elective Course</option>
-                                <option>Group 3 a)Compulsary Foundation</option>
-                                <option>Group 3 b)Elective Foundation</option>
-                                <option>Group 4</option>
+                                
+                                <select id="courseGroupD" name="courseGroupD">
+                                <option value="" disabled selected hidden>Group</option>
+                                <option >Group 1 Core Course</option>
+                                <option >Group 2 Elective Course</option>
+                                <option >Group 3 a)Compulsary Foundation</option>
+                                <option >Group 3 b)Elective Foundation</option>
+                                <option >Group 4</option>
                                 
                                 </select>
-                                <input type="text" placeholder="Max marks">
-                                <input type="text" placeholder="Min Marks">
-                                <input type="text" placeholder="Max Internal Assesment Marks">
-                                <button id="button1" onclick="">ADD</button>
+                                <input name="maxMarks" type="text" placeholder="Max marks">
+                                <input name="minMarks" type="text" placeholder="Min Marks">
+                                <input name="maxIA" type="text" placeholder="Max Internal Assesment Marks">
+                                <button id="button1" onclick="insertCourse();">ADD</button>
                           </form>
                     </div>
                 </div>          
             </div>
-            
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                 
+                 
+                 
+                 
+                 
                     
              <div class="tabs__content" data-tab="5">
                 <div class="protab"> 
@@ -350,12 +340,35 @@
                             <th>Class Year</th>
                             <th>Action</th>
                         </tr>
+                        
+                        <%
+                        	try{
+                        		Connection con = DBConnection.createConnection();;
+    	    					Statement statement = con.createStatement();
+    	    					ResultSet classesData = statement.executeQuery(""
+    	    						+"SELECT * FROM (class " 
+    	    						+"INNER JOIN programme ON class.programme_id = programme.programme_id) "
+    	    						+"ORDER BY programme.programme_name ASC");
+    	    					
+    	    					while(classesData.next()){
+    	    			%>		
+    	    	
                         <tr>
-                            <td class="td1"></td>   <!--Programme name-->
-                            <td class="td2"></td>   <!--Semseter-->
-                            <td></td>
+                            <td class="td1"><%=classesData.getString("programme_name")%></td>   <!--Programme name-->
+                            <td class="td2"><%=classesData.getString("class_name")%></td>   <!--Semseter-->
+                            <td><%=classesData.getString("class_year")%></td>
                             <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
-                        </tr>
+                        </tr>			
+
+                        <% 	
+    	    					}
+                        	}catch(SQLException e){
+                        		e.printStackTrace();
+                        		
+                        	}
+	                           
+	                    %>
+                     
                     </table>
                     </div>
                 </div>
@@ -366,32 +379,43 @@
                         <div class="close5" id="close" >+</div>
                         <div class="header5">
                             <h1>Add Class Data</h1></div>
-                            <form action="">
-                                <select >
+                            <form id="classForm" action="InsertDataServlet" method="post">
+                            	<input type="hidden" name="Data" value="class"/>
+                                <input type="hidden" id="programmeNameInClass" name="programmeNameInClass"/>
+                                <select id="programmeNameInClassD">
                                 <option value="" disabled selected hidden>Select Programme</option>
-                                <option>Bca</option>
-                                <option>Bcom</option>
-                                <option>BBA</option>
+                                <%
+                                	try{
+                                		Connection con = DBConnection.createConnection();
+                                		Statement statement = con.createStatement();
+                                		ResultSet programmeName = statement.executeQuery("SELECT programme_name FROM programme");
+                                		while(programmeName.next()){
+                                			
+                                %>		
+                                            <option><%=programmeName.getString("programme_name")%></option>	
+                                <%	
+                                	
+                                		}
+                                	}catch(SQLException e){
+                                		e.printStackTrace();
+                                	}
+                                %>
                                 </select>
-                                <input type="text" placeholder="Course Code">
-                                <input type="text" placeholder="Course Name">
-                                <input type="text" placeholder="Year (in digits)">
-                                <button id="button5" >ADD</button>
+                                <input name="classId" type="text" placeholder="Class ID">
+                                <input name="className" type="text" placeholder="Class Name">
+                                <input name="classYear" type="text" placeholder="Class Year (in digits)">
+                                <button id="button5" onclick="insertClass();" >ADD</button>
                         </form>
                     </div>
                 </div>
             </div>
                     
+               
+               
+               
+               
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-            
+     
             
             <div class="tabs__content" data-tab="6">
             <div class="protab"> 

@@ -205,13 +205,33 @@
 					
 
 
-//  function to call insertServlet
-
+//  function to call insertDataServlet
+			
+			document.getElementById("button")
 			function insertProgramme(){
 				document.getElementById("programmeForm").submit();
 			}
 			
+			document.getElementById("button1")
 			function insertCourse(){
+				var selectElement = document.getElementById("courseTypeD");
+        		var output = selectElement.options[selectElement.selectedIndex].text;
+        		document.forms['courseForm']['courseType'].value = output;
+        		
+        		var selectElement2 = document.getElementById("courseGroupD");
+        		var output2 = selectElement2.options[selectElement2.selectedIndex].text;
+        		document.forms['courseForm']['courseGroup'].value = output2;
+        		
+        		
 				document.getElementById("courseForm").submit();
 			}
-
+			
+			
+			document.getElementById("button5")
+			function insertClass(){
+				var selectElement = document.getElementById("programmeNameInClassD");
+        		var output = selectElement.options[selectElement.selectedIndex].text;
+        		document.forms['classForm']['programmeNameInClass'].value = output;
+      
+				document.getElementById("classForm").submit();
+			}
