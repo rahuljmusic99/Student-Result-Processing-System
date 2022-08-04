@@ -271,7 +271,7 @@
                                 <input type="text" placeholder="Course Code">
                                 <input type="text" placeholder="Course Name">
                                 <input type="text" placeholder="Year (in digits)">
-                                <button id="button3" >ADD</button>
+                                <button id="button5" >ADD</button>
                         </form>
                     </div>
                 </div>
