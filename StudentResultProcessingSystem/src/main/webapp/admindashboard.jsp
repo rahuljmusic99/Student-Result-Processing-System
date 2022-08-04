@@ -235,6 +235,7 @@
 	                          document.querySelector('.bg-model1').style.display = 'flex';
                               document.querySelector('.bg-model1').style.position = 'fixed';document.querySelector('.bg-model').style.position = 'fixed';
 	                          document.getElementById("programmeNameInCourse").value = "<%=programmeResultSet.getString("programme_name")%>";
+	                          document.getElementById("courseSemester").value = "<%=i%>";
 	                        }
                         </script>
                         <%
