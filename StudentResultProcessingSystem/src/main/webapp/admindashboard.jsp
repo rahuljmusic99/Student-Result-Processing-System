@@ -233,6 +233,7 @@
 	                        document.getElementById("btn__course<%=i + j%>");
 	                        function insertCourseData<%=i + j%>(){
 	                          document.querySelector('.bg-model1').style.display = 'flex';
+                              document.querySelector('.bg-model1').style.position = 'fixed';document.querySelector('.bg-model').style.position = 'fixed';
 	                          document.getElementById("programmeNameInCourse").value = "<%=programmeResultSet.getString("programme_name")%>";
 	                        }
                         </script>

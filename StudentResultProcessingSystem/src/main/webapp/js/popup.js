@@ -1,7 +1,7 @@
 document.getElementById("add");
 function myFunction1(){
   document.querySelector('.bg-model').style.display = 'flex';
-  document.querySelector('.bg-model1').style.position = 'fixed';
+  document.querySelector('.bg-model').style.position = 'fixed';
 }
                     
         
