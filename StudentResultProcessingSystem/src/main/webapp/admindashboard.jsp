@@ -280,7 +280,107 @@
            
             
             <div class="tabs__content" data-tab="3">
-                <h1>Users</h1>
+                <div class="protab"> 
+                    
+                    
+                    <button class="refresh" id="ref" onclick="myFunction()">Refresh page</button>
+                    <h4>Staff Details Management</h4>
+                    <div class="inner__protab">
+                        
+                    <div class="inner1">
+                        <h6 class="left">Staff list</h6>
+                        <div id="add3" class="add" title="Add programme" onclick="myFunction12()">
+                        <i class="fa fa-plus" title="Add programme"></i></div></div>
+                    <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
+                        <tr >
+                            <th>Programme Name</th>
+                            <th>Class</th>
+                            <th>Student Name</th>
+                            <th>Register Number</th>
+                            <th>View Student Details</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td class="td1"></td>   <!--Programme name-->
+                            <td class="td2"></td>   <!--Semseter-->
+                            <td></td>   <!--Course-->
+                            <td></td>
+                            <td class="td2"><button class="btn__edit" id="btn-edit3" onclick="myFunction13()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
+                            <td class="td3"><div class="circle1" title="Edit Programme" id="edit2" onclick="myFunction14()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+                
+                <div class="bg-model9">
+                    <div class="model-content9">
+                        <div class="close9" id="close" >+</div>
+                        <div class="header9">
+                            <h1>Add Staff Details</h1></div>
+                             <img class="student" src="images/studenticon.svg">
+                            <form action="" >
+                                <input type="text" placeholder="First Name" class="merge4">
+                                <input type="text" placeholder="Last Name" class="merge4">
+                                <select class="merge5">
+                                <option value="" disabled selected hidden>Gender</option>
+                                <option>Adimale</option>
+                                </select>
+                                <input type="text" placeholder="Email" class="merge4">
+                                <input type="text" placeholder="Mobile Number" class="merge4">
+                                <input type="text" placeholder="Address" class="merge5">
+                                <input type="text" placeholder="Staff ID(Digits only)" class="merge4">
+                                <input type="text" placeholder="Password" class="merge4">
+                                <button id="button9" >Add</button>
+                        </form>
+                    </div>
+                </div>
+                
+                
+                <div class="bg-model10">
+                    <div class="model-content10">
+                        <div class="close10" id="close" >+</div>
+                        <div class="header10">
+                            <h1>Staff Details</h1></div>
+                             <img class="student" src="images/studenticon.svg">
+                            <form action="" >
+                                <input type="text" placeholder="First Name" class="merge4">
+                                <input type="text" placeholder="Last Name" class="merge4">
+                                <select class="merge5">
+                                <option value="" disabled selected hidden>Gender</option>
+                                <option>Adimale</option>
+                                </select>
+                                <input type="text" placeholder="Email" class="merge4">
+                                <input type="text" placeholder="Mobile Number" class="merge4">
+                                <input type="text" placeholder="Address" class="merge5">
+                                <input type="text" placeholder="Staff ID(Digits only)" class="merge4">
+                                <input type="text" placeholder="Password" class="merge4">
+                        </form>
+                    </div>
+                </div>
+                
+                
+                <div class="bg-model11">
+                    <div class="model-content11">
+                        <div class="close11" id="close" >+</div>
+                        <div class="header11">
+                            <h1>Staff Details</h1></div>
+                             <img class="student" src="images/studenticon.svg">
+                            <form action="" >
+                                <input type="text" placeholder="First Name" class="merge4">
+                                <input type="text" placeholder="Last Name" class="merge4">
+                                <select class="merge5">
+                                <option value="" disabled selected hidden>Gender</option>
+                                <option>Adimale</option>
+                                </select>
+                                <input type="text" placeholder="Email" class="merge4">
+                                <input type="text" placeholder="Mobile Number" class="merge4">
+                                <input type="text" placeholder="Address" class="merge5">
+                                <input type="text" placeholder="Staff ID(Digits only)" class="merge4">
+                                <input type="text" placeholder="Password" class="merge4">
+                                <button id="button11" >Update</button>
+                        </form>
+                    </div>
+                </div>
             </div>
             
             
@@ -788,6 +888,26 @@
                 document.querySelector('.bg-model8').style.display = 'none';
             })
         </script>
+                
+        <script>
+             document.querySelector('.close9').addEventListener('click', function(){
+             document.querySelector('.bg-model9').style.display = 'none';
+            })
+        </script>
+                
+        <script>
+              document.querySelector('.close10').addEventListener('click', function(){
+              document.querySelector('.bg-model10').style.display = 'none';
+            })
+        </script>
+                
+        <script>
+               document.querySelector('.close11').addEventListener('click', function(){
+                document.querySelector('.bg-model11').style.display = 'none';
+            })
+        </script>
+                
+                
                   
     </body>
 </html>

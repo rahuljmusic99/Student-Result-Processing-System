@@ -49,6 +49,31 @@ function myFunction11(){
     document.querySelector('.bg-model8').style.display = 'flex';
     document.querySelector('.bg-model8').style.position = 'fixed';
 }
+
+
+document.getElementById("add2");
+function myFunction12(){
+   document.querySelector('.bg-model9').style.display = 'flex';
+    document.querySelector('.bg-model7').style.position = 'fixed';
+
+}
+    
+document.getElementById("btn-edit3");
+function myFunction13(){
+   document.querySelector('.bg-model10').style.display = 'flex';
+    document.querySelector('.bg-model7').style.position = 'fixed';
+}
+       
+        
+        
+document.getElementById("edit2");
+function myFunction14(){
+   document.querySelector('.bg-model11').style.display = 'flex';
+    document.querySelector('.bg-model7').style.position = 'fixed';
+}
+       
+        
+       
        
         
             
