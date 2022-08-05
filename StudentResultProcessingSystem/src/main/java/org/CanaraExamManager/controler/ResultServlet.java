@@ -1,5 +1,6 @@
 package org.CanaraExamManager.controler;
 
+import org.CanaraExamManager.bean.ProgrammeCourseClassBean;
 import org.CanaraExamManager.bean.ResultBean;
 import org.CanaraExamManager.dao.ResultDao;
 
@@ -23,16 +24,21 @@ public class ResultServlet extends HttpServlet {
 		
 		String semesterString = (String) request.getParameter("semester");
 		String userNameString = (String) request.getParameter("userName");
+		String studentNameString = (String) request.getParameter("studentName");
+		String programmeNameString = (String) request.getParameter("programmeName");
 		
 		ResultBean resultBean = new ResultBean();
 		resultBean.setUserName(userNameString);
-		resultBean.setSemester(semesterString);      
-		
+		resultBean.setSemester(semesterString);
+
 		ResultDao resultDao = new ResultDao();
 		ResultSet resultSet = resultDao.getResult(resultBean);
 		
 		if(resultSet!=null) {
 			request.setAttribute("semesterMarks", resultSet);
+			request.setAttribute("studentName", studentNameString);
+			request.setAttribute("registerNo", userNameString);
+			request.setAttribute("programmeName",programmeNameString);
 			request.getRequestDispatcher("finalmarks.jsp").forward(request, response);	
 			
 		}else {

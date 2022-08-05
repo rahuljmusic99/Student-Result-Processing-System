@@ -97,6 +97,31 @@
                 				<tr >
                                 <td class="make"><div class="marks1"><div class="innerdiv" onclick="callResultServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>">Semester <%=Integer.toString(i)%></div></div></td>
                             	<td class="make"><div class="marks2"><div class="innerdiv2" onclick="callInternalServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>">Semester <%=Integer.toString(i)%></div></div></td>
+                            	
+                            	<script type="text/javascript">
+	                            	document.getElementById("div<%=i%>");
+	                    		    
+	                            	function callResultServlet<%=i%>(){
+	                    						
+	                    				document.forms['semesterForm']['semester'].value = "<%=i%>";
+	                    			    document.getElementById("semesterForm").submit();
+	                    				
+	                    				
+	                    			}
+                            	</script>
+                            	
+                            	<script type="text/javascript">
+	                            	document.getElementById("div<%=i%>");
+	                    		    
+	                            	function callInternalServlet<%=i%>(){
+	                    						
+	                    				document.forms['semesterForm']['semester'].value = "<%=i%>";
+	                    			    document.getElementById("semesterForm").submit();
+	                    				
+	                    				
+	                    			}
+                            	</script>
+                            
                             <%} %>    
                             
                             

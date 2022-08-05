@@ -96,14 +96,7 @@
                         <%
                         	try{			
                         		
-               					Connection con = DBConnection.createConnection();;
-               					Statement statement = con.createStatement();
-               					ResultSet studentData = statement.executeQuery(""
-               						+"SELECT * FROM ((student "
-               						+"INNER JOIN programme ON student.programme_id = programme.programme_id)"
-               						+"INNER JOIN class ON student.class_id = class.class_id)"
-               						+"ORDER BY programme.programme_name ASC");
-               					
+               					ResultSet studentData = loadData.loadStudentData();
                					int i = 1;
                					while(studentData.next()){
                						
@@ -471,16 +464,12 @@
                         	try{
                         		if(programmeResultSet!=null){
                         			int j = 0;
+                        			
                         			while(programmeResultSet.next()){
-                        				
-                        				
+                        	
                         				for(int i=1; i<= programmeResultSet.getInt("programme_sem"); i++){
                         					
-                        					Connection con = DBConnection.createConnection();;
-                        					Statement statement = con.createStatement();
-                        					ResultSet coursesData = statement.executeQuery(""
-                        						+"SELECT * FROM course where course_sem = "+Integer.toString(i)+" "
-                        						+"AND programme_id = "+programmeResultSet.getString("programme_id")+"");
+                        					ResultSet coursesData = loadData.loadCoursedata(programmeResultSet, i);
                         					String coursesString = "";
                         %>
                         <tr>
@@ -672,13 +661,8 @@
                         
                         <%
                         	try{
-                        		Connection con = DBConnection.createConnection();;
-    	    					Statement statement = con.createStatement();
-    	    					ResultSet classesData = statement.executeQuery(""
-    	    						+"SELECT * FROM (class " 
-    	    						+"INNER JOIN programme ON class.programme_id = programme.programme_id) "
-    	    						+"ORDER BY programme.programme_name ASC");
-    	    					
+                        		
+                        		ResultSet classesData = loadData.loadClassData();
     	    					while(classesData.next()){
     	    			%>		
     	    	
@@ -715,9 +699,7 @@
                                 <option value="" disabled selected hidden>Select Programme</option>
                                 <%
                                 	try{
-                                		Connection con = DBConnection.createConnection();
-                                		Statement statement = con.createStatement();
-                                		ResultSet programmeName = statement.executeQuery("SELECT programme_name FROM programme");
+                                		ResultSet programmeName = loadData.loadProgrammeData();
                                 		while(programmeName.next()){
                                 			
                                 %>		
@@ -762,13 +744,19 @@
             </div>
             
             
+            
+            
             <form action="ResultServlet" method="post" id="semesterForm">
             	         <input name="semester" type="hidden" value=""/>
             	         <input name="userName" type="hidden" value="">
+            	         <input name="studentName" type="hidden" value=""/>
+            	         <input name="programmeName" type="hidden" value=""/>
 			</form>
 			<form action="InternalServlet" method="post" id=internalForm>
             	         <input name="semester" type="hidden" value=""/>
             	         <input name="userName" type="hidden" value="">
+            	         <input name="studentName" type="hidden" value=""/>
+            	         <input name="programmeName" type="hidden" value=""/>
 			</form>   
             <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
             <tr>
@@ -779,19 +767,12 @@
                 <th>Add Result</th>
                 <th>View Result</th>
                 <th>Action</th>
-            </tr>
-              
+            </tr>   
             <%
             
             	try{
             		
-            		Connection con = DBConnection.createConnection();;
-					Statement statement = con.createStatement();
-					ResultSet studentData = statement.executeQuery(""
-						+"SELECT * FROM ((student " 
-						+"INNER JOIN programme ON student.programme_id = programme.programme_id) "
-						+"INNER JOIN class ON student.class_id = class.class_id)"
-						+"ORDER BY programme.programme_name ASC");	
+					ResultSet studentData = loadData.loadResulData();	
             		
 					if(studentData!=null){
 						int i = 1;
@@ -809,29 +790,78 @@
             </tr>
             
             
-            	<script type="text/javascript">
-            	
+            	            	<script type="text/javascript">
+            		
 	            	document.getElementById("btn-edit<%=i%>");
 	            	function viewResult<%=i%>(){
 	            	    document.querySelector('.bg-model2').style.display = 'flex';
                         document.querySelector('.bg-model2').style.position = 'fixed';
 	            	    document.forms['semesterForm']['userName'].value = "<%=studentData.getString("reg_no")%>";
 	            	    document.forms['internalForm']['userName'].value = "<%=studentData.getString("reg_no")%>";
+	            	    document.forms['semesterForm']['studentName'].value = "<%=studentData.getString("first_name") +" "+studentData.getString("last_name")%>";
+	            	    document.forms['internalForm']['studentName'].value = "<%=studentData.getString("first_name") +" "+studentData.getString("last_name")%>";
+	            	    document.forms['semesterForm']['programmeName'].value = "<%=studentData.getString("programme_name")%>";
+	            	    document.forms['internalForm']['programmeName'].value = "<%=studentData.getString("programme_name")%>";
+	            	    
+	            	    table = document.getElementById('viewResultTable');
+	            	    
+	            	    var rowCount = table.rows.length -1;
+	            	    
+	            	    if(rowCount < <%=studentData.getInt("semester")%>){
+	            	    	var createRow =  <%=studentData.getInt("semester")%> - rowCount;
+	            	    	for(let i= 1;i <= createRow; i++){
+		            	    	
+		            	    	var tr = document.createElement('tr');
+		            	    	tr.setAttribute('class','pop-row');
+		            	    	var td = document.createElement('td');
+		            	    	var div = document.createElement('div');
+		            	    	div.setAttribute('class','pop-div');
+		            	    	var div2 = document.createElement('div');
+		            	    	div2.setAttribute('class','pop-inner');
+		            	    	div2.setAttribute('id','div'+i);
+		            	    	div2.setAttribute('onclick','callResultServlet'+i+'()');
+		            	    	div2.textContent = "Semester "+(rowCount + i);	
+		            	    	
+		            	    	div.appendChild(div2);
+		            	    	td.appendChild(div);
+		            	    	tr.appendChild(td);
+		            	    	table.appendChild(tr);
+		            	    	
+		            	    	var tdI = document.createElement('td');
+		            	    	var divI = document.createElement('div');
+		            	    	divI.setAttribute('class','pop-div');
+		            	    	var divI2 = document.createElement('div');
+		            	    	divI2.setAttribute('class','pop-inner');
+		            	    	divI2.setAttribute('id','div'+i);
+		            	    	divI2.setAttribute('onclick','callInternalServlet'+i+'()');
+		            	    	divI2.textContent = "Semester "+(rowCount + i);
+		            	    	
+		            	    	divI.appendChild(divI2);
+		            	    	tdI.appendChild(divI);
+		            	    	tr.appendChild(tdI);	
+		            	  
+		            	    }
+	            	    }
+	            	    
+	            	    
+	            	    if(rowCount > <%=studentData.getInt("semester")%>){
+	            	    	var createRow =  rowCount - <%=studentData.getInt("semester")%>;
+	            	    	for(let i= 1;i <= createRow; i++){
+	            	    		table.deleteRow(-1);
+	            	    	}
+	            	    }
 	            	}
             	</script>
-            
-            
-            
 			<% 		
 				i = i + 1;
                 	}	
                 }	
                	}catch(SQLException e){}
             
-            %>     
+            %>   
+              
             </table>
             </div>
-            
             </div>
                 <div class="bg-model2">
                 <div class="model-content2">
@@ -844,39 +874,7 @@
                   <tr>
                      <th>Semester</th>
                      <th>Internals</th>
-                  </tr>
-                                    
-                     <%
-                     
-                     	int maxSem = 1;
-                     	try{
-                     
-		                    Connection con = DBConnection.createConnection();;
-		 					Statement statement = con.createStatement();
-		 					ResultSet programmeSem = statement.executeQuery(""
-		 						+"SELECT programme_sem from programme "
-		 						+"WHERE programme_sem = (SELECT MAX(programme_sem)FROM programme)LIMIT 1");	
-		             		
-		 					if(programmeSem!=null){
-		                 		while(programmeSem.next()){
-									maxSem = programmeSem.getInt("programme_sem");
-									
-		                 		}
-		 					}
-                     	}catch(SQLException e){
-                     		e.printStackTrace();
-                     	}
-                     
-                     
-                     	for(int i = 1 ;i <= maxSem; i++){
-                     %>         
-                    <tr class="pop-row">
-                        <td><div class="pop-div"><div class="pop-inner" onclick="callResultServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>">Semester <%=i%></div></div></td>
-                        <td><div class="pop-div"><div class="pop-inner" onclick="callInternalServlet<%=Integer.toString(i)%>()" id="div<%=Integer.toString(i)%>">Semester <%=i%></div></div></td>
-                      
-                    </tr>
-                    <%} %>
-                    
+                  </tr>  
                 </table>
                 </form>
                 </div>
@@ -892,13 +890,11 @@
                               <tr>
                                 <th>Semester</th>
                               </tr>
-                                <%
-			                     	for(int i = 1 ;i <= maxSem; i++){
-                     			%>     
+                                
                                <tr class="pop-row">
-                                   <td><div class="pop-div"><div class="pop-inner2">Semester <%=i%></div></div></td>
+                                   <td><div class="pop-div"><div class="pop-inner2">Semester </div></div></td>
                                 </tr> 
-                                 <%} %>     
+                                    
                             </table> 
                         </form>
                     </div>
@@ -925,14 +921,58 @@
                 </div>     
             </div>
          </div>
+           
+				<%
+                   
+                   	int maxSem = 1;
+                   	try{
+	                   
+	                    Connection con = DBConnection.createConnection();;
+	 					Statement statement = con.createStatement();
+	 					ResultSet programmeSem = statement.executeQuery(""
+	 						+"SELECT programme_sem from programme "
+	 						+"WHERE programme_sem = (SELECT MAX(programme_sem)FROM programme)LIMIT 1");	
+	             		
+	 					if(programmeSem!=null){
+	                 		while(programmeSem.next()){
+								maxSem = programmeSem.getInt("programme_sem");
+								
+	                 		}
+	 					}
+                   	}catch(SQLException e){
+                   		e.printStackTrace();
+                   	}
+                   		for(int i = 1 ;i <= maxSem; i++){
+				%>         
+                    
+                    <script type="text/javascript">
+	                            	document.getElementById("div<%=i%>");
+	                    		    
+	                            	function callResultServlet<%=i%>(){
+	                    						
+	                    				document.forms['semesterForm']['semester'].value = "<%=i%>";
+	                    			    document.getElementById("semesterForm").submit();
+	                    				
+	                    				
+	                    			}
+					</script>
+					
+					<script type="text/javascript">
+	                            	document.getElementById("div<%=i%>");
+	                    		    
+	                            	function callInternalServlet<%=i%>(){
+	                    						
+	                    				document.forms['internalForm']['semester'].value = "<%=i%>";
+	                    			    document.getElementById("internalForm").submit();
+	                    				
+	                    				
+	                    			}
+					</script>
+                    
+				<%} %>
+             
                 
-                
-                
-                
-                
-                
-        
-                
+                        
         <script type="text/javascript">
             let image = document.getElementById("image");
             let images = ['css/images/can1.jpg','css/images/can2.jpg','css/images/can3.jpg','css/images/can4.jpg','css/images/can5.jpg','css/images/can6.jpg','css/images/can7.jpg']
@@ -942,6 +982,10 @@
                    
             },2500);
         </script>
+                
+                
+                
+                
                 
                 <script>
                     document.querySelector('.close').addEventListener('click', function(){
@@ -1018,6 +1062,7 @@
                document.querySelector('.close11').addEventListener('click', function(){
                 document.querySelector('.bg-model11').style.display = 'none';
             })
+<<<<<<< HEAD
         </script>
         
         <script>
@@ -1035,6 +1080,9 @@
                 
                 
                   
+=======
+        </script>          
+>>>>>>> 782ceeb895f2f09000f47a80335e413010360d28
     </body>
 </html>
     
