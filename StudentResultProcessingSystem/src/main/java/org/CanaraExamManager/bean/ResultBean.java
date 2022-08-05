@@ -2,8 +2,8 @@ package org.CanaraExamManager.bean;
 
 public class ResultBean {
 
-	private String userNameString;
-	private String semesterString;
+	private String userNameString = "";
+	private String semesterString = "";
 	
 	public String getUserName() {
 		return this.userNameString;
@@ -22,5 +22,6 @@ public class ResultBean {
 	public void setSemester(String semesterString) {
 		this.semesterString = semesterString;
 	}
+
 	
 }

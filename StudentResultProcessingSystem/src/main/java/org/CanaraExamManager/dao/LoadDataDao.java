@@ -27,4 +27,77 @@ public class LoadDataDao {
 		
 		return resultSet;
 	}
+	
+	public ResultSet loadStudentData() {
+		
+		ResultSet resultSet = null;
+		
+		try {
+			
+			Connection con = DBConnection.createConnection();;
+				Statement statement = con.createStatement();
+				resultSet = statement.executeQuery(""
+					+"SELECT * FROM ((student "
+					+"INNER JOIN programme ON student.programme_id = programme.programme_id)"
+					+"INNER JOIN class ON student.class_id = class.class_id)"
+					+"ORDER BY programme.programme_name ASC");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+			
+			return resultSet;
+	}
+	
+	public ResultSet loadCoursedata(ResultSet programmeResultSet,int i) {
+		ResultSet resultSet = null;
+		
+		try {
+			Connection con = DBConnection.createConnection();;
+			Statement statement = con.createStatement();
+			resultSet = statement.executeQuery(""
+				+"SELECT * FROM course where course_sem = "+Integer.toString(i)+" "
+				+"AND programme_id = "+programmeResultSet.getString("programme_id")+"");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultSet;
+	}
+	
+	public ResultSet loadClassData() {
+		ResultSet resultSet = null;
+		
+		try {
+			Connection con = DBConnection.createConnection();;
+			Statement statement = con.createStatement();
+			resultSet = statement.executeQuery(""
+				+"SELECT * FROM (class " 
+				+"INNER JOIN programme ON class.programme_id = programme.programme_id) "
+				+"ORDER BY programme.programme_name ASC");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultSet;
+	}
+	
+	public ResultSet loadResulData() {
+		ResultSet resultSet = null;
+		
+		try {
+			Connection con = DBConnection.createConnection();;
+			Statement statement = con.createStatement();
+			resultSet = statement.executeQuery(""
+					+"SELECT * FROM ((student " 
+					+"INNER JOIN programme ON student.programme_id = programme.programme_id) "
+					+"INNER JOIN class ON student.class_id = class.class_id)"
+					+"ORDER BY programme.programme_name ASC");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultSet;
+	}
 }

@@ -6,6 +6,10 @@
     pageEncoding="UTF-8"%>
 <%	
 	ResultSet resultSet = (ResultSet) request.getAttribute("semesterMarks");
+	
+	String studentName = "";
+	String regNo = "";
+	String programmeName = "";
 
 	int grandTotalObtained = 0;
 	int grandTotalMax = 0;
@@ -40,10 +44,10 @@
             <div class="inner">
              <h1><span style="color: palegoldenrod">CANARA&nbsp;</span><img src="css/images/canlogo.png" class="logo"><span style="color: palegoldenrod">&nbsp;COLLEGE</span></h1>
             <h5>Marks Sheet</h5>
-            <h6><span style="color: palegoldenrod">Programme:&nbsp;&nbsp;</span><span><%=session.getAttribute("programme")%></span></h6>
+            <h6><span style="color: palegoldenrod">Programme:&nbsp;&nbsp;</span><span><%=request.getAttribute("programmeName")%></span></h6>
              <div class="img"><img src="" class="studimg"></div>
-             <div class="right"><h3><br><br><span >Date:&nbsp;</span><span>12-10-2000</span></h3><h4><span>Reg No:&nbsp;</span><span><%=session.getAttribute("regNo")%></span></h4></div>
-             <h2><span style="color: white;">Name:&nbsp;</span><span><%=session.getAttribute("studentName")%></span></h2>
+             <div class="right"><h3><br><br><span >Date:&nbsp;</span><span>12-10-2000</span></h3><h4><span>Reg No:&nbsp;</span><span><%=request.getAttribute("studentName")%></span></h4></div>
+             <h2><span style="color: white;">Name:&nbsp;</span><span><%=(String) request.getAttribute("studentName")%></span></h2>
             </div>
             <table class="table1" border="1" cellspacing="0"  rules="" align="center">
                 <tr bgcolor="#7dace4">
@@ -75,6 +79,7 @@
 						grandTotalGp = grandTotalGp + resultSet.getInt("grade_point");
 						grandTotalGpw = grandTotalGpw + resultSet.getInt("grade_point_weightage");
 						grandTotalCp = grandTotalCp + (resultSet.getInt("credit") * resultSet.getInt("grade_point"));
+
     	 		%>
                 <tr bgcolor="whitesmoke">
                     <td rowspan="3"><%=resultSet.getString("course_name").toUpperCase()%></td> <!--course name-->   <!-- comment specifies-you have to add value  -->
