@@ -71,7 +71,12 @@ function myFunction16(){
     document.querySelector('.bg-model13').style.position = 'fixed';
 }
        
-        
+ document.getElementById("edit5");
+function myFunction17(){
+    document.querySelector('.bg-model14').style.display = 'flex';
+    document.querySelector('.bg-model14').style.position = 'fixed';
+}
+             
             
 
         

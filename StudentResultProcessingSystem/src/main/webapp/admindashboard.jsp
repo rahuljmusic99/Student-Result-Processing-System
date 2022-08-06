@@ -82,8 +82,9 @@
                         
                     <div class="inner1">
                         <h6 class="left">Students list</h6>
-                        <div id="add2" class="add" title="Add programme" onclick="myFunction9()">
-                        <i class="fa fa-plus" title="Add programme"></i></div></div>
+                        <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
+                        <div class="icon"><i class="fa fa-plus-circle" aria-hidden="true"  id="add2" title="Add programme" onclick="myFunction9()"></i></div>
+                        </div>
                     <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
                         <tr >
                           <th>Programme Name</th>
@@ -340,8 +341,7 @@
                         
                     <div class="inner1">
                         <h6 class="left">Staff list</h6>
-                        <div id="add3" class="add" title="Add programme" onclick="myFunction12()">
-                        <i class="fa fa-plus" title="Add programme"></i></div></div>
+                        <div class="icon1"><i class="fa fa-plus-circle" id="add3" title="Add programme" onclick="myFunction12()"></i></div></div>
                     <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
                         <tr >
                             <th>Programme Name</th>
@@ -448,7 +448,10 @@
                     <h4>Programme Management</h4>
                     <div class="inner__protab">
                         
-                    <div class="inner1"><h6 class="left">Programme list</h6><div id="add" class="add" title="Add programme" onclick="myFunction1()"></div><i class="fa fa-plus" aria-hidden="true" title="Add programme"></i></div>
+                    <div class="inner1">
+                        <h6 class="left">Programme list</h6>
+                        <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
+                        <div class="icon"><i class="fa fa-plus-circle" id="add"  title="Add programme" onclick="myFunction1()"></i></div></div>
                    
                     <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
                         <tr class="tb2">
@@ -630,7 +633,7 @@
                                 <input type="text" placeholder="Programme Name">
                                 <input type="text" placeholder="Duration(In Years)">
                                 <input type="text" placeholder="Total Semester">
-                                <button id="button" >ADD</button>
+                                <button id="button13" >UPDATE</button>
                         </form>
                     </div>
                 </div>
@@ -649,8 +652,8 @@
                         
                     <div class="inner1">
                         <h6 class="left">Class list</h6>
-                        <div id="add1" class="add" title="Add programme" onclick="myFunction8()">
-                        <i class="fa fa-plus" title="Add programme"></i></div></div>
+                        <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
+                        <div class="icon"><i class="fa fa-plus-circle" id="add1" title="Add programme" onclick="myFunction8()"></i></div></div>
                     <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
                         <tr >
                             <th>Programme Name</th>
@@ -669,8 +672,8 @@
                         <tr>
                             <td class="td1"><%=classesData.getString("programme_name")%></td>   <!--Programme name-->
                             <td class="td2"><%=classesData.getString("class_name")%></td>   <!--Semseter-->
-                            <td><%=classesData.getString("class_year")%></td>
-                            <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td5"><%=classesData.getString("class_year")%></td>
+                            <td class="td3"><div class="circle1" title="Edit Programme" id="edit5" onclick="myFunction17()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>			
 
                         <% 	
@@ -716,6 +719,26 @@
                                 <input name="className" type="text" placeholder="Class Name">
                                 <input name="classYear" type="text" placeholder="Class Year (in digits)">
                                 <button id="button5" onclick="insertClass();" >ADD</button>
+                        </form>
+                    </div>
+                </div>
+                        
+                <div class="bg-model14">
+                    <div class="model-content14">
+                        <div class="close14" id="close" >+</div>
+                        <div class="header14">
+                            <h1>Edit Class Data</h1></div>
+                            <form action="">
+                                <select >
+                                <option value="" disabled selected hidden>Select Programme</option>
+                                <option>Bca</option>
+                                <option>Bcom</option>
+                                <option>BBA</option>
+                                </select>
+                                <input type="text" placeholder="Course Code">
+                                <input type="text" placeholder="Course Name">
+                                <input type="text" placeholder="Year (in digits)">
+                                <button id="button15" >UPDATE</button>
                         </form>
                     </div>
                 </div>
@@ -1062,7 +1085,6 @@
                document.querySelector('.close11').addEventListener('click', function(){
                 document.querySelector('.bg-model11').style.display = 'none';
             })
-<<<<<<< HEAD
         </script>
         
         <script>
@@ -1077,12 +1099,20 @@
                
             })
         </script>
+                    
+                    
+        <script>
+            document.querySelector('.close14').addEventListener('click', function(){
+                document.querySelector('.bg-model14').style.display = 'none';
+               
+            })
+        </script>
                 
                 
                   
-=======
+
         </script>          
->>>>>>> 782ceeb895f2f09000f47a80335e413010360d28
+
     </body>
 </html>
     

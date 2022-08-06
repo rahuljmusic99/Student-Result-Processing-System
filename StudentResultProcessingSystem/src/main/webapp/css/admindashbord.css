@@ -169,16 +169,40 @@ h4{
     text-align: center;
 }
 
-.add{
-    width: 2.5rem;
-    height: 2.5rem;
+.fa-plus-circle{
+    color: green;
+    margin-top: -0.16rem;
+    margin-bottom: -0.2rem;
+    margin-left: -0.1rem;
+    margin-right: -0.1rem;
+    cursor: pointer;
+    float: right;  
+}
+
+.icon{
+    font-size: 2.4rem;
+    background-color: white;
+    width: 1.9rem;
     border-radius: 50%;
     float: right;
-    margin-right: 2rem;
+    margin-right: -22rem;
     margin-top: -1.5rem;
-    background: green;
-    cursor: pointer;
+    
+
 }
+
+.icon1{
+    font-size: 2.4rem;
+    background-color: white;
+    width: 1.9rem;
+    border-radius: 50%;
+    float: right;
+    margin-right: 1rem;
+    margin-top: -1.5rem;
+    
+
+}
+
 
 h6{
     padding: 5px;
@@ -264,17 +288,6 @@ h6{
 }
 
 
-
-
-
-.fa-plus{
-    align-items: center;
-    justify-content: center;
-    display:inline;
-    margin:0.7rem;
-    color: white;
-      
-}
 
 .protab .refresh{
     float: right;
@@ -520,6 +533,27 @@ option{
     margin: 1rem;
     float: right;
     margin-top: -2rem;
+}
+
+.select3{
+    margin: 0;
+    width: 15%;
+    display: inline-flex;
+    margin: 1rem;
+    float: right;
+    margin-top: -2rem;
+    margin-right: 12rem;
+}
+
+.add1{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    float: right;
+    margin-right: -22rem;
+    margin-top: -1.5rem;
+    background: green;
+    cursor: pointer;
 }
 
 .bg-model2{
@@ -853,7 +887,7 @@ option{
     border: none;
     float: right;
     cursor: pointer;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 #button6:hover{
@@ -962,7 +996,7 @@ option{
     border: none;
     float: right;
     cursor: pointer;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     font-weight: bold;
 }
 
@@ -1244,7 +1278,7 @@ option{
 }
 
 #button13{
-    background-color: blue;
+    background-color: darkgoldenrod;
     color: white;
     padding: 10px;
     width: 5rem;
@@ -1259,7 +1293,7 @@ option{
 }
 
 #button14{
-    background-color: blue;
+    background-color: gray;
     color: white;
     padding: 10px;
     width: 5rem;
@@ -1273,6 +1307,63 @@ option{
 #button14:hover{
     opacity: 0.9;
 }
+
+.bg-model14{
+    width: 80%;
+    height:100% ;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    
+
+    
+}
+
+
+.model-content14{
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 5px;
+    position: relative;
+}
+
+.model-content14 .header14{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.close14{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button15{
+    background-color: darkgoldenrod;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    cursor: pointer;
+    margin-top: -1rem;
+    margin-right: 1rem;
+}
+
+#button15:hover{
+    opacity: 0.9;
+}
+
 
 
 select{
@@ -1288,6 +1379,10 @@ option{
 
 .student{
     height: 5rem;
+}
+
+.td5{
+    text-align: center;
 }
 
 .merge1{
