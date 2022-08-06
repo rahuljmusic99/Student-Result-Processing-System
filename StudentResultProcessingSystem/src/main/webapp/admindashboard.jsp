@@ -735,7 +735,7 @@
             </tr>
             
             
-            	            	<script type="text/javascript">
+			<script type="text/javascript">
             		
 	            	document.getElementById("btn-edit<%=i%>");
 	            	function viewResult<%=i%>(){
@@ -927,10 +927,6 @@
                    
             },2500);
         </script>
-                
-                
-                
-                
                 
                 <script>
                     document.querySelector('.close').addEventListener('click', function(){
