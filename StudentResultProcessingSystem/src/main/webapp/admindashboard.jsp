@@ -601,23 +601,27 @@
                                     <th>MAx<br> Marks</th>
                                     <th>Min<br> Marks</th>
                                     <th>Max<br>IA</th>
+                                    <th>Delete<br>Course</th>
+                                    <th>Updata<br>Course</th>
                                     </tr>
                                     
                                     <tr class="input-in">
-                                        <td ><input class="input"></td>
                                         <td><input class="input"></td>
                                         <td><input class="input"></td>
                                         <td><input class="input"></td>
                                         <td><input class="input"></td>
                                         <td><input class="input"></td>
-                                        <td><input class="input"></td>
-                                        <td><input class="input"></td>
-                                        <td><input class="input"></td>
+                                        <td><input class="inputDigits"></td>
+                                        <td><input class="inputDigits"></td>
+                                        <td><input class="inputDigits"></td>
+                                        <td><input class="inputDigits"></td>
+                                        <td><button class="inputButton" id="button12" >DELETE</button></td>
+                                        <td><button class="inputButton" id="button14" >UPDATE</button></td>
                                     </tr>
                                 </table>
                         </form>
-                        <button id="button12" >DELETE</button>
-                        <button id="button14" >UPDATE</button>
+                       
+                        
                         
                     </div>
                 </div>
@@ -813,7 +817,7 @@
             </tr>
             
             
-            	            	<script type="text/javascript">
+			<script type="text/javascript">
             		
 	            	document.getElementById("btn-edit<%=i%>");
 	            	function viewResult<%=i%>(){
@@ -1006,10 +1010,6 @@
             },2500);
         </script>
                 
-                
-                
-                
-                
                 <script>
                     document.querySelector('.close').addEventListener('click', function(){
                         document.querySelector('.bg-model').style.display = 'none';
@@ -1085,6 +1085,10 @@
                document.querySelector('.close11').addEventListener('click', function(){
                 document.querySelector('.bg-model11').style.display = 'none';
             })
+<<<<<<< HEAD
+=======
+
+>>>>>>> 453b7a3c55606de14d5491e264bfd1859a7dba17
         </script>
         
         <script>
@@ -1109,8 +1113,11 @@
         </script>
                 
                 
+<<<<<<< HEAD
                   
 
+=======
+>>>>>>> 453b7a3c55606de14d5491e264bfd1859a7dba17
         </script>          
 
     </body>
