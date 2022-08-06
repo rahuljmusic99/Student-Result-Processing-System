@@ -322,13 +322,10 @@
                 </div>
                 </div>
             
-            
-            
-            
-            
-            
-            
-           
+
+
+
+
             
             <div class="tabs__content" data-tab="3">
                 <div class="protab"> 
@@ -464,7 +461,7 @@
                         	try{
                         		if(programmeResultSet!=null){
                         			int j = 0;
-                        			
+                        			int courseCount = 1;
                         			while(programmeResultSet.next()){
                         	
                         				for(int i=1; i<= programmeResultSet.getInt("programme_sem"); i++){
@@ -484,6 +481,7 @@
                         				
                             			out.println(coursesData.getString("course_name"));
                             			out.println("<br/>");
+                            			courseCount = courseCount + 1;
                              		}
                             	}
                             	
@@ -494,11 +492,10 @@
 
 
 							<td class="td1"><button class="btn__course" id="btn__course<%=i + j%>>" onclick="insertCourseData<%=i + j%>()"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
-                            <td class="td2"><button class="btn__edit" id="btn-edit4" onclick="myFunction15()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
-                            <td class="td3"><div class="circle1" title="Edit Programme" id="edit3" onclick="myFunction16()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td2"><button class="btn__edit" id="courseEdit<%=i + j%>" onclick="editCourse<%=i + j%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
+                            <td class="td3"><div class="circle1" title="Edit Programme" id="programmeEdit<%=i + j%>" onclick="editProgramme<%=i + j%>()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
-                        
-                        
+                          
                         <script type="text/javascript">
 	                        document.getElementById("btn__course<%=i + j%>");
 	                        function insertCourseData<%=i + j%>(){
@@ -507,6 +504,123 @@
 	                          document.getElementById("programmeNameInCourse").value = "<%=programmeResultSet.getString("programme_name")%>";
 	                          document.getElementById("courseSemester").value = "<%=i%>";
 	                          document.getElementById("programmeIdInCourse").value = "<%=programmeResultSet.getString("programme_id")%>"
+	                        }
+	                        
+	                        document.getElementById("programmeEdit<%=i + j%>");
+	                        function editProgramme<%=i + j%>(){
+	                            document.querySelector('.bg-model13').style.display = 'flex';
+	                            document.querySelector('.bg-model13').style.position = 'fixed';
+	                            document.getElementById("programmeIdInProgramme").value = "<%=programmeResultSet.getString("programme_id")%>";
+	                            document.getElementById("programmeNameInProgramme").value = "<%=programmeResultSet.getString("programme_name")%>";
+	                            document.getElementById("programmeDuration").value = "<%=programmeResultSet.getString("programme_duration")%>";
+	                            document.getElementById("programmeTotalSemesterInProgramme").value = "<%=programmeResultSet.getString("programme_sem")%>";
+	                        } 
+	                        
+	                        document.getElementById("courseEdit<%=i + j%>");
+	                        document.getElementById("editCourseTable");
+	                        function editCourse<%=i + j%>(){
+	                            document.querySelector('.bg-model12').style.display = 'flex';
+	                            document.querySelector('.bg-model12').style.position = 'fixed';
+	                            
+	                            table = document.getElementById("editCourseTable");
+	    	            	    
+	    	            	    var rowCount = table.rows.length -1;
+	    	            	    
+	    	            	    if(rowCount < <%=courseCount%>){
+	    	            	    	var createRow =  <%=courseCount%> - rowCount;
+	    	            	    	for(let i= 1;i <= createRow; i++){
+	    		            	    	
+	    		            	    	var tr = document.createElement('tr');
+	    		            	    	tr.setAttribute('class','input-in');
+	    		            	    	
+	    		            	    	var td1 = document.createElement('td');
+	    		            	    	var input1 = document.createElement('input');
+	    		            	    	input1.setAttribute('class','input');
+	    		            	    	input1.setAttribute('id','programmeNameInCourseEditt<%=i + j%>');
+	    		            	    	td1.appendChild(input1);
+	    		            	    	
+	    		            	    	var td2 = document.createElement('td');
+	    		            	    	var input2 = document.createElement('input');
+	    		            	    	input2.setAttribute('class','input');
+	    		            	    	input2.setAttribute('id','courseCodeInCourset<%=i + j%>');
+	    		            	    	td2.appendChild(input2);
+	    		            	    	
+	    		            	    	var td3 = document.createElement('td');
+	    		            	    	var input3 = document.createElement('input');
+	    		            	    	input3.setAttribute('class','input');
+	    		            	    	input3.setAttribute('id','courseNameInCourset<%=i + j%>');
+	    		            	    	td3.appendChild(input3);
+	    		            	    	
+	    		            	    	var td4 = document.createElement('td');
+	    		            	    	var select1 = document.createElement('select');
+	    		            	    	select1.setAttribute('class','input');
+	    		            	    	select1.setAttribute('id','courseTypeInCourset<%=i + j%>');
+	    		            	    	td4.appendChild(select1);
+	    		            	    	
+	    		            	    	var td5 = document.createElement('td');
+	    		            	    	var select2 = document.createElement('select');
+	    		            	    	select2.setAttribute('class','input');
+	    		            	    	select2.setAttribute('id','courseGroupInCourset<%=i + j%>');
+	    		            	    	td4.appendChild(select2);
+	    		            	    	
+	    		            	    	
+	    		            	    	var td6 = document.createElement('td');
+	    		            	    	var input4 = document.createElement('input');
+	    		            	    	input4.setAttribute('class','inputDigits');
+	    		            	    	input4.setAttribute('id','courseSemInCourset<%=i + j%>');
+	    		            	    	td6.appendChild(input4);
+	    		            	    	
+	    		            	    	var td7 = document.createElement('td');
+	    		            	    	var input5 = document.createElement('input');
+	    		            	    	input5.setAttribute('class','inputDigits');
+	    		            	    	input5.setAttribute('id','maxMarksInCourset<%=i + j%>');
+	    		            	    	td7.appendChild(input5);
+	    		            	    	
+	    		            	    	var td8 = document.createElement('td');
+	    		            	    	var input6 = document.createElement('input');
+	    		            	    	input6.setAttribute('class','inputDigits');
+	    		            	    	input6.setAttribute('id','minMarksInCourset<%=i + j%>');
+	    		            	    	td8.appendChild(input6);
+	    		            	    	
+	    		            	    	var td9 = document.createElement('td');
+	    		            	    	var input1 = document.createElement('input');
+	    		            	    	input7.setAttribute('class','inputDigits');
+	    		            	    	input7.setAttribute('id','maxIAInCourset<%=i + j%>');
+	    		            	    	td9.appendChild(input7);
+	    		            	    	
+	    		            	    	var td10 = document.createElement('td');
+	    		            	    	var btnUpdate = document.createElement('button');
+	    		            	    	btnUpdate.setAttribute('class','inputButton');
+	    		            	    	btnUpdate.setAttribute('id','btnUpdate');
+	    		            	    	btnUpdate.setAttribute('onclick','updateCourset<%=i + j%>');
+	    		            	    	td10.appendChild(btnUpdate);
+	    		            	    	
+	    		            	    	var td11 = document.createElement('td');
+	    		            	    	var btnDelete = document.createElement('button');
+	    		            	    	btnDelete.setAttribute('class','inputButton');
+	    		            	    	btnDelete.setAttribute('id','btnDelete');
+	    		            	    	btnDelete.setAttribute('onclick','deleteCourset<%=i + j%>');
+	    		            	    	td11.appendChild(btnDelete);
+	    		            	    	
+	    		            	    	tr.appenChild(td1);//1
+	    		            	    	tr.appenChild(td2);//2
+	    		            	    	tr.appenChild(td3);//3
+	    		            	    	tr.appenChild(td4);//4
+	    		            	    	tr.appenChild(td5);//5
+	    		            	    	tr.appenChild(td6);//6
+	    		            	    	tr.appenChild(td7);//7
+	    		            	    	tr.appenChild(td8);//8
+	    		            	    	tr.appenChild(td9);//9
+	    		            	    	tr.appenChild(td10);//10
+	    		            	    	tr.appenChild(td11);//11
+	    		            	    	
+	    		            	    	table.appendChild(tr);
+	    		            	    	
+	    		            	  
+	    		            	    }
+	    	            	    }
+	                           
+	                            
 	                        }
                         </script>
                         <%
@@ -586,8 +700,8 @@
                         <div class="close12" id="close" >+</div>
                         <div class="header12">
                             <h1>Edit Course Data</h1></div>
-                            <form action="">
-                                <table border="1" class="tb4">
+                            <form>
+                                <table id="editCourseTable" border="1" class="tb4">
                                     <tr>
                                     <th>Programme Name</th>
                                     <th>Course<br> code</th>
@@ -603,18 +717,19 @@
                                     </tr>
                                     
                                     <tr class="input-in">
-                                        <td><input class="input"></td>
-                                        <td><input class="input"></td>
-                                        <td><input class="input"></td>
-                                        <td><input class="input"></td>
-                                        <td><input class="input"></td>
-                                        <td><input class="inputDigits"></td>
-                                        <td><input class="inputDigits"></td>
-                                        <td><input class="inputDigits"></td>
-                                        <td><input class="inputDigits"></td>
+                                        <td><input id="programmeNameInCourseEdit" class="input" value=""></td>
+                                        <td><input id="courseCodeInCourse" class="input"></td>
+                                        <td><input id="courseNameInCourse" class="input"></td>
+                                        <td><input id="courseTypeInCourse" class="input"></td>
+                                        <td><input id="courseGroupInCourse" class="input"></td>
+                                        <td><input id="courseSemInCourse" class="inputDigits"></td>
+                                        <td><input id="maxMarksInCourse" class="inputDigits"></td>
+                                        <td><input id="minMarksInCourse" class="inputDigits"></td>
+                                        <td><input id="maxIAInCourse" class="inputDigits"></td>
                                         <td><button class="inputButton" id="button12" >DELETE</button></td>
                                         <td><button class="inputButton" id="button14" >UPDATE</button></td>
                                     </tr>
+                                    
                                 </table>
                         </form>
                        
@@ -630,10 +745,10 @@
                         <div class="header13">
                             <h1>Edit Programme Data</h1></div>
                             <form action="">
-                                <input type="text" placeholder="Programme Id">
-                                <input type="text" placeholder="Programme Name">
-                                <input type="text" placeholder="Duration(In Years)">
-                                <input type="text" placeholder="Total Semester">
+                                <input id="programmeIdInProgramme" type="text" placeholder="Programme Id">
+                                <input id="programmeNameInProgramme" type="text" placeholder="Programme Name">
+                                <input id="programmeDuration" type="text" placeholder="Duration(In Years)">
+                                <input id="programmeTotalSemesterInProgramme" type="text" placeholder="Total Semester">
                                 <button id="button" >ADD</button>
                         </form>
                     </div>
