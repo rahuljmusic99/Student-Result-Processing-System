@@ -1141,6 +1141,140 @@ option{
 #button11:hover{
     opacity: 0.9;
 }
+
+.bg-model12{
+    width: 80%;
+    height:100% ;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    display: none;
+
+    
+}
+
+
+.model-content12{
+    width: 1100px;
+    height: auto;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    overflow-y: auto;
+}
+
+
+
+.model-content12 .header12{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.close12{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button12{
+    background-color: red;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    font-weight: bold;
+    
+}
+
+#button12:hover{
+    opacity: 0.9;
+}
+
+.bg-model13{
+    width: 80%;
+    height:100% ;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    transition: 200ms ease-out;
+}
+
+
+.model-content13{
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    
+    
+}
+
+.model-content13 .header13{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+
+
+.close13{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button13{
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    cursor: pointer;
+    
+}
+
+#button13:hover{
+    opacity: 0.9;
+}
+
+#button14{
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+#button14:hover{
+    opacity: 0.9;
+}
+
+
 select{
     width: 50%;
     display: block;
@@ -1191,10 +1325,12 @@ option{
 
 .merge2:nth-child(3){
     margin-left: 2rem;
+    width: 17.5rem;
 }
 
 .merge2:nth-child(4){
     margin-left: 2rem;
+    width: 17.5rem;
 }
 .merge1:nth-child(5){
     margin-left: 0 auto;
@@ -1215,6 +1351,7 @@ option{
 }
 .merge2:nth-child(12){
     margin-left: 2rem;
+    width: 17.5rem;
 }
 
 .merge1:nth-child(17){
@@ -1229,6 +1366,7 @@ option{
 
 .merge2:nth-child(16){
     margin-left: 2rem;
+    width: 17.5rem;
 }
 
 
@@ -1293,4 +1431,23 @@ option{
 .merge4:nth-child(8){
     margin-left: 2.5rem;
 }
+
+.tb4{
+    width: 65rem;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.input-in{
+    width: 3rem;
+    margin: 0 auto;
+}
+
+.input{
+    padding: 0;
+    width: 7rem;
+}
+
+
 

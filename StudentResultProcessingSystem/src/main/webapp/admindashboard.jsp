@@ -495,7 +495,7 @@
 
 							<td class="td1"><button class="btn__course" id="btn__course<%=i + j%>>" onclick="insertCourseData<%=i + j%>()"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
                             <td class="td2"><button class="btn__edit" id="btn-edit4" onclick="myFunction15()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
-                            <td class="td3"><div class="circle1" title="Edit Programme"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td3"><div class="circle1" title="Edit Programme" id="edit3" onclick="myFunction16()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
                         
                         
@@ -578,7 +578,62 @@
                                 <button id="button1" onclick="insertCourse();">ADD</button>
                           </form>
                     </div>
-                </div>          
+                </div>  
+                    
+                    
+                    <div class="bg-model12">
+                    <div class="model-content12">
+                        <div class="close12" id="close" >+</div>
+                        <div class="header12">
+                            <h1>Edit Course Data</h1></div>
+                            <form action="">
+                                <table border="1" class="tb4">
+                                    <tr>
+                                    <th>Programme Name</th>
+                                    <th>Course<br> code</th>
+                                    <th>Course<br> name</th>
+                                    <th>Course<br> Type</th>
+                                    <th>Course<br> Group</th>
+                                    <th>Course<br> Sem</th>
+                                    <th>MAx<br> Marks</th>
+                                    <th>Min<br> Marks</th>
+                                    <th>Max<br>IA</th>
+                                    </tr>
+                                    
+                                    <tr class="input-in">
+                                        <td ><input class="input"></td>
+                                        <td><input class="input"></td>
+                                        <td><input class="input"></td>
+                                        <td><input class="input"></td>
+                                        <td><input class="input"></td>
+                                        <td><input class="input"></td>
+                                        <td><input class="input"></td>
+                                        <td><input class="input"></td>
+                                        <td><input class="input"></td>
+                                    </tr>
+                                </table>
+                        </form>
+                        <button id="button12" >DELETE</button>
+                        <button id="button14" >UPDATE</button>
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="bg-model13">
+                    <div class="model-content13">
+                        <div class="close13" id="close">+</div>
+                        <div class="header13">
+                            <h1>Edit Programme Data</h1></div>
+                            <form action="">
+                                <input type="text" placeholder="Programme Id">
+                                <input type="text" placeholder="Programme Name">
+                                <input type="text" placeholder="Duration(In Years)">
+                                <input type="text" placeholder="Total Semester">
+                                <button id="button" >ADD</button>
+                        </form>
+                    </div>
+                </div>
             </div>
                  
                  
@@ -1003,7 +1058,27 @@
                document.querySelector('.close11').addEventListener('click', function(){
                 document.querySelector('.bg-model11').style.display = 'none';
             })
+<<<<<<< HEAD
+        </script>
+        
+        <script>
+            document.querySelector('.close12').addEventListener('click', function(){
+                document.querySelector('.bg-model12').style.display = 'none';
+            })
+        </script>
+        
+        <script>
+            document.querySelector('.close13').addEventListener('click', function(){
+                document.querySelector('.bg-model13').style.display = 'none';
+               
+            })
+        </script>
+                
+                
+                  
+=======
         </script>          
+>>>>>>> 782ceeb895f2f09000f47a80335e413010360d28
     </body>
 </html>
     
