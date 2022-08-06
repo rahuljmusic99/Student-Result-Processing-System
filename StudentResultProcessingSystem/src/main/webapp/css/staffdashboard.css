@@ -1,20 +1,22 @@
 *{
     margin: 0;
-    padding: 0;
-    overflow: hidden;
-    
+    padding: 0; 
 }
 
 .tabs{
     border:1px solid #cccccc;
     display:flex;
     height: 100%;  
+    width: 100%;
 }
 
 .tabs__sidebar{
-    width: 145px;
+    width: 250px;
     flex-shrink: 0;
     background: blue;
+    box-shadow: 0 3px 10px rgb(0,0,0,0.5);
+    height: 100%;
+    position: fixed; 
 }
 
 .tabs__button{
@@ -28,6 +30,7 @@
     text-align: left;
     font-family: serif;
     font-size:16px;  
+    height: 4rem;
 }
 
 .tabs__button:active{
@@ -40,7 +43,7 @@
 
 .tabs__button--active{
     font-weight: bold;
-    border-right: 3px solid red;  /* #009879  */
+    border-right: 3px solid red;  
     background: blue;
     color: #ffffff;
 }
@@ -50,6 +53,8 @@
     font-size: 0.8rem;
     display: none;
     transition: 2s;
+    margin-left: 17rem;
+    height: auto;
 }
 
 .tabs__content--active{
@@ -79,55 +84,6 @@ img{
     background-color: white;  
 }
 
-.space3{
-    background: blue;
-    height: 90%;
-    width: 500px;   /*500px*/
-    border-radius: 20px;
-    padding: 15px;
-    box-shadow: 10px 10px 10px;
-    margin-top: 0px;
-    flex-shrink: 0;
-}
-
-.edu{
-    height: 60px;
-}
-
-html{
-    font-size: 95%;
-}
-
-.space4{
-    text-align: center;
-    background:#ffffff;
-    height: 50px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    margin-top: 25px;
-    font-size: 18px;  
-    margin-left: 60px;
-    margin-right: 60px;
-    box-shadow: 10px 10px 20px 0px black;
-    padding-top: 17px;
-}
-
-.space4:hover{
-    box-shadow: none;
-    background-image: linear-gradient(to right,#8A2387,#E94057);
-    transition: 1s;
-    color:white;
-    margin-left: 80px;
-    margin-right: 80px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.space4:active{
-    height: 65px;
-    margin-left: 60px;
-    margin-right: 60px;
-}
 
 i{
     margin-right: 5px;
@@ -140,18 +96,6 @@ i{
     margin-top: 40px;
 }
 
-
-.space5{
-    float: right;
-    width:800px;
-    height: 100%;
-    margin-left:550px;
-    display: flex;
-    justify-content: center;  
-}
-
-
-
 h2{
     font-size:25px;
 }
@@ -160,6 +104,548 @@ p{
     font-size: 16px;
 }
 
+h3{
+    font-size: 20px;
+}
+
+
+
+tr{
+    height: 4rem;
+}
+td{
+    padding: 0.2rem;
+    
+}
+h4{
+    margin-top: 2rem;
+    margin-left: 3rem;
+    font-size: 20px;
+}
+
+
+.edu{
+    height: 60px;
+}
+
+.divmarks{
+    width: 1210px;
+    height: auto;
+    background: #f6f7f5;
+    padding-bottom: 1rem;
+    border: 1px solid #dddddd;
+    
+}
+
+
+.innermarks{
+    width: 1150px;
+    height: auto;
+    margin-left: 1.4rem;
+    margin-top: 1.5rem;
+    box-shadow: 0px 0px 4px 1px; 
+    background: white;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.tb2{
+    padding: 1px;
+    margin: 10px;
+    border: 1px solid #dddddd;
+    width: 1130px;
+}
+
+.marks1{
+    text-align: center;
+    padding: 15px;
+    width: 21rem;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.marks2{
+    text-align: center;
+    padding: 15px;
+    width: 21rem;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.innerdiv{
+    border: 1px solid blue;
+    padding: 15px;
+    width: 19rem;
+    margin-left: 70px;
+    margin-right: 70px;
+    transition: 2sec;
+}
+
+.innerdiv2{
+    border: 1px solid blue;
+    padding: 15px;
+    width: 19rem;
+    margin-left: 70px;
+    margin-right: 70px;
+    
+}
+
+.innerdiv:hover{
+   width: 17rem;
+   margin-left: 90px;
+   margin-right: 90px;
+    cursor: pointer;
+    
+}
+
+.innerdiv2:hover{
+   width: 17rem;
+   margin-left: 90px;
+   margin-right: 90px;
+    cursor: pointer;
+}
+
+
+.make{
+    width: 33rem;
+}
+
+.head2{
+    font-size: 20px;
+}
+
+.protab{
+    width: 1210px;
+    height: auto;
+    background: #f6f7f5;
+    padding-bottom: 1rem;
+    border: 1px solid #dddddd;
+   
+}
+
+.inner__protab{
+    width: 1150px;
+    height: auto;
+    margin-left: 1.4rem;
+    margin-top: 1.5rem;
+    box-shadow: 0px 0px 4px 1px; 
+    background: white;
+    padding-bottom: 1rem;
+    
+    
+}
+
+.tb1{
+    
+    margin: 10px;
+    border: 1px solid #dddddd;
+    width: 1130px;
+}
+
+
+tr{
+    height: 4rem;
+}
+td{
+    padding: 0.2rem;
+    
+}
+
+h4{
+    margin-top: 2rem;
+    margin-left: 3rem;
+    font-size: 20px;
+}
+
+.inner1{
+    width: 1150px;
+    height: 4rem;
+    background: grey;  
+    text-align: center;
+}
+
+.fa-plus-circle{
+    color: green;
+    margin-top: -0.16rem;
+    margin-bottom: -0.2rem;
+    margin-left: -0.1rem;
+    margin-right: -0.1rem;
+    cursor: pointer;
+    float: right;  
+}
+
+.icon{
+    font-size: 2.4rem;
+    background-color: white;
+    width: 1.9rem;
+    border-radius: 50%;
+    float: right;
+    margin-right: -22rem;
+    margin-top: -1.5rem;
+    
+
+}
+
+.icon1{
+    font-size: 2.4rem;
+    background-color: white;
+    width: 1.9rem;
+    border-radius: 50%;
+    float: right;
+    margin-right: 1rem;
+    margin-top: -1.5rem;
+    
+
+}
+
+
+h6{
+    padding: 5px;
+    font-size: 16px;
+    color: white;
+    padding-top: 1rem;
+}
+
+.left{
+    text-align: left;
+}
+.btn__course{
+    background-color: blue;
+    color: #fff;
+    border: none;
+    padding: 0.4rem;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn__edit{
+    background-color: grey;
+    color: #fff;
+    border: none;
+    padding: 0.6rem;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.fa-pencil-square-o{
+    color: white;
+    width: 4rem;
+    font-size: 16px;
+}
+
+
+.td1{
+    text-align: center;
+}
+
+.td2{
+    text-align: center;
+}
+.td3{
+    margin-left: 3rem;
+}
+.circle1{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-left: 1rem;
+    background-color: darkgoldenrod;
+    cursor: pointer;
+}
+
+.circle2{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-left: 2rem;
+    background-color: red;
+    cursor: pointer;
+}
+
+.fa-times{
+    text-align: center;
+    color: white;
+    margin-top: 0.5rem;
+    margin-left: 0.6rem;
+}
+
+.fa-pencil
+{
+    color: white;
+    font-size: 16px;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    
+}
+
+
+
+.protab .refresh{
+    float: right;
+    margin: 1rem;
+    font-weight: bold;
+    background: blue;
+    color: white;
+    border: none;
+    padding: 0.2rem;
+    cursor: pointer;
+    
+}
+
+.edu{
+    height: 60px;
+}
+
+select{
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+    height: 2.3rem;
+}
+
+option{
+    background: whitesmoke;
+}
+
+.select2{
+    margin: 0;
+    width: 15%;
+    display: inline-flex;
+    margin: 1rem;
+    float: right;
+    margin-top: -2rem;
+}
+
+.bg-model2{
+    width: 80%;
+    height:100% ;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    
+}
+
+
+.model-content2{
+    width: 500px;
+    height: 450px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+}
+
+.model-content2 .header2{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.close2{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button2{
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    cursor: pointer;
+}
+
+#button2:hover{
+    opacity: 0.9;
+}
+
+select{
+    width: 50%;
+    display: block;
+    margin: 15px auto;
+    height: 2.3rem;
+}
+
+option{
+    background: whitesmoke;
+}
+
+.tb3{
+    width: 30rem;
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+
+.pop-row{
+    height: 2rem;
+    border-bottom: 1px solid black;
+    background-color: #eeeeee;
+
+}
+
+.pop-div{
+    height: 2rem;
+    width: 15rem;
+    padding-bottom: 0.3rem;
+}
+
+.pop-inner{
+    border: 1px solid blue;
+    width: 12rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    background-color: white;
+    transition: 1s ;
+    
+}
+.pop-inner:hover{
+    width: 8rem;
+    margin-left: 4rem;
+    margin-right: 3rem;
+    background-color: grey;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pop-row:hover{
+    background-color: whitesmoke;
+}
+
+
+.bg-model3{
+    width: 80%;
+    height:100% ;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    
+}
+
+
+.model-content3{
+    width: 500px;
+    height: 450px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+}
+
+.model-content3 .header3{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.close3{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.pop-inner2{
+    border: 1px solid blue;
+    width: 17rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-left: 6rem;
+    margin-right: 5rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    background-color: white;
+    transition: 1s ;
+    
+}
+
+.pop-inner2:hover{
+    width: 16rem;
+    margin-left: 6.5rem;
+    margin-right: 3rem;
+    background-color: grey;
+    color: white;
+    font-weight: bold;
+}
+
+.bg-model4{
+    width: 80%;
+    height:100% ;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    
+}
+
+
+.model-content4{
+    width: 500px;
+    height: 450px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+}
+
+.model-content4 .header4{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.close4{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.select3{
+    margin: 0;
+    width: 15%;
+    display: inline-flex;
+    margin: 1rem;
+    float: right;
+    margin-top: -2rem;
+    margin-right: 2rem;
+}
+
+.td5{
+    text-align: center;
+}
 
 
 
