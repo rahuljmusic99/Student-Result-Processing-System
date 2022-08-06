@@ -464,7 +464,7 @@
                         	try{
                         		if(programmeResultSet!=null){
                         			int j = 0;
-                        			int courseCount = 1;
+                        			int courseCount = 0;
                         			while(programmeResultSet.next()){
                         	
                         				for(int i=1; i<= programmeResultSet.getInt("programme_sem"); i++){
@@ -528,9 +528,8 @@
 	                            table = document.getElementById("editCourseTable");
 	    	            	    
 	    	            	    var rowCount = table.rows.length -1;
-	    	            	    
-	    	            	    if(rowCount < <%=courseCount%>){
-	    	            	    	var createRow =  <%=courseCount%> - rowCount;
+	    	            	    if(rowCount < <%=13%>){
+	    	            	    	var createRow =  <%=13%> - rowCount;
 	    	            	    	for(let i= 1;i <= createRow; i++){
 	    		            	    	
 	    		            	    	var tr = document.createElement('tr');
@@ -539,95 +538,103 @@
 	    		            	    	var td1 = document.createElement('td');
 	    		            	    	var input1 = document.createElement('input');
 	    		            	    	input1.setAttribute('class','input');
-	    		            	    	input1.setAttribute('id','programmeNameInCourseEditt<%=i + j%>');
+	    		            	    	input1.setAttribute('id','programmeNameInCourseEdit<%=i + j%>');
 	    		            	    	td1.appendChild(input1);
 	    		            	    	
 	    		            	    	var td2 = document.createElement('td');
 	    		            	    	var input2 = document.createElement('input');
 	    		            	    	input2.setAttribute('class','input');
-	    		            	    	input2.setAttribute('id','courseCodeInCourset<%=i + j%>');
+	    		            	    	input2.setAttribute('id','courseCodeInCourse<%=i + j%>');
 	    		            	    	td2.appendChild(input2);
 	    		            	    	
 	    		            	    	var td3 = document.createElement('td');
 	    		            	    	var input3 = document.createElement('input');
 	    		            	    	input3.setAttribute('class','input');
-	    		            	    	input3.setAttribute('id','courseNameInCourset<%=i + j%>');
+	    		            	    	input3.setAttribute('id','courseNameInCourse<%=i + j%>');
 	    		            	    	td3.appendChild(input3);
 	    		            	    	
 	    		            	    	var td4 = document.createElement('td');
 	    		            	    	var select1 = document.createElement('select');
 	    		            	    	select1.setAttribute('class','input');
-	    		            	    	select1.setAttribute('id','courseTypeInCourset<%=i + j%>');
+	    		            	    	select1.setAttribute('id','courseTypeInCourse<%=i + j%>');
 	    		            	    	td4.appendChild(select1);
 	    		            	    	
 	    		            	    	var td5 = document.createElement('td');
 	    		            	    	var select2 = document.createElement('select');
 	    		            	    	select2.setAttribute('class','input');
-	    		            	    	select2.setAttribute('id','courseGroupInCourset<%=i + j%>');
-	    		            	    	td4.appendChild(select2);
+	    		            	    	select2.setAttribute('id','courseGroupInCourse<%=i + j%>');
+	    		            	    	td5.appendChild(select2);
 	    		            	    	
 	    		            	    	
 	    		            	    	var td6 = document.createElement('td');
 	    		            	    	var input4 = document.createElement('input');
 	    		            	    	input4.setAttribute('class','inputDigits');
-	    		            	    	input4.setAttribute('id','courseSemInCourset<%=i + j%>');
+	    		            	    	input4.setAttribute('id','courseSemInCourse<%=i + j%>');
 	    		            	    	td6.appendChild(input4);
 	    		            	    	
 	    		            	    	var td7 = document.createElement('td');
 	    		            	    	var input5 = document.createElement('input');
 	    		            	    	input5.setAttribute('class','inputDigits');
-	    		            	    	input5.setAttribute('id','maxMarksInCourset<%=i + j%>');
+	    		            	    	input5.setAttribute('id','maxMarksInCourse<%=i + j%>');
 	    		            	    	td7.appendChild(input5);
 	    		            	    	
 	    		            	    	var td8 = document.createElement('td');
 	    		            	    	var input6 = document.createElement('input');
 	    		            	    	input6.setAttribute('class','inputDigits');
-	    		            	    	input6.setAttribute('id','minMarksInCourset<%=i + j%>');
+	    		            	    	input6.setAttribute('id','minMarksInCourse<%=i + j%>');
 	    		            	    	td8.appendChild(input6);
 	    		            	    	
 	    		            	    	var td9 = document.createElement('td');
-	    		            	    	var input1 = document.createElement('input');
+	    		            	    	var input7 = document.createElement('input');
 	    		            	    	input7.setAttribute('class','inputDigits');
-	    		            	    	input7.setAttribute('id','maxIAInCourset<%=i + j%>');
+	    		            	    	input7.setAttribute('id','maxIAInCourse<%=i + j%>');
 	    		            	    	td9.appendChild(input7);
 	    		            	    	
 	    		            	    	var td10 = document.createElement('td');
 	    		            	    	var btnUpdate = document.createElement('button');
 	    		            	    	btnUpdate.setAttribute('class','inputButton');
-	    		            	    	btnUpdate.setAttribute('id','btnUpdate');
-	    		            	    	btnUpdate.setAttribute('onclick','updateCourset<%=i + j%>');
+	    		            	    	btnUpdate.setAttribute('id','button14');
+	    		            	    	btnUpdate.setAttribute('onclick','updateCourse<%=i + j%>()');
+	    		            	    	btnUpdate.textContent = "UPDATE";
 	    		            	    	td10.appendChild(btnUpdate);
 	    		            	    	
 	    		            	    	var td11 = document.createElement('td');
 	    		            	    	var btnDelete = document.createElement('button');
 	    		            	    	btnDelete.setAttribute('class','inputButton');
-	    		            	    	btnDelete.setAttribute('id','btnDelete');
-	    		            	    	btnDelete.setAttribute('onclick','deleteCourset<%=i + j%>');
+	    		            	    	btnDelete.setAttribute('id','button12');
+	    		            	    	btnDelete.setAttribute('onclick','deleteCourse<%=i + j%>()');
+	    		            	    	btnDelete.textContent = "DELETE	";
 	    		            	    	td11.appendChild(btnDelete);
 	    		            	    	
-	    		            	    	tr.appenChild(td1);//1
-	    		            	    	tr.appenChild(td2);//2
-	    		            	    	tr.appenChild(td3);//3
-	    		            	    	tr.appenChild(td4);//4
-	    		            	    	tr.appenChild(td5);//5
-	    		            	    	tr.appenChild(td6);//6
-	    		            	    	tr.appenChild(td7);//7
-	    		            	    	tr.appenChild(td8);//8
-	    		            	    	tr.appenChild(td9);//9
-	    		            	    	tr.appenChild(td10);//10
-	    		            	    	tr.appenChild(td11);//11
+	    		            	    	tr.appendChild(td1);//1
+	    		            	    	tr.appendChild(td2);//2
+	    		            	    	tr.appendChild(td3);//3
+	    		            	    	tr.appendChild(td4);//4
+	    		            	    	tr.appendChild(td5);//5
+	    		            	    	tr.appendChild(td6);//6
+	    		            	    	tr.appendChild(td7);//7
+	    		            	    	tr.appendChild(td8);//8
+	    		            	    	tr.appendChild(td9);//9
+	    		            	    	tr.appendChild(td10);//10
+	    		            	    	tr.appendChild(td11);//11
 	    		            	    	
 	    		            	    	table.appendChild(tr);
-	    		            	    	
-	    		            	  
+	    	
 	    		            	    }
 	    	            	    }
+	    	            	    
+	    	            	    if(rowCount > <%=courseCount%>){
+    	            	    		var createRow =  rowCount - <%=courseCount%>;
+	    	            	    	for(let i= 1;i <= createRow; i++){
+	    	            	    		table.deleteRow(-1);
+	    	            	    	}
+    	            	    	}
 	                           
 	                            
 	                        }
                         </script>
-                        <%
-                        				}
+                        <%				
+                        courseCount = 0;}
                         				j = j + programmeResultSet.getInt("programme_sem");//increment j for index
                         			}
                         		}
@@ -719,20 +726,6 @@
                                     <th>Updata<br>Course</th>
                                     </tr>
                                     
-                                    <tr class="input-in">
-                                        <td><input id="programmeNameInCourseEdit" class="input" value=""></td>
-                                        <td><input id="courseCodeInCourse" class="input"></td>
-                                        <td><input id="courseNameInCourse" class="input"></td>
-                                        <td><input id="courseTypeInCourse" class="input"></td>
-                                        <td><input id="courseGroupInCourse" class="input"></td>
-                                        <td><input id="courseSemInCourse" class="inputDigits"></td>
-                                        <td><input id="maxMarksInCourse" class="inputDigits"></td>
-                                        <td><input id="minMarksInCourse" class="inputDigits"></td>
-                                        <td><input id="maxIAInCourse" class="inputDigits"></td>
-                                        <td><button class="inputButton" id="button12" >DELETE</button></td>
-                                        <td><button class="inputButton" id="button14" >UPDATE</button></td>
-                                    </tr>
-                                    
                                 </table>
                         </form>
                        
@@ -753,14 +746,7 @@
                                 <input id="programmeNameInProgramme" type="text" placeholder="Programme Name">
                                 <input id="programmeDuration" type="text" placeholder="Duration(In Years)">
                                 <input id="programmeTotalSemesterInProgramme" type="text" placeholder="Total Semester">
-                                <button id="button" >ADD</button>
-
-                                <input type="text" placeholder="Programme Id">
-                                <input type="text" placeholder="Programme Name">
-                                <input type="text" placeholder="Duration(In Years)">
-                                <input type="text" placeholder="Total Semester">
                                 <button id="button13" >UPDATE</button>
-
                         </form>
                     </div>
                 </div>
