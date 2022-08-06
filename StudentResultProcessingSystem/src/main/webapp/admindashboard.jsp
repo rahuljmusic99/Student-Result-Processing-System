@@ -598,23 +598,27 @@
                                     <th>MAx<br> Marks</th>
                                     <th>Min<br> Marks</th>
                                     <th>Max<br>IA</th>
+                                    <th>Delete<br>Course</th>
+                                    <th>Updata<br>Course</th>
                                     </tr>
                                     
                                     <tr class="input-in">
-                                        <td ><input class="input"></td>
                                         <td><input class="input"></td>
                                         <td><input class="input"></td>
                                         <td><input class="input"></td>
                                         <td><input class="input"></td>
                                         <td><input class="input"></td>
-                                        <td><input class="input"></td>
-                                        <td><input class="input"></td>
-                                        <td><input class="input"></td>
+                                        <td><input class="inputDigits"></td>
+                                        <td><input class="inputDigits"></td>
+                                        <td><input class="inputDigits"></td>
+                                        <td><input class="inputDigits"></td>
+                                        <td><button class="inputButton" id="button12" >DELETE</button></td>
+                                        <td><button class="inputButton" id="button14" >UPDATE</button></td>
                                     </tr>
                                 </table>
                         </form>
-                        <button id="button12" >DELETE</button>
-                        <button id="button14" >UPDATE</button>
+                       
+                        
                         
                     </div>
                 </div>
@@ -1058,7 +1062,7 @@
                document.querySelector('.close11').addEventListener('click', function(){
                 document.querySelector('.bg-model11').style.display = 'none';
             })
-<<<<<<< HEAD
+
         </script>
         
         <script>
@@ -1075,10 +1079,8 @@
         </script>
                 
                 
-                  
-=======
         </script>          
->>>>>>> 782ceeb895f2f09000f47a80335e413010360d28
+
     </body>
 </html>
     
