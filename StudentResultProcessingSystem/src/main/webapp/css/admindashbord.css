@@ -1208,7 +1208,7 @@ option{
     border-bottom: 1px solid #dddddd;
 }
 
-.close12{
+#editCourse{
     position: absolute;
     top: 0;
     right: 14px;
@@ -1217,7 +1217,7 @@ option{
     cursor: pointer;
 }
 
-#button12{
+.btnDelete{
     background-color: red;
     color: white;
     padding: 10px;
@@ -1231,7 +1231,7 @@ option{
     
 }
 
-#button12:hover{
+.btnDelete{
     opacity: 0.9;
 }
 
@@ -1292,7 +1292,7 @@ option{
     opacity: 0.9;
 }
 
-#button14{
+.btnUpdate{
     background-color: gray;
     color: white;
     padding: 10px;
@@ -1304,7 +1304,7 @@ option{
     font-weight: bold;
 }
 
-#button14:hover{
+..btnUpdate{
     opacity: 0.9;
 }
 
@@ -1550,6 +1550,6 @@ option{
     width: 3rem;
 }
 
-
-
-
+.hiddenCourseData{
+	display: none;
+}

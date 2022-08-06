@@ -481,11 +481,10 @@
                             	if(coursesData!=null){
                             		
                             		while(coursesData.next()){
-                        				
                             			out.println(coursesData.getString("course_name"));
                             			out.println("<br/>");
                             			courseCount = courseCount + 1;
-                             		}
+                            	 	}
                             	}
                             	
                             }catch(SQLException e){
@@ -522,116 +521,11 @@
 	                        document.getElementById("courseEdit<%=i + j%>");
 	                        document.getElementById("editCourseTable");
 	                        function editCourse<%=i + j%>(){
-	                            document.querySelector('.bg-model12').style.display = 'flex';
-	                            document.querySelector('.bg-model12').style.position = 'fixed';
-	                            
-	                            table = document.getElementById("editCourseTable");
-	    	            	    
-	    	            	    var rowCount = table.rows.length -1;
-	    	            	    if(rowCount < <%=13%>){
-	    	            	    	var createRow =  <%=13%> - rowCount;
-	    	            	    	for(let i= 1;i <= createRow; i++){
-	    		            	    	
-	    		            	    	var tr = document.createElement('tr');
-	    		            	    	tr.setAttribute('class','input-in');
-	    		            	    	
-	    		            	    	var td1 = document.createElement('td');
-	    		            	    	var input1 = document.createElement('input');
-	    		            	    	input1.setAttribute('class','input');
-	    		            	    	input1.setAttribute('id','programmeNameInCourseEdit<%=i + j%>');
-	    		            	    	td1.appendChild(input1);
-	    		            	    	
-	    		            	    	var td2 = document.createElement('td');
-	    		            	    	var input2 = document.createElement('input');
-	    		            	    	input2.setAttribute('class','input');
-	    		            	    	input2.setAttribute('id','courseCodeInCourse<%=i + j%>');
-	    		            	    	td2.appendChild(input2);
-	    		            	    	
-	    		            	    	var td3 = document.createElement('td');
-	    		            	    	var input3 = document.createElement('input');
-	    		            	    	input3.setAttribute('class','input');
-	    		            	    	input3.setAttribute('id','courseNameInCourse<%=i + j%>');
-	    		            	    	td3.appendChild(input3);
-	    		            	    	
-	    		            	    	var td4 = document.createElement('td');
-	    		            	    	var select1 = document.createElement('select');
-	    		            	    	select1.setAttribute('class','input');
-	    		            	    	select1.setAttribute('id','courseTypeInCourse<%=i + j%>');
-	    		            	    	td4.appendChild(select1);
-	    		            	    	
-	    		            	    	var td5 = document.createElement('td');
-	    		            	    	var select2 = document.createElement('select');
-	    		            	    	select2.setAttribute('class','input');
-	    		            	    	select2.setAttribute('id','courseGroupInCourse<%=i + j%>');
-	    		            	    	td5.appendChild(select2);
-	    		            	    	
-	    		            	    	
-	    		            	    	var td6 = document.createElement('td');
-	    		            	    	var input4 = document.createElement('input');
-	    		            	    	input4.setAttribute('class','inputDigits');
-	    		            	    	input4.setAttribute('id','courseSemInCourse<%=i + j%>');
-	    		            	    	td6.appendChild(input4);
-	    		            	    	
-	    		            	    	var td7 = document.createElement('td');
-	    		            	    	var input5 = document.createElement('input');
-	    		            	    	input5.setAttribute('class','inputDigits');
-	    		            	    	input5.setAttribute('id','maxMarksInCourse<%=i + j%>');
-	    		            	    	td7.appendChild(input5);
-	    		            	    	
-	    		            	    	var td8 = document.createElement('td');
-	    		            	    	var input6 = document.createElement('input');
-	    		            	    	input6.setAttribute('class','inputDigits');
-	    		            	    	input6.setAttribute('id','minMarksInCourse<%=i + j%>');
-	    		            	    	td8.appendChild(input6);
-	    		            	    	
-	    		            	    	var td9 = document.createElement('td');
-	    		            	    	var input7 = document.createElement('input');
-	    		            	    	input7.setAttribute('class','inputDigits');
-	    		            	    	input7.setAttribute('id','maxIAInCourse<%=i + j%>');
-	    		            	    	td9.appendChild(input7);
-	    		            	    	
-	    		            	    	var td10 = document.createElement('td');
-	    		            	    	var btnUpdate = document.createElement('button');
-	    		            	    	btnUpdate.setAttribute('class','inputButton');
-	    		            	    	btnUpdate.setAttribute('id','button14');
-	    		            	    	btnUpdate.setAttribute('onclick','updateCourse<%=i + j%>()');
-	    		            	    	btnUpdate.textContent = "UPDATE";
-	    		            	    	td10.appendChild(btnUpdate);
-	    		            	    	
-	    		            	    	var td11 = document.createElement('td');
-	    		            	    	var btnDelete = document.createElement('button');
-	    		            	    	btnDelete.setAttribute('class','inputButton');
-	    		            	    	btnDelete.setAttribute('id','button12');
-	    		            	    	btnDelete.setAttribute('onclick','deleteCourse<%=i + j%>()');
-	    		            	    	btnDelete.textContent = "DELETE	";
-	    		            	    	td11.appendChild(btnDelete);
-	    		            	    	
-	    		            	    	tr.appendChild(td1);//1
-	    		            	    	tr.appendChild(td2);//2
-	    		            	    	tr.appendChild(td3);//3
-	    		            	    	tr.appendChild(td4);//4
-	    		            	    	tr.appendChild(td5);//5
-	    		            	    	tr.appendChild(td6);//6
-	    		            	    	tr.appendChild(td7);//7
-	    		            	    	tr.appendChild(td8);//8
-	    		            	    	tr.appendChild(td9);//9
-	    		            	    	tr.appendChild(td10);//10
-	    		            	    	tr.appendChild(td11);//11
-	    		            	    	
-	    		            	    	table.appendChild(tr);
-	    	
-	    		            	    }
+								document.getElementById("editCoursediv<%=i + j%>").style.display = 'flex';
+								document.getElementById("editCoursediv<%=i + j%>").style.display = 'fixed';
+								
 	    	            	    }
 	    	            	    
-	    	            	    if(rowCount > <%=courseCount%>){
-    	            	    		var createRow =  rowCount - <%=courseCount%>;
-	    	            	    	for(let i= 1;i <= createRow; i++){
-	    	            	    		table.deleteRow(-1);
-	    	            	    	}
-    	            	    	}
-	                           
-	                            
-	                        }
                         </script>
                         <%				
                         courseCount = 0;}
@@ -647,7 +541,8 @@
                     </table>
                     </div>
                 </div>
-                     
+                
+              
                 <div class="bg-model">
                     <div class="model-content">
                         <div class="close" id="close" onclick="myFuction()2">+</div>
@@ -704,13 +599,33 @@
                     </div>
                 </div>  
                     
+                      
+                        <%
+                        	try{
+                        		
+                        		ResultSet programmeResultSet2 = loadData.loadProgrammeData();
+                        		if(programmeResultSet2!=null){
+                        			int j = 0;
+                        			int courseCount = 0;
+                        			while(programmeResultSet2.next()){
+                        	
+                        				for(int i=1; i<= programmeResultSet2.getInt("programme_sem"); i++){
+                        					
+                        					ResultSet coursesData = loadData.loadCoursedata(programmeResultSet2, i);
+                        %>
                     
-                    <div class="bg-model12">
+                    <div class="bg-model12" id="editCoursediv<%=i + j%>">
                     <div class="model-content12">
-                        <div class="close12" id="close" >+</div>
+                        <div class="closeCourse<%=i + j%>" id="editCourse">+
+                        	<script type="text/javascript">
+								document.querySelector('.closeCourse<%=i + j%>').addEventListener('click', function(){
+			                	document.getElementById('editCoursediv<%=i + j%>').style.display = 'none';
+			            		})
+        					</script>
+                        </div>
                         <div class="header12">
                             <h1>Edit Course Data</h1></div>
-                            <form>
+                            <form id="editCourseForm<%=i + j%>" action="" method="post">
                                 <table id="editCourseTable" border="1" class="tb4">
                                     <tr>
                                     <th>Programme Name</th>
@@ -723,9 +638,45 @@
                                     <th>Min<br> Marks</th>
                                     <th>Max<br>IA</th>
                                     <th>Delete<br>Course</th>
-                                    <th>Updata<br>Course</th>
+                                    <th>Update<br>Course</th>
                                     </tr>
-                                    
+							<%try{
+                            	if(coursesData!=null){
+                            		
+                            		while(coursesData.next()){
+                            %>			
+                            		<tr class="input-in">
+                            			<td><input class="input" id="" value="<%=programmeResultSet2.getString("programme_name")%>"/></td>
+                            			<td><input class="input" id="" value="<%=coursesData.getString("course_code")%>"/></td>
+                            			<td><input class="input" id="" value="<%=coursesData.getString("course_name")%>"/></td>
+                            			<%if(coursesData.getString("course_type")=="Theory"){%>
+                            				<td><select>
+                            					<option value="" disabled hidden>course Type</option>
+                            					<option selected>Theory</option>
+                            					<option>Practical</option>
+                            				</select>
+                            			</td>
+                            			<%}else{%>
+	                            				<td><select>
+	                        					<option value="" disabled hidden>course Type</option>
+	                        					<option>Theory</option>
+	                        					<option selected>Practical</option>
+	                        				</select>
+	                        			</td>
+                            			
+                            			<%}%>
+                            			
+                            			
+                            			
+                            		</tr>     			
+                            			
+                            <%	 	}
+                            	}
+                            	
+                            }catch(SQLException e){
+                            	e.printStackTrace();
+                            	
+                            }%> 
                                 </table>
                         </form>
                        
@@ -733,7 +684,17 @@
                         
                     </div>
                 </div>
-                
+                <%				
+                	courseCount = 0;}
+                				j = j + programmeResultSet2.getInt("programme_sem");//increment j for index
+                			}
+                		}
+                	}catch(SQLException e){
+                		e.printStackTrace();
+                		
+                	}	
+                   
+                %>               
                 
                 <div class="bg-model13">
                     <div class="model-content13">
@@ -1196,11 +1157,7 @@
 
         </script>
         
-        <script>
-            document.querySelector('.close12').addEventListener('click', function(){
-                document.querySelector('.bg-model12').style.display = 'none';
-            })
-        </script>
+      
         
         <script>
             document.querySelector('.close13').addEventListener('click', function(){
