@@ -748,19 +748,19 @@
                         <div class="header13">
                             <h1>Edit Programme Data</h1></div>
                             <form action="">
-<<<<<<< HEAD
+
                                 <input id="programmeIdInProgramme" type="text" placeholder="Programme Id">
                                 <input id="programmeNameInProgramme" type="text" placeholder="Programme Name">
                                 <input id="programmeDuration" type="text" placeholder="Duration(In Years)">
                                 <input id="programmeTotalSemesterInProgramme" type="text" placeholder="Total Semester">
                                 <button id="button" >ADD</button>
-=======
+
                                 <input type="text" placeholder="Programme Id">
                                 <input type="text" placeholder="Programme Name">
                                 <input type="text" placeholder="Duration(In Years)">
                                 <input type="text" placeholder="Total Semester">
                                 <button id="button13" >UPDATE</button>
->>>>>>> 5b65f53b567c1a72770cf5911ec2777847c805fa
+
                         </form>
                     </div>
                 </div>

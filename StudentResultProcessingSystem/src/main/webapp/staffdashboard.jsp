@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="org.CanaraExamManager.util.DBConnection" %>
+<%@page import="org.CanaraExamManager.dao.LoadDataDao" %>
+<%@page import="java.sql.Connection" %>
+<%@page import="java.sql.Statement" %>
     
 <% 
 	response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
@@ -12,6 +20,12 @@
 <%} %>   
 
 <%request.getAttribute("username");%>
+
+<%
+	LoadDataDao loadData = new LoadDataDao(); 
+	ResultSet programmeResultSet = loadData.loadProgrammeData();
+	 
+%>
 
 <!DOCTYPE html5>
 <html>
