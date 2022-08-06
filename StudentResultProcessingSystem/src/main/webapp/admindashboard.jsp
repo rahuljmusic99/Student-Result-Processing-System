@@ -946,7 +946,6 @@
                         </form>
                     </div>
                 </div>     
-            </div>
          </div>
            
 				<%
@@ -1085,10 +1084,7 @@
                document.querySelector('.close11').addEventListener('click', function(){
                 document.querySelector('.bg-model11').style.display = 'none';
             })
-<<<<<<< HEAD
-=======
 
->>>>>>> 453b7a3c55606de14d5491e264bfd1859a7dba17
         </script>
         
         <script>
@@ -1113,11 +1109,6 @@
         </script>
                 
                 
-<<<<<<< HEAD
-                  
-
-=======
->>>>>>> 453b7a3c55606de14d5491e264bfd1859a7dba17
         </script>          
 
     </body>
