@@ -1304,7 +1304,7 @@ option{
     font-weight: bold;
 }
 
-..btnUpdate{
+.btnUpdate{
     opacity: 0.9;
 }
 
@@ -1548,6 +1548,15 @@ option{
 .inputDigits{
     padding: 0;
     width: 3rem;
+}
+
+.inputCourseCode{
+	padding: 0;
+    width: 5.5rem;
+}
+
+.tdCourse{
+	padding:0;
 }
 
 .hiddenCourseData{

@@ -522,7 +522,7 @@
 	                        document.getElementById("editCourseTable");
 	                        function editCourse<%=i + j%>(){
 								document.getElementById("editCoursediv<%=i + j%>").style.display = 'flex';
-								document.getElementById("editCoursediv<%=i + j%>").style.display = 'fixed';
+								document.getElementById("editCoursediv<%=i + j%>").style.position = 'fixed';
 								
 	    	            	    }
 	    	            	    
@@ -599,7 +599,11 @@
                     </div>
                 </div>  
                     
-                      
+                  <form id="deleteCourseForm" action = "" method="post">
+                  		<input type="hidden" name="courseCode" value=""/>
+                  		<input type="hidden" name="courseName" value=""/>
+                  		<input type="hidden" name="programmeId" value=""/>
+                  </form>    
                         <%
                         	try{
                         		
@@ -626,49 +630,125 @@
                         <div class="header12">
                             <h1>Edit Course Data</h1></div>
                             <form id="editCourseForm<%=i + j%>" action="" method="post">
-                                <table id="editCourseTable" border="1" class="tb4">
+                                <table id="editCourseTable<%=i + j%>" border="1" class="tb4">
                                     <tr>
-                                    <th>Programme Name</th>
-                                    <th>Course<br> code</th>
-                                    <th>Course<br> name</th>
-                                    <th>Course<br> Type</th>
-                                    <th>Course<br> Group</th>
-                                    <th>Course<br> Sem</th>
-                                    <th>MAx<br> Marks</th>
-                                    <th>Min<br> Marks</th>
-                                    <th>Max<br>IA</th>
-                                    <th>Delete<br>Course</th>
-                                    <th>Update<br>Course</th>
+                                    <th class="tdCourse">Programme Name</th>
+                                    <th class="tdCourse" >Course<br> code</th>
+                                    <th class="tdCourse" >Course<br> name</th>
+                                    <th class="tdCourse">Course<br> Type</th>
+                                    <th class="tdCourse">Course<br> Group</th>
+                                    <th class="tdCourse">Course<br> Sem</th>
+                                    <th class="tdCourse">MAx<br> Marks</th>
+                                    <th class="tdCourse">Min<br> Marks</th>
+                                    <th class="tdCourse">Max<br>IA</th>
+                                    <th class="tdCourse">Delete<br>Course</th>
+                                    <th class="tdCourse">Update<br>Course</th>
                                     </tr>
 							<%try{
                             	if(coursesData!=null){
                             		
                             		while(coursesData.next()){
+                            			courseCount = courseCount + 1;
                             %>			
                             		<tr class="input-in">
-                            			<td><input class="input" id="" value="<%=programmeResultSet2.getString("programme_name")%>"/></td>
-                            			<td><input class="input" id="" value="<%=coursesData.getString("course_code")%>"/></td>
-                            			<td><input class="input" id="" value="<%=coursesData.getString("course_name")%>"/></td>
-                            			<%if(coursesData.getString("course_type")=="Theory"){%>
-                            				<td><select>
+                            			<td class="tdCourse"><input class="input" id="" value="<%=programmeResultSet2.getString("programme_name")%>"/></td>
+                            			<td class="tdCourse"><input class="inputCourseCode" id="" value="<%=coursesData.getString("course_code")%>"/></td>
+                            			<td class="tdCourse"><input class="input" id="" value="<%=coursesData.getString("course_name")%>"/></td>
+                            			<%if(coursesData.getString("course_type").equals("Theory")){
+                            			%>
+                            				<td class="tdCourse"><select class="input">
                             					<option value="" disabled hidden>course Type</option>
                             					<option selected>Theory</option>
                             					<option>Practical</option>
                             				</select>
                             			</td>
                             			<%}else{%>
-	                            				<td><select>
-	                        					<option value="" disabled hidden>course Type</option>
-	                        					<option>Theory</option>
-	                        					<option selected>Practical</option>
-	                        				</select>
-	                        			</td>
-                            			
+                            				<td class="tdCourse"><select class="input">
+                            					<option value="" disabled hidden>course Type</option>
+                            					<option>Theory</option>
+                            					<option Selected>Practical</option>
+                            				</select>
+                            			</td>
                             			<%}%>
                             			
+                            			<%switch(coursesData.getString("course_group")){
+                            			case "Group 1 Core Course":
+                            			%>
+                            				<td class="tdCourse"><select class="input">
+                            					<option value="" disabled hidden>course Group</option>
+                            					<option selected>Group 1 Core Course</option>
+				                                <option >Group 2 Elective Course</option>
+				                                <option >Group 3 a)Compulsary Foundation</option>
+				                                <option >Group 3 b)Elective Foundation</option>
+				                                <option >Group 4</option>
+                            				</select>
+                            			</td>
+                            			<%break;	
+                            			case "Group 2 Elective Course":
+                                			%>
+                                				<td class="tdCourse"><select class="input">
+                                					<option value="" disabled hidden>course Group</option>
+                                					<option >Group 1 Core Course</option>
+    				                                <option selected>Group 2 Elective Course</option>
+    				                                <option >Group 3 a)Compulsary Foundation</option>
+    				                                <option >Group 3 b)Elective Foundation</option>
+    				                                <option >Group 4</option>
+                                				</select>
+                                			</td>
+                                			<%break;
+	                           			case "Group 3 a)Compulsary Foundation":
+	                               			%>
+	                               				<td class="tdCourse"><select class="input">
+	                               					<option value="" disabled hidden>course Group</option>
+	                               					<option >Group 1 Core Course</option>
+	   				                                <option >Group 2 Elective Course</option>
+	   				                                <option selected >Group 3 a)Compulsary Foundation</option>
+	   				                                <option >Group 3 b)Elective Foundation</option>
+	   				                                <option >Group 4</option>
+	                               				</select>
+	                               			</td>
+	                               			<%break;
+                               			case "Group 3 b)Elective Foundation":
+	                               			%>
+	                               				<td class="tdCourse"><select class="input">
+	                               					<option value="" disabled hidden>course Group</option>
+	                               					<option >Group 1 Core Course</option>
+	   				                                <option >Group 2 Elective Course</option>
+	   				                                <option >Group 3 a)Compulsary Foundation</option>
+	   				                                <option selected >Group 3 b)Elective Foundation</option>
+	   				                                <option >Group 4</option>
+	                               				</select>
+	                               			</td>
+	                               			<%break;
+                            			default:
+                            				%>
+                            				<td class="tdCourse"><select class="input">
+	                               					<option value="" disabled hidden>course Group</option>
+	                               					<option >Group 1 Core Course</option>
+	   				                                <option >Group 2 Elective Course</option>
+	   				                                <option >Group 3 a)Compulsary Foundation</option>
+	   				                                <option >Group 3 b)Elective Foundation</option>
+	   				                                <option selected >Group 4</option>
+	                               				</select>
+	                               			</td>
+                            			<%} %>
                             			
+                       						<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_marks")%>"/></td>
+                            				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("min_marks")%>"/></td>
+                            				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_IA")%>"/></td>
+                            				
+                            			<script type="text/javascript">
+                            				function deleteCourse<%=courseCount%>(){
+                            					document.forms['deleteCourseForm']['courseCode'].value = "<%=coursesData.getString("course_code")%>";
+                            					document.forms['deleteCourseForm']['courseName'].value = "<%=coursesData.getString("course_name")%>";
+                            					document.getElementById('deleteCourseForm').submit();
+                            					
+                            				}
+                            				
+                            				
+                            			</script>
                             			
-                            		</tr>     			
+                            		</tr>    
                             			
                             <%	 	}
                             	}
