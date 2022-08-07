@@ -41,6 +41,10 @@
         <script src="js/popup.js"></script>
     </head> 
     <body>
+    
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+    
         <div class="tabs">
             <div class="tabs__sidebar">
                 <div class="space"><img src="css/images/education.png" class="edu"></div>
@@ -54,7 +58,11 @@
                 <button class="tabs__button" onclick="logoutConfirm();" ><i class="fa fa-power-off"></i>Logout</button>
             </div>
         
-            
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
+<!-- ------------------------------------------------------ TAB 1 DASHBOARD ----- ------------------------------------------------------------------------------- -->
             
             <div class="tabs__content" data-tab="1">
                 <h2>Canara College Mangalore</h2><br>
@@ -70,8 +78,9 @@
             
             
             
-            
-            
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
+<!-- ------------------------------------------------------ TAB 2 STUDENT DETAILS ------------------------------------------------------------------------------- -->            
             <div class="tabs__content" data-tab="2">
                 <div class="protab"> 
                     
@@ -192,6 +201,7 @@
                     </div>
                 </div>
             
+             
                 
                 <div class="bg-model6">
                     <div class="model-content6">
@@ -327,6 +337,8 @@
 
 
 
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------ TAB 3 STAFF DETAILS --------------------------------------------------------------------------------- -->
             
             <div class="tabs__content" data-tab="3">
                 <div class="protab"> 
@@ -360,6 +372,8 @@
                     </div>
                 </div>
                 
+                
+                
                 <div class="bg-model9">
                     <div class="model-content9">
                         <div class="close9" id="close" >+</div>
@@ -383,7 +397,6 @@
                     </div>
                 </div>
                 
-                
                 <div class="bg-model10">
                     <div class="model-content10">
                         <div class="close10" id="close" >+</div>
@@ -405,7 +418,6 @@
                         </form>
                     </div>
                 </div>
-                
                 
                 <div class="bg-model11">
                     <div class="model-content11">
@@ -437,8 +449,9 @@
             
             
             
-            
-            
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
+<!-- ------------------------------------------------------ TAB 4 PROGRAMME AND COURSES ------------------------------------------------------------------------- -->
+
             <div class="tabs__content" data-tab="4">
                 <div class="protab"> 
                     <button class="refresh" id="refProgramme" onclick="refreshProgramme();">Refresh page</button>
@@ -490,7 +503,7 @@
                             }catch(SQLException e){
                             	e.printStackTrace();
                             	
-                            }%>  </td>   <!--Course-->
+                        }%> </td>   <!--Course-->
 
 
 							<td class="td1"><button class="btn__course" id="btn__course<%=i + j%>>" onclick="insertCourseData<%=i + j%>()"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
@@ -543,6 +556,7 @@
                 </div>
                 
               
+              
                 <div class="bg-model">
                     <div class="model-content">
                         <div class="close" id="close" onclick="myFuction()2">+</div>
@@ -559,7 +573,6 @@
                         </form>
                     </div>
                 </div>
-                
                 
                 <div class="bg-model1">
                     <div class="model-content1">
@@ -754,10 +767,7 @@
                             	
                             }%> 
                                 </table>
-                        </form>
-                       
-                        
-                        
+                        </form> 
                     </div>
                 </div>
                 <%				
@@ -793,6 +803,8 @@
                  
                  
                  
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->                 
+<!-- ------------------------------------------------------ TAB 5 CLASSES  -------------------------------------------------------------------------------------- -->
                     
              <div class="tabs__content" data-tab="5">
                 <div class="protab"> 
@@ -838,7 +850,6 @@
                     </table>
                     </div>
                 </div>
-                 
                  
                  <div class="bg-model5">
                     <div class="model-content5">
@@ -899,7 +910,8 @@
                
                
                     
-     
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->     
+<!-- ------------------------------------------------------ TAB 6 STUDENT RESULTS ------------------------------------------------------------------------------- -->
             
             <div class="tabs__content" data-tab="6">
             <div class="protab"> 
@@ -1036,6 +1048,9 @@
             </table>
             </div>
             </div>
+            
+            
+            
                 <div class="bg-model2">
                 <div class="model-content2">
                 <div class="close2" id="close" >+</div>
@@ -1144,6 +1159,11 @@
 				<%} %>
              
                 
+
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
                         
         <script type="text/javascript">
             let image = document.getElementById("image");
@@ -1155,58 +1175,54 @@
             },2500);
         </script>
                 
-                <script>
-                    document.querySelector('.close').addEventListener('click', function(){
-                        document.querySelector('.bg-model').style.display = 'none';
-                     });
-                </script>
-                
-                <script>
-                    document.querySelector('.close1').addEventListener('click', function(){
-                        document.querySelector('.bg-model1').style.display = 'none';
-                    });
-                </script>
-                
-                <script>
-                    document.querySelector('.close2').addEventListener('click', function(){
-                        document.querySelector('.bg-model2').style.display = 'none';
-                    })
-                </script>
-                
-                <script>
-                    document.querySelector('.close3').addEventListener('click', function(){
-                        document.querySelector('.bg-model3').style.display = 'none';
-                    })
-                </script>
-                
-                <script>
-                    document.querySelector('.close4').addEventListener('click', function(){
-                        document.querySelector('.bg-model4').style.display = 'none';
-                    })
-                
-                </script>
-                
-                <script>
-                    document.querySelector('.close5').addEventListener('click', function(){
-                       document.querySelector('.bg-model5').style.display = 'none';
-                   })
-                </script>
-                
-                <script>
-                   document.querySelector('.close6').addEventListener('click', function(){
-                      document.querySelector('.bg-model6').style.display = 'none';
-                  })
-               </script>
-                
+         <script>
+             document.querySelector('.close').addEventListener('click', function(){
+                 document.querySelector('.bg-model').style.display = 'none';
+              });
+         </script>
          
-        
+         <script>
+             document.querySelector('.close1').addEventListener('click', function(){
+                 document.querySelector('.bg-model1').style.display = 'none';
+             });
+         </script>
+         
+         <script>
+             document.querySelector('.close2').addEventListener('click', function(){
+                 document.querySelector('.bg-model2').style.display = 'none';
+             })
+         </script>
+         
+         <script>
+             document.querySelector('.close3').addEventListener('click', function(){
+                 document.querySelector('.bg-model3').style.display = 'none';
+             })
+         </script>
+         
+         <script>
+             document.querySelector('.close4').addEventListener('click', function(){
+                 document.querySelector('.bg-model4').style.display = 'none';
+             })
+         
+         </script>
+         
+         <script>
+             document.querySelector('.close5').addEventListener('click', function(){
+                document.querySelector('.bg-model5').style.display = 'none';
+            })
+         </script>
+         
+         <script>
+            document.querySelector('.close6').addEventListener('click', function(){
+               document.querySelector('.bg-model6').style.display = 'none';
+           })
+        </script>
+                
         <script>
             document.querySelector('.close7').addEventListener('click', function(){
                 document.querySelector('.bg-model7').style.display = 'none';
             })
         </script>
-        
-        
         
         <script>
             document.querySelector('.close8').addEventListener('click', function(){
@@ -1233,16 +1249,13 @@
 
         </script>
         
-      
-        
         <script>
             document.querySelector('.close13').addEventListener('click', function(){
                 document.querySelector('.bg-model13').style.display = 'none';
                
             })
         </script>
-                    
-                    
+                        
         <script>
             document.querySelector('.close14').addEventListener('click', function(){
                 document.querySelector('.bg-model14').style.display = 'none';
@@ -1250,8 +1263,7 @@
             })
         </script>
                 
-                
-        </script>          
+                     
 
     </body>
 </html>
