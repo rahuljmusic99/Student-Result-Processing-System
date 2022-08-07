@@ -14,4 +14,14 @@
     <servlet-name>UpdateDataServlet</servlet-name>
     <url-pattern>/UpdateDataServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteDataServlet</display-name>
+    <servlet-name>DeleteDataServlet</servlet-name>
+    <servlet-class>org.CanaraExamManager.controler.DeleteDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteDataServlet</servlet-name>
+    <url-pattern>/DeleteDataServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -599,11 +599,7 @@
                     </div>
                 </div>  
                     
-                  <form id="deleteCourseForm" action = "" method="post">
-                  		<input type="hidden" name="courseCode" value=""/>
-                  		<input type="hidden" name="courseName" value=""/>
-                  		<input type="hidden" name="programmeId" value=""/>
-                  </form>    
+ 
                         <%
                         	try{
                         		
@@ -739,9 +735,9 @@
                             				
                             			<script type="text/javascript">
                             				function deleteCourse<%=courseCount%>(){
-                            					document.forms['deleteCourseForm']['courseCode'].value = "<%=coursesData.getString("course_code")%>";
-                            					document.forms['deleteCourseForm']['courseName'].value = "<%=coursesData.getString("course_name")%>";
-                            					document.getElementById('deleteCourseForm').submit();
+                            					document.forms['deleteForm']['courseCode'].value = "<%=coursesData.getString("course_code")%>";
+                            					document.forms['deleteForm']['courseName'].value = "<%=coursesData.getString("course_name")%>";
+                            					
                             					
                             				}
                             				
