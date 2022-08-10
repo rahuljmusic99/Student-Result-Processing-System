@@ -39,8 +39,13 @@
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="js/popup.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
     </head> 
     <body>
+    
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
         <div class="tabs">
             <div class="tabs__sidebar">
                 <div class="space"><img src="css/images/education.png" class="edu"></div>
@@ -54,7 +59,11 @@
                 <button class="tabs__button" onclick="logoutConfirm();" ><i class="fa fa-power-off"></i>Logout</button>
             </div>
         
-            
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
+<!-- ------------------------------------------------------ TAB 1 DASHBOARD ----- ------------------------------------------------------------------------------- -->
             
             <div class="tabs__content" data-tab="1">
                 <h2>Canara College Mangalore</h2><br>
@@ -70,8 +79,9 @@
             
             
             
-            
-            
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
+<!-- ------------------------------------------------------ TAB 2 STUDENT DETAILS ------------------------------------------------------------------------------- -->            
             <div class="tabs__content" data-tab="2">
                 <div class="protab"> 
                     
@@ -89,6 +99,7 @@
                         <tr >
                           <th>Programme Name</th>
                             <th>Class</th>
+                            <th>Class Year</th>
                             <th>Student Name</th>
                             <th>Register Number</th>
                             <th>View Student Details</th>
@@ -105,6 +116,7 @@
                         <tr>
                             <td  class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme name-->
                             <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
+                            <td class="td2"><%=studentData.getString("class_year")%></td>
                             <td><%=studentData.getString("first_name")+" "+studentData.getString("last_name")%></td>  <!-- register number -->
                             <td><%=studentData.getString("reg_no")%></td>
                             <td class="td2"><button id="viewStudent<%=i%>" class="btn__edit"  onclick="viewStudentDetails<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
@@ -192,14 +204,20 @@
                     </div>
                 </div>
             
+             
                 
                 <div class="bg-model6">
                     <div class="model-content6">
                         <div class="close6" id="close" >+</div>
                         <div class="header6">
                             <h1>Add Student Data</h1></div>
+<<<<<<< HEAD
                              <img class="student" src="css/images/studenticon.svg">
                             <form action="" >
+=======
+                             <img class="student" src="images/studenticon.svg">
+                            <form action="insertDataServlet" method="post" id="addStudentForm" >
+>>>>>>> 466a362bdd568746dcc7a474a8d178f20b42d27c
                                 <input type="text" placeholder="First Name" class="merge1">
                                 <input type="text" placeholder="Last Name" class="merge1">
                                 <select class="merge2">
@@ -217,29 +235,168 @@
                                 <input type="text" placeholder="District" class="merge3">
                                 <input type="text" placeholder="State" class="merge3">
                                 <input type="text" placeholder="Year Of Joining" class="merge2">
-                                <select class="merge3">
+                                <select class="merge3" id="studentProgrammeSelect" name="studentProgrammeSelect" onchange = "changeDropDownData(this.value)">
                                 <option value="" disabled selected hidden>Programme</option>
-                                <option></option>
+						<% 
+							ResultSet studentProgrammeData = loadData.loadProgrammeData();
+							if(studentProgrammeData!= null){
+								
+								try{
+									
+									while(studentProgrammeData.next()){
+						%>				
+										<option value="<%=studentProgrammeData.getString("programme_id")%>" ><%=studentProgrammeData.getString("programme_name")%></option>
+						<%			}
+								}catch(SQLException e){
+									e.printStackTrace();
+								}
+							}
+						%>
+								</select>
+								
+                                <select class="merge3" id="classDropDown" name="classDropDown" onchange="changeDropDownData2(this.value)">
+                                <option value="class" disabled selected hidden>class</option>
+						<% 
+							ResultSet studentClassData = loadData.loadClassData();
+							if(studentProgrammeData!= null){
+								
+								try{
+									
+									while(studentClassData.next()){
+						%>				
+										<option value="<%=studentClassData.getString("programme_id")%>" ><%=studentClassData.getString("class_name")%></option>
+						<%			}
+								}catch(SQLException e){
+									e.printStackTrace();
+								}
+							}
+						%>
                                 </select>
-                                <select class="merge3">
-                                <option value="" disabled selected hidden>class</option>
-                                <option></option>
+                                
+                                <select class="merge3" id="classYearDropDown" name="classYearDropDown">
+                                <option value="classYear" disabled selected hidden>Class Year</option>
+                        <% 
+							ResultSet studentClassData2 = loadData.loadClassData();
+							if(studentClassData2!= null){
+								
+								try{
+									
+									while(studentClassData2.next()){
+						%>				
+										<option value="<%=studentClassData2.getString("programme_id")%>"><%=studentClassData2.getString("class_year")%></option>
+						<%			}
+								}catch(SQLException e){
+									e.printStackTrace();
+								}
+							}
+						%>        
                                 </select>
-                                <select class="merge3">
-                                <option value="" disabled selected hidden>Class Year</option>
-                                <option>Adimale</option>
-                                </select>
-                                <select class="merge2">
+                                <select class="merge2" id="programmeSemDropDown">
                                 <option value="" disabled selected hidden>Current Sem</option>
-                                <option></option>
                                 </select>
-                                
-                                
                                 <input type="text" placeholder="Register Number" class="merge1">
                                 <input type="text" placeholder="Password" class="merge1">
                                 <button id="button6" >ADD</button>
+                        <% 
+							ResultSet studentProgrammeSem = loadData.loadProgrammeData();
+							if(studentProgrammeSem!= null){
+								
+								try{
+									
+									while(studentProgrammeSem.next()){
+						%>				
+										<input type = "hidden" id="<%=studentProgrammeSem.getString("programme_id")%>" value = "<%=studentProgrammeSem.getString("programme_sem")%>">
+						<%			}
+								}catch(SQLException e){
+									e.printStackTrace();
+								}
+							}
+						%>        
                                 
-                            
+                                
+                                <script>
+                             		// function to enable and disable dropDown in Student Data
+									window.onload = function removeduplicate(){
+										var myclass = {};
+										$("select[id='classDropDown'] > option").each(function () {
+										    if(myclass[this.text]) {
+										        $(this).remove();
+										        $(this).hide();
+										    } else {
+										        myclass[this.text] = this.value;
+										        $(this).hide();
+										    }
+										});
+										
+										var myyear = {};
+										$("select[id='classYearDropDown'] > option").each(function () {
+										    if(myyear[this.text]) {
+										        $(this).remove();
+										        $(this).hide();
+										    } else {
+										        myyear[this.text] = this.value;
+										        $(this).hide();
+										    }
+										});
+										
+										var mysem = {};
+										$("select[id='programmeSemDropDown'] > option").each(function () {
+										    if(mysem[this.text]) {
+										        $(this).remove();
+										        $(this).hide();
+										    } else {
+										        mysem[this.text] = this.value;
+										        $(this).hide();
+										    }
+										});
+									}
+                             		
+                    				function changeDropDownData(studentProgrammeSelect){        
+                    					if(studentProgrammeSelect!=''){
+                    						
+                    						$("#classDropDown option[value='"+studentProgrammeSelect+"']").show();
+                    						$("#classDropDown option[value!='"+studentProgrammeSelect+"']").hide();
+                    						$("#classDropDown option[value='class']").prop('selected',true);
+                    						$("#classYearDropDown option[value='classYear']").prop('selected',true);
+                    						
+                    						var programmeSem = document.getElementById(studentProgrammeSelect).value;
+                    						var optionsCount = $('#programmeSemDropDown > option').length -1;
+                    						
+                    						if(programmeSem > optionsCount){
+                    							
+                    							for(let i=(optionsCount + 1);i<=(programmeSem);i++){
+                    								$('#programmeSemDropDown').append(new Option(i, i));
+                    							}
+                    						}
+                    						
+                    						if(programmeSem < optionsCount){
+                    							
+                    							for(let i=(optionsCount);i>(programmeSem);i--){
+                    								$("#programmeSemDropDown option[value='"+i+"']").remove();
+                    							}
+                    						}
+                    						
+                    						$("#programmeSemDropDown option").hide();
+                    						
+                    					}
+                    				}
+                    				
+                    				function changeDropDownData2(studentClassSelect){                    					
+                    					if(studentClassSelect!=''){
+                    						$("#classYearDropDown option[value='"+studentClassSelect+"']").show();
+                    						$("#classYearDropDown option[value!='"+studentClassSelect+"']").hide();
+                    						$("#classYearDropDown option[value='classYear']").prop('selected',true);
+                    					}
+                    				}
+                    				
+                    				function changeDropDownData3(studentClassSelect){                    					
+                    					if(studentClassSelect!=''){
+                    						$("#classYearDropDown option[value='"+studentClassSelect+"']").show();
+                    						$("#classYearDropDown option[value!='"+studentClassSelect+"']").hide();
+                    						$("#classYearDropDown option[value='classYear']").prop('selected',true);
+                    					}
+                    				}
+                                </script>
                         </form>
                     </div>
                 </div>
@@ -327,6 +484,8 @@
 
 
 
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------ TAB 3 STAFF DETAILS --------------------------------------------------------------------------------- -->
             
             <div class="tabs__content" data-tab="3">
                 <div class="protab"> 
@@ -360,6 +519,8 @@
                     </div>
                 </div>
                 
+                
+                
                 <div class="bg-model9">
                     <div class="model-content9">
                         <div class="close9" id="close" >+</div>
@@ -383,7 +544,6 @@
                     </div>
                 </div>
                 
-                
                 <div class="bg-model10">
                     <div class="model-content10">
                         <div class="close10" id="close" >+</div>
@@ -405,7 +565,6 @@
                         </form>
                     </div>
                 </div>
-                
                 
                 <div class="bg-model11">
                     <div class="model-content11">
@@ -437,8 +596,9 @@
             
             
             
-            
-            
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
+<!-- ------------------------------------------------------ TAB 4 PROGRAMME AND COURSES ------------------------------------------------------------------------- -->
+
             <div class="tabs__content" data-tab="4">
                 <div class="protab"> 
                     <button class="refresh" id="refProgramme" onclick="refreshProgramme();">Refresh page</button>
@@ -464,7 +624,7 @@
                         	try{
                         		if(programmeResultSet!=null){
                         			int j = 0;
-                        			int courseCount = 1;
+                        			int courseCount = 0;
                         			while(programmeResultSet.next()){
                         	
                         				for(int i=1; i<= programmeResultSet.getInt("programme_sem"); i++){
@@ -481,17 +641,16 @@
                             	if(coursesData!=null){
                             		
                             		while(coursesData.next()){
-                        				
                             			out.println(coursesData.getString("course_name"));
                             			out.println("<br/>");
                             			courseCount = courseCount + 1;
-                             		}
+                            	 	}
                             	}
                             	
                             }catch(SQLException e){
                             	e.printStackTrace();
                             	
-                            }%>  </td>   <!--Course-->
+                        }%> </td>   <!--Course-->
 
 
 							<td class="td1"><button class="btn__course" id="btn__course<%=i + j%>>" onclick="insertCourseData<%=i + j%>()"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
@@ -522,112 +681,14 @@
 	                        document.getElementById("courseEdit<%=i + j%>");
 	                        document.getElementById("editCourseTable");
 	                        function editCourse<%=i + j%>(){
-	                            document.querySelector('.bg-model12').style.display = 'flex';
-	                            document.querySelector('.bg-model12').style.position = 'fixed';
-	                            
-	                            table = document.getElementById("editCourseTable");
-	    	            	    
-	    	            	    var rowCount = table.rows.length -1;
-	    	            	    
-	    	            	    if(rowCount < <%=courseCount%>){
-	    	            	    	var createRow =  <%=courseCount%> - rowCount;
-	    	            	    	for(let i= 1;i <= createRow; i++){
-	    		            	    	
-	    		            	    	var tr = document.createElement('tr');
-	    		            	    	tr.setAttribute('class','input-in');
-	    		            	    	
-	    		            	    	var td1 = document.createElement('td');
-	    		            	    	var input1 = document.createElement('input');
-	    		            	    	input1.setAttribute('class','input');
-	    		            	    	input1.setAttribute('id','programmeNameInCourseEditt<%=i + j%>');
-	    		            	    	td1.appendChild(input1);
-	    		            	    	
-	    		            	    	var td2 = document.createElement('td');
-	    		            	    	var input2 = document.createElement('input');
-	    		            	    	input2.setAttribute('class','input');
-	    		            	    	input2.setAttribute('id','courseCodeInCourset<%=i + j%>');
-	    		            	    	td2.appendChild(input2);
-	    		            	    	
-	    		            	    	var td3 = document.createElement('td');
-	    		            	    	var input3 = document.createElement('input');
-	    		            	    	input3.setAttribute('class','input');
-	    		            	    	input3.setAttribute('id','courseNameInCourset<%=i + j%>');
-	    		            	    	td3.appendChild(input3);
-	    		            	    	
-	    		            	    	var td4 = document.createElement('td');
-	    		            	    	var select1 = document.createElement('select');
-	    		            	    	select1.setAttribute('class','input');
-	    		            	    	select1.setAttribute('id','courseTypeInCourset<%=i + j%>');
-	    		            	    	td4.appendChild(select1);
-	    		            	    	
-	    		            	    	var td5 = document.createElement('td');
-	    		            	    	var select2 = document.createElement('select');
-	    		            	    	select2.setAttribute('class','input');
-	    		            	    	select2.setAttribute('id','courseGroupInCourset<%=i + j%>');
-	    		            	    	td4.appendChild(select2);
-	    		            	    	
-	    		            	    	
-	    		            	    	var td6 = document.createElement('td');
-	    		            	    	var input4 = document.createElement('input');
-	    		            	    	input4.setAttribute('class','inputDigits');
-	    		            	    	input4.setAttribute('id','courseSemInCourset<%=i + j%>');
-	    		            	    	td6.appendChild(input4);
-	    		            	    	
-	    		            	    	var td7 = document.createElement('td');
-	    		            	    	var input5 = document.createElement('input');
-	    		            	    	input5.setAttribute('class','inputDigits');
-	    		            	    	input5.setAttribute('id','maxMarksInCourset<%=i + j%>');
-	    		            	    	td7.appendChild(input5);
-	    		            	    	
-	    		            	    	var td8 = document.createElement('td');
-	    		            	    	var input6 = document.createElement('input');
-	    		            	    	input6.setAttribute('class','inputDigits');
-	    		            	    	input6.setAttribute('id','minMarksInCourset<%=i + j%>');
-	    		            	    	td8.appendChild(input6);
-	    		            	    	
-	    		            	    	var td9 = document.createElement('td');
-	    		            	    	var input1 = document.createElement('input');
-	    		            	    	input7.setAttribute('class','inputDigits');
-	    		            	    	input7.setAttribute('id','maxIAInCourset<%=i + j%>');
-	    		            	    	td9.appendChild(input7);
-	    		            	    	
-	    		            	    	var td10 = document.createElement('td');
-	    		            	    	var btnUpdate = document.createElement('button');
-	    		            	    	btnUpdate.setAttribute('class','inputButton');
-	    		            	    	btnUpdate.setAttribute('id','btnUpdate');
-	    		            	    	btnUpdate.setAttribute('onclick','updateCourset<%=i + j%>');
-	    		            	    	td10.appendChild(btnUpdate);
-	    		            	    	
-	    		            	    	var td11 = document.createElement('td');
-	    		            	    	var btnDelete = document.createElement('button');
-	    		            	    	btnDelete.setAttribute('class','inputButton');
-	    		            	    	btnDelete.setAttribute('id','btnDelete');
-	    		            	    	btnDelete.setAttribute('onclick','deleteCourset<%=i + j%>');
-	    		            	    	td11.appendChild(btnDelete);
-	    		            	    	
-	    		            	    	tr.appenChild(td1);//1
-	    		            	    	tr.appenChild(td2);//2
-	    		            	    	tr.appenChild(td3);//3
-	    		            	    	tr.appenChild(td4);//4
-	    		            	    	tr.appenChild(td5);//5
-	    		            	    	tr.appenChild(td6);//6
-	    		            	    	tr.appenChild(td7);//7
-	    		            	    	tr.appenChild(td8);//8
-	    		            	    	tr.appenChild(td9);//9
-	    		            	    	tr.appenChild(td10);//10
-	    		            	    	tr.appenChild(td11);//11
-	    		            	    	
-	    		            	    	table.appendChild(tr);
-	    		            	    	
-	    		            	  
-	    		            	    }
+								document.getElementById("editCoursediv<%=i + j%>").style.display = 'flex';
+								document.getElementById("editCoursediv<%=i + j%>").style.position = 'fixed';
+								
 	    	            	    }
-	                           
-	                            
-	                        }
+	    	            	    
                         </script>
-                        <%
-                        				}
+                        <%				
+                        courseCount = 0;}
                         				j = j + programmeResultSet.getInt("programme_sem");//increment j for index
                         			}
                         		}
@@ -640,7 +701,9 @@
                     </table>
                     </div>
                 </div>
-                     
+                
+              
+              
                 <div class="bg-model">
                     <div class="model-content">
                         <div class="close" id="close" onclick="myFuction()2">+</div>
@@ -657,7 +720,6 @@
                         </form>
                     </div>
                 </div>
-                
                 
                 <div class="bg-model1">
                     <div class="model-content1">
@@ -697,50 +759,175 @@
                     </div>
                 </div>  
                     
+ 
+                        <%
+                        	try{
+                        		
+                        		ResultSet programmeResultSet2 = loadData.loadProgrammeData();
+                        		if(programmeResultSet2!=null){
+                        			int j = 0;
+                        			int courseCount = 0;
+                        			while(programmeResultSet2.next()){
+                        	
+                        				for(int i=1; i<= programmeResultSet2.getInt("programme_sem"); i++){
+                        					
+                        					ResultSet coursesData = loadData.loadCoursedata(programmeResultSet2, i);
+                        %>
                     
-                    <div class="bg-model12">
+                    <div class="bg-model12" id="editCoursediv<%=i + j%>">
                     <div class="model-content12">
-                        <div class="close12" id="close" >+</div>
+                        <div class="closeCourse<%=i + j%>" id="editCourse">+
+                        	<script type="text/javascript">
+								document.querySelector('.closeCourse<%=i + j%>').addEventListener('click', function(){
+			                	document.getElementById('editCoursediv<%=i + j%>').style.display = 'none';
+			            		})
+        					</script>
+                        </div>
                         <div class="header12">
                             <h1>Edit Course Data</h1></div>
-                            <form>
-                                <table id="editCourseTable" border="1" class="tb4">
+                            <form id="editCourseForm<%=i + j%>" action="" method="post">
+                                <table id="editCourseTable<%=i + j%>" border="1" class="tb4">
                                     <tr>
-                                    <th>Programme Name</th>
-                                    <th>Course<br> code</th>
-                                    <th>Course<br> name</th>
-                                    <th>Course<br> Type</th>
-                                    <th>Course<br> Group</th>
-                                    <th>Course<br> Sem</th>
-                                    <th>MAx<br> Marks</th>
-                                    <th>Min<br> Marks</th>
-                                    <th>Max<br>IA</th>
-                                    <th>Delete<br>Course</th>
-                                    <th>Updata<br>Course</th>
+                                    <th class="tdCourse">Programme Name</th>
+                                    <th class="tdCourse" >Course<br> code</th>
+                                    <th class="tdCourse" >Course<br> name</th>
+                                    <th class="tdCourse">Course<br> Type</th>
+                                    <th class="tdCourse">Course<br> Group</th>
+                                    <th class="tdCourse">Course<br> Sem</th>
+                                    <th class="tdCourse">MAx<br> Marks</th>
+                                    <th class="tdCourse">Min<br> Marks</th>
+                                    <th class="tdCourse">Max<br>IA</th>
+                                    <th class="tdCourse">Delete<br>Course</th>
+                                    <th class="tdCourse">Update<br>Course</th>
                                     </tr>
-                                    
-                                    <tr class="input-in">
-                                        <td><input id="programmeNameInCourseEdit" class="input" value=""></td>
-                                        <td><input id="courseCodeInCourse" class="input"></td>
-                                        <td><input id="courseNameInCourse" class="input"></td>
-                                        <td><input id="courseTypeInCourse" class="input"></td>
-                                        <td><input id="courseGroupInCourse" class="input"></td>
-                                        <td><input id="courseSemInCourse" class="inputDigits"></td>
-                                        <td><input id="maxMarksInCourse" class="inputDigits"></td>
-                                        <td><input id="minMarksInCourse" class="inputDigits"></td>
-                                        <td><input id="maxIAInCourse" class="inputDigits"></td>
-                                        <td><button class="inputButton" id="button12" >DELETE</button></td>
-                                        <td><button class="inputButton" id="button14" >UPDATE</button></td>
-                                    </tr>
-                                    
+							<%try{
+                            	if(coursesData!=null){
+                            		
+                            		while(coursesData.next()){
+                            			courseCount = courseCount + 1;
+                            %>			
+                            		<tr class="input-in">
+                            			<td class="tdCourse"><input class="input" id="" value="<%=programmeResultSet2.getString("programme_name")%>"/></td>
+                            			<td class="tdCourse"><input class="inputCourseCode" id="" value="<%=coursesData.getString("course_code")%>"/></td>
+                            			<td class="tdCourse"><input class="input" id="" value="<%=coursesData.getString("course_name")%>"/></td>
+                            			<%if(coursesData.getString("course_type").equals("Theory")){
+                            			%>
+                            				<td class="tdCourse"><select class="input">
+                            					<option value="" disabled hidden>course Type</option>
+                            					<option selected>Theory</option>
+                            					<option>Practical</option>
+                            				</select>
+                            			</td>
+                            			<%}else{%>
+                            				<td class="tdCourse"><select class="input">
+                            					<option value="" disabled hidden>course Type</option>
+                            					<option>Theory</option>
+                            					<option Selected>Practical</option>
+                            				</select>
+                            			</td>
+                            			<%}%>
+                            			
+                            			<%switch(coursesData.getString("course_group")){
+                            			case "Group 1 Core Course":
+                            			%>
+                            				<td class="tdCourse"><select class="input">
+                            					<option value="" disabled hidden>course Group</option>
+                            					<option selected>Group 1 Core Course</option>
+				                                <option >Group 2 Elective Course</option>
+				                                <option >Group 3 a)Compulsary Foundation</option>
+				                                <option >Group 3 b)Elective Foundation</option>
+				                                <option >Group 4</option>
+                            				</select>
+                            			</td>
+                            			<%break;	
+                            			case "Group 2 Elective Course":
+                                			%>
+                                				<td class="tdCourse"><select class="input">
+                                					<option value="" disabled hidden>course Group</option>
+                                					<option >Group 1 Core Course</option>
+    				                                <option selected>Group 2 Elective Course</option>
+    				                                <option >Group 3 a)Compulsary Foundation</option>
+    				                                <option >Group 3 b)Elective Foundation</option>
+    				                                <option >Group 4</option>
+                                				</select>
+                                			</td>
+                                			<%break;
+	                           			case "Group 3 a)Compulsary Foundation":
+	                               			%>
+	                               				<td class="tdCourse"><select class="input">
+	                               					<option value="" disabled hidden>course Group</option>
+	                               					<option >Group 1 Core Course</option>
+	   				                                <option >Group 2 Elective Course</option>
+	   				                                <option selected >Group 3 a)Compulsary Foundation</option>
+	   				                                <option >Group 3 b)Elective Foundation</option>
+	   				                                <option >Group 4</option>
+	                               				</select>
+	                               			</td>
+	                               			<%break;
+                               			case "Group 3 b)Elective Foundation":
+	                               			%>
+	                               				<td class="tdCourse"><select class="input">
+	                               					<option value="" disabled hidden>course Group</option>
+	                               					<option >Group 1 Core Course</option>
+	   				                                <option >Group 2 Elective Course</option>
+	   				                                <option >Group 3 a)Compulsary Foundation</option>
+	   				                                <option selected >Group 3 b)Elective Foundation</option>
+	   				                                <option >Group 4</option>
+	                               				</select>
+	                               			</td>
+	                               			<%break;
+                            			default:
+                            				%>
+                            				<td class="tdCourse"><select class="input">
+	                               					<option value="" disabled hidden>course Group</option>
+	                               					<option >Group 1 Core Course</option>
+	   				                                <option >Group 2 Elective Course</option>
+	   				                                <option >Group 3 a)Compulsary Foundation</option>
+	   				                                <option >Group 3 b)Elective Foundation</option>
+	   				                                <option selected >Group 4</option>
+	                               				</select>
+	                               			</td>
+                            			<%} %>
+                            			
+                       						<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_marks")%>"/></td>
+                            				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("min_marks")%>"/></td>
+                            				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_IA")%>"/></td>
+                            				
+                            			<script type="text/javascript">
+                            				function deleteCourse<%=courseCount%>(){
+                            					document.forms['deleteForm']['courseCode'].value = "<%=coursesData.getString("course_code")%>";
+                            					document.forms['deleteForm']['courseName'].value = "<%=coursesData.getString("course_name")%>";
+                            					
+                            					
+                            				}
+                            				
+                            				
+                            			</script>
+                            			
+                            		</tr>    
+                            			
+                            <%	 	}
+                            	}
+                            	
+                            }catch(SQLException e){
+                            	e.printStackTrace();
+                            	
+                            }%> 
                                 </table>
-                        </form>
-                       
-                        
-                        
+                        </form> 
                     </div>
                 </div>
-                
+                <%				
+                	courseCount = 0;}
+                				j = j + programmeResultSet2.getInt("programme_sem");//increment j for index
+                			}
+                		}
+                	}catch(SQLException e){
+                		e.printStackTrace();
+                		
+                	}	
+                   
+                %>               
                 
                 <div class="bg-model13">
                     <div class="model-content13">
@@ -753,14 +940,7 @@
                                 <input id="programmeNameInProgramme" type="text" placeholder="Programme Name">
                                 <input id="programmeDuration" type="text" placeholder="Duration(In Years)">
                                 <input id="programmeTotalSemesterInProgramme" type="text" placeholder="Total Semester">
-                                <button id="button" >ADD</button>
-
-                                <input type="text" placeholder="Programme Id">
-                                <input type="text" placeholder="Programme Name">
-                                <input type="text" placeholder="Duration(In Years)">
-                                <input type="text" placeholder="Total Semester">
                                 <button id="button13" >UPDATE</button>
-
                         </form>
                     </div>
                 </div>
@@ -770,6 +950,8 @@
                  
                  
                  
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->                 
+<!-- ------------------------------------------------------ TAB 5 CLASSES  -------------------------------------------------------------------------------------- -->
                     
              <div class="tabs__content" data-tab="5">
                 <div class="protab"> 
@@ -815,7 +997,6 @@
                     </table>
                     </div>
                 </div>
-                 
                  
                  <div class="bg-model5">
                     <div class="model-content5">
@@ -876,7 +1057,8 @@
                
                
                     
-     
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->     
+<!-- ------------------------------------------------------ TAB 6 STUDENT RESULTS ------------------------------------------------------------------------------- -->
             
             <div class="tabs__content" data-tab="6">
             <div class="protab"> 
@@ -1013,6 +1195,9 @@
             </table>
             </div>
             </div>
+            
+            
+            
                 <div class="bg-model2">
                 <div class="model-content2">
                 <div class="close2" id="close" >+</div>
@@ -1121,6 +1306,11 @@
 				<%} %>
              
                 
+
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
                         
         <script type="text/javascript">
             let image = document.getElementById("image");
@@ -1132,58 +1322,54 @@
             },2500);
         </script>
                 
-                <script>
-                    document.querySelector('.close').addEventListener('click', function(){
-                        document.querySelector('.bg-model').style.display = 'none';
-                     });
-                </script>
-                
-                <script>
-                    document.querySelector('.close1').addEventListener('click', function(){
-                        document.querySelector('.bg-model1').style.display = 'none';
-                    });
-                </script>
-                
-                <script>
-                    document.querySelector('.close2').addEventListener('click', function(){
-                        document.querySelector('.bg-model2').style.display = 'none';
-                    })
-                </script>
-                
-                <script>
-                    document.querySelector('.close3').addEventListener('click', function(){
-                        document.querySelector('.bg-model3').style.display = 'none';
-                    })
-                </script>
-                
-                <script>
-                    document.querySelector('.close4').addEventListener('click', function(){
-                        document.querySelector('.bg-model4').style.display = 'none';
-                    })
-                
-                </script>
-                
-                <script>
-                    document.querySelector('.close5').addEventListener('click', function(){
-                       document.querySelector('.bg-model5').style.display = 'none';
-                   })
-                </script>
-                
-                <script>
-                   document.querySelector('.close6').addEventListener('click', function(){
-                      document.querySelector('.bg-model6').style.display = 'none';
-                  })
-               </script>
-                
+         <script>
+             document.querySelector('.close').addEventListener('click', function(){
+                 document.querySelector('.bg-model').style.display = 'none';
+              });
+         </script>
          
-        
+         <script>
+             document.querySelector('.close1').addEventListener('click', function(){
+                 document.querySelector('.bg-model1').style.display = 'none';
+             });
+         </script>
+         
+         <script>
+             document.querySelector('.close2').addEventListener('click', function(){
+                 document.querySelector('.bg-model2').style.display = 'none';
+             })
+         </script>
+         
+         <script>
+             document.querySelector('.close3').addEventListener('click', function(){
+                 document.querySelector('.bg-model3').style.display = 'none';
+             })
+         </script>
+         
+         <script>
+             document.querySelector('.close4').addEventListener('click', function(){
+                 document.querySelector('.bg-model4').style.display = 'none';
+             })
+         
+         </script>
+         
+         <script>
+             document.querySelector('.close5').addEventListener('click', function(){
+                document.querySelector('.bg-model5').style.display = 'none';
+            })
+         </script>
+         
+         <script>
+            document.querySelector('.close6').addEventListener('click', function(){
+               document.querySelector('.bg-model6').style.display = 'none';
+           })
+        </script>
+                
         <script>
             document.querySelector('.close7').addEventListener('click', function(){
                 document.querySelector('.bg-model7').style.display = 'none';
             })
         </script>
-        
-        
         
         <script>
             document.querySelector('.close8').addEventListener('click', function(){
@@ -1211,19 +1397,12 @@
         </script>
         
         <script>
-            document.querySelector('.close12').addEventListener('click', function(){
-                document.querySelector('.bg-model12').style.display = 'none';
-            })
-        </script>
-        
-        <script>
             document.querySelector('.close13').addEventListener('click', function(){
                 document.querySelector('.bg-model13').style.display = 'none';
                
             })
         </script>
-                    
-                    
+                        
         <script>
             document.querySelector('.close14').addEventListener('click', function(){
                 document.querySelector('.bg-model14').style.display = 'none';
@@ -1231,8 +1410,7 @@
             })
         </script>
                 
-                
-        </script>          
+                     
 
     </body>
 </html>

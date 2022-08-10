@@ -9,11 +9,9 @@ import org.CanaraExamManager.bean.ProgrammeCourseClassBean;
 import org.CanaraExamManager.bean.StudentStaffDataBean;
 import org.CanaraExamManager.util.DBConnection;
 
-public class InsertDataDao {
+public class UpdateDataDao {
 	
-//	Method for inserting Student Data
-	
-	public String insertStudentData(StudentStaffDataBean studentDataBean) {
+	public String updateStudentData(StudentStaffDataBean studentDataBean) {
 		
 		Connection con = null;
 		String query = "";
@@ -44,12 +42,11 @@ public class InsertDataDao {
 						resultSet = null;
 						resultSet = statement.executeQuery("SELECT * FROM student WHERE reg_no =  "+studentDataBean.getRegNo()+"");
 						
-						if(resultSet.next() == false) { //check whether student with that register number already exists
+						if(resultSet.next() == true) { //check whether student with that register number already exists
 							
-							query = "INSERT INTO student(reg_no,first_name,last_name,gender,dob,email,phone,address,"
-									+ "blood_group,birth_place,birth_district,birth_state,pincode,password,programme_id,class_id,"
-									+ "joining_year,semester,status)"
-									+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+							query = "UPDATE student SET reg_no = ?, first_name = ?, last_name = ?, gender = ?, dob,email = ?,"
+									+ "phone = ?, address = ?, blood_group = ?,birth_place = ?,birth_district = ?,birth_state = ?,"
+									+ "pincode = ?, password = ?, programme_id = ?, class_id = ?, joining_year = ?, semester = ?, status = ? ";
 							preparedStatement = con.prepareStatement(query);
 							
 							preparedStatement.setString(1,studentDataBean.getRegNo());//1
@@ -76,7 +73,7 @@ public class InsertDataDao {
 							
 						}else {
 							
-							return "Student with the Register Number "+studentDataBean.getRegNo()+" Already Exists";
+							return "Student with the Register Number "+studentDataBean.getRegNo()+" Does Not Exists";
 						}
 					
 					}else {
@@ -94,9 +91,9 @@ public class InsertDataDao {
 	
 	
 	
-//	Method for inserting Staff Data
+//	Method for updating Staff Data
 	
-	public String insertStaffData(StudentStaffDataBean staffDataBean) {
+	public String updateStaffData(StudentStaffDataBean staffDataBean) {
 		
 		Connection con = null;
 		String query = "";
@@ -131,7 +128,6 @@ public class InsertDataDao {
 				
 				preparedStatement.execute();
 					
-				
 			}else {
 				
 				return "Staff with Staff.ID "+staffDataBean.getStaffId()+" Already Exists";
@@ -149,9 +145,9 @@ public class InsertDataDao {
 	
 	
 	
-//	Method for inserting Programme Data	
+//	Method for updating Programme Data	
 	
-public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
+public String updateProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 		
 		Connection con = null;
 		String query = "";
@@ -204,9 +200,9 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 
 
 
-//Method for inserting Course Data
+//Method for updating Course Data
 
-	public String insertCourseData(ProgrammeCourseClassBean courseDataBean) {
+	public String updateCourseData(ProgrammeCourseClassBean courseDataBean) {
 		
 		Connection con = null;
 		String query = "";
@@ -257,9 +253,9 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 	
 	
 	
-//Method for inserting class data
+//Method for updating class data
 	
-	public String insertClassData(ProgrammeCourseClassBean classDataBean) {
+	public String updateClassData(ProgrammeCourseClassBean classDataBean) {
 		
 		Connection con = null;
 		String query = "";
@@ -330,6 +326,4 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 		
 		return "SUCCESS";
 	}
-	
-	
 }
