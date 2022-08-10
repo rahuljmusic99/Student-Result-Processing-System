@@ -18,7 +18,7 @@ public class LoadDataDao {
 		try {
 			con = DBConnection.createConnection();
 			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM programme");
+			resultSet = statement.executeQuery("SELECT * FROM programme ORDER BY programme_name ASC");
 												
 		} catch (SQLException e) {
 			e.printStackTrace();

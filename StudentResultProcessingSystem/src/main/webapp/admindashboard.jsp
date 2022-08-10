@@ -39,12 +39,13 @@
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="js/popup.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
     </head> 
     <body>
     
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-    
         <div class="tabs">
             <div class="tabs__sidebar">
                 <div class="space"><img src="css/images/education.png" class="edu"></div>
@@ -98,6 +99,7 @@
                         <tr >
                           <th>Programme Name</th>
                             <th>Class</th>
+                            <th>Class Year</th>
                             <th>Student Name</th>
                             <th>Register Number</th>
                             <th>View Student Details</th>
@@ -114,6 +116,7 @@
                         <tr>
                             <td  class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme name-->
                             <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
+                            <td class="td2"><%=studentData.getString("class_year")%></td>
                             <td><%=studentData.getString("first_name")+" "+studentData.getString("last_name")%></td>  <!-- register number -->
                             <td><%=studentData.getString("reg_no")%></td>
                             <td class="td2"><button id="viewStudent<%=i%>" class="btn__edit"  onclick="viewStudentDetails<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
@@ -209,7 +212,7 @@
                         <div class="header6">
                             <h1>Add Student Data</h1></div>
                              <img class="student" src="images/studenticon.svg">
-                            <form action="" >
+                            <form action="insertDataServlet" method="post" id="addStudentForm" >
                                 <input type="text" placeholder="First Name" class="merge1">
                                 <input type="text" placeholder="Last Name" class="merge1">
                                 <select class="merge2">
@@ -227,29 +230,168 @@
                                 <input type="text" placeholder="District" class="merge3">
                                 <input type="text" placeholder="State" class="merge3">
                                 <input type="text" placeholder="Year Of Joining" class="merge2">
-                                <select class="merge3">
+                                <select class="merge3" id="studentProgrammeSelect" name="studentProgrammeSelect" onchange = "changeDropDownData(this.value)">
                                 <option value="" disabled selected hidden>Programme</option>
-                                <option></option>
+						<% 
+							ResultSet studentProgrammeData = loadData.loadProgrammeData();
+							if(studentProgrammeData!= null){
+								
+								try{
+									
+									while(studentProgrammeData.next()){
+						%>				
+										<option value="<%=studentProgrammeData.getString("programme_id")%>" ><%=studentProgrammeData.getString("programme_name")%></option>
+						<%			}
+								}catch(SQLException e){
+									e.printStackTrace();
+								}
+							}
+						%>
+								</select>
+								
+                                <select class="merge3" id="classDropDown" name="classDropDown" onchange="changeDropDownData2(this.value)">
+                                <option value="class" disabled selected hidden>class</option>
+						<% 
+							ResultSet studentClassData = loadData.loadClassData();
+							if(studentProgrammeData!= null){
+								
+								try{
+									
+									while(studentClassData.next()){
+						%>				
+										<option value="<%=studentClassData.getString("programme_id")%>" ><%=studentClassData.getString("class_name")%></option>
+						<%			}
+								}catch(SQLException e){
+									e.printStackTrace();
+								}
+							}
+						%>
                                 </select>
-                                <select class="merge3">
-                                <option value="" disabled selected hidden>class</option>
-                                <option></option>
+                                
+                                <select class="merge3" id="classYearDropDown" name="classYearDropDown">
+                                <option value="classYear" disabled selected hidden>Class Year</option>
+                        <% 
+							ResultSet studentClassData2 = loadData.loadClassData();
+							if(studentClassData2!= null){
+								
+								try{
+									
+									while(studentClassData2.next()){
+						%>				
+										<option value="<%=studentClassData2.getString("programme_id")%>"><%=studentClassData2.getString("class_year")%></option>
+						<%			}
+								}catch(SQLException e){
+									e.printStackTrace();
+								}
+							}
+						%>        
                                 </select>
-                                <select class="merge3">
-                                <option value="" disabled selected hidden>Class Year</option>
-                                <option>Adimale</option>
-                                </select>
-                                <select class="merge2">
+                                <select class="merge2" id="programmeSemDropDown">
                                 <option value="" disabled selected hidden>Current Sem</option>
-                                <option></option>
                                 </select>
-                                
-                                
                                 <input type="text" placeholder="Register Number" class="merge1">
                                 <input type="text" placeholder="Password" class="merge1">
                                 <button id="button6" >ADD</button>
+                        <% 
+							ResultSet studentProgrammeSem = loadData.loadProgrammeData();
+							if(studentProgrammeSem!= null){
+								
+								try{
+									
+									while(studentProgrammeSem.next()){
+						%>				
+										<input type = "hidden" id="<%=studentProgrammeSem.getString("programme_id")%>" value = "<%=studentProgrammeSem.getString("programme_sem")%>">
+						<%			}
+								}catch(SQLException e){
+									e.printStackTrace();
+								}
+							}
+						%>        
                                 
-                            
+                                
+                                <script>
+                             		// function to enable and disable dropDown in Student Data
+									window.onload = function removeduplicate(){
+										var myclass = {};
+										$("select[id='classDropDown'] > option").each(function () {
+										    if(myclass[this.text]) {
+										        $(this).remove();
+										        $(this).hide();
+										    } else {
+										        myclass[this.text] = this.value;
+										        $(this).hide();
+										    }
+										});
+										
+										var myyear = {};
+										$("select[id='classYearDropDown'] > option").each(function () {
+										    if(myyear[this.text]) {
+										        $(this).remove();
+										        $(this).hide();
+										    } else {
+										        myyear[this.text] = this.value;
+										        $(this).hide();
+										    }
+										});
+										
+										var mysem = {};
+										$("select[id='programmeSemDropDown'] > option").each(function () {
+										    if(mysem[this.text]) {
+										        $(this).remove();
+										        $(this).hide();
+										    } else {
+										        mysem[this.text] = this.value;
+										        $(this).hide();
+										    }
+										});
+									}
+                             		
+                    				function changeDropDownData(studentProgrammeSelect){        
+                    					if(studentProgrammeSelect!=''){
+                    						
+                    						$("#classDropDown option[value='"+studentProgrammeSelect+"']").show();
+                    						$("#classDropDown option[value!='"+studentProgrammeSelect+"']").hide();
+                    						$("#classDropDown option[value='class']").prop('selected',true);
+                    						$("#classYearDropDown option[value='classYear']").prop('selected',true);
+                    						
+                    						var programmeSem = document.getElementById(studentProgrammeSelect).value;
+                    						var optionsCount = $('#programmeSemDropDown > option').length -1;
+                    						
+                    						if(programmeSem > optionsCount){
+                    							
+                    							for(let i=(optionsCount + 1);i<=(programmeSem);i++){
+                    								$('#programmeSemDropDown').append(new Option(i, i));
+                    							}
+                    						}
+                    						
+                    						if(programmeSem < optionsCount){
+                    							
+                    							for(let i=(optionsCount);i>(programmeSem);i--){
+                    								$("#programmeSemDropDown option[value='"+i+"']").remove();
+                    							}
+                    						}
+                    						
+                    						$("#programmeSemDropDown option").hide();
+                    						
+                    					}
+                    				}
+                    				
+                    				function changeDropDownData2(studentClassSelect){                    					
+                    					if(studentClassSelect!=''){
+                    						$("#classYearDropDown option[value='"+studentClassSelect+"']").show();
+                    						$("#classYearDropDown option[value!='"+studentClassSelect+"']").hide();
+                    						$("#classYearDropDown option[value='classYear']").prop('selected',true);
+                    					}
+                    				}
+                    				
+                    				function changeDropDownData3(studentClassSelect){                    					
+                    					if(studentClassSelect!=''){
+                    						$("#classYearDropDown option[value='"+studentClassSelect+"']").show();
+                    						$("#classYearDropDown option[value!='"+studentClassSelect+"']").hide();
+                    						$("#classYearDropDown option[value='classYear']").prop('selected',true);
+                    					}
+                    				}
+                                </script>
                         </form>
                     </div>
                 </div>
