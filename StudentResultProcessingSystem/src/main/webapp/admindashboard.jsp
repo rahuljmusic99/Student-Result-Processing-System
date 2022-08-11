@@ -40,6 +40,9 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="js/popup.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'rel='stylesheet'>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
+      	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
         
     </head> 
     <body>
@@ -221,7 +224,7 @@
                                 <option>Female</option>
                                 <option>Other</option>
                                 </select>
-                                <input type="text" placeholder="Date of Birth" class="merge2">
+                                <input type="date" id="sdob" name="sdob" placeholder="Date of Birth" class="merge2">
                                 <input type="text" placeholder="Email" class="merge1">
                                 <input type="text" placeholder="Mobile Number" class="merge1">
                                 <input type="text" placeholder="Address" class="merge1">
@@ -259,7 +262,7 @@
 									
 									while(studentClassData.next()){
 						%>				
-										<option value="<%=studentClassData.getString("programme_id")%>" ><%=studentClassData.getString("class_name")%></option>
+										<option value="<%=studentClassData.getString("programme_id")%>" id="<%=studentClassData.getString("class_name")%>"><%=studentClassData.getString("class_name")%></option>
 						<%			}
 								}catch(SQLException e){
 									e.printStackTrace();
@@ -268,7 +271,7 @@
 						%>
                                 </select>
                                 
-                                <select class="merge3" id="classYearDropDown" name="classYearDropDown">
+                                <select class="merge3" id="classYearDropDown" name="classYearDropDown" onchange="changeDropDownData3(this.value)">
                                 <option value="classYear" disabled selected hidden>Class Year</option>
                         <% 
 							ResultSet studentClassData2 = loadData.loadClassData();
@@ -278,7 +281,7 @@
 									
 									while(studentClassData2.next()){
 						%>				
-										<option value="<%=studentClassData2.getString("programme_id")%>"><%=studentClassData2.getString("class_year")%></option>
+										<option value="<%=studentClassData2.getString("class_name")%>"><%=studentClassData2.getString("class_year")%></option>
 						<%			}
 								}catch(SQLException e){
 									e.printStackTrace();
@@ -287,7 +290,7 @@
 						%>        
                                 </select>
                                 <select class="merge2" id="programmeSemDropDown">
-                                <option value="" disabled selected hidden>Current Sem</option>
+                                <option value="programmeSem" disabled selected hidden>Current Sem</option>
                                 </select>
                                 <input type="text" placeholder="Register Number" class="merge1">
                                 <input type="text" placeholder="Password" class="merge1">
@@ -311,6 +314,9 @@
                                 
                                 <script>
                              		// function to enable and disable dropDown in Student Data
+                             		
+                             		
+                             		
 									window.onload = function removeduplicate(){
 										var myclass = {};
 										$("select[id='classDropDown'] > option").each(function () {
@@ -326,7 +332,6 @@
 										var myyear = {};
 										$("select[id='classYearDropDown'] > option").each(function () {
 										    if(myyear[this.text]) {
-										        $(this).remove();
 										        $(this).hide();
 										    } else {
 										        myyear[this.text] = this.value;
@@ -353,6 +358,9 @@
                     						$("#classDropDown option[value!='"+studentProgrammeSelect+"']").hide();
                     						$("#classDropDown option[value='class']").prop('selected',true);
                     						$("#classYearDropDown option[value='classYear']").prop('selected',true);
+                    						$("#classYearDropDown option").hide();
+                    						$("#programmeSemDropDown option[value='programmeSem']").prop('selected',true);
+                    						
                     						
                     						var programmeSem = document.getElementById(studentProgrammeSelect).value;
                     						var optionsCount = $('#programmeSemDropDown > option').length -1;
@@ -378,17 +386,30 @@
                     				
                     				function changeDropDownData2(studentClassSelect){                    					
                     					if(studentClassSelect!=''){
-                    						$("#classYearDropDown option[value='"+studentClassSelect+"']").show();
-                    						$("#classYearDropDown option[value!='"+studentClassSelect+"']").hide();
+                    						
+                    						var classId = $("#classDropDown option:selected").attr("id");
+                    						
+                    						$("#classYearDropDown option[value='"+classId+"']").show();
+                    						$("#classYearDropDown option[value!='"+classId+"']").hide();
                     						$("#classYearDropDown option[value='classYear']").prop('selected',true);
+                    						$("#programmeSemDropDown option[value='programmeSem']").prop('selected',true);
+                    						$("#programmeSemDropDown option").hide();
                     					}
                     				}
                     				
-                    				function changeDropDownData3(studentClassSelect){                    					
-                    					if(studentClassSelect!=''){
-                    						$("#classYearDropDown option[value='"+studentClassSelect+"']").show();
-                    						$("#classYearDropDown option[value!='"+studentClassSelect+"']").hide();
-                    						$("#classYearDropDown option[value='classYear']").prop('selected',true);
+                    				function changeDropDownData3(studentClassYear){                    					
+                    					if(studentClassYear!=''){
+                    						$("#programmeSemDropDown option[value='programmeSem']").prop('selected',true);
+                    						
+                    						$("#classYearDropDown option:selected").each(function() {
+                    							   var classYear = parseInt($(this).text());
+                    							   var firstSem = (classYear + classYear) -1; 
+                    							   var secondSem = firstSem + 1;
+                    							   
+                    							   $("#programmeSemDropDown option[value='"+firstSem+"']").show();
+                    							   $("#programmeSemDropDown option[value!='"+firstSem+"']").hide();
+                    							   $("#programmeSemDropDown option[value='"+secondSem+"']").show();
+                    							}); 
                     					}
                     				}
                                 </script>
