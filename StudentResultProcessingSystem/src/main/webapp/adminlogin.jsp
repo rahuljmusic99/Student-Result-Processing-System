@@ -44,7 +44,7 @@
                 </div>   
             <section class="header2">
                 <div class="title"><p><b>Canara exam manager</b></p></div>
-                <div class="leftdiv"><img class="edu" src="css/images/education.png" ></div>
+                <div class="leftdiv"><img class="edu" src="css/images/ad.png" ></div>
            </section>
             </section>   
             

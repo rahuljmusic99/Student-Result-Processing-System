@@ -214,8 +214,13 @@
                         <div class="close6" id="close" >+</div>
                         <div class="header6">
                             <h1>Add Student Data</h1></div>
+<<<<<<< HEAD
+                             <img class="student" src="css/images/studenticon.svg">
+                            <form action="" >
+=======
                              <img class="student" src="images/studenticon.svg">
                             <form action="insertDataServlet" method="post" id="addStudentForm" >
+>>>>>>> 466a362bdd568746dcc7a474a8d178f20b42d27c
                                 <input type="text" placeholder="First Name" class="merge1">
                                 <input type="text" placeholder="Last Name" class="merge1">
                                 <select class="merge2">
@@ -422,7 +427,7 @@
                         <div class="close7" id="close" >+</div>
                         <div class="header7">
                             <h1>Student Details</h1></div>
-                             <img class="student" src="images/studenticon.svg">
+                             <img class="student" src="css/images/studenticon.svg">
                             <div id="viewStudentDiv">
                                 <input type="text" id="sFirstName" placeholder="First Name" class="merge1" readonly="readonly">
                                 <input type="text" id="sLastName" placeholder="Last Name" class="merge1" readonly="readonly">
@@ -451,7 +456,7 @@
                         <div class="close8" id="close" >+</div>
                         <div class="header8">
                             <h1>Edit Student Details</h1></div>
-                             <img class="student" src="images/studenticon.svg">
+                             <img class="student" src="css/images/studenticon.svg">
                             <form id = "editStudentForm" action="" >
                                 <input id="sFirstName" type="text" placeholder="First Name" class="merge1">
                                 <input id="sLastName"  type="text" placeholder="Last Name" class="merge1">
@@ -542,7 +547,7 @@
                         <div class="close9" id="close" >+</div>
                         <div class="header9">
                             <h1>Add Staff Details</h1></div>
-                             <img class="student" src="images/studenticon.svg">
+                             <img class="student" src="css/images/studenticon.svg">
                             <form action="" >
                                 <input type="text" placeholder="First Name" class="merge4">
                                 <input type="text" placeholder="Last Name" class="merge4">
@@ -565,7 +570,7 @@
                         <div class="close10" id="close" >+</div>
                         <div class="header10">
                             <h1>Staff Details</h1></div>
-                             <img class="student" src="images/studenticon.svg">
+                             <img class="student" src="css/images/studenticon.svg">
                             <form action="" >
                                 <input type="text" placeholder="First Name" class="merge4">
                                 <input type="text" placeholder="Last Name" class="merge4">
@@ -587,7 +592,7 @@
                         <div class="close11" id="close" >+</div>
                         <div class="header11">
                             <h1>Edit Staff Details</h1></div>
-                             <img class="student" src="images/studenticon.svg">
+                             <img class="student" src="css/images/studenticon.svg">
                             <form action="" >
                                 <input type="text" placeholder="First Name" class="merge4">
                                 <input type="text" placeholder="Last Name" class="merge4">
