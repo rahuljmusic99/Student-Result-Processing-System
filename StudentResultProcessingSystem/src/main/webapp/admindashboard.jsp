@@ -214,13 +214,11 @@
                         <div class="close6" id="close" >+</div>
                         <div class="header6">
                             <h1>Add Student Data</h1></div>
-<<<<<<< HEAD
+
                              <img class="student" src="css/images/studenticon.svg">
                             <form action="" >
-=======
-                             <img class="student" src="images/studenticon.svg">
-                            <form action="insertDataServlet" method="post" id="addStudentForm" >
->>>>>>> 466a362bdd568746dcc7a474a8d178f20b42d27c
+
+
                                 <input type="text" placeholder="First Name" class="merge1">
                                 <input type="text" placeholder="Last Name" class="merge1">
                                 <select class="merge2">
