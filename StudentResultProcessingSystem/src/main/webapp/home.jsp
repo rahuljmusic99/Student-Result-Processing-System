@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+
 <!DOCTYPE html5>
 <html>
     <head>
@@ -45,7 +45,7 @@
             
             <section class="header2">
                 <div class="title"><p><b>Canara exam manager</b></p></div>
-                <div class="leftdiv"><img class="edu" src="css/images/education.png" ></div>
+                <div class="leftdiv"><img class="edu" src="css/images/ed.png" ></div>
            </section>
         </section>
     </body>

@@ -6,12 +6,22 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>ProgrammeAndCoursesServlet</display-name>
-    <servlet-name>ProgrammeAndCoursesServlet</servlet-name>
-    <servlet-class>org.CanaraExamManager.controler.ProgrammeAndCoursesServlet</servlet-class>
+    <display-name>UpdateDataServlet</display-name>
+    <servlet-name>UpdateDataServlet</servlet-name>
+    <servlet-class>org.CanaraExamManager.controler.UpdateDataServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ProgrammeAndCoursesServlet</servlet-name>
-    <url-pattern>/ProgrammeAndCoursesServlet</url-pattern>
+    <servlet-name>UpdateDataServlet</servlet-name>
+    <url-pattern>/UpdateDataServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteDataServlet</display-name>
+    <servlet-name>DeleteDataServlet</servlet-name>
+    <servlet-class>org.CanaraExamManager.controler.DeleteDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteDataServlet</servlet-name>
+    <url-pattern>/DeleteDataServlet</url-pattern>
   </servlet-mapping>
 </web-app>

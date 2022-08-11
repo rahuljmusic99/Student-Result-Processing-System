@@ -24,17 +24,17 @@
 
 .leftdiv{
     float: left;
-    width: 250px;
-    height: 250px;
-    margin-top: 400px;
-    margin-left: 250px;   
+    width: 400px;
+    height: 400px;
+    margin-top: 300px;
+    margin-left: 200px;   
 }
 
 .edu{
     color: green;
     /*opacity: 0.4;*/
     color: white;
-    height: 250px;
+    height: 400px;
 }
 
 .title{

@@ -17,21 +17,10 @@ CREATE TABLE student(
 	phone bigint(20) NOT NULL,
 	address varchar(225) NOT NULL,
 	blood_group varchar(225) NOT NULL,
-	caste varchar(225) NOT NULL,
-	religion varchar(225) NOT NULL,
-	aadhar_no bigint(20) NOT NULL,
 	birth_place varchar(225) NOT NULL,
 	birth_district varchar(225) NOT NULL,
-	country varchar(225) NOT NULL,
-	identity_mark varchar(225),
 	pincode int(11) NOT NULL,
 	password varchar(225) NOT NULL,
-	f_name varchar(225) NOT NULL,
-	f_occupation varchar(225) NOT NULL,
-	f_phone bigint(20) NOT NULL,
-	m_name varchar(225) NOT NULL,
-	m_occupation varchar(225) NOT NULL,
-	m_phone bigint(20) NOT NULL,
 	programme_id int(10) NOT NULL,
 	class_id int(10) NOT NULL,
 	joining_year int(10) NOT NULL,
@@ -82,9 +71,6 @@ CREATE TABLE staff(
 	phone bigint(20) NOT NULL,
 	address varchar(225) NOT NULL,
 	blood_group varchar(225) NOT NULL,
-	caste varchar(225) NOT NULL,
-	religion varchar(225) NOT NULL,
-	identity_mark varchar(225),
 	password varchar(225) NOT NULL,
 	staff_status varchar(225) NOT NULL
 );
@@ -302,6 +288,7 @@ WHERE course.course_sem = "3";
 
 CREATE TABLE class (
 class_id int(10)  PRIMARY KEY NOT NULL,
+class_name varchar(255) UNIQUE NOT NULL,
 programme_id int(10) NOT NULL,
 class_year int(2) NOT NULL,
 class_section varchar(2),
@@ -311,3 +298,41 @@ FOREIGN KEY (programme_id) REFERENCES programme (programme_id)
 #insert values into class
 
 INSERT INTO class(class_id,programme_id,class_year)VALUES(2311,231,1);
+
+
+
+ALTER TABLE student
+    DROP m_phone,
+    DROP m_occupation,
+    DROP f_phone,
+    DROP m_name,
+    DROP f_name,
+    DROP identity_mark,
+    DROP country,
+    DROP aadhar_no,
+    DROP f_occupation,
+    DROP religion,
+    DROP caste;
+
+
+ALTER TABLE staff
+DROP religion,
+DROP caste,
+DROP identity_mark;
+
+
+
+
+
+
+
+SELECT A.programme_id,B.class_id FROM (programme A 
+INNER JOIN class B ON A.programme_id = B.programme_id) 
+WHERE A.programme_name = "BCA"
+AND B.class_name = "BCA"
+AND B.class_year = "3"
+
+
+
+INSERT INTO student (reg_no,first_name,last_name,gender,dob,email,phone,address,blood_group,birth_place,birth_district,pincode,password,programme_id,class_id,joining_year,semester,status)
+VALUES(191132708,"Deeraj","S","Male","2000-10-11","hpdeeraj@gmial.com",8088237969,"Babugudda","O+ve","Mangalore","Dakshina Kannada","575001","Deeraj@123","231","2311","2019","6","true");

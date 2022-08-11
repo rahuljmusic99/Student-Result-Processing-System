@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%session.setAttribute("LoginUser", "AdminLogin"); %>
+<% 
+	response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+	if((request.getSession(false).getAttribute("admin")!=null) )
+	{
+%> 
+<jsp:forward page="/admindashboard.jsp"></jsp:forward>
+<%} %> 
+
+
+		
+	
+
 
 <!DOCTYPE html5>
 <html>
@@ -32,7 +44,7 @@
                 </div>   
             <section class="header2">
                 <div class="title"><p><b>Canara exam manager</b></p></div>
-                <div class="leftdiv"><img class="edu" src="css/images/education.png" ></div>
+                <div class="leftdiv"><img class="edu" src="css/images/ad.png" ></div>
            </section>
             </section>   
             
