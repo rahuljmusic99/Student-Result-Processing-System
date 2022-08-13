@@ -32,17 +32,10 @@
                 
                 
                 <form name="adminLoginForm" action="LoginServlet" method="post" class="login1" onsubmit="return validate();">
-<<<<<<< HEAD
                     <i class="fa-solid fa-user"></i>
                     <input name="username" class="field1" type="text" placeholder="Register number"><br><br>
                     <i class="fa-solid fa-eye-slash" id="show-password" onclick="toggle()"></i>
                     <input id="password" name="password" class="field2" type="password" placeholder="password"><br><br>
-=======
-                    <i class="fa fa-user-o"></i>
-                    <input name="username" class="field1" type="text" placeholder="Admin Id"><br><br>
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                    <input name="password" class="field2" type="password" placeholder="password"><br><br>
->>>>>>> fcaf7b328b238eac214d8c5aaed76a84fdd448f1
                     <span style="color:red"><%=(request.getAttribute("errMessage") == null) ? ""
          										: request.getAttribute("errMessage")%></span><br/>
                     <input type="submit" value="Log In" class="btn"/>
