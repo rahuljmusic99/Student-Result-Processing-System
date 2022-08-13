@@ -15,11 +15,15 @@
     background-color:white;
     width: 50%;
     float: right;
-    height: 100%;
     box-shadow: 10px 10px 100px 10px;
-    padding-top: 40px;
+    text-align: center;
+    padding-top: 50px;
     border: 1px solid white;
-    border-radius: 100px;   
+    border-radius: 50px;
+    height: 90%;
+    margin-right: 10px;
+    margin-top: 9px;
+    margin-bottom: 50px;   
 }
 
 .leftdiv{
@@ -53,19 +57,10 @@ h1{
 }
 
 .login1{
-    margin-top: 190px;
+    margin-top: 200px;
     width: 100%;  
 }
 
-.lable{
-    display:block;
-    text-align:left;
-    font-size: 18px;
-    padding-left: 225px;
-    clear: both;
-    color: grey;   
-    
-}
 
 .field1{
     height: 50px;
@@ -87,7 +82,7 @@ h1{
 
 .btn{
     width: 320px;
-    height: 32px;
+    height: 45px;
     background-color: blue;
     color: #ffff;
     border: none;
@@ -174,33 +169,29 @@ i{
 
 .title{
     text-align: center;
-    font-size: 25px;
-    font-family: serif;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
     color:white;
     margin-top: 10px;  
 }
 
 h1{
     color: grey;
-    font-size: 25px;
+    font-size: 30px;
     font-family: 'Poppins', sans-serif;
     margin-right: 120px;
 }
 
-.login1{
-    margin-top: 190px;
-    width: 100%;  
+i{
+    color: grey;
 }
 
-.lable{
-    display:block;
-    text-align:left;
-    font-size: 18px;
-    padding-left: 225px;
-    clear: both;
-    color: grey;   
-    
+.login1{
+    margin-top: 200px;
+    width: 100%; 
+    padding-top: 1px;
 }
+
 
 .field1{
     height: 50px;
@@ -209,6 +200,7 @@ h1{
     padding-right: 60px;
     width: 320px;
     border: 1px solid #ccc;
+    border-radius: 8px;
 }
 
 .field2{
@@ -218,31 +210,33 @@ h1{
     padding-right: 60px;
     width: 320px;
     border: 1px solid #ccc;
+    border-radius: 8px;
 }
 
 .btn{
     width: 320px;
-    height: 32px;
+    height: 45px;
     background-color: blue;
     color: #ffff;
     border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 700;
 }
 
-.btn:active{
-    cursor:progress;
-}
+
 
 .btn:hover{
     cursor: pointer;
 }
 .field1:focus{
-    outline-style:ridge;
+    outline-style:solid;
     outline-color:blue;
     outline-width: 1.4px;
 }
 
 .field2:focus{
-   outline-style: ridge;
+   outline-style: solid;
    outline-color: blue;
    outline-width: 1.4px;
 }
@@ -252,7 +246,7 @@ h1{
     font-size: 20px;
     position: fixed;
     padding-left: 270px;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 .divback{
@@ -262,9 +256,7 @@ h1{
     font-size: 18px;      
 }
 
-i{
-    color: grey;
-}
+
 
 
 

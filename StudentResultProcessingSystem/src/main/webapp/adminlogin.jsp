@@ -26,24 +26,22 @@
     <body>   		
         <section class="header"> 
             <div class="maindiv2">
-                <a href="home.jsp"><div class="divback"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;<span style="color: blue;font-size: 24px"></span>Back</div></a>
+                <a href="home.jsp"><div class="divback"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;<span style="color: blue;font-size: 24px">Back</span></div></a>
                <h1>Login as <span style="color: blue">Admin</span></h1> 
                 
                 
                 <form name="adminLoginForm" action="LoginServlet" method="post" class="login1" onsubmit="return validate();">
-                    <label class="lable">Admin.Id<br></label>
                     <i class="fa fa-user-o"></i>
                     <input name="username" class="field1" type="text" placeholder="Register number"><br><br>
-                    <label class="lable">password<br></label>
                     <i class="fa fa-lock" aria-hidden="true"></i>
                     <input name="password" class="field2" type="password" placeholder="password"><br><br>
                     <span style="color:red"><%=(request.getAttribute("errMessage") == null) ? ""
          										: request.getAttribute("errMessage")%></span><br/>
-                    <input type="submit" value="Login" class="btn"/>
+                    <input type="submit" value="Log In" class="btn"/>
                 </form>
                 </div>   
             <section class="header2">
-                <div class="title"><p><b>Canara exam manager</b></p></div>
+                <div class="title"><p><b>Canara Exam Manager</b></p></div>
                 <div class="leftdiv"><img class="edu" src="css/images/ad.png" ></div>
            </section>
             </section>   
