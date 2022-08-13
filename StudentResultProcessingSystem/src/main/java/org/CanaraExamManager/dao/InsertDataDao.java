@@ -28,12 +28,12 @@ public class InsertDataDao {
 			
 			con = DBConnection.createConnection();
 			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT A.programme_id,B.class_id FROM (programme A "
+			resultSet = statement.executeQuery("SELECT A.programme_id,B.class_name,B.class_id,B.class_year FROM (programme A "
 											+ "INNER JOIN class B ON A.programme_id = B.programme_id) "
-											+ "WHERE A.programme_name = "+studentDataBean.getProgramme()+" "
-											+ "AND B.class_name = "+studentDataBean.getclass()+" "
-											+ "AND B.class_year = "+studentDataBean.getYear()+" ");
-				while (resultSet.next()) {
+											+ "WHERE A.programme_id = "+studentDataBean.getProgramme()+" "
+											+ "AND B.class_name = '"+studentDataBean.getclass().trim()+"' "
+											+ "AND B.class_year = "+studentDataBean.getClassYear()+" ");
+				while(resultSet.next()) {
 					
 					programmeId = resultSet.getString("programme_id");
 					classId = resultSet.getString("class_id");
@@ -45,11 +45,12 @@ public class InsertDataDao {
 						resultSet = statement.executeQuery("SELECT * FROM student WHERE reg_no =  "+studentDataBean.getRegNo()+"");
 						
 						if(resultSet.next() == false) { //check whether student with that register number already exists
+							System.out.println(studentDataBean.getDOB());
 							
 							query = "INSERT INTO student(reg_no,first_name,last_name,gender,dob,email,phone,address,"
-									+ "blood_group,birth_place,birth_district,birth_state,pincode,password,programme_id,class_id,"
+									+ "birth_place,birth_district,birth_state,pincode,password,programme_id,class_id,"
 									+ "joining_year,semester,status)"
-									+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+									+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 							preparedStatement = con.prepareStatement(query);
 							
 							preparedStatement.setString(1,studentDataBean.getRegNo());//1
@@ -60,17 +61,16 @@ public class InsertDataDao {
 							preparedStatement.setString(6,studentDataBean.getEmail());//6
 							preparedStatement.setString(7,studentDataBean.getPhone());//7
 							preparedStatement.setString(8,studentDataBean.getAddress());//8
-							preparedStatement.setString(9,studentDataBean.getBloodGroup());//9
-							preparedStatement.setString(10,studentDataBean.getCity());//10
-							preparedStatement.setString(11,studentDataBean.getDistrict());//11
-							preparedStatement.setString(12,studentDataBean.getState());//12
-							preparedStatement.setString(13,studentDataBean.getPinCode());//13
-							preparedStatement.setString(14,studentDataBean.getPassword());//14
-							preparedStatement.setString(15,programmeId);//15
-							preparedStatement.setString(16,classId);//16
-							preparedStatement.setString(17,studentDataBean.getYear());//17
-							preparedStatement.setString(18,studentDataBean.getCurrentSemester());//18
-							preparedStatement.setString(19,"true");//18
+							preparedStatement.setString(9,studentDataBean.getCity());//9
+							preparedStatement.setString(10,studentDataBean.getDistrict());//10
+							preparedStatement.setString(11,studentDataBean.getState());//11
+							preparedStatement.setString(12,studentDataBean.getPinCode());//12
+							preparedStatement.setString(13,studentDataBean.getPassword());//13
+							preparedStatement.setString(14,programmeId);//14
+							preparedStatement.setString(15,classId);//15
+							preparedStatement.setString(16,studentDataBean.getYear());//16
+							preparedStatement.setString(17,studentDataBean.getCurrentSemester());//17
+							preparedStatement.setString(18,"true");//18
 							
 							preparedStatement.execute();
 							
@@ -85,6 +85,7 @@ public class InsertDataDao {
 					}
 				
 		} catch (Exception e) {
+			
 			return e.getLocalizedMessage();
 		}
 		
@@ -112,9 +113,9 @@ public class InsertDataDao {
 			resultSet = statement.executeQuery("SELECT * FROM staff WHERE staff_id = "+staffDataBean.getStaffId()+"");
 			if(resultSet.next() == false) {//check whether staff with that staff id already exists
 				
-				query = "INSERT INTO staff(staff_id,first_name,last_name,gender,dob,email,phone,address,blood_group,"
+				query = "INSERT INTO staff(staff_id,first_name,last_name,gender,dob,email,phone,address,"
 						+ "password,staff_status)"
-						+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+						+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
 				preparedStatement = con.prepareStatement(query);
 				
 				preparedStatement.setString(1, staffDataBean.getStaffId());//1
@@ -125,9 +126,8 @@ public class InsertDataDao {
 				preparedStatement.setString(6, staffDataBean.getEmail());//6
 				preparedStatement.setString(7, staffDataBean.getPhone());//7
 				preparedStatement.setString(8, staffDataBean.getAddress());//8
-				preparedStatement.setString(9, staffDataBean.getBloodGroup());//9
-				preparedStatement.setString(10, staffDataBean.getPassword());//10
-				preparedStatement.setString(11, "true");//11
+				preparedStatement.setString(10, staffDataBean.getPassword());//9
+				preparedStatement.setString(11, "true");//10
 				
 				preparedStatement.execute();
 					

@@ -57,7 +57,6 @@ public class UpdateDataDao {
 							preparedStatement.setString(6,studentDataBean.getEmail());//6
 							preparedStatement.setString(7,studentDataBean.getPhone());//7
 							preparedStatement.setString(8,studentDataBean.getAddress());//8
-							preparedStatement.setString(9,studentDataBean.getBloodGroup());//9
 							preparedStatement.setString(10,studentDataBean.getCity());//10
 							preparedStatement.setString(11,studentDataBean.getDistrict());//11
 							preparedStatement.setString(12,studentDataBean.getState());//12
@@ -122,7 +121,6 @@ public class UpdateDataDao {
 				preparedStatement.setString(6, staffDataBean.getEmail());//6
 				preparedStatement.setString(7, staffDataBean.getPhone());//7
 				preparedStatement.setString(8, staffDataBean.getAddress());//8
-				preparedStatement.setString(9, staffDataBean.getBloodGroup());//9
 				preparedStatement.setString(10, staffDataBean.getPassword());//10
 				preparedStatement.setString(11, "true");//11
 				

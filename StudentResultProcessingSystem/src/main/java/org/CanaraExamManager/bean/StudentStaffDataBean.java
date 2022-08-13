@@ -20,7 +20,7 @@ public class StudentStaffDataBean {
 	private String currentSemesterString = "";
 	private String registerNoString = "";
 	private String passwordString = "";
-	private String bloodGroupString = "";
+	private String classYearString = "";
 	
 	private String staffId = "";
 	
@@ -160,15 +160,14 @@ public class StudentStaffDataBean {
 		return this.stateString;
 	}
 	
-	public void setBloodGroup(String bloodString) {//17
-		this.bloodGroupString = bloodString;
+	public void setClassYear(String classYearString) {
+		this.classYearString = classYearString; 
 	}
-	
-	public String getBloodGroup() {
-		return this.bloodGroupString;
+
+	public String getClassYear() {
+		return this.classYearString; 
 	}
-	
-	
+
 	
 	public void setStaffId(String staffId) {
 		this.staffId = staffId;

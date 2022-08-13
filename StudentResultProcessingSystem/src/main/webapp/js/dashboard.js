@@ -93,7 +93,10 @@
 				document.getElementById("classForm").submit();
 			}
 			
-			
+			document.getElementById("button6");
+			function insertStudent(){
+				document.getElementById("insertStudentDataForm").submit();
+			}
 		
 			
 			

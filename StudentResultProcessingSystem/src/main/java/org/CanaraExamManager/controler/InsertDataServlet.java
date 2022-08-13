@@ -2,6 +2,7 @@ package org.CanaraExamManager.controler;
 
 import org.CanaraExamManager.bean.*;
 import org.CanaraExamManager.dao.InsertDataDao;
+import org.CanaraExamManager.util.DateFormatConvertor;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.ParseException;
 
 @WebServlet("/InsertDataServlet")
 public class InsertDataServlet extends HttpServlet {
@@ -26,25 +28,25 @@ public class InsertDataServlet extends HttpServlet {
 				
 				StudentStaffDataBean studentDataBean = new StudentStaffDataBean();
 				
-				 studentDataBean.setfirstName(request.getParameter(""));//1
-				 studentDataBean.setLastName(request.getParameter(""));//2
-				 studentDataBean.setGender(request.getParameter(""));//3
-				 studentDataBean.setDOB(request.getParameter(""));//4
-				 studentDataBean.setEmail(request.getParameter(""));//5
-				 studentDataBean.setPhone(request.getParameter(""));//6
-				 studentDataBean.setAddress(request.getParameter(""));//7
-				 studentDataBean.setPinCode(request.getParameter(""));//8
-				 studentDataBean.setCity(request.getParameter(""));//9
-				 studentDataBean.setDistrict(request.getParameter(""));//10
-				 studentDataBean.setState(request.getParameter(""));//11
-				 studentDataBean.setYear(request.getParameter(""));//12
-				 studentDataBean.setProgramme(request.getParameter(""));//13
-				 studentDataBean.setClass(request.getParameter(""));//14
-				 studentDataBean.setCurrentSemester(request.getParameter(""));//15
-				 studentDataBean.setRegNo(request.getParameter(""));//16
-				 studentDataBean.setPassword(request.getParameter(""));//17
-				 studentDataBean.setBloodGroup(request.getParameter(""));//18
-				 
+				 studentDataBean.setfirstName(request.getParameter("sFirstName"));//1
+				 studentDataBean.setLastName(request.getParameter("sLastName"));//2
+				 studentDataBean.setGender(request.getParameter("sGender"));//3				 
+				 studentDataBean.setDOB(request.getParameter("sdob"));//4
+				 studentDataBean.setEmail(request.getParameter("sEmail"));//5
+				 studentDataBean.setPhone(request.getParameter("sPhone"));//6
+				 studentDataBean.setAddress(request.getParameter("sAddress"));//7
+				 studentDataBean.setPinCode(request.getParameter("sPincode"));//8
+				 studentDataBean.setCity(request.getParameter("sCity"));//9
+				 studentDataBean.setDistrict(request.getParameter("sDistrict"));//10
+				 studentDataBean.setState(request.getParameter("sState"));//11
+				 studentDataBean.setYear(request.getParameter("sYearOfJoining"));//12
+				 studentDataBean.setProgramme(request.getParameter("sProgramme"));//13
+				 studentDataBean.setClass(request.getParameter("sClass"));//14
+				 studentDataBean.setCurrentSemester(request.getParameter("sSemester"));//15
+				 studentDataBean.setRegNo(request.getParameter("sRegNo"));//16
+				 studentDataBean.setPassword(request.getParameter("sPassword"));//17
+				 studentDataBean.setClassYear(request.getParameter("sClassYear"));//18
+	 
 				 String dataValidateString = insertDataDao.insertStudentData(studentDataBean) ;
 				 
 				 request.setAttribute("insertionMessage",dataValidateString);
@@ -62,7 +64,6 @@ public class InsertDataServlet extends HttpServlet {
 				staffDataBean.setEmail(request.getParameter(""));//5
 				staffDataBean.setPhone(request.getParameter(""));//6
 				staffDataBean.setAddress(request.getParameter(""));//7
-				staffDataBean.setBloodGroup(request.getParameter(""));//8
 				staffDataBean.setPassword(request.getParameter(""));//9
 				
 				String dataValidateString = insertDataDao.insertStaffData(staffDataBean) ;

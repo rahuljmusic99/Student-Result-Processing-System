@@ -43,8 +43,7 @@ public class UpdateDataServlet extends HttpServlet {
 				 studentDataBean.setCurrentSemester(request.getParameter(""));//15
 				 studentDataBean.setRegNo(request.getParameter(""));//16
 				 studentDataBean.setPassword(request.getParameter(""));//17
-				 studentDataBean.setBloodGroup(request.getParameter(""));//18
-				 
+				
 				 String dataValidateString = updateDataDao.updateStudentData(studentDataBean) ;
 				 
 				 request.setAttribute("insertionMessage",dataValidateString);
@@ -62,7 +61,6 @@ public class UpdateDataServlet extends HttpServlet {
 				staffDataBean.setEmail(request.getParameter(""));//5
 				staffDataBean.setPhone(request.getParameter(""));//6
 				staffDataBean.setAddress(request.getParameter(""));//7
-				staffDataBean.setBloodGroup(request.getParameter(""));//8
 				staffDataBean.setPassword(request.getParameter(""));//9
 				
 				String dataValidateString = updateDataDao.updateStaffData(staffDataBean) ;

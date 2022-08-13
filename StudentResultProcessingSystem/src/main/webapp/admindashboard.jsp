@@ -146,7 +146,7 @@
 	                            document.getElementById("sYOF").value = "<%=studentData.getString("joining_year")%>";
 	                            document.getElementById("sProgramme").value = "<%=studentData.getString("programme_name")%>";
 	                            document.getElementById("sClass").value = "<%=studentData.getString("class_name")%>";
-	                            document.getElementById("sClassYear").value = "<%=studentData.getString("class_year")%>";
+	                            document.getElementById("sClassYear2").value = "<%=studentData.getString("class_year")%>";
 	                            document.getElementById("sCurrentSem").value = "<%=studentData.getString("semester")%>";
 	                            document.getElementById("sRegNo").value = "<%=studentData.getInt("reg_no")%>";
 	                            document.getElementById("sPassword").value = "<%=studentData.getString("password")%>";
@@ -216,27 +216,27 @@
                             <h1>Add Student Data</h1></div>
 
                              <img class="student" src="css/images/studenticon.svg">
-                            <form action="" >
+                            <form id="insertStudentDataForm" action="InsertDataServlet" method="post">
 
 
-                                <input type="text" placeholder="First Name" class="merge1">
-                                <input type="text" placeholder="Last Name" class="merge1">
-                                <select class="merge2">
+                                <input name="sFirstName" type="text" placeholder="First Name" class="merge1">
+                                <input name="sLastName" type="text" placeholder="Last Name" class="merge1">
+                                <select name="sGender" class="merge2">
                                 <option value="" disabled selected hidden>Gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
                                 <option>Other</option>
                                 </select>
-                                <input type="date" id="sdob" name="sdob" placeholder="Date of Birth" class="merge2">
-                                <input type="text" placeholder="Email" class="merge1">
-                                <input type="text" placeholder="Mobile Number" class="merge1">
-                                <input type="text" placeholder="Address" class="merge1">
-                                <input type="text" placeholder="Pincode" class="merge1">
-                                <input type="text" placeholder="city" class="merge3">
-                                <input type="text" placeholder="District" class="merge3">
-                                <input type="text" placeholder="State" class="merge3">
-                                <input type="text" placeholder="Year Of Joining" class="merge2">
-                                <select class="merge3" id="studentProgrammeSelect" name="studentProgrammeSelect" onchange = "changeDropDownData(this.value)">
+                                <input name="sdob" type="date" id="sdob" name="sdob" placeholder="Date of Birth" class="merge2">
+                                <input name="sEmail" type="text" placeholder="Email" class="merge1">
+                                <input name="sPhone" type="text" placeholder="Mobile Number" class="merge1">
+                                <input name="sAddress" type="text" placeholder="Address" class="merge1">
+                                <input name="sPincode" type="text" placeholder="Pincode" class="merge1">
+                                <input name="sCity" type="text" placeholder="city" class="merge3">
+                                <input name="sDistrict" type="text" placeholder="District" class="merge3">
+                                <input name="sState" type="text" placeholder="State" class="merge3">
+                                <input name="sYearOfJoining" type="text" placeholder="Year Of Joining" class="merge2">
+                                <select name="sProgramme" class="merge3" id="studentProgrammeSelect" name="studentProgrammeSelect" onchange = "changeDropDownData(this.value)">
                                 <option value="" disabled selected hidden>Programme</option>
 						<% 
 							ResultSet studentProgrammeData = loadData.loadProgrammeData();
@@ -292,12 +292,15 @@
 							}
 						%>        
                                 </select>
-                                <select class="merge2" id="programmeSemDropDown">
+                                <select name="sSemester" class="merge2" id="programmeSemDropDown">
                                 <option value="programmeSem" disabled selected hidden>Current Sem</option>
                                 </select>
-                                <input type="text" placeholder="Register Number" class="merge1">
-                                <input type="text" placeholder="Password" class="merge1">
-                                <button id="button6" >ADD</button>
+                                <input name="sRegNo" type="text" placeholder="Register Number" class="merge1">
+                                <input name="sPassword" type="text" placeholder="Password" class="merge1">
+                                <input type="hidden" name="Data" value="student"/>
+                                <input type="hidden" name="sClass" id="sclass" value=""/>
+                                <input type="hidden" name="sClassYear" id="sClassYear" value=""/>
+                                <button id="button6" onclick="insertStudent()">ADD</button>
                         <% 
 							ResultSet studentProgrammeSem = loadData.loadProgrammeData();
 							if(studentProgrammeSem!= null){
@@ -397,6 +400,12 @@
                     						$("#classYearDropDown option[value='classYear']").prop('selected',true);
                     						$("#programmeSemDropDown option[value='programmeSem']").prop('selected',true);
                     						$("#programmeSemDropDown option").hide();
+                    						
+                    						$("#classDropDown option:selected").each(function() {
+                 							   var classId = this.text;
+                 							   document.forms['insertStudentDataForm']['sClass'].value = classId;
+                 							  
+                 							}); 
                     					}
                     				}
                     				
@@ -406,6 +415,7 @@
                     						
                     						$("#classYearDropDown option:selected").each(function() {
                     							   var classYear = parseInt($(this).text());
+                    							   document.forms['insertStudentDataForm']['sClassYear'].value = classYear;
                     							   var firstSem = (classYear + classYear) -1; 
                     							   var secondSem = firstSem + 1;
                     							   
@@ -413,6 +423,12 @@
                     							   $("#programmeSemDropDown option[value!='"+firstSem+"']").hide();
                     							   $("#programmeSemDropDown option[value='"+secondSem+"']").show();
                     							}); 
+                    						
+                    						$("#classYearDropDown option:selected").each(function() {
+                  							   var classYear = this.text;
+                  							   document.forms['insertStudentDataForm']['sClassYear'].value = classYear;
+                  							  
+                  							}); 
                     					}
                     				}
                                 </script>
@@ -441,7 +457,7 @@
                                 <input type="text" id="sYOF" placeholder="Year Of Joining" class="merge2" readonly="readonly">
                                 <input class="merge3" id="sProgramme" readonly="readonly">
                                 <input class="merge3" id="sClass" readonly="readonly">
-                                <input class="merge3" id="sClassYear" readonly="readonly">
+                                <input class="merge3" id="sClassYear2" readonly="readonly">
                                 <input class="merge2" id="sCurrentSem" readonly="readonly">
                                 <input type="text" id="sRegNo" placeholder="Register Number" class="merge1" readonly="readonly">
                                 <input type="text" id="sPassword" placeholder="Password" class="merge1" readonly="readonly">

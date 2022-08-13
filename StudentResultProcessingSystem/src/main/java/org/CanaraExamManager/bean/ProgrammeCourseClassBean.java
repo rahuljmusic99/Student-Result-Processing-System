@@ -1,6 +1,5 @@
 package org.CanaraExamManager.bean;
 
-import java.util.Set;
 
 public class ProgrammeCourseClassBean {
 
