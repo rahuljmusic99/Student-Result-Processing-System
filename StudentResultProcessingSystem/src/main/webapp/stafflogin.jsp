@@ -17,7 +17,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
+    	<script type="text/javascript" src="${pageContext.request.contextPath}/js/login.js"></script>
      </head>
     <body>
     		
@@ -28,10 +29,10 @@
                 
                 
                 <form name="staffLoginForm" action="LoginServlet" method="post" class="login1" onsubmit="return validate();">
-                    <i class="fa fa-user-o"></i>
+                    <i class="fa-solid fa-user"></i>
                     <input name="username" class="field1" type="text" placeholder="Staff ID"><br><br>
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                    <input name="password" class="field2" type="password" placeholder="password"><br><br>
+                    <i class="fa-solid fa-eye-slash" id="show-password" onclick="toggle()"></i>
+                    <input id="password" name="password" class="field2" type="password" placeholder="password"><br><br>
                     <span style="color:red"><%=(request.getAttribute("errMessage") == null) ? ""
          										: request.getAttribute("errMessage")%></span><br/>
                     <input type="submit" value="Log In" class="btn"/>
