@@ -69,11 +69,15 @@
                       <div class="tabs__content" data-tab="2">
                          <form action="ResultServlet" method="post" id="semesterForm">
             	         <input name="semester" type="hidden" value=""/>
-            	         <input name="userName" type="hidden" value=<%=request.getSession(false).getAttribute("student") %>>
+            	         <input name="userName" type="hidden" value="<%=request.getSession(false).getAttribute("student") %>">
+                         <input name="programmeName" type="hidden" value="<%=request.getSession(false).getAttribute("programme") %>">
+                         <input name="studentName" type="hidden" value="<%=request.getSession(false).getAttribute("studentName") %>"/>
                          </form>
                          <form action="InternalServlet" method="post" id=internalForm>
             	         <input name="semester" type="hidden" value=""/>
             	         <input name="userName" type="hidden" value=<%=request.getSession(false).getAttribute("student") %>>
+                         <input name="programmeName" type="hidden" value="<%=request.getSession(false).getAttribute("programme	") %>">
+                         <input name="studentName" type="hidden" value="<%=request.getSession(false).getAttribute("studentName") %>"/>
                          </form>
                           
                           
@@ -115,8 +119,8 @@
 	                    		    
 	                            	function callInternalServlet<%=i%>(){
 	                    						
-	                    				document.forms['semesterForm']['semester'].value = "<%=i%>";
-	                    			    document.getElementById("semesterForm").submit();
+	                    				document.forms['internalForm']['semester'].value = "<%=i%>";
+	                    			    document.getElementById("internalForm").submit();
 	                    				
 	                    				
 	                    			}

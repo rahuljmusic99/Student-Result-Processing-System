@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@page import="org.CanaraExamManager.util.DBConnection" %>
 <%@page import="org.CanaraExamManager.dao.LoadDataDao" %>
 <%@page import="java.sql.Connection" %>
@@ -300,7 +298,54 @@
            </div> 
                 
         
-     
+     	<%
+                   
+                   	int maxSem = 1;
+                   	try{
+	                   
+	                    Connection con = DBConnection.createConnection();;
+	 					Statement statement = con.createStatement();
+	 					ResultSet programmeSem = statement.executeQuery(""
+	 						+"SELECT programme_sem from programme "
+	 						+"WHERE programme_sem = (SELECT MAX(programme_sem)FROM programme)LIMIT 1");	
+	             		
+	 					if(programmeSem!=null){
+	                 		while(programmeSem.next()){
+								maxSem = programmeSem.getInt("programme_sem");
+								
+	                 		}
+	 					}
+                   	}catch(SQLException e){
+                   		e.printStackTrace();
+                   	}
+                   		for(int i = 1 ;i <= maxSem; i++){
+				%>         
+                    
+                    <script type="text/javascript">
+	                            	document.getElementById("div<%=i%>");
+	                    		    
+	                            	function callResultServlet<%=i%>(){
+	                    						
+	                    				document.forms['semesterForm']['semester'].value = "<%=i%>";
+	                    			    document.getElementById("semesterForm").submit();
+	                    				
+	                    				
+	                    			}
+					</script>
+					
+					<script type="text/javascript">
+	                            	document.getElementById("div<%=i%>");
+	                    		    
+	                            	function callInternalServlet<%=i%>(){
+	                    						
+	                    				document.forms['internalForm']['semester'].value = "<%=i%>";
+	                    			    document.getElementById("internalForm").submit();
+	                    				
+	                    				
+	                    			}
+					</script>
+                    
+				<%} %>
         
         
          <form action="ResultServlet" method="get" id="semesterForm">

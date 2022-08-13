@@ -475,19 +475,18 @@
                                 <input id="sYOF" type="text" placeholder="Year Of Joining" class="merge2">
                                 <select id="sProgramme" class="merge3">
                                 <option value="" disabled  hidden>Programme</option>
-                                <option>Adimale</option>
+                                <option></option>
                                 </select>
                                 <select id="sClass" class="merge3">
                                 <option value="" disabled hidden>class</option>
-                                <option>Adimale</option>
+                                <option></option>
                                 </select>
                                 <select id="sClassYear" class="merge3">
                                 <option value="" disabled hidden>Class Year</option>
-                                <option>Adimale</option>
+                                <option></option>
                                 </select>
                                 <select id="sCurrentSem" class="merge2">
                                 <option value="" disabled hidden>Current Sem</option>
-                                <option>Adimale</option>
                                 </select>
                                 
                                 
