@@ -36,22 +36,21 @@
 
 .edu{
     color: green;
-    /*opacity: 0.4;*/
     color: white;
     height: 250px;
 }
 
 .title{
     text-align: center;
-    font-size: 25px;
-    font-family: serif;
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
     color:white;
     margin-top: 10px;  
 }
 
 h1{
     color: grey;
-    font-size: 25px;
+    font-size: 30px;
     font-family: 'Poppins', sans-serif;
     margin-right: 120px;
 }
@@ -59,6 +58,7 @@ h1{
 .login1{
     margin-top: 200px;
     width: 100%;  
+    padding-top: 1px;
 }
 
 i{
@@ -72,6 +72,7 @@ i{
     padding-right: 60px;
     width: 320px;
     border: 1px solid #ccc;
+    border-radius: 8px;
 }
 
 .field2{
@@ -81,6 +82,7 @@ i{
     padding-right: 60px;
     width: 320px;
     border: 1px solid #ccc;
+    border-radius: 8px;
 }
 
 .btn{
@@ -89,23 +91,22 @@ i{
     background-color: blue;
     color: #ffff;
     border: none;
-}
-
-.btn:active{
-    cursor:progress;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 .btn:hover{
     cursor: pointer;
 }
 .field1:focus{
-    outline-style:ridge;
+    outline-style:solid;
     outline-color:blue;
     outline-width: 1.4px;
 }
 
 .field2:focus{
-   outline-style: ridge;
+   outline-style: solid;
    outline-color: blue;
    outline-width: 1.4px;
 }
@@ -115,7 +116,7 @@ i{
     font-size: 20px;
     position: fixed;
     padding-left: 270px;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 .divback{

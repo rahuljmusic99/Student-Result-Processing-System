@@ -22,7 +22,7 @@
     <body>
         <section class="header"> 
             <div class="maindiv2">
-                <a href="home.jsp"><div class="divback"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;<span style="color: blue;font-size: 24px"></span>Back</div></a>
+                <a href="home.jsp"><div class="divback"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;<span style="color: blue;font-size: 24px">Back</span></div></a>
                <h1>Login as <span style="color: blue">Student</span></h1> 
                 
                 
@@ -37,7 +37,7 @@
                 </form>
                 </div>   
             <section class="header2">
-                <div class="title"><p><b>Canara exam manager</b></p></div>
+                <div class="title"><p><b>Canara Exam Manager</b></p></div>
                 <div class="leftdiv"><img class="edu" src="css/images/sd.png" ></div>
            </section>
             </section>   
