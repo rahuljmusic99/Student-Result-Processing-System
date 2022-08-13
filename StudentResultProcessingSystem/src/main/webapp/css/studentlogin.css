@@ -15,11 +15,15 @@
     background-color:white;
     width: 50%;
     float: right;
-    height: 100%;
     box-shadow: 10px 10px 100px 10px;
-    padding-top: 40px;
+    text-align: center;
+    padding-top: 50px;
     border: 1px solid white;
-    border-radius: 100px;   
+    border-radius: 50px;
+    height: 90%;
+    margin-right: 10px;
+    margin-top: 9px;
+    margin-bottom: 50px;   
 }
 
 .leftdiv{
@@ -53,18 +57,12 @@ h1{
 }
 
 .login1{
-    margin-top: 190px;
+    margin-top: 200px;
     width: 100%;  
 }
 
-.lable{
-    display:block;
-    text-align:left;
-    font-size: 18px;
-    padding-left: 225px;
-    clear: both;
-    color: grey;   
-    
+i{
+    color: grey;
 }
 
 .field1{
@@ -87,7 +85,7 @@ h1{
 
 .btn{
     width: 320px;
-    height: 32px;
+    height: 45px;
     background-color: blue;
     color: #ffff;
     border: none;
@@ -127,9 +125,6 @@ h1{
     font-size: 18px;      
 }
 
-i{
-    color: grey;
-}
 
 
 

@@ -148,9 +148,8 @@
                  	let random = Math.floor(Math.random()*7);
                  	image.src = images[random];  
              	},2500);
-             
-             </script>
-                          
+        
+             </script>           
      
     </body>
 </html>    
