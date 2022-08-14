@@ -52,8 +52,8 @@
         <div class="tabs">
             <div class="tabs__sidebar">
                 <div class="space"><img src="css/images/education.png" class="edu"></div>
-                <div class="space2"><i class="fa fa-angle-left"></i></div>
-                <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
+                <button class="tabs__button" data-for-tab="7" id="mainprofile"><div class="holder3"></div></button>
+                <button class="tabs__button tabs__button--active" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Student Details</button>
                 <button class="tabs__button" data-for-tab="3"><i class="fa fa-graduation-cap"></i>Staff Details</button>
                 <button class="tabs__button" data-for-tab="4"><i class="fa fa-bar-chart"></i>Programme and courses</button>
@@ -1307,6 +1307,39 @@
                     </div>
                 </div>     
          </div>
+              <div class="tabs__content" data-tab="7">
+            
+            <div class="protab1">
+                <div class="inner__protab1">
+                    <div class="inner2"><h6 class="left">Profile</h6></div>
+                    
+                    <div class="holder">
+                    <div class="holder2">
+                    <img src="" class="innerimg">
+                    </div>
+                    <p class="name">Deeraj</p>
+                    </div>
+                    <div class="inputs">
+                        <label>Name</label>
+                        <input class="int" type="text" readonly>
+                        <label>Phone</label>
+                        <input class="int" readonly>
+                        <label>Email</label>
+                        <input class="int" type="email" readonly>
+                        <label>Password</label>
+                        <input class="int" type="password" readonly>
+                        <button class="cp">Change Password</button>
+                    </div>
+     
+                </div>
+             </div>
+          </div>  
+                
+     </div>
+                
+        
+                
+
            
 				<%
                    
@@ -1363,6 +1396,15 @@
 
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+                    
+                                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                         
         <script type="text/javascript">
             let image = document.getElementById("image");

@@ -35,7 +35,7 @@
                 
                 
             document.querySelectorAll(".tabs").forEach(tabsContainer =>{
-                tabsContainer.querySelector(".tabs__sidebar .tabs__button").click();
+                tabsContainer.querySelector(".tabs__sidebar .tabs__button--active").click();
                     
                     
                 });
