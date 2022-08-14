@@ -11,6 +11,7 @@ import org.CanaraExamManager.bean.ProgrammeCourseClassBean;
 import org.CanaraExamManager.bean.StudentStaffDataBean;
 import org.CanaraExamManager.dao.UpdateDataDao;
 
+@WebServlet("/UpdateDataServlet")
 public class UpdateDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

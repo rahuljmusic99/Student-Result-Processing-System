@@ -98,7 +98,14 @@
 				document.getElementById("insertStudentDataForm").submit();
 			}
 		
-			
+
+			function deleteData(uniqueId, Data){
+				
+				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
+				document.forms['deleteDataForm']['Data'].value = Data;
+				
+				document.getElementById("deleteDataForm").submit();
+			}
 			
 
 			

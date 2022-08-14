@@ -46,7 +46,11 @@
         
     </head> 
     <body>
-    
+    	
+    	<form id="deleteDataForm" action="DeleteDataServlet" method="post">
+    		<input type="hidden" id="uniqueId" name="uniqueId" value=""/>
+    		<input type="hidden" id="Data" name="Data" value=""/>
+    	</form>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
         <div class="tabs">
@@ -85,7 +89,7 @@
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
 <!-- ------------------------------------------------------ TAB 2 STUDENT DETAILS ------------------------------------------------------------------------------- -->            
-            <div class="tabs__content" data-tab="2">
+            <div class="tabs__content" data-tab="2" id="studentDetails">
                 <div class="protab"> 
                     
                     
@@ -123,7 +127,7 @@
                             <td><%=studentData.getString("first_name")+" "+studentData.getString("last_name")%></td>  <!-- register number -->
                             <td><%=studentData.getString("reg_no")%></td>
                             <td class="td2"><button id="viewStudent<%=i%>" class="btn__edit"  onclick="viewStudentDetails<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
-                            <td class="td3"><div id="editStudent<%=i%>" class="circle1" title="Edit Programme" onclick="editStudentDetails<%=i%>()" ><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td3"><div id="editStudent<%=i%>" class="circle1" title="Edit Programme" onclick="editStudentDetails<%=i%>()" ><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteStudent" class="circle2" title="Delete Programme" onclick="deleteStudentData('<%=studentData.getString("reg_no")%>','student');"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
                         
                         <script type="text/javascript">
@@ -202,6 +206,17 @@
                         	}
                         
                         %>
+                        
+                         <script type="text/javascript">
+                        	document.getElementById("deleteStudent");
+	                        function deleteStudentData(uniqueId, Data){
+	            				
+	            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
+	            				document.forms['deleteDataForm']['Data'].value = Data;
+	            				
+	            				document.getElementById("deleteDataForm").submit();
+	            			}
+                        </script>
                         
                     </table>
                     </div>
@@ -707,7 +722,7 @@
 
 							<td class="td1"><button class="btn__course" id="btn__course<%=i + j%>>" onclick="insertCourseData<%=i + j%>()"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
                             <td class="td2"><button class="btn__edit" id="courseEdit<%=i + j%>" onclick="editCourse<%=i + j%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
-                            <td class="td3"><div class="circle1" title="Edit Programme" id="programmeEdit<%=i + j%>" onclick="editProgramme<%=i + j%>()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td3"><div class="circle1" title="Edit Programme" id="programmeEdit<%=i + j%>" onclick="editProgramme<%=i + j%>()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteProgramme" onclick="deleteProgrammeData('<%=programmeResultSet.getString("programme_id")%>','programme')" class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
                           
                         <script type="text/javascript">
@@ -750,6 +765,17 @@
                         	}	
                            
                         %>
+                        
+                         <script type="text/javascript">
+                        	document.getElementById("deleteStudent");
+	                        function deleteProgrammeData(uniqueId, Data){
+	            				
+	            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
+	            				document.forms['deleteDataForm']['Data'].value = Data;
+	            				
+	            				document.getElementById("deleteDataForm").submit();
+	            			}
+                        </script>
                     </table>
                     </div>
                 </div>
@@ -1034,7 +1060,7 @@
                             <td class="td1"><%=classesData.getString("programme_name")%></td>   <!--Programme name-->
                             <td class="td2"><%=classesData.getString("class_name")%></td>   <!--Semseter-->
                             <td class="td5"><%=classesData.getString("class_year")%></td>
-                            <td class="td3"><div class="circle1" title="Edit Programme" id="edit5" onclick="myFunction17()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td3"><div class="circle1" title="Edit Class" id="edit5" onclick="myFunction17()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteClass" class="circle2" title="Delete Class" onclick="deleteClass('<%=classesData.getString("class_id")%>','class')"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>			
 
                         <% 	
@@ -1047,6 +1073,15 @@
 	                    %>
                      
                     </table>
+                     <script type="text/javascript">
+                     	document.getElementById("deleteClass");
+                     	function deleteClass(uniqueId,Data){
+                     		document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
+                     		document.forms['deleteDataForm']['Data'].value = Data;
+                     		
+                     		document.getElementById("deleteDataForm").submit();
+                     	}
+                     </script>
                     </div>
                 </div>
                  

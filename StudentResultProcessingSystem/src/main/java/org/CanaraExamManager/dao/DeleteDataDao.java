@@ -1,8 +1,8 @@
 package org.CanaraExamManager.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import org.CanaraExamManager.bean.ProgrammeCourseClassBean;
 import org.CanaraExamManager.bean.StudentStaffDataBean;
@@ -14,17 +14,15 @@ public class DeleteDataDao {
 		
 		Connection con = null;
 		String query = "";
-		Statement statement = null;
+		PreparedStatement preparedStatement = null;
 
 		try {
-			query = "DELETE FROM student WHERE reg_no ="+studentDataBean.getRegNo()+" "
-					+"AND first_name = '"+studentDataBean.getfirstName()+"' "
-					+"AND last_name = '"+studentDataBean.getLastName()+"'";
+			query = "DELETE FROM student WHERE reg_no ="+studentDataBean.getRegNo().trim()+"";
 			
 			con = DBConnection.createConnection();
-			statement = con.createStatement();
+			preparedStatement = con.prepareStatement(query);
 			
-			statement.executeQuery(query);
+			preparedStatement.execute();
 			
 			
 		} catch (SQLException e) {
@@ -38,7 +36,7 @@ public class DeleteDataDao {
 		
 		Connection con = null;
 		String query = "";
-		Statement statement = null;
+		PreparedStatement preparedStatement = null;
 
 		try {
 			query = "DELETE FROM staff WHERE staff_id ="+staffDataBean.getStaffId()+" "
@@ -46,9 +44,9 @@ public class DeleteDataDao {
 					+"AND last_name = '"+staffDataBean.getLastName()+"'";
 			
 			con = DBConnection.createConnection();
-			statement = con.createStatement();
+			preparedStatement = con.prepareStatement(query);
 			
-			statement.executeQuery(query);
+			preparedStatement.execute();
 			
 			
 		} catch (SQLException e) {
@@ -62,16 +60,15 @@ public class DeleteDataDao {
 		
 		Connection con = null;
 		String query = "";
-		Statement statement = null;
+		PreparedStatement preparedStatement = null;
 
 		try {
-			query = "DELETE FROM programme WHERE programme_id ="+programmeDataBean.getProgrammeId()+" "
-					+"AND programme_name = '"+programmeDataBean.getProgrammeName()+"'";
+			query = "DELETE FROM programme WHERE programme_id = "+programmeDataBean.getProgrammeId().trim()+" ";
 			
 			con = DBConnection.createConnection();
-			statement = con.createStatement();
+			preparedStatement = con.prepareStatement(query);
 			
-			statement.executeQuery(query);
+			preparedStatement.execute();
 			
 			
 		} catch (SQLException e) {
@@ -85,16 +82,16 @@ public class DeleteDataDao {
 		
 		Connection con = null;
 		String query = "";
-		Statement statement = null;
+		PreparedStatement preparedStatement = null;
 
 		try {
 			query = "DELETE FROM course WHERE course_code ="+courseDataBean.getCourseCode()+" "
 					+"AND course_name = '"+courseDataBean.getCourseName()+"'";
 			
 			con = DBConnection.createConnection();
-			statement = con.createStatement();
+			preparedStatement = con.prepareStatement(query);
 			
-			statement.executeQuery(query);
+			preparedStatement.execute();
 			
 			
 		} catch (SQLException e) {
@@ -108,17 +105,15 @@ public class DeleteDataDao {
 		
 		Connection con = null;
 		String query = "";
-		Statement statement = null;
+		PreparedStatement preparedStatement = null;
 
 		try {
-			query = "DELETE FROM class WHERE class_id ="+classBean.getClassId()+" "
-					+"AND class_name = '"+classBean.getClassName()+"' "
-					+ "AND class_year = "+classBean.getClassYear()+"";
+			query = "DELETE FROM class WHERE class_id ="+classBean.getClassId().trim()+"";
 			
 			con = DBConnection.createConnection();
-			statement = con.createStatement();
+			preparedStatement = con.prepareStatement(query);
 			
-			statement.executeQuery(query);
+			preparedStatement.execute();
 			
 			
 		} catch (SQLException e) {
@@ -132,15 +127,15 @@ public class DeleteDataDao {
 		
 		Connection con = null;
 		String query = "";
-		Statement statement = null;
+		PreparedStatement preparedStatement = null;
 
 		try {
 			query = "DELETE FROM final_marks WHERE reg_no = ";
 			
 			con = DBConnection.createConnection();
-			statement = con.createStatement();
+			preparedStatement = con.prepareStatement(query);
 			
-			statement.executeQuery(query);
+			preparedStatement.execute();
 			
 			
 		} catch (SQLException e) {
@@ -154,15 +149,15 @@ public class DeleteDataDao {
 		
 		Connection con = null;
 		String query = "";
-		Statement statement = null;
+		PreparedStatement preparedStatement = null;
 
 		try {
 			query = "DELETE FROM first_internal_marks WHERE reg_no = ";
 			
 			con = DBConnection.createConnection();
-			statement = con.createStatement();
+			preparedStatement = con.prepareStatement(query);
 			
-			statement.executeQuery(query);
+			preparedStatement.execute();
 			
 			
 		} catch (SQLException e) {
@@ -176,15 +171,15 @@ public class DeleteDataDao {
 		
 		Connection con = null;
 		String query = "";
-		Statement statement = null;
+		PreparedStatement preparedStatement = null;
 
 		try {
 			query = "DELETE FROM second_internal_marks WHERE reg_no = ";
 			
 			con = DBConnection.createConnection();
-			statement = con.createStatement();
+			preparedStatement = con.prepareStatement(query);
 			
-			statement.executeQuery(query);
+			preparedStatement.execute();
 			
 			
 		} catch (SQLException e) {

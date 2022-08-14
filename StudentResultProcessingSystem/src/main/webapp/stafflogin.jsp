@@ -28,7 +28,7 @@
                <h1>Login as <span style="color: blue">Staff</span></h1> 
                 
                 
-                <form name="staffLoginForm" action="Logto ininServlet" method="post" class="login1" onsubmit="return validate();">
+                <form name="staffLoginForm" action="LoginServlet" method="post" class="login1" onsubmit="return validate();">
                     <i class="fa-solid fa-user"></i>
                     <input name="username" class="field1" type="text" placeholder="Staff ID"><br><br>
                     <i class="fa-solid fa-eye-slash" id="show-password" onclick="toggle()"></i>

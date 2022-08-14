@@ -12,7 +12,7 @@ import org.CanaraExamManager.bean.StudentStaffDataBean;
 import org.CanaraExamManager.dao.DeleteDataDao;
 import org.CanaraExamManager.dao.InsertDataDao;
 
-
+@WebServlet("/DeleteDataServlet")
 public class DeleteDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -26,9 +26,7 @@ public class DeleteDataServlet extends HttpServlet {
 			switch (dataString) {
 			case "student":{ 
 				StudentStaffDataBean studentDataBean = new StudentStaffDataBean();
-				studentDataBean.setfirstName(request.getParameter(""));//1
-				studentDataBean.setLastName(request.getParameter(""));//2
-				studentDataBean.setRegNo(request.getParameter(""));
+				studentDataBean.setRegNo(request.getParameter("uniqueId"));
 				
 				String dataValidateString = deleteDataDao.deleteStudentData(studentDataBean) ;
 				 
@@ -43,21 +41,33 @@ public class DeleteDataServlet extends HttpServlet {
 				
 			}case "programme":{
 				ProgrammeCourseClassBean programmeDataBean = new ProgrammeCourseClassBean();
-				programmeDataBean.setProgrammeName("");
-				programmeDataBean.setProgrammeId("");
+				programmeDataBean.setProgrammeId(request.getParameter("uniqueId"));
+				
+				String dataValidateString = deleteDataDao.deleteProgrammeData(programmeDataBean) ;
+				 
+				request.setAttribute("insertionMessage",dataValidateString);
+				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 				
 			}case "course":{
 				ProgrammeCourseClassBean courseDataBean = new ProgrammeCourseClassBean();
-				courseDataBean.setCourseCode("");
-				courseDataBean.setCourseName("");
-				courseDataBean.setProgrammeId("");
+				courseDataBean.setCourseCode(request.getParameter("uniqueId"));
+				
+				String dataValidateString = deleteDataDao.deleteCourseData(courseDataBean) ;
+				 
+				request.setAttribute("insertionMessage",dataValidateString);
+				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
+
 			
 			}case "class":{
 				ProgrammeCourseClassBean classDataBean = new ProgrammeCourseClassBean();
-				classDataBean.setClassName("");
-				classDataBean.setClassId("");
-				classDataBean.setClassYear("");
+				classDataBean.setClassId(request.getParameter("uniqueId"));
+				
+				String dataValidateString = deleteDataDao.deleteClassData(classDataBean) ;
+				 
+				request.setAttribute("insertionMessage",dataValidateString);
+				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
+				
 				
 			}case "finalResult": {
 				
