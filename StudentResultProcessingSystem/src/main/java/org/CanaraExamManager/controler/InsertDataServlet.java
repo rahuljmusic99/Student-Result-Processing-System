@@ -2,7 +2,7 @@ package org.CanaraExamManager.controler;
 
 import org.CanaraExamManager.bean.*;
 import org.CanaraExamManager.dao.InsertDataDao;
-import org.CanaraExamManager.util.DateFormatConvertor;
+import org.CanaraExamManager.util.EmaiUtility;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,6 +11,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 
 @WebServlet("/InsertDataServlet")
 public class InsertDataServlet extends HttpServlet {
@@ -48,11 +52,39 @@ public class InsertDataServlet extends HttpServlet {
 				 studentDataBean.setClassYear(request.getParameter("sClassYear"));//18
 	 
 				 String dataValidateString = insertDataDao.insertStudentData(studentDataBean) ;
+				 String mailValidateString = "";
 				 
-				 request.setAttribute("insertionMessage",dataValidateString);
-				 request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response); 
+				 if(dataValidateString == "SUCCESS") {
+					 
+					String toAddressString = studentDataBean.getEmail();
+					String subjectString = "Password";
+					String messageString = studentDataBean.getPassword();
+					
+					
+					try {
+						mailValidateString = EmaiUtility.sendEmail(toAddressString,subjectString,messageString);
+					} catch (AddressException e) {
+						e.printStackTrace();
+					} catch (MessagingException e) { 
+						e.printStackTrace();
+					}	
 				
-				 
+					if(mailValidateString == "SUCCESS") {	
+						request.setAttribute("insertionMessage", "SUCCESS" );
+						request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response); 
+					
+					 }else {
+						 request.setAttribute("insertionMessage","Inserted Data successfully" + " but Mail not sent! Please check the Email Id");
+						 request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
+					 }
+				 }else {
+					 
+					 request.setAttribute("insertionMessage",dataValidateString);
+					 request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
+				 }
+				
+				
+				  
 			}case "staff": {
 				
 				StudentStaffDataBean staffDataBean = new StudentStaffDataBean();
@@ -67,7 +99,8 @@ public class InsertDataServlet extends HttpServlet {
 				staffDataBean.setPassword(request.getParameter(""));//9
 				
 				String dataValidateString = insertDataDao.insertStaffData(staffDataBean) ;
-				 
+				
+				
 				request.setAttribute("insertionMessage",dataValidateString);
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				

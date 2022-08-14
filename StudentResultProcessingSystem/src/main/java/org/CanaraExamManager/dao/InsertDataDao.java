@@ -45,7 +45,6 @@ public class InsertDataDao {
 						resultSet = statement.executeQuery("SELECT * FROM student WHERE reg_no =  "+studentDataBean.getRegNo()+"");
 						
 						if(resultSet.next() == false) { //check whether student with that register number already exists
-							System.out.println(studentDataBean.getDOB());
 							
 							query = "INSERT INTO student(reg_no,first_name,last_name,gender,dob,email,phone,address,"
 									+ "birth_place,birth_district,birth_state,pincode,password,programme_id,class_id,"
