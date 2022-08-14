@@ -1021,7 +1021,7 @@ option{
 
 .model-content9{
     width: 500px;
-    height:450px;
+    height:500px;
     background-color: white;
     border-radius: 4px;
     padding: 20px;
@@ -1078,7 +1078,7 @@ option{
 
 .model-content10{
     width: 500px;
-    height:450px;
+    height:500px;
     background-color: white;
     border-radius: 4px;
     padding: 20px;
@@ -1136,7 +1136,7 @@ option{
 
 .model-content11{
     width: 500px;
-    height:450px;
+    height:500px;
     background-color: white;
     border-radius: 4px;
     padding: 20px;
@@ -1527,6 +1527,15 @@ option{
     margin-left: 2.5rem;
 }
 
+.merge4:nth-child(9){
+    margin-left: 0 auto;
+}
+
+.merge4:nth-child(10){
+    margin-left: 2.5rem;
+}
+
+
 .tb4{
     width: 65rem;
     border: 1px solid grey;
@@ -1561,4 +1570,11 @@ option{
 
 .hiddenCourseData{
 	display: none;
+}
+
+.td8{
+    text-align: center;
+}
+.td7{
+    text-align: center;
 }
