@@ -535,17 +535,17 @@
                     <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
                         <tr >
                             <th>Programme Name</th>
-                            <th>Class</th>
-                            <th>Student Name</th>
-                            <th>Register Number</th>
-                            <th>View Student Details</th>
+                            <th>Staff Name</th>
+                            <th>Staff ID</th>
+                            <th>Role</th>
+                            <th>View Staff Details</th>
                             <th>Action</th>
                         </tr>
                         <tr>
                             <td class="td1"></td>   <!--Programme name-->
                             <td class="td2"></td>   <!--Semseter-->
-                            <td></td>   <!--Course-->
-                            <td></td>
+                            <td class="td7"></td>   <!--Course-->
+                            <td class="td8"></td>
                             <td class="td2"><button class="btn__edit" id="btn-edit3" onclick="myFunction13()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
                             <td class="td3"><div class="circle1" title="Edit Programme" id="edit2" onclick="myFunction14()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
@@ -566,11 +566,17 @@
                                 <input type="text" placeholder="Last Name" class="merge4">
                                 <select class="merge5">
                                 <option value="" disabled selected hidden>Gender</option>
-                                <option>Adimale</option>
+                                <option></option>
                                 </select>
                                 <input type="text" placeholder="Email" class="merge4">
                                 <input type="text" placeholder="Mobile Number" class="merge4">
                                 <input type="text" placeholder="Address" class="merge5">
+                                <select class="merge4">
+                                <option value="" disabled selected hidden>Programme name</option>
+                                </select>
+                                <select class="merge4">
+                                <option value="" disabled selected hidden>Role</option>
+                                </select>
                                 <input type="text" placeholder="Staff ID(Digits only)" class="merge4">
                                 <input type="text" placeholder="Password" class="merge4">
                                 <button id="button9" >Add</button>
@@ -589,11 +595,17 @@
                                 <input type="text" placeholder="Last Name" class="merge4">
                                 <select class="merge5">
                                 <option value="" disabled selected hidden>Gender</option>
-                                <option>Adimale</option>
+                                <option></option>
                                 </select>
                                 <input type="text" placeholder="Email" class="merge4">
                                 <input type="text" placeholder="Mobile Number" class="merge4">
                                 <input type="text" placeholder="Address" class="merge5">
+                                <select class="merge4">
+                                <option value="" disabled selected hidden>Programme name</option>
+                                </select>
+                                <select class="merge4">
+                                <option value="" disabled selected hidden>Role</option>
+                                </select>
                                 <input type="text" placeholder="Staff ID(Digits only)" class="merge4">
                                 <input type="text" placeholder="Password" class="merge4">
                         </form>
@@ -611,11 +623,17 @@
                                 <input type="text" placeholder="Last Name" class="merge4">
                                 <select class="merge5">
                                 <option value="" disabled selected hidden>Gender</option>
-                                <option>Adimale</option>
+                                <option></option>
                                 </select>
                                 <input type="text" placeholder="Email" class="merge4">
                                 <input type="text" placeholder="Mobile Number" class="merge4">
                                 <input type="text" placeholder="Address" class="merge5">
+                                <select class="merge4">
+                                <option value="" disabled selected hidden>Programme name</option>
+                                </select>
+                                <select class="merge4">
+                                <option value="" disabled selected hidden>Role</option>
+                                </select>
                                 <input type="text" placeholder="Staff ID(Digits only)" class="merge4">
                                 <input type="text" placeholder="Password" class="merge4">
                                 <button id="button11" >Update</button>
