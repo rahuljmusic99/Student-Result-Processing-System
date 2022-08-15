@@ -33,9 +33,9 @@
                 
                 <form name="adminLoginForm" action="LoginServlet" method="post" class="login1" onsubmit="return validate();">
                     <i class="fa-solid fa-user"></i>
-                    <input name="username" class="field1" type="text" placeholder="Register number"><br><br>
+                    <input name="username" class="field1" type="text" placeholder="Admin ID"><br><br>
                     <i class="fa-solid fa-eye-slash" id="show-password" onclick="toggle()"></i>
-                    <input id="password" name="password" class="field2" type="password" placeholder="password"><br><br>
+                    <input id="password" name="password" class="field2" type="password" placeholder="Password"><br><br>
                     <span style="color:red"><%=(request.getAttribute("errMessage") == null) ? ""
          										: request.getAttribute("errMessage")%></span><br/>
                     <input type="submit" value="Log In" class="btn"/>

@@ -30,7 +30,7 @@ public class DeleteDataServlet extends HttpServlet {
 				
 				String dataValidateString = deleteDataDao.deleteStudentData(studentDataBean) ;
 				 
-				request.setAttribute("insertionMessage",dataValidateString);
+				request.setAttribute("deletionMessage",dataValidateString);
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 
 			}case "staff":{
@@ -45,7 +45,7 @@ public class DeleteDataServlet extends HttpServlet {
 				
 				String dataValidateString = deleteDataDao.deleteProgrammeData(programmeDataBean) ;
 				 
-				request.setAttribute("insertionMessage",dataValidateString);
+				request.setAttribute("deletionMessage",dataValidateString);
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 				
@@ -55,7 +55,7 @@ public class DeleteDataServlet extends HttpServlet {
 				
 				String dataValidateString = deleteDataDao.deleteCourseData(courseDataBean) ;
 				 
-				request.setAttribute("insertionMessage",dataValidateString);
+				request.setAttribute("deletionMessage",dataValidateString);
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 
 			
@@ -65,7 +65,7 @@ public class DeleteDataServlet extends HttpServlet {
 				
 				String dataValidateString = deleteDataDao.deleteClassData(classDataBean) ;
 				 
-				request.setAttribute("insertionMessage",dataValidateString);
+				request.setAttribute("deletionMessage",dataValidateString);
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 				

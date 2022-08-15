@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.mysql.cj.util.Base64Decoder"%>
 <%@page import="java.sql.ResultSetMetaData"%>
 <%@page import="java.sql.ResultSet"%>
@@ -74,7 +75,7 @@
                 		
 						grandTotalMax = grandTotalMax + resultSet.getInt("max_marks");
 						grandTotalIA = grandTotalIA + resultSet.getInt("max_IA");
-						grandTotalObtained = grandTotalObtained + resultSet.getInt("obtained_marks");
+						grandTotalObtained = grandTotalObtained + resultSet.getInt("total_marks");
 						grandTotalCredit = grandTotalCredit + resultSet.getInt("credit");
 						grandTotalGp = grandTotalGp + resultSet.getInt("grade_point");
 						grandTotalGpw = grandTotalGpw + resultSet.getInt("grade_point_weightage");
@@ -194,8 +195,11 @@
                     <td><%=grandTotalGpw%></td>     <!-- gpw total   -->
                     <td></td>
                 </tr>
+                <%DecimalFormat df = new DecimalFormat();
+                  df.setMaximumFractionDigits(2);
+                %>
                 <tr bgcolor="whitesmoke">
-                    <td colspan="11" class="avg">&nbsp;Semester Grade Point Average: <%=grandTotalCp/grandTotalCredit%></td> <!-- try to add sgpa value after : inside the tag   -->
+                    <td colspan="11" class="avg">&nbsp;Semester Grade Point Average: <%=df.format(grandTotalCp/grandTotalCredit)%></td> <!-- try to add sgpa value after : inside the tag   -->
                 
                 </tr> 
                 

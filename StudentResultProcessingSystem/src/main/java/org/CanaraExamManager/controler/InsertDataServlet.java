@@ -57,8 +57,13 @@ public class InsertDataServlet extends HttpServlet {
 				 if(dataValidateString == "SUCCESS") {
 					 
 					String toAddressString = studentDataBean.getEmail();
-					String subjectString = "Password";
-					String messageString = studentDataBean.getPassword();
+					String subjectString = "Invitation to join CanaraExamPortal";
+					String messageString = "<h3>Dear "+studentDataBean.getfirstName().trim()+" "+studentDataBean.getLastName().trim()+","+"</h3><br/>"
+										 + "<p>Welcome to CanaraExamPortal, a website created by WEB-CENTRIC for CANARACOLLEGE</p><br/>"
+										 + "<p>The key intent for this initiative is to support students of CANARACOLLEGE to improve their academic performance, "
+										 + "providing students with a user friendly interface to view semester and internal results.  Students can also analyse their"
+										 + "academic performance through intensive graphical charts and metrics, which will help you to with your academic performance.</p><br/>"
+										 + "<p>2 Easy Steps to Get Started</p>";
 					
 					
 					try {

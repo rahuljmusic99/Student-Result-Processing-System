@@ -19,9 +19,9 @@ public class EmaiUtility {
 	
 	public static String sendEmail(String toAddress,String subject, String message) throws AddressException, MessagingException {
 		
-		final String userName = "canaracollege99@outlook.com"; 
-		final String password = "Canara@123";
-		String host = "smtp-mail.outlook.com";
+		final String userName = "rahuljmusic99@gmail.com"; 
+		final String password = "asfwfqrevulpffrj";
+		String host = "smtp.gmail.com";
 		String port = "587";
 		
 		//Set SMTP Server Properties
@@ -46,7 +46,7 @@ public class EmaiUtility {
 		msg.setRecipients(Message.RecipientType.TO, toAddresses);
 		msg.setSubject(subject);
 		msg.setSentDate(new Date());
-		msg.setText(message);
+		msg.setContent(message,"text/html");
 		
 		//Send the email
 		Transport.send(msg);

@@ -208,14 +208,28 @@
                         %>
                         
                          <script type="text/javascript">
-                        	document.getElementById("deleteStudent");
-	                        function deleteStudentData(uniqueId, Data){
-	            				
-	            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
-	            				document.forms['deleteDataForm']['Data'].value = Data;
-	            				
-	            				document.getElementById("deleteDataForm").submit();
-	            			}
+                         	 document.getElementById("deleteStudent");
+	                         function deleteStudentData(uniqueId, Data){
+	                 			
+	                 			swal({title: "Warning",
+	                 				 text: "Are you shure you want delete the Student along with results associated with him/her",
+	                 				 icon: "warning",
+	                 				 buttons: {
+	                 					 cancel: "No",
+	                 					 yes: "Yes",
+	                 				 },	 
+	                 			})
+	                 			.then((value) => {	
+	                 				if(value == "yes"){
+
+	    	            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
+	    	            				document.forms['deleteDataForm']['Data'].value = Data;
+	    	            				
+	    	            				document.getElementById("deleteDataForm").submit();
+	                 				}
+	                 			});
+	                 		}
+                         
                         </script>
                         
                     </table>

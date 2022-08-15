@@ -9,8 +9,13 @@
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 <%
-	String insertionMessage = (String) request.getAttribute("insertionMessage");
+	String insertionMessage = "" ;
+	insertionMessage = (String) request.getAttribute("insertionMessage");
 	
+	String deletionMessage = "" ;
+	deletionMessage = (String) request.getAttribute("deletionMessage");
+
+if(insertionMessage != "" || insertionMessage != null){
 	if(insertionMessage == "SUCCESS"){
 %>		
 	<script type="text/javascript">
@@ -72,6 +77,69 @@
 	
 <%		
 	}
+}else if(deletionMessage != "" || deletionMessage != null){
+	if(deletionMessage == "SUCCESS"){
+%>		
+	<script type="text/javascript">
+	
+		window.onload=function changeBackground() {
+		   document.body.style.background = 'blue';
+		   successMessage();
+		}
+	
+	</script>	
+	
+	<script type="text/javascript">
+		function successMessage(){
+			
+			swal({title: "Success",
+				 text: "Deleted Data Successfully",
+				 icon: "success",
+				 buttons: {
+					 ok: "OK",
+				 },	 
+			})
+			.then((value) => {	
+				if(value == "ok"){
+					document.location.href="admindashboard.jsp";
+				}
+			});
+		}
+	</script>
+<% 
+
+	}else{
+%>	
+	<script type="text/javascript">
+	
+		window.onload=function changeBackground() {
+		   document.body.style.background = 'red';
+		   errorMessage();
+		}
+	
+	</script>	
+	
+	<script type="text/javascript">
+		function errorMessage(){
+			
+			swal({title: "Sorry",
+				 text: "<%=deletionMessage%>",
+				 icon: "warning",
+				 buttons: {
+					 ok: "OK",
+				 },	 
+			})
+			.then((value) => {	
+				if(value == "ok"){
+					document.location.href="admindashboard.jsp";
+				}
+			});
+		}
+	</script>
+	
+<%		
+	}
+}	
 	
 %>
 	</head>
