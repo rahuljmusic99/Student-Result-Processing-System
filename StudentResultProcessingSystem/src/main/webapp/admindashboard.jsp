@@ -52,40 +52,7 @@
     		<input type="hidden" id="Data" name="Data" value=""/>
     	</form>
     	
-    	<form id="checkForCourse" action="DeleteDataServlet" method="post">
-                <%
-           	ResultSet programmeForCourseResultSet = loadData.loadProgrammeData();
-         	try{
-         		if(programmeForCourseResultSet!=null){
-         			while(programmeForCourseResultSet.next()){
-         				int courseCount = 0;
-         				for(int i=1; i<= programmeForCourseResultSet.getInt("programme_sem"); i++){
-         					
-         					ResultSet coursesData = loadData.loadCoursedata(programmeForCourseResultSet, i);
-              try{
-                  	if(coursesData!=null){
-                  		
-                  		while(coursesData.next()){
-                  			courseCount = courseCount + 1;
-                 			
-                  		}
-                  	}
-                	
-                 }catch(SQLException e){
-                 	e.printStackTrace();
-                	}	
-             
-           		}
-         				 %>
-             		<input type="hidden" id="programme<%=programmeForCourseResultSet.getString("programme_id")%>" name="<%=programmeForCourseResultSet.getString("programme_id")%>" value="<%=courseCount%>" />
- 						<%                
-         			}
-         		}
-         	}catch(SQLException e){
-         		e.printStackTrace();
-         		
-    			}%>
-		</form>
+
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
         <div class="tabs">
             <div class="tabs__sidebar">
@@ -99,10 +66,6 @@
                 <button class="tabs__button" data-for-tab="6"><i class="fa fa-bullseye"></i>Student Result</button>
                 <button class="tabs__button" onclick="logoutConfirm();" ><i class="fa fa-power-off"></i>Logout</button>
             </div>
-        
-
-
-
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
 <!-- ------------------------------------------------------ TAB 1 DASHBOARD ----- ------------------------------------------------------------------------------- -->
             
@@ -280,8 +243,6 @@
 
                              <img class="student" src="css/images/studenticon.svg">
                             <form id="insertStudentDataForm" action="InsertDataServlet" method="post">
-
-
                                 <input name="sFirstName" type="text" placeholder="First Name" class="merge1">
                                 <input name="sLastName" type="text" placeholder="Last Name" class="merge1">
                                 <select name="sGender" class="merge2">
@@ -604,14 +565,51 @@
                             <th>View Staff Details</th>
                             <th>Action</th>
                         </tr>
+                        <%
+                        	ResultSet staffDataSet = loadData.loadStaffData();
+                        	
+                        	if(staffDataSet != null){
+                        		
+                        		try{
+                        			int i = 1;
+                        			while(staffDataSet.next()){
+                        %>				
                         <tr>
-                            <td class="td1"></td>   <!--Programme name-->
-                            <td class="td2"></td>   <!--Semseter-->
-                            <td class="td7"></td>   <!--Course-->
-                            <td class="td8"></td>
-                            <td class="td2"><button class="btn__edit" id="btn-edit3" onclick="myFunction13()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
+                            <td class="td1"><%=staffDataSet.getString("programme_name")%></td>   <!--Programme name-->
+                            <td class="td2"><%=staffDataSet.getString("first_name")+" "+staffDataSet.getString("last_name")%></td>   <!--staffName-->
+                            <td class="td7"><%=staffDataSet.getString("staff_id")%></td>   <!--staffId-->
+                            <td class="td8"></td>   <!--Role-->
+                            <td class="td2"><button class="btn__edit" id="viewStaff<%=i%>" onclick="viewStaffDetails<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
                             <td class="td3"><div class="circle1" title="Edit Programme" id="edit2" onclick="myFunction14()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
+                        
+                        <script type="text/javascript">
+                        document.getElementById("viewStaff<%=i%>");
+                        function viewStaffDetails<%=i%>(){
+                        	
+                        	document.querySelector('.bg-model10').style.display = 'flex';
+                        	document.querySelector('.bg-model10').style.position = 'fixed';
+                        	
+                            document.getElementById("staffFirstName").value = "<%=staffDataSet.getString("first_name")%>";
+                            document.getElementById("staffLastName").value = "<%=staffDataSet.getString("last_name")%>";
+                            document.getElementById("staffGender").value = "<%=staffDataSet.getString("gender")%>";
+                            document.getElementById("staffEmail").value = "<%=staffDataSet.getString("email")%>";
+                            document.getElementById("StaffPhone").value = "<%=staffDataSet.getString("phone")%>";
+                            document.getElementById("staffAddress").value = "<%=staffDataSet.getString("address")%>";
+                            document.getElementById("staffProgramme").value = "<%=staffDataSet.getString("programme_name")%>";
+                            document.getElementById("staffId").value = "<%=staffDataSet.getString("staff_id")%>";
+                            document.getElementById("staffPassword").value = "<%=staffDataSet.getString("password")%>";
+                           
+                        }
+                        </script>
+                        
+						<%		
+								i++;	
+									}
+                        			
+                        		}catch(SQLException e){}
+                        	}
+                        %>
                     </table>
                     </div>
                 </div>
@@ -625,23 +623,42 @@
                             <h1>Add Staff Details</h1></div>
                              <img class="student" src="css/images/studenticon.svg">
                             <form action="" >
-                                <input type="text" placeholder="First Name" class="merge4">
-                                <input type="text" placeholder="Last Name" class="merge4">
-                                <select class="merge5">
+                                <input name="firstName" type="text" placeholder="First Name" class="merge4">
+                                <input name="lastName" type="text" placeholder="Last Name" class="merge4">
+                                <select name="gender" class="merge5">
                                 <option value="" disabled selected hidden>Gender</option>
-                                <option></option>
+                                <option value="Male">Male</option>
+                                <option value="Femal">Female</option>
+                                <option value="Other">Other</option>
                                 </select>
-                                <input type="text" placeholder="Email" class="merge4">
-                                <input type="text" placeholder="Mobile Number" class="merge4">
-                                <input type="text" placeholder="Address" class="merge5">
-                                <select class="merge4">
-                                <option value="" disabled selected hidden>Programme name</option>
+                                <input name="email" type="text" placeholder="Email" class="merge4">
+                                <input name="phone" type="text" placeholder="Mobile Number" class="merge4">
+                                <input name="address" type="text" placeholder="Address" class="merge5">
+                                <select name="programmeName" class="merge4">
+                                <option value="" disabled selected hidden>Programme</option>
+							<%
+								ResultSet programmeDataSet = loadData.loadProgrammeData();
+								
+								if(programmeDataSet != null){
+									
+									try{
+
+										while(programmeDataSet.next()){
+							%>	
+											<option value="<%=programmeDataSet.getString("programme_id")%>"><%=programmeDataSet.getString("programme_name")%></option>			
+							<% 			}
+										
+									}catch(SQLException e){
+										
+									}
+								}
+							%>
                                 </select>
-                                <select class="merge4">
+                                <select name="" class="merge4">
                                 <option value="" disabled selected hidden>Role</option>
                                 </select>
-                                <input type="text" placeholder="Staff ID(Digits only)" class="merge4">
-                                <input type="text" placeholder="Password" class="merge4">
+                                <input name="staffId" type="text" placeholder="Staff ID(Digits only)" class="merge4">
+                                <input name="password" type="text" placeholder="Password" class="merge4">
                                 <button id="button9" >Add</button>
                         </form>
                     </div>
@@ -654,23 +671,16 @@
                             <h1>Staff Details</h1></div>
                              <img class="student" src="css/images/studenticon.svg">
                             <form action="" >
-                                <input type="text" placeholder="First Name" class="merge4">
-                                <input type="text" placeholder="Last Name" class="merge4">
-                                <select class="merge5">
-                                <option value="" disabled selected hidden>Gender</option>
-                                <option></option>
-                                </select>
-                                <input type="text" placeholder="Email" class="merge4">
-                                <input type="text" placeholder="Mobile Number" class="merge4">
-                                <input type="text" placeholder="Address" class="merge5">
-                                <select class="merge4">
-                                <option value="" disabled selected hidden>Programme name</option>
-                                </select>
-                                <select class="merge4">
-                                <option value="" disabled selected hidden>Role</option>
-                                </select>
-                                <input type="text" placeholder="Staff ID(Digits only)" class="merge4">
-                                <input type="text" placeholder="Password" class="merge4">
+                                <input id="staffFirstName" type="text" placeholder="First Name" class="merge4">
+                                <input id="staffLastName" type="text" placeholder="Last Name" class="merge4">
+                               	<input id="staffGender" type="text" placeholder="Gender" class="merge5">
+                                <input id="staffEmail" type="text" placeholder="Email" class="merge4">
+                                <input id="StaffPhone" type="text" placeholder="Mobile Number" class="merge4">
+                                <input id="staffAddress" type="text" placeholder="Address" class="merge5">
+								<input id="staffProgramme" type="text" placeholder="Programme" class="merge4"/>
+                                <input type="text" placeholder="Role" class="merge4">
+                                <input id="staffId" type="text" placeholder="Staff ID" class="merge4">
+                                <input id="staffPassword" type="text" placeholder="Password" class="merge4">
                         </form>
                     </div>
                 </div>
@@ -864,6 +874,41 @@
 	                 		}
                          
                         </script>
+                        
+						<form id="checkForCourse" action="DeleteDataServlet" method="post">
+                <%
+			           	ResultSet programmeForCourseResultSet = loadData.loadProgrammeData();
+			         	try{
+			         		if(programmeForCourseResultSet!=null){
+			         			while(programmeForCourseResultSet.next()){
+			         				int courseCount = 0;
+			         				for(int i=1; i<= programmeForCourseResultSet.getInt("programme_sem"); i++){
+			         					
+			         					ResultSet coursesData = loadData.loadCoursedata(programmeForCourseResultSet, i);
+			              try{
+			                  	if(coursesData!=null){
+			                  		
+			                  		while(coursesData.next()){
+			                  			courseCount = courseCount + 1;
+			                 			
+			                  		}
+			                  	}
+			                	
+			                 }catch(SQLException e){
+			                 	e.printStackTrace();
+			                	}	
+			             
+			           		}
+			         				 %>
+			             		<input type="hidden" id="programme<%=programmeForCourseResultSet.getString("programme_id")%>" name="<%=programmeForCourseResultSet.getString("programme_id")%>" value="<%=courseCount%>" />
+			 						<%                
+			         			}
+			         		}
+			         	}catch(SQLException e){
+			         		e.printStackTrace();
+         		
+    			}%>
+						</form>
                     </div>
                 </div>
                 

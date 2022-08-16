@@ -43,15 +43,7 @@ function myFunction12(){
     document.querySelector('.bg-model9').style.position = 'fixed';
 
 }
-    
-document.getElementById("btn-edit3");
-function myFunction13(){
-   document.querySelector('.bg-model10').style.display = 'flex';
-    document.querySelector('.bg-model10').style.position = 'fixed';
-}
-       
-        
-        
+            
 document.getElementById("edit2");
 function myFunction14(){
    document.querySelector('.bg-model11').style.display = 'flex';

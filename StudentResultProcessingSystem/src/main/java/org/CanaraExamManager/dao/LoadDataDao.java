@@ -50,6 +50,25 @@ public class LoadDataDao {
 			return resultSet;
 	}
 	
+	public ResultSet loadStaffData() {
+		
+		ResultSet resultSet = null;
+		
+		try {
+
+			Connection con = DBConnection.createConnection();;
+				Statement statement = con.createStatement();
+				resultSet = statement.executeQuery(""
+					+"SELECT * FROM (staff "
+					+"INNER JOIN programme ON staff.programme_id = staff.programme_id)"
+					+"ORDER BY programme.programme_name ASC");
+			 
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return resultSet;
+	}
+	
 	public ResultSet loadCoursedata(ResultSet programmeResultSet,int i) {
 		ResultSet resultSet = null;
 		
