@@ -51,7 +51,41 @@
     		<input type="hidden" id="uniqueId" name="uniqueId" value=""/>
     		<input type="hidden" id="Data" name="Data" value=""/>
     	</form>
-
+    	
+    	<form id="checkForCourse" action="DeleteDataServlet" method="post">
+                <%
+           	ResultSet programmeForCourseResultSet = loadData.loadProgrammeData();
+         	try{
+         		if(programmeForCourseResultSet!=null){
+         			while(programmeForCourseResultSet.next()){
+         				int courseCount = 0;
+         				for(int i=1; i<= programmeForCourseResultSet.getInt("programme_sem"); i++){
+         					
+         					ResultSet coursesData = loadData.loadCoursedata(programmeForCourseResultSet, i);
+              try{
+                  	if(coursesData!=null){
+                  		
+                  		while(coursesData.next()){
+                  			courseCount = courseCount + 1;
+                 			
+                  		}
+                  	}
+                	
+                 }catch(SQLException e){
+                 	e.printStackTrace();
+                	}	
+             
+           		}
+         				 %>
+             		<input type="hidden" id="programme<%=programmeForCourseResultSet.getString("programme_id")%>" name="<%=programmeForCourseResultSet.getString("programme_id")%>" value="<%=courseCount%>" />
+ 						<%                
+         			}
+         		}
+         	}catch(SQLException e){
+         		e.printStackTrace();
+         		
+    			}%>
+		</form>
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
         <div class="tabs">
             <div class="tabs__sidebar">
@@ -711,7 +745,6 @@
                         				for(int i=1; i<= programmeResultSet.getInt("programme_sem"); i++){
                         					
                         					ResultSet coursesData = loadData.loadCoursedata(programmeResultSet, i);
-                        					String coursesString = "";
                         %>
                         <tr>
 							<td id = "<%=programmeResultSet.getString("programme_name")%>"class="td1"><%=programmeResultSet.getString("programme_name")%></td>   <!--Programme name-->
@@ -725,19 +758,22 @@
                             			out.println(coursesData.getString("course_name"));
                             			out.println("<br/>");
                             			courseCount = courseCount + 1;
-                            	 	}
+                            			
+                            		}
                             	}
                             	
                             }catch(SQLException e){
                             	e.printStackTrace();
                             	
                         }%> </td>   <!--Course-->
-
+				
 
 							<td class="td1"><button class="btn__course" id="btn__course<%=i + j%>>" onclick="insertCourseData<%=i + j%>()"><span style="font-size: 16px;">+</span> Course</button></td>  <!--add course-->
                             <td class="td2"><button class="btn__edit" id="courseEdit<%=i + j%>" onclick="editCourse<%=i + j%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Edit</button></td> <!--Edit course-->
-                            <td class="td3"><div class="circle1" title="Edit Programme" id="programmeEdit<%=i + j%>" onclick="editProgramme<%=i + j%>()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteProgramme" onclick="deleteProgrammeData('<%=programmeResultSet.getString("programme_id")%>','programme')" class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td3"><div class="circle1" title="Edit Programme" id="programmeEdit<%=i + j%>" onclick="editProgramme<%=i + j%>()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteProgramme" onclick="deleteProgrammeData('<%=programmeResultSet.getString("programme_id")%>','programme','<%=programmeResultSet.getString("programme_name")%>')" class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
+                        
+                        
                           
                         <script type="text/javascript">
 	                        document.getElementById("btn__course<%=i + j%>");
@@ -779,18 +815,55 @@
                         	}	
                            
                         %>
-                        
-                         <script type="text/javascript">
-                        	document.getElementById("deleteStudent");
-	                        function deleteProgrammeData(uniqueId, Data){
-	            				
-	            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
-	            				document.forms['deleteDataForm']['Data'].value = Data;
-	            				
-	            				document.getElementById("deleteDataForm").submit();
-	            			}
-                        </script>
+                       
                     </table>
+                    <script type="text/javascript">
+                         	 document.getElementById("deleteProgramme");
+	                         function deleteProgrammeData(uniqueId, Data, programmeName){
+	                 			var courseCount = "";
+	                        	courseCount = document.forms['checkForCourse']['programme'+uniqueId].value;
+	                        	console.log(courseCount);
+	                        	if(courseCount== "0"){
+	                        		swal({title: "Warning",
+		                 				 text: "Are you sure you want delete Programme "+"''"+programmeName+"''"+" ?",
+		                 				 icon: "warning",
+		                 				 buttons: {
+		                 					 cancel: "No",
+		                 					 yes: "Yes",
+		                 				 },	 
+		                 			})
+		                 			.then((value) => {	
+		                 				if(value == "yes"){
+
+		    	            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
+		    	            				document.forms['deleteDataForm']['Data'].value = Data;
+		    	            				
+		    	            				document.getElementById("deleteDataForm").submit();
+		                 				}
+		                 			});
+	                        	}
+	                        	else{
+	                        		swal({title: "Warning",
+		                 				 text: "This Programme Contains Courses...Are you sure you want delete Programme "+"''"+programmeName+"''"+" ?",
+		                 				 icon: "warning",
+		                 				 buttons: {
+		                 					 cancel: "No",
+		                 					 yes: "Yes",
+		                 				 },	 
+		                 			})
+		                 			.then((value) => {	
+		                 				if(value == "yes"){
+
+		    	            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
+		    	            				document.forms['deleteDataForm']['Data'].value = Data;
+		    	            				
+		    	            				document.getElementById("deleteDataForm").submit();
+		                 				}
+		                 			});
+	                        	}
+	                 		}
+                         
+                        </script>
                     </div>
                 </div>
                 
