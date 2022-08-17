@@ -140,7 +140,7 @@
 <!-- ------------------------------------------------------ TAB 3 Performance --------------------------------------------------------------------------------------- -->                              
            	
            	<div id="performanceChart" class="tabs__content" data-tab="3">
-				<canvas id="semesterChart" width="400"></canvas> 
+				<canvas id="semesterChart"></canvas> 
 				
 				<script type="text/javascript">
 				  document.getElementById("performanceChart");
