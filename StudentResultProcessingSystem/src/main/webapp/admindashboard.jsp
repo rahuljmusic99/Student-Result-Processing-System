@@ -170,11 +170,11 @@
 	                            }
 	                            
 	                            if(<%=studentData.getString("gender").toLowerCase() == "female"%>){
-	                            	document.forms['editStudentForm']['sGender'].options[1].selected=true;
+	                            	document.forms['editStudentForm']['sGender'].options[2].selected=true;
 	                            }
 	                            
 	                            if(<%=studentData.getString("gender").toLowerCase() == "other"%>){
-	                            	document.forms['editStudentForm']['sGender'].options[1].selected=true;
+	                            	document.forms['editStudentForm']['sGender'].options[3].selected=true;
 	                            }
 	                      
 	                            document.forms['editStudentForm']['sDOB'].value = "<%=studentData.getString("dob")%>";
@@ -580,7 +580,7 @@
                             <td class="td7"><%=staffDataSet.getString("staff_id")%></td>   <!--staffId-->
                             <td class="td8"></td>   <!--Role-->
                             <td class="td2"><button class="btn__edit" id="viewStaff<%=i%>" onclick="viewStaffDetails<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
-                            <td class="td3"><div class="circle1" title="Edit Programme" id="edit2" onclick="myFunction14()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Programme"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td3"><div class="circle1" title="Edit Staff" id="editStaff<%=i%>" onclick="editStaffDetails<%=i%>()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div onclick="deleteStaffData('<%=staffDataSet.getString("staff_id")%>','staff')" class="circle2" title="Delete Staff"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
                         
                         <script type="text/javascript">
@@ -601,6 +601,24 @@
                             document.getElementById("staffPassword").value = "<%=staffDataSet.getString("password")%>";
                            
                         }
+                        
+                        document.getElementById("editStaff<%=i%>");
+                        document.getElementById("editStudentDiv");
+                        function editStaffDetails<%=i%>(){
+                       
+                      
+                        	document.querySelector('.bg-model11').style.display = 'flex';
+                        	document.querySelector('.bg-model11').style.position = 'fixed';
+                        	
+                        	
+                        	document.forms['editStaffForm']['staffFirstName'].value = "<%=staffDataSet.getString("first_name")%>";
+                        	document.forms['editStaffForm']['staffLastName'].value = "<%=staffDataSet.getString("last_name")%>";
+                        	document.forms['editStaffForm']['staffId'].value = "<%=staffDataSet.getString("staff_id")%>";
+                        	document.forms['editStaffForm']['staffEmail'].value = "<%=staffDataSet.getString("email")%>";
+                        	document.forms['editStaffForm']['staffPhone'].value = "<%=staffDataSet.getString("phone")%>";
+                        	document.forms['editStaffForm']['staffAddress'].value = "<%=staffDataSet.getString("address")%>";
+                        	document.forms['editStaffForm']['staffPassword'].value = "<%=staffDataSet.getString("password")%>";
+                        }
                         </script>
                         
 						<%		
@@ -610,6 +628,29 @@
                         		}catch(SQLException e){}
                         	}
                         %>
+                         <script type="text/javascript">
+                         	 document.getElementById("deleteStaff");
+	                         function deleteStaffData(uniqueId, Data){
+	                 			
+	                 			swal({title: "Warning",
+	                 				 text: "Are you shure you want delete Staff"+<%=staffDataSet.getString("first_name")%>+" "+<%=staffDataSet.getString("last_name")%>,
+	                 				 icon: "warning",
+	                 				 buttons: {
+	                 					 cancel: "No",
+	                 					 yes: "Yes",
+	                 				 },	 
+	                 			})
+	                 			.then((value) => {	
+	                 				if(value == "yes"){
+
+	    	            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
+	    	            				document.forms['deleteDataForm']['Data'].value = Data;
+	    	            				
+	    	            				document.getElementById("deleteDataForm").submit();
+	                 				}
+	                 			});
+	                 		}
+						</script>
                     </table>
                     </div>
                 </div>
@@ -622,7 +663,7 @@
                         <div class="header9">
                             <h1>Add Staff Details</h1></div>
                              <img class="student" src="css/images/studenticon.svg">
-                            <form action="" >
+                            <form id="insertStaffForm" action="InsertDataServlet" method="post">
                                 <input name="firstName" type="text" placeholder="First Name" class="merge4">
                                 <input name="lastName" type="text" placeholder="Last Name" class="merge4">
                                 <select name="gender" class="merge5">
@@ -634,7 +675,7 @@
                                 <input name="email" type="text" placeholder="Email" class="merge4">
                                 <input name="phone" type="text" placeholder="Mobile Number" class="merge4">
                                 <input name="address" type="text" placeholder="Address" class="merge5">
-                                <select name="programmeName" class="merge4">
+                                <select name="programmeId" class="merge4">
                                 <option value="" disabled selected hidden>Programme</option>
 							<%
 								ResultSet programmeDataSet = loadData.loadProgrammeData();
@@ -659,7 +700,8 @@
                                 </select>
                                 <input name="staffId" type="text" placeholder="Staff ID(Digits only)" class="merge4">
                                 <input name="password" type="text" placeholder="Password" class="merge4">
-                                <button id="button9" >Add</button>
+                                <input name="Data" type="hidden" value="staff"/>
+                                <button id="button9" onclick="insertStaff()" >Add</button>
                         </form>
                     </div>
                 </div>
@@ -671,16 +713,16 @@
                             <h1>Staff Details</h1></div>
                              <img class="student" src="css/images/studenticon.svg">
                             <form action="" >
-                                <input id="staffFirstName" type="text" placeholder="First Name" class="merge4">
-                                <input id="staffLastName" type="text" placeholder="Last Name" class="merge4">
-                               	<input id="staffGender" type="text" placeholder="Gender" class="merge5">
-                                <input id="staffEmail" type="text" placeholder="Email" class="merge4">
-                                <input id="StaffPhone" type="text" placeholder="Mobile Number" class="merge4">
-                                <input id="staffAddress" type="text" placeholder="Address" class="merge5">
-								<input id="staffProgramme" type="text" placeholder="Programme" class="merge4"/>
-                                <input type="text" placeholder="Role" class="merge4">
-                                <input id="staffId" type="text" placeholder="Staff ID" class="merge4">
-                                <input id="staffPassword" type="text" placeholder="Password" class="merge4">
+                                <input id="staffFirstName" type="text" readonly="readonly" placeholder="First Name" class="merge4">
+                                <input id="staffLastName" type="text" readonly="readonly" placeholder="Last Name" class="merge4">
+                               	<input id="staffGender" type="text" readonly="readonly" placeholder="Gender" class="merge5">
+                                <input id="staffEmail" type="text" readonly="readonly" placeholder="Email" class="merge4">
+                                <input id="StaffPhone" type="text" readonly="readonly" placeholder="Mobile Number" class="merge4">
+                                <input id="staffAddress" type="text" readonly="readonly" placeholder="Address" class="merge5">
+								<input id="staffProgramme" type="text" readonly="readonly" placeholder="Programme" class="merge4"/>
+                                <input type="text" placeholder="Role" readonly="readonly" class="merge4">
+                                <input id="staffId" type="text" readonly="readonly" placeholder="Staff ID" class="merge4">
+                                <input id="staffPassword" type="text" readonly="readonly" placeholder="Password" class="merge4">
                         </form>
                     </div>
                 </div>
@@ -688,27 +730,29 @@
                 <div class="bg-model11">
                     <div class="model-content11">
                         <div class="close11" id="close" >+</div>
-                        <div class="header11">
+                        <div id="editStudentDiv" class="header11">
                             <h1>Edit Staff Details</h1></div>
                              <img class="student" src="css/images/studenticon.svg">
-                            <form action="" >
-                                <input type="text" placeholder="First Name" class="merge4">
-                                <input type="text" placeholder="Last Name" class="merge4">
-                                <select class="merge5">
+                            <form id="editStaffForm" action="" method="post">
+                                <input id="staffFirstName" name="staffFirstName" type="text" placeholder="First Name" class="merge4">
+                                <input id="staffLastName" name="staffLastName" type="text" placeholder="Last Name" class="merge4">
+                                <select id="staffGender" name="staffGender" class="merge5">
                                 <option value="" disabled selected hidden>Gender</option>
-                                <option></option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
                                 </select>
-                                <input type="text" placeholder="Email" class="merge4">
-                                <input type="text" placeholder="Mobile Number" class="merge4">
-                                <input type="text" placeholder="Address" class="merge5">
-                                <select class="merge4">
+                                <input id="staffEmail" name="staffEmail" type="text" placeholder="Email" class="merge4">
+                                <input id="staffPhone" name="StaffPhone" type="text" placeholder="Mobile Number" class="merge4">
+                                <input id="staffAddress" name="staffAddress" type="text" placeholder="Address" class="merge5">
+                                <select id="staffProgramme" name="staffProgramme" class="merge4">
                                 <option value="" disabled selected hidden>Programme name</option>
                                 </select>
-                                <select class="merge4">
+                                <select id="" name="" class="merge4">
                                 <option value="" disabled selected hidden>Role</option>
                                 </select>
-                                <input type="text" placeholder="Staff ID(Digits only)" class="merge4">
-                                <input type="text" placeholder="Password" class="merge4">
+                                <input id="staffId" name="staffId" type="text" placeholder="Staff ID(Digits only)" class="merge4">
+                                <input id="staffPassword" name="staffPassword" type="text" placeholder="Password" class="merge4">
                                 <button id="button11" >Update</button>
                         </form>
                     </div>

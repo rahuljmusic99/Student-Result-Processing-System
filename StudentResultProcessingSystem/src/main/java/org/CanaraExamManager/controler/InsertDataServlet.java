@@ -94,14 +94,15 @@ public class InsertDataServlet extends HttpServlet {
 				
 				StudentStaffDataBean staffDataBean = new StudentStaffDataBean();
 				
-				staffDataBean.setfirstName(request.getParameter(""));//1
-				staffDataBean.setLastName(request.getParameter(""));//2
-				staffDataBean.setGender(request.getParameter(""));//3
-				staffDataBean.setDOB(request.getParameter(""));//4
-				staffDataBean.setEmail(request.getParameter(""));//5
-				staffDataBean.setPhone(request.getParameter(""));//6
-				staffDataBean.setAddress(request.getParameter(""));//7
-				staffDataBean.setPassword(request.getParameter(""));//9
+				staffDataBean.setfirstName(request.getParameter("firstName"));//1
+				staffDataBean.setLastName(request.getParameter("lastName"));//2
+				staffDataBean.setGender(request.getParameter("gender"));//3/
+				staffDataBean.setEmail(request.getParameter("email"));//4
+				staffDataBean.setPhone(request.getParameter("phone"));//5
+				staffDataBean.setAddress(request.getParameter("address"));//6
+				staffDataBean.setStaffId(request.getParameter("staffId"));//7
+				staffDataBean.setPassword(request.getParameter("password"));//8
+				staffDataBean.setProgramme(request.getParameter("programmeId"));//9
 				
 				String dataValidateString = insertDataDao.insertStaffData(staffDataBean) ;
 				

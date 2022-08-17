@@ -112,8 +112,8 @@ public class InsertDataDao {
 			resultSet = statement.executeQuery("SELECT * FROM staff WHERE staff_id = "+staffDataBean.getStaffId()+"");
 			if(resultSet.next() == false) {//check whether staff with that staff id already exists
 				
-				query = "INSERT INTO staff(staff_id,first_name,last_name,gender,dob,email,phone,address,"
-						+ "password,staff_status)"
+				query = "INSERT INTO staff(staff_id,first_name,last_name,gender,email,phone,address,"
+						+ "password,programme_id,staff_status)"
 						+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
 				preparedStatement = con.prepareStatement(query);
 				
@@ -121,12 +121,12 @@ public class InsertDataDao {
 				preparedStatement.setString(2, staffDataBean.getfirstName());//2
 				preparedStatement.setString(3, staffDataBean.getLastName());//3
 				preparedStatement.setString(4, staffDataBean.getGender());//4
-				preparedStatement.setString(5, staffDataBean.getDOB());//5
-				preparedStatement.setString(6, staffDataBean.getEmail());//6
-				preparedStatement.setString(7, staffDataBean.getPhone());//7
-				preparedStatement.setString(8, staffDataBean.getAddress());//8
-				preparedStatement.setString(10, staffDataBean.getPassword());//9
-				preparedStatement.setString(11, "true");//10
+				preparedStatement.setString(5, staffDataBean.getEmail());//5
+				preparedStatement.setString(6, staffDataBean.getPhone());//6
+				preparedStatement.setString(7, staffDataBean.getAddress());//7
+				preparedStatement.setString(8, staffDataBean.getPassword());//8
+				preparedStatement.setString(9, staffDataBean.getProgramme());//9
+				preparedStatement.setString(10, "true");//10
 				
 				preparedStatement.execute();
 					

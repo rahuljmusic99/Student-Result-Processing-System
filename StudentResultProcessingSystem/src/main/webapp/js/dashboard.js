@@ -97,6 +97,11 @@
 			function insertStudent(){
 				document.getElementById("insertStudentDataForm").submit();
 			}
+			
+			document.getElementById("button9");
+			function insertStaff(){
+				docuemtn.getElementById("insertStaffForm").submit();
+			}
 		
 
 			function deleteData(uniqueId, Data){
