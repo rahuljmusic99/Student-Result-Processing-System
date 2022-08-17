@@ -1220,14 +1220,15 @@ option{
 .btnDelete{
     background-color: red;
     color: white;
-    padding: 10px;
-    width: 5rem;
+    padding: 6px;
+    width: 4rem;
     border: none;
+    border-radius: 5px;
+    font-size: 15px;
     float: right;
     cursor: pointer;
-    margin-top: 1rem;
-    margin-left: 1.5rem;
     font-weight: bold;
+    text-align: center;
     
 }
 
@@ -1293,15 +1294,17 @@ option{
 }
 
 .btnUpdate{
-    background-color: gray;
+    background-color: darkgoldenrod;
     color: white;
-    padding: 10px;
-    width: 5rem;
+    padding: 6px;
+    width: 4rem;
     border: none;
+    border-radius: 5px;
+    font-size: 15px;
     float: right;
     cursor: pointer;
-    margin-top: 1rem;
     font-weight: bold;
+    text-align: center;
 }
 
 .btnUpdate{
@@ -1548,17 +1551,29 @@ option{
 .input{
     padding: 0;
     width: 7rem;
+    text-align: center;  
 }
 
+.tdCo{
+    width: 4rem;
+}
+
+.inputprog{
+    padding: 0;
+    width: 4rem;
+    text-align: center;
+}
 
 .inputDigits{
     padding: 0;
     width: 3rem;
+    text-align: center;
 }
 
 .inputCourseCode{
 	padding: 0;
     width: 5.5rem;
+    text-align: center;
 }
 
 .tdCourse{

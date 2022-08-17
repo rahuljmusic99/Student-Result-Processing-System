@@ -1042,7 +1042,7 @@
                             <form id="editCourseForm<%=i + j%>" action="" method="post">
                                 <table id="editCourseTable<%=i + j%>" border="1" class="tb4">
                                     <tr>
-                                    <th class="tdCourse">Programme Name</th>
+                                    <th class="tdCourse">Programme<br>Name</th>
                                     <th class="tdCourse" >Course<br> code</th>
                                     <th class="tdCourse" >Course<br> name</th>
                                     <th class="tdCourse">Course<br> Type</th>
@@ -1061,7 +1061,7 @@
                             			courseCount = courseCount + 1;
                             %>			
                             		<tr class="input-in">
-                            			<td class="tdCourse"><input class="input" id="" value="<%=programmeResultSet2.getString("programme_name")%>"/></td>
+                            			<td class="tdCo"><input class="inputprog" id="" value="<%=programmeResultSet2.getString("programme_name")%>"/></td>
                             			<td class="tdCourse"><input class="inputCourseCode" id="" value="<%=coursesData.getString("course_code")%>"/></td>
                             			<td class="tdCourse"><input class="input" id="" value="<%=coursesData.getString("course_name")%>"/></td>
                             			<%if(coursesData.getString("course_type").equals("Theory")){
@@ -1142,10 +1142,13 @@
 	                               				</select>
 	                               			</td>
                             			<%} %>
-                            			
+                            			    
+                                            <td class="tdCourse"><input class="inputDigits" id="" value=""/></td>
                        						<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_marks")%>"/></td>
                             				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("min_marks")%>"/></td>
                             				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_IA")%>"/></td>
+                                            <td><button class="btnDelete" id="button12">Delete</button></td> 
+                                            <td><button class="btnUpdate" id="button14">Update</button></td> 
                             				
                             			<script type="text/javascript">
                             				function deleteCourse<%=courseCount%>(){
