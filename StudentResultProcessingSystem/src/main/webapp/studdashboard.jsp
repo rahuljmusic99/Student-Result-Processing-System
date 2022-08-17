@@ -139,15 +139,13 @@
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->     
 <!-- ------------------------------------------------------ TAB 3 Performance --------------------------------------------------------------------------------------- -->                              
            	
-           	<div id="performanceChart" class="tabs__content" data-tab="3">
-				<canvas id="semesterChart" width="400"></canvas> 
-				
+           	<div class="tabs__content" data-tab="3">
+				<div class="chartholder">
+                  <canvas id="semesterChart" width="400"></canvas> 
+	            </div>		
 				<script type="text/javascript">
-				  document.getElementById("performanceChart");
 	    		  var semesterCanvas = document.getElementById("semesterChart").getContext("2d");
-	
 	    		  var semesterChart = new Chart(semesterCanvas,{
-	    		  	
 	    		  	type: "bar",
 	    		  	data:{
 	    		  		labels:['Pythond','Javascript','PHP','Java','C#','C++'],
@@ -156,7 +154,7 @@
 	    		  		},],
 	    		  	},
 	    		  });
-    		  </script> 
+    		  </script>
     		      
             </div>                 
                 
