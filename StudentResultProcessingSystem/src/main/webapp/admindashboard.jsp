@@ -580,7 +580,7 @@
                             <td class="td7"><%=staffDataSet.getString("staff_id")%></td>   <!--staffId-->
                             <td class="td8"></td>   <!--Role-->
                             <td class="td2"><button class="btn__edit" id="viewStaff<%=i%>" onclick="viewStaffDetails<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
-                            <td class="td3"><div class="circle1" title="Edit Staff" id="editStaff<%=i%>" onclick="editStaffDetails<%=i%>()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div onclick="deleteStaffData('<%=staffDataSet.getString("staff_id")%>','staff')" class="circle2" title="Delete Staff"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td3"><div class="circle1" title="Edit Staff" id="editStaff<%=i%>" onclick="editStaffDetails<%=i%>()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteStaff" onclick="deleteStaffData('<%=staffDataSet.getString("staff_id")%>','staff','<%=staffDataSet.getString("first_name")+' '+staffDataSet.getString("last_name")%>')" class="circle2" title="Delete Staff"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
                         
                         <script type="text/javascript">
@@ -628,30 +628,30 @@
                         		}catch(SQLException e){}
                         	}
                         %>
-                         <script type="text/javascript">
-                         	 document.getElementById("deleteStaff");
-	                         function deleteStaffData(uniqueId, Data){
-	                 			
-	                 			swal({title: "Warning",
-	                 				 text: "Are you shure you want delete Staff"+<%=staffDataSet.getString("first_name")%>+" "+<%=staffDataSet.getString("last_name")%>,
-	                 				 icon: "warning",
-	                 				 buttons: {
-	                 					 cancel: "No",
-	                 					 yes: "Yes",
-	                 				 },	 
-	                 			})
-	                 			.then((value) => {	
-	                 				if(value == "yes"){
-
-	    	            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
-	    	            				document.forms['deleteDataForm']['Data'].value = Data;
-	    	            				
-	    	            				document.getElementById("deleteDataForm").submit();
-	                 				}
-	                 			});
-	                 		}
-						</script>
                     </table>
+                     <script type="text/javascript">
+		                     document.getElementById("deleteStaff");
+		                     function deleteStaffData(uniqueId, Data, staffName){
+		             			
+		             			swal({title: "Warning",
+		             				 text: "Are you shure you want delete Staff "+"''"+staffName+"''",
+		             				 icon: "warning",
+		             				 buttons: {
+		             					 cancel: "No",
+		             					 yes: "Yes",
+		             				 },	 
+		             			})
+		             			.then((value) => {	
+		             				if(value == "yes"){
+		
+			            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
+			            				document.forms['deleteDataForm']['Data'].value = Data;
+			            				
+			            				document.getElementById("deleteDataForm").submit();
+		             				}
+		             			});
+		             		}	 
+					 </script>
                     </div>
                 </div>
                 
@@ -1236,7 +1236,7 @@
                             <td class="td1"><%=classesData.getString("programme_name")%></td>   <!--Programme name-->
                             <td class="td2"><%=classesData.getString("class_name")%></td>   <!--Semseter-->
                             <td class="td5"><%=classesData.getString("class_year")%></td>
-                            <td class="td3"><div class="circle1" title="Edit Class" id="edit5" onclick="myFunction17()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteClass" class="circle2" title="Delete Class" onclick="deleteClass('<%=classesData.getString("class_id")%>','class')"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td3"><div class="circle1" title="Edit Class" id="edit5" onclick="myFunction17()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteClass" class="circle2" title="Delete Class" onclick="deleteClass('<%=classesData.getString("class_id")%>','class','<%=classesData.getString("class_name")+" "+classesData.getString("class_year")+" year"%>','<%=classesData.getString("reg_no")%>')"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>			
 
                         <% 	
@@ -1251,11 +1251,37 @@
                     </table>
                      <script type="text/javascript">
                      	document.getElementById("deleteClass");
-                     	function deleteClass(uniqueId,Data){
-                     		document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
-                     		document.forms['deleteDataForm']['Data'].value = Data;
+                     	function deleteClass(uniqueId,Data,className,reg_no){
                      		
-                     		document.getElementById("deleteDataForm").submit();
+                     		if(reg_no !== "null"){
+                     			swal({title: "Sorry",
+	   	             				 text: "Unable to Delete Class "+"''"+className+"'' Because it contains Students",
+	   	             				 icon: "error",
+	   	             				 buttons: {
+	   	             					 ok: "OK",
+	   	             				 },	 
+	   	             			});
+                     			
+                     		}else{
+	                     			swal({title: "Warning",
+	   	             				 text: "Are you shure you want delete Class "+"''"+className+"''",
+	   	             				 icon: "warning",
+	   	             				 buttons: {
+	   	             					 cancel: "No",
+	   	             					 yes: "Yes",
+	   	             				 },	 
+	   	             			})
+	   	             			.then((value) => {	
+	   	             				if(value == "yes"){
+	   	
+	   		            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
+	   		            				document.forms['deleteDataForm']['Data'].value = Data;
+	   		            				
+	   		            				document.getElementById("deleteDataForm").submit();
+	   	             				}
+	   	             			});
+                     		}
+                     		
                      	}
                      </script>
                     </div>
@@ -1518,6 +1544,15 @@
                     </div>
                 </div>     
          </div>
+         
+
+
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->     
+<!-- ------------------------------------------------------ TAB 7 Profile --------------------------------------------------------------------------------------- -->       
+         
               <div class="tabs__content" data-tab="7">
             
             <div class="protab1">
@@ -1528,17 +1563,17 @@
                     <div class="holder2">
                     <img src="" class="innerimg">
                     </div>
-                    <p class="name">Deeraj</p>
+                    <p class="name"><%=request.getSession(false).getAttribute("adminName")%></p>
                     </div>
                     <div class="inputs">
                         <label>Name</label>
-                        <input class="int" type="text" readonly>
+                        <input value="<%=request.getSession(false).getAttribute("adminName")%>" class="int" type="text" readonly>
                         <label>Phone</label>
-                        <input class="int" readonly>
+                        <input value="<%=request.getSession(false).getAttribute("adminPhone")%>" class="int" readonly>
                         <label>Email</label>
-                        <input class="int" type="email" readonly>
+                        <input value="<%=request.getSession(false).getAttribute("adminEmail")%>" class="int" type="email" readonly>
                         <label>Password</label>
-                        <input class="int" type="password" readonly>
+                        <input value="<%=request.getSession(false).getAttribute("adminPassword")%>" class="int" type="password" readonly>
                         <button class="cp">Change Password</button>
                     </div>
      
@@ -1548,10 +1583,9 @@
                 
      </div>
                 
-        
+ <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
                 
-
-           
+     
 				<%
                    
                    	int maxSem = 1;

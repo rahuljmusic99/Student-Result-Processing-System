@@ -2,6 +2,10 @@ package org.CanaraExamManager.bean;
 
 import java.sql.Blob;
 
+import org.apache.catalina.startup.Tomcat.ExistingStandardWrapper;
+
+import com.mysql.cj.PingTarget;
+
 public class LoginBean {
 	
 	private String userNameString;
@@ -9,6 +13,9 @@ public class LoginBean {
 	private String semesterString;
 	private String nameString;
 	private String programmeName;
+	private String className;
+	private String phone;
+	private String email;
 //	private Blob userImage;
 //	private String userImageString;
 	
@@ -56,6 +63,30 @@ public class LoginBean {
 	public void setProgramme(String programmeName) {
 		
 		this.programmeName = programmeName;
+	}
+	
+	public String getClassName() {
+		return className;
+	}
+	
+	public void setClassName(String className) {
+		this.className = className;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+	
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 //	public Blob getUserImage() {

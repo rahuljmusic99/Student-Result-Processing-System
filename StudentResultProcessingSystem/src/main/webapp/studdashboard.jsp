@@ -36,7 +36,7 @@
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="js/pdf.js"></script>
-        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     </head> 
     <body onload="setupTabs()">
         <div class="tabs">
@@ -134,16 +134,33 @@
                     </div>
                 </div> 
              </div>
-                              
-                <div class="tabs__content" data-tab="3">
-                    
-                <p>performance</p>
-                
-            </div>
-                      
+       
+       
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->     
+<!-- ------------------------------------------------------ TAB 3 Performance --------------------------------------------------------------------------------------- -->                              
+           	
+           	<div id="performanceChart" class="tabs__content" data-tab="3">
+				<canvas id="semesterChart" width="400"></canvas> 
+				
+				<script type="text/javascript">
+				  document.getElementById("performanceChart");
+	    		  var semesterCanvas = document.getElementById("semesterChart").getContext("2d");
+	
+	    		  var semesterChart = new Chart(semesterCanvas,{
+	    		  	
+	    		  	type: "bar",
+	    		  	data:{
+	    		  		labels:['Pythond','Javascript','PHP','Java','C#','C++'],
+	    		  		datasets: [{
+	    		  			data: [13,12,11,10,9,6],
+	    		  		},],
+	    		  	},
+	    		  });
+    		  </script> 
+    		      
+            </div>                 
                 
         </div>
-         
     
               <script type="text/javascript">
              	let image = document.getElementById("image");

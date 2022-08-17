@@ -29,7 +29,7 @@ public class DeleteDataDao {
 			return e.getLocalizedMessage();
 		}
 		
-		return "SUCCESS";
+		return "DELETESUCCESS";
 	}
 	
 	public String deleteStaffData(StudentStaffDataBean staffDataBean) {
@@ -39,9 +39,7 @@ public class DeleteDataDao {
 		PreparedStatement preparedStatement = null;
 
 		try {
-			query = "DELETE FROM staff WHERE staff_id ="+staffDataBean.getStaffId()+" "
-					+"AND first_name = '"+staffDataBean.getfirstName()+"' "
-					+"AND last_name = '"+staffDataBean.getLastName()+"'";
+			query = "DELETE FROM staff WHERE staff_id ="+staffDataBean.getStaffId().trim()+"";
 			
 			con = DBConnection.createConnection();
 			preparedStatement = con.prepareStatement(query);
@@ -53,7 +51,7 @@ public class DeleteDataDao {
 			return e.getLocalizedMessage();
 		}
 		
-		return "SUCCESS";
+		return "DELETESUCCESS";
 	}
 	
 	public String deleteProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
@@ -75,7 +73,7 @@ public class DeleteDataDao {
 			return e.getLocalizedMessage();
 		}
 		
-		return "SUCCESS";
+		return "DELETESUCCESS";
 	}
 	
 	public String deleteCourseData(ProgrammeCourseClassBean courseDataBean) {
@@ -98,7 +96,7 @@ public class DeleteDataDao {
 			return e.getLocalizedMessage();
 		}
 		
-		return "SUCCESS";
+		return "DELETESUCCESS";
 	}
 	
 	public String deleteClassData(ProgrammeCourseClassBean classBean) {
@@ -120,7 +118,7 @@ public class DeleteDataDao {
 			return e.getLocalizedMessage();
 		}
 		
-		return "SUCCESS";
+		return "DELETESUCCESS";
 	}
 	
 	public String deleteFinalResultData() {
@@ -142,7 +140,7 @@ public class DeleteDataDao {
 			return e.getLocalizedMessage();
 		}
 		
-		return "SUCCESS";
+		return "DELETESUCCESS";
 	}
 	
 	public String deletefirstInternalData() {
@@ -164,7 +162,7 @@ public class DeleteDataDao {
 			return e.getLocalizedMessage();
 		}
 		
-		return "SUCCESS";
+		return "DELETESUCCESS";
 	}
 	
 	public String deleteSecondInternalData() {
@@ -186,6 +184,6 @@ public class DeleteDataDao {
 			return e.getLocalizedMessage();
 		}
 		
-		return "SUCCESS";
+		return "DELETESUCCESS";
 	}
 }

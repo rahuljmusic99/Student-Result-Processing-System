@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet {
 		String userNameString = request.getParameter("username");
 		String passwordString = request.getParameter("password");
 		String semesterString = "";
-		String nameString = "";
 		String programmeName = "";
 		String userImageString = "";
 		Blob userImage = null;
@@ -63,7 +62,6 @@ public class LoginServlet extends HttpServlet {
 				
 				semesterString = loginBean.getSemester();
 				programmeName = loginBean.getProgramme();
-				nameString = loginBean.getName();
 //				try {
 //					imageConverter.base64Converter(loginBean);
 //				} catch (SQLException | IOException e) {
@@ -75,7 +73,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("student", userNameString);
 				session2.setAttribute("regNo", userNameString);
-				session2.setAttribute("studentName", nameString);
+//				session2.setAttribute("studentName", nameString);
 				session2.setAttribute("semester", semesterString);
 				session2.setAttribute("programme", programmeName);
 				session2.setAttribute("user", "student");
@@ -100,7 +98,7 @@ public class LoginServlet extends HttpServlet {
 		
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("staff",userNameString);
-				session2.setAttribute("StaffName", nameString);
+//				session2.setAttribute("StaffName", nameString);
 				session2.setAttribute("user", "staff");
 				response.sendRedirect("staffdashboard.jsp");
 			}else {
@@ -123,7 +121,10 @@ public class LoginServlet extends HttpServlet {
 				
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("admin",userNameString );
-				session2.setAttribute("StaffName", nameString);
+				session2.setAttribute("adminName", loginBean.getName());
+				session2.setAttribute("adminPhone", loginBean.getPhone());
+				session2.setAttribute("adminEmail", loginBean.getEmail());
+				session2.setAttribute("adminPassword",loginBean.getPassword());
 				session2.setAttribute("user", "admin");
 				response.sendRedirect("admindashboard.jsp");
 			}else {

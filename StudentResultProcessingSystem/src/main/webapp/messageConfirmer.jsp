@@ -12,10 +12,12 @@
 	String insertionMessage = "" ;
 	insertionMessage = (String) request.getAttribute("insertionMessage");
 	
+	System.out.println(insertionMessage);
+	
 	String deletionMessage = "" ;
 	deletionMessage = (String) request.getAttribute("deletionMessage");
 
-if(insertionMessage != "" || insertionMessage != null){
+if(insertionMessage != null){ 
 	if(insertionMessage == "SUCCESS"){
 %>		
 	<script type="text/javascript">
@@ -77,8 +79,8 @@ if(insertionMessage != "" || insertionMessage != null){
 	
 <%		
 	}
-}else if(deletionMessage != "" || deletionMessage != null){
-	if(deletionMessage == "SUCCESS"){
+}else if(deletionMessage != null){
+	if(deletionMessage == "DELETESUCCESS"){
 %>		
 	<script type="text/javascript">
 	

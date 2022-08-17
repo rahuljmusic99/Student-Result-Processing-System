@@ -19,6 +19,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
      	<script type="text/javascript" src="${pageContext.request.contextPath}/js/login.js"></script>
+    	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      </head>
     <body>
         <section class="header"> 
@@ -44,7 +45,6 @@
            </section>
             </section>   
             
-            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script type="text/javascript">
 
             	
@@ -54,14 +54,30 @@
 	                var password = document.studentLoginForm.password.value;
 	           
 	                
-	                if(username == null || username == ""){
-            			swal("Sorry","please enter username","warning");
-            			return false;
-            		}
-            		else if(password == null || password == ""){
-            			swal("Sorry","please enter password","warning");
-            			return false;
-            		}
+	                if((username == null || username == "")&&(password == null || password == "")){
+	                	Swal.fire(
+	                			  'Sorry',
+	                			  'Please Enter Register Number and Password',
+	                			  'error'
+	                			)
+	        			return false;
+	                }
+	                else if(username == null || username == ""){
+	                	Swal.fire(
+	                			  'Sorry',
+	                			  'Please Enter Register Number',
+	                			  'error'
+	                			)
+	        			return false;
+	        		}
+	        		else if(password == null || password == ""){
+	        			Swal.fire(
+	              			  'Sorry',
+	              			  'Please Enter Password',
+	              			  'error'
+	              			)
+	        			return false;
+	        		}
             		
             	}
             	

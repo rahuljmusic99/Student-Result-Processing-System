@@ -92,8 +92,9 @@ public class LoadDataDao {
 			Connection con = DBConnection.createConnection();;
 			Statement statement = con.createStatement();
 			resultSet = statement.executeQuery(""
-				+"SELECT * FROM (class " 
-				+"INNER JOIN programme ON class.programme_id = programme.programme_id) "
+				+"SELECT * FROM ((class " 
+				+"INNER JOIN programme ON class.programme_id = programme.programme_id)"
+				+"LEFT JOIN student ON class.class_id = student.class_id)  "
 				+"ORDER BY programme.programme_name ASC");
 		} catch (SQLException e) {
 			e.printStackTrace();

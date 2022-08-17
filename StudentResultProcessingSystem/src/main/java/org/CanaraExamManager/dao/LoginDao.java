@@ -4,7 +4,7 @@ import java.sql.Blob;
 import java.sql.Connection;
 
 import org.CanaraExamManager.bean.LoginBean;
-
+import org.CanaraExamManager.bean.StudentStaffDataBean;
 import org.CanaraExamManager.util.DBConnection;
 
 
@@ -38,9 +38,9 @@ public class LoginDao {
 			statement = con.createStatement();
 			
 			resultset = statement.executeQuery(""
-			+ "select A.reg_no,password,status,semester,first_name,last_name,A.programme_id,B.programme_id,B.programme_name,C.reg_no,C.profile_image FROM ((student A "
+			+ "select A.reg_no,A.class_id,A.password,A.status,A.semester,A.first_name,A.last_name,A.programme_id,B.programme_id,B.programme_name,C.class_id,C.class_name FROM ((student A "
 			+ "INNER JOIN programme B ON A.programme_id = B.programme_id) "
-			+ "INNER JOIN studentimage C ON A.reg_no = C.reg_no) "
+			+ "INNER JOIN class C ON A.class_id = C.class_id) "
 			+ "WHERE A.reg_no = "+userNameString+"");
 			
 			while(resultset.next()) {
@@ -136,6 +136,7 @@ public class LoginDao {
 		String userNameString = loginBean.getUserName();
 		String passwordString = loginBean.getPassword();
 		
+		
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultset = null;
@@ -149,7 +150,7 @@ public class LoginDao {
 			//Statement is used to write queries.
 			statement = con.createStatement();
 			
-			resultset = statement.executeQuery("select admin_id,password from admin");
+			resultset = statement.executeQuery("select admin_id,first_name,last_name,phone,email,password from admin");
 			
 			
 			while(resultset.next()) {
@@ -159,6 +160,10 @@ public class LoginDao {
 				
 				if(userNameString.equals(userNameDBString) && passwordString.equals(passwordDBString) ) {
 					
+					loginBean.setName(resultset.getString("first_name")+" "+resultset.getString("last_name"));
+					loginBean.setPhone(resultset.getString("phone"));
+					loginBean.setEmail(resultset.getString("email"));
+					loginBean.setPassword(resultset.getString("password"));
 					return "SUCCESS";//Return SUCCESS if the user credentials match the user credentials in the database
 				}
 				
