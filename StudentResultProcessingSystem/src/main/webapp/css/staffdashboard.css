@@ -784,7 +784,113 @@ label{
     cursor: pointer;
 }
 
+.protab2{
+    width: 1210px;
+    height: 98%;
+    background: whitesmoke;
+    padding-bottom: 1rem;
+    border: 1px solid #dddddd;
+    margin-bottom: -1rem; 
+}
 
+.logos{
+    width: 35rem;
+    height: 8rem;
+    padding-top: 2rem;
+}
+
+.imgholder{
+    margin-left: 20rem;
+}
+
+.cards{
+    background-color: white;
+    width: 13rem;
+    height: 8rem;
+    margin-bottom: 3px;
+    display: inline-block;
+    margin-left: 3rem;
+    padding-top: 1rem;
+    box-shadow: -2px 1px 5px 1px;
+    border-left: 10px solid blue;    
+}
+
+.cardholder{
+   margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+
+.cards2{
+    background-color: white;
+    width: 18rem;
+    height: 10rem;
+    margin-bottom: 3px;
+    display: inline-block;
+    box-shadow: -2px 1px 5px 1px;
+    margin-left: 4rem;
+    border-left: 10px solid darkgray;  
+}
+
+.cardholder2{
+   margin-left: 25rem;
+    margin-top: 4rem;
+}
+
+.head1{
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    text-align: center;
+}
+.head2{
+    margin-top: 6rem;
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    text-align: center;
+    margin-left: 3rem;
+}
+
+.icon2{
+    width: 4rem;
+    height: 4rem;
+    float: right;
+    margin-right: 2rem;
+    margin-top: -2rem;
+}
+
+.icon3{
+    width: 5rem;
+    height: 6rem;
+    margin-right: 2rem;
+    margin-top: -5.5rem;
+    margin-left: 1rem;
+ 
+}
+.im{
+    height: 3rem;
+}
+
+.ims{
+    height: 5rem;
+}
+
+.values{
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-left: 0.5rem;
+    font-weight: 600;
+}
+
+.values2{
+    font-size: 3rem;
+    margin-top: -6rem;
+    margin-left: 0.5rem;
+    margin-right: 7rem;
+    font-weight: 600;
+    float: right;
+}
 
 
 
