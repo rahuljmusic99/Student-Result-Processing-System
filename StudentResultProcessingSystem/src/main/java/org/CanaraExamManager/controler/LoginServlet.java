@@ -1,6 +1,5 @@
 package org.CanaraExamManager.controler;
 
-import org.CanaraExamManager.dao.LoadDataDao;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,13 +8,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Blob;
 //import java.sql.SQLException;
-import java.sql.ResultSet;
 
 import org.CanaraExamManager.bean.LoginBean;
 import org.CanaraExamManager.util.ImageConverter;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.CanaraExamManager.dao.LoginDao;
 
 
@@ -78,9 +79,9 @@ public class LoginServlet extends HttpServlet {
 				session2.setAttribute("semester", semesterString);
 				session2.setAttribute("programme", programmeName);
 				session2.setAttribute("user", "student");
+				session2.setAttribute("averageFinalMarks", loginDao.averageFinalMarks());
 //				session2.setAttribute("userImage", userImageString);
 				
-				session2.setAttribute("averageFinalMarks", loginDao.averageFinalMarks());
 				response.sendRedirect("studdashboard.jsp");
 			
 			}else {

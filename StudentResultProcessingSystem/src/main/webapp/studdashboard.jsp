@@ -10,9 +10,8 @@
 %> 
 <jsp:forward page="/studentlogin.jsp"></jsp:forward>
 <%} 
-
-	float[] finalMarks = (float[])session.getAttribute("averageFinalMarks");
-
+	
+	float[] averageFinalMarks = (float[]) session.getAttribute("averageFinalMarks");
 %>
      
 <!DOCTYPE html5>
@@ -133,16 +132,24 @@
            	<div class="tabs__content" data-tab="3">
 				<div class="chartholder">
                   <canvas id="semesterChart" width="400"></canvas> 
+                  <input type="hidden" id="semesters" value="<%=semesterInt%>" />
 	            </div>	
-	            	
+	            	            	
 				<script type="text/javascript">
+					
+				  var semesters = document.getElementById("semesters").value;
 	    		  var semesterCanvas = document.getElementById("semesterChart").getContext("2d");
 	    		  var semesterChart = new Chart(semesterCanvas,{
 	    		  	type: "line",
 	    		  	data:{
-	    		  		labels:['Pythond','Javascript','PHP','Java','C#','C++'],
+	    		  		labels:[],
 	    		  		datasets: [{
-	    		  			data: [100,12,11,10,9,6],
+	    		  			data: [
+	    		  				<%for(int j = 0; j < averageFinalMarks.length;j++){
+	    		  				%>
+	    		  				<%=averageFinalMarks[j]+","%>
+	    		  				<%}%>
+	    		  				],
 	    		  		},],
 	    		  	},
 	    		  });
