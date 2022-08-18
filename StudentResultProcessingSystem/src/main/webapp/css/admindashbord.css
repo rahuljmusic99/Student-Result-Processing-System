@@ -1,17 +1,12 @@
 *{
     margin: 0;
-    padding: 0;
-    /*overflow: hidden;*/
-    
+    padding: 0;   
 }
 
 .tabs{
-    border:1px solid #cccccc;
     display:flex;
     height: 100%;  
-    width: 100%;
-    
-    
+    width: 100%;  
 }
 
 .tabs__sidebar{
@@ -20,8 +15,7 @@
     background: blue;
     box-shadow: 0 3px 10px rgb(0,0,0,0.5);
     height: 100%;
-    position: fixed;
-    
+    position: fixed;   
 }
 
 .tabs__sidebar::after{
@@ -1716,4 +1710,110 @@ label{
     color: grey;
     cursor: pointer;
 }
+
+.im{
+    height: 3rem;
+}
+
+.ims{
+    height: 5rem;
+}
+
+.protab2{
+    width: 1210px;
+    height: 98%;
+    background: grey;
+    padding-bottom: 1rem;
+    border: 1px solid #dddddd;
+    margin-bottom: -1rem; 
+}
+
+.logos{
+    width: 40rem;
+    height: 10rem;
+}
+
+.imgholder{
+    margin-left: 18rem;
+}
+
+.cards{
+    background-color: white;
+    width: 13rem;
+    height: 8rem;
+    margin-bottom: 3px;
+    display: inline-block;
+    margin-left: 1rem;
+    padding-top: 1rem;
+    border-left: 10px solid blue;
+    
+}
+
+.cardholder{
+   margin-left: 0.5rem;
+    margin-top: 2rem;
+}
+
+
+.cards2{
+    background-color: white;
+    width: 18rem;
+    height: 10rem;
+    margin-bottom: 3px;
+    display: inline-block;
+    margin-left: 4rem;
+    border-left: 10px solid darkgray;  
+}
+
+.cardholder2{
+   margin-left: 13rem;
+    margin-top: 4rem;
+}
+
+.head1{
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    text-align: center;
+}
+.head2{
+    margin-top: 6rem;
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    text-align: center;
+    margin-left: 3rem;
+}
+
+.icon2{
+    width: 4rem;
+    height: 4rem;
+    float: right;
+    margin-right: 2rem;
+    margin-top: -2rem;
+}
+.icon3{
+    width: 5rem;
+    height: 6rem;
+    margin-right: 2rem;
+    margin-top: -5.5rem;
+    margin-left: 1rem;
+ 
+}
+.values{
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-left: 0.5rem;
+    font-weight: 600;
+}
+
+.values2{
+    font-size: 3rem;
+    margin-top: -6rem;
+    margin-left: 0.5rem;
+    margin-right: 7rem;
+    font-weight: 600;
+    float: right;
+}
+
 
