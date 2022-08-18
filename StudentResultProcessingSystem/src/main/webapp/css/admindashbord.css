@@ -1729,12 +1729,12 @@ label{
 }
 
 .logos{
-    width: 40rem;
-    height: 10rem;
+    width: 35rem;
+    height: 8rem;
 }
 
 .imgholder{
-    margin-left: 18rem;
+    margin-left: 20rem;
     padding-top: 3rem;
 }
 
@@ -1745,6 +1745,7 @@ label{
     margin-bottom: 3px;
     display: inline-block;
     margin-left: 1rem;
+    box-shadow: -2px 1px 5px 1px;
     padding-top: 1rem;
     border-left: 10px solid blue;
     
@@ -1762,6 +1763,7 @@ label{
     height: 10rem;
     margin-bottom: 3px;
     display: inline-block;
+    box-shadow: -2px 1px 5px 1px;
     margin-left: 4rem;
     border-left: 10px solid darkgray;  
 }
