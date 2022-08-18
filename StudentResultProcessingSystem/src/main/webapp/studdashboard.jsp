@@ -157,7 +157,7 @@
 	    		  				<%}%>
 	    		  				],
 	    		  				backgroundColor: "#5DADEC",
-	    		  				borderColor:"#2E5894",
+	    		  				borderColor: "#2E5894",
 	    		  				borderWidth: 3,
 	    		  		},],
 	    		  	},
