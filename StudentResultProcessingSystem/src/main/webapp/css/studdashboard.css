@@ -218,10 +218,16 @@ h4{
     font-size: 20px;
 }
 
-.chartholder{
+.chartholder1{
     width: 50rem;
-    margin-left: 5rem;
-    margin-top: 20rem;
+    margin-left: 12rem;
+    padding-top: 10rem;
+}
+
+.chartholder2{
+     width: 50rem;
+     margin-left: 10rem;
+     margin-top: 10rem;
 }
 
 .protab1{
@@ -231,6 +237,24 @@ h4{
     padding-bottom: 1rem;
     border: 1px solid #dddddd;
     margin-bottom: -1rem; 
+}
+
+.protab2{
+    width: 1210px;
+    height: 98%;
+    background: #f6f7f5;
+    padding-bottom: 1rem;
+    border: 1px solid #dddddd;
+    margin-bottom: 3rem; 
+}
+
+.protab3{
+    width: 1210px;
+    height: 98%;
+    background: #f6f7f5;
+    padding-bottom: 1rem;
+    border: 1px solid #dddddd;
+    margin-top: 3rem;
 }
 
 .inner__protab1{
@@ -357,9 +381,3 @@ label{
     color: grey;
     cursor: pointer;
 }
-
-
-
-
-
-
