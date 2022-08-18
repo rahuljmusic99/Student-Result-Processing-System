@@ -70,15 +70,19 @@
 <!-- ------------------------------------------------------ TAB 1 DASHBOARD ----- ------------------------------------------------------------------------------- -->
             
             <div class="tabs__content" data-tab="1">
-                <h2>Canara College Mangalore</h2><br>
-                <img  src="" id="image">
-                <h3>About Canara College</h3><br>
-                
-                <p class="about">
-                 Canara College with its noble vision to prepare educationally strong and culturally vibrant students is a prestigious institute for higher learning, well acclaimed to have its deep rooted existence since 1973 with its moral ideals, rich core values and fusion of cultural ethos; pioneered by a great legendary soul, Late Sri Ammembal Subba Rao Pai. It has a glorious history and legacy in the field of imparting value-based, character building education to its aspirants. True to its motto of “Educating for Righteous Life” and philosophy of commitment towards offering quality education at affordable cost, it is located centrally in the coastal educational hub of Mangaluru city. The institution is governed and managed by Canara High School Association, Mangaluru, reaccredited by NAAC and affiliated to Mangalore University.<br><br><br>
-
-                  It offers undergraduate programmes in Commerce (B.Com.), Bachelor of Commerce Professoinal with Coaching for CA and CS, Bachelor of Science [B.Sc. (PCM, PMC and BZC)], Bachelor of Computer Applications (B.C.A.), Bachelor of Business Administration (B.B.A.) and a post graduate programme in Commerce (M.Com.).
-                </p> 
+                <div class="protab2">
+                   <div class="imgholder"> <img src="css/images/canlogos.png" class="logos"></div>
+                    <div class="cardholder">
+                    <div class="cards"><span style="color:steelblue;"><p class="head1">TOTAL RESULT PUBLISH</p></span><p class="values">12</p><div class="icon2"><img src="css/images/blackboard.png" class="im"></div></div>
+                    <div class="cards"><span style="color:green;"><p class="head1">TOTAL EXAM</p></span><p class="values">12</p><div class="icon2"><img src="css/images/exam.png" class="im"></div></div>
+                    <div class="cards"><span style="color:purple;"><p class="head1">TOTAL PROGRAMME</p></span><p class="values">12</p><div class="icon2"><img src="css/images/programme.png" class="im"></div></div>
+                    <div class="cards"><span style="color:orange;"><p class="head1">TOTAL COURSE</p></span><p class="values">12</p><div class="icon2"><img src="css/images/course.png" class="im"></div></div>
+                    <div class="cards"><span style="color:red;"><p class="head1">TOTAL CLASS</p></span><p class="values">12</p><div class="icon2"><img src="css/images/class.png" class="im"></div></div></div>
+                    <div class="cardholder2">
+                    <div class="cards2"><span style="color:steelblue;"><p class="head2">STUDENTS</p></span><p class="values2">12</p><div class="icon3"><img src="css/images/graduated.png" class="ims"></div></div>
+                    <div class="cards2"><span style="color:steelblue;"><p class="head2">STAFF</p></span><p class="values2">12</p><div class="icon3"><img src="css/images/staffs.png" class="ims"></div></div>
+                    </div> 
+                </div>  
             </div>
             
             
