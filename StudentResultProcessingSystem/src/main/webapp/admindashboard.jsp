@@ -1576,6 +1576,7 @@
                         <label>Email</label>
                         <input value="<%=request.getSession(false).getAttribute("adminEmail")%>" class="int" type="email" readonly>
                         <label>Password</label>
+                        <div class="i"><i class="fa fa-grav"></i></div>
                         <input value="<%=request.getSession(false).getAttribute("adminPassword")%>" class="int" type="password" readonly>
                         <button class="cp">Change Password</button>
                     </div>
