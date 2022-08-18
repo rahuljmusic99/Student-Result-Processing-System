@@ -80,6 +80,8 @@ public class LoginServlet extends HttpServlet {
 				session2.setAttribute("programme", programmeName);
 				session2.setAttribute("user", "student");
 				session2.setAttribute("averageFinalMarks", loginDao.averageFinalMarks());
+				session2.setAttribute("averageFirstInternal", loginDao.averageFirstInternal());
+				session2.setAttribute("averageSecondInternal", loginDao.averageSecondInternal());
 //				session2.setAttribute("userImage", userImageString);
 				
 				response.sendRedirect("studdashboard.jsp");

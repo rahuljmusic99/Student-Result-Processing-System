@@ -15,6 +15,8 @@ import java.sql.SQLException;
 public class LoginDao {
 	
 	float[] marksArray ;
+	float[] firstInternal;
+	float[] secondInternal;
 	
 	public String authenticateUser(LoginBean loginBean) {
 		
@@ -61,11 +63,19 @@ public class LoginDao {
 					loginBean.setSemester(semesterString);
 					
 					this.marksArray = new float[Integer.parseInt(semesterString)];
+					this.firstInternal = new float[Integer.parseInt(semesterString)];
+					this.secondInternal = new float[Integer.parseInt(semesterString)];
 					
 					for(int i = 1; i <= Integer.parseInt(semesterString) ; i++){
 						
 						float grandTotalMaxMarks = 0;
 						float grandTotalMarks = 0;
+						
+						float grandTotalMaxMarks2 = 0;
+						float grandTotalMarks2 = 0;
+						
+						float grandTotalMaxMarks3 = 0;
+						float grandTotalMarks3 = 0;
 						
 						ResultSet marksResultSet = null;
 						marksResultSet = statement.executeQuery("SELECT * FROM (course "
@@ -90,6 +100,55 @@ public class LoginDao {
 							this.marksArray[i-1] = averageMarks;
 						}
 						
+						
+						ResultSet firstInternalResultSet = null;
+						firstInternalResultSet = statement.executeQuery("SELECT A.course_code,A.course_sem,A.programme_id,B.course_code,"
+								+ "B.obtained_marks,B.max_marks,B.reg_no FROM (course A "
+								+ "LEFT JOIN first_internal_marks B ON A.course_code = B.course_code) "
+								+ "WHERE A.programme_id = "+programmeIdString+" "
+								+ "AND A.course_sem = "+i+" "
+								+ "AND B.reg_no = "+userNameDBString+"");
+						
+						while (firstInternalResultSet.next()) {
+							
+							grandTotalMaxMarks2 = grandTotalMaxMarks2 + (firstInternalResultSet.getFloat("max_marks"));
+							grandTotalMarks2 =  grandTotalMarks2 + (firstInternalResultSet.getFloat("obtained_marks"));
+							
+						}
+						
+						float averageMarks2 = (grandTotalMarks2*100)/grandTotalMaxMarks2;
+						
+						if(Float.isNaN(averageMarks2)) {
+							this.firstInternal[i-1] = 0;
+							
+						}else {
+							this.firstInternal[i-1] = averageMarks2;
+						}
+						
+						
+						ResultSet secondInternalResultSet = null;
+						secondInternalResultSet = statement.executeQuery("SELECT A.course_code,A.course_sem,A.programme_id,B.course_code,"
+								+ "B.obtained_marks,B.max_marks,B.reg_no FROM (course A "
+								+ "LEFT JOIN second_internal_marks B ON A.course_code = B.course_code) "
+								+ "WHERE A.programme_id = "+programmeIdString+" "
+								+ "AND A.course_sem = "+i+" "
+								+ "AND B.reg_no = "+userNameDBString+"");
+						
+						while (secondInternalResultSet.next()) {
+							
+							grandTotalMaxMarks3 = grandTotalMaxMarks3 + (secondInternalResultSet.getFloat("max_marks"));
+							grandTotalMarks3 =  grandTotalMarks3 + (secondInternalResultSet.getFloat("obtained_marks"));
+							
+						}
+						
+						float averageMarks3 = (grandTotalMarks3*100)/grandTotalMaxMarks3;
+						
+						if(Float.isNaN(averageMarks3)) {
+							this.secondInternal[i-1] = 0;
+							
+						}else {
+							this.secondInternal[i-1] = averageMarks3;
+						}
 					}
 					
 					
@@ -118,6 +177,16 @@ public class LoginDao {
 	public float[] averageFinalMarks() {
 		
 		return this.marksArray;
+	}
+	
+	public float[] averageFirstInternal() {
+		
+		return this.firstInternal;
+	}
+	
+	public float[] averageSecondInternal() {
+		
+		return this.secondInternal;
 	}
 	
 	

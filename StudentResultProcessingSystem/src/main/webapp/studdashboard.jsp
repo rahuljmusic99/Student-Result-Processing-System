@@ -1,3 +1,4 @@
+<%@page import="org.apache.tomcat.websocket.BackgroundProcess"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -12,6 +13,28 @@
 <%} 
 	
 	float[] averageFinalMarks = (float[]) session.getAttribute("averageFinalMarks");
+	float[] averageFirstInternal = (float[]) session.getAttribute("averageFirstInternal");
+	float[] averageSecondInternal = (float[]) session.getAttribute("averageSecondInternal");
+	
+	String[] bgColor = new String[8];
+	bgColor[0] = "#ff8080";
+	bgColor[1] = "#EE82EE";
+	bgColor[2] = "#ffff00";
+	bgColor[3] = "#4dffd2";
+	bgColor[4] = "#ffd24d";
+	bgColor[5] = "#ff4dd2";
+	bgColor[6] = "#4d79ff";
+	bgColor[7] = "#ff794d";
+	
+	String[] borderColor = new String[8];
+	borderColor[0] = "#ff6666";
+	borderColor[1] = "#eb6ceb";
+	borderColor[2] = "#e6e600";
+	borderColor[3] = "#33ffcc";
+	borderColor[4] = "#ffcc33";
+	borderColor[5] = "#ff33cc";
+	borderColor[6] = "#3366ff";
+	borderColor[7] = "#ff6633";
 %>
      
 <!DOCTYPE html5>
@@ -134,17 +157,15 @@
            	<div class="tabs__content" data-tab="3">
                 <div class="protab2">
 				<div class="chartholder1">
-                  <canvas id="semesterChart" width="400"></canvas> 
+                  <canvas id="semesterChart" ></canvas> 
 	            </div>
                 </div>
                 
                <div class="protab3">
                <div class="chartholder2">
-                <canvas id="semesterChart2" width="400"></canvas> 
+                <canvas id="semesterChart2" ></canvas> 
 	           </div>
                </div>
-	            	
-
                   <input type="hidden" id="semesters" value="<%=semesterInt%>" />
 	            </div>	
 	            	            	
@@ -155,6 +176,7 @@
 	    		  var semesterChart = new Chart(semesterCanvas,{
 	    		  	type: "bar",
 	    		  	data:{
+	    		  		
 	    		  		labels:[
 	    		  			<%for(int j = 0; j < averageFinalMarks.length;j++){
 	    		  				%>
@@ -162,17 +184,40 @@
 	    		  				<%}%>
 	    		  		],
 	    		  		datasets: [{
+	    		  			label : "Semester Average Marks",
 	    		  			data: [
 	    		  				<%for(int j = 0; j < averageFinalMarks.length;j++){
 	    		  				%>
 	    		  				<%=averageFinalMarks[j]+","%>
 	    		  				<%}%>
 	    		  				],
-	    		  				backgroundColor: "#5DADEC",
-	    		  				borderColor: "#2E5894",
+								backgroundColor: [
+									<%for(int j = 0; j < averageFinalMarks.length;j++){
+			    		  				%>
+			    		  				<%="'"+bgColor[j]+"',"%>
+			    		  				<%}%>
+								],
+	    		  				borderColor: [
+	    		  					<%for(int j = 0; j < averageFinalMarks.length;j++){
+	    	    		  				%>
+	    	    		  				<%="'"+borderColor[j]+"',"%>
+	    	    		  				<%}%>
+	    		  				],
 	    		  				borderWidth: 3,
 	    		  		},],
 	    		  	},
+	    		  	options: {
+	    		        plugins: {
+	    		            title: {
+	    		                display: true,
+	    		                text: 'Semester Performance',
+	    		                padding: {
+	    		                    top: 0,
+	    		                    bottom: 0
+	    		                }
+	    		            }
+	    		        }
+	    		    },
 	    		  });
 	    		  
     		  </script>
@@ -183,11 +228,52 @@
 	    		  var semesterChart = new Chart(semesterCanvas,{
 	    		  	type: "bar",
 	    		  	data:{
-	    		  		labels:['Pythond','Javascript','PHP','Java','C#','C++'],
+	    		  		labels:[<%for(int j = 0; j < averageFirstInternal.length;j++){
+    		  				%>
+    		  				<%="'"+"Semester "+(j+1)+"',"%>
+    		  				<%}%>],
 	    		  		datasets: [{
-	    		  			data: [13,12,11,10,9,6],
-                            backgroundColor: "#5DADEC",
-	    		  				borderColor:"#2E5894",
+    		  				label : "First Internal Average Marks",
+	    		  			data: [
+	    		  				<%for(int j = 0; j < averageFinalMarks.length;j++){
+		    		  				%>
+		    		  				<%=averageFirstInternal[j]+","%>
+		    		  				<%}%>
+	    		  			],
+                            backgroundColor: [
+                            	<%for(int j = 0; j < averageFinalMarks.length;j++){
+		    		  				%>
+		    		  				<%="'"+bgColor[j]+"',"%>
+		    		  				<%}%>
+                            ],
+	    		  				borderColor: [
+	    		  					<%for(int j = 0; j < averageFinalMarks.length;j++){
+	    	    		  				%>
+	    	    		  				<%="'"+borderColor[j]+"',"%>
+	    	    		  				<%}%>
+	    		  				],
+	    		  				borderWidth: 3,
+	    		  		},
+	    		  		{
+    		  				label : "Second Internal Average Marks",
+	    		  			data: [
+	    		  				<%for(int j = 0; j < averageSecondInternal.length;j++){
+		    		  				%>
+		    		  				<%=averageSecondInternal[j]+","%>
+		    		  				<%}%>
+	    		  			],
+                            backgroundColor: [
+                            	<%for(int j = 7; j > averageFinalMarks.length;j--){
+		    		  				%>
+		    		  				<%="'"+bgColor[j]+"',"%>
+		    		  				<%}%>
+                            ],
+	    		  				borderColor:[
+	    		  					<%for(int j = 7; j > averageFinalMarks.length;j--){
+	    	    		  				%>
+	    	    		  				<%="'"+borderColor[j]+"',"%>
+	    	    		  				<%}%>
+	    		  				],
 	    		  				borderWidth: 3,
 	    		  		},],
 	    		  	},
