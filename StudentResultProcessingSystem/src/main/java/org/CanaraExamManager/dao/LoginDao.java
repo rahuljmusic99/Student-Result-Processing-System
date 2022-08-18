@@ -60,6 +60,7 @@ public class LoginDao {
 					loginBean.setEmail(resultset.getString("email"));
 					loginBean.setPhone(resultset.getString("phone"));
 					loginBean.setPassword(resultset.getString("password"));
+					loginBean.setProgramme(resultset.getString("programme_name"));
 					loginBean.setSemester(semesterString);
 					
 					this.marksArray = new float[Integer.parseInt(semesterString)];
@@ -79,7 +80,7 @@ public class LoginDao {
 						
 						ResultSet marksResultSet = null;
 						marksResultSet = statement.executeQuery("SELECT * FROM (course "
-								+ "LEFT JOIN final_marks ON course.course_code = final_marks.course_code) "
+								+ "INNER JOIN final_marks ON course.course_code = final_marks.course_code) "
 								+ "WHERE course.programme_id = "+programmeIdString+" "
 								+ "AND course.course_sem = "+i+" "
 								+ "AND final_marks.reg_no = "+userNameDBString+"");
@@ -104,7 +105,7 @@ public class LoginDao {
 						ResultSet firstInternalResultSet = null;
 						firstInternalResultSet = statement.executeQuery("SELECT A.course_code,A.course_sem,A.programme_id,B.course_code,"
 								+ "B.obtained_marks,B.max_marks,B.reg_no FROM (course A "
-								+ "LEFT JOIN first_internal_marks B ON A.course_code = B.course_code) "
+								+ "INNER JOIN first_internal_marks B ON A.course_code = B.course_code) "
 								+ "WHERE A.programme_id = "+programmeIdString+" "
 								+ "AND A.course_sem = "+i+" "
 								+ "AND B.reg_no = "+userNameDBString+"");
@@ -129,7 +130,7 @@ public class LoginDao {
 						ResultSet secondInternalResultSet = null;
 						secondInternalResultSet = statement.executeQuery("SELECT A.course_code,A.course_sem,A.programme_id,B.course_code,"
 								+ "B.obtained_marks,B.max_marks,B.reg_no FROM (course A "
-								+ "LEFT JOIN second_internal_marks B ON A.course_code = B.course_code) "
+								+ "INNER JOIN second_internal_marks B ON A.course_code = B.course_code) "
 								+ "WHERE A.programme_id = "+programmeIdString+" "
 								+ "AND A.course_sem = "+i+" "
 								+ "AND B.reg_no = "+userNameDBString+"");

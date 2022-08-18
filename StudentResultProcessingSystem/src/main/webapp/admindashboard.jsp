@@ -1243,7 +1243,7 @@
                             <td class="td1"><%=classesData.getString("programme_name")%></td>   <!--Programme name-->
                             <td class="td2"><%=classesData.getString("class_name")%></td>   <!--Semseter-->
                             <td class="td5"><%=classesData.getString("class_year")%></td>
-                            <td class="td3"><div class="circle1" title="Edit Class" id="edit5" onclick="myFunction17()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteClass" class="circle2" title="Delete Class" onclick="deleteClass('<%=classesData.getString("class_id")%>','class','<%=classesData.getString("class_name")+" "+classesData.getString("class_year")+" year"%>','<%=classesData.getString("reg_no")%>')"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                            <td class="td3"><div class="circle1" title="Edit Class" id="edit5" onclick="myFunction17()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteClass" class="circle2" title="Delete Class" onclick="deleteClass('<%=classesData.getString("class_id")%>','class','<%=classesData.getString("class_name")+" "+classesData.getString("class_year")+" year"%>')"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>			
 
                         <% 	
@@ -1258,18 +1258,8 @@
                     </table>
                      <script type="text/javascript">
                      	document.getElementById("deleteClass");
-                     	function deleteClass(uniqueId,Data,className,reg_no){
-                     		
-                     		if(reg_no !== "null"){
-                     			swal({title: "Sorry",
-	   	             				 text: "Unable to Delete Class "+"''"+className+"'' Because it contains Students",
-	   	             				 icon: "error",
-	   	             				 buttons: {
-	   	             					 ok: "OK",
-	   	             				 },	 
-	   	             			});
-                     			
-                     		}else{
+                     	function deleteClass(uniqueId,Data,className){
+
 	                     			swal({title: "Warning",
 	   	             				 text: "Are you shure you want delete Class "+"''"+className+"''",
 	   	             				 icon: "warning",
@@ -1287,7 +1277,6 @@
 	   		            				document.getElementById("deleteDataForm").submit();
 	   	             				}
 	   	             			});
-                     		}
                      		
                      	}
                      </script>

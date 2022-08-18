@@ -75,7 +75,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("student", userNameString);
 				session2.setAttribute("regNo", userNameString);
-//				session2.setAttribute("studentName", nameString);
+				session2.setAttribute("studentName", loginBean.getName().trim());
 				session2.setAttribute("semester", semesterString);
 				session2.setAttribute("programme", programmeName);
 				session2.setAttribute("user", "student");

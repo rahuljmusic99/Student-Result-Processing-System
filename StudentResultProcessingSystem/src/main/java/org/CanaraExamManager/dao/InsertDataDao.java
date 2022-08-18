@@ -30,9 +30,9 @@ public class InsertDataDao {
 			statement = con.createStatement();
 			resultSet = statement.executeQuery("SELECT A.programme_id,B.class_name,B.class_id,B.class_year FROM (programme A "
 											+ "INNER JOIN class B ON A.programme_id = B.programme_id) "
-											+ "WHERE A.programme_id = "+studentDataBean.getProgramme()+" "
+											+ "WHERE A.programme_id = "+studentDataBean.getProgramme().trim()+" "
 											+ "AND B.class_name = '"+studentDataBean.getclass().trim()+"' "
-											+ "AND B.class_year = "+studentDataBean.getClassYear()+" ");
+											+ "AND B.class_year = "+studentDataBean.getClassYear().trim()+" ");
 				while(resultSet.next()) {
 					
 					programmeId = resultSet.getString("programme_id");
@@ -52,23 +52,23 @@ public class InsertDataDao {
 									+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 							preparedStatement = con.prepareStatement(query);
 							
-							preparedStatement.setString(1,studentDataBean.getRegNo());//1
-							preparedStatement.setString(2,studentDataBean.getfirstName());//2
-							preparedStatement.setString(3,studentDataBean.getLastName());//3
-							preparedStatement.setString(4,studentDataBean.getGender());//4
-							preparedStatement.setString(5,studentDataBean.getDOB());//5
-							preparedStatement.setString(6,studentDataBean.getEmail());//6
-							preparedStatement.setString(7,studentDataBean.getPhone());//7
-							preparedStatement.setString(8,studentDataBean.getAddress());//8
-							preparedStatement.setString(9,studentDataBean.getCity());//9
-							preparedStatement.setString(10,studentDataBean.getDistrict());//10
-							preparedStatement.setString(11,studentDataBean.getState());//11
-							preparedStatement.setString(12,studentDataBean.getPinCode());//12
-							preparedStatement.setString(13,studentDataBean.getPassword());//13
-							preparedStatement.setString(14,programmeId);//14
-							preparedStatement.setString(15,classId);//15
-							preparedStatement.setString(16,studentDataBean.getYear());//16
-							preparedStatement.setString(17,studentDataBean.getCurrentSemester());//17
+							preparedStatement.setString(1,studentDataBean.getRegNo().trim());//1
+							preparedStatement.setString(2,studentDataBean.getfirstName().trim());//2
+							preparedStatement.setString(3,studentDataBean.getLastName().trim());//3
+							preparedStatement.setString(4,studentDataBean.getGender().trim());//4
+							preparedStatement.setString(5,studentDataBean.getDOB().trim());//5
+							preparedStatement.setString(6,studentDataBean.getEmail().trim());//6
+							preparedStatement.setString(7,studentDataBean.getPhone().trim());//7
+							preparedStatement.setString(8,studentDataBean.getAddress().trim());//8
+							preparedStatement.setString(9,studentDataBean.getCity().trim());//9
+							preparedStatement.setString(10,studentDataBean.getDistrict().trim());//10
+							preparedStatement.setString(11,studentDataBean.getState().trim());//11
+							preparedStatement.setString(12,studentDataBean.getPinCode().trim());//12
+							preparedStatement.setString(13,studentDataBean.getPassword().trim());//13
+							preparedStatement.setString(14,programmeId.trim());//14
+							preparedStatement.setString(15,classId.trim());//15
+							preparedStatement.setString(16,studentDataBean.getYear().trim());//16
+							preparedStatement.setString(17,studentDataBean.getCurrentSemester().trim());//17
 							preparedStatement.setString(18,"true");//18
 							
 							preparedStatement.execute();
@@ -117,15 +117,15 @@ public class InsertDataDao {
 						+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
 				preparedStatement = con.prepareStatement(query);
 				
-				preparedStatement.setString(1, staffDataBean.getStaffId());//1
-				preparedStatement.setString(2, staffDataBean.getfirstName());//2
-				preparedStatement.setString(3, staffDataBean.getLastName());//3
-				preparedStatement.setString(4, staffDataBean.getGender());//4
-				preparedStatement.setString(5, staffDataBean.getEmail());//5
-				preparedStatement.setString(6, staffDataBean.getPhone());//6
-				preparedStatement.setString(7, staffDataBean.getAddress());//7
-				preparedStatement.setString(8, staffDataBean.getPassword());//8
-				preparedStatement.setString(9, staffDataBean.getProgramme());//9
+				preparedStatement.setString(1, staffDataBean.getStaffId().trim());//1
+				preparedStatement.setString(2, staffDataBean.getfirstName().trim());//2
+				preparedStatement.setString(3, staffDataBean.getLastName().trim());//3
+				preparedStatement.setString(4, staffDataBean.getGender().trim());//4
+				preparedStatement.setString(5, staffDataBean.getEmail().trim());//5
+				preparedStatement.setString(6, staffDataBean.getPhone().trim());//6
+				preparedStatement.setString(7, staffDataBean.getAddress().trim());//7
+				preparedStatement.setString(8, staffDataBean.getPassword().trim());//8
+				preparedStatement.setString(9, staffDataBean.getProgramme().trim());//9
 				preparedStatement.setString(10, "true");//10
 				
 				preparedStatement.execute();
@@ -174,10 +174,10 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 							+"VALUES(?,?,?,?)";
 					preparedStatement = con.prepareStatement(query);
 					
-					preparedStatement.setString(1, programmeDataBean.getProgrammeId());//1
-					preparedStatement.setString(2, programmeDataBean.getProgrammeName().toUpperCase());
-					preparedStatement.setString(3, programmeDataBean.getProgrammeDuration());
-					preparedStatement.setString(4, programmeDataBean.getSemester());
+					preparedStatement.setString(1, programmeDataBean.getProgrammeId().trim());//1
+					preparedStatement.setString(2, (programmeDataBean.getProgrammeName().toUpperCase()).trim());
+					preparedStatement.setString(3, programmeDataBean.getProgrammeDuration().trim());
+					preparedStatement.setString(4, programmeDataBean.getSemester().trim());
 					
 					preparedStatement.execute();
 					
@@ -222,20 +222,48 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 
 					if(resultSet.next() == false) { //check whether course with that courseCode already exists
 							
+							String groupNumber = "";
+							
+							switch(courseDataBean.getCourseGroup().trim()) {
+								
+							case "Group 1 Core Course":
+								groupNumber = "1";
+								break;
+								
+							case "Group 2 Elective Course":
+								groupNumber = "2";
+								break;
+								
+							case "Group 3 a)Compulsary Foundation":
+								groupNumber = "3.1";
+								break;
+								
+							case "Group 3 b)Elective Foundation":
+								groupNumber = "3.2";
+								break;
+								
+							case "Group 4":
+								groupNumber = "4";
+								
+							default:
+								groupNumber = "0";
+							}
+						
 							query = "INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,"
-									+ "min_marks,max_IA,programme_id)"
-									+ "VALUES(?,?,?,?,?,?,?,?,?)";
+									+ "min_marks,max_IA,programme_id,course_group_number)"
+									+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
 							preparedStatement = con.prepareStatement(query);
 							
-							preparedStatement.setString(1, courseDataBean.getCourseCode().toUpperCase());
-							preparedStatement.setString(2, courseDataBean.getCourseName().toUpperCase());
-							preparedStatement.setString(3, courseDataBean.getCourseType());
-							preparedStatement.setString(4, courseDataBean.getCourseGroup());
-							preparedStatement.setString(5, courseDataBean.getSemester());
-							preparedStatement.setString(6, courseDataBean.getMaxMarks());
-							preparedStatement.setString(7, courseDataBean.getMinMarks());
-							preparedStatement.setString(8, courseDataBean.getMaxIA());
-							preparedStatement.setString(9, courseDataBean.getProgrammeId());
+							preparedStatement.setString(1, (courseDataBean.getCourseCode().toUpperCase()).trim());
+							preparedStatement.setString(2, (courseDataBean.getCourseName().toUpperCase()).trim());
+							preparedStatement.setString(3, courseDataBean.getCourseType().trim());
+							preparedStatement.setString(4, courseDataBean.getCourseGroup().trim());
+							preparedStatement.setString(5, courseDataBean.getSemester().trim());
+							preparedStatement.setString(6, courseDataBean.getMaxMarks().trim());
+							preparedStatement.setString(7, courseDataBean.getMinMarks().trim());
+							preparedStatement.setString(8, courseDataBean.getMaxIA().trim());
+							preparedStatement.setString(9, courseDataBean.getProgrammeId().trim());
+							preparedStatement.setString(10,groupNumber.trim());
 							
 							preparedStatement.execute();
 						
@@ -289,7 +317,7 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 							
 							resultSet = null;
 							resultSet = statement.executeQuery("SELECT * FROM class WHERE class_name = '"+classDataBean.getClassName().toUpperCase()+"' "
-															+ "AND class_year = "+classDataBean.getClassYear()+"");
+															+ "AND class_year = "+classDataBean.getClassYear().trim()+"");
 							
 							if(resultSet.next()==false) {
 								
@@ -297,10 +325,10 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 										+ "VALUES(?,?,?,?)";
 								preparedStatement = con.prepareStatement(query);
 								
-								preparedStatement.setString(1, classDataBean.getClassId());
-								preparedStatement.setString(2, classDataBean.getClassName().toUpperCase());
-								preparedStatement.setString(3, programmeId);
-								preparedStatement.setString(4, classDataBean.getClassYear());
+								preparedStatement.setString(1, classDataBean.getClassId().trim());
+								preparedStatement.setString(2, classDataBean.getClassName().toUpperCase().trim());
+								preparedStatement.setString(3, programmeId.trim());
+								preparedStatement.setString(4, classDataBean.getClassYear().trim());
 							
 								preparedStatement.execute();
 							}else {
