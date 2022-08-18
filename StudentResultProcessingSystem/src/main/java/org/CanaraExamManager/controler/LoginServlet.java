@@ -68,7 +68,8 @@ public class LoginServlet extends HttpServlet {
 //					e.printStackTrace();
 //				}
 //				userImageString  = loginBean.getUserImageString();
-
+				
+				
 				
 				HttpSession session2 = request.getSession();
 				session2.setAttribute("student", userNameString);
@@ -78,6 +79,8 @@ public class LoginServlet extends HttpServlet {
 				session2.setAttribute("programme", programmeName);
 				session2.setAttribute("user", "student");
 //				session2.setAttribute("userImage", userImageString);
+				
+				session2.setAttribute("averageFinalMarks", loginDao.averageFinalMarks());
 				response.sendRedirect("studdashboard.jsp");
 			
 			}else {
