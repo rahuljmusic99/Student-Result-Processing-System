@@ -135,7 +135,6 @@
                 <div class="protab2">
 				<div class="chartholder1">
                   <canvas id="semesterChart" width="400"></canvas> 
-<<<<<<< HEAD
 	            </div>
                 </div>
                 
@@ -145,11 +144,11 @@
 	           </div>
                </div>
 	            	
-=======
+
                   <input type="hidden" id="semesters" value="<%=semesterInt%>" />
 	            </div>	
 	            	            	
->>>>>>> d515647bea86a8855811e16b8269177f4ea628dc
+
 				<script type="text/javascript">
 				
 	    		  var semesterCanvas = document.getElementById("semesterChart").getContext("2d");
@@ -192,7 +191,6 @@
 	    		  });
     		  </script>
     		      
-            </div> 
                           
 <!-----------------------------------------------------------Profile----------------------------------------------------------------------------->                         
                           
