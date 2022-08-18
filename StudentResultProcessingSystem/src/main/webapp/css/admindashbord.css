@@ -1591,6 +1591,9 @@ option{
     text-align: center;
 }
 
+.i{
+    font-size: 20px; 
+}
 .protab1{
     width: 1210px;
     height: 90%;
@@ -1704,5 +1707,13 @@ label{
     height: 8rem;
     padding-bottom: 3rem;
     border: none;    
+}
+
+.fa-grav{   
+    position: fixed;
+    margin-left: 38rem;
+    margin-top: 6px;
+    color: grey;
+    cursor: pointer;
 }
 

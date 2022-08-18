@@ -42,8 +42,10 @@
         <div class="tabs">
             <div class="tabs__sidebar">
                 <div class="space"><img src="css/images/education.png" class="edu"></div>
-                <div class="space2"><i class="fa fa-angle-left"></i></div>
-                <button class="tabs__button" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
+                <button class="tabs__button" data-for-tab="4" id="mainprofile">
+                <div class="holder3"></div>
+                </button>
+                <button class="tabs__button tabs__button--active" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-bar-chart"></i>Result</button>
                 <button class="tabs__button" data-for-tab="3"><i class="fa fa-bar-chart"></i>Performance</button>
                 <button onclick="logoutConfirm();" class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
@@ -156,7 +158,37 @@
 	    		  });
     		  </script>
     		      
-            </div>                 
+            </div> 
+                          
+<!-----------------------------------------------------------Profile----------------------------------------------------------------------------->                         
+                          
+            <div class="tabs__content" data-tab="4">
+            <div class="protab1">
+                <div class="inner__protab1">
+                    <div class="inner2"><h6 class="left">Profile</h6></div>
+                    
+                    <div class="holder">
+                    <div class="holder2">
+                    <img src="" class="innerimg">
+                    </div>
+                    <p class="name">Deeraj</p>
+                    </div>
+                    <div class="inputs">
+                        <label>Name</label>
+                        <input class="int" type="text" readonly>
+                        <label>Phone</label>
+                        <input class="int" readonly>
+                        <label>Email</label>
+                        <input class="int" type="email" readonly>
+                        <label>Password</label>
+                        <div class="i"><i class="fa fa-grav"></i></div>
+                        <input class="int" type="password" readonly>
+                        <button class="cp">Change Password</button>
+                    </div>
+     
+                </div>
+             </div>
+          </div>
                 
         </div>
     
