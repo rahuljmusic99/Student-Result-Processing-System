@@ -10,9 +10,8 @@
 %> 
 <jsp:forward page="/studentlogin.jsp"></jsp:forward>
 <%} 
-
-	float[] finalMarks = (float[])session.getAttribute("averageFinalMarks");
-
+	
+	float[] averageFinalMarks = (float[]) session.getAttribute("averageFinalMarks");
 %>
      
 <!DOCTYPE html5>
@@ -136,6 +135,7 @@
                 <div class="protab2">
 				<div class="chartholder1">
                   <canvas id="semesterChart" width="400"></canvas> 
+<<<<<<< HEAD
 	            </div>
                 </div>
                 
@@ -145,17 +145,37 @@
 	           </div>
                </div>
 	            	
+=======
+                  <input type="hidden" id="semesters" value="<%=semesterInt%>" />
+	            </div>	
+	            	            	
+>>>>>>> d515647bea86a8855811e16b8269177f4ea628dc
 				<script type="text/javascript">
+				
 	    		  var semesterCanvas = document.getElementById("semesterChart").getContext("2d");
 	    		  var semesterChart = new Chart(semesterCanvas,{
-	    		  	type: "line",
+	    		  	type: "bar",
 	    		  	data:{
-	    		  		labels:['Pythond','Javascript','PHP','Java','C#','C++'],
+	    		  		labels:[
+	    		  			<%for(int j = 0; j < averageFinalMarks.length;j++){
+	    		  				%>
+	    		  				<%="'"+"Semester "+(j+1)+"',"%>
+	    		  				<%}%>
+	    		  		],
 	    		  		datasets: [{
-	    		  			data: [100,12,11,10,9,6],
+	    		  			data: [
+	    		  				<%for(int j = 0; j < averageFinalMarks.length;j++){
+	    		  				%>
+	    		  				<%=averageFinalMarks[j]+","%>
+	    		  				<%}%>
+	    		  				],
+	    		  				backgroundColor: "#5DADEC",
+	    		  				borderColor:"#2E5894",
+	    		  				borderWidth: 3,
 	    		  		},],
 	    		  	},
 	    		  });
+	    		  
     		  </script>
                 
                 
@@ -213,7 +233,6 @@
                  	let random = Math.floor(Math.random()*7);
                  	image.src = images[random];  
              	},2500);
-        
              </script>           
      
     </body>
