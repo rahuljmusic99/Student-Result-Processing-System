@@ -132,11 +132,23 @@
 <!-- ------------------------------------------------------ TAB 3 Performance --------------------------------------------------------------------------------------- -->                              
 
            	<div class="tabs__content" data-tab="3">
-				<div class="chartholder">
+                <div class="protab2">
+				<div class="chartholder1">
                   <canvas id="semesterChart" width="400"></canvas> 
+	            </div>
+                </div>
+                
+               <div class="protab3">
+               <div class="chartholder2">
+                <canvas id="semesterChart2" width="400"></canvas> 
+	           </div>
+               </div>
+	            	
+
                   <input type="hidden" id="semesters" value="<%=semesterInt%>" />
 	            </div>	
 	            	            	
+
 				<script type="text/javascript">
 				
 	    		  var semesterCanvas = document.getElementById("semesterChart").getContext("2d");
@@ -164,8 +176,24 @@
 	    		  });
 	    		  
     		  </script>
+                
+                
+                <script type="text/javascript">
+	    		  var semesterCanvas = document.getElementById("semesterChart2").getContext("2d");
+	    		  var semesterChart = new Chart(semesterCanvas,{
+	    		  	type: "bar",
+	    		  	data:{
+	    		  		labels:['Pythond','Javascript','PHP','Java','C#','C++'],
+	    		  		datasets: [{
+	    		  			data: [13,12,11,10,9,6],
+                            backgroundColor: "#5DADEC",
+	    		  				borderColor:"#2E5894",
+	    		  				borderWidth: 3,
+	    		  		},],
+	    		  	},
+	    		  });
+    		  </script>
     		      
-            </div> 
                           
 <!-----------------------------------------------------------Profile----------------------------------------------------------------------------->                         
                           
