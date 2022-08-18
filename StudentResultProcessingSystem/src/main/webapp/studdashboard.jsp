@@ -138,13 +138,17 @@
 	            </div>	
 	            	            	
 				<script type="text/javascript">
-					
-				  var semesters = document.getElementById("semesters").value;
+				
 	    		  var semesterCanvas = document.getElementById("semesterChart").getContext("2d");
 	    		  var semesterChart = new Chart(semesterCanvas,{
-	    		  	type: "line",
+	    		  	type: "bar",
 	    		  	data:{
-	    		  		labels:[],
+	    		  		labels:[
+	    		  			<%for(int j = 0; j < averageFinalMarks.length;j++){
+	    		  				%>
+	    		  				<%="'"+"Semester "+(j+1)+"',"%>
+	    		  				<%}%>
+	    		  		],
 	    		  		datasets: [{
 	    		  			data: [
 	    		  				<%for(int j = 0; j < averageFinalMarks.length;j++){
@@ -152,9 +156,13 @@
 	    		  				<%=averageFinalMarks[j]+","%>
 	    		  				<%}%>
 	    		  				],
+	    		  				backgroundColor: "#0000FF",
+	    		  				borderColor: "#FFFFFF",
+	    		  				borderWidth: 1,
 	    		  		},],
 	    		  	},
 	    		  });
+	    		  
     		  </script>
     		      
             </div> 
@@ -198,7 +206,6 @@
                  	let random = Math.floor(Math.random()*7);
                  	image.src = images[random];  
              	},2500);
-        
              </script>           
      
     </body>
