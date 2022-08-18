@@ -186,6 +186,9 @@
 	    		  		labels:['Pythond','Javascript','PHP','Java','C#','C++'],
 	    		  		datasets: [{
 	    		  			data: [13,12,11,10,9,6],
+                            backgroundColor: "#5DADEC",
+	    		  				borderColor:"#2E5894",
+	    		  				borderWidth: 3,
 	    		  		},],
 	    		  	},
 	    		  });
