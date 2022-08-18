@@ -11,18 +11,9 @@
 <jsp:forward page="/studentlogin.jsp"></jsp:forward>
 <%} 
 
-	if((String)request.getAttribute("resultError") == "No Data Found!"){
-%> 		
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-		<script type="text/javascript"> 
-            				
-         		window.onload = function(){
-         			swal("Sorry","No Data Foune!","warning");
-         		}
-            					
- 		</script>
-	
-<%} %>
+	float[] finalMarks = (float[])session.getAttribute("averageFinalMarks");
+
+%>
      
 <!DOCTYPE html5>
 <html>
@@ -140,19 +131,20 @@
        
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->     
 <!-- ------------------------------------------------------ TAB 3 Performance --------------------------------------------------------------------------------------- -->                              
-           	
+
            	<div class="tabs__content" data-tab="3">
 				<div class="chartholder">
                   <canvas id="semesterChart" width="400"></canvas> 
-	            </div>		
+	            </div>	
+	            	
 				<script type="text/javascript">
 	    		  var semesterCanvas = document.getElementById("semesterChart").getContext("2d");
 	    		  var semesterChart = new Chart(semesterCanvas,{
-	    		  	type: "bar",
+	    		  	type: "line",
 	    		  	data:{
 	    		  		labels:['Pythond','Javascript','PHP','Java','C#','C++'],
 	    		  		datasets: [{
-	    		  			data: [13,12,11,10,9,6],
+	    		  			data: [100,12,11,10,9,6],
 	    		  		},],
 	    		  	},
 	    		  });
