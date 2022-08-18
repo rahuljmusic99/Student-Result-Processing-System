@@ -156,9 +156,9 @@
 	    		  				<%=averageFinalMarks[j]+","%>
 	    		  				<%}%>
 	    		  				],
-	    		  				backgroundColor: "#0000FF",
-	    		  				borderColor: "#FFFFFF",
-	    		  				borderWidth: 1,
+	    		  				backgroundColor: "#5DADEC",
+	    		  				borderColor:"#2E5894",
+	    		  				borderWidth: 3,
 	    		  		},],
 	    		  	},
 	    		  });
