@@ -93,10 +93,6 @@
 				document.getElementById("classForm").submit();
 			}
 			
-			document.getElementById("button6");
-			function insertStudent(){
-				document.getElementById("insertStudentDataForm").submit();
-			}
 			
 			document.getElementById("button9");
 			function insertStaff(){
@@ -113,4 +109,13 @@
 			}
 			
 
+
+//	Form validations 
+
+//	InsertStudent Form Validation
+
+			
+           
+                    			
+                                			
 			

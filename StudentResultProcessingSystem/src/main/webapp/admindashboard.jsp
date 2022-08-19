@@ -247,24 +247,24 @@
 
                              <img class="student" src="css/images/studenticon.svg">
                             <form id="insertStudentDataForm" action="InsertDataServlet" method="post">
-                                <input name="sFirstName" type="text" placeholder="First Name" class="merge1">
-                                <input name="sLastName" type="text" placeholder="Last Name" class="merge1">
-                                <select name="sGender" class="merge2">
+                                <input id="studentFirstName" name="sFirstName" type="text" placeholder="First Name" class="merge1" required>
+                                <input id="studentLastName" name="sLastName" type="text" placeholder="Last Name" class="merge1" required>
+                                <select name="sGender" class="merge2" required>
                                 <option value="" disabled selected hidden>Gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
                                 <option>Other</option>
                                 </select>
-                                <input name="sdob" type="date" id="sdob" name="sdob" placeholder="Date of Birth" class="merge2">
-                                <input name="sEmail" type="text" placeholder="Email" class="merge1">
-                                <input name="sPhone" type="text" placeholder="Mobile Number" class="merge1">
-                                <input name="sAddress" type="text" placeholder="Address" class="merge1">
-                                <input name="sPincode" type="text" placeholder="Pincode" class="merge1">
-                                <input name="sCity" type="text" placeholder="city" class="merge3">
-                                <input name="sDistrict" type="text" placeholder="District" class="merge3">
-                                <input name="sState" type="text" placeholder="State" class="merge3">
-                                <input name="sYearOfJoining" type="text" placeholder="Year Of Joining" class="merge2">
-                                <select name="sProgramme" class="merge3" id="studentProgrammeSelect" name="studentProgrammeSelect" onchange = "changeDropDownData(this.value)">
+                                <input id="studentDob" name="sdob" type="date" id="sdob" name="sdob" placeholder="Date of Birth" class="merge2" required>
+                                <input id="studentEmail" name="sEmail" type="text" placeholder="Email" class="merge1" required>
+                                <input id="studentPhone" name="sPhone" type="text" placeholder="Mobile Number" class="merge1" required>
+                                <input id="studentAddress" name="sAddress" type="text" placeholder="Address" class="merge1" required>
+                                <input id="studentPincode" name="sPincode" type="text" placeholder="Pincode" class="merge1" required>
+                                <input id="studentCity" name="sCity" type="text" placeholder="city" class="merge3" required>
+                                <input id="studentDistrict" name="sDistrict" type="text" placeholder="District" class="merge3" required>
+                                <input id="studentState" name="sState" type="text" placeholder="State" class="merge3" required>
+                                <input id="studentYof" name="sYearOfJoining" type="text" placeholder="Year Of Joining" class="merge2" required>
+                                <select name="sProgramme" class="merge3" id="studentProgrammeSelect" name="studentProgrammeSelect" onchange = "changeDropDownData(this.value)" required>
                                 <option value="" disabled selected hidden>Programme</option>
 						<% 
 							ResultSet studentProgrammeData = loadData.loadProgrammeData();
@@ -283,8 +283,8 @@
 						%>
 								</select>
 								
-                                <select class="merge3" id="classDropDown" name="classDropDown" onchange="changeDropDownData2(this.value)">
-                                <option value="class" disabled selected hidden>class</option>
+                                <select class="merge3" id="classDropDown" name="classDropDown" onchange="changeDropDownData2(this.value)" required>
+                                <option value=""  disabled selected hidden>class</option>
 						<% 
 							ResultSet studentClassData = loadData.loadClassData();
 							if(studentProgrammeData!= null){
@@ -302,8 +302,8 @@
 						%>
                                 </select>
                                 
-                                <select class="merge3" id="classYearDropDown" name="classYearDropDown" onchange="changeDropDownData3(this.value)">
-                                <option value="classYear" disabled selected hidden>Class Year</option>
+                                <select class="merge3" id="classYearDropDown" name="classYearDropDown" onchange="changeDropDownData3(this.value)" required>
+                                <option value=""  disabled selected hidden>Class Year</option>
                         <% 
 							ResultSet studentClassData2 = loadData.loadClassData();
 							if(studentClassData2!= null){
@@ -320,15 +320,15 @@
 							}
 						%>        
                                 </select>
-                                <select name="sSemester" class="merge2" id="programmeSemDropDown">
-                                <option value="programmeSem" disabled selected hidden>Current Sem</option>
+                                <select name="sSemester" class="merge2" id="programmeSemDropDown" required>
+                                <option value="" disabled selected hidden>Current Sem</option>
                                 </select>
-                                <input name="sRegNo" type="text" placeholder="Register Number" class="merge1">
-                                <input name="sPassword" type="text" placeholder="Password" class="merge1">
-                                <input type="hidden" name="Data" value="student"/>
+                                <input id="studentRegNo" name="sRegNo" type="text" placeholder="Register Number" class="merge1" required>
+                                <input id="studentPassword" name="sPassword" type="text" placeholder="Password" class="merge1" required>
+                                <input type="hidden" name="Data" value="student" required />
                                 <input type="hidden" name="sClass" id="sclass" value=""/>
-                                <input type="hidden" name="sClassYear" id="sClassYear" value=""/>
-                                <button id="button6" onclick="insertStudent()">ADD</button>
+                                <input type="hidden" name="sClassYear" id="sClassYear" value="" required />
+                                <input type="submit" id="button6" value="ADD"/>
                         <% 
 							ResultSet studentProgrammeSem = loadData.loadProgrammeData();
 							if(studentProgrammeSem!= null){
@@ -347,25 +347,133 @@
                                 
                                 
                                 <script>
-                             		// function to enable and disable dropDown in Student Data
-                             		
-                             		
-                             		
-									window.onload = function removeduplicate(){
-										var myclass = {};
-										$("select[id='classDropDown'] > option").each(function () {
-										    if(myclass[this.text]) {
-										        $(this).remove();
-										        $(this).hide();
-										    } else {
-										        myclass[this.text] = this.value;
-										        $(this).hide();
-										    }
-										});
+                                //add student form validation
+                                 const addStudentForm = document.getElementById("insertStudentDataForm");
+                                 const sFirstName = document.getElementById("studentFirstName");
+                                 const sLastName = document.getElementById("studentLastName");
+                                 const sPhone = document.getElementById("studentPhone");
+                                 const sDob = document.getElementById("studentDob");
+                                 const sEmail = document.getElementById("studentEmail");
+                                 const sAddress = document.getElementById("studentAddress");
+                                 
+								 addStudentForm.addEventListener('submit', (e)=> {
+									
+									e.preventDefault(); 
+									
+									var onlyCharacters = /^[A-za-z]*$/;
+									var onlyDigits = /^\d+$/; 
+									var startingCaps = /^[A-Z]\w*/;
+									var namePattern = /^[A-Z][a-z]*$/;
+									
+									var validMinDate = new Date();
+									var dd = String(validMinDate.getDate()).padStart(2, '0');
+									var mm = String(validMinDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+									var yyyy = validMinDate.getFullYear() -17;
+									validMinDate = yyyy + '-' + mm + '-' + dd;
+									
+									var validMaxDate = new Date();
+									var dd = String(validMaxDate.getDate()).padStart(2, '0');
+									var mm = String(validMaxDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+									var yyyy = validMaxDate.getFullYear() -35;
+									validMaxDate = yyyy + '-' + mm + '-' + dd;
+									
+									var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+									var mobileNumber = /^[6-9]\d+/; 
+									
+								
+									if(onlyCharacters.test(sFirstName.value) == false){//First Name
+										swal("Invalid First Name !","First Name can only contain Alphabets","error");
+										e.preventDefault(); 
+										
+									}else if(sFirstName.value.length < 2){
+										swal("Invalid First Name !","First Name should have at least 2 Characters","error");
+										e.preventDefault(); 
+									
+									}else if(sFirstName.value.length > 64){
+										swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+										e.preventDefault(); 
+									
+									}else if(startingCaps.test(sFirstName.value) == false){
+										swal("Invalid First Name !","Starting Alphabet of the First Name should be Capitalized","error");
+										e.preventDefault(); 
+										
+									}else if(namePattern.test(sFirstName.value) == false){
+										swal("Invalid First Name !","Only Starting Alphabet of the First Name should be Capitalized","error");
+										e.preventDefault(); 
+										
+									}else if(onlyCharacters.test(sLastName.value) == false){//Last Name
+										swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
+										e.preventDefault(); 
+										
+									}else if(sLastName.value.length > 64){
+										swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+										e.preventDefault(); 
+									
+									}else if(startingCaps.test(sLastName.value) == false){
+										swal("Invalid Last Name !","Starting Alphabet of the Last Name should be Capitalized","error");
+										e.preventDefault(); 
+										
+									}else if(namePattern.test(sLastName.value) == false){
+										swal("Invalid Last Name !","Only Starting Alphabet of the Last Name should be Capitalized","error");
+										e.preventDefault(); 
+										
+									}else if((sDob.value) > validMinDate){//DOB
+										swal("Invalid Date of Birth !","Age must be greater than 17 years","error");
+										e.preventDefault(); 
+										
+									}else if((sDob.value) < validMaxDate){
+										swal("Invalid Date of Birth !","Age must be less than 35 years","error");
+										e.preventDefault(); 
+										
+									}else if(email.test(sEmail.value) == false){//Email
+										swal("Invalid Email !","Please Enter a valid Email address Format","error");
+										e.preventDefault();
+										
+									}else if(sEmail.length > 255){
+										swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+										e.preventDefault();
+										
+									}else if(sAddress.length < 3){
+										swal("Invalid Address","Address cannot be less than 3 Characters","error");
+										e.preventDefault();
+										
+									}else if(onlyDigits.test(sPhone.value) == false){//Mobile Number
+										swal("Invalid Mobile Number !","Mobile Number can only contain Digits","error");
+										e.preventDefault(); 
+										
+									}else if(mobileNumber.test(sPhone.value) == false){
+										swal("Invalid Mobile Number !","Starting Digit of Mobile Number can only begin from range '6-9'","error");
+										e.preventDefault(); 
+										
+									}else if(sPhone.value.length < 10){
+										swal("Invalid Mobile Number !","Mobile Number cannot be less than 10 Digits","error");
+										e.preventDefault(); 
+										
+								 	}else if(sPhone.value.length > 10){
+										swal("Invalid Mobile Number !","Mobile Number cannot be more than 10 Digits","error");
+										e.preventDefault(); 
+										
+								 	}
+								 });
+						                                
+                                
+                    	  		// function to enable and disable dropDown in Student Data        		
+								window.onload = function removeduplicate(){
+									var myclass = {};
+									$("select[id='classDropDown'] > option").each(function () {
+									    if(myclass[this.text]) {
+									        $(this).remove();
+									        $(this).hide();
+									    } else {
+									        myclass[this.text] = this.value;
+									        $(this).hide();
+									    }
+									});
 										
 										var myyear = {};
 										$("select[id='classYearDropDown'] > option").each(function () {
 										    if(myyear[this.text]) {
+			
 										        $(this).hide();
 										    } else {
 										        myyear[this.text] = this.value;
@@ -390,10 +498,10 @@
                     						
                     						$("#classDropDown option[value='"+studentProgrammeSelect+"']").show();
                     						$("#classDropDown option[value!='"+studentProgrammeSelect+"']").hide();
-                    						$("#classDropDown option[value='class']").prop('selected',true);
-                    						$("#classYearDropDown option[value='classYear']").prop('selected',true);
+                    						document.getElementById("classDropDown").selectedIndex = "0";
+                    						document.getElementById("classYearDropDown").selectedIndex = "0";
                     						$("#classYearDropDown option").hide();
-                    						$("#programmeSemDropDown option[value='programmeSem']").prop('selected',true);
+                    						document.getElementById("programmeSemDropDown").selectedIndex = "0";
                     						
                     						
                     						var programmeSem = document.getElementById(studentProgrammeSelect).value;
@@ -425,8 +533,8 @@
                     						
                     						$("#classYearDropDown option[value='"+classId+"']").show();
                     						$("#classYearDropDown option[value!='"+classId+"']").hide();
-                    						$("#classYearDropDown option[value='classYear']").prop('selected',true);
-                    						$("#programmeSemDropDown option[value='programmeSem']").prop('selected',true);
+                    						document.getElementById("classYearDropDown").selectedIndex = "0";
+                    						document.getElementById("programmeSemDropDown").selectedIndex = "0";
                     						$("#programmeSemDropDown option").hide();
                     						
                     						$("#classDropDown option:selected").each(function() {
@@ -439,7 +547,7 @@
                     				
                     				function changeDropDownData3(studentClassYear){                    					
                     					if(studentClassYear!=''){
-                    						$("#programmeSemDropDown option[value='programmeSem']").prop('selected',true);
+                    						document.getElementById("programmeSemDropDown").selectedIndex = "0"; 
                     						
                     						$("#classYearDropDown option:selected").each(function() {
                     							   var classYear = parseInt($(this).text());
@@ -673,7 +781,7 @@
                                 <select name="gender" class="merge5">
                                 <option value="" disabled selected hidden>Gender</option>
                                 <option value="Male">Male</option>
-                                <option value="Femal">Female</option>
+                                <option value="Female">Female</option>
                                 <option value="Other">Other</option>
                                 </select>
                                 <input name="email" type="text" placeholder="Email" class="merge4">
