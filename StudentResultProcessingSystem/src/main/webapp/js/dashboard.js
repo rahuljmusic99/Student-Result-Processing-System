@@ -1,4 +1,8 @@
-//		JavaScript function to create tabs on the left and contents on right
+/**
+ * 
+ */
+ 
+ //		JavaScript function to create tabs on the left and contents on right
             function setupTabs() {
                 document.querySelectorAll(".tabs__button").forEach(button => {
                     
@@ -109,12 +113,6 @@
 			}
 			
 
-
-//	Form validations 
-
-//	InsertStudent Form Validation
-
-			
            
                     			
                                 			
