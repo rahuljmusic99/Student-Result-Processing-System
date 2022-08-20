@@ -807,7 +807,7 @@
                             <td class="td1"><%=staffDataSet.getString("programme_name")%></td>   <!--Programme name-->
                             <td class="td2"><%=staffDataSet.getString("first_name")+" "+staffDataSet.getString("last_name")%></td>   <!--staffName-->
                             <td class="td7"><%=staffDataSet.getString("staff_id")%></td>   <!--staffId-->
-                            <td class="td8"></td>   <!--Role-->
+                            <td class="td8"><%=staffDataSet.getString("role")%></td>   <!--Role-->
                             <td class="td2"><button class="btn__edit" id="viewStaff<%=i%>" onclick="viewStaffDetails<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
                             <td class="td3"><div class="circle1" title="Edit Staff" id="editStaff<%=i%>" onclick="editStaffDetails<%=i%>()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteStaff" onclick="deleteStaffData('<%=staffDataSet.getString("staff_id")%>','staff','<%=staffDataSet.getString("first_name")+' '+staffDataSet.getString("last_name")%>')" class="circle2" title="Delete Staff"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
@@ -923,10 +923,10 @@
 								}
 							%>
                                 </select>
-                                <select id="" name="" class="merge4" >
+                                <select name="staffRole" class="merge4" required >
                                 <option value="" disabled selected hidden>Role</option>
-                                <option value=""></option>
-                                <option value=""></option>
+                                <option value="Internal Auditor">Internal Auditor</option>
+                                <option value="Faculty">Faculty</option>
                                 </select>
                                 <input id="staffI" name="staffId" type="text" placeholder="Staff ID(Digits only)" class="merge4" required>
                                 <input id="staffPass" name="password" type="text" placeholder="Password" class="merge4" required>

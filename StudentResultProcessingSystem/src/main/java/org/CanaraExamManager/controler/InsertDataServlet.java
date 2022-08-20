@@ -103,6 +103,7 @@ public class InsertDataServlet extends HttpServlet {
 				staffDataBean.setStaffId(request.getParameter("staffId"));//7
 				staffDataBean.setPassword(request.getParameter("password"));//8
 				staffDataBean.setProgramme(request.getParameter("programmeId"));//9
+				staffDataBean.setRole(request.getParameter("staffRole"));
 				
 				String dataValidateString = insertDataDao.insertStaffData(staffDataBean) ;
 				

@@ -21,6 +21,7 @@ public class StudentStaffDataBean {
 	private String registerNoString = "";
 	private String passwordString = "";
 	private String classYearString = "";
+	private String roleString = "";
 	
 	private String staffId = "";
 	
@@ -176,4 +177,13 @@ public class StudentStaffDataBean {
 	public String getStaffId() {
 		return this.staffId;
 	}
+	
+	public void setRole(String roleString) {
+		this.roleString = roleString;
+	}
+	
+	public String getRole() {
+		return this.roleString;
+	}
+	
 }

@@ -113,8 +113,8 @@ public class InsertDataDao {
 			if(resultSet.next() == false) {//check whether staff with that staff id already exists
 				
 				query = "INSERT INTO staff(staff_id,first_name,last_name,gender,email,phone,address,"
-						+ "password,programme_id,staff_status)"
-						+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
+						+ "password,programme_id,staff_status,role)"
+						+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 				preparedStatement = con.prepareStatement(query);
 				
 				preparedStatement.setString(1, staffDataBean.getStaffId().trim());//1
@@ -127,6 +127,7 @@ public class InsertDataDao {
 				preparedStatement.setString(8, staffDataBean.getPassword().trim());//8
 				preparedStatement.setString(9, staffDataBean.getProgramme().trim());//9
 				preparedStatement.setString(10, "true");//10
+				preparedStatement.setString(11, staffDataBean.getRole().trim());
 				
 				preparedStatement.execute();
 					
