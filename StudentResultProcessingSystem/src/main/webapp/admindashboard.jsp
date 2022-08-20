@@ -263,7 +263,7 @@
                             <input id="studentCity" name="sCity" type="text" placeholder="city" class="merge3" required>
                             <input id="studentDistrict" name="sDistrict" type="text" placeholder="District" class="merge3" required>
                             <input id="studentState" name="sState" type="text" placeholder="State" class="merge3" required>
-                            <input id="studentYof" name="sYearOfJoining" type="text" placeholder="Year Of Joining" class="merge2" required>
+                            <input id="studentYof" name="sYearOfJoining" type="number" placeholder="Year Of Joining" class="merge2" required>
                             <select name="sProgramme" class="merge3" id="studentProgrammeSelect" name="studentProgrammeSelect" onchange = "changeDropDownData(this.value)" required>
                             <option value="" disabled selected hidden>Programme</option>
 		<% 
@@ -355,6 +355,10 @@
                     const sAddress = document.getElementById("studentAddress");
                     const sCity = document.getElementById("studentCity");
                     const sPincode = document.getElementById("studentPincode");
+                    const sDistrict = document.getElementById("studentDistrict");
+                    const sState = document.getElementById("studentState");
+                    const sYof = document.getElementById("studentYof");
+                    const sPassword = document.getElementById("studentPassword");
                              
 				 	addStudentForm.addEventListener('submit', (e)=> {
 					
@@ -372,20 +376,25 @@
 					validMinDate = yyyy + '-' + mm + '-' + dd;
 					
 					var validMaxDate = new Date();
-					var dd = String(validMaxDate.getDate()).padStart(2, '0');
-					var mm = String(validMaxDate.getMonth() + 1).padStart(2, '0'); //January is 0!
-					var yyyy = validMaxDate.getFullYear() -35;
-					validMaxDate = yyyy + '-' + mm + '-' + dd;
+					var dd2 = String(validMaxDate.getDate()).padStart(2, '0');
+					var mm2 = String(validMaxDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+					var yyyy2 = validMaxDate.getFullYear() -35;
+					validMaxDate = yyyy2 + '-' + mm2 + '-' + dd2;
+					
+					var validMaxYear = new Date();
+					var yyyy3 = validMaxYear.getFullYear();
+					validMaxYear = yyyy3;
 					
 					var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 					var mobileNumber = /^[6-9]\d+/; 
 					var city = /^[A-Z]{1}[a-z]+([ ]{1}[A-Z]{1}[a-z]+)?([-]{1}[A-Z]{1}[a-z]+)?([ ]{1}[A-Z]*[a-z]+)*?[a-z]$/;
 					var pincode = /^[1-9]{1}[0-9]{2}[0-9]{3}$/;
 					var address = /^[A-Z0-9]{1}[A-Za-z0-9 \'\.\-\,\;\:\#]*[A-Za-z0-9\.]$/;
-					var regNo = //;
-					var password = //;
+					var districtState = /^[A-Za-z]*([ ]{1}[A-Z]{1}[a-z]+)*?[a-z]$/;
 					
-				
+					var yearOfBirth = parseInt(/^\d{4}/.exec(sDob.value));
+					var password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/;
+					
 					if(onlyCharacters.test(sFirstName.value) == false){//First Name
 						swal("Invalid First Name !","First Name can only contain Alphabets","error");
 						e.preventDefault(); 
@@ -492,6 +501,62 @@
 				 		
 				 	}else if(city.test(sCity.value) == false){
 				 		swal("Invalid City !","City can only contain Alphabets, a Single Space after each Word and '-' Character  Eg:'Sangli-Miraj and Kupwad'","error");
+						e.preventDefault();
+				 		
+				 	}else if(districtState.test(sDistrict.value) == false){//District
+				 		swal("Invalid District !","District can only contain Alphabets and Single Space after each Word","error");
+						e.preventDefault();
+				 		
+				 	}else if(sDistrict.value.length < 3){
+				 		swal("Invalid District !","District cannot contain less than 3 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(startingCaps.test(sDistrict.value) == false){
+				 		swal("Invalid District !","Starting Alphabet of the District should be capitalized","error");
+						e.preventDefault();
+				 		
+				 	}else if(sDistrict.value.length > 64){
+				 		swal("Invalid District !","District cannot contain more than 64 Characters","error");
+						e.preventDefault();
+						
+				 	}else if(districtState.test(sState.value) == false){//State
+				 		swal("Invalid State !","State can only contain Alphabets and a Single Space after each Word","error");
+						e.preventDefault();
+				 		
+				 	}else if(sState.value.length < 3){
+				 		swal("Invalid District !","District cannot contain less than 3 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(startingCaps.test(sState.value) == false){
+				 		swal("Invalid State !","Starting Alphabet of the State should be capitalized","error");
+						e.preventDefault();
+				 		
+				 	}else if(sState.value.length > 64){
+				 		swal("Invalid State !","State cannot contain more than 64 Characters","error");
+						e.preventDefault();
+				 	
+				 	}else if(sYof.value > validMaxYear){//Year of Joining
+				 		swal("Invalid Year of Joining !","Year of Joining cannot be greater than Current Year","error");
+						e.preventDefault();
+				 		
+				 	}else if((parseInt(sYof.value) - yearOfBirth) < 17){
+				 		swal("Invalid Year of Joining !","Year of Joining should be greater than 17 years of Year of Birth","error");
+						e.preventDefault();
+				 		
+				 	}else if((parseInt(sYof.value) - yearOfBirth) > 35){
+				 		swal("Invalid Year of Joining !","Year of Joining should not be greater then 35 years of Year of Birth","error");
+						e.preventDefault();
+				 		
+				 	}else if(password.test(sPassword.value) == false){//password
+				 		swal("Invalid Password !","Password must contain at least one uppercase letter, one lowercase letter, one number and one special character","error");
+						e.preventDefault();
+				 		
+				 	}else if(sPassword.value.length < 8){
+				 		swal("Invalid Password !","Password must contain at leat 8 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(sPassword.value.length > 64){
+				 		swal("Invalid Password !","Password must not contain more than 64 Characters","error");
 						e.preventDefault();
 				 		
 				 	}
