@@ -358,12 +358,11 @@
                     const sDistrict = document.getElementById("studentDistrict");
                     const sState = document.getElementById("studentState");
                     const sYof = document.getElementById("studentYof");
+                    const sRegNo = document.getElementById("studentRegNo");
                     const sPassword = document.getElementById("studentPassword");
                              
-				 	addStudentForm.addEventListener('submit', (e)=> {
-					
-					e.preventDefault(); 
-					
+				 addStudentForm.addEventListener('submit', (e)=> {
+
 					var onlyCharacters = /^[A-za-z]*$/;
 					var onlyDigits = /^\d+$/; 
 					var startingCaps = /^[A-Z]\w*/;
@@ -393,6 +392,7 @@
 					var districtState = /^[A-Za-z]*([ ]{1}[A-Z]{1}[a-z]+)*?[a-z]$/;
 					
 					var yearOfBirth = parseInt(/^\d{4}/.exec(sDob.value));
+					var regNo = /^[A-Za-z0-9]*[0-9]+[a-zA-Z0-9]*$/;
 					var password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/;
 					
 					if(onlyCharacters.test(sFirstName.value) == false){//First Name
@@ -545,6 +545,18 @@
 				 		
 				 	}else if((parseInt(sYof.value) - yearOfBirth) > 35){
 				 		swal("Invalid Year of Joining !","Year of Joining should not be greater then 35 years of Year of Birth","error");
+						e.preventDefault();
+				 		
+				 	}else if(regNo.test(sRegNo.value) == false){//Reg No
+				 		swal("Invalid Register Number !","Register Number can only contain letters and at least one digit","error");
+						e.preventDefault();
+				 		
+				 	}else if(sRegNo.value.length < 9){
+				 		swal("Invalid Register Number !","Register Number cannot be less than 9 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(sRegNo.value.length > 12){
+				 		swal("Invalid Register Number !","Register Number cannot be more than 12 Characters","error");
 						e.preventDefault();
 				 		
 				 	}else if(password.test(sPassword.value) == false){//password
@@ -757,7 +769,7 @@
                     </form>
                 </div>
             </div>
-            </div>
+         </div>
         
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------ TAB 3 STAFF DETAILS --------------------------------------------------------------------------------- -->
