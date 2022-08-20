@@ -64,7 +64,7 @@
 		        <button class="tabs__button" data-for-tab="5"><i class="fa fa-bar-chart"></i>classes</button>
 		        <button class="tabs__button" data-for-tab="6"><i class="fa fa-bullseye"></i>Student Result</button>
 		        <button class="tabs__button" onclick="logoutConfirm();" ><i class="fa fa-power-off"></i>Logout</button>
-		</div>
+			</div>
 		
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
 <!-- ------------------------------------------------------ TAB 1 DASHBOARD ----- ------------------------------------------------------------------------------- -->
@@ -774,7 +774,7 @@
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------ TAB 3 STAFF DETAILS --------------------------------------------------------------------------------- -->
             
-            <div class="tabs__content" data-tab="3">
+            <div class="tabs__content" data-tab="3" id="staffDetails">
                 <div class="protab"> 
                     
                     
@@ -891,19 +891,19 @@
                         <div class="header9">
                             <h1>Add Staff Details</h1></div>
                              <img class="student" src="css/images/studenticon.svg">
-                            <form id="insertStaffForm" action="InsertDataServlet" method="post">
-                                <input name="firstName" type="text" placeholder="First Name" class="merge4">
-                                <input name="lastName" type="text" placeholder="Last Name" class="merge4">
-                                <select name="gender" class="merge5">
+                            <form id="insertStaffDataForm" action="InsertDataServlet" method="post">
+                                <input id="staffFN" name="firstName" type="text" placeholder="First Name" class="merge4" required>
+                                <input id="staffLN" name="lastName" type="text" placeholder="Last Name" class="merge4" required>
+                                <select name="gender" class="merge5" required>
                                 <option value="" disabled selected hidden>Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Other">Other</option>
                                 </select>
-                                <input name="email" type="text" placeholder="Email" class="merge4">
-                                <input name="phone" type="text" placeholder="Mobile Number" class="merge4">
-                                <input name="address" type="text" placeholder="Address" class="merge5">
-                                <select name="programmeId" class="merge4">
+                                <input id="staffEm" name="email" type="text" placeholder="Email" class="merge4" required>
+                                <input id="staffPh" name="phone" type="text" placeholder="Mobile Number" class="merge4" required>
+                                <input id="staffAd" name="address" type="text" placeholder="Address" class="merge5" required>
+                                <select name="programmeId" class="merge4" required>
                                 <option value="" disabled selected hidden>Programme</option>
 							<%
 								ResultSet programmeDataSet = loadData.loadProgrammeData();
@@ -923,13 +923,141 @@
 								}
 							%>
                                 </select>
-                                <select name="" class="merge4">
+                                <select id="" name="" class="merge4" >
                                 <option value="" disabled selected hidden>Role</option>
+                                <option value=""></option>
+                                <option value=""></option>
                                 </select>
-                                <input name="staffId" type="text" placeholder="Staff ID(Digits only)" class="merge4">
-                                <input name="password" type="text" placeholder="Password" class="merge4">
+                                <input id="staffI" name="staffId" type="text" placeholder="Staff ID(Digits only)" class="merge4" required>
+                                <input id="staffPass" name="password" type="text" placeholder="Password" class="merge4" required>
                                 <input name="Data" type="hidden" value="staff"/>
-                                <button id="button9" onclick="insertStaff()" >Add</button>
+                                <input type="submit" id="button9" value="ADD" />
+                                
+                                <script type="text/javascript">
+                                	const insertStaffForm = document.getElementById("insertStaffDataForm");
+									const staffFirstName = document.getElementById("staffFN");
+									const staffLastName = document.getElementById("staffLN");
+								 	const staffEmail = document.getElementById("staffEm");
+								 	const staffPhone = document.getElementById("staffPh");
+								 	const staffAddress = document.getElementById("staffAd");
+								 	const staffId = document.getElementById("staffI");
+								 	const staffPassword = document.getElementById("staffPass");
+									
+								 	insertStaffForm.addEventListener('submit', (e)=> {
+								 		 
+								 		e.preventDefault();
+								 		
+								 		var onlyCharacters = /^[A-za-z]*$/;
+										var onlyDigits = /^\d+$/; 
+										var startingCaps = /^[A-Z]\w*/;
+										var namePattern = /^[A-Z][a-z]*$/;										
+										var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+										var mobileNumber = /^[6-9]\d+/; 
+										var address = /^[A-Z0-9]{1}[A-Za-z0-9 \'\.\-\,\;\:\#]*[A-Za-z0-9\.]$/;
+										var sID = /^\d*$/;
+										var password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/;
+										
+										if(onlyCharacters.test(staffFirstName.value) == false){//First Name
+											swal("Invalid First Name !","First Name can only contain Alphabets","error");
+											e.preventDefault(); 
+											
+										}else if(staffFirstName.value.length < 2){
+											swal("Invalid First Name !","First Name should have at least 2 Characters","error");
+											e.preventDefault(); 
+										
+										}else if(staffFirstName.value.length > 64){
+											swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+											e.preventDefault(); 
+										
+										}else if(startingCaps.test(staffFirstName.value) == false){
+											swal("Invalid First Name !","Starting Alphabet of the First Name should be Capitalized","error");
+											e.preventDefault(); 
+											
+										}else if(namePattern.test(staffFirstName.value) == false){
+											swal("Invalid First Name !","Only Starting Alphabet of the First Name should be Capitalized","error");
+											e.preventDefault(); 
+											
+										}else if(onlyCharacters.test(staffLastName.value) == false){//Last Name
+											swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
+											e.preventDefault(); 
+											
+										}else if(staffLastName.value.length > 64){
+											swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+											e.preventDefault(); 
+										
+										}else if(startingCaps.test(staffLastName.value) == false){
+											swal("Invalid Last Name !","Starting Alphabet of the Last Name should be Capitalized","error");
+											e.preventDefault(); 
+											
+										}else if(namePattern.test(staffLastName.value) == false){
+											swal("Invalid Last Name !","Only Starting Alphabet of the Last Name should be Capitalized","error");
+											e.preventDefault(); 
+											
+										}else if(email.test(staffEmail.value) == false){//Email
+											swal("Invalid Email !","Please Enter a valid Email address Format","error");
+											e.preventDefault();
+											
+										}else if(staffEmail.length > 255){
+											swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+											e.preventDefault();
+											
+										}else if(onlyDigits.test(staffPhone.value) == false){//Mobile Number
+											swal("Invalid Mobile Number !","Mobile Number can only contain Digits","error");
+											e.preventDefault(); 
+											
+										}else if(mobileNumber.test(staffPhone.value) == false){
+											swal("Invalid Mobile Number !","Starting Digit of Mobile Number can only begin from range '6-9'","error");
+											e.preventDefault(); 
+											
+										}else if(staffPhone.value.length < 10){
+											swal("Invalid Mobile Number !","Mobile Number cannot be less than 10 Digits","error");
+											e.preventDefault(); 
+											
+									 	}else if(staffPhone.value.length > 10){
+											swal("Invalid Mobile Number !","Mobile Number cannot be more than 10 Digits","error");
+											e.preventDefault(); 
+											
+									 	}else if(address.test(staffAddress.value) == false){//Address
+									 		swal("Invalid Address !","Address can only contain Alphabets, Digits, White Spaces, some Special Characters like ' - , . : ; #  and starting Character can only be a Digit or a Capital Alphabet","error");
+											e.preventDefault();
+									 		
+									 	}else if(staffAddress.value.length > 255){
+									 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+											e.preventDefault();
+									 		
+									 	}else if(staffAddress.length < 3){
+											swal("Invalid Address","Address cannot be less than 3 Characters","error");
+											e.preventDefault();
+											
+										}else if(sID.test(staffId.value) == false){//Staff ID
+									 		swal("Invalid Staff ID !","Staff ID can only contain Digits","error");
+											e.preventDefault();
+									 		
+									 	}else if(staffId.value.length < 3){
+									 		swal("Invalid Staff ID !","staff ID cannot be less than 3 Characters","error");
+											e.preventDefault();
+									 		
+									 	}else if(staffId.value.length > 3){
+									 		swal("Invalid Staff ID !","Staff ID cannot be more than 3 Characters","error");
+											e.preventDefault();
+									 		
+									 	}else if(password.test(staffPassword.value) == false){//password
+									 		swal("Invalid Password !","Password must contain at least one uppercase letter, one lowercase letter, one number and one special character","error");
+											e.preventDefault();
+									 		
+									 	}else if(staffPassword.value.length < 8){
+									 		swal("Invalid Password !","Password must contain at leat 8 Characters","error");
+											e.preventDefault();
+									 		
+									 	}else if(staffPassword.value.length > 64){
+									 		swal("Invalid Password !","Password must not contain more than 64 Characters","error");
+											e.preventDefault();
+									 		
+									 	}
+								 	});
+								 		
+								 	
+								</script>
                         </form>
                     </div>
                 </div>

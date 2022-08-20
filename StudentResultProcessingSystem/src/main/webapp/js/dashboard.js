@@ -96,12 +96,6 @@
       
 				document.getElementById("classForm").submit();
 			}
-			
-			
-			document.getElementById("button9");
-			function insertStaff(){
-				docuemtn.getElementById("insertStaffForm").submit();
-			}
 		
 
 			function deleteData(uniqueId, Data){
