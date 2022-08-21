@@ -1,4 +1,8 @@
-//		JavaScript function to create tabs on the left and contents on right
+/**
+ * 
+ */
+ 
+ //		JavaScript function to create tabs on the left and contents on right
             function setupTabs() {
                 document.querySelectorAll(".tabs__button").forEach(button => {
                     
@@ -64,11 +68,6 @@
     		
 //  function to call insertDataServlet
 			
-			document.getElementById("button")
-			function insertProgramme(){
-				document.getElementById("programmeForm").submit();
-			}
-			
 			document.getElementById("button1")
 			function insertCourse(){
 				var selectElement = document.getElementById("courseTypeD");
@@ -83,26 +82,6 @@
 				document.getElementById("courseForm").submit();
 			}
 			
-			
-			document.getElementById("button5")
-			function insertClass(){
-				var selectElement = document.getElementById("programmeNameInClassD");
-        		var output = selectElement.options[selectElement.selectedIndex].text;
-        		document.forms['classForm']['programmeNameInClass'].value = output;
-      
-				document.getElementById("classForm").submit();
-			}
-			
-			document.getElementById("button6");
-			function insertStudent(){
-				document.getElementById("insertStudentDataForm").submit();
-			}
-			
-			document.getElementById("button9");
-			function insertStaff(){
-				docuemtn.getElementById("insertStaffForm").submit();
-			}
-		
 
 			function deleteData(uniqueId, Data){
 				
@@ -113,4 +92,7 @@
 			}
 			
 
+           
+                    			
+                                			
 			

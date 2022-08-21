@@ -64,7 +64,7 @@ if(insertionMessage != null){
 			
 			swal({title: "Sorry",
 				 text: "<%=insertionMessage%>",
-				 icon: "warning",
+				 icon: "error",
 				 buttons: {
 					 ok: "OK",
 				 },	 
@@ -126,7 +126,7 @@ if(insertionMessage != null){
 			
 			swal({title: "Sorry",
 				 text: "<%=deletionMessage%>",
-				 icon: "warning",
+				 icon: "error",
 				 buttons: {
 					 ok: "OK",
 				 },	 

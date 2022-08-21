@@ -60,7 +60,7 @@ public class LoadDataDao {
 				Statement statement = con.createStatement();
 				resultSet = statement.executeQuery(""
 					+"SELECT * FROM (staff "
-					+"INNER JOIN programme ON staff.programme_id = staff.programme_id)"
+					+"INNER JOIN programme ON staff.programme_id = programme.programme_id)"
 					+"ORDER BY programme.programme_name ASC");
 			 
 		}catch(SQLException e) {

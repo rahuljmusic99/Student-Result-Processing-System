@@ -46,510 +46,739 @@
         
     </head> 
     <body>
-    	
+
+<!-- ------------------------------------------------------Form to Delete Data----------------------------------------------------------------------------------- -->    	
     	<form id="deleteDataForm" action="DeleteDataServlet" method="post">
     		<input type="hidden" id="uniqueId" name="uniqueId" value=""/>
     		<input type="hidden" id="Data" name="Data" value=""/>
     	</form>
-    	
-
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-        <div class="tabs">
-            <div class="tabs__sidebar">
-                <div class="space"><img src="css/images/education.png" class="edu"></div>
-                <button class="tabs__button" data-for-tab="7" id="mainprofile"><div class="holder3"></div></button>
-                <button class="tabs__button tabs__button--active" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
-                <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Student Details</button>
-                <button class="tabs__button" data-for-tab="3"><i class="fa fa-graduation-cap"></i>Staff Details</button>
-                <button class="tabs__button" data-for-tab="4"><i class="fa fa-bar-chart"></i>Programme and courses</button>
-                <button class="tabs__button" data-for-tab="5"><i class="fa fa-bar-chart"></i>classes</button>
-                <button class="tabs__button" data-for-tab="6"><i class="fa fa-bullseye"></i>Student Result</button>
-                <button class="tabs__button" onclick="logoutConfirm();" ><i class="fa fa-power-off"></i>Logout</button>
-            </div>
+		<div class="tabs">
+		    <div class="tabs__sidebar">
+		        <div class="space"><img src="css/images/education.png" class="edu"></div>
+		        <button class="tabs__button" data-for-tab="7" id="mainprofile"><div class="holder3"></div></button>
+		        <button class="tabs__button tabs__button--active" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
+		        <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Student Details</button>
+		        <button class="tabs__button" data-for-tab="3"><i class="fa fa-graduation-cap"></i>Staff Details</button>
+		        <button class="tabs__button" data-for-tab="4"><i class="fa fa-bar-chart"></i>Programme and courses</button>
+		        <button class="tabs__button" data-for-tab="5"><i class="fa fa-bar-chart"></i>classes</button>
+		        <button class="tabs__button" data-for-tab="6"><i class="fa fa-bullseye"></i>Student Result</button>
+		        <button class="tabs__button" onclick="logoutConfirm();" ><i class="fa fa-power-off"></i>Logout</button>
+			</div>
+		
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
 <!-- ------------------------------------------------------ TAB 1 DASHBOARD ----- ------------------------------------------------------------------------------- -->
-            
-            <div class="tabs__content" data-tab="1">
-                <div class="protab2">
-                   <div class="imgholder"> <img src="css/images/canlogos.png" class="logos"></div>
-                    <div class="cardholder">
-                    <div class="cards"><span style="color:steelblue;"><p class="head1">TOTAL RESULT PUBLISH</p></span><p class="values">12</p><div class="icon2"><img src="css/images/blackboard.png" class="im"></div></div>
-                    <div class="cards"><span style="color:green;"><p class="head1">TOTAL EXAM</p></span><p class="values">12</p><div class="icon2"><img src="css/images/exam.png" class="im"></div></div>
-                    <div class="cards"><span style="color:purple;"><p class="head1">TOTAL PROGRAMME</p></span><p class="values">12</p><div class="icon2"><img src="css/images/programme.png" class="im"></div></div>
-                    <div class="cards"><span style="color:orange;"><p class="head1">TOTAL COURSE</p></span><p class="values">12</p><div class="icon2"><img src="css/images/course.png" class="im"></div></div>
-                    <div class="cards"><span style="color:red;"><p class="head1">TOTAL CLASS</p></span><p class="values">12</p><div class="icon2"><img src="css/images/class.png" class="im"></div></div></div>
-                    <div class="cardholder2">
-                    <div class="cards2"><span style="color:steelblue;"><p class="head2">STUDENTS</p></span><p class="values2">12</p><div class="icon3"><img src="css/images/graduated.png" class="ims"></div></div>
-                    <div class="cards2"><span style="color:steelblue;"><p class="head2">STAFF</p></span><p class="values2">12</p><div class="icon3"><img src="css/images/staffs.png" class="ims"></div></div>
-                    </div> 
-                </div>  
+        
+        <div class="tabs__content" data-tab="1">
+            <div class="protab2">
+               <div class="imgholder"> <img src="css/images/canlogos.png" class="logos"></div>
+                <div class="cardholder">
+                <div class="cards"><span style="color:steelblue;"><p class="head1">TOTAL RESULT PUBLISH</p></span><p class="values">12</p><div class="icon2"><img src="css/images/blackboard.png" class="im"></div></div>
+                <div class="cards"><span style="color:green;"><p class="head1">TOTAL EXAM</p></span><p class="values">12</p><div class="icon2"><img src="css/images/exam.png" class="im"></div></div>
+                <div class="cards"><span style="color:purple;"><p class="head1">TOTAL PROGRAMME</p></span><p class="values">12</p><div class="icon2"><img src="css/images/programme.png" class="im"></div></div>
+                <div class="cards"><span style="color:orange;"><p class="head1">TOTAL COURSE</p></span><p class="values">12</p><div class="icon2"><img src="css/images/course.png" class="im"></div></div>
+                <div class="cards"><span style="color:red;"><p class="head1">TOTAL CLASS</p></span><p class="values">12</p><div class="icon2"><img src="css/images/class.png" class="im"></div></div></div>
+                <div class="cardholder2">
+                <div class="cards2"><span style="color:steelblue;"><p class="head2">STUDENTS</p></span><p class="values2">12</p><div class="icon3"><img src="css/images/graduated.png" class="ims"></div></div>
+                <div class="cards2"><span style="color:steelblue;"><p class="head2">STAFF</p></span><p class="values2">12</p><div class="icon3"><img src="css/images/staffs.png" class="ims"></div></div>
+                </div> 
+            </div>  
+        </div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
+<!-- ------------------------------------------------------ TAB 2 STUDENT DETAILS ------------------------------------------------------------------------------- -->          
+ 
+        <div class="tabs__content" data-tab="2" id="studentDetails">
+            <div class="protab"> 
+                
+                
+                <button class="refresh" id="ref" onclick="myFunction()">Refresh page</button>
+                <h4>Student Details Management</h4>
+                <div class="inner__protab">
+                    
+                <div class="inner1">
+                    <h6 class="left">Students list</h6>
+                    <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
+                    <div class="icon"><i class="fa fa-plus-circle" aria-hidden="true"  id="add2" title="Add programme" onclick="myFunction9()"></i></div>
+                    </div>
+                <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
+                    <tr >
+                      <th>Programme Name</th>
+                        <th>Class</th>
+                        <th>Class Year</th>
+                        <th>Student Name</th>
+                        <th>Register Number</th>
+                        <th>View Student Details</th>
+                        <th>Action</th>
+                    </tr>
+                    <%
+                    	try{			
+                    		
+           					ResultSet studentData = loadData.loadStudentData();
+           					int i = 1;
+           					while(studentData.next()){
+           						
+                    %>
+                    <tr>
+                        <td  class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme name-->
+                        <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
+                        <td class="td2"><%=studentData.getString("class_year")%></td>
+                        <td><%=studentData.getString("first_name")+" "+studentData.getString("last_name")%></td>  <!-- register number -->
+                        <td><%=studentData.getString("reg_no")%></td>
+                        <td class="td2"><button id="viewStudent<%=i%>" class="btn__edit"  onclick="viewStudentDetails<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
+                        <td class="td3"><div id="editStudent<%=i%>" class="circle1" title="Edit Programme" onclick="editStudentDetails<%=i%>()" ><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteStudent" class="circle2" title="Delete Programme" onclick="deleteStudentData('<%=studentData.getString("reg_no")%>','student');"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                    </tr>
+                    
+                    <script type="text/javascript">
+                    //Function to Insert Data into View Student Form
+                     document.getElementById("viewStudent<%=i%>");
+                     function viewStudentDetails<%=i%>(){
+                         document.querySelector('.bg-model7').style.display = 'flex';
+                         document.querySelector('.bg-model7').style.position = 'fixed';
+                         
+                         document.getElementById("sFirstName").value = "<%=studentData.getString("first_name")%>";
+                         document.getElementById("sLastName").value = "<%=studentData.getString("last_name")%>";
+                         document.getElementById("sGender").value = "<%=studentData.getString("gender")%>";
+                         document.getElementById("sDOB").value = "<%=studentData.getString("dob")%>";
+                         document.getElementById("sEmail").value = "<%=studentData.getString("email")%>";
+                         document.getElementById("sPhone").value = "<%=studentData.getString("phone")%>";
+                         document.getElementById("sAddress").value = "<%=studentData.getString("address")%>";
+                         document.getElementById("sPincode").value = "<%=studentData.getString("pincode")%>";
+                         document.getElementById("sCity").value = "<%=studentData.getString("birth_place")%>";
+                         document.getElementById("sDistrict").value = "<%=studentData.getString("birth_district")%>";
+                         document.getElementById("sState").value = "<%=studentData.getString("birth_state")%>";
+                         document.getElementById("sYOF").value = "<%=studentData.getString("joining_year")%>";
+                         document.getElementById("sProgramme").value = "<%=studentData.getString("programme_name")%>";
+                         document.getElementById("sClass").value = "<%=studentData.getString("class_name")%>";
+                         document.getElementById("sClassYear2").value = "<%=studentData.getString("class_year")%>";
+                         document.getElementById("sCurrentSem").value = "<%=studentData.getString("semester")%>";
+                         document.getElementById("sRegNo").value = "<%=studentData.getInt("reg_no")%>";
+                         document.getElementById("sPassword").value = "<%=studentData.getString("password")%>";
+                        
+                     }
+                    </script>
+                    
+                    <script  type="text/javascript">
+                    //Function to Insert Data into Edit Student Form
+                     document.getElementById("viewStudentDiv");
+                     document.getElementById("editStudent<%=i%>");
+                     function editStudentDetails<%=i%>(){
+                         document.querySelector('.bg-model8').style.display = 'flex';
+                         document.querySelector('.bg-model8').style.position = 'fixed';
+                         
+                         document.forms['editStudentForm']['sFirstName'].value = "<%=studentData.getString("first_name")%>";
+                         document.forms['editStudentForm']['sLastName'].value = "<%=studentData.getString("last_name")%>";
+                         
+                         if(<%=studentData.getString("gender").toLowerCase() == "male"%>){
+                         	document.forms['editStudentForm']['sGender'].options[1].selected=true;
+                         }
+                         
+                         if(<%=studentData.getString("gender").toLowerCase() == "female"%>){
+                         	document.forms['editStudentForm']['sGender'].options[2].selected=true;
+                         }
+                         
+                         if(<%=studentData.getString("gender").toLowerCase() == "other"%>){
+                         	document.forms['editStudentForm']['sGender'].options[3].selected=true;
+                         }
+                   
+                         document.forms['editStudentForm']['sDOB'].value = "<%=studentData.getString("dob")%>";
+                         document.forms['editStudentForm']['sEmail'].value = "<%=studentData.getString("email")%>";
+                         document.forms['editStudentForm']['sPhone'].value = "<%=studentData.getString("phone")%>";
+                         document.forms['editStudentForm']['sAddress'].value = "<%=studentData.getString("address")%>";
+                         document.forms['editStudentForm']['sPincode'].value = "<%=studentData.getString("pincode")%>";
+                         document.forms['editStudentForm']['sCity'].value = "<%=studentData.getString("birth_place")%>";
+                         document.forms['editStudentForm']['sDistrict'].value = "<%=studentData.getString("birth_district")%>";
+                         document.forms['editStudentForm']['sState'].value = "<%=studentData.getString("birth_state")%>";
+                         document.forms['editStudentForm']['sYOF'].value = "<%=studentData.getString("joining_year")%>";
+                        
+                    
+                        
+                        
+                         document.forms['editStudentForm']['sRegNo'].value = "<%=studentData.getString("reg_no")%>";
+                         document.forms['editStudentForm']['sPassword'].value = "<%=studentData.getString("password")%>";
+                     }
+                    </script>
+                    
+                    <%
+           				i++;
+           					}
+                    	}catch(SQLException e){
+                    		e.printStackTrace();
+                    	}
+                    
+                    %>
+                    
+                     <script type="text/javascript">
+                     //Function to Delete Student Data Along With Result Data
+                      document.getElementById("deleteStudent");
+                      function deleteStudentData(uniqueId, Data){
+              			
+              			swal({title: "Warning",
+              				 text: "Are you shure you want delete the Student along with results associated with him/her",
+              				 icon: "warning",
+              				 buttons: {
+              					 cancel: "No",
+              					 yes: "Yes",
+              				 },	 
+              			})
+              			.then((value) => {	
+              				if(value == "yes"){
+
+ 	            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
+ 	            				document.forms['deleteDataForm']['Data'].value = Data;
+ 	            				
+ 	            				document.getElementById("deleteDataForm").submit();
+              				}
+              			});
+              		}
+                     
+                    </script>
+                    
+                </table>
+                </div>
+            </div>
+        
+          
+            <div class="bg-model6" id="addStudentDataDiv">
+                <div class="model-content6" id="addStudentDataDiv2">
+                    <div class="close6" id="close" >+</div>
+                    <div class="header6">
+                        <h1>Add Student Data</h1></div>
+
+                         <img class="student" src="css/images/studenticon.svg">
+                        <form id="insertStudentDataForm" action="InsertDataServlet" method="post">
+                            <input id="studentFirstName" name="sFirstName" type="text" placeholder="First Name" class="merge1" required>
+                            <input id="studentLastName" name="sLastName" type="text" placeholder="Last Name" class="merge1" required>
+                            <select name="sGender" class="merge2" required>
+                            <option value="" disabled selected hidden>Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                            </select>
+                            <input id="studentDob" name="sdob" type="date" id="sdob" name="sdob" placeholder="Date of Birth" class="merge2" required>
+                            <input id="studentEmail" name="sEmail" type="text" placeholder="Email" class="merge1" required>
+                            <input id="studentPhone" name="sPhone" type="text" placeholder="Mobile Number" class="merge1" required>
+                            <input id="studentAddress" name="sAddress" type="text" placeholder="Address" class="merge1" required>
+                            <input id="studentPincode" name="sPincode" type="text" placeholder="Pincode" class="merge1" required>
+                            <input id="studentCity" name="sCity" type="text" placeholder="city" class="merge3" required>
+                            <input id="studentDistrict" name="sDistrict" type="text" placeholder="District" class="merge3" required>
+                            <input id="studentState" name="sState" type="text" placeholder="State" class="merge3" required>
+                            <input id="studentYof" name="sYearOfJoining" type="number" placeholder="Year Of Joining" class="merge2" required>
+                            <select name="sProgramme" class="merge3" id="studentProgrammeSelect" name="studentProgrammeSelect" onchange = "changeDropDownData(this.value)" required>
+                            <option value="" disabled selected hidden>Programme</option>
+		<% 
+			ResultSet studentProgrammeData = loadData.loadProgrammeData();
+			if(studentProgrammeData!= null){
+				
+				try{
+					
+					while(studentProgrammeData.next()){
+		%>				
+						<option value="<%=studentProgrammeData.getString("programme_id")%>" ><%=studentProgrammeData.getString("programme_name")%></option>
+		<%			}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		%>
+				</select>
+				
+                            <select class="merge3" id="classDropDown" name="classDropDown" onchange="changeDropDownData2(this.value)" required>
+                            <option value=""  disabled selected hidden>class</option>
+		<% 
+			ResultSet studentClassData = loadData.loadClassData();
+			if(studentProgrammeData!= null){
+				
+				try{
+					
+					while(studentClassData.next()){
+		%>				
+						<option value="<%=studentClassData.getString("programme_id")%>" id="<%=studentClassData.getString("class_name")%>"><%=studentClassData.getString("class_name")%></option>
+		<%			}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		%>
+                            </select>
+                            
+                            <select class="merge3" id="classYearDropDown" name="classYearDropDown" onchange="changeDropDownData3(this.value)" required>
+                            <option value=""  disabled selected hidden>Class Year</option>
+                    <% 
+			ResultSet studentClassData2 = loadData.loadClassData();
+			if(studentClassData2!= null){
+				
+				try{
+					
+					while(studentClassData2.next()){
+		%>				
+						<option value="<%=studentClassData2.getString("class_name")%>"><%=studentClassData2.getString("class_year")%></option>
+		<%			}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		%>        
+                            </select>
+                            <select name="sSemester" class="merge2" id="programmeSemDropDown" required>
+                            <option value="" disabled selected hidden>Current Sem</option>
+                            </select>
+                            <input id="studentRegNo" name="sRegNo" type="text" placeholder="Register Number" class="merge1" required>
+                            <input id="studentPassword" name="sPassword" type="text" placeholder="Password" class="merge1" required>
+                            <input type="hidden" name="Data" value="student" required />
+                            <input type="hidden" name="sClass" id="sclass" value=""/>
+                            <input type="hidden" name="sClassYear" id="sClassYear" value="" required />
+                            <input type="submit" id="button6" value="ADD"/>
+                    <% 
+			ResultSet studentProgrammeSem = loadData.loadProgrammeData();
+			if(studentProgrammeSem!= null){
+				
+				try{
+					
+					while(studentProgrammeSem.next()){
+		%>				
+						<input type = "hidden" id="<%=studentProgrammeSem.getString("programme_id")%>" value = "<%=studentProgrammeSem.getString("programme_sem")%>">
+		<%			}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		%>        
+                   <script type="text/javascript">
+                   //add student form validation
+                    const addStudentForm = document.getElementById("insertStudentDataForm");
+                    const sFirstName = document.getElementById("studentFirstName");
+                    const sLastName = document.getElementById("studentLastName");
+                    const sPhone = document.getElementById("studentPhone");
+                    const sDob = document.getElementById("studentDob");
+                    const sEmail = document.getElementById("studentEmail");
+                    const sAddress = document.getElementById("studentAddress");
+                    const sCity = document.getElementById("studentCity");
+                    const sPincode = document.getElementById("studentPincode");
+                    const sDistrict = document.getElementById("studentDistrict");
+                    const sState = document.getElementById("studentState");
+                    const sYof = document.getElementById("studentYof");
+                    const sRegNo = document.getElementById("studentRegNo");
+                    const sPassword = document.getElementById("studentPassword");
+                             
+				 addStudentForm.addEventListener('submit', (e)=> {
+
+					var onlyCharacters = /^[A-za-z]*$/;
+					var onlyDigits = /^\d+$/; 
+					var startingCaps = /^[A-Z]\w*/;
+					var namePattern = /^[A-Z][a-z]*$/;
+					
+					var validMinDate = new Date();
+					var dd = String(validMinDate.getDate()).padStart(2, '0');
+					var mm = String(validMinDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+					var yyyy = validMinDate.getFullYear() -17;
+					validMinDate = yyyy + '-' + mm + '-' + dd;
+					
+					var validMaxDate = new Date();
+					var dd2 = String(validMaxDate.getDate()).padStart(2, '0');
+					var mm2 = String(validMaxDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+					var yyyy2 = validMaxDate.getFullYear() -35;
+					validMaxDate = yyyy2 + '-' + mm2 + '-' + dd2;
+					
+					var validMaxYear = new Date();
+					var yyyy3 = validMaxYear.getFullYear();
+					validMaxYear = yyyy3;
+					
+					var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+					var mobileNumber = /^[6-9]\d+/; 
+					var city = /^[A-Z]{1}[a-z]+([ ]{1}[A-Z]{1}[a-z]+)?([-]{1}[A-Z]{1}[a-z]+)?([ ]{1}[A-Z]*[a-z]+)*?[a-z]$/;
+					var pincode = /^[1-9]{1}[0-9]{2}[0-9]{3}$/;
+					var address = /^[A-Z0-9]{1}[A-Za-z0-9 \'\.\-\,\;\:\#]*[A-Za-z0-9\.]$/;
+					var districtState = /^[A-Za-z]*([ ]{1}[A-Z]{1}[a-z]+)*?[a-z]$/;
+					
+					var yearOfBirth = parseInt(/^\d{4}/.exec(sDob.value));
+					var regNo = /^[A-Za-z0-9]*[0-9]+[a-zA-Z0-9]*$/;
+					var password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/;
+					
+					if(onlyCharacters.test(sFirstName.value) == false){//First Name
+						swal("Invalid First Name !","First Name can only contain Alphabets","error");
+						e.preventDefault(); 
+						
+					}else if(sFirstName.value.length < 2){
+						swal("Invalid First Name !","First Name should have at least 2 Characters","error");
+						e.preventDefault(); 
+					
+					}else if(sFirstName.value.length > 64){
+						swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+						e.preventDefault(); 
+					
+					}else if(startingCaps.test(sFirstName.value) == false){
+						swal("Invalid First Name !","Starting Alphabet of the First Name should be Capitalized","error");
+						e.preventDefault(); 
+						
+					}else if(namePattern.test(sFirstName.value) == false){
+						swal("Invalid First Name !","Only Starting Alphabet of the First Name should be Capitalized","error");
+						e.preventDefault(); 
+						
+					}else if(onlyCharacters.test(sLastName.value) == false){//Last Name
+						swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
+						e.preventDefault(); 
+						
+					}else if(sLastName.value.length > 64){
+						swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+						e.preventDefault(); 
+					
+					}else if(startingCaps.test(sLastName.value) == false){
+						swal("Invalid Last Name !","Starting Alphabet of the Last Name should be Capitalized","error");
+						e.preventDefault(); 
+						
+					}else if(namePattern.test(sLastName.value) == false){
+						swal("Invalid Last Name !","Only Starting Alphabet of the Last Name should be Capitalized","error");
+						e.preventDefault(); 
+						
+					}else if((sDob.value) > validMinDate){//DOB
+						swal("Invalid Date of Birth !","Age must be greater than 17 years","error");
+						e.preventDefault(); 
+						
+					}else if((sDob.value) < validMaxDate){
+						swal("Invalid Date of Birth !","Age must be less than 35 years","error");
+						e.preventDefault(); 
+						
+					}else if(email.test(sEmail.value) == false){//Email
+						swal("Invalid Email !","Please Enter a valid Email address Format","error");
+						e.preventDefault();
+						
+					}else if(sEmail.length > 255){
+						swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+						e.preventDefault();
+						
+					}else if(sAddress.length < 3){
+						swal("Invalid Address","Address cannot be less than 3 Characters","error");
+						e.preventDefault();
+						
+					}else if(onlyDigits.test(sPhone.value) == false){//Mobile Number
+						swal("Invalid Mobile Number !","Mobile Number can only contain Digits","error");
+						e.preventDefault(); 
+						
+					}else if(mobileNumber.test(sPhone.value) == false){
+						swal("Invalid Mobile Number !","Starting Digit of Mobile Number can only begin from range '6-9'","error");
+						e.preventDefault(); 
+						
+					}else if(sPhone.value.length < 10){
+						swal("Invalid Mobile Number !","Mobile Number cannot be less than 10 Digits","error");
+						e.preventDefault(); 
+						
+				 	}else if(sPhone.value.length > 10){
+						swal("Invalid Mobile Number !","Mobile Number cannot be more than 10 Digits","error");
+						e.preventDefault(); 
+						
+				 	}else if(address.test(sAddress.value) == false){//Address
+				 		swal("Invalid Address !","Address can only contain Alphabets, Digits, White Spaces, some Special Characters like ' - , . : ; #  and starting Character can only be a Digit or a Capital Alphabet","error");
+						e.preventDefault();
+				 		
+				 	}else if(sAddress.value.length > 255){
+				 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(onlyDigits.test(sPincode.value) == false){//Pinclode
+				 		swal("Invalid Pincode !","Pincode can only contain Digits","error");
+						e.preventDefault();
+				 		
+				 	}else if(sPincode.value.length > 6){
+				 		swal("Invalid Pincode !","Pincode cannot be more than 6 Digits","error");
+						e.preventDefault();
+				 		
+				 	}else if(sPincode.value.length < 6){
+				 		swal("Invalid Pincode !","Pincode cannot be less than 6 Digits","error");
+						e.preventDefault();
+				 		
+				 	}else if(pincode.test(sPincode.value) == false){
+				 		swal("Invalid Pincode !","Pincode cannot begin with '0'","error");
+						e.preventDefault();	
+						
+				 	}else if(sCity.value.length < 3){//City
+				 		swal("Invalid City !","City cannot contain less than 3 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(startingCaps.test(sCity.value) == false){
+				 		swal("Invalid City !","Starting Alphabet of the City should be Capitalized","error");
+						e.preventDefault();
+				 		
+				 	}else if(city.test(sCity.value) == false){
+				 		swal("Invalid City !","City can only contain Alphabets, a Single Space after each Word and '-' Character  Eg:'Sangli-Miraj and Kupwad'","error");
+						e.preventDefault();
+				 		
+				 	}else if(sCity.value.length > 64){
+				 		swal("Invalid City !","City cannot contain more than 64 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(districtState.test(sDistrict.value) == false){//District
+				 		swal("Invalid District !","District can only contain Alphabets and Single Space after each Word","error");
+						e.preventDefault();
+				 		
+				 	}else if(sDistrict.value.length < 3){
+				 		swal("Invalid District !","District cannot contain less than 3 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(startingCaps.test(sDistrict.value) == false){
+				 		swal("Invalid District !","Starting Alphabet of the District should be capitalized","error");
+						e.preventDefault();
+				 		
+				 	}else if(sDistrict.value.length > 64){
+				 		swal("Invalid District !","District cannot contain more than 64 Characters","error");
+						e.preventDefault();
+						
+				 	}else if(districtState.test(sState.value) == false){//State
+				 		swal("Invalid State !","State can only contain Alphabets and a Single Space after each Word","error");
+						e.preventDefault();
+				 		
+				 	}else if(sState.value.length < 3){
+				 		swal("Invalid District !","District cannot contain less than 3 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(startingCaps.test(sState.value) == false){
+				 		swal("Invalid State !","Starting Alphabet of the State should be capitalized","error");
+						e.preventDefault();
+				 		
+				 	}else if(sState.value.length > 64){
+				 		swal("Invalid State !","State cannot contain more than 64 Characters","error");
+						e.preventDefault();
+				 	
+				 	}else if(sYof.value > validMaxYear){//Year of Joining
+				 		swal("Invalid Year of Joining !","Year of Joining cannot be greater than Current Year","error");
+						e.preventDefault();
+				 		
+				 	}else if((parseInt(sYof.value) - yearOfBirth) < 17){
+				 		swal("Invalid Year of Joining !","Year of Joining should be greater than 17 years of Year of Birth","error");
+						e.preventDefault();
+				 		
+				 	}else if((parseInt(sYof.value) - yearOfBirth) > 35){
+				 		swal("Invalid Year of Joining !","Year of Joining should not be greater then 35 years of Year of Birth","error");
+						e.preventDefault();
+				 		
+				 	}else if(regNo.test(sRegNo.value) == false){//Reg No
+				 		swal("Invalid Register Number !","Register Number can only contain letters and at least one digit","error");
+						e.preventDefault();
+				 		
+				 	}else if(sRegNo.value.length < 9){
+				 		swal("Invalid Register Number !","Register Number cannot be less than 9 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(sRegNo.value.length > 12){
+				 		swal("Invalid Register Number !","Register Number cannot be more than 12 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(password.test(sPassword.value) == false){//password
+				 		swal("Invalid Password !","Password must contain at least one uppercase letter, one lowercase letter, one number and one special character","error");
+						e.preventDefault();
+				 		
+				 	}else if(sPassword.value.length < 8){
+				 		swal("Invalid Password !","Password must contain at leat 8 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(sPassword.value.length > 64){
+				 		swal("Invalid Password !","Password must not contain more than 64 Characters","error");
+						e.preventDefault();
+				 		
+				 	}
+				 });
+		                                
+                            
+                // function to insert and hide dropDown Data in Student Data        		
+				window.onload = function removeduplicate(){
+					var myclass = {};
+					$("select[id='classDropDown'] > option").each(function () {
+					    if(myclass[this.text]) {
+					        $(this).remove();
+					        $(this).hide();
+					    } else {
+					        myclass[this.text] = this.value;
+					        $(this).hide();
+					    }
+					});
+						
+						var myyear = {};
+						$("select[id='classYearDropDown'] > option").each(function () {
+						    if(myyear[this.text]) {
+
+						        $(this).hide();
+						    } else {
+						        myyear[this.text] = this.value;
+						        $(this).hide();
+						    }
+						});
+						
+						var mysem = {};
+						$("select[id='programmeSemDropDown'] > option").each(function () {
+						    if(mysem[this.text]) {
+						        $(this).remove();
+						        $(this).hide();
+						    } else {
+						        mysem[this.text] = this.value;
+						        $(this).hide();
+						    }
+						});
+					}
+                         	
+					// function to Enable and Disabe dropDown Data in Student Data
+	       				function changeDropDownData(studentProgrammeSelect){        
+	       					if(studentProgrammeSelect!=''){
+	       						
+	       						$("#classDropDown option[value='"+studentProgrammeSelect+"']").show();
+	       						$("#classDropDown option[value!='"+studentProgrammeSelect+"']").hide();
+	       						document.getElementById("classDropDown").selectedIndex = "0";
+	       						document.getElementById("classYearDropDown").selectedIndex = "0";
+	       						$("#classYearDropDown option").hide();
+	       						document.getElementById("programmeSemDropDown").selectedIndex = "0";
+	       						
+	       						
+	       						var programmeSem = document.getElementById(studentProgrammeSelect).value;
+	       						var optionsCount = $('#programmeSemDropDown > option').length -1;
+	       						
+	       						if(programmeSem > optionsCount){
+	       							
+	       							for(let i=(optionsCount + 1);i<=(programmeSem);i++){
+	       								$('#programmeSemDropDown').append(new Option(i, i));
+	       							}
+	       						}
+	       						
+	       						if(programmeSem < optionsCount){
+	       							
+	       							for(let i=(optionsCount);i>(programmeSem);i--){
+	       								$("#programmeSemDropDown option[value='"+i+"']").remove();
+	       							}
+	       						}
+	       						
+	       						$("#programmeSemDropDown option").hide();
+	       						
+	       					}
+	       				}
+	       				
+	       				function changeDropDownData2(studentClassSelect){                    					
+	       					if(studentClassSelect!=''){
+	       						
+	       						var classId = $("#classDropDown option:selected").attr("id");
+	       						
+	       						$("#classYearDropDown option[value='"+classId+"']").show();
+	       						$("#classYearDropDown option[value!='"+classId+"']").hide();
+	       						document.getElementById("classYearDropDown").selectedIndex = "0";
+	       						document.getElementById("programmeSemDropDown").selectedIndex = "0";
+	       						$("#programmeSemDropDown option").hide();
+	       						
+	       						$("#classDropDown option:selected").each(function() {
+	    							   var classId = this.text;
+	    							   document.forms['insertStudentDataForm']['sClass'].value = classId;
+	    							  
+	    							}); 
+	       					}
+	       				}
+	       				
+	       				function changeDropDownData3(studentClassYear){                    					
+	       					if(studentClassYear!=''){
+	       						document.getElementById("programmeSemDropDown").selectedIndex = "0"; 
+	       						
+	       						$("#classYearDropDown option:selected").each(function() {
+	       							   var classYear = parseInt($(this).text());
+	       							   document.forms['insertStudentDataForm']['sClassYear'].value = classYear;
+	       							   var firstSem = (classYear + classYear) -1; 
+	       							   var secondSem = firstSem + 1;
+	       							   
+	       							   $("#programmeSemDropDown option[value='"+firstSem+"']").show();
+	       							   $("#programmeSemDropDown option[value!='"+firstSem+"']").hide();
+	       							   $("#programmeSemDropDown option[value='"+secondSem+"']").show();
+	       							}); 
+	       						
+	       						$("#classYearDropDown option:selected").each(function() {
+	     							   var classYear = this.text;
+	     							   document.forms['insertStudentDataForm']['sClassYear'].value = classYear;
+	     							  
+	     							}); 
+	       					}
+	       				}
+                            </script>
+                    </form>
+                </div>
             </div>
             
             
+            <div class="bg-model7">
+                <div class="model-content7">
+                    <div class="close7" id="close" >+</div>
+                    <div class="header7">
+                        <h1>Student Details</h1></div>
+                         <img class="student" src="css/images/studenticon.svg">
+                        <div id="viewStudentDiv">
+                            <input type="text" id="sFirstName" placeholder="First Name" class="merge1" readonly="readonly">
+                            <input type="text" id="sLastName" placeholder="Last Name" class="merge1" readonly="readonly">
+                            <input class="merge2" id="sGender" readonly="readonly">
+                            <input type="text" id="sDOB" placeholder="Date of Birth" class="merge2" readonly="readonly">
+                            <input type="text" id="sEmail" placeholder="Email" class="merge1" readonly="readonly">
+                            <input type="text" id="sPhone" placeholder="Mobile Number" class="merge1" readonly="readonly">
+                            <input type="text" id="sAddress" placeholder="Address" class="merge1" readonly="readonly">
+                            <input type="text" id="sPincode" placeholder="Pincode" class="merge1" readonly="readonly">
+                            <input type="text" id="sCity" placeholder="city" class="merge3" readonly="readonly">
+                            <input type="text" id="sDistrict" placeholder="District" class="merge3" readonly="readonly">
+                            <input type="text" id="sState" placeholder="State" class="merge3" readonly="readonly">
+                            <input type="text" id="sYOF" placeholder="Year Of Joining" class="merge2" readonly="readonly">
+                            <input class="merge3" id="sProgramme" readonly="readonly">
+                            <input class="merge3" id="sClass" readonly="readonly">
+                            <input class="merge3" id="sClassYear2" readonly="readonly">
+                            <input class="merge2" id="sCurrentSem" readonly="readonly">
+                            <input type="text" id="sRegNo" placeholder="Register Number" class="merge1" readonly="readonly">
+                            <input type="text" id="sPassword" placeholder="Password" class="merge1" readonly="readonly">
+                    	</div>
+                </div>
+            </div>
             
-
-<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
-<!-- ------------------------------------------------------ TAB 2 STUDENT DETAILS ------------------------------------------------------------------------------- -->            
-            <div class="tabs__content" data-tab="2" id="studentDetails">
-                <div class="protab"> 
-                    
-                    
-                    <button class="refresh" id="ref" onclick="myFunction()">Refresh page</button>
-                    <h4>Student Details Management</h4>
-                    <div class="inner__protab">
-                        
-                    <div class="inner1">
-                        <h6 class="left">Students list</h6>
-                        <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
-                        <div class="icon"><i class="fa fa-plus-circle" aria-hidden="true"  id="add2" title="Add programme" onclick="myFunction9()"></i></div>
-                        </div>
-                    <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
-                        <tr >
-                          <th>Programme Name</th>
-                            <th>Class</th>
-                            <th>Class Year</th>
-                            <th>Student Name</th>
-                            <th>Register Number</th>
-                            <th>View Student Details</th>
-                            <th>Action</th>
-                        </tr>
-                        <%
-                        	try{			
-                        		
-               					ResultSet studentData = loadData.loadStudentData();
-               					int i = 1;
-               					while(studentData.next()){
-               						
-                        %>
-                        <tr>
-                            <td  class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme name-->
-                            <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
-                            <td class="td2"><%=studentData.getString("class_year")%></td>
-                            <td><%=studentData.getString("first_name")+" "+studentData.getString("last_name")%></td>  <!-- register number -->
-                            <td><%=studentData.getString("reg_no")%></td>
-                            <td class="td2"><button id="viewStudent<%=i%>" class="btn__edit"  onclick="viewStudentDetails<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
-                            <td class="td3"><div id="editStudent<%=i%>" class="circle1" title="Edit Programme" onclick="editStudentDetails<%=i%>()" ><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteStudent" class="circle2" title="Delete Programme" onclick="deleteStudentData('<%=studentData.getString("reg_no")%>','student');"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
-                        </tr>
-                        
-                        <script type="text/javascript">
-	                        document.getElementById("viewStudent<%=i%>");
-	                        function viewStudentDetails<%=i%>(){
-	                            document.querySelector('.bg-model7').style.display = 'flex';
-	                            document.querySelector('.bg-model7').style.position = 'fixed';
-	                            
-	                            document.getElementById("sFirstName").value = "<%=studentData.getString("first_name")%>";
-	                            document.getElementById("sLastName").value = "<%=studentData.getString("last_name")%>";
-	                            document.getElementById("sGender").value = "<%=studentData.getString("gender")%>";
-	                            document.getElementById("sDOB").value = "<%=studentData.getString("dob")%>";
-	                            document.getElementById("sEmail").value = "<%=studentData.getString("email")%>";
-	                            document.getElementById("sPhone").value = "<%=studentData.getString("phone")%>";
-	                            document.getElementById("sAddress").value = "<%=studentData.getString("address")%>";
-	                            document.getElementById("sPincode").value = "<%=studentData.getString("pincode")%>";
-	                            document.getElementById("sCity").value = "<%=studentData.getString("birth_place")%>";
-	                            document.getElementById("sDistrict").value = "<%=studentData.getString("birth_district")%>";
-	                            document.getElementById("sState").value = "<%=studentData.getString("birth_state")%>";
-	                            document.getElementById("sYOF").value = "<%=studentData.getString("joining_year")%>";
-	                            document.getElementById("sProgramme").value = "<%=studentData.getString("programme_name")%>";
-	                            document.getElementById("sClass").value = "<%=studentData.getString("class_name")%>";
-	                            document.getElementById("sClassYear2").value = "<%=studentData.getString("class_year")%>";
-	                            document.getElementById("sCurrentSem").value = "<%=studentData.getString("semester")%>";
-	                            document.getElementById("sRegNo").value = "<%=studentData.getInt("reg_no")%>";
-	                            document.getElementById("sPassword").value = "<%=studentData.getString("password")%>";
-	                           
-	                        }
-                        </script>
-                        
-                        <script>
-                        	document.getElementById("viewStudentDiv");
-	                        document.getElementById("editStudent<%=i%>");
-	                        function editStudentDetails<%=i%>(){
-	                            document.querySelector('.bg-model8').style.display = 'flex';
-	                            document.querySelector('.bg-model8').style.position = 'fixed';
-	                            
-	                            document.forms['editStudentForm']['sFirstName'].value = "<%=studentData.getString("first_name")%>";
-	                            document.forms['editStudentForm']['sLastName'].value = "<%=studentData.getString("last_name")%>";
-	                            
-	                            if(<%=studentData.getString("gender").toLowerCase() == "male"%>){
-	                            	document.forms['editStudentForm']['sGender'].options[1].selected=true;
-	                            }
-	                            
-	                            if(<%=studentData.getString("gender").toLowerCase() == "female"%>){
-	                            	document.forms['editStudentForm']['sGender'].options[2].selected=true;
-	                            }
-	                            
-	                            if(<%=studentData.getString("gender").toLowerCase() == "other"%>){
-	                            	document.forms['editStudentForm']['sGender'].options[3].selected=true;
-	                            }
-	                      
-	                            document.forms['editStudentForm']['sDOB'].value = "<%=studentData.getString("dob")%>";
-	                            document.forms['editStudentForm']['sEmail'].value = "<%=studentData.getString("email")%>";
-	                            document.forms['editStudentForm']['sPhone'].value = "<%=studentData.getString("phone")%>";
-	                            document.forms['editStudentForm']['sAddress'].value = "<%=studentData.getString("address")%>";
-	                            document.forms['editStudentForm']['sPincode'].value = "<%=studentData.getString("pincode")%>";
-	                            document.forms['editStudentForm']['sCity'].value = "<%=studentData.getString("birth_place")%>";
-	                            document.forms['editStudentForm']['sDistrict'].value = "<%=studentData.getString("birth_district")%>";
-	                            document.forms['editStudentForm']['sState'].value = "<%=studentData.getString("birth_state")%>";
-	                            document.forms['editStudentForm']['sYOF'].value = "<%=studentData.getString("joining_year")%>";
-	                           
-	                       
-	                           
-	                           
-	                            document.forms['editStudentForm']['sRegNo'].value = "<%=studentData.getString("reg_no")%>";
-	                            document.forms['editStudentForm']['sPassword'].value = "<%=studentData.getString("password")%>";
-	                        }
-                        </script>
-                        
-                        <%
-               				i++;
-               					}
-                        	}catch(SQLException e){
-                        		e.printStackTrace();
-                        	}
-                        
-                        %>
-                        
-                         <script type="text/javascript">
-                         	 document.getElementById("deleteStudent");
-	                         function deleteStudentData(uniqueId, Data){
-	                 			
-	                 			swal({title: "Warning",
-	                 				 text: "Are you shure you want delete the Student along with results associated with him/her",
-	                 				 icon: "warning",
-	                 				 buttons: {
-	                 					 cancel: "No",
-	                 					 yes: "Yes",
-	                 				 },	 
-	                 			})
-	                 			.then((value) => {	
-	                 				if(value == "yes"){
-
-	    	            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
-	    	            				document.forms['deleteDataForm']['Data'].value = Data;
-	    	            				
-	    	            				document.getElementById("deleteDataForm").submit();
-	                 				}
-	                 			});
-	                 		}
-                         
-                        </script>
-                        
-                    </table>
-                    </div>
-                </div>
             
-             
-                
-                <div class="bg-model6">
-                    <div class="model-content6">
-                        <div class="close6" id="close" >+</div>
-                        <div class="header6">
-                            <h1>Add Student Data</h1></div>
-
-                             <img class="student" src="css/images/studenticon.svg">
-                            <form id="insertStudentDataForm" action="InsertDataServlet" method="post">
-                                <input name="sFirstName" type="text" placeholder="First Name" class="merge1">
-                                <input name="sLastName" type="text" placeholder="Last Name" class="merge1">
-                                <select name="sGender" class="merge2">
-                                <option value="" disabled selected hidden>Gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option>Other</option>
-                                </select>
-                                <input name="sdob" type="date" id="sdob" name="sdob" placeholder="Date of Birth" class="merge2">
-                                <input name="sEmail" type="text" placeholder="Email" class="merge1">
-                                <input name="sPhone" type="text" placeholder="Mobile Number" class="merge1">
-                                <input name="sAddress" type="text" placeholder="Address" class="merge1">
-                                <input name="sPincode" type="text" placeholder="Pincode" class="merge1">
-                                <input name="sCity" type="text" placeholder="city" class="merge3">
-                                <input name="sDistrict" type="text" placeholder="District" class="merge3">
-                                <input name="sState" type="text" placeholder="State" class="merge3">
-                                <input name="sYearOfJoining" type="text" placeholder="Year Of Joining" class="merge2">
-                                <select name="sProgramme" class="merge3" id="studentProgrammeSelect" name="studentProgrammeSelect" onchange = "changeDropDownData(this.value)">
-                                <option value="" disabled selected hidden>Programme</option>
-						<% 
-							ResultSet studentProgrammeData = loadData.loadProgrammeData();
-							if(studentProgrammeData!= null){
-								
-								try{
-									
-									while(studentProgrammeData.next()){
-						%>				
-										<option value="<%=studentProgrammeData.getString("programme_id")%>" ><%=studentProgrammeData.getString("programme_name")%></option>
-						<%			}
-								}catch(SQLException e){
-									e.printStackTrace();
-								}
-							}
-						%>
-								</select>
-								
-                                <select class="merge3" id="classDropDown" name="classDropDown" onchange="changeDropDownData2(this.value)">
-                                <option value="class" disabled selected hidden>class</option>
-						<% 
-							ResultSet studentClassData = loadData.loadClassData();
-							if(studentProgrammeData!= null){
-								
-								try{
-									
-									while(studentClassData.next()){
-						%>				
-										<option value="<%=studentClassData.getString("programme_id")%>" id="<%=studentClassData.getString("class_name")%>"><%=studentClassData.getString("class_name")%></option>
-						<%			}
-								}catch(SQLException e){
-									e.printStackTrace();
-								}
-							}
-						%>
-                                </select>
-                                
-                                <select class="merge3" id="classYearDropDown" name="classYearDropDown" onchange="changeDropDownData3(this.value)">
-                                <option value="classYear" disabled selected hidden>Class Year</option>
-                        <% 
-							ResultSet studentClassData2 = loadData.loadClassData();
-							if(studentClassData2!= null){
-								
-								try{
-									
-									while(studentClassData2.next()){
-						%>				
-										<option value="<%=studentClassData2.getString("class_name")%>"><%=studentClassData2.getString("class_year")%></option>
-						<%			}
-								}catch(SQLException e){
-									e.printStackTrace();
-								}
-							}
-						%>        
-                                </select>
-                                <select name="sSemester" class="merge2" id="programmeSemDropDown">
-                                <option value="programmeSem" disabled selected hidden>Current Sem</option>
-                                </select>
-                                <input name="sRegNo" type="text" placeholder="Register Number" class="merge1">
-                                <input name="sPassword" type="text" placeholder="Password" class="merge1">
-                                <input type="hidden" name="Data" value="student"/>
-                                <input type="hidden" name="sClass" id="sclass" value=""/>
-                                <input type="hidden" name="sClassYear" id="sClassYear" value=""/>
-                                <button id="button6" onclick="insertStudent()">ADD</button>
-                        <% 
-							ResultSet studentProgrammeSem = loadData.loadProgrammeData();
-							if(studentProgrammeSem!= null){
-								
-								try{
-									
-									while(studentProgrammeSem.next()){
-						%>				
-										<input type = "hidden" id="<%=studentProgrammeSem.getString("programme_id")%>" value = "<%=studentProgrammeSem.getString("programme_sem")%>">
-						<%			}
-								}catch(SQLException e){
-									e.printStackTrace();
-								}
-							}
-						%>        
-                                
-                                
-                                <script>
-                             		// function to enable and disable dropDown in Student Data
-                             		
-                             		
-                             		
-									window.onload = function removeduplicate(){
-										var myclass = {};
-										$("select[id='classDropDown'] > option").each(function () {
-										    if(myclass[this.text]) {
-										        $(this).remove();
-										        $(this).hide();
-										    } else {
-										        myclass[this.text] = this.value;
-										        $(this).hide();
-										    }
-										});
-										
-										var myyear = {};
-										$("select[id='classYearDropDown'] > option").each(function () {
-										    if(myyear[this.text]) {
-										        $(this).hide();
-										    } else {
-										        myyear[this.text] = this.value;
-										        $(this).hide();
-										    }
-										});
-										
-										var mysem = {};
-										$("select[id='programmeSemDropDown'] > option").each(function () {
-										    if(mysem[this.text]) {
-										        $(this).remove();
-										        $(this).hide();
-										    } else {
-										        mysem[this.text] = this.value;
-										        $(this).hide();
-										    }
-										});
-									}
-                             		
-                    				function changeDropDownData(studentProgrammeSelect){        
-                    					if(studentProgrammeSelect!=''){
-                    						
-                    						$("#classDropDown option[value='"+studentProgrammeSelect+"']").show();
-                    						$("#classDropDown option[value!='"+studentProgrammeSelect+"']").hide();
-                    						$("#classDropDown option[value='class']").prop('selected',true);
-                    						$("#classYearDropDown option[value='classYear']").prop('selected',true);
-                    						$("#classYearDropDown option").hide();
-                    						$("#programmeSemDropDown option[value='programmeSem']").prop('selected',true);
-                    						
-                    						
-                    						var programmeSem = document.getElementById(studentProgrammeSelect).value;
-                    						var optionsCount = $('#programmeSemDropDown > option').length -1;
-                    						
-                    						if(programmeSem > optionsCount){
-                    							
-                    							for(let i=(optionsCount + 1);i<=(programmeSem);i++){
-                    								$('#programmeSemDropDown').append(new Option(i, i));
-                    							}
-                    						}
-                    						
-                    						if(programmeSem < optionsCount){
-                    							
-                    							for(let i=(optionsCount);i>(programmeSem);i--){
-                    								$("#programmeSemDropDown option[value='"+i+"']").remove();
-                    							}
-                    						}
-                    						
-                    						$("#programmeSemDropDown option").hide();
-                    						
-                    					}
-                    				}
-                    				
-                    				function changeDropDownData2(studentClassSelect){                    					
-                    					if(studentClassSelect!=''){
-                    						
-                    						var classId = $("#classDropDown option:selected").attr("id");
-                    						
-                    						$("#classYearDropDown option[value='"+classId+"']").show();
-                    						$("#classYearDropDown option[value!='"+classId+"']").hide();
-                    						$("#classYearDropDown option[value='classYear']").prop('selected',true);
-                    						$("#programmeSemDropDown option[value='programmeSem']").prop('selected',true);
-                    						$("#programmeSemDropDown option").hide();
-                    						
-                    						$("#classDropDown option:selected").each(function() {
-                 							   var classId = this.text;
-                 							   document.forms['insertStudentDataForm']['sClass'].value = classId;
-                 							  
-                 							}); 
-                    					}
-                    				}
-                    				
-                    				function changeDropDownData3(studentClassYear){                    					
-                    					if(studentClassYear!=''){
-                    						$("#programmeSemDropDown option[value='programmeSem']").prop('selected',true);
-                    						
-                    						$("#classYearDropDown option:selected").each(function() {
-                    							   var classYear = parseInt($(this).text());
-                    							   document.forms['insertStudentDataForm']['sClassYear'].value = classYear;
-                    							   var firstSem = (classYear + classYear) -1; 
-                    							   var secondSem = firstSem + 1;
-                    							   
-                    							   $("#programmeSemDropDown option[value='"+firstSem+"']").show();
-                    							   $("#programmeSemDropDown option[value!='"+firstSem+"']").hide();
-                    							   $("#programmeSemDropDown option[value='"+secondSem+"']").show();
-                    							}); 
-                    						
-                    						$("#classYearDropDown option:selected").each(function() {
-                  							   var classYear = this.text;
-                  							   document.forms['insertStudentDataForm']['sClassYear'].value = classYear;
-                  							  
-                  							}); 
-                    					}
-                    				}
-                                </script>
-                        </form>
-                    </div>
+            <div class="bg-model8">
+                <div class="model-content8">
+                    <div class="close8" id="close" >+</div>
+                    <div class="header8">
+                        <h1>Edit Student Details</h1></div>
+                         <img class="student" src="css/images/studenticon.svg">
+                        <form id = "editStudentForm" action="" >
+                            <input id="sFirstName" type="text" placeholder="First Name" class="merge1">
+                            <input id="sLastName"  type="text" placeholder="Last Name" class="merge1">
+                            <select id="sGender" class="merge2">
+                            <option value="" disabled hidden>Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                            </select>
+                            <input id="sDOB" type="text" placeholder="Date of Birth" class="merge2">
+                            <input id="sEmail" type="text" placeholder="Email" class="merge1">
+                            <input id="sPhone" type="text" placeholder="Mobile Number" class="merge1">
+                            <input id="sAddress" type="text" placeholder="Address" class="merge1">
+                            <input id="sPincode" type="text" placeholder="Pincode" class="merge1">
+                            <input id="sCity" type="text" placeholder="city" class="merge3">
+                            <input id="sDistrict" type="text" placeholder="District" class="merge3">
+                            <input id="sState" type="text" placeholder="State" class="merge3">
+                            <input id="sYOF" type="text" placeholder="Year Of Joining" class="merge2">
+                            <select id="sProgramme" class="merge3">
+                            <option value="" disabled  hidden>Programme</option>
+                            <option></option>
+                            </select>
+                            <select id="sClass" class="merge3">
+                            <option value="" disabled hidden>class</option>
+                            <option></option>
+                            </select>
+                            <select id="sClassYear" class="merge3">
+                            <option value="" disabled hidden>Class Year</option>
+                            <option></option>
+                            </select>
+                            <select id="sCurrentSem" class="merge2">
+                            <option value="" disabled hidden>Current Sem</option>
+                            </select>
+                            
+                            
+                            <input id="sRegNo" type="text" placeholder="Register Number" class="merge1">
+                            <input id="sPassword" type="text" placeholder="Password" class="merge1">
+                            <button id="button8" >UPDATE</button>
+                    </form>
                 </div>
-                
-                <div class="bg-model7">
-                    <div class="model-content7">
-                        <div class="close7" id="close" >+</div>
-                        <div class="header7">
-                            <h1>Student Details</h1></div>
-                             <img class="student" src="css/images/studenticon.svg">
-                            <div id="viewStudentDiv">
-                                <input type="text" id="sFirstName" placeholder="First Name" class="merge1" readonly="readonly">
-                                <input type="text" id="sLastName" placeholder="Last Name" class="merge1" readonly="readonly">
-                                <input class="merge2" id="sGender" readonly="readonly">
-                                <input type="text" id="sDOB" placeholder="Date of Birth" class="merge2" readonly="readonly">
-                                <input type="text" id="sEmail" placeholder="Email" class="merge1" readonly="readonly">
-                                <input type="text" id="sPhone" placeholder="Mobile Number" class="merge1" readonly="readonly">
-                                <input type="text" id="sAddress" placeholder="Address" class="merge1" readonly="readonly">
-                                <input type="text" id="sPincode" placeholder="Pincode" class="merge1" readonly="readonly">
-                                <input type="text" id="sCity" placeholder="city" class="merge3" readonly="readonly">
-                                <input type="text" id="sDistrict" placeholder="District" class="merge3" readonly="readonly">
-                                <input type="text" id="sState" placeholder="State" class="merge3" readonly="readonly">
-                                <input type="text" id="sYOF" placeholder="Year Of Joining" class="merge2" readonly="readonly">
-                                <input class="merge3" id="sProgramme" readonly="readonly">
-                                <input class="merge3" id="sClass" readonly="readonly">
-                                <input class="merge3" id="sClassYear2" readonly="readonly">
-                                <input class="merge2" id="sCurrentSem" readonly="readonly">
-                                <input type="text" id="sRegNo" placeholder="Register Number" class="merge1" readonly="readonly">
-                                <input type="text" id="sPassword" placeholder="Password" class="merge1" readonly="readonly">
-                        	</div>
-                    </div>
-                </div>
-                
-                <div class="bg-model8">
-                    <div class="model-content8">
-                        <div class="close8" id="close" >+</div>
-                        <div class="header8">
-                            <h1>Edit Student Details</h1></div>
-                             <img class="student" src="css/images/studenticon.svg">
-                            <form id = "editStudentForm" action="" >
-                                <input id="sFirstName" type="text" placeholder="First Name" class="merge1">
-                                <input id="sLastName"  type="text" placeholder="Last Name" class="merge1">
-                                <select id="sGender" class="merge2">
-                                <option value="" disabled hidden>Gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option>Other</option>
-                                </select>
-                                <input id="sDOB" type="text" placeholder="Date of Birth" class="merge2">
-                                <input id="sEmail" type="text" placeholder="Email" class="merge1">
-                                <input id="sPhone" type="text" placeholder="Mobile Number" class="merge1">
-                                <input id="sAddress" type="text" placeholder="Address" class="merge1">
-                                <input id="sPincode" type="text" placeholder="Pincode" class="merge1">
-                                <input id="sCity" type="text" placeholder="city" class="merge3">
-                                <input id="sDistrict" type="text" placeholder="District" class="merge3">
-                                <input id="sState" type="text" placeholder="State" class="merge3">
-                                <input id="sYOF" type="text" placeholder="Year Of Joining" class="merge2">
-                                <select id="sProgramme" class="merge3">
-                                <option value="" disabled  hidden>Programme</option>
-                                <option></option>
-                                </select>
-                                <select id="sClass" class="merge3">
-                                <option value="" disabled hidden>class</option>
-                                <option></option>
-                                </select>
-                                <select id="sClassYear" class="merge3">
-                                <option value="" disabled hidden>Class Year</option>
-                                <option></option>
-                                </select>
-                                <select id="sCurrentSem" class="merge2">
-                                <option value="" disabled hidden>Current Sem</option>
-                                </select>
-                                
-                                
-                                <input id="sRegNo" type="text" placeholder="Register Number" class="merge1">
-                                <input id="sPassword" type="text" placeholder="Password" class="merge1">
-                                <button id="button8" >UPDATE</button>
-                        </form>
-                    </div>
-                </div>
-                </div>
-            
-
-
-
-
+            </div>
+         </div>
+        
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------ TAB 3 STAFF DETAILS --------------------------------------------------------------------------------- -->
             
-            <div class="tabs__content" data-tab="3">
+            <div class="tabs__content" data-tab="3" id="staffDetails">
                 <div class="protab"> 
                     
                     
@@ -582,7 +811,7 @@
                             <td class="td1"><%=staffDataSet.getString("programme_name")%></td>   <!--Programme name-->
                             <td class="td2"><%=staffDataSet.getString("first_name")+" "+staffDataSet.getString("last_name")%></td>   <!--staffName-->
                             <td class="td7"><%=staffDataSet.getString("staff_id")%></td>   <!--staffId-->
-                            <td class="td8"></td>   <!--Role-->
+                            <td class="td8"><%=staffDataSet.getString("role")%></td>   <!--Role-->
                             <td class="td2"><button class="btn__edit" id="viewStaff<%=i%>" onclick="viewStaffDetails<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>View</button></td> <!--Edit course-->
                             <td class="td3"><div class="circle1" title="Edit Staff" id="editStaff<%=i%>" onclick="editStaffDetails<%=i%>()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteStaff" onclick="deleteStaffData('<%=staffDataSet.getString("staff_id")%>','staff','<%=staffDataSet.getString("first_name")+' '+staffDataSet.getString("last_name")%>')" class="circle2" title="Delete Staff"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
                         </tr>
@@ -660,26 +889,25 @@
                 </div>
                 
                 
-                
                 <div class="bg-model9">
                     <div class="model-content9">
                         <div class="close9" id="close" >+</div>
                         <div class="header9">
                             <h1>Add Staff Details</h1></div>
                              <img class="student" src="css/images/studenticon.svg">
-                            <form id="insertStaffForm" action="InsertDataServlet" method="post">
-                                <input name="firstName" type="text" placeholder="First Name" class="merge4">
-                                <input name="lastName" type="text" placeholder="Last Name" class="merge4">
-                                <select name="gender" class="merge5">
+                            <form id="insertStaffDataForm" action="InsertDataServlet" method="post">
+                                <input id="staffFN" name="firstName" type="text" placeholder="First Name" class="merge4" required>
+                                <input id="staffLN" name="lastName" type="text" placeholder="Last Name" class="merge4" required>
+                                <select name="gender" class="merge5" required>
                                 <option value="" disabled selected hidden>Gender</option>
                                 <option value="Male">Male</option>
-                                <option value="Femal">Female</option>
+                                <option value="Female">Female</option>
                                 <option value="Other">Other</option>
                                 </select>
-                                <input name="email" type="text" placeholder="Email" class="merge4">
-                                <input name="phone" type="text" placeholder="Mobile Number" class="merge4">
-                                <input name="address" type="text" placeholder="Address" class="merge5">
-                                <select name="programmeId" class="merge4">
+                                <input id="staffEm" name="email" type="text" placeholder="Email" class="merge4" required>
+                                <input id="staffPh" name="phone" type="text" placeholder="Mobile Number" class="merge4" required>
+                                <input id="staffAd" name="address" type="text" placeholder="Address" class="merge5" required>
+                                <select name="programmeId" class="merge4" required>
                                 <option value="" disabled selected hidden>Programme</option>
 							<%
 								ResultSet programmeDataSet = loadData.loadProgrammeData();
@@ -699,16 +927,143 @@
 								}
 							%>
                                 </select>
-                                <select name="" class="merge4">
+                                <select name="staffRole" class="merge4" required >
                                 <option value="" disabled selected hidden>Role</option>
+                                <option value="Internal Auditor">Internal Auditor</option>
+                                <option value="Faculty">Faculty</option>
                                 </select>
-                                <input name="staffId" type="text" placeholder="Staff ID(Digits only)" class="merge4">
-                                <input name="password" type="text" placeholder="Password" class="merge4">
+                                <input id="staffI" name="staffId" type="text" placeholder="Staff ID(Digits only)" class="merge4" required>
+                                <input id="staffPass" name="password" type="text" placeholder="Password" class="merge4" required>
                                 <input name="Data" type="hidden" value="staff"/>
-                                <button id="button9" onclick="insertStaff()" >Add</button>
+                                <input type="submit" id="button9" value="ADD" />
+                                
+                                <script type="text/javascript">
+                                	const insertStaffForm = document.getElementById("insertStaffDataForm");
+									const staffFirstName = document.getElementById("staffFN");
+									const staffLastName = document.getElementById("staffLN");
+								 	const staffEmail = document.getElementById("staffEm");
+								 	const staffPhone = document.getElementById("staffPh");
+								 	const staffAddress = document.getElementById("staffAd");
+								 	const staffId = document.getElementById("staffI");
+								 	const staffPassword = document.getElementById("staffPass");
+									
+								 	insertStaffForm.addEventListener('submit', (e)=> {
+								 		
+								 		var onlyCharacters = /^[A-za-z]*$/;
+										var onlyDigits = /^\d+$/; 
+										var startingCaps = /^[A-Z]\w*/;
+										var namePattern = /^[A-Z][a-z]*$/;										
+										var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+										var mobileNumber = /^[6-9]\d+/; 
+										var address = /^[A-Z0-9]{1}[A-Za-z0-9 \'\.\-\,\;\:\#]*[A-Za-z0-9\.]$/;
+										var sID = /^\d*$/;
+										var password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/;
+										
+										if(onlyCharacters.test(staffFirstName.value) == false){//First Name
+											swal("Invalid First Name !","First Name can only contain Alphabets","error");
+											e.preventDefault(); 
+											
+										}else if(staffFirstName.value.length < 2){
+											swal("Invalid First Name !","First Name should have at least 2 Characters","error");
+											e.preventDefault(); 
+										
+										}else if(staffFirstName.value.length > 64){
+											swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+											e.preventDefault(); 
+										
+										}else if(startingCaps.test(staffFirstName.value) == false){
+											swal("Invalid First Name !","Starting Alphabet of the First Name should be Capitalized","error");
+											e.preventDefault(); 
+											
+										}else if(namePattern.test(staffFirstName.value) == false){
+											swal("Invalid First Name !","Only Starting Alphabet of the First Name should be Capitalized","error");
+											e.preventDefault(); 
+											
+										}else if(onlyCharacters.test(staffLastName.value) == false){//Last Name
+											swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
+											e.preventDefault(); 
+											
+										}else if(staffLastName.value.length > 64){
+											swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+											e.preventDefault(); 
+										
+										}else if(startingCaps.test(staffLastName.value) == false){
+											swal("Invalid Last Name !","Starting Alphabet of the Last Name should be Capitalized","error");
+											e.preventDefault(); 
+											
+										}else if(namePattern.test(staffLastName.value) == false){
+											swal("Invalid Last Name !","Only Starting Alphabet of the Last Name should be Capitalized","error");
+											e.preventDefault(); 
+											
+										}else if(email.test(staffEmail.value) == false){//Email
+											swal("Invalid Email !","Please Enter a valid Email address Format","error");
+											e.preventDefault();
+											
+										}else if(staffEmail.length > 255){
+											swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+											e.preventDefault();
+											
+										}else if(onlyDigits.test(staffPhone.value) == false){//Mobile Number
+											swal("Invalid Mobile Number !","Mobile Number can only contain Digits","error");
+											e.preventDefault(); 
+											
+										}else if(mobileNumber.test(staffPhone.value) == false){
+											swal("Invalid Mobile Number !","Starting Digit of Mobile Number can only begin from range '6-9'","error");
+											e.preventDefault(); 
+											
+										}else if(staffPhone.value.length < 10){
+											swal("Invalid Mobile Number !","Mobile Number cannot be less than 10 Digits","error");
+											e.preventDefault(); 
+											
+									 	}else if(staffPhone.value.length > 10){
+											swal("Invalid Mobile Number !","Mobile Number cannot be more than 10 Digits","error");
+											e.preventDefault(); 
+											
+									 	}else if(address.test(staffAddress.value) == false){//Address
+									 		swal("Invalid Address !","Address can only contain Alphabets, Digits, White Spaces, some Special Characters like ' - , . : ; #  and starting Character can only be a Digit or a Capital Alphabet","error");
+											e.preventDefault();
+									 		
+									 	}else if(staffAddress.value.length > 255){
+									 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+											e.preventDefault();
+									 		
+									 	}else if(staffAddress.length < 3){
+											swal("Invalid Address","Address cannot be less than 3 Characters","error");
+											e.preventDefault();
+											
+										}else if(sID.test(staffId.value) == false){//Staff ID
+									 		swal("Invalid Staff ID !","Staff ID can only contain Digits","error");
+											e.preventDefault();
+									 		
+									 	}else if(staffId.value.length < 3){
+									 		swal("Invalid Staff ID !","staff ID cannot be less than 3 Characters","error");
+											e.preventDefault();
+									 		
+									 	}else if(staffId.value.length > 3){
+									 		swal("Invalid Staff ID !","Staff ID cannot be more than 3 Characters","error");
+											e.preventDefault();
+									 		
+									 	}else if(password.test(staffPassword.value) == false){//password
+									 		swal("Invalid Password !","Password must contain at least one uppercase letter, one lowercase letter, one number and one special character","error");
+											e.preventDefault();
+									 		
+									 	}else if(staffPassword.value.length < 8){
+									 		swal("Invalid Password !","Password must contain at leat 8 Characters","error");
+											e.preventDefault();
+									 		
+									 	}else if(staffPassword.value.length > 64){
+									 		swal("Invalid Password !","Password must not contain more than 64 Characters","error");
+											e.preventDefault();
+									 		
+									 	}
+								 	});
+								 		
+								 	
+								</script>
                         </form>
                     </div>
                 </div>
+                
                 
                 <div class="bg-model10">
                     <div class="model-content10">
@@ -730,6 +1085,7 @@
                         </form>
                     </div>
                 </div>
+                
                 
                 <div class="bg-model11">
                     <div class="model-content11">
@@ -761,13 +1117,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
-            
-            
-            
-            
-            
-            
+            </div>     
             
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
 <!-- ------------------------------------------------------ TAB 4 PROGRAMME AND COURSES ------------------------------------------------------------------------- -->
@@ -961,7 +1311,6 @@
                 </div>
                 
               
-              
                 <div class="bg-model">
                     <div class="model-content">
                         <div class="close" id="close" onclick="myFuction()2">+</div>
@@ -969,50 +1318,120 @@
                             <h1>Add Programme Data</h1></div>
                             <form id="programmeForm" action="InsertDataServlet" method="post">
                             	<input type="hidden" value="programme" name="Data" />
-                                <input type="text" placeholder="Programme Id" name="programmeId">
-                                <input type="text" placeholder="Programme Name" name="programmeName">
-                                <input type="text" placeholder="Duration(In Years)" name="duration">
-                                <input type="text" placeholder="Total Semester" name="totalSemester">
-                                <button id="button" onclick="insertProgramme();" >ADD</button>
-                            
+                                <input id="pId" type="text" placeholder="Programme Id" name="programmeId" required>
+                                <input id="pName" type="text" placeholder="Programme Name" name="programmeName" required>
+                                <input id="pDuration" type="number" placeholder="Duration(In Years)" name="duration" required>
+                                <input id="pSem" type="number" placeholder="Total Semester" name="totalSemester" required>
+                                <input type="submit" id="button" value="ADD" />
+                                
+                                <script type="text/javascript">
+                                	const insertProgrammeForm = document.getElementById("programmeForm");
+									const programmeId = document.getElementById("pId");
+									const programmeName = document.getElementById("pName");
+									const programmeDuration = document.getElementById("pDuration");
+								 	const programmeSem = document.getElementById("pSem");
+				
+								 	insertProgrammeForm.addEventListener('submit', (e)=> {
+								 		 
+								 		var onlyCharactersAndSpaces = /^[a-zA-Z]*[ a-zA-Z]*$/;
+								 		var atLeastThreeLetters = /[A-Za-z]{3,}/;
+										var onlyDigits = /^\d+$/; 
+										var startingCaps = /^[A-Z]\w*/;										
+										
+										if(onlyDigits.test(programmeId.value) == false){//Programme ID
+											swal("Invalid Programme ID !","Prgramme ID can contain only Digits","error");
+											e.preventDefault(); 
+											
+										}else if(programmeId.value.length < 3){
+											swal("Invalid Programme ID !","Prgramme ID cannot be less than 3 Digits","error");
+											e.preventDefault(); 
+											
+										}else if(programmeId.value.length > 3){
+											swal("Invalid Programme ID !","Prgramme ID cannot be more than 3 Digits","error");
+											e.preventDefault(); 
+											
+										}else if(onlyCharactersAndSpaces.test(programmeName.value) == false){//Programme Name
+											swal("Invalid Programme Name !","Programme Name can only contain characters and spaces","error")
+											
+										}else if(atLeastThreeLetters.test(programmeName.value) == false){
+											swal("Invalid Programme Name !","Programme Name should contain at least 3 letters","error");	
+											e.preventDefault();
+											
+										}else if(programmeName.value.length < 3){
+											swal("Invalid Programme Name !","Prgramme Name cannot be less than 3 Characters","error");
+											e.preventDefault(); 
+											
+										}else if(programmeName.value.length > 64){
+											swal("Invalid Programme Name !","Prgramme Name cannot be more than 64 Characters","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeDuration.value) > 6){//Programme Duration
+											swal("Invalid Programme Duration !","Prgramme Duration cannot be greater than 6 years","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeDuration.value) < 1){
+											swal("Invalid Programme Duration !","Prgramme Duration cannot be less than 1 year","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeSem.value) > parseInt(programmeDuration.value)*2){//Programme Semester
+											swal("Invalid Total Semester !","Total Semester cannot be greater than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeSem.value) < parseInt(programmeDuration.value)*2){
+											swal("Invalid Total Semester !","Total Semester cannot be less than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
+											e.preventDefault(); 
+											
+										}
+								 	});
+                            </script>
                         </form>
                     </div>
                 </div>
+                
                 
                 <div class="bg-model1">
                     <div class="model-content1">
                         <div class="close1" id="close" >+</div>
                         <div class="header1">
                             <h1>Add Course Data</h1></div>
-                            <form id="courseForm" action="InsertDataServlet" method="post">
+                            <form id="insertCourseForm" action="InsertDataServlet" method="post">
                             	<input type="hidden" value="course" name="Data" />
                             	<input type="hidden" id = "programmeIdInCourse" name="programmeIdInCourse" value=""/>
                                 <input type="text" id="programmeNameInCourse" name="programmeNameInCourse" readonly="readonly" value=""/>
-                                <input type="text" name="courseCode" placeholder="Course Code">
-                                <input type="text" name="courseName" placeholder="Course Name">
+                                
+                                <input id="ccCode" type="text" name="courseCode" placeholder="Course Code" required>
+                                <input id="ccName" type="text" name="courseName" placeholder="Course Name" required>
+                                
                                 <input type="text" id="courseSemester" name="courseSemester" readonly="readonly" value=""/>
-                                <input type="hidden" id ="courseType" name="courseType"  value=""/>
-                                <input type="hidden" id="courseGroup" name="courseGroup" value=""/>
                                 
-                                <select id="courseTypeD" name="courseTypeD">
+                                <select name="courseType" required>
                                 <option value="" disabled selected hidden>Type</option>
-                                <option >Theory</option>
-                                <option >Practical</option>
+                                <option value="Theory">Theory</option>
+                                <option value="Practical">Practical</option>
                                 </select>
                                 
-                                <select id="courseGroupD" name="courseGroupD">
+                                <select name="courseGroup" required>
                                 <option value="" disabled selected hidden>Group</option>
-                                <option >Group 1 Core Course</option>
-                                <option >Group 2 Elective Course</option>
-                                <option >Group 3 a)Compulsary Foundation</option>
-                                <option >Group 3 b)Elective Foundation</option>
-                                <option >Group 4</option>
-                                
+                                <option value="Group 1 Core Course" >Group 1 Core Course</option>
+                                <option value="Group 2 Elective Course" >Group 2 Elective Course</option>
+                                <option value="Group 3 a)Compulsary Foundation" >Group 3 a)Compulsary Foundation</option>
+                                <option value="Group 3 b)Elective Foundation" >Group 3 b)Elective Foundation</option>
+                                <option value="Group 4" >Group 4</option>
                                 </select>
-                                <input name="maxMarks" type="text" placeholder="Max marks">
-                                <input name="minMarks" type="text" placeholder="Min Marks">
-                                <input name="maxIA" type="text" placeholder="Max Internal Assesment Marks">
-                                <button id="button1" onclick="insertCourse();">ADD</button>
+                                
+                                <input id="ccMaxMarks" name="maxMarks" type="number" placeholder="Max marks" required>
+                                <input id="ccMinMarks" name="minMarks" type="number" placeholder="Min Marks" required>
+                                <input id="ccMaxIA" name="maxIA" type="number" placeholder="Max Internal Assesment Marks" required>
+                                <input type="submit" id="button1" value="ADD"/>
+                                
+                                <script type="text/javascript">
+									const insertCourseForm = document.getElementById("insertCourseForm");
+									
+									insertCourseForm.addEventListener('submit',(e)=>{
+										e.preventDefault();
+									});
+                                	
+                                </script>
                           </form>
                     </div>
                 </div>  
@@ -1207,151 +1626,199 @@
                 </div>
             </div>
                  
-                 
-                 
-                 
-                 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->                 
 <!-- ------------------------------------------------------ TAB 5 CLASSES  -------------------------------------------------------------------------------------- -->
                     
-             <div class="tabs__content" data-tab="5">
-                <div class="protab"> 
-                    <button class="refresh" id="ref" onclick="myFunction()">Refresh page</button>
-                    <h4>Class Management</h4>
-                    <div class="inner__protab">
-                        
-                    <div class="inner1">
-                        <h6 class="left">Class list</h6>
-                        <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
-                        <div class="icon"><i class="fa fa-plus-circle" id="add1" title="Add programme" onclick="myFunction8()"></i></div></div>
-                    <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
-                        <tr >
-                            <th>Programme Name</th>
-                            <th>Class Name</th>
-                            <th>Class Year</th>
-                            <th>Action</th>
-                        </tr>
-                        
-                        <%
-                        	try{
-                        		
-                        		ResultSet classesData = loadData.loadClassData();
-    	    					while(classesData.next()){
-    	    			%>		
-    	    	
-                        <tr>
-                            <td class="td1"><%=classesData.getString("programme_name")%></td>   <!--Programme name-->
-                            <td class="td2"><%=classesData.getString("class_name")%></td>   <!--Semseter-->
-                            <td class="td5"><%=classesData.getString("class_year")%></td>
-                            <td class="td3"><div class="circle1" title="Edit Class" id="edit5" onclick="myFunction17()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteClass" class="circle2" title="Delete Class" onclick="deleteClass('<%=classesData.getString("class_id")%>','class','<%=classesData.getString("class_name")+" "+classesData.getString("class_year")+" year"%>','<%=classesData.getString("reg_no")%>')"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
-                        </tr>			
+            <div class="tabs__content" data-tab="5">
+               <div class="protab"> 
+                   <h4>Class Management</h4>
+                   <div class="inner__protab">
+                       
+                   <div class="inner1">
+                       <h6 class="left">Class list</h6>
+                       <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
+                       <div class="icon"><i class="fa fa-plus-circle" id="add1" title="Add programme" onclick="myFunction8()"></i></div></div>
+                   <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
+                       <tr >
+                           <th>Programme Name</th>
+                           <th>Class Name</th>
+                           <th>Class Year</th>
+                           <th>Action</th>
+                       </tr>
+                       
+                       <%
+                       	try{
+                       		
+                       		ResultSet classesData = loadData.loadClassData();
+   	    					while(classesData.next()){
+   	    			%>		
+   	    	
+                       <tr>
+                           <td class="td1"><%=classesData.getString("programme_name")%></td>   <!--Programme name-->
+                           <td class="td2"><%=classesData.getString("class_name")%></td>   <!--Semseter-->
+                           <td class="td5"><%=classesData.getString("class_year")%></td>
+                           <td class="td3"><div class="circle1" title="Edit Class" id="edit5" onclick="myFunction17()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteClass" class="circle2" title="Delete Class" onclick="deleteClass('<%=classesData.getString("class_id")%>','class','<%=classesData.getString("class_name")+" "+classesData.getString("class_year")+" year"%>')"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                       </tr>			
 
-                        <% 	
-    	    					}
-                        	}catch(SQLException e){
-                        		e.printStackTrace();
-                        		
-                        	}
-	                           
-	                    %>
-                     
-                    </table>
-                     <script type="text/javascript">
-                     	document.getElementById("deleteClass");
-                     	function deleteClass(uniqueId,Data,className,reg_no){
-                     		
-                     		if(reg_no !== "null"){
-                     			swal({title: "Sorry",
-	   	             				 text: "Unable to Delete Class "+"''"+className+"'' Because it contains Students",
-	   	             				 icon: "error",
-	   	             				 buttons: {
-	   	             					 ok: "OK",
-	   	             				 },	 
-	   	             			});
-                     			
-                     		}else{
-	                     			swal({title: "Warning",
-	   	             				 text: "Are you shure you want delete Class "+"''"+className+"''",
-	   	             				 icon: "warning",
-	   	             				 buttons: {
-	   	             					 cancel: "No",
-	   	             					 yes: "Yes",
-	   	             				 },	 
-	   	             			})
-	   	             			.then((value) => {	
-	   	             				if(value == "yes"){
-	   	
-	   		            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
-	   		            				document.forms['deleteDataForm']['Data'].value = Data;
-	   		            				
-	   		            				document.getElementById("deleteDataForm").submit();
-	   	             				}
-	   	             			});
-                     		}
-                     		
-                     	}
-                     </script>
-                    </div>
-                </div>
-                 
-                 <div class="bg-model5">
-                    <div class="model-content5">
-                        <div class="close5" id="close" >+</div>
-                        <div class="header5">
-                            <h1>Add Class Data</h1></div>
-                            <form id="classForm" action="InsertDataServlet" method="post">
-                            	<input type="hidden" name="Data" value="class"/>
-                                <input type="hidden" id="programmeNameInClass" name="programmeNameInClass"/>
-                                <select id="programmeNameInClassD">
-                                <option value="" disabled selected hidden>Select Programme</option>
-                                <%
-                                	try{
-                                		ResultSet programmeName = loadData.loadProgrammeData();
-                                		while(programmeName.next()){
-                                			
-                                %>		
-                                            <option><%=programmeName.getString("programme_name")%></option>	
-                                <%	
-                                	
-                                		}
-                                	}catch(SQLException e){
-                                		e.printStackTrace();
-                                	}
-                                %>
-                                </select>
-                                <input name="classId" type="text" placeholder="Class ID">
-                                <input name="className" type="text" placeholder="Class Name">
-                                <input name="classYear" type="text" placeholder="Class Year (in digits)">
-                                <button id="button5" onclick="insertClass();" >ADD</button>
-                        </form>
-                    </div>
-                </div>
-                        
-                <div class="bg-model14">
-                    <div class="model-content14">
-                        <div class="close14" id="close" >+</div>
-                        <div class="header14">
-                            <h1>Edit Class Data</h1></div>
-                            <form action="">
-                                <select >
-                                <option value="" disabled selected hidden>Select Programme</option>
-                                <option>Bca</option>
-                                <option>Bcom</option>
-                                <option>BBA</option>
-                                </select>
-                                <input type="text" placeholder="Course Code">
-                                <input type="text" placeholder="Course Name">
-                                <input type="text" placeholder="Year (in digits)">
-                                <button id="button15" >UPDATE</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+                       <% 	
+   	    					}
+                       	}catch(SQLException e){
+                       		e.printStackTrace();
+                       		
+                       	}
+                           
+                    %>
                     
+                   </table>
+                    <script type="text/javascript">
+                    	document.getElementById("deleteClass");
+                    	function deleteClass(uniqueId,Data,className){
+
+                     			swal({title: "Warning",
+   	             				 text: "Are you shure you want delete Class "+"''"+className+"''",
+   	             				 icon: "warning",
+   	             				 buttons: {
+   	             					 cancel: "No",
+   	             					 yes: "Yes",
+   	             				 },	 
+   	             			})
+   	             			.then((value) => {	
+   	             				if(value == "yes"){
+   	
+   		            				document.forms['deleteDataForm']['uniqueId'].value = uniqueId;
+   		            				document.forms['deleteDataForm']['Data'].value = Data;
+   		            				
+   		            				document.getElementById("deleteDataForm").submit();
+   	             				}
+   	             			});
+                    		
+                    	}
+                    </script>
+                   </div>
+               </div>
                
+                
+                <div class="bg-model5">
+                   <div class="model-content5">
+                       <div class="close5" id="close" >+</div>
+                       <div class="header5">
+                           <h1>Add Class Data</h1></div>
+                           <form id="insertClassForm" action="InsertDataServlet" method="post">
+                           	   <input type="hidden" name="Data" value="class"/>
+                               <select name="programmeNameInClass" onchange="addProgrammeSem(this.value)" required>
+                               <option value="" disabled selected hidden>Select Programme</option>
+                               <%
+                               	try{
+                               		ResultSet programmeName = loadData.loadProgrammeData();
+                               		while(programmeName.next()){
+                               			
+                               %>		
+                                           <option><%=programmeName.getString("programme_name")%></option>	
+                               <%	
+                               	
+                               		}
+                               	}catch(SQLException e){
+                               		e.printStackTrace();
+                               	}
+                               %>
+                               </select>
+                               <input id="cID" name="classId" type="text" placeholder="Class ID" required>
+                               <input id="cName" name="className" type="text" placeholder="Class Name" required>
+                               <input id="cYear" name="classYear" type="number" placeholder="Class Year (in digits)" required>
+                               <input type="submit" id="button5" value="ADD"/>
+                               <%
+                               	try{
+                               		ResultSet programmeName = loadData.loadProgrammeData();
+                               		while(programmeName.next()){
+                               			
+                               %>		
+                                           <input type="hidden" id="programme<%=programmeName.getString("programme_name")%>" value="<%=programmeName.getString("programme_duration")%>"/>	
+                               <%	
+                               	
+                               		}
+                               	}catch(SQLException e){
+                               		e.printStackTrace();
+                               	}
+                               %>
+                               
+                               <script type="text/javascript">
+                               		var duration = 0;
+									function addProgrammeSem(pName){
+										duration = document.getElementById("programme"+pName).value;
+										console.log(duration);
+									}
+									
+									const insertClassForm = document.getElementById("insertClassForm");
+									const classId = document.getElementById("cID");
+									const className = document.getElementById("cName");
+									const classYear = document.getElementById("cYear");
+						
+									insertClassForm.addEventListener('submit', (e)=>{
+										
+										var onlyCharactersAndSpaces = /^[a-zA-Z]*[ a-zA-Z]*$/;
+								 		var atLeastThreeLetters = /[A-Za-z]{3,}/;
+										var onlyDigits = /^\d+$/; 
+										
+										if(onlyDigits.test(classId.value) == false){//Class Id
+											swal("Invalid Class ID !","Class ID can contain only Digits","error");
+											e.preventDefault();
+											
+										}else if(classId.value.length > 3){
+											swal("Invalid Class ID !","Class ID cannot be more than 3 Digits","error");
+											e.preventDefault();
+											
+										}else if(classId.value.length < 3){
+											swal("Invalid Class ID !","Class ID cannot be less than 3 Digits","error");
+											e.preventDefault();
+											
+										}else if(onlyCharactersAndSpaces.test(className.value) == false){//Class Name
+											swal("Invalid Class Name !","Class Name can only contain letters and spaces","error");
+											e.preventDefault();
+											
+										}else if(atLeastThreeLetters.test(className.value) == false){
+											swal("Invalid Class Name !","Class Name must contain at least 3 letters","error");
+											e.preventDefault();
+											
+										}else if(className.value.length > 64){
+											swal("Invalid Class Name !","Class Name cannot contain more than 64 characters","error");
+											e.preventDefault();
+											
+										}else if(parseInt(classYear.value) > duration){//Class Year
+											swal("Invalid Class Year !","Class Year cannot be greater than "+duration+" year(s)","error");
+											e.preventDefault();
+											
+										}else if(parseInt(classYear.value) < 1){//Class Year
+											swal("Invalid Class Year !","Class Year cannot be less than 1 year","error");
+											e.preventDefault();
+											
+										}
+									});
+							   </script>
+                       </form>
+                   </div>
+               </div>
                
-               
-               
+                       
+               <div class="bg-model14">
+                   <div class="model-content14">
+                       <div class="close14" id="close" >+</div>
+                       <div class="header14">
+                           <h1>Edit Class Data</h1></div>
+                           <form action="">
+                               <select >
+                               <option value="" disabled selected hidden>Select Programme</option>
+                               <option>Bca</option>
+                               <option>Bcom</option>
+                               <option>BBA</option>
+                               </select>
+                               <input type="text" placeholder="Course Code">
+                               <input type="text" placeholder="Course Name">
+                               <input type="text" placeholder="Year (in digits)">
+                               <button id="button15" >UPDATE</button>
+                       </form>
+                   </div>
+               </div>
+           </div>
                     
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->     
 <!-- ------------------------------------------------------ TAB 6 STUDENT RESULTS ------------------------------------------------------------------------------- -->
@@ -1370,9 +1837,7 @@
             <option>  </option>      
             </select>
             </div>
-            
-            
-            
+
             
             <form action="ResultServlet" method="post" id="semesterForm">
             	         <input name="semester" type="hidden" value=""/>
@@ -1385,7 +1850,9 @@
             	         <input name="userName" type="hidden" value="">
             	         <input name="studentName" type="hidden" value=""/>
             	         <input name="programmeName" type="hidden" value=""/>
-			</form>   
+			</form>  
+			
+			 
             <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
             <tr>
                 <th>Programme</th>
@@ -1491,77 +1958,72 @@
             </table>
             </div>
             </div>
+
             
-            
-            
-                <div class="bg-model2">
-                <div class="model-content2">
-                <div class="close2" id="close" >+</div>
-                <div class="header2">
-                <h1>View Student Result </h1></div>
-                    
-                <form action="">
-                <table border="1" class="tb3" id="viewResultTable">
-                  <tr>
-                     <th>Semester</th>
-                     <th>Internals</th>
-                  </tr>  
-                </table>
-                </form>
-                </div>
-                </div>
+               <div class="bg-model2">
+               <div class="model-content2">
+               <div class="close2" id="close" >+</div>
+               <div class="header2">
+               <h1>View Student Result </h1></div>
+                   
+               <form action="">
+               <table border="1" class="tb3" id="viewResultTable">
+                 <tr>
+                    <th>Semester</th>
+                    <th>Internals</th>
+                 </tr>  
+               </table>
+               </form>
+               </div>
+               </div>
+               
+               
+               <div class="bg-model3">
+                   <div class="model-content3">
+                   <div class="close3" id="close" >+</div>
+                   <div class="header3">
+                     <h1>Edit Student Results</h1></div>
+                       <form action="">
+                           <table border="1" class="tb3">
+                             <tr>
+                               <th>Semester</th>
+                             </tr>
+                               
+                              <tr class="pop-row">
+                                  <td><div class="pop-div"><div class="pop-inner2">Semester </div></div></td>
+                               </tr> 
+                                   
+                           </table> 
+                       </form>
+                   </div>
+               </div>
                 
-                <div class="bg-model3">
-                    <div class="model-content3">
-                    <div class="close3" id="close" >+</div>
-                    <div class="header3">
-                      <h1>Edit Student Results</h1></div>
-                        <form action="">
-                            <table border="1" class="tb3">
-                              <tr>
-                                <th>Semester</th>
-                              </tr>
-                                
-                               <tr class="pop-row">
-                                   <td><div class="pop-div"><div class="pop-inner2">Semester </div></div></td>
-                                </tr> 
-                                    
-                            </table> 
-                        </form>
-                    </div>
-                </div>
-                 
-                <div class="bg-model4">
-                    <div class="model-content4">
-                        <div class="close4" id="close" >+</div>
-                        <div class="header4">
-                            <h1>Delete Student Results</h1></div>
-                            <form action="">
-                                <table border="1" class="tb3">
-                                    <tr>
-                                    <th>Semester</th>
-                                    </tr>
-                                    
-                                    <tr class="pop-row">
-                                        <td><div class="pop-div"><div class="pop-inner2">Semester1</div></div></td>
-                                    </tr>  
-                                    
-                                </table>
-                        </form>
-                    </div>
-                </div>     
-         </div>
-         
-
-
-
-
+                
+               <div class="bg-model4">
+                   <div class="model-content4">
+                       <div class="close4" id="close" >+</div>
+                       <div class="header4">
+                           <h1>Delete Student Results</h1></div>
+                           <form action="">
+                               <table border="1" class="tb3">
+                                   <tr>
+                                   <th>Semester</th>
+                                   </tr>
+                                   
+                                   <tr class="pop-row">
+                                       <td><div class="pop-div"><div class="pop-inner2">Semester1</div></div></td>
+                                   </tr>  
+                                   
+                               </table>
+                       </form>
+                   </div>
+               </div>     
+        </div>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->     
 <!-- ------------------------------------------------------ TAB 7 Profile --------------------------------------------------------------------------------------- -->       
-         
-              <div class="tabs__content" data-tab="7">
-            
+     
+          <div class="tabs__content" data-tab="7">
             <div class="protab1">
                 <div class="inner__protab1">
                     <div class="inner2"><h6 class="left">Profile</h6></div>
@@ -1591,73 +2053,59 @@
                 
      </div>
                 
- <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
+ <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->     
+ <!-- ------------------------------------------------------ Call To View Student Results ------------------------------------------------------------------------ -->           
                 
-     
-				<%
-                   
-                   	int maxSem = 1;
-                   	try{
-	                   
-	                    Connection con = DBConnection.createConnection();;
-	 					Statement statement = con.createStatement();
-	 					ResultSet programmeSem = statement.executeQuery(""
-	 						+"SELECT programme_sem from programme "
-	 						+"WHERE programme_sem = (SELECT MAX(programme_sem)FROM programme)LIMIT 1");	
-	             		
-	 					if(programmeSem!=null){
-	                 		while(programmeSem.next()){
-								maxSem = programmeSem.getInt("programme_sem");
-								
-	                 		}
-	 					}
-                   	}catch(SQLException e){
-                   		e.printStackTrace();
-                   	}
-                   		for(int i = 1 ;i <= maxSem; i++){
-				%>         
-                    
-                    <script type="text/javascript">
-	                            	document.getElementById("div<%=i%>");
-	                    		    
-	                            	function callResultServlet<%=i%>(){
-	                    						
-	                    				document.forms['semesterForm']['semester'].value = "<%=i%>";
-	                    			    document.getElementById("semesterForm").submit();
-	                    				
-	                    				
-	                    			}
-					</script>
-					
-					<script type="text/javascript">
-	                            	document.getElementById("div<%=i%>");
-	                    		    
-	                            	function callInternalServlet<%=i%>(){
-	                    						
-	                    				document.forms['internalForm']['semester'].value = "<%=i%>";
-	                    			    document.getElementById("internalForm").submit();
-	                    				
-	                    				
-	                    			}
-					</script>
-                    
-				<%} %>
-             
-                
-
-
-
-
-<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-                    
-                                
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+		<%
+                 
+                 	int maxSem = 1;
+                 	try{
+                  
+                   Connection con = DBConnection.createConnection();;
+					Statement statement = con.createStatement();
+					ResultSet programmeSem = statement.executeQuery(""
+						+"SELECT programme_sem from programme "
+						+"WHERE programme_sem = (SELECT MAX(programme_sem)FROM programme)LIMIT 1");	
+            		
+					if(programmeSem!=null){
+                		while(programmeSem.next()){
+						maxSem = programmeSem.getInt("programme_sem");
+						
+                		}
+					}
+                 	}catch(SQLException e){
+                 		e.printStackTrace();
+                 	}
+                 		for(int i = 1 ;i <= maxSem; i++){
+		%>         
+                  
+                  <script type="text/javascript">
+                           	document.getElementById("div<%=i%>");
+                   		    
+                           	function callResultServlet<%=i%>(){
+                   						
+                   				document.forms['semesterForm']['semester'].value = "<%=i%>";
+                   			    document.getElementById("semesterForm").submit();
+                   				
+                   				
+                   			}
+			</script>
+			
+			<script type="text/javascript">
+                           	document.getElementById("div<%=i%>");
+                   		    
+                           	function callInternalServlet<%=i%>(){
+                   						
+                   				document.forms['internalForm']['semester'].value = "<%=i%>";
+                   			    document.getElementById("internalForm").submit();
+                   				
+                   				
+                   			}
+			</script>
+                  
+		<%} %>
+           
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->    
                         
         <script type="text/javascript">
             let image = document.getElementById("image");
@@ -1756,8 +2204,6 @@
                
             })
         </script>
-                
-                     
 
     </body>
 </html>

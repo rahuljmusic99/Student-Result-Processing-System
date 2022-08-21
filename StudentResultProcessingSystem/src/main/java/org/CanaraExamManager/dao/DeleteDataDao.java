@@ -70,7 +70,7 @@ public class DeleteDataDao {
 			
 			
 		} catch (SQLException e) {
-			return e.getLocalizedMessage();
+			return "Unbale to Delete Programme '"+"Programme ID: "+programmeDataBean.getProgrammeId().trim()+"' because it contains Classes";
 		}
 		
 		return "DELETESUCCESS";
@@ -115,7 +115,7 @@ public class DeleteDataDao {
 			
 			
 		} catch (SQLException e) {
-			return e.getLocalizedMessage();
+			return "Unbale to Delete Class '"+"Class ID: "+classBean.getClassId().trim()+"' because it contains Students";
 		}
 		
 		return "DELETESUCCESS";
