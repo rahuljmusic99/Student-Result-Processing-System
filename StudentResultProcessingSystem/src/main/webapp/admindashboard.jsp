@@ -1426,9 +1426,16 @@
                                 
                                 <script type="text/javascript">
 									const insertCourseForm = document.getElementById("insertCourseForm");
+									const courseCode = document.getElementById("ccCode");
+									const courseName = document.getElementById("ccName");
+									const courseMaxMarks = document.getElementById("ccMaxMarks");
+									const courseMinMarks = document.getElementById("ccMinMarks");
+									const courseMaxIA = document.getElementById("ccMaxIA");
 									
 									insertCourseForm.addEventListener('submit',(e)=>{
 										e.preventDefault();
+										
+										
 									});
                                 	
                                 </script>
