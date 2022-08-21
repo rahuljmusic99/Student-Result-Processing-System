@@ -53,18 +53,18 @@ public class InsertDataDao {
 							preparedStatement = con.prepareStatement(query);
 							
 							preparedStatement.setString(1,studentDataBean.getRegNo().trim());//1
-							preparedStatement.setString(2,studentDataBean.getfirstName().trim());//2
-							preparedStatement.setString(3,studentDataBean.getLastName().trim());//3
+							preparedStatement.setString(2,studentDataBean.getfirstName().replaceAll("\\s+"," ").trim());//2
+							preparedStatement.setString(3,studentDataBean.getLastName().replaceAll("\\s+"," ").trim());//3
 							preparedStatement.setString(4,studentDataBean.getGender().trim());//4
 							preparedStatement.setString(5,studentDataBean.getDOB().trim());//5
 							preparedStatement.setString(6,studentDataBean.getEmail().trim());//6
 							preparedStatement.setString(7,studentDataBean.getPhone().trim());//7
-							preparedStatement.setString(8,studentDataBean.getAddress().trim());//8
-							preparedStatement.setString(9,studentDataBean.getCity().trim());//9
-							preparedStatement.setString(10,studentDataBean.getDistrict().trim());//10
-							preparedStatement.setString(11,studentDataBean.getState().trim());//11
+							preparedStatement.setString(8,studentDataBean.getAddress().replaceAll("\\s+"," ").trim());//8
+							preparedStatement.setString(9,studentDataBean.getCity().replaceAll("\\s+"," ").trim());//9
+							preparedStatement.setString(10,studentDataBean.getDistrict().replaceAll("\\s+"," ").trim());//10
+							preparedStatement.setString(11,studentDataBean.getState().replaceAll("\\s+"," ").trim());//11
 							preparedStatement.setString(12,studentDataBean.getPinCode().trim());//12
-							preparedStatement.setString(13,studentDataBean.getPassword().trim());//13
+							preparedStatement.setString(13,studentDataBean.getPassword().replaceAll("\\s+"," ").trim());//13
 							preparedStatement.setString(14,programmeId.trim());//14
 							preparedStatement.setString(15,classId.trim());//15
 							preparedStatement.setString(16,studentDataBean.getYear().trim());//16
@@ -118,13 +118,13 @@ public class InsertDataDao {
 				preparedStatement = con.prepareStatement(query);
 				
 				preparedStatement.setString(1, staffDataBean.getStaffId().trim());//1
-				preparedStatement.setString(2, staffDataBean.getfirstName().trim());//2
-				preparedStatement.setString(3, staffDataBean.getLastName().trim());//3
+				preparedStatement.setString(2, staffDataBean.getfirstName().replaceAll("\\s+"," ").trim());//2
+				preparedStatement.setString(3, staffDataBean.getLastName().replaceAll("\\s+"," ").trim());//3
 				preparedStatement.setString(4, staffDataBean.getGender().trim());//4
 				preparedStatement.setString(5, staffDataBean.getEmail().trim());//5
 				preparedStatement.setString(6, staffDataBean.getPhone().trim());//6
-				preparedStatement.setString(7, staffDataBean.getAddress().trim());//7
-				preparedStatement.setString(8, staffDataBean.getPassword().trim());//8
+				preparedStatement.setString(7, staffDataBean.getAddress().replaceAll("\\s+"," ").trim());//7
+				preparedStatement.setString(8, staffDataBean.getPassword().replaceAll("\\s+"," ").trim());//8
 				preparedStatement.setString(9, staffDataBean.getProgramme().trim());//9
 				preparedStatement.setString(10, "true");//10
 				preparedStatement.setString(11, staffDataBean.getRole().trim());
@@ -176,7 +176,7 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 					preparedStatement = con.prepareStatement(query);
 					
 					preparedStatement.setString(1, programmeDataBean.getProgrammeId().trim());//1
-					preparedStatement.setString(2, (programmeDataBean.getProgrammeName().toUpperCase()).trim());
+					preparedStatement.setString(2, (programmeDataBean.getProgrammeName().toUpperCase()).replaceAll("\\s+"," ").trim());
 					preparedStatement.setString(3, programmeDataBean.getProgrammeDuration().trim());
 					preparedStatement.setString(4, programmeDataBean.getSemester().trim());
 					
@@ -255,8 +255,8 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 									+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
 							preparedStatement = con.prepareStatement(query);
 							
-							preparedStatement.setString(1, (courseDataBean.getCourseCode().toUpperCase()).trim());
-							preparedStatement.setString(2, (courseDataBean.getCourseName().toUpperCase()).trim());
+							preparedStatement.setString(1, (courseDataBean.getCourseCode().toUpperCase()).replaceAll("\\s+"," ").trim());
+							preparedStatement.setString(2, (courseDataBean.getCourseName().toUpperCase()).replaceAll("\\s+"," ").trim());
 							preparedStatement.setString(3, courseDataBean.getCourseType().trim());
 							preparedStatement.setString(4, courseDataBean.getCourseGroup().trim());
 							preparedStatement.setString(5, courseDataBean.getSemester().trim());
@@ -327,7 +327,7 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 								preparedStatement = con.prepareStatement(query);
 								
 								preparedStatement.setString(1, classDataBean.getClassId().trim());
-								preparedStatement.setString(2, classDataBean.getClassName().toUpperCase().trim());
+								preparedStatement.setString(2, (classDataBean.getClassName().toUpperCase()).replaceAll("\\s+"," ").trim());
 								preparedStatement.setString(3, programmeId.trim());
 								preparedStatement.setString(4, classDataBean.getClassYear().trim());
 							

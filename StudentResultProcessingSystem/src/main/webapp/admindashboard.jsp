@@ -503,6 +503,10 @@
 				 		swal("Invalid City !","City can only contain Alphabets, a Single Space after each Word and '-' Character  Eg:'Sangli-Miraj and Kupwad'","error");
 						e.preventDefault();
 				 		
+				 	}else if(sCity.value.length > 64){
+				 		swal("Invalid City !","City cannot contain more than 64 Characters","error");
+						e.preventDefault();
+				 		
 				 	}else if(districtState.test(sDistrict.value) == false){//District
 				 		swal("Invalid District !","District can only contain Alphabets and Single Space after each Word","error");
 						e.preventDefault();
@@ -944,8 +948,6 @@
 								 	const staffPassword = document.getElementById("staffPass");
 									
 								 	insertStaffForm.addEventListener('submit', (e)=> {
-								 		 
-								 		e.preventDefault();
 								 		
 								 		var onlyCharacters = /^[A-za-z]*$/;
 										var onlyDigits = /^\d+$/; 
@@ -1316,12 +1318,72 @@
                             <h1>Add Programme Data</h1></div>
                             <form id="programmeForm" action="InsertDataServlet" method="post">
                             	<input type="hidden" value="programme" name="Data" />
-                                <input type="text" placeholder="Programme Id" name="programmeId">
-                                <input type="text" placeholder="Programme Name" name="programmeName">
-                                <input type="text" placeholder="Duration(In Years)" name="duration">
-                                <input type="text" placeholder="Total Semester" name="totalSemester">
-                                <button id="button" onclick="insertProgramme();" >ADD</button>
-                            
+                                <input id="pId" type="text" placeholder="Programme Id" name="programmeId" required>
+                                <input id="pName" type="text" placeholder="Programme Name" name="programmeName" required>
+                                <input id="pDuration" type="number" placeholder="Duration(In Years)" name="duration" required>
+                                <input id="pSem" type="number" placeholder="Total Semester" name="totalSemester" required>
+                                <input type="submit" id="button" value="ADD" />
+                                
+                                <script type="text/javascript">
+                                	const insertProgrammeForm = document.getElementById("programmeForm");
+									const programmeId = document.getElementById("pId");
+									const programmeName = document.getElementById("pName");
+									const programmeDuration = document.getElementById("pDuration");
+								 	const programmeSem = document.getElementById("pSem");
+				
+								 	insertProgrammeForm.addEventListener('submit', (e)=> {
+								 		 
+								 		var onlyCharactersAndSpaces = /^[a-zA-Z]*[ a-zA-Z]*$/;
+								 		var atLeastThreeLetters = /[A-Za-z]{3,}/;
+										var onlyDigits = /^\d+$/; 
+										var startingCaps = /^[A-Z]\w*/;										
+										
+										if(onlyDigits.test(programmeId.value) == false){//Programme ID
+											swal("Invalid Programme ID !","Prgramme ID can contain only Digits","error");
+											e.preventDefault(); 
+											
+										}else if(programmeId.value.length < 3){
+											swal("Invalid Programme ID !","Prgramme ID cannot be less than 3 Digits","error");
+											e.preventDefault(); 
+											
+										}else if(programmeId.value.length > 3){
+											swal("Invalid Programme ID !","Prgramme ID cannot be more than 3 Digits","error");
+											e.preventDefault(); 
+											
+										}else if(onlyCharactersAndSpaces.test(programmeName.value) == false){//Programme Name
+											swal("Invalid Programme Name !","Programme Name can only contain characters and spaces","error")
+											
+										}else if(atLeastThreeLetters.test(programmeName.value) == false){
+											swal("Invalid Programme Name !","Programme Name should contain at least 3 letters","error");	
+											e.preventDefault();
+											
+										}else if(programmeName.value.length < 3){
+											swal("Invalid Programme Name !","Prgramme Name cannot be less than 3 Characters","error");
+											e.preventDefault(); 
+											
+										}else if(programmeName.value.length > 64){
+											swal("Invalid Programme Name !","Prgramme Name cannot be more than 64 Characters","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeDuration.value) > 6){//Programme Duration
+											swal("Invalid Programme Duration !","Prgramme Duration cannot be greater than 6 years","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeDuration.value) < 1){
+											swal("Invalid Programme Duration !","Prgramme Duration cannot be less than 1 year","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeSem.value) > parseInt(programmeDuration.value)*2){//Programme Semester
+											swal("Invalid Total Semester !","Total Semester cannot be greater than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeSem.value) < parseInt(programmeDuration.value)*2){
+											swal("Invalid Total Semester !","Total Semester cannot be less than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
+											e.preventDefault(); 
+											
+										}
+								 	});
+                            </script>
                         </form>
                     </div>
                 </div>
@@ -1332,35 +1394,44 @@
                         <div class="close1" id="close" >+</div>
                         <div class="header1">
                             <h1>Add Course Data</h1></div>
-                            <form id="courseForm" action="InsertDataServlet" method="post">
+                            <form id="insertCourseForm" action="InsertDataServlet" method="post">
                             	<input type="hidden" value="course" name="Data" />
                             	<input type="hidden" id = "programmeIdInCourse" name="programmeIdInCourse" value=""/>
                                 <input type="text" id="programmeNameInCourse" name="programmeNameInCourse" readonly="readonly" value=""/>
-                                <input type="text" name="courseCode" placeholder="Course Code">
-                                <input type="text" name="courseName" placeholder="Course Name">
+                                
+                                <input id="ccCode" type="text" name="courseCode" placeholder="Course Code" required>
+                                <input id="ccName" type="text" name="courseName" placeholder="Course Name" required>
+                                
                                 <input type="text" id="courseSemester" name="courseSemester" readonly="readonly" value=""/>
-                                <input type="hidden" id ="courseType" name="courseType"  value=""/>
-                                <input type="hidden" id="courseGroup" name="courseGroup" value=""/>
                                 
-                                <select id="courseTypeD" name="courseTypeD">
+                                <select name="courseType" required>
                                 <option value="" disabled selected hidden>Type</option>
-                                <option >Theory</option>
-                                <option >Practical</option>
+                                <option value="Theory">Theory</option>
+                                <option value="Practical">Practical</option>
                                 </select>
                                 
-                                <select id="courseGroupD" name="courseGroupD">
+                                <select name="courseGroup" required>
                                 <option value="" disabled selected hidden>Group</option>
-                                <option >Group 1 Core Course</option>
-                                <option >Group 2 Elective Course</option>
-                                <option >Group 3 a)Compulsary Foundation</option>
-                                <option >Group 3 b)Elective Foundation</option>
-                                <option >Group 4</option>
-                                
+                                <option value="Group 1 Core Course" >Group 1 Core Course</option>
+                                <option value="Group 2 Elective Course" >Group 2 Elective Course</option>
+                                <option value="Group 3 a)Compulsary Foundation" >Group 3 a)Compulsary Foundation</option>
+                                <option value="Group 3 b)Elective Foundation" >Group 3 b)Elective Foundation</option>
+                                <option value="Group 4" >Group 4</option>
                                 </select>
-                                <input name="maxMarks" type="text" placeholder="Max marks">
-                                <input name="minMarks" type="text" placeholder="Min Marks">
-                                <input name="maxIA" type="text" placeholder="Max Internal Assesment Marks">
-                                <button id="button1" onclick="insertCourse();">ADD</button>
+                                
+                                <input id="ccMaxMarks" name="maxMarks" type="number" placeholder="Max marks" required>
+                                <input id="ccMinMarks" name="minMarks" type="number" placeholder="Min Marks" required>
+                                <input id="ccMaxIA" name="maxIA" type="number" placeholder="Max Internal Assesment Marks" required>
+                                <input type="submit" id="button1" value="ADD"/>
+                                
+                                <script type="text/javascript">
+									const insertCourseForm = document.getElementById("insertCourseForm");
+									
+									insertCourseForm.addEventListener('submit',(e)=>{
+										e.preventDefault();
+									});
+                                	
+                                </script>
                           </form>
                     </div>
                 </div>  
@@ -1560,7 +1631,6 @@
                     
             <div class="tabs__content" data-tab="5">
                <div class="protab"> 
-                   <button class="refresh" id="ref" onclick="myFunction()">Refresh page</button>
                    <h4>Class Management</h4>
                    <div class="inner__protab">
                        
@@ -1633,10 +1703,9 @@
                        <div class="close5" id="close" >+</div>
                        <div class="header5">
                            <h1>Add Class Data</h1></div>
-                           <form id="classForm" action="InsertDataServlet" method="post">
-                           	<input type="hidden" name="Data" value="class"/>
-                               <input type="hidden" id="programmeNameInClass" name="programmeNameInClass"/>
-                               <select id="programmeNameInClassD">
+                           <form id="insertClassForm" action="InsertDataServlet" method="post">
+                           	   <input type="hidden" name="Data" value="class"/>
+                               <select name="programmeNameInClass" onchange="addProgrammeSem(this.value)" required>
                                <option value="" disabled selected hidden>Select Programme</option>
                                <%
                                	try{
@@ -1653,10 +1722,78 @@
                                	}
                                %>
                                </select>
-                               <input name="classId" type="text" placeholder="Class ID">
-                               <input name="className" type="text" placeholder="Class Name">
-                               <input name="classYear" type="text" placeholder="Class Year (in digits)">
-                               <button id="button5" onclick="insertClass();" >ADD</button>
+                               <input id="cID" name="classId" type="text" placeholder="Class ID" required>
+                               <input id="cName" name="className" type="text" placeholder="Class Name" required>
+                               <input id="cYear" name="classYear" type="number" placeholder="Class Year (in digits)" required>
+                               <input type="submit" id="button5" value="ADD"/>
+                               <%
+                               	try{
+                               		ResultSet programmeName = loadData.loadProgrammeData();
+                               		while(programmeName.next()){
+                               			
+                               %>		
+                                           <input type="hidden" id="programme<%=programmeName.getString("programme_name")%>" value="<%=programmeName.getString("programme_duration")%>"/>	
+                               <%	
+                               	
+                               		}
+                               	}catch(SQLException e){
+                               		e.printStackTrace();
+                               	}
+                               %>
+                               
+                               <script type="text/javascript">
+                               		var duration = 0;
+									function addProgrammeSem(pName){
+										duration = document.getElementById("programme"+pName).value;
+										console.log(duration);
+									}
+									
+									const insertClassForm = document.getElementById("insertClassForm");
+									const classId = document.getElementById("cID");
+									const className = document.getElementById("cName");
+									const classYear = document.getElementById("cYear");
+						
+									insertClassForm.addEventListener('submit', (e)=>{
+										
+										var onlyCharactersAndSpaces = /^[a-zA-Z]*[ a-zA-Z]*$/;
+								 		var atLeastThreeLetters = /[A-Za-z]{3,}/;
+										var onlyDigits = /^\d+$/; 
+										
+										if(onlyDigits.test(classId.value) == false){//Class Id
+											swal("Invalid Class ID !","Class ID can contain only Digits","error");
+											e.preventDefault();
+											
+										}else if(classId.value.length > 3){
+											swal("Invalid Class ID !","Class ID cannot be more than 3 Digits","error");
+											e.preventDefault();
+											
+										}else if(classId.value.length < 3){
+											swal("Invalid Class ID !","Class ID cannot be less than 3 Digits","error");
+											e.preventDefault();
+											
+										}else if(onlyCharactersAndSpaces.test(className.value) == false){//Class Name
+											swal("Invalid Class Name !","Class Name can only contain letters and spaces","error");
+											e.preventDefault();
+											
+										}else if(atLeastThreeLetters.test(className.value) == false){
+											swal("Invalid Class Name !","Class Name must contain at least 3 letters","error");
+											e.preventDefault();
+											
+										}else if(className.value.length > 64){
+											swal("Invalid Class Name !","Class Name cannot contain more than 64 characters","error");
+											e.preventDefault();
+											
+										}else if(parseInt(classYear.value) > duration){//Class Year
+											swal("Invalid Class Year !","Class Year cannot be greater than "+duration+" year(s)","error");
+											e.preventDefault();
+											
+										}else if(parseInt(classYear.value) < 1){//Class Year
+											swal("Invalid Class Year !","Class Year cannot be less than 1 year","error");
+											e.preventDefault();
+											
+										}
+									});
+							   </script>
                        </form>
                    </div>
                </div>

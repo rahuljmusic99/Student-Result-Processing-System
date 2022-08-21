@@ -68,11 +68,6 @@
     		
 //  function to call insertDataServlet
 			
-			document.getElementById("button")
-			function insertProgramme(){
-				document.getElementById("programmeForm").submit();
-			}
-			
 			document.getElementById("button1")
 			function insertCourse(){
 				var selectElement = document.getElementById("courseTypeD");
@@ -87,16 +82,6 @@
 				document.getElementById("courseForm").submit();
 			}
 			
-			
-			document.getElementById("button5")
-			function insertClass(){
-				var selectElement = document.getElementById("programmeNameInClassD");
-        		var output = selectElement.options[selectElement.selectedIndex].text;
-        		document.forms['classForm']['programmeNameInClass'].value = output;
-      
-				document.getElementById("classForm").submit();
-			}
-		
 
 			function deleteData(uniqueId, Data){
 				
