@@ -499,6 +499,7 @@ input{
     background-color: blue;
     color: white;
     padding: 10px;
+    margin-top: -0.5rem;
     width: 5rem;
     border: none;
     float: right;
