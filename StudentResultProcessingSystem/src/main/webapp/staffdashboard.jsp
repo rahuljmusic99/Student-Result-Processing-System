@@ -79,7 +79,7 @@
                     
                     <footer>
                       <div class="foot">
-                        <img src="css/images/CANARA_ICON.png" class="footlogo">
+                        <img src="css/images/canlogo.png" class="footlogo">
                         <div class="footpart1">
                         <h1 class="heads1">CANARA COLLEGE</h1>
                         <p class="pr2">Address:</p>
