@@ -263,7 +263,7 @@
                             <input id="studentCity" name="sCity" type="text" placeholder="city" class="merge3" required>
                             <input id="studentDistrict" name="sDistrict" type="text" placeholder="District" class="merge3" required>
                             <input id="studentState" name="sState" type="text" placeholder="State" class="merge3" required>
-                            <input id="studentYof" name="sYearOfJoining" type="number" placeholder="Year Of Joining" class="merge2" required>
+                            <input id="studentYof" name="sYearOfJoining" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Year Of Joining" class="merge2" required>
                             <select name="sProgramme" class="merge3" id="studentProgrammeSelect" name="studentProgrammeSelect" onchange = "changeDropDownData(this.value)" required>
                             <option value="" disabled selected hidden>Programme</option>
 		<% 
@@ -1319,8 +1319,8 @@
                             	<input type="hidden" value="programme" name="Data" />
                                 <input id="pId" type="text" placeholder="Programme Id" name="programmeId" required>
                                 <input id="pName" type="text" placeholder="Programme Name" name="programmeName" required>
-                                <input id="pDuration" type="number" placeholder="Duration(In Years)" name="duration" required>
-                                <input id="pSem" type="number" placeholder="Total Semester" name="totalSemester" required>
+                                <input id="pDuration" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Duration(In Years)" name="duration" required>
+                                <input id="pSem" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Total Semester" name="totalSemester" required>
                                 <input type="submit" id="button" value="ADD" />
                                 
                                 <script type="text/javascript">
@@ -1418,9 +1418,9 @@
                                 <option value="Group 4" >Group 4</option>
                                 </select>
                                 
-                                <input id="ccMaxMarks" name="maxMarks" type="number" placeholder="Max marks" required>
-                                <input id="ccMinMarks" name="minMarks" type="number" placeholder="Min Marks" required>
-                                <input id="ccMaxIA" name="maxIA" type="number" placeholder="Max Internal Assesment Marks" required>
+                                <input id="ccMaxMarks" name="maxMarks" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Max marks" required>
+                                <input id="ccMinMarks" name="minMarks" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Min Marks" required>
+                                <input id="ccMaxIA" name="maxIA" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Max Internal Assesment Marks" required>
                                 <input type="submit" id="button1" value="ADD"/>
                                 
                                 <script type="text/javascript">
@@ -1432,56 +1432,43 @@
 									const courseMaxIA = document.getElementById("ccMaxIA");
 									
 									insertCourseForm.addEventListener('submit',(e)=>{
-										e.preventDefault();
 										
 										var onlyCharactersAndSpaces = /^[a-zA-Z]*[ a-zA-Z]*$/;
 								 		var atLeastThreeLetters = /[A-Za-z]{3,}/;
 										var onlyDigits = /^\d+$/; 
-										var startingCaps = /^[A-Z]\w*/;										
+										var startingCaps = /^[A-Z]\w*/;	
+										var cCode = /^[a-zA-Z]{6}[0-9]{3}$/;
+										var cName = /^[a-zA-Z]*[\s\#\&\(\)\-\+\.\,\/\\a-zA-Z]*$/;
 										
-										if(onlyDigits.test(programmeId.value) == false){//Programme ID
-											swal("Invalid Programme ID !","Prgramme ID can contain only Digits","error");
+										if(cCode.test(courseCode.value) == false){//course code
+											swal("Invalid Course Code !","Course Code must contain 4 characters at the beginning and 3 digtis at the end 'eg:BCACAC231' (NO SPACES ALLOWED!)","error");
 											e.preventDefault(); 
 											
-										}else if(programmeId.value.length < 3){
-											swal("Invalid Programme ID !","Prgramme ID cannot be less than 3 Digits","error");
-											e.preventDefault(); 
-											
-										}else if(programmeId.value.length > 3){
-											swal("Invalid Programme ID !","Prgramme ID cannot be more than 3 Digits","error");
-											e.preventDefault(); 
-											
-										}else if(onlyCharactersAndSpaces.test(programmeName.value) == false){//Programme Name
-											swal("Invalid Programme Name !","Programme Name can only contain characters and spaces","error")
-											
-										}else if(atLeastThreeLetters.test(programmeName.value) == false){
-											swal("Invalid Programme Name !","Programme Name should contain at least 3 letters","error");	
+										}else if(cName.test(courseName.value) == false){//course name
+											swal("Invalid Course Name !","Course Name can contain only letters, spaces and some special characters like '. , /\ () & # - +' ","error");
 											e.preventDefault();
 											
-										}else if(programmeName.value.length < 3){
-											swal("Invalid Programme Name !","Prgramme Name cannot be less than 3 Characters","error");
-											e.preventDefault(); 
+										}else if(courseName.value.length > 64){
+											swal("Invalid Course Name !","Course Name cannnot contain more than 64 Characters","error");
+											e.preventDefault();
 											
-										}else if(programmeName.value.length > 64){
-											swal("Invalid Programme Name !","Prgramme Name cannot be more than 64 Characters","error");
-											e.preventDefault(); 
+										}else if(parseInt(courseMaxMarks.value) > 125){//max marks
+											swal("Invalid Max Marks !","Max Marks cannot be greater than 125 ","error");
+											e.preventDefault();
 											
-										}else if(parseInt(programmeDuration.value) > 6){//Programme Duration
-											swal("Invalid Programme Duration !","Prgramme Duration cannot be greater than 6 years","error");
-											e.preventDefault(); 
+										}else if(parseInt(courseMaxMarks.value) < 25){
+											swal("Invalid Max Marks !","Max Marks cannot be less than 25 ","error");
+											e.preventDefault();
 											
-										}else if(parseInt(programmeDuration.value) < 1){
-											swal("Invalid Programme Duration !","Prgramme Duration cannot be less than 1 year","error");
-											e.preventDefault(); 
+										}else if(parseInt(courseMinMarks.value) > parseInt(courseMaxMarks.value)){//min marks
+											swal("Invalid Min Marks !","Min Marks cannot be greater than Max Marks ","error");
+											e.preventDefault();
 											
-										}else if(parseInt(programmeSem.value) > parseInt(programmeDuration.value)*2){//Programme Semester
-											swal("Invalid Total Semester !","Total Semester cannot be greater than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
-											e.preventDefault(); 
+										}else if(parseInt(courseMaxIA.value) > parseInt(courseMinMarks.value)){//max IA
+											swal("Invalid Max Internal Assessment Marks !","Internal Assessment Marks cannot be greater than Min Marks ","error");
+											e.preventDefault();
 											
-										}else if(parseInt(programmeSem.value) < parseInt(programmeDuration.value)*2){
-											swal("Invalid Total Semester !","Total Semester cannot be less than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
-											e.preventDefault(); 
-											
+										}
 									});
                                 	
                                 </script>
@@ -1777,7 +1764,7 @@
                                </select>
                                <input id="cID" name="classId" type="text" placeholder="Class ID" required>
                                <input id="cName" name="className" type="text" placeholder="Class Name" required>
-                               <input id="cYear" name="classYear" type="number" placeholder="Class Year (in digits)" required>
+                               <input id="cYear" name="classYear" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Class Year (in digits)" required>
                                <input type="submit" id="button5" value="ADD"/>
                                <%
                                	try{

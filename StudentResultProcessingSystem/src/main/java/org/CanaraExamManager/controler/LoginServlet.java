@@ -13,7 +13,6 @@ import java.sql.Blob;
 //import java.sql.SQLException;
 
 import org.CanaraExamManager.bean.LoginBean;
-import org.CanaraExamManager.util.ImageConverter;
 import org.CanaraExamManager.dao.LoginDao;
 
 
@@ -43,7 +42,6 @@ public class LoginServlet extends HttpServlet {
 		
 		//creating object for LoginDao which contains the main logic of the application.
 		LoginDao loginDao = new LoginDao();
-		ImageConverter imageConverter = new ImageConverter();
 		
 		
 		HttpSession session = request.getSession();
