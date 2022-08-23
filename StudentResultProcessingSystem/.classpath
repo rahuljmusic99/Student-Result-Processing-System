@@ -9,7 +9,7 @@
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v10.0"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/rahul/Downloads/activation.jar/activation.jar"/>
-	<classpathentry kind="lib" path="C:/Users/rahul/Downloads/javax.mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rahul/git/StudentResultProcessingSystem/StudentResultProcessingSystem/jar files/activation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rahul/git/StudentResultProcessingSystem/StudentResultProcessingSystem/jar files/javax.mail.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
