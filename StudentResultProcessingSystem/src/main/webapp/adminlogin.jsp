@@ -8,11 +8,6 @@
 <jsp:forward page="/admindashboard.jsp"></jsp:forward>
 <%} %> 
 
-
-		
-	
-
-
 <!DOCTYPE html5>
 <html>
     <head>

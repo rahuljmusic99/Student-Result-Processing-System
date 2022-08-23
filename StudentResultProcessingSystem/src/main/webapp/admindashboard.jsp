@@ -392,7 +392,6 @@
 					var districtState = /^[A-Za-z]*([ ]{1}[A-Z]{1}[a-z]+)*?[a-z]$/;
 					
 					var yearOfBirth = parseInt(/^\d{4}/.exec(sDob.value));
-					var regNo = /^[A-Za-z0-9]*[0-9]+[a-zA-Z0-9]*$/;
 					var password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/;
 					
 					if(onlyCharacters.test(sFirstName.value) == false){//First Name
@@ -551,16 +550,16 @@
 				 		swal("Invalid Year of Joining !","Year of Joining should not be greater then 35 years of Year of Birth","error");
 						e.preventDefault();
 				 		
-				 	}else if(regNo.test(sRegNo.value) == false){//Reg No
-				 		swal("Invalid Register Number !","Register Number can only contain letters and at least one digit","error");
+				 	}else if(onlyDigits.test(sRegNo.value) == false){//Reg No
+				 		swal("Invalid Register Number !","Register Number can contain only Digits","error");
 						e.preventDefault();
 				 		
 				 	}else if(sRegNo.value.length < 9){
 				 		swal("Invalid Register Number !","Register Number cannot be less than 9 Characters","error");
 						e.preventDefault();
 				 		
-				 	}else if(sRegNo.value.length > 12){
-				 		swal("Invalid Register Number !","Register Number cannot be more than 12 Characters","error");
+				 	}else if(sRegNo.value.length > 9){
+				 		swal("Invalid Register Number !","Register Number cannot be more than 9 Characters","error");
 						e.preventDefault();
 				 		
 				 	}else if(password.test(sPassword.value) == false){//password
@@ -1435,7 +1434,54 @@
 									insertCourseForm.addEventListener('submit',(e)=>{
 										e.preventDefault();
 										
+										var onlyCharactersAndSpaces = /^[a-zA-Z]*[ a-zA-Z]*$/;
+								 		var atLeastThreeLetters = /[A-Za-z]{3,}/;
+										var onlyDigits = /^\d+$/; 
+										var startingCaps = /^[A-Z]\w*/;										
 										
+										if(onlyDigits.test(programmeId.value) == false){//Programme ID
+											swal("Invalid Programme ID !","Prgramme ID can contain only Digits","error");
+											e.preventDefault(); 
+											
+										}else if(programmeId.value.length < 3){
+											swal("Invalid Programme ID !","Prgramme ID cannot be less than 3 Digits","error");
+											e.preventDefault(); 
+											
+										}else if(programmeId.value.length > 3){
+											swal("Invalid Programme ID !","Prgramme ID cannot be more than 3 Digits","error");
+											e.preventDefault(); 
+											
+										}else if(onlyCharactersAndSpaces.test(programmeName.value) == false){//Programme Name
+											swal("Invalid Programme Name !","Programme Name can only contain characters and spaces","error")
+											
+										}else if(atLeastThreeLetters.test(programmeName.value) == false){
+											swal("Invalid Programme Name !","Programme Name should contain at least 3 letters","error");	
+											e.preventDefault();
+											
+										}else if(programmeName.value.length < 3){
+											swal("Invalid Programme Name !","Prgramme Name cannot be less than 3 Characters","error");
+											e.preventDefault(); 
+											
+										}else if(programmeName.value.length > 64){
+											swal("Invalid Programme Name !","Prgramme Name cannot be more than 64 Characters","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeDuration.value) > 6){//Programme Duration
+											swal("Invalid Programme Duration !","Prgramme Duration cannot be greater than 6 years","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeDuration.value) < 1){
+											swal("Invalid Programme Duration !","Prgramme Duration cannot be less than 1 year","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeSem.value) > parseInt(programmeDuration.value)*2){//Programme Semester
+											swal("Invalid Total Semester !","Total Semester cannot be greater than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeSem.value) < parseInt(programmeDuration.value)*2){
+											swal("Invalid Total Semester !","Total Semester cannot be less than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
+											e.preventDefault(); 
+											
 									});
                                 	
                                 </script>
