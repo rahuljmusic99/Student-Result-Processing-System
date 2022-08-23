@@ -61,7 +61,9 @@
     			.then((value) => {	
     				if(value == "logout"){
     					document.location.href="LogoutServlet";
-    				}
+    				}else if(value == "cancel"){
+						window.location.reload();
+					}
     			});
     		}
     		
