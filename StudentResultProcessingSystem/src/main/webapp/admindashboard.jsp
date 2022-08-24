@@ -163,6 +163,7 @@
                      document.getElementById("viewStudentDiv");
                      document.getElementById("editStudent<%=i%>");
                      function editStudentDetails<%=i%>(){
+                    	 
                          document.querySelector('.bg-model8').style.display = 'flex';
                          document.querySelector('.bg-model8').style.position = 'fixed';
                          
@@ -181,9 +182,19 @@
                          document.forms['editStudentForm']['stState'].value = "<%=studentData.getString("birth_state")%>";
                          document.forms['editStudentForm']['stYOF'].value = "<%=studentData.getString("joining_year")%>";
                         
-                    
-                        
-                        
+                         $("#stProgramme option[value!='<%=studentData.getString("programme_id")%>']").removeAttr("selected");
+                         $("#stProgramme option[value='<%=studentData.getString("programme_id")%>']").attr('selected', 'true');
+                         
+                         $("#classDropDown2 option[id='c<%=studentData.getString("class_id")%>']").attr('selected', 'true');
+                         $("#classDropDown2 option[id!='c<%=studentData.getString("class_id")%>']").removeAttr("selected");
+                         $("#classDropDown2 option[value!='<%=studentData.getString("programme_id")%>']").hide();
+                         
+                         $("#classYearDropDown2 option[value='<%=studentData.getString("class_name")%>']").attr('selected', 'true');
+                         $("#classYearDropDown2 option[value!='<%=studentData.getString("class_name")%>']").removeAttr("selected");
+                         $("#classYearDropDown2 option[value!='<%=studentData.getString("class_name")%>']").hide();
+                         
+                         console.log("c<%=studentData.getString("class_id")%>")
+                         
                          document.forms['editStudentForm']['stRegNo'].value = "<%=studentData.getString("reg_no")%>";
                          document.forms['editStudentForm']['stPassword'].value = "<%=studentData.getString("password")%>";
                      }
@@ -571,7 +582,7 @@
                 // function to insert and hide dropDown Data in Student Data        		
 				window.onload = function removeduplicate(){
 					var myclass = {};
-					$("select[id='classDropDown'] > option").each(function () {
+					$("select[id='classDropDown'] > option").each(function() {
 					    if(myclass[this.text]) {
 					        $(this).remove();
 					        $(this).hide();
@@ -582,7 +593,7 @@
 					});
 						
 						var myyear = {};
-						$("select[id='classYearDropDown'] > option").each(function () {
+						$("select[id='classYearDropDown'] > option").each(function() {
 						    if(myyear[this.text]) {
 
 						        $(this).hide();
@@ -593,7 +604,7 @@
 						});
 						
 						var mysem = {};
-						$("select[id='programmeSemDropDown'] > option").each(function () {
+						$("select[id='programmeSemDropDown'] > option").each(function() {
 						    if(mysem[this.text]) {
 						        $(this).remove();
 						        $(this).hide();
@@ -740,19 +751,63 @@
                             <input id="stState" type="text" placeholder="State" class="merge3">
                             <input id="stYOF" type="text" placeholder="Year Of Joining" class="merge2">
                             <select id="stProgramme" class="merge3">
-                            <option value="" disabled  hidden>Programme</option>
-                            <option></option>
+                            <option value="" disabled selected hidden>Programme</option>
+        <% 
+			ResultSet studentProgrammeData3 = loadData.loadProgrammeData();
+			if(studentProgrammeData3!= null){
+				
+				try{
+					
+					while(studentProgrammeData3.next()){
+		%>				
+						<option value="<%=studentProgrammeData3.getString("programme_id")%>" ><%=studentProgrammeData3.getString("programme_name")%></option>
+		<%			}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		%>
+				</select>
+				
+                            <select class="merge3" id="classDropDown2" name="classDropDown" onchange="changeDropDownData2(this.value)" required>
+                            <option value=""  disabled selected hidden>class</option>
+		<% 
+			ResultSet studentClassData3 = loadData.loadClassData();
+			if(studentProgrammeData3!= null){
+				
+				try{
+					
+					while(studentClassData3.next()){
+		%>				
+						<option value="<%=studentClassData3.getString("programme_id")%>" id="c<%=studentClassData3.getString("class_id")%>"><%=studentClassData3.getString("class_name")%></option>
+		<%			}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		%>
                             </select>
-                            <select id="stClass" class="merge3">
-                            <option value="" disabled hidden>class</option>
-                            <option></option>
-                            </select>
-                            <select id="stClassYear" class="merge3">
-                            <option value="" disabled hidden>Class Year</option>
-                            <option></option>
+                            
+                            <select class="merge3" id="classYearDropDown2" name="classYearDropDown" onchange="changeDropDownData3(this.value)" required>
+                            <option value=""  disabled selected hidden>Class Year</option>
+                    <% 
+			ResultSet studentClassData4 = loadData.loadClassData();
+			if(studentClassData4!= null){
+				
+				try{
+					
+					while(studentClassData4.next()){
+		%>				
+						<option value="<%=studentClassData4.getString("class_name")%>"><%=studentClassData4.getString("class_year")%></option>
+		<%			}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		%>
                             </select>
                             <select id="stCurrentSem" class="merge2">
-                            <option value="" disabled hidden>Current Sem</option>
+                            <option value="" disabled selected hidden>Current Sem</option>
                             </select>
                             
                             
