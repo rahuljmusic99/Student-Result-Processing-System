@@ -42,6 +42,8 @@ if(insertionMessage != null){
 			.then((value) => {	
 				if(value == "ok"){
 					document.location.href="admindashboard.jsp";
+				}else{
+					document.location.href="admindashboard.jsp";
 				}
 			});
 		}
@@ -71,6 +73,8 @@ if(insertionMessage != null){
 			})
 			.then((value) => {	
 				if(value == "ok"){
+					document.location.href="admindashboard.jsp";
+				}else{
 					document.location.href="admindashboard.jsp";
 				}
 			});
@@ -104,6 +108,8 @@ if(insertionMessage != null){
 			.then((value) => {	
 				if(value == "ok"){
 					document.location.href="admindashboard.jsp";
+				}else{
+					document.location.href="admindashboard.jsp";
 				}
 			});
 		}
@@ -133,6 +139,8 @@ if(insertionMessage != null){
 			})
 			.then((value) => {	
 				if(value == "ok"){
+					document.location.href="admindashboard.jsp";
+				}else{
 					document.location.href="admindashboard.jsp";
 				}
 			});

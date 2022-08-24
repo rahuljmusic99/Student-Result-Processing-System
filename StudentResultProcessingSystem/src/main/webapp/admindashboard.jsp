@@ -57,7 +57,7 @@
 		    <div class="tabs__sidebar">
 		        <div class="space"><img src="css/images/education.png" class="edu"></div>
 		        <button class="tabs__button" data-for-tab="7" id="mainprofile"><div class="holder3"></div></button>
-		        <button class="tabs__button tabs__button--active" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
+		        <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
 		        <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Student Details</button>
 		        <button class="tabs__button" data-for-tab="3"><i class="fa fa-graduation-cap"></i>Staff Details</button>
 		        <button class="tabs__button" data-for-tab="4"><i class="fa fa-bar-chart"></i>Programme and courses</button>
@@ -166,36 +166,26 @@
                          document.querySelector('.bg-model8').style.display = 'flex';
                          document.querySelector('.bg-model8').style.position = 'fixed';
                          
-                         document.forms['editStudentForm']['sFirstName'].value = "<%=studentData.getString("first_name")%>";
-                         document.forms['editStudentForm']['sLastName'].value = "<%=studentData.getString("last_name")%>";
+                         document.forms['editStudentForm']['stFirstName'].value = "<%=studentData.getString("first_name")%>";
+                         document.forms['editStudentForm']['stLastName'].value = "<%=studentData.getString("last_name")%>";
                          
-                         if(<%=studentData.getString("gender").toLowerCase() == "male"%>){
-                         	document.forms['editStudentForm']['sGender'].options[1].selected=true;
-                         }
-                         
-                         if(<%=studentData.getString("gender").toLowerCase() == "female"%>){
-                         	document.forms['editStudentForm']['sGender'].options[2].selected=true;
-                         }
-                         
-                         if(<%=studentData.getString("gender").toLowerCase() == "other"%>){
-                         	document.forms['editStudentForm']['sGender'].options[3].selected=true;
-                         }
+                      	
                    
-                         document.forms['editStudentForm']['sDOB'].value = "<%=studentData.getString("dob")%>";
-                         document.forms['editStudentForm']['sEmail'].value = "<%=studentData.getString("email")%>";
-                         document.forms['editStudentForm']['sPhone'].value = "<%=studentData.getString("phone")%>";
-                         document.forms['editStudentForm']['sAddress'].value = "<%=studentData.getString("address")%>";
-                         document.forms['editStudentForm']['sPincode'].value = "<%=studentData.getString("pincode")%>";
-                         document.forms['editStudentForm']['sCity'].value = "<%=studentData.getString("birth_place")%>";
-                         document.forms['editStudentForm']['sDistrict'].value = "<%=studentData.getString("birth_district")%>";
-                         document.forms['editStudentForm']['sState'].value = "<%=studentData.getString("birth_state")%>";
-                         document.forms['editStudentForm']['sYOF'].value = "<%=studentData.getString("joining_year")%>";
+                         document.forms['editStudentForm']['stDOB'].value = "<%=studentData.getString("dob")%>";
+                         document.forms['editStudentForm']['stEmail'].value = "<%=studentData.getString("email")%>";
+                         document.forms['editStudentForm']['stPhone'].value = "<%=studentData.getString("phone")%>";
+                         document.forms['editStudentForm']['stAddress'].value = "<%=studentData.getString("address")%>";
+                         document.forms['editStudentForm']['stPincode'].value = "<%=studentData.getString("pincode")%>";
+                         document.forms['editStudentForm']['stCity'].value = "<%=studentData.getString("birth_place")%>";
+                         document.forms['editStudentForm']['stDistrict'].value = "<%=studentData.getString("birth_district")%>";
+                         document.forms['editStudentForm']['stState'].value = "<%=studentData.getString("birth_state")%>";
+                         document.forms['editStudentForm']['stYOF'].value = "<%=studentData.getString("joining_year")%>";
                         
                     
                         
                         
-                         document.forms['editStudentForm']['sRegNo'].value = "<%=studentData.getString("reg_no")%>";
-                         document.forms['editStudentForm']['sPassword'].value = "<%=studentData.getString("password")%>";
+                         document.forms['editStudentForm']['stRegNo'].value = "<%=studentData.getString("reg_no")%>";
+                         document.forms['editStudentForm']['stPassword'].value = "<%=studentData.getString("password")%>";
                      }
                     </script>
                     
@@ -732,42 +722,42 @@
                         <h1>Edit Student Details</h1></div>
                          <img class="student" src="css/images/studenticon.svg">
                         <form id = "editStudentForm" action="" >
-                            <input id="sFirstName" type="text" placeholder="First Name" class="merge1">
-                            <input id="sLastName"  type="text" placeholder="Last Name" class="merge1">
-                            <select id="sGender" class="merge2">
+                            <input id="stFirstName" type="text" placeholder="First Name" class="merge1">
+                            <input id="stLastName"  type="text" placeholder="Last Name" class="merge1">
+                            <select id="stGender" class="merge2">
                             <option value="" disabled hidden>Gender</option>
                             <option>Male</option>
                             <option>Female</option>
                             <option>Other</option>
                             </select>
-                            <input id="sDOB" type="text" placeholder="Date of Birth" class="merge2">
-                            <input id="sEmail" type="text" placeholder="Email" class="merge1">
-                            <input id="sPhone" type="text" placeholder="Mobile Number" class="merge1">
-                            <input id="sAddress" type="text" placeholder="Address" class="merge1">
-                            <input id="sPincode" type="text" placeholder="Pincode" class="merge1">
-                            <input id="sCity" type="text" placeholder="city" class="merge3">
-                            <input id="sDistrict" type="text" placeholder="District" class="merge3">
-                            <input id="sState" type="text" placeholder="State" class="merge3">
-                            <input id="sYOF" type="text" placeholder="Year Of Joining" class="merge2">
-                            <select id="sProgramme" class="merge3">
+                            <input id="stDOB" type="text" placeholder="Date of Birth" class="merge2">
+                            <input id="stEmail" type="text" placeholder="Email" class="merge1">
+                            <input id="stPhone" type="text" placeholder="Mobile Number" class="merge1">
+                            <input id="stAddress" type="text" placeholder="Address" class="merge1">
+                            <input id="stPincode" type="text" placeholder="Pincode" class="merge1">
+                            <input id="stCity" type="text" placeholder="city" class="merge3">
+                            <input id="stDistrict" type="text" placeholder="District" class="merge3">
+                            <input id="stState" type="text" placeholder="State" class="merge3">
+                            <input id="stYOF" type="text" placeholder="Year Of Joining" class="merge2">
+                            <select id="stProgramme" class="merge3">
                             <option value="" disabled  hidden>Programme</option>
                             <option></option>
                             </select>
-                            <select id="sClass" class="merge3">
+                            <select id="stClass" class="merge3">
                             <option value="" disabled hidden>class</option>
                             <option></option>
                             </select>
-                            <select id="sClassYear" class="merge3">
+                            <select id="stClassYear" class="merge3">
                             <option value="" disabled hidden>Class Year</option>
                             <option></option>
                             </select>
-                            <select id="sCurrentSem" class="merge2">
+                            <select id="stCurrentSem" class="merge2">
                             <option value="" disabled hidden>Current Sem</option>
                             </select>
                             
                             
-                            <input id="sRegNo" type="text" placeholder="Register Number" class="merge1">
-                            <input id="sPassword" type="text" placeholder="Password" class="merge1">
+                            <input id="stRegNo" type="text" placeholder="Register Number" class="merge1">
+                            <input id="stPassword" type="text" placeholder="Password" class="merge1">
                             <button id="button8" >UPDATE</button>
                     </form>
                 </div>
@@ -1433,10 +1423,6 @@
 									
 									insertCourseForm.addEventListener('submit',(e)=>{
 										
-										var onlyCharactersAndSpaces = /^[a-zA-Z]*[ a-zA-Z]*$/;
-								 		var atLeastThreeLetters = /[A-Za-z]{3,}/;
-										var onlyDigits = /^\d+$/; 
-										var startingCaps = /^[A-Z]\w*/;	
 										var cCode = /^[a-zA-Z]{6}[0-9]{3}$/;
 										var cName = /^[a-zA-Z]*[\s\#\&\(\)\-\+\.\,\/\\a-zA-Z]*$/;
 										
