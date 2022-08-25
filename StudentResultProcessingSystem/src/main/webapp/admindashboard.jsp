@@ -55,7 +55,7 @@
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 		<div class="tabs">
 		    <div class="tabs__sidebar">
-		        <div class="space"><img src="css/images/education.png" class="edu"></div>
+		        <div class="space"><div class="space4"><img src="css/images/ad.png" class="edu"></div><p>Canara exam manager</p></div>
 		        <button class="tabs__button" data-for-tab="7" id="mainprofile"><div class="holder3"></div></button>
 		        <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
 		        <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Student Details</button>
