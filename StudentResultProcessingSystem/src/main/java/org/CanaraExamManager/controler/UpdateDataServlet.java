@@ -27,23 +27,23 @@ public class UpdateDataServlet extends HttpServlet {
 				
 				StudentStaffDataBean studentDataBean = new StudentStaffDataBean();
 				
-				 studentDataBean.setfirstName(request.getParameter(""));//1
-				 studentDataBean.setLastName(request.getParameter(""));//2
-				 studentDataBean.setGender(request.getParameter(""));//3
-				 studentDataBean.setDOB(request.getParameter(""));//4
-				 studentDataBean.setEmail(request.getParameter(""));//5
-				 studentDataBean.setPhone(request.getParameter(""));//6
-				 studentDataBean.setAddress(request.getParameter(""));//7
-				 studentDataBean.setPinCode(request.getParameter(""));//8
-				 studentDataBean.setCity(request.getParameter(""));//9
-				 studentDataBean.setDistrict(request.getParameter(""));//10
-				 studentDataBean.setState(request.getParameter(""));//11
-				 studentDataBean.setYear(request.getParameter(""));//12
-				 studentDataBean.setProgramme(request.getParameter(""));//13
-				 studentDataBean.setClass(request.getParameter(""));//14
-				 studentDataBean.setCurrentSemester(request.getParameter(""));//15
-				 studentDataBean.setRegNo(request.getParameter(""));//16
-				 studentDataBean.setPassword(request.getParameter(""));//17
+				 studentDataBean.setfirstName(request.getParameter("sFirstName"));//1
+				 studentDataBean.setLastName(request.getParameter("sLastName"));//2
+				 studentDataBean.setGender(request.getParameter("sGender"));//3
+				 studentDataBean.setDOB(request.getParameter("sdob"));//4
+				 studentDataBean.setEmail(request.getParameter("sEmail"));//5
+				 studentDataBean.setPhone(request.getParameter("sPhone"));//6
+				 studentDataBean.setAddress(request.getParameter("sAddress"));//7
+				 studentDataBean.setPinCode(request.getParameter("sPincode"));//8
+				 studentDataBean.setCity(request.getParameter("sCity"));//9
+				 studentDataBean.setDistrict(request.getParameter("sDistrict"));//10
+				 studentDataBean.setState(request.getParameter("sState"));//11
+				 studentDataBean.setYear(request.getParameter("sYearOfJoining"));//12
+				 studentDataBean.setProgramme(request.getParameter("sProgramme"));//13
+				 studentDataBean.setClass(request.getParameter("sClass"));//14
+				 studentDataBean.setCurrentSemester(request.getParameter("sSemester"));//15
+				 studentDataBean.setRegNo(request.getParameter("sRegNo"));//16
+				 studentDataBean.setClassYear(request.getParameter("sClassYear"));//17
 				
 				 String dataValidateString = updateDataDao.updateStudentData(studentDataBean) ;
 				 

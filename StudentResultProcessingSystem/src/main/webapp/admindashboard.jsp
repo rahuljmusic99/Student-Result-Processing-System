@@ -170,8 +170,9 @@
                          document.forms['editStudentForm']['stFirstName'].value = "<%=studentData.getString("first_name")%>";
                          document.forms['editStudentForm']['stLastName'].value = "<%=studentData.getString("last_name")%>";
                          
-                      	
-                   
+                         $("#stProgramme option[value!='<%=studentData.getString("programme_id")%>']").removeAttr("selected");
+                         $("#stProgramme option[value='<%=studentData.getString("programme_id")%>']").attr('selected', 'true');
+                      	 
                          document.forms['editStudentForm']['stDOB'].value = "<%=studentData.getString("dob")%>";
                          document.forms['editStudentForm']['stEmail'].value = "<%=studentData.getString("email")%>";
                          document.forms['editStudentForm']['stPhone'].value = "<%=studentData.getString("phone")%>";
@@ -181,22 +182,31 @@
                          document.forms['editStudentForm']['stDistrict'].value = "<%=studentData.getString("birth_district")%>";
                          document.forms['editStudentForm']['stState'].value = "<%=studentData.getString("birth_state")%>";
                          document.forms['editStudentForm']['stYOF'].value = "<%=studentData.getString("joining_year")%>";
-                        
-                         $("#stProgramme option[value!='<%=studentData.getString("programme_id")%>']").removeAttr("selected");
-                         $("#stProgramme option[value='<%=studentData.getString("programme_id")%>']").attr('selected', 'true');
+                         document.forms['editStudentForm']['sClass'].value = "<%=studentData.getString("class_name")%>";
+                         document.forms['editStudentForm']['sClassYear'].value = "<%=studentData.getString("class_year")%>";
                          
-                         $("#classDropDown2 option[id='c<%=studentData.getString("class_id")%>']").attr('selected', 'true');
+                         
+                         $("#stGender option[value!='<%=studentData.getString("gender")%>']").removeAttr("selected");
+                         $("#stGender option[value='<%=studentData.getString("gender")%>']").attr('selected', 'true');
+                         
                          $("#classDropDown2 option[id!='c<%=studentData.getString("class_id")%>']").removeAttr("selected");
+                         $("#classDropDown2 option[id='c<%=studentData.getString("class_id")%>']").attr('selected', 'true');
                          $("#classDropDown2 option[value!='<%=studentData.getString("programme_id")%>']").hide();
                          
-                         $("#classYearDropDown2 option[value='<%=studentData.getString("class_name")%>']").attr('selected', 'true');
-                         $("#classYearDropDown2 option[value!='<%=studentData.getString("class_name")%>']").removeAttr("selected");
-                         $("#classYearDropDown2 option[value!='<%=studentData.getString("class_name")%>']").hide();
+                         $("#classYearDropDown2 option[value!='c<%=studentData.getString("class_id")%>']").removeAttr("selected");
+                         $("#classYearDropDown2 option[value='c<%=studentData.getString("class_id")%>']").attr('selected', 'true');
+                         $("#classYearDropDown2 option[value!='c<%=studentData.getString("class_id")%>']").hide();
                          
-                         console.log("c<%=studentData.getString("class_id")%>")
+                         var optionValue = "<%=studentData.getString("semester")%>";
+                         var optionText = "<%=studentData.getString("semester")%>";
+                         $('#programmeSemDropDown2').append(new Option(optionText, optionValue));
+                         $("#programmeSemDropDown2 option[value!='<%=studentData.getString("semester")%>']").removeAttr("selected");
+                         $("#programmeSemDropDown2 option[value='<%=studentData.getString("semester")%>']").attr('selected', 'true');
+                         $("#programmeSemDropDown2 option[value!='<%=studentData.getString("semester")%>']").hide();
                          
                          document.forms['editStudentForm']['stRegNo'].value = "<%=studentData.getString("reg_no")%>";
                          document.forms['editStudentForm']['stPassword'].value = "<%=studentData.getString("password")%>";
+                         document.forms['editStudentForm']['tempRegNo'].value = "<%=studentData.getString("reg_no")%>";
                      }
                     </script>
                     
@@ -265,7 +275,7 @@
                             <input id="studentDistrict" name="sDistrict" type="text" placeholder="District" class="merge3" required>
                             <input id="studentState" name="sState" type="text" placeholder="State" class="merge3" required>
                             <input id="studentYof" name="sYearOfJoining" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Year Of Joining" class="merge2" required>
-                            <select name="sProgramme" class="merge3" id="studentProgrammeSelect" name="studentProgrammeSelect" onchange = "changeDropDownData(this.value)" required>
+                            <select name="sProgramme" class="merge3" id="studentProgrammeSelect" onchange = "changeDropDownData(this.value)" required>
                             <option value="" disabled selected hidden>Programme</option>
 		<% 
 			ResultSet studentProgrammeData = loadData.loadProgrammeData();
@@ -284,17 +294,17 @@
 		%>
 				</select>
 				
-                            <select class="merge3" id="classDropDown" name="classDropDown" onchange="changeDropDownData2(this.value)" required>
+                            <select class="merge3" id="classDropDown" name="classDropDown" onchange="changeDropDownData2(this.value)" onclick="changeDropDownData3(this.value)" required>
                             <option value=""  disabled selected hidden>class</option>
 		<% 
-			ResultSet studentClassData = loadData.loadClassData();
+			ResultSet studentClassData = loadData.loadOnlyClassData();
 			if(studentProgrammeData!= null){
 				
 				try{
 					
 					while(studentClassData.next()){
 		%>				
-						<option value="<%=studentClassData.getString("programme_id")%>" id="<%=studentClassData.getString("class_name")%>"><%=studentClassData.getString("class_name")%></option>
+						<option value="<%=studentClassData.getString("programme_id")%>" id="cl<%=studentClassData.getString("class_id")%>"><%=studentClassData.getString("class_name")%></option>
 		<%			}
 				}catch(SQLException e){
 					e.printStackTrace();
@@ -303,17 +313,17 @@
 		%>
                             </select>
                             
-                            <select class="merge3" id="classYearDropDown" name="classYearDropDown" onchange="changeDropDownData3(this.value)" required>
+                            <select class="merge3" id="classYearDropDown" name="classYearDropDown"required>
                             <option value=""  disabled selected hidden>Class Year</option>
                     <% 
-			ResultSet studentClassData2 = loadData.loadClassData();
+			ResultSet studentClassData2 = loadData.loadOnlyClassData();
 			if(studentClassData2!= null){
 				
 				try{
 					
 					while(studentClassData2.next()){
 		%>				
-						<option value="<%=studentClassData2.getString("class_name")%>"><%=studentClassData2.getString("class_year")%></option>
+						<option value="cl<%=studentClassData2.getString("class_id")%>"><%=studentClassData2.getString("class_year")%></option>
 		<%			}
 				}catch(SQLException e){
 					e.printStackTrace();
@@ -584,7 +594,6 @@
 					var myclass = {};
 					$("select[id='classDropDown'] > option").each(function() {
 					    if(myclass[this.text]) {
-					        $(this).remove();
 					        $(this).hide();
 					    } else {
 					        myclass[this.text] = this.value;
@@ -656,8 +665,9 @@
 	       						
 	       						$("#classYearDropDown option[value='"+classId+"']").show();
 	       						$("#classYearDropDown option[value!='"+classId+"']").hide();
-	       						document.getElementById("classYearDropDown").selectedIndex = "0";
-	       						document.getElementById("programmeSemDropDown").selectedIndex = "0";
+	       						$("#classYearDropDown option[value!='"+classId+"']").removeAttr("selected");
+	       						$("#classYearDropDown option[value='"+classId+"']").attr("selected",true);
+	       						
 	       						$("#programmeSemDropDown option").hide();
 	       						
 	       						$("#classDropDown option:selected").each(function() {
@@ -665,11 +675,11 @@
 	    							   document.forms['insertStudentDataForm']['sClass'].value = classId;
 	    							  
 	    							}); 
+	       						
 	       					}
 	       				}
 	       				
-	       				function changeDropDownData3(studentClassYear){                    					
-	       					if(studentClassYear!=''){
+	       				function changeDropDownData3(){                    					
 	       						document.getElementById("programmeSemDropDown").selectedIndex = "0"; 
 	       						
 	       						$("#classYearDropDown option:selected").each(function() {
@@ -688,7 +698,7 @@
 	     							   document.forms['insertStudentDataForm']['sClassYear'].value = classYear;
 	     							  
 	     							}); 
-	       					}
+	       					
 	       				}
                             </script>
                     </form>
@@ -732,25 +742,25 @@
                     <div class="header8">
                         <h1>Edit Student Details</h1></div>
                          <img class="student" src="css/images/studenticon.svg">
-                        <form id = "editStudentForm" action="" >
-                            <input id="stFirstName" type="text" placeholder="First Name" class="merge1">
-                            <input id="stLastName"  type="text" placeholder="Last Name" class="merge1">
-                            <select id="stGender" class="merge2">
+                        <form id = "editStudentForm" action="UpdateDataServlet" method="post">
+                            <input name="sFirstName" id="stFirstName" type="text" placeholder="First Name" class="merge1" required>
+                            <input name="sLastName" id="stLastName"  type="text" placeholder="Last Name" class="merge1" required>
+                            <select name="sGender" id="stGender" class="merge2" required>
                             <option value="" disabled hidden>Gender</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Other</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
                             </select>
-                            <input id="stDOB" type="text" placeholder="Date of Birth" class="merge2">
-                            <input id="stEmail" type="text" placeholder="Email" class="merge1">
-                            <input id="stPhone" type="text" placeholder="Mobile Number" class="merge1">
-                            <input id="stAddress" type="text" placeholder="Address" class="merge1">
-                            <input id="stPincode" type="text" placeholder="Pincode" class="merge1">
-                            <input id="stCity" type="text" placeholder="city" class="merge3">
-                            <input id="stDistrict" type="text" placeholder="District" class="merge3">
-                            <input id="stState" type="text" placeholder="State" class="merge3">
-                            <input id="stYOF" type="text" placeholder="Year Of Joining" class="merge2">
-                            <select id="stProgramme" class="merge3">
+                            <input name="sdob" id="stDOB" type="date" placeholder="Date of Birth" class="merge2" required>
+                            <input name="sEmail" id="stEmail" type="text" placeholder="Email" class="merge1" required>
+                            <input name="sPhone" id="stPhone" type="text" placeholder="Mobile Number" class="merge1" required>
+                            <input name="sAddress"  id="stAddress" type="text" placeholder="Address" class="merge1" required>
+                            <input name="sPincode" id="stPincode" type="text" placeholder="Pincode" class="merge1"required>
+                            <input name="sCity" id="stCity" type="text" placeholder="city" class="merge3" required>
+                            <input name="sDistrict"  id="stDistrict" type="text" placeholder="District" class="merge3" required>
+                            <input name="sState" id="stState" type="text" placeholder="State" class="merge3" required>
+                            <input name="sYearOfJoining" id="stYOF" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Year Of Joining" class="merge2" required>
+                            <select name="sProgramme" id="stProgramme" class="merge3" onclick = "changeDropDownData4(this.value)" required>
                             <option value="" disabled selected hidden>Programme</option>
         <% 
 			ResultSet studentProgrammeData3 = loadData.loadProgrammeData();
@@ -769,10 +779,10 @@
 		%>
 				</select>
 				
-                            <select class="merge3" id="classDropDown2" name="classDropDown" onchange="changeDropDownData2(this.value)" required>
+                            <select class="merge3" id="classDropDown2" name="classDropDown" onchange="changeDropDownData5(this.value)" onclick="changeDropDownData6(this.value)" required>
                             <option value=""  disabled selected hidden>class</option>
 		<% 
-			ResultSet studentClassData3 = loadData.loadClassData();
+			ResultSet studentClassData3 = loadData.loadOnlyClassData();
 			if(studentProgrammeData3!= null){
 				
 				try{
@@ -788,17 +798,17 @@
 		%>
                             </select>
                             
-                            <select class="merge3" id="classYearDropDown2" name="classYearDropDown" onchange="changeDropDownData3(this.value)" required>
+                            <select class="merge3" id="classYearDropDown2" name="classYearDropDown" required>
                             <option value=""  disabled selected hidden>Class Year</option>
                     <% 
-			ResultSet studentClassData4 = loadData.loadClassData();
+			ResultSet studentClassData4 = loadData.loadOnlyClassData();
 			if(studentClassData4!= null){
 				
 				try{
 					
 					while(studentClassData4.next()){
 		%>				
-						<option value="<%=studentClassData4.getString("class_name")%>"><%=studentClassData4.getString("class_year")%></option>
+						<option value="c<%=studentClassData4.getString("class_id")%>"><%=studentClassData4.getString("class_year")%></option>
 		<%			}
 				}catch(SQLException e){
 					e.printStackTrace();
@@ -806,14 +816,136 @@
 			}
 		%>
                             </select>
-                            <select id="stCurrentSem" class="merge2">
+                            <select name="sSemester" onclick="removeSemDuplicate()" class="merge2" id="programmeSemDropDown2" required>
                             <option value="" disabled selected hidden>Current Sem</option>
                             </select>
                             
                             
-                            <input id="stRegNo" type="text" placeholder="Register Number" class="merge1">
-                            <input id="stPassword" type="text" placeholder="Password" class="merge1">
-                            <button id="button8" >UPDATE</button>
+                            <input name="sRegNo" id="stRegNo" type="text" placeholder="Register Number" class="merge1" readonly="readonly" required>
+                            <input id="stPassword" type="password" placeholder="Password" class="merge1" readonly="readonly" required>
+                            <input type="hidden" name="Data" value="student" required />
+                            <input type="hidden" name="sClass" id="stClass" value="" required/>
+                            <input type="hidden" name="sClassYear" id="stClassYear" value="" required />
+                            <input type="hidden" name="temp" value="" id="tempRegNo"/>
+                            <input type="submit" id="button8" value="UPDATE" >
+		<% 
+			ResultSet studentProgrammeSem2 = loadData.loadProgrammeData();
+			if(studentProgrammeSem!= null){
+				
+				try{
+					
+					while(studentProgrammeSem2.next()){
+		%>				
+						<input type = "hidden" id="p<%=studentProgrammeSem2.getString("programme_id")%>" value = "<%=studentProgrammeSem2.getString("programme_sem")%>">
+		<%			}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+			}
+		%>                            
+                            
+                            <script type="text/javascript">
+                            function changeDropDownData4(studentProgrammeSelect){        
+    	       					if(studentProgrammeSelect!=''){
+    	       						
+    	       						$("#classDropDown2 option[value='"+studentProgrammeSelect+"']").show();
+    	       						$("#classDropDown2 option[value!='"+studentProgrammeSelect+"']").hide();
+    	       						document.getElementById("classDropDown2").selectedIndex = "0";
+    	       						document.getElementById("classYearDropDown2").selectedIndex = "0";
+    	       						$("#classYearDropDown2 option").hide();
+    	       						document.getElementById("programmeSemDropDown2").selectedIndex = "0";
+    	       						
+    	       						
+    	       						var programmeSem = document.getElementById("p"+studentProgrammeSelect).value;
+    	       						var optionsCount = $('#programmeSemDropDown2 > option').length -1;
+    	       						
+    	       						if(programmeSem > optionsCount){
+    	       							
+    	       							for(let i=(optionsCount + 1);i<=(programmeSem);i++){
+    	       								$('#programmeSemDropDown2').append(new Option(i, i));
+    	       							}
+    	       						}
+    	       						
+    	       						if(programmeSem < optionsCount){
+    	       							
+    	       							for(let i=(optionsCount);i>(programmeSem);i--){
+    	       								$("#programmeSemDropDown2 option[value='"+i+"']").remove();
+    	       							}
+    	       						}
+    	       						
+    	       						$("#programmeSemDropDown2 option").hide();
+    	       						
+    	       					}
+    	       				}
+    	       				
+    	       				function changeDropDownData5(studentClassSelect){                    					
+    	       					if(studentClassSelect!=''){
+    	       						
+    	       						var classId = $("#classDropDown2 option:selected").attr("id");
+    	       						
+    	       						$("#classYearDropDown2 option[value='"+classId+"']").show();
+    	       						$("#classYearDropDown2 option[value!='"+classId+"']").hide();
+    	       						$("#classYearDropDown2 option[value!='"+classId+"']").removeAttr("selected");
+    	       						$("#classYearDropDown2 option[value='"+classId+"']").attr("selected",true);
+    	       						
+    	       						$("#programmeSemDropDown2 option").hide();
+    	       						
+    	       						$("#classDropDown2 option:selected").each(function() {
+    	    							   var classId = this.text;
+    	    							   document.forms['editStudentForm']['stClass'].value = classId;
+    	    							  
+    	    							});
+    	       						
+    	       						var programmeSem = document.getElementById("p"+studentClassSelect).value;
+    	       						var optionsCount = $('#programmeSemDropDown2 > option').length -1;
+    	       						
+    	       						if(programmeSem > optionsCount){
+    	       							
+    	       							for(let i=(optionsCount + 1);i<=(programmeSem);i++){
+    	       								$('#programmeSemDropDown2').append(new Option(i, i));
+    	       							}
+    	       						}
+    	       						
+    	       						if(programmeSem < optionsCount){
+    	       							
+    	       							for(let i=(optionsCount);i>(programmeSem);i--){
+    	       								$("#programmeSemDropDown2 option[value='"+i+"']").remove();
+    	       							}
+    	       						}
+    	       						
+    	       					}
+    	       				}
+    	       				
+    	       				function changeDropDownData6(){                    					
+    	       						document.getElementById("programmeSemDropDown2").selectedIndex = "0"; 
+    	       						
+    	       						$("#classYearDropDown2 option:selected").each(function() {
+    	       							   var classYear = parseInt($(this).text());
+    	       							   document.forms['editStudentForm']['stClassYear'].value = classYear;
+    	       							   var firstSem = (classYear + classYear) -1; 
+    	       							   var secondSem = firstSem + 1;
+    	       							   
+    	       							   $("#programmeSemDropDown2 option[value='"+firstSem+"']").show();
+    	       							   $("#programmeSemDropDown2 option[value!='"+firstSem+"']").hide();
+    	       							   $("#programmeSemDropDown2 option[value='"+secondSem+"']").show();
+    	       							}); 
+    	       						
+    	       						$("#classYearDropDown2 option:selected").each(function() {
+    	     							   var classYear = this.text;
+    	     							   document.forms['editStudentForm']['sClassYear'].value = classYear;
+    	     							  
+    	     							}); 
+    	       					
+    	       				}
+    	       				
+    	       				function removeSemDuplicate(){
+	    						$("#programmeSemDropDown2 option").each(function() {
+	    							  $(this).siblings('[value="'+ this.value +'"]').remove();
+	    							});
+    	       					
+    	       				}
+                            
+                            </script>
                     </form>
                 </div>
             </div>
@@ -1730,7 +1862,7 @@
                        <%
                        	try{
                        		
-                       		ResultSet classesData = loadData.loadClassData();
+                       		ResultSet classesData = loadData.loadOnlyClassData();
    	    					while(classesData.next()){
    	    			%>		
    	    	
