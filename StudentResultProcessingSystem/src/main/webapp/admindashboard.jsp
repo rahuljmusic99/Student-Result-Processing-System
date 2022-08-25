@@ -453,12 +453,8 @@
 						swal("Invalid Email !","Please Enter a valid Email address Format","error");
 						e.preventDefault();
 						
-					}else if(sEmail.length > 255){
+					}else if(sEmail.value.length > 255){
 						swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
-						e.preventDefault();
-						
-					}else if(sAddress.length < 3){
-						swal("Invalid Address","Address cannot be less than 3 Characters","error");
 						e.preventDefault();
 						
 					}else if(onlyDigits.test(sPhone.value) == false){//Mobile Number
@@ -485,7 +481,11 @@
 				 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
 						e.preventDefault();
 				 		
-				 	}else if(onlyDigits.test(sPincode.value) == false){//Pinclode
+				 	}else if(sAddress.value.length < 3){
+						swal("Invalid Address","Address cannot be less than 3 Characters","error");
+						e.preventDefault();
+						
+					}else if(onlyDigits.test(sPincode.value) == false){//Pinclode
 				 		swal("Invalid Pincode !","Pincode can only contain Digits","error");
 						e.preventDefault();
 				 		
@@ -845,6 +845,212 @@
 		%>                            
                             
                             <script type="text/javascript">
+                            //edit student validation
+                    const editStudentForm = document.getElementById("editStudentForm");
+                    const sFirstName2 = document.getElementById("stFirstName");
+                    const sLastName2 = document.getElementById("stLastName");
+                    const sPhone2 = document.getElementById("stPhone");
+                    const sDob2 = document.getElementById("stDOB");
+                    const sEmail2 = document.getElementById("stEmail");
+                    const sAddress2 = document.getElementById("stAddress");
+                    const sCity2 = document.getElementById("stCity");
+                    const sPincode2 = document.getElementById("stPincode");
+                    const sDistrict2 = document.getElementById("stDistrict");
+                    const sState2 = document.getElementById("stState");
+                    const sYof2 = document.getElementById("stYOF");
+          
+                             
+                    editStudentForm.addEventListener('submit', (e)=> {
+
+					var onlyCharacters = /^[A-za-z]*$/;
+					var onlyDigits = /^\d+$/; 
+					var startingCaps = /^[A-Z]\w*/;
+					var namePattern = /^[A-Z][a-z]*$/;
+					
+					var validMinDate = new Date();
+					var dd = String(validMinDate.getDate()).padStart(2, '0');
+					var mm = String(validMinDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+					var yyyy = validMinDate.getFullYear() -17;
+					validMinDate = yyyy + '-' + mm + '-' + dd;
+					
+					var validMaxDate = new Date();
+					var dd2 = String(validMaxDate.getDate()).padStart(2, '0');
+					var mm2 = String(validMaxDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+					var yyyy2 = validMaxDate.getFullYear() -35;
+					validMaxDate = yyyy2 + '-' + mm2 + '-' + dd2;
+					
+					var validMaxYear = new Date();
+					var yyyy3 = validMaxYear.getFullYear();
+					validMaxYear = yyyy3;
+					
+					var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+					var mobileNumber = /^[6-9]\d+/; 
+					var city = /^[A-Z]{1}[a-z]+([ ]{1}[A-Z]{1}[a-z]+)?([-]{1}[A-Z]{1}[a-z]+)?([ ]{1}[A-Z]*[a-z]+)*?[a-z]$/;
+					var pincode = /^[1-9]{1}[0-9]{2}[0-9]{3}$/;
+					var address = /^[A-Z0-9]{1}[A-Za-z0-9 \'\.\-\,\;\:\#]*[A-Za-z0-9\.]$/;
+					var districtState = /^[A-Za-z]*([ ]{1}[A-Z]{1}[a-z]+)*?[a-z]$/;
+					
+					var yearOfBirth = parseInt(/^\d{4}/.exec(sDob2.value));
+					
+					if(onlyCharacters.test(sFirstName2.value) == false){//First Name
+						swal("Invalid First Name !","First Name can only contain Alphabets","error");
+						e.preventDefault(); 
+						
+					}else if(sFirstName2.value.length < 2){
+						swal("Invalid First Name !","First Name should have at least 2 Characters","error");
+						e.preventDefault(); 
+					
+					}else if(sFirstName2.value.length > 64){
+						swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+						e.preventDefault(); 
+					
+					}else if(startingCaps.test(sFirstName2.value) == false){
+						swal("Invalid First Name !","Starting Alphabet of the First Name should be Capitalized","error");
+						e.preventDefault(); 
+						
+					}else if(namePattern.test(sFirstName2.value) == false){
+						swal("Invalid First Name !","Only Starting Alphabet of the First Name should be Capitalized","error");
+						e.preventDefault(); 
+						
+					}else if(onlyCharacters.test(sLastName2.value) == false){//Last Name
+						swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
+						e.preventDefault(); 
+						
+					}else if(sLastName2.value.length > 64){
+						swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+						e.preventDefault(); 
+					
+					}else if(startingCaps.test(sLastName2.value) == false){
+						swal("Invalid Last Name !","Starting Alphabet of the Last Name should be Capitalized","error");
+						e.preventDefault(); 
+						
+					}else if(namePattern.test(sLastName2.value) == false){
+						swal("Invalid Last Name !","Only Starting Alphabet of the Last Name should be Capitalized","error");
+						e.preventDefault(); 
+						
+					}else if((sDob2.value) > validMinDate){//DOB
+						swal("Invalid Date of Birth !","Age must be greater than 17 years","error");
+						e.preventDefault(); 
+						
+					}else if((sDob2.value) < validMaxDate){
+						swal("Invalid Date of Birth !","Age must be less than 35 years","error");
+						e.preventDefault(); 
+						
+					}else if(email.test(sEmail2.value) == false){//Email
+						swal("Invalid Email !","Please Enter a valid Email address Format","error");
+						e.preventDefault();
+						
+					}else if(sEmail2.value.length > 255){
+						swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+						e.preventDefault();
+						
+					}else if(onlyDigits.test(sPhone2.value) == false){//Mobile Number
+						swal("Invalid Mobile Number !","Mobile Number can only contain Digits","error");
+						e.preventDefault(); 
+						
+					}else if(mobileNumber.test(sPhone2.value) == false){
+						swal("Invalid Mobile Number !","Starting Digit of Mobile Number can only begin from range '6-9'","error");
+						e.preventDefault(); 
+						
+					}else if(sPhone2.value.length < 10){
+						swal("Invalid Mobile Number !","Mobile Number cannot be less than 10 Digits","error");
+						e.preventDefault(); 
+						
+				 	}else if(sPhone2.value.length > 10){
+						swal("Invalid Mobile Number !","Mobile Number cannot be more than 10 Digits","error");
+						e.preventDefault(); 
+						
+				 	}else if(address.test(sAddress2.value) == false){//Address
+				 		swal("Invalid Address !","Address can only contain Alphabets, Digits, White Spaces, some Special Characters like ' - , . : ; #  and starting Character can only be a Digit or a Capital Alphabet","error");
+						e.preventDefault();
+				 		
+				 	}else if(sAddress2.value.length < 3){
+						swal("Invalid Address","Address cannot be less than 3 Characters","error");
+						e.preventDefault();
+						
+					}else if(sAddress2.value.length > 255){
+				 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(onlyDigits.test(sPincode2.value) == false){//Pinclode
+				 		swal("Invalid Pincode !","Pincode can only contain Digits","error");
+						e.preventDefault();
+				 		
+				 	}else if(sPincode2.value.length > 6){
+				 		swal("Invalid Pincode !","Pincode cannot be more than 6 Digits","error");
+						e.preventDefault();
+				 		
+				 	}else if(sPincode2.value.length < 6){
+				 		swal("Invalid Pincode !","Pincode cannot be less than 6 Digits","error");
+						e.preventDefault();
+				 		
+				 	}else if(pincode.test(sPincode2.value) == false){
+				 		swal("Invalid Pincode !","Pincode cannot begin with '0'","error");
+						e.preventDefault();	
+						
+				 	}else if(sCity2.value.length < 3){//City
+				 		swal("Invalid City !","City cannot contain less than 3 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(startingCaps.test(sCity2.value) == false){
+				 		swal("Invalid City !","Starting Alphabet of the City should be Capitalized","error");
+						e.preventDefault();
+				 		
+				 	}else if(city.test(sCity2.value) == false){
+				 		swal("Invalid City !","City can only contain Alphabets, a Single Space after each Word and '-' Character  Eg:'Sangli-Miraj and Kupwad'","error");
+						e.preventDefault();
+				 		
+				 	}else if(sCity2.value.length > 64){
+				 		swal("Invalid City !","City cannot contain more than 64 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(districtState.test(sDistrict2.value) == false){//District
+				 		swal("Invalid District !","District can only contain Alphabets and Single Space after each Word","error");
+						e.preventDefault();
+				 		
+				 	}else if(sDistrict2.value.length < 3){
+				 		swal("Invalid District !","District cannot contain less than 3 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(startingCaps.test(sDistrict2.value) == false){
+				 		swal("Invalid District !","Starting Alphabet of the District should be capitalized","error");
+						e.preventDefault();
+				 		
+				 	}else if(sDistrict2.value.length > 64){
+				 		swal("Invalid District !","District cannot contain more than 64 Characters","error");
+						e.preventDefault();
+						
+				 	}else if(districtState.test(sState2.value) == false){//State
+				 		swal("Invalid State !","State can only contain Alphabets and a Single Space after each Word","error");
+						e.preventDefault();
+				 		
+				 	}else if(sState2.value.length < 3){
+				 		swal("Invalid District !","District cannot contain less than 3 Characters","error");
+						e.preventDefault();
+				 		
+				 	}else if(startingCaps.test(sState2.value) == false){
+				 		swal("Invalid State !","Starting Alphabet of the State should be capitalized","error");
+						e.preventDefault();
+				 		
+				 	}else if(sState2.value.length > 64){
+				 		swal("Invalid State !","State cannot contain more than 64 Characters","error");
+						e.preventDefault();
+				 	
+				 	}else if(sYof2.value > validMaxYear){//Year of Joining
+				 		swal("Invalid Year of Joining !","Year of Joining cannot be greater than Current Year","error");
+						e.preventDefault();
+				 		
+				 	}else if((parseInt(sYof2.value) - yearOfBirth) < 17){
+				 		swal("Invalid Year of Joining !","Year of Joining should be greater than 17 years of Year of Birth","error");
+						e.preventDefault();
+				 		
+				 	}else if((parseInt(sYof2.value) - yearOfBirth) > 35){
+				 		swal("Invalid Year of Joining !","Year of Joining should not be greater then 35 years of Year of Birth","error");
+						e.preventDefault();
+				 		
+				 	}
+				 });
+                            
                             function changeDropDownData4(studentProgrammeSelect){        
     	       					if(studentProgrammeSelect!=''){
     	       						
@@ -1020,13 +1226,33 @@
                         	document.querySelector('.bg-model11').style.position = 'fixed';
                         	
                         	
-                        	document.forms['editStaffForm']['staffFirstName'].value = "<%=staffDataSet.getString("first_name")%>";
-                        	document.forms['editStaffForm']['staffLastName'].value = "<%=staffDataSet.getString("last_name")%>";
-                        	document.forms['editStaffForm']['staffId'].value = "<%=staffDataSet.getString("staff_id")%>";
-                        	document.forms['editStaffForm']['staffEmail'].value = "<%=staffDataSet.getString("email")%>";
-                        	document.forms['editStaffForm']['staffPhone'].value = "<%=staffDataSet.getString("phone")%>";
-                        	document.forms['editStaffForm']['staffAddress'].value = "<%=staffDataSet.getString("address")%>";
-                        	document.forms['editStaffForm']['staffPassword'].value = "<%=staffDataSet.getString("password")%>";
+                        	document.forms['editStaffForm']['staffFirstName2'].value = "<%=staffDataSet.getString("first_name")%>";
+                        	document.forms['editStaffForm']['staffLastName2'].value = "<%=staffDataSet.getString("last_name")%>";
+                        	document.forms['editStaffForm']['staffId2'].value = "<%=staffDataSet.getString("staff_id")%>";
+                        	document.forms['editStaffForm']['tempStaffId'].value = "<%=staffDataSet.getString("staff_id")%>";
+                        	document.forms['editStaffForm']['staffEmail2'].value = "<%=staffDataSet.getString("email")%>";
+                        	document.forms['editStaffForm']['staffPhone2'].value = "<%=staffDataSet.getString("phone")%>";
+                        	document.forms['editStaffForm']['staffAddress2'].value = "<%=staffDataSet.getString("address")%>";
+                        	document.forms['editStaffForm']['staffPassword2'].value = "<%=staffDataSet.getString("password")%>";
+                        	
+                        	$("#staffGender2 option[value!='<%=staffDataSet.getString("gender")%>']").removeAttr("selected");
+                        	$("#staffGender2 option[value='<%=staffDataSet.getString("gender")%>']").attr("selected",true);
+                        	
+                        	$("#staffProgramme2 option[id!='pro<%=staffDataSet.getString("programme_id")%>']").removeAttr("selected");
+                        	$("#staffProgramme2 option[id='pro<%=staffDataSet.getString("programme_id")%>']").attr("selected",true);
+                        	
+                        	var role = '<%=staffDataSet.getString("role")%>';
+                        	console.log(role);
+                        	
+                        	if(role == "Internal Auditor"){
+                        		$("#staffRole2 option[id!='internalAudit']").removeAttr("selected");
+                            	$("#staffRole2 option[id='internalAudit']").attr("selected",true);
+                        	
+                        	}else{
+                        		$("#staffRole2 option[id!='Facul']").removeAttr("selected");
+                            	$("#staffRole2 option[id='Facul']").attr("selected",true);
+                        		
+                        	}
                         }
                         </script>
                         
@@ -1269,27 +1495,144 @@
                         <div id="editStudentDiv" class="header11">
                             <h1>Edit Staff Details</h1></div>
                              <img class="student" src="css/images/studenticon.svg">
-                            <form id="editStaffForm" action="" method="post">
-                                <input id="staffFirstName" name="staffFirstName" type="text" placeholder="First Name" class="merge4">
-                                <input id="staffLastName" name="staffLastName" type="text" placeholder="Last Name" class="merge4">
-                                <select id="staffGender" name="staffGender" class="merge5">
+                            <form id="editStaffForm" action="UpdateDataServlet" method="post">
+                                <input id="staffFirstName2" name="staffFirstName" type="text" placeholder="First Name" class="merge4" required>
+                                <input id="staffLastName2" name="staffLastName" type="text" placeholder="Last Name" class="merge4" required>
+                                <select id="staffGender2" name="staffGender" class="merge5" required>
                                 <option value="" disabled selected hidden>Gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option>Other</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
                                 </select>
-                                <input id="staffEmail" name="staffEmail" type="text" placeholder="Email" class="merge4">
-                                <input id="staffPhone" name="StaffPhone" type="text" placeholder="Mobile Number" class="merge4">
-                                <input id="staffAddress" name="staffAddress" type="text" placeholder="Address" class="merge5">
-                                <select id="staffProgramme" name="staffProgramme" class="merge4">
+                                <input id="staffEmail2" name="staffEmail" type="text" placeholder="Email" class="merge4" required>
+                                <input id="staffPhone2" name="StaffPhone" type="text" placeholder="Mobile Number" class="merge4" required>
+                                <input id="staffAddress2" name="staffAddress" type="text" placeholder="Address" class="merge5" required>
+                                <select id="staffProgramme2" name="staffProgramme" class="merge4">
                                 <option value="" disabled selected hidden>Programme name</option>
+                    <%
+								ResultSet programmeDataSet4 = loadData.loadProgrammeData();
+								
+								if(programmeDataSet4 != null){
+									
+									try{
+
+										while(programmeDataSet4.next()){
+					%>	
+											<option id="pro<%=programmeDataSet4.getString("programme_id")%>" value="<%=programmeDataSet4.getString("programme_id")%>"><%=programmeDataSet4.getString("programme_name")%></option>			
+					<% 			}
+										
+									}catch(SQLException e){
+										
+									}
+								}
+					%>            
                                 </select>
-                                <select id="" name="" class="merge4">
+                                <select id="staffRole2" name="staffRole" class="merge4" required>
                                 <option value="" disabled selected hidden>Role</option>
+								<option id="internalAudit" value="Internal Auditor">Internal Auditor</option>
+                                <option id="Facul" value="Faculty">Faculty</option>
                                 </select>
-                                <input id="staffId" name="staffId" type="text" placeholder="Staff ID(Digits only)" class="merge4">
-                                <input id="staffPassword" name="staffPassword" type="text" placeholder="Password" class="merge4">
-                                <button id="button11" >Update</button>
+                                <input id="staffId2" name="staffId" type="text" placeholder="Staff ID(Digits only)" class="merge4" required>
+                                <input id="staffPassword2" name="staffPassword" type="password" placeholder="Password" class="merge4" readonly="readonly" required>
+                                <input type="hidden" name="Data" value="staff"/>
+                                <input type="hidden" id="tempStaffId"/ name="tempStaffId">
+                                <input type="submit" id="button11" value="UPDATE" />
+                                
+                                <script type="text/javascript">
+                                const editStaffForm = document.getElementById("editStaffForm");
+								const staffFirstName2 = document.getElementById("staffFirstName2");
+								const staffLastName2 = document.getElementById("staffLastName2");
+							 	const staffEmail2 = document.getElementById("staffEmail2");
+							 	const staffPhone2 = document.getElementById("staffPhone2");
+							 	const staffAddress2 = document.getElementById("staffAddress2");
+								
+							 	editStaffForm.addEventListener('submit', (e)=> {
+							 		
+							 		var onlyCharacters = /^[A-za-z]*$/;
+									var onlyDigits = /^\d+$/; 
+									var startingCaps = /^[A-Z]\w*/;
+									var namePattern = /^[A-Z][a-z]*$/;										
+									var email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+									var mobileNumber = /^[6-9]\d+/; 
+									var address = /^[A-Z0-9]{1}[A-Za-z0-9 \'\.\-\,\;\:\#]*[A-Za-z0-9\.]$/;
+									var sID = /^\d*$/;
+									var password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]*$/;
+									
+									if(onlyCharacters.test(staffFirstName2.value) == false){//First Name
+										swal("Invalid First Name !","First Name can only contain Alphabets","error");
+										e.preventDefault(); 
+										
+									}else if(staffFirstName2.value.length < 2){
+										swal("Invalid First Name !","First Name should have at least 2 Characters","error");
+										e.preventDefault(); 
+									
+									}else if(staffFirstName2.value.length > 64){
+										swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+										e.preventDefault(); 
+									
+									}else if(startingCaps.test(staffFirstName2.value) == false){
+										swal("Invalid First Name !","Starting Alphabet of the First Name should be Capitalized","error");
+										e.preventDefault(); 
+										
+									}else if(namePattern.test(staffFirstName2.value) == false){
+										swal("Invalid First Name !","Only Starting Alphabet of the First Name should be Capitalized","error");
+										e.preventDefault(); 
+										
+									}else if(onlyCharacters.test(staffLastName2.value) == false){//Last Name
+										swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
+										e.preventDefault(); 
+										
+									}else if(staffLastName2.value.length > 64){
+										swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+										e.preventDefault(); 
+									
+									}else if(startingCaps.test(staffLastName2.value) == false){
+										swal("Invalid Last Name !","Starting Alphabet of the Last Name should be Capitalized","error");
+										e.preventDefault(); 
+										
+									}else if(namePattern.test(staffLastName2.value) == false){
+										swal("Invalid Last Name !","Only Starting Alphabet of the Last Name should be Capitalized","error");
+										e.preventDefault(); 
+										
+									}else if(email.test(staffEmail2.value) == false){//Email
+										swal("Invalid Email !","Please Enter a valid Email address Format","error");
+										e.preventDefault();
+										
+									}else if(staffEmail2.length > 255){
+										swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+										e.preventDefault();
+										
+									}else if(onlyDigits.test(staffPhone2.value) == false){//Mobile Number
+										swal("Invalid Mobile Number !","Mobile Number can only contain Digits","error");
+										e.preventDefault(); 
+										
+									}else if(mobileNumber.test(staffPhone2.value) == false){
+										swal("Invalid Mobile Number !","Starting Digit of Mobile Number can only begin from range '6-9'","error");
+										e.preventDefault(); 
+										
+									}else if(staffPhone2.value.length < 10){
+										swal("Invalid Mobile Number !","Mobile Number cannot be less than 10 Digits","error");
+										e.preventDefault(); 
+										
+								 	}else if(staffPhone2.value.length > 10){
+										swal("Invalid Mobile Number !","Mobile Number cannot be more than 10 Digits","error");
+										e.preventDefault(); 
+										
+								 	}else if(address.test(staffAddress2.value) == false){//Address
+								 		swal("Invalid Address !","Address can only contain Alphabets, Digits, White Spaces, some Special Characters like ' - , . : ; #  and starting Character can only be a Digit or a Capital Alphabet","error");
+										e.preventDefault();
+								 		
+								 	}else if(staffAddress2.value.length > 255){
+								 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+										e.preventDefault();
+								 		
+								 	}else if(staffAddress2.length < 3){
+										swal("Invalid Address","Address cannot be less than 3 Characters","error");
+										e.preventDefault();
+										
+									}
+							 	});
+                                </script>
                         </form>
                     </div>
                 </div>
@@ -1377,6 +1720,10 @@
 	                            document.getElementById("programmeNameInProgramme").value = "<%=programmeResultSet.getString("programme_name")%>";
 	                            document.getElementById("programmeDuration").value = "<%=programmeResultSet.getString("programme_duration")%>";
 	                            document.getElementById("programmeTotalSemesterInProgramme").value = "<%=programmeResultSet.getString("programme_sem")%>";
+	                            $("#programmeDuration").attr({
+	                                "max" : 10,        // substitute your own
+	                                "min" : <%=programmeResultSet.getString("programme_duration")%>          // values (or variables) here
+	                             });
 	                        } 
 	                        
 	                        document.getElementById("courseEdit<%=i + j%>");
@@ -1528,7 +1875,8 @@
 											
 										}else if(onlyCharactersAndSpaces.test(programmeName.value) == false){//Programme Name
 											swal("Invalid Programme Name !","Programme Name can only contain characters and spaces","error")
-											
+											e.preventDefault();	
+										
 										}else if(atLeastThreeLetters.test(programmeName.value) == false){
 											swal("Invalid Programme Name !","Programme Name should contain at least 3 letters","error");	
 											e.preventDefault();
@@ -1827,13 +2175,61 @@
                         <div class="close13" id="close">+</div>
                         <div class="header13">
                             <h1>Edit Programme Data</h1></div>
-                            <form action="">
-
-                                <input id="programmeIdInProgramme" type="text" placeholder="Programme Id">
+                            <form id="editProgrammeForm" action="UpdateDataServlet" method="post">
+                                <input id="programmeIdInProgramme" type="text" placeholder="Programme Id" readonly="readonly">
                                 <input id="programmeNameInProgramme" type="text" placeholder="Programme Name">
-                                <input id="programmeDuration" type="text" placeholder="Duration(In Years)">
-                                <input id="programmeTotalSemesterInProgramme" type="text" placeholder="Total Semester">
-                                <button id="button13" >UPDATE</button>
+                                <input id="programmeDuration" min="" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Duration(In Years)">
+                                <input id="programmeTotalSemesterInProgramme" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Total Semester">
+                                <input type="submit" id="button13" value="UPDATE" />
+                                
+                                <script type="text/javascript">
+                                	const editProgrammeForm = document.getElementById("editProgrammeForm");
+									const programmeName2 = document.getElementById("programmeNameInProgramme");
+									const programmeDuration2 = document.getElementById("programmeDuration");
+								 	const programmeSem2 = document.getElementById("programmeTotalSemesterInProgramme");
+				
+								 	editProgrammeForm.addEventListener('submit', (e)=> {
+								 		 
+								 		var onlyCharactersAndSpaces = /^[a-zA-Z]*[ a-zA-Z]*$/;
+								 		var atLeastThreeLetters = /[A-Za-z]{3,}/;
+										var onlyDigits = /^\d+$/; 
+										var startingCaps = /^[A-Z]\w*/;										
+										
+										if(onlyCharactersAndSpaces.test(programmeName2.value) == false){//Programme Name
+											swal("Invalid Programme Name !","Programme Name can only contain characters and spaces","error")
+											e.preventDefault();
+										
+										}else if(atLeastThreeLetters.test(programmeName2.value) == false){
+											swal("Invalid Programme Name !","Programme Name should contain at least 3 letters","error");	
+											e.preventDefault();
+											
+										}else if(programmeName2.value.length < 3){
+											swal("Invalid Programme Name !","Prgramme Name cannot be less than 3 Characters","error");
+											e.preventDefault(); 
+											
+										}else if(programmeName2.value.length > 64){
+											swal("Invalid Programme Name !","Prgramme Name cannot be more than 64 Characters","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeDuration2.value) > 6){//Programme Duration
+											swal("Invalid Programme Duration !","Prgramme Duration cannot be greater than 6 years","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeDuration2.value) < 1){
+											swal("Invalid Programme Duration !","Prgramme Duration cannot be less than 1 year","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeSem2.value) > parseInt(programmeDuration2.value)*2){//Programme Semester
+											swal("Invalid Total Semester !","Total Semester cannot be greater than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
+											e.preventDefault(); 
+											
+										}else if(parseInt(programmeSem2.value) < parseInt(programmeDuration2.value)*2){
+											swal("Invalid Total Semester !","Total Semester cannot be less than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
+											e.preventDefault(); 
+											
+										}
+								 	});
+                            </script>
                         </form>
                     </div>
                 </div>

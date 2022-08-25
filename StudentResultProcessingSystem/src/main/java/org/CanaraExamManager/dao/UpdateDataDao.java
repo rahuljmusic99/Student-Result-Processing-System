@@ -107,39 +107,31 @@ public class UpdateDataDao {
 			
 			con = DBConnection.createConnection();
 			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM staff WHERE staff_id = "+staffDataBean.getStaffId()+"");
-			if(resultSet.next() == false) {//check whether staff with that staff id already exists
 				
-				query = "INSERT INTO staff(staff_id,first_name,last_name,gender,dob,email,phone,address,blood_group,"
-						+ "password,staff_status)"
-						+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+				query = "UPDATE staff SET first_name = ?, last_name = ?, gender = ?, email = ?,"
+						+ "phone = ?, address = ?, programme_id = ?, staff_status = ?, staff_id = ?, role = ? "
+						+ "WHERE staff_id = "+staffDataBean.getTemp().trim()+"";
 				preparedStatement = con.prepareStatement(query);
 				
-				preparedStatement.setString(1, staffDataBean.getStaffId());//1
-				preparedStatement.setString(2, staffDataBean.getfirstName());//2
-				preparedStatement.setString(3, staffDataBean.getLastName());//3
-				preparedStatement.setString(4, staffDataBean.getGender());//4
-				preparedStatement.setString(5, staffDataBean.getDOB());//5
-				preparedStatement.setString(6, staffDataBean.getEmail());//6
-				preparedStatement.setString(7, staffDataBean.getPhone());//7
-				preparedStatement.setString(8, staffDataBean.getAddress());//8
-				preparedStatement.setString(10, staffDataBean.getPassword());//10
-				preparedStatement.setString(11, "true");//11
+				preparedStatement.setString(1, staffDataBean.getfirstName());//1
+				preparedStatement.setString(2, staffDataBean.getLastName());//2
+				preparedStatement.setString(3, staffDataBean.getGender());//3
+				preparedStatement.setString(4, staffDataBean.getEmail());//4
+				preparedStatement.setString(5, staffDataBean.getPhone());//5
+				preparedStatement.setString(6, staffDataBean.getAddress());//6
+				preparedStatement.setString(7, staffDataBean.getProgramme());//7
+				preparedStatement.setString(8, "true");//8
+				preparedStatement.setString(9, staffDataBean.getStaffId());//9
+				preparedStatement.setString(10, staffDataBean.getRole());
 				
 				preparedStatement.execute();
-					
-			}else {
-				
-				return "Staff with Staff.ID "+staffDataBean.getStaffId()+" Already Exists";
-				
-			}
 					
 		} catch (Exception e) {
 			return e.getLocalizedMessage();
 		}
 		
 		
-		return "SUCCESS";
+		return "SUCCESSUPDATE";
 	}
 	
 	

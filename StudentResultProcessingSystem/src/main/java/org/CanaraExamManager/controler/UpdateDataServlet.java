@@ -55,14 +55,16 @@ public class UpdateDataServlet extends HttpServlet {
 				
 				StudentStaffDataBean staffDataBean = new StudentStaffDataBean();
 				
-				staffDataBean.setfirstName(request.getParameter(""));//1
-				staffDataBean.setLastName(request.getParameter(""));//2
-				staffDataBean.setGender(request.getParameter(""));//3
-				staffDataBean.setDOB(request.getParameter(""));//4
-				staffDataBean.setEmail(request.getParameter(""));//5
-				staffDataBean.setPhone(request.getParameter(""));//6
-				staffDataBean.setAddress(request.getParameter(""));//7
-				staffDataBean.setPassword(request.getParameter(""));//9
+				staffDataBean.setfirstName(request.getParameter("staffFirstName"));//1
+				staffDataBean.setLastName(request.getParameter("staffLastName"));//2
+				staffDataBean.setGender(request.getParameter("staffGender"));//3
+				staffDataBean.setEmail(request.getParameter("staffEmail"));//5
+				staffDataBean.setPhone(request.getParameter("StaffPhone"));//6
+				staffDataBean.setAddress(request.getParameter("staffAddress"));//7
+				staffDataBean.setProgramme(request.getParameter("staffProgramme"));//9
+				staffDataBean.setStaffId(request.getParameter("staffId"));//10
+				staffDataBean.setTemp(request.getParameter("tempStaffId"));//11
+				staffDataBean.setRole(request.getParameter("staffRole"));//12
 				
 				String dataValidateString = updateDataDao.updateStaffData(staffDataBean) ;
 				 
