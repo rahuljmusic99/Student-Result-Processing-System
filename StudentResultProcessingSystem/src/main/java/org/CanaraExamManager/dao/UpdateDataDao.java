@@ -26,12 +26,14 @@ public class UpdateDataDao {
 			
 			con = DBConnection.createConnection();
 			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT A.programme_id,B.class_id FROM (programme A "
+			con = DBConnection.createConnection();
+			statement = con.createStatement();
+			resultSet = statement.executeQuery("SELECT A.programme_id,B.class_name,B.class_id,B.class_year FROM (programme A "
 											+ "INNER JOIN class B ON A.programme_id = B.programme_id) "
-											+ "WHERE A.programme_name = "+studentDataBean.getProgramme()+" "
-											+ "AND B.class_name = "+studentDataBean.getclass()+" "
-											+ "AND B.class_year = "+studentDataBean.getYear()+" ");
-				while (resultSet.next()) {
+											+ "WHERE A.programme_id = "+studentDataBean.getProgramme().trim()+" "
+											+ "AND B.class_name = '"+studentDataBean.getclass().trim()+"' "
+											+ "AND B.class_year = "+studentDataBean.getClassYear().trim()+" ");
+				while(resultSet.next()) {
 					
 					programmeId = resultSet.getString("programme_id");
 					classId = resultSet.getString("class_id");
@@ -44,29 +46,29 @@ public class UpdateDataDao {
 						
 						if(resultSet.next() == true) { //check whether student with that register number already exists
 							
-							query = "UPDATE student SET reg_no = ?, first_name = ?, last_name = ?, gender = ?, dob,email = ?,"
-									+ "phone = ?, address = ?, blood_group = ?,birth_place = ?,birth_district = ?,birth_state = ?,"
-									+ "pincode = ?, password = ?, programme_id = ?, class_id = ?, joining_year = ?, semester = ?, status = ? ";
+							query = "UPDATE student SET reg_no = ?, first_name = ?, last_name = ?, gender = ?, dob = ?,email = ?,"
+									+ "phone = ?, address = ?,birth_place = ?,birth_district = ?,birth_state = ?,"
+									+ "pincode = ?, programme_id = ?, class_id = ?, joining_year = ?, semester = ?, status = ? "
+									+ "WHERE reg_no = "+studentDataBean.getRegNo().trim()+"";
 							preparedStatement = con.prepareStatement(query);
 							
 							preparedStatement.setString(1,studentDataBean.getRegNo());//1
-							preparedStatement.setString(2,studentDataBean.getfirstName());//2
-							preparedStatement.setString(3,studentDataBean.getLastName());//3
+							preparedStatement.setString(2,studentDataBean.getfirstName().replaceAll("\\s+"," ").trim());//2
+							preparedStatement.setString(3,studentDataBean.getLastName().replaceAll("\\s+"," ").trim());//3
 							preparedStatement.setString(4,studentDataBean.getGender());//4
 							preparedStatement.setString(5,studentDataBean.getDOB());//5
 							preparedStatement.setString(6,studentDataBean.getEmail());//6
 							preparedStatement.setString(7,studentDataBean.getPhone());//7
-							preparedStatement.setString(8,studentDataBean.getAddress());//8
-							preparedStatement.setString(10,studentDataBean.getCity());//10
-							preparedStatement.setString(11,studentDataBean.getDistrict());//11
-							preparedStatement.setString(12,studentDataBean.getState());//12
-							preparedStatement.setString(13,studentDataBean.getPinCode());//13
-							preparedStatement.setString(14,studentDataBean.getPassword());//14
-							preparedStatement.setString(15,programmeId);//15
-							preparedStatement.setString(16,classId);//16
-							preparedStatement.setString(17,studentDataBean.getYear());//17
-							preparedStatement.setString(18,studentDataBean.getCurrentSemester());//18
-							preparedStatement.setString(19,"true");//18
+							preparedStatement.setString(8,studentDataBean.getAddress().replaceAll("\\s+"," ").trim());//8
+							preparedStatement.setString(9,studentDataBean.getCity().replaceAll("\\s+"," ").trim());//9
+							preparedStatement.setString(10,studentDataBean.getDistrict().replaceAll("\\s+"," ").trim());//10
+							preparedStatement.setString(11,studentDataBean.getState().replaceAll("\\s+"," ").trim());//11
+							preparedStatement.setString(12,studentDataBean.getPinCode());//12
+							preparedStatement.setString(13,programmeId);//13
+							preparedStatement.setString(14,classId);//14
+							preparedStatement.setString(15,studentDataBean.getYear());//15
+							preparedStatement.setString(16,studentDataBean.getCurrentSemester());//16
+							preparedStatement.setString(17,"true");//17
 							
 							preparedStatement.execute();
 							
@@ -85,7 +87,7 @@ public class UpdateDataDao {
 		}
 		
 		
-		return "SUCCESS";
+		return "SUCCESSUPDATE";
 	}
 	
 	
@@ -105,39 +107,31 @@ public class UpdateDataDao {
 			
 			con = DBConnection.createConnection();
 			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM staff WHERE staff_id = "+staffDataBean.getStaffId()+"");
-			if(resultSet.next() == false) {//check whether staff with that staff id already exists
 				
-				query = "INSERT INTO staff(staff_id,first_name,last_name,gender,dob,email,phone,address,blood_group,"
-						+ "password,staff_status)"
-						+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+				query = "UPDATE staff SET first_name = ?, last_name = ?, gender = ?, email = ?,"
+						+ "phone = ?, address = ?, programme_id = ?, staff_status = ?, staff_id = ?, role = ? "
+						+ "WHERE staff_id = "+staffDataBean.getTemp().trim()+"";
 				preparedStatement = con.prepareStatement(query);
 				
-				preparedStatement.setString(1, staffDataBean.getStaffId());//1
-				preparedStatement.setString(2, staffDataBean.getfirstName());//2
-				preparedStatement.setString(3, staffDataBean.getLastName());//3
-				preparedStatement.setString(4, staffDataBean.getGender());//4
-				preparedStatement.setString(5, staffDataBean.getDOB());//5
-				preparedStatement.setString(6, staffDataBean.getEmail());//6
-				preparedStatement.setString(7, staffDataBean.getPhone());//7
-				preparedStatement.setString(8, staffDataBean.getAddress());//8
-				preparedStatement.setString(10, staffDataBean.getPassword());//10
-				preparedStatement.setString(11, "true");//11
+				preparedStatement.setString(1, staffDataBean.getfirstName());//1
+				preparedStatement.setString(2, staffDataBean.getLastName());//2
+				preparedStatement.setString(3, staffDataBean.getGender());//3
+				preparedStatement.setString(4, staffDataBean.getEmail());//4
+				preparedStatement.setString(5, staffDataBean.getPhone());//5
+				preparedStatement.setString(6, staffDataBean.getAddress());//6
+				preparedStatement.setString(7, staffDataBean.getProgramme());//7
+				preparedStatement.setString(8, "true");//8
+				preparedStatement.setString(9, staffDataBean.getStaffId());//9
+				preparedStatement.setString(10, staffDataBean.getRole());
 				
 				preparedStatement.execute();
-					
-			}else {
-				
-				return "Staff with Staff.ID "+staffDataBean.getStaffId()+" Already Exists";
-				
-			}
 					
 		} catch (Exception e) {
 			return e.getLocalizedMessage();
 		}
 		
 		
-		return "SUCCESS";
+		return "SUCCESSUPDATE";
 	}
 	
 	

@@ -27,23 +27,23 @@ public class UpdateDataServlet extends HttpServlet {
 				
 				StudentStaffDataBean studentDataBean = new StudentStaffDataBean();
 				
-				 studentDataBean.setfirstName(request.getParameter(""));//1
-				 studentDataBean.setLastName(request.getParameter(""));//2
-				 studentDataBean.setGender(request.getParameter(""));//3
-				 studentDataBean.setDOB(request.getParameter(""));//4
-				 studentDataBean.setEmail(request.getParameter(""));//5
-				 studentDataBean.setPhone(request.getParameter(""));//6
-				 studentDataBean.setAddress(request.getParameter(""));//7
-				 studentDataBean.setPinCode(request.getParameter(""));//8
-				 studentDataBean.setCity(request.getParameter(""));//9
-				 studentDataBean.setDistrict(request.getParameter(""));//10
-				 studentDataBean.setState(request.getParameter(""));//11
-				 studentDataBean.setYear(request.getParameter(""));//12
-				 studentDataBean.setProgramme(request.getParameter(""));//13
-				 studentDataBean.setClass(request.getParameter(""));//14
-				 studentDataBean.setCurrentSemester(request.getParameter(""));//15
-				 studentDataBean.setRegNo(request.getParameter(""));//16
-				 studentDataBean.setPassword(request.getParameter(""));//17
+				 studentDataBean.setfirstName(request.getParameter("sFirstName"));//1
+				 studentDataBean.setLastName(request.getParameter("sLastName"));//2
+				 studentDataBean.setGender(request.getParameter("sGender"));//3
+				 studentDataBean.setDOB(request.getParameter("sdob"));//4
+				 studentDataBean.setEmail(request.getParameter("sEmail"));//5
+				 studentDataBean.setPhone(request.getParameter("sPhone"));//6
+				 studentDataBean.setAddress(request.getParameter("sAddress"));//7
+				 studentDataBean.setPinCode(request.getParameter("sPincode"));//8
+				 studentDataBean.setCity(request.getParameter("sCity"));//9
+				 studentDataBean.setDistrict(request.getParameter("sDistrict"));//10
+				 studentDataBean.setState(request.getParameter("sState"));//11
+				 studentDataBean.setYear(request.getParameter("sYearOfJoining"));//12
+				 studentDataBean.setProgramme(request.getParameter("sProgramme"));//13
+				 studentDataBean.setClass(request.getParameter("sClass"));//14
+				 studentDataBean.setCurrentSemester(request.getParameter("sSemester"));//15
+				 studentDataBean.setRegNo(request.getParameter("sRegNo"));//16
+				 studentDataBean.setClassYear(request.getParameter("sClassYear"));//17
 				
 				 String dataValidateString = updateDataDao.updateStudentData(studentDataBean) ;
 				 
@@ -55,14 +55,16 @@ public class UpdateDataServlet extends HttpServlet {
 				
 				StudentStaffDataBean staffDataBean = new StudentStaffDataBean();
 				
-				staffDataBean.setfirstName(request.getParameter(""));//1
-				staffDataBean.setLastName(request.getParameter(""));//2
-				staffDataBean.setGender(request.getParameter(""));//3
-				staffDataBean.setDOB(request.getParameter(""));//4
-				staffDataBean.setEmail(request.getParameter(""));//5
-				staffDataBean.setPhone(request.getParameter(""));//6
-				staffDataBean.setAddress(request.getParameter(""));//7
-				staffDataBean.setPassword(request.getParameter(""));//9
+				staffDataBean.setfirstName(request.getParameter("staffFirstName"));//1
+				staffDataBean.setLastName(request.getParameter("staffLastName"));//2
+				staffDataBean.setGender(request.getParameter("staffGender"));//3
+				staffDataBean.setEmail(request.getParameter("staffEmail"));//5
+				staffDataBean.setPhone(request.getParameter("StaffPhone"));//6
+				staffDataBean.setAddress(request.getParameter("staffAddress"));//7
+				staffDataBean.setProgramme(request.getParameter("staffProgramme"));//9
+				staffDataBean.setStaffId(request.getParameter("staffId"));//10
+				staffDataBean.setTemp(request.getParameter("tempStaffId"));//11
+				staffDataBean.setRole(request.getParameter("staffRole"));//12
 				
 				String dataValidateString = updateDataDao.updateStaffData(staffDataBean) ;
 				 

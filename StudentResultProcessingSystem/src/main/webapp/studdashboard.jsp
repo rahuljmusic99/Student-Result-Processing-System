@@ -50,6 +50,7 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="js/pdf.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+        <script src="https://kit.fontawesome.com/dd03fdb332.js" crossorigin="anonymous"></script>
     </head> 
     <body onload="setupTabs()">
         <div class="tabs">
@@ -88,7 +89,7 @@
                     
                     <footer>
                       <div class="foot">
-                        <img src="css/images/CANARA_ICON.png" class="footlogo">
+                        <img src="css/images/canlogo.png" class="footlogo">
                         <div class="footpart1">
                         <h1 class="heads1">CANARA COLLEGE</h1>
                         <p class="pr2">Address:</p>
