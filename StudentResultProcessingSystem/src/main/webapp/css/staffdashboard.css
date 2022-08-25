@@ -75,7 +75,24 @@ img{
    transition-duration: 2s;
 }
 .space{
-    height: 80px;
+    height: 7rem;
+    text-align: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    
+}
+
+.edu{
+   height: 6rem;
+}
+
+.space4{
+    padding-top: 0.5rem;
+    width: 6rem;
+    height: 5rem;
+    margin: 0 auto;
 }
 
 .space2{
@@ -127,10 +144,6 @@ h4{
 }
 
 
-.edu{
-    height: 60px;
-}
-
 .divmarks{
     width: 1210px;
     height: auto;
@@ -139,7 +152,6 @@ h4{
     border: 1px solid #dddddd;
     
 }
-
 
 .innermarks{
     width: 1150px;
@@ -786,11 +798,11 @@ label{
 
 .protab2{
     width: 1210px;
-    height: 98%;
+    height: auto;
     background: whitesmoke;
     padding-bottom: 1rem;
     border: 1px solid #dddddd;
-    margin-bottom: -1rem; 
+ 
 }
 
 .logos{
@@ -893,7 +905,6 @@ label{
 }
 
 .about{
-    margin: 1rem;
     margin-bottom: 5rem;
     padding: 1rem;
     background-color: #D3D3D3;
