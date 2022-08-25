@@ -61,7 +61,9 @@
     			.then((value) => {	
     				if(value == "logout"){
     					document.location.href="LogoutServlet";
-    				}
+    				}else{
+						document.getElementById("tab1").click();
+					}
     			});
     		}
     		

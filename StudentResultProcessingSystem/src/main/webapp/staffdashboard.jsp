@@ -46,7 +46,7 @@
                 <button class="tabs__button" data-for-tab="4" id="mainprofile">
                 <div class="holder3"></div>
                 </button>
-                <button class="tabs__button tabs__button--active" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
+                <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-bullseye"></i>Classes</button>
                 <button class="tabs__button" data-for-tab="3" ><i class="fa fa-bar-chart"></i>Student Result</button>
                 <button onclick="logoutConfirm();" class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
@@ -79,7 +79,7 @@
                     
                     <footer>
                       <div class="foot">
-                        <img src="css/images/CANARA_ICON.png" class="footlogo">
+                        <img src="css/images/canlogo.png" class="footlogo">
                         <div class="footpart1">
                         <h1 class="heads1">CANARA COLLEGE</h1>
                         <p class="pr2">Address:</p>
@@ -136,15 +136,6 @@
                 </div>
                 </div>   
            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
             
             <div class="tabs__content" data-tab="3">

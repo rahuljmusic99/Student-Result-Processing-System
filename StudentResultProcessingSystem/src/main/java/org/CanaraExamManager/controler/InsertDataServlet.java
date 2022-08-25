@@ -58,12 +58,20 @@ public class InsertDataServlet extends HttpServlet {
 					 
 					String toAddressString = studentDataBean.getEmail();
 					String subjectString = "Invitation to join CanaraExamPortal";
-					String messageString = "<h3>Dear "+studentDataBean.getfirstName().trim()+" "+studentDataBean.getLastName().trim()+","+"</h3><br/>"
-										 + "<p>Welcome to CanaraExamPortal, a website created by WEB-CENTRIC for CANARACOLLEGE</p><br/>"
-										 + "<p>The key intent for this initiative is to support students of CANARACOLLEGE to improve their academic performance, "
-										 + "providing students with a user friendly interface to view semester and internal results.  Students can also analyse their"
-										 + "academic performance through intensive graphical charts and metrics, which will help you to with your academic performance.</p><br/>"
-										 + "<p>2 Easy Steps to Get Started</p>";
+					String messageString = "<div style=\"background-color:black;color:white;padding:4rem;margin:1rem;\">\r\n"
+							+ "<div style=\"background-color: black;width: 100%;height: 100%;\"><img src=\"https://lh3.googleusercontent.com/C7R0Hy-Nq-5qll7kg-PO5evyTybIddUipmiHK2QGqsa2eJgpnweY3FXOJBgLrLOTmjibHchSnTHmk9OPL4ql3ajoRPIlPE8rFklPuJsxVNcGBm75haBGc75jH7GXvs3Mmsq_gZXOew=w2400\" style=\"width:100%;height:100%;\"></div>\r\n"
+							+ "<h3 style=\"color:#e591c3;font-size: 25px;\">Dear "+studentDataBean.getfirstName().trim()+" "+studentDataBean.getLastName().trim()+"</h3><br/>\r\n"
+							+ "<p style=\"font-size: 20px;font-family:sans-serif\">Welcome to <span style=\"color:skyblue\">CanaraExamPortal</span>, a website created by WEB-CENTRIC for CANARACOLLEGE</p><br/>\r\n"
+							+ "<p style=\"font-size: 18px;font-family:sans-serif\">The key intent for this initiative is to support students of CANARACOLLEGE to improve their academic performance, \"\r\n"
+							+ "providing students with a user friendly interface to view semester and internal results.  Students can also analyse their\"\r\n"
+							+ "academic performance through intensive graphical charts and metrics, which will help you to with your academic performance.</p><br/>\r\n"
+							+ "<p style=\"color:#e591c3;font-size: 27px;text-align: center;font-weight: 800\">2 Easy Steps To Get Started</p>\r\n"
+							+ "<p style=\"text-align: center;font-size: 16px\">1. Click on the button below to sign in using the following credentials</p>\r\n"
+							+ "<p style=\"text-align: center;font-size: 20px;\">Username:<span>"+studentDataBean.getRegNo().trim()+"</span></p>\r\n"
+							+ "<p style=\"text-align: center;font-size: 20px;\">Password:<span>"+studentDataBean.getPassword()+"</span></p><br>\r\n"
+							+ "<p style=\"text-align: center;font-size: 16px;\">2. Once you're on the platform, you can change your password</p><br>\r\n"
+							+ "<div style=\"display: flex;justify-content: center;align-items: center;\"><button style=\"color:white;background-color:orangered;font-size:3vh;padding:1rem;font-weight:700;border-radius:8px;\">Get Started</button></div>\r\n"
+							+ "</div>";
 					
 					
 					try {

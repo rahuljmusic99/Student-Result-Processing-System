@@ -8,15 +8,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Blob;
 //import java.sql.SQLException;
 
 import org.CanaraExamManager.bean.LoginBean;
-import org.CanaraExamManager.util.ImageConverter;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.CanaraExamManager.dao.LoginDao;
 
 
@@ -46,7 +42,6 @@ public class LoginServlet extends HttpServlet {
 		
 		//creating object for LoginDao which contains the main logic of the application.
 		LoginDao loginDao = new LoginDao();
-		ImageConverter imageConverter = new ImageConverter();
 		
 		
 		HttpSession session = request.getSession();

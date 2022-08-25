@@ -12,7 +12,7 @@
 <!DOCTYPE html5>
 <html>
     <head>
-        <title>SRPS</title>
+        <title>Staff Login</title>
         <link rel="stylesheet" href="css/stafflogin.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
