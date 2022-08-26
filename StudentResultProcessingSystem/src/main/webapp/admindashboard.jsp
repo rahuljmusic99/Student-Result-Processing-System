@@ -1706,7 +1706,7 @@
 	                        document.getElementById("btn__course<%=i + j%>");
 	                        function insertCourseData<%=i + j%>(){
 	                          document.querySelector('.bg-model1').style.display = 'flex';
-                              document.querySelector('.bg-model1').style.position = 'fixed';document.querySelector('.bg-model').style.position = 'fixed';
+                              document.querySelector('.bg-model1').style.position = 'fixed';
 	                          document.getElementById("programmeNameInCourse").value = "<%=programmeResultSet.getString("programme_name")%>";
 	                          document.getElementById("courseSemester").value = "<%=i%>";
 	                          document.getElementById("programmeIdInCourse").value = "<%=programmeResultSet.getString("programme_id")%>"
@@ -2127,7 +2127,7 @@
 	                               			</td>
                             			<%} %>
                             			    
-                                            <td class="tdCourse"><input class="inputDigits" id="" value=""/></td>
+                                            <td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("course_sem")%>"/></td>
                        						<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_marks")%>"/></td>
                             				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("min_marks")%>"/></td>
                             				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_IA")%>"/></td>
@@ -2175,11 +2175,12 @@
                         <div class="close13" id="close">+</div>
                         <div class="header13">
                             <h1>Edit Programme Data</h1></div>
-                            <form id="editProgrammeForm" action="UpdateDataServlet" method="post">
-                                <input id="programmeIdInProgramme" type="text" placeholder="Programme Id" readonly="readonly">
-                                <input id="programmeNameInProgramme" type="text" placeholder="Programme Name">
-                                <input id="programmeDuration" min="" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Duration(In Years)">
-                                <input id="programmeTotalSemesterInProgramme" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Total Semester">
+                            <form id="editProgrammeForm" action="UpdateDataServlet" method="post" >
+                                <input name="programmeId" id="programmeIdInProgramme" type="text" placeholder="Programme Id" readonly="readonly" required>
+                                <input name="programmeName" id="programmeNameInProgramme" type="text" placeholder="Programme Name" required>
+                                <input name="duration" id="programmeDuration" min="" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Duration(In Years)" required>
+                                <input name="totalSemester" id="programmeTotalSemesterInProgramme" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Total Semester" required>
+                               	<input name="Data" type="hidden" value="programme"/>
                                 <input type="submit" id="button13" value="UPDATE" />
                                 
                                 <script type="text/javascript">
@@ -2220,11 +2221,11 @@
 											e.preventDefault(); 
 											
 										}else if(parseInt(programmeSem2.value) > parseInt(programmeDuration2.value)*2){//Programme Semester
-											swal("Invalid Total Semester !","Total Semester cannot be greater than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
+											swal("Invalid Total Semester !","Total Semester cannot be greater than "+(parseInt(programmeDuration2.value)*2)+" semester(s)","error");
 											e.preventDefault(); 
 											
 										}else if(parseInt(programmeSem2.value) < parseInt(programmeDuration2.value)*2){
-											swal("Invalid Total Semester !","Total Semester cannot be less than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
+											swal("Invalid Total Semester !","Total Semester cannot be less than "+(parseInt(programmeDuration2.value)*2)+" semester(s)","error");
 											e.preventDefault(); 
 											
 										}
@@ -2259,6 +2260,7 @@
                        	try{
                        		
                        		ResultSet classesData = loadData.loadOnlyClassData();
+                       		int ci=1;
    	    					while(classesData.next()){
    	    			%>		
    	    	
@@ -2266,11 +2268,26 @@
                            <td class="td1"><%=classesData.getString("programme_name")%></td>   <!--Programme name-->
                            <td class="td2"><%=classesData.getString("class_name")%></td>   <!--Semseter-->
                            <td class="td5"><%=classesData.getString("class_year")%></td>
-                           <td class="td3"><div class="circle1" title="Edit Class" id="edit5" onclick="myFunction17()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteClass" class="circle2" title="Delete Class" onclick="deleteClass('<%=classesData.getString("class_id")%>','class','<%=classesData.getString("class_name")+" "+classesData.getString("class_year")+" year"%>')"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
-                       </tr>			
+                           <td class="td3"><div class="circle1" title="Edit Class" id="editClass<%=ci%>" onclick="updateClassData<%=ci%>()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteClass" class="circle2" title="Delete Class" onclick="deleteClass('<%=classesData.getString("class_id")%>','class','<%=classesData.getString("class_name")+" "+classesData.getString("class_year")+" year"%>')"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                       </tr>	
+                       
+                       <script type="text/javascript">
+	                       document.getElementById("editClass<%=ci%>");
+	                       function updateClassData<%=ci%>(){
+	                    	 document.querySelector('.bg-model14').style.display = 'flex';
+	                    	 document.querySelector('.bg-model14').style.position = 'fixed';
+	                    	 
+	                    	 $("#proNameInClass option[id!='cla<%=classesData.getString("programme_id")%>']").removeAttr("selected");
+	                    	 $("#proNameInClass option[id='cla<%=classesData.getString("programme_id")%>']").attr("selected",true);
+	                    	 
+	                         document.getElementById("cIdInClass").value = "<%=classesData.getString("class_id")%>";
+	                         document.getElementById("cNameInClass").value = "<%=classesData.getString("class_name")%>";
+	                         document.getElementById("cYearInClass").value = "<%=classesData.getString("class_year")%>";
+	                       }
+                       </script>		
 
                        <% 	
-   	    					}
+   	    					ci++;}
                        	}catch(SQLException e){
                        		e.printStackTrace();
                        		
@@ -2322,7 +2339,7 @@
                                		while(programmeName.next()){
                                			
                                %>		
-                                           <option><%=programmeName.getString("programme_name")%></option>	
+                                           <option value="<%=programmeName.getString("programme_name")%>"><%=programmeName.getString("programme_name")%></option>	
                                <%	
                                	
                                		}
@@ -2354,7 +2371,6 @@
                                		var duration = 0;
 									function addProgrammeSem(pName){
 										duration = document.getElementById("programme"+pName).value;
-										console.log(duration);
 									}
 									
 									const insertClassForm = document.getElementById("insertClassForm");
@@ -2413,17 +2429,88 @@
                        <div class="close14" id="close" >+</div>
                        <div class="header14">
                            <h1>Edit Class Data</h1></div>
-                           <form action="">
-                               <select >
+                           <form id="updateClassForm" action="UpdateDataServlet" method="post">
+                               <select name="progNameInClass" id="proNameInClass" onchange="addProgrammeSem2(this.value)" required >
                                <option value="" disabled selected hidden>Select Programme</option>
-                               <option>Bca</option>
-                               <option>Bcom</option>
-                               <option>BBA</option>
+               <%
+               		ResultSet updateClassResultSet = loadData.loadProgrammeData();
+               		if(updateClassResultSet!=null){
+               			while(updateClassResultSet.next()){
+               %>				
+               					<option id="cla<%=updateClassResultSet.getString("programme_id")%>" value="<%=updateClassResultSet.getString("programme_name")%>"><%=updateClassResultSet.getString("programme_name")%></option>
+               <% 		}
+               			
+               		}
+               
+               %>
                                </select>
-                               <input type="text" placeholder="Course Code">
-                               <input type="text" placeholder="Course Name">
-                               <input type="text" placeholder="Year (in digits)">
-                               <button id="button15" >UPDATE</button>
+                               <input id="cIdInClass" name="classId" type="text" placeholder="Class ID" required readonly="readonly">
+                               <input id="cNameInClass" name="className" type="text" placeholder="Class Name" required>
+                               <input id="cYearInClass" name="classYear" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Class Year (in digits)" required>
+                               <input name="Data" value="class" type="hidden"/>
+                               <input type="submit" id="button15" onclick="addProgrammeSem2()" value="UPDATE" />
+                               
+                                <%
+                               	try{
+                               		ResultSet programmeName20 = loadData.loadProgrammeData();
+                               		if(programmeName20!=null){
+                               		while(programmeName20.next()){
+                               			
+                               %>		
+                                           <input type="hidden" id="prg<%=programmeName20.getString("programme_name")%>" value="<%=programmeName20.getString("programme_duration")%>"/>	
+                               <%	
+                               	
+                               		}
+                               		}
+                               	}catch(SQLException e){
+                               		e.printStackTrace();
+                               	}
+                               %>
+                               
+                               <script type="text/javascript">
+                               		var duration2 = 0;
+									function addProgrammeSem2(pName){
+										duration2 = document.getElementById("prg"+pName).value;
+									}
+									
+									const updateClassForm = document.getElementById("updateClassForm");
+									const classId2 = document.getElementById("cIdInClass");
+									const className2 = document.getElementById("cNameInClass");
+									const classYear2 = document.getElementById("cYearInClass");
+						
+									updateClassForm.addEventListener('submit', (e)=>{
+										
+										var onlyCharactersAndSpaces = /^[a-zA-Z]*[ a-zA-Z]*$/;
+								 		var atLeastThreeLetters = /[A-Za-z]{3,}/;
+										var onlyDigits = /^\d+$/; 
+										
+										if(onlyDigits.test(classId2.value) == false){//Class Id
+											swal("Invalid Class ID !","Class ID can contain only Digits","error");
+											e.preventDefault();
+											
+										}else if(classId2.value.length > 3){
+											swal("Invalid Class ID !","Class ID cannot be more than 3 Digits","error");
+											e.preventDefault();
+											
+										}else if(classId2.value.length < 3){
+											swal("Invalid Class ID !","Class ID cannot be less than 3 Digits","error");
+											e.preventDefault();
+											
+										}else if(onlyCharactersAndSpaces.test(className2.value) == false){//Class Name
+											swal("Invalid Class Name !","Class Name can only contain letters and spaces","error");
+											e.preventDefault();
+											
+										}else if(atLeastThreeLetters.test(className2.value) == false){
+											swal("Invalid Class Name !","Class Name must contain at least 3 letters","error");
+											e.preventDefault();
+											
+										}else if(className2.value.length > 64){
+											swal("Invalid Class Name !","Class Name cannot contain more than 64 characters","error");
+											e.preventDefault();
+											
+										}
+									});
+							   </script>
                        </form>
                    </div>
                </div>

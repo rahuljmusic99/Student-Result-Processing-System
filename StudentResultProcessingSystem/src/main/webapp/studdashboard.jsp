@@ -316,7 +316,18 @@
 	    		  				],
 	    		  				borderWidth: 3,
 	    		  		},],
-	    		  	},
+	    		  	},options: {
+	    		        plugins: {
+	    		            title: {
+	    		                display: true,
+	    		                text: 'Internal Performance',
+	    		                padding: {
+	    		                    top: 0,
+	    		                    bottom: 0
+	    		                }
+	    		            }
+	    		        }
+	    		    },
 	    		  });
     		  </script>
     		      

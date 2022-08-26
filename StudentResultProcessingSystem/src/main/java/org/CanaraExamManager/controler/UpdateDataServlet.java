@@ -47,7 +47,7 @@ public class UpdateDataServlet extends HttpServlet {
 				
 				 String dataValidateString = updateDataDao.updateStudentData(studentDataBean) ;
 				 
-				 request.setAttribute("insertionMessage",dataValidateString);
+				 request.setAttribute("updateMessage",dataValidateString);
 				 request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response); 
 				
 				 
@@ -68,7 +68,7 @@ public class UpdateDataServlet extends HttpServlet {
 				
 				String dataValidateString = updateDataDao.updateStaffData(staffDataBean) ;
 				 
-				request.setAttribute("insertionMessage",dataValidateString);
+				request.setAttribute("updateMessage",dataValidateString);
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 			}case "programme": {
@@ -82,7 +82,7 @@ public class UpdateDataServlet extends HttpServlet {
 				
 				String dataValidateString = updateDataDao.updateProgrammeData(programmeBean);
 				
-				request.setAttribute("insertionMessage",dataValidateString);
+				request.setAttribute("updateMessage",dataValidateString);
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 			}case "course": {
@@ -101,7 +101,7 @@ public class UpdateDataServlet extends HttpServlet {
 		
 				String dataValidateString = updateDataDao.updateCourseData(courseDataBean);
 				 
-				request.setAttribute("insertionMessage",dataValidateString);
+				request.setAttribute("updateMessage",dataValidateString);
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 				
@@ -109,14 +109,14 @@ public class UpdateDataServlet extends HttpServlet {
 				
 				ProgrammeCourseClassBean classDataBean = new ProgrammeCourseClassBean();
 				
-				classDataBean.setClassId(request.getParameter("classId").trim());
-				classDataBean.setClassName(request.getParameter("className").trim());
-				classDataBean.setProgrammeName(request.getParameter("programmeNameInClass").trim());
-				classDataBean.setClassYear(request.getParameter("classYear").trim());
+				classDataBean.setClassId(request.getParameter("classId"));
+				classDataBean.setClassName(request.getParameter("className"));
+				classDataBean.setProgrammeName(request.getParameter("progNameInClass"));
+				classDataBean.setClassYear(request.getParameter("classYear"));
 				
 				String dataValidateString = updateDataDao.updateClassData(classDataBean);
 				 
-				request.setAttribute("insertionMessage",dataValidateString);
+				request.setAttribute("updateMessage",dataValidateString);
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 				
