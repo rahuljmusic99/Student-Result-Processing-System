@@ -413,8 +413,8 @@
 						swal("Invalid First Name !","First Name should have at least 2 Characters","error");
 						e.preventDefault(); 
 					
-					}else if(sFirstName.value.length > 64){
-						swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+					}else if(sFirstName.value.length > 15){
+						swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 						e.preventDefault(); 
 					
 					}else if(startingCaps.test(sFirstName.value) == false){
@@ -429,8 +429,8 @@
 						swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
 						e.preventDefault(); 
 						
-					}else if(sLastName.value.length > 64){
-						swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+					}else if(sLastName.value.length > 15){
+						swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 						e.preventDefault(); 
 					
 					}else if(startingCaps.test(sLastName.value) == false){
@@ -453,8 +453,8 @@
 						swal("Invalid Email !","Please Enter a valid Email address Format","error");
 						e.preventDefault();
 						
-					}else if(sEmail.value.length > 255){
-						swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+					}else if(sEmail.value.length > 25){
+						swal("Invalid Email !","Email Address cannot be more than 25 Characters","error");
 						e.preventDefault();
 						
 					}else if(onlyDigits.test(sPhone.value) == false){//Mobile Number
@@ -477,8 +477,8 @@
 				 		swal("Invalid Address !","Address can only contain Alphabets, Digits, White Spaces, some Special Characters like ' - , . : ; #  and starting Character can only be a Digit or a Capital Alphabet","error");
 						e.preventDefault();
 				 		
-				 	}else if(sAddress.value.length > 255){
-				 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+				 	}else if(sAddress.value.length > 25){
+				 		swal("Invalid Address !","Address cannot be more than 25 Characters","error");
 						e.preventDefault();
 				 		
 				 	}else if(sAddress.value.length < 3){
@@ -513,8 +513,8 @@
 				 		swal("Invalid City !","City can only contain Alphabets, a Single Space after each Word and '-' Character  Eg:'Sangli-Miraj and Kupwad'","error");
 						e.preventDefault();
 				 		
-				 	}else if(sCity.value.length > 64){
-				 		swal("Invalid City !","City cannot contain more than 64 Characters","error");
+				 	}else if(sCity.value.length > 20){
+				 		swal("Invalid City !","City cannot contain more than 20 Characters","error");
 						e.preventDefault();
 				 		
 				 	}else if(districtState.test(sDistrict.value) == false){//District
@@ -529,8 +529,8 @@
 				 		swal("Invalid District !","Starting Alphabet of the District should be capitalized","error");
 						e.preventDefault();
 				 		
-				 	}else if(sDistrict.value.length > 64){
-				 		swal("Invalid District !","District cannot contain more than 64 Characters","error");
+				 	}else if(sDistrict.value.length > 20){
+				 		swal("Invalid District !","District cannot contain more than 20 Characters","error");
 						e.preventDefault();
 						
 				 	}else if(districtState.test(sState.value) == false){//State
@@ -545,8 +545,8 @@
 				 		swal("Invalid State !","Starting Alphabet of the State should be capitalized","error");
 						e.preventDefault();
 				 		
-				 	}else if(sState.value.length > 64){
-				 		swal("Invalid State !","State cannot contain more than 64 Characters","error");
+				 	}else if(sState.value.length > 20){
+				 		swal("Invalid State !","State cannot contain more than 20 Characters","error");
 						e.preventDefault();
 				 	
 				 	}else if(sYof.value > validMaxYear){//Year of Joining
@@ -581,8 +581,8 @@
 				 		swal("Invalid Password !","Password must contain at leat 8 Characters","error");
 						e.preventDefault();
 				 		
-				 	}else if(sPassword.value.length > 64){
-				 		swal("Invalid Password !","Password must not contain more than 64 Characters","error");
+				 	}else if(sPassword.value.length > 25){
+				 		swal("Invalid Password !","Password must not contain more than 25 Characters","error");
 						e.preventDefault();
 				 		
 				 	}
@@ -900,8 +900,8 @@
 						swal("Invalid First Name !","First Name should have at least 2 Characters","error");
 						e.preventDefault(); 
 					
-					}else if(sFirstName2.value.length > 64){
-						swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+					}else if(sFirstName2.value.length > 15){
+						swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 						e.preventDefault(); 
 					
 					}else if(startingCaps.test(sFirstName2.value) == false){
@@ -916,8 +916,8 @@
 						swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
 						e.preventDefault(); 
 						
-					}else if(sLastName2.value.length > 64){
-						swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+					}else if(sLastName2.value.length > 15){
+						swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 						e.preventDefault(); 
 					
 					}else if(startingCaps.test(sLastName2.value) == false){
@@ -940,8 +940,8 @@
 						swal("Invalid Email !","Please Enter a valid Email address Format","error");
 						e.preventDefault();
 						
-					}else if(sEmail2.value.length > 255){
-						swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+					}else if(sEmail2.value.length > 25){
+						swal("Invalid Email !","Email Address cannot be more than 25 Characters","error");
 						e.preventDefault();
 						
 					}else if(onlyDigits.test(sPhone2.value) == false){//Mobile Number
@@ -968,8 +968,8 @@
 						swal("Invalid Address","Address cannot be less than 3 Characters","error");
 						e.preventDefault();
 						
-					}else if(sAddress2.value.length > 255){
-				 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+					}else if(sAddress2.value.length > 25){
+				 		swal("Invalid Address !","Address cannot be more than 25 Characters","error");
 						e.preventDefault();
 				 		
 				 	}else if(onlyDigits.test(sPincode2.value) == false){//Pinclode
@@ -1000,8 +1000,8 @@
 				 		swal("Invalid City !","City can only contain Alphabets, a Single Space after each Word and '-' Character  Eg:'Sangli-Miraj and Kupwad'","error");
 						e.preventDefault();
 				 		
-				 	}else if(sCity2.value.length > 64){
-				 		swal("Invalid City !","City cannot contain more than 64 Characters","error");
+				 	}else if(sCity2.value.length > 20){
+				 		swal("Invalid City !","City cannot contain more than 20 Characters","error");
 						e.preventDefault();
 				 		
 				 	}else if(districtState.test(sDistrict2.value) == false){//District
@@ -1016,8 +1016,8 @@
 				 		swal("Invalid District !","Starting Alphabet of the District should be capitalized","error");
 						e.preventDefault();
 				 		
-				 	}else if(sDistrict2.value.length > 64){
-				 		swal("Invalid District !","District cannot contain more than 64 Characters","error");
+				 	}else if(sDistrict2.value.length > 20){
+				 		swal("Invalid District !","District cannot contain more than 20 Characters","error");
 						e.preventDefault();
 						
 				 	}else if(districtState.test(sState2.value) == false){//State
@@ -1032,8 +1032,8 @@
 				 		swal("Invalid State !","Starting Alphabet of the State should be capitalized","error");
 						e.preventDefault();
 				 		
-				 	}else if(sState2.value.length > 64){
-				 		swal("Invalid State !","State cannot contain more than 64 Characters","error");
+				 	}else if(sState2.value.length > 20){
+				 		swal("Invalid State !","State cannot contain more than 20 Characters","error");
 						e.preventDefault();
 				 	
 				 	}else if(sYof2.value > validMaxYear){//Year of Joining
@@ -1369,8 +1369,8 @@
 											swal("Invalid First Name !","First Name should have at least 2 Characters","error");
 											e.preventDefault(); 
 										
-										}else if(staffFirstName.value.length > 64){
-											swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+										}else if(staffFirstName.value.length > 15){
+											swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 											e.preventDefault(); 
 										
 										}else if(startingCaps.test(staffFirstName.value) == false){
@@ -1385,8 +1385,8 @@
 											swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
 											e.preventDefault(); 
 											
-										}else if(staffLastName.value.length > 64){
-											swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+										}else if(staffLastName.value.length > 15){
+											swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 											e.preventDefault(); 
 										
 										}else if(startingCaps.test(staffLastName.value) == false){
@@ -1401,8 +1401,8 @@
 											swal("Invalid Email !","Please Enter a valid Email address Format","error");
 											e.preventDefault();
 											
-										}else if(staffEmail.length > 255){
-											swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+										}else if(staffEmail.length > 25){
+											swal("Invalid Email !","Email Address cannot be more than 25 Characters","error");
 											e.preventDefault();
 											
 										}else if(onlyDigits.test(staffPhone.value) == false){//Mobile Number
@@ -1425,8 +1425,8 @@
 									 		swal("Invalid Address !","Address can only contain Alphabets, Digits, White Spaces, some Special Characters like ' - , . : ; #  and starting Character can only be a Digit or a Capital Alphabet","error");
 											e.preventDefault();
 									 		
-									 	}else if(staffAddress.value.length > 255){
-									 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+									 	}else if(staffAddress.value.length > 25){
+									 		swal("Invalid Address !","Address cannot be more than 25 Characters","error");
 											e.preventDefault();
 									 		
 									 	}else if(staffAddress.length < 3){
@@ -1453,8 +1453,8 @@
 									 		swal("Invalid Password !","Password must contain at leat 8 Characters","error");
 											e.preventDefault();
 									 		
-									 	}else if(staffPassword.value.length > 64){
-									 		swal("Invalid Password !","Password must not contain more than 64 Characters","error");
+									 	}else if(staffPassword.value.length > 25){
+									 		swal("Invalid Password !","Password must not contain more than 25 Characters","error");
 											e.preventDefault();
 									 		
 									 	}
@@ -1566,8 +1566,8 @@
 										swal("Invalid First Name !","First Name should have at least 2 Characters","error");
 										e.preventDefault(); 
 									
-									}else if(staffFirstName2.value.length > 64){
-										swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+									}else if(staffFirstName2.value.length > 15){
+										swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 										e.preventDefault(); 
 									
 									}else if(startingCaps.test(staffFirstName2.value) == false){
@@ -1582,8 +1582,8 @@
 										swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
 										e.preventDefault(); 
 										
-									}else if(staffLastName2.value.length > 64){
-										swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+									}else if(staffLastName2.value.length > 15){
+										swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 										e.preventDefault(); 
 									
 									}else if(startingCaps.test(staffLastName2.value) == false){
@@ -1598,8 +1598,8 @@
 										swal("Invalid Email !","Please Enter a valid Email address Format","error");
 										e.preventDefault();
 										
-									}else if(staffEmail2.length > 255){
-										swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+									}else if(staffEmail2.length > 25){
+										swal("Invalid Email !","Email Address cannot be more than 25 Characters","error");
 										e.preventDefault();
 										
 									}else if(onlyDigits.test(staffPhone2.value) == false){//Mobile Number
@@ -1622,8 +1622,8 @@
 								 		swal("Invalid Address !","Address can only contain Alphabets, Digits, White Spaces, some Special Characters like ' - , . : ; #  and starting Character can only be a Digit or a Capital Alphabet","error");
 										e.preventDefault();
 								 		
-								 	}else if(staffAddress2.value.length > 255){
-								 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+								 	}else if(staffAddress2.value.length > 25){
+								 		swal("Invalid Address !","Address cannot be more than 25 Characters","error");
 										e.preventDefault();
 								 		
 								 	}else if(staffAddress2.length < 3){
@@ -1885,8 +1885,8 @@
 											swal("Invalid Programme Name !","Prgramme Name cannot be less than 3 Characters","error");
 											e.preventDefault(); 
 											
-										}else if(programmeName.value.length > 64){
-											swal("Invalid Programme Name !","Prgramme Name cannot be more than 64 Characters","error");
+										}else if(programmeName.value.length > 35){
+											swal("Invalid Programme Name !","Prgramme Name cannot be more than 35 Characters","error");
 											e.preventDefault(); 
 											
 										}else if(parseInt(programmeDuration.value) > 6){//Programme Duration
@@ -2023,9 +2023,8 @@
                         </div>
                         <div class="header12">
                             <h1>Edit Course Data</h1></div>
-                            <form id="editCourseForm<%=i + j%>" action="" method="post">
-                                <table id="editCourseTable<%=i + j%>" border="1" class="tb4">
-                                    <tr>
+                            <table class="tb4">
+                            	<tr>
                                     <th class="tdCourse">Programme<br>Name</th>
                                     <th class="tdCourse" >Course<br> code</th>
                                     <th class="tdCourse" >Course<br> name</th>
@@ -2037,15 +2036,20 @@
                                     <th class="tdCourse">Max<br>IA</th>
                                     <th class="tdCourse">Delete<br>Course</th>
                                     <th class="tdCourse">Update<br>Course</th>
-                                    </tr>
-							<%try{
+                                    </tr>		
+                            </table>
+                            
+                        <%try{
                             	if(coursesData!=null){
                             		
                             		while(coursesData.next()){
                             			courseCount = courseCount + 1;
-                            %>			
+                        %>	
+                                
+                            <form id="editCourseForm<%=courseCount%>" action="" method="post">
+                                <table id="editCourseTable<%=i + j%>" border="1" class="tb4">
                             		<tr class="input-in">
-                            			<td class="tdCo"><input class="inputprog" id="" value="<%=programmeResultSet2.getString("programme_name")%>"/></td>
+                            			<td class="tdCo"><input class="inputprog" id="" value="<%=programmeResultSet2.getString("programme_name")%>" readonly="readonly"/></td>
                             			<td class="tdCourse"><input class="inputCourseCode" id="" value="<%=coursesData.getString("course_code")%>"/></td>
                             			<td class="tdCourse"><input class="input" id="" value="<%=coursesData.getString("course_name")%>"/></td>
                             			<%if(coursesData.getString("course_type").equals("Theory")){
@@ -2131,8 +2135,8 @@
                        						<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_marks")%>"/></td>
                             				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("min_marks")%>"/></td>
                             				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_IA")%>"/></td>
-                                            <td><button class="btnDelete" id="button12">Delete</button></td> 
-                                            <td><button class="btnUpdate" id="button14">Update</button></td> 
+                                            <td><input type="submit" class="btnDelete" id="button12" value="DELETE"></td> 
+                                            <td><input type="submit" class="btnUpdate" id="button14" value="UPDATE"></td> 
                             				
                             			<script type="text/javascript">
                             				function deleteCourse<%=courseCount%>(){
@@ -2146,7 +2150,8 @@
                             			</script>
                             			
                             		</tr>    
-                            			
+                            	</table>
+                        	</form> 	
                             <%	 	}
                             	}
                             	
@@ -2154,8 +2159,7 @@
                             	e.printStackTrace();
                             	
                             }%> 
-                                </table>
-                        </form> 
+                      
                     </div>
                 </div>
                 <%				
@@ -2208,8 +2212,8 @@
 											swal("Invalid Programme Name !","Prgramme Name cannot be less than 3 Characters","error");
 											e.preventDefault(); 
 											
-										}else if(programmeName2.value.length > 64){
-											swal("Invalid Programme Name !","Prgramme Name cannot be more than 64 Characters","error");
+										}else if(programmeName2.value.length > 35){
+											swal("Invalid Programme Name !","Prgramme Name cannot be more than 35 Characters","error");
 											e.preventDefault(); 
 											
 										}else if(parseInt(programmeDuration2.value) > 6){//Programme Duration
@@ -2404,15 +2408,15 @@
 											swal("Invalid Class Name !","Class Name must contain at least 3 letters","error");
 											e.preventDefault();
 											
-										}else if(className.value.length > 64){
-											swal("Invalid Class Name !","Class Name cannot contain more than 64 characters","error");
+										}else if(className.value.length > 10){
+											swal("Invalid Class Name !","Class Name cannot contain more than 10 characters","error");
 											e.preventDefault();
 											
 										}else if(parseInt(classYear.value) > duration){//Class Year
 											swal("Invalid Class Year !","Class Year cannot be greater than "+duration+" year(s)","error");
 											e.preventDefault();
 											
-										}else if(parseInt(classYear.value) < 1){//Class Year
+										}else if(parseInt(classYear.value) < 1){
 											swal("Invalid Class Year !","Class Year cannot be less than 1 year","error");
 											e.preventDefault();
 											
@@ -2448,7 +2452,7 @@
                                <input id="cNameInClass" name="className" type="text" placeholder="Class Name" required>
                                <input id="cYearInClass" name="classYear" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Class Year (in digits)" required>
                                <input name="Data" value="class" type="hidden"/>
-                               <input type="submit" id="button15" onclick="addProgrammeSem2()" value="UPDATE" />
+                               <input type="submit" id="button15"  value="UPDATE" />
                                
                                 <%
                                	try{
@@ -2480,6 +2484,8 @@
 						
 									updateClassForm.addEventListener('submit', (e)=>{
 										
+										addProgrammeSem2(document.getElementById("proNameInClass").value);
+										
 										var onlyCharactersAndSpaces = /^[a-zA-Z]*[ a-zA-Z]*$/;
 								 		var atLeastThreeLetters = /[A-Za-z]{3,}/;
 										var onlyDigits = /^\d+$/; 
@@ -2504,8 +2510,16 @@
 											swal("Invalid Class Name !","Class Name must contain at least 3 letters","error");
 											e.preventDefault();
 											
-										}else if(className2.value.length > 64){
-											swal("Invalid Class Name !","Class Name cannot contain more than 64 characters","error");
+										}else if(className2.value.length > 10){
+											swal("Invalid Class Name !","Class Name cannot contain more than 10 characters","error");
+											e.preventDefault();
+											
+										}else if(parseInt(classYear2.value) > duration2){//Class Year
+											swal("Invalid Class Year !","Class Year cannot be greater than "+duration2+" year(s)","error");
+											e.preventDefault();
+											
+										}else if(parseInt(classYear2.value) < 1){
+											swal("Invalid Class Year !","Class Year cannot be less than 1 year","error");
 											e.preventDefault();
 											
 										}
