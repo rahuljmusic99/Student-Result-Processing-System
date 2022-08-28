@@ -316,11 +316,6 @@
                          	 $("#studentHeading").show();
                      	 
                       }
-                      
-                      window.onload = function hideClasses(){
-                    	  console.log("hello");
-      					
-                      }
                     </script>
                     
                 </table>
@@ -1245,9 +1240,9 @@
                         
                     <div class="inner1">
                         <h6 class="left">Staff list</h6>
-                        <select class="select3" onchange="changeProgrammeFilterStaff(this.value)">
-                        <option value="" disabled selected hidden>Programme</option>
-                        <option value="All">All</option>
+                        <select class="select3" id="filterProgrammeStaff" onchange="changeProgrammeFilterStaff(this.value)">
+                        <option value="" disabled selected hidden>Filter By Programme</option>
+                        <option value="All">All Programme's</option>
                          
 	                <%
 	                	ResultSet FilterProgrammeClass = loadData.loadProgrammeData();
@@ -1365,6 +1360,14 @@
 	                      	  
 		                       	 if(programme == "All"){
 		                       		 $('#staffDataTable tr').show(); 
+		                           	 
+		                    		 $('#filterProgrammeStaff').append($('<option>', {
+		                  			    value: 1,
+		                  			    text: 'Filter By Programme',
+		                  			    selected: true,
+		                  			    disabled: true,
+		                  			    hidden: true
+		                  			}));
 		                       	 
 		                       	 }else{
 		                       		 
@@ -1759,9 +1762,9 @@
                         
                     <div class="inner1">
                         <h6 class="left">Programme list</h6>
-                        <select class="select3" onchange="changeProgrammeFilterPro(this.value)">
+                        <select class="select3" id="filterProgrammeProgramme" onchange="changeProgrammeFilterPro(this.value)">
                         <option value="" disabled selected hidden>Filter By Programme</option>
-                        <option value="All">All</option>
+                        <option value="All">All Programme's</option>
                         
                 <%
                 	ResultSet FilterProgrammePro = loadData.loadProgrammeData();
@@ -1883,6 +1886,14 @@
 	                      	  
 	                       	 if(programme == "All"){
 	                       		 $('#programmeDataTable tr').show(); 
+	                       		 
+	                       		 $('#filterProgrammeProgramme').append($('<option>', {
+		                  			    value: 1,
+		                  			    text: 'Filter By Programme',
+		                  			    selected: true,
+		                  			    disabled: true,
+		                  			    hidden: true
+		                  			}));
 	                       	 
 	                       	 }else{
 	                       		 
@@ -2454,9 +2465,9 @@
                        
                    <div class="inner1">
                        <h6 class="left">Class list</h6>
-                       <select class="select3" onchange="changeProgrammeFilterClass(this.value)">
+                       <select class="select3" id="filterProgrammeClass" onchange="changeProgrammeFilterClass(this.value)">
                        <option value="" disabled selected hidden>Filter By Programme</option>
-                       <option value="All">All</option>
+                       <option value="All">All Programme's</option>
                <%
                 	ResultSet FilterProgrammeclass = loadData.loadProgrammeData();
                 	if(FilterProgrammeclass != null){
@@ -2525,6 +2536,14 @@
 	                      	  
 	                       	 if(programme == "All"){
 	                       		 $('#classDataTable tr').show(); 
+	                       		 
+	                       		 $('#filterProgrammeClass').append($('<option>', {
+		                  			    value: 1,
+		                  			    text: 'Filter By Programme',
+		                  			    selected: true,
+		                  			    disabled: true,
+		                  			    hidden: true
+		                  			}));
 	                       	 
 	                       	 }else{
 	                       		 
@@ -2775,12 +2794,35 @@
             <h4>Student Result Management</h4>
             <div class="inner__protab">
             <div class="inner1"><h6 class="left">Student Result</h6>
-            <select class="select2">
-            <option value="" disabled selected hidden>Class</option>
-            <option>  </option>
+            <select class="select2" id="classFilters2" onchange="changeClassFilter2(this.value)">
+            <option value="" disabled selected hidden>Filter By Class</option>
+            <option hidden value="All" id="allTheClasses2">All Classes</option>
+       		<%
+            	ResultSet FilterClass2 = loadData.loadOnlyClassData();
+            	if(FilterClass2 != null){
+            		while(FilterClass2.next()){
+            			
+            %>	
+            	<option hidden id="<%=FilterClass2.getString("programme_id")%>" value="<%=FilterClass2.getString("class_name")%><%=FilterClass2.getString("class_year")%>"><%=FilterClass2.getString("class_name")+" "+FilterClass2.getString("class_year")+" year"%></option>	
+            <%		}
+            	}
+            
+            %>      
             </select>
-            <select class="select2"><option value="" disabled selected hidden>Programme</option>
-            <option>  </option>      
+            <select class="select2" id="filterProgramme2" onchange="changeProgrammeFilter2(this.value)">
+            <option value="" disabled selected hidden>Filter By Programme</option>
+            <option value="All">All Programme's</option>      
+    		<%
+            	ResultSet FilterProgramme2 = loadData.loadProgrammeData();
+            	if(FilterProgramme2 != null){
+            		while(FilterProgramme2.next()){
+            			
+            %>	
+            	<option value="<%=FilterProgramme2.getString("programme_id")%>"><%=FilterProgramme2.getString("programme_name")%></option>	
+            <%		}
+            	}
+            
+            %>  	
             </select>
             </div>
 
@@ -2799,8 +2841,8 @@
 			</form>  
 			
 			 
-            <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
-            <tr>
+            <table border="1" class="tb1" cellspacing="0" padding="10" rules="all" id="resultDataTable">
+            <tr id="resultHeader">
                 <th>Programme</th>
                 <th>Class</th>
                 <th>Class Year</th>
@@ -2821,7 +2863,7 @@
                 		while(studentData.next()){
                 			
             %>	       
-           <tr>
+           <tr class="filterRow<%=studentData.getString("programme_id")%> filterRow<%=studentData.getString("class_name")%><%=studentData.getString("class_year")%>">
               <td class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme -->
               <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
               <td class="td2"><%=studentData.getString("class_year")%></td>
@@ -2902,7 +2944,51 @@
                	}catch(SQLException e){}
             
             %>   
-              
+			<script type="text/javascript">
+            function changeProgrammeFilter2(programme){
+           	 if(programme == "All"){
+           		 $('#resultDataTable tr').show(); 
+           		 $("#classFilters2 option").attr("hidden",true);
+           		 $("#classFilters2 option[id='allTheClasses2']").attr("hidden",true);
+					
+           		 $('#classFilters2').append($('<option>', {
+           			    value: 1,
+           			    text: 'Filter By Class',
+           			    selected: true,
+           			    disabled: true,
+           			    hidden: true
+           			}));
+           		 
+           		 $('#filterProgramme2').append($('<option>', {
+        			    value: 1,
+        			    text: 'Filter By Programme',
+        			    selected: true,
+        			    disabled: true,
+        			    hidden: true
+        			}));
+           	 }else{
+           		 
+           		 $(".filterRow"+programme).show();
+               	 $('#resultDataTable').find('tr').not(".filterRow"+programme).hide();
+               	 $("#resultHeader").show();
+
+               	$("#classFilters2 option[id!="+programme+"]").attr("hidden",true);
+               	$("#classFilters2 option[id="+programme+"]").removeAttr("hidden");
+               	$("#classFilters2 option[id='allTheClasses2']").removeAttr("hidden");
+               	$("#classFilters2 option[id='allTheClasses2']").attr("value",programme);
+           	 }
+           	 
+           	  
+             }
+             
+             function changeClassFilter2(className){
+            		 
+            		 $(".filterRow"+className).show();
+            		 $('#resultDataTable').find('tr').not(".filterRow"+className).hide();
+                	 $("#resultHeader").show();
+            	 
+             }
+			</script>  
             </table>
             </div>
             </div>

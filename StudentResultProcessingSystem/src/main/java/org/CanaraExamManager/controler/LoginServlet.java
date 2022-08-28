@@ -71,6 +71,9 @@ public class LoginServlet extends HttpServlet {
 				session2.setAttribute("student", userNameString);
 				session2.setAttribute("regNo", userNameString);
 				session2.setAttribute("studentName", loginBean.getName().trim());
+				session2.setAttribute("studentPhone", loginBean.getPhone());
+				session2.setAttribute("studentEmail", loginBean.getEmail());
+				session2.setAttribute("studentPassword",loginBean.getPassword());
 				session2.setAttribute("semester", semesterString);
 				session2.setAttribute("programme", programmeName);
 				session2.setAttribute("user", "student");
@@ -101,6 +104,10 @@ public class LoginServlet extends HttpServlet {
 				session2.setAttribute("staff",userNameString);
 //				session2.setAttribute("StaffName", nameString);
 				session2.setAttribute("user", "staff");
+				session2.setAttribute("staffName", loginBean.getName());
+				session2.setAttribute("staffPhone", loginBean.getPhone());
+				session2.setAttribute("staffEmail", loginBean.getEmail());
+				session2.setAttribute("staffPassword",loginBean.getPassword());
 				response.sendRedirect("staffdashboard.jsp");
 			}else {
 				
