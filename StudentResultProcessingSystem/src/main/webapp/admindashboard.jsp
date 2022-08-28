@@ -2048,22 +2048,22 @@
                             			courseCount = courseCount + 1;
                         %>	
                                 
-                            <form id="editCourseForm<%=courseCount%>" action="" method="post">
+                            <form id="editCourseForm<%=courseCount%><%=i + j%>" action="" method="post">
                                 <table id="editCourseTable<%=i + j%>" border="1" class="tb4">
                             		<tr class="input-in">
                             			<td class="tdCo"><input class="inputprog" id="" value="<%=programmeResultSet2.getString("programme_name")%>" readonly="readonly"/></td>
-                            			<td class="tdCourse"><input class="inputCourseCode" id="" readonly="readonly" name="uniqueId" value="<%=coursesData.getString("course_code")%>"/></td>
-                            			<td class="tdCourse"><input class="input" id="" name="courseName" value="<%=coursesData.getString("course_name")%>"/></td>
+                            			<td class="tdCourse"><input class="inputCourseCode" id="courseCo<%=courseCount%><%=i + j%>"  name="uniqueId" value="<%=coursesData.getString("course_code")%>" onchange="disableButton<%=courseCount%><%=i + j%>()" required/></td>
+                            			<td class="tdCourse"><input class="input" id="courseN<%=courseCount%><%=i + j%>" name="courseName" value="<%=coursesData.getString("course_name")%>" onchange="disableButton<%=courseCount%><%=i + j%>()" required/></td>
                             			<%if(coursesData.getString("course_type").equals("Theory")){
                             			%>
-                            				<td class="tdCourse"><select class="input">
+                            				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name="courseType" required>
                             					<option value="" disabled hidden>course Type</option>
                             					<option selected>Theory</option>
                             					<option>Practical</option>
                             				</select>
                             			</td>
                             			<%}else{%>
-                            				<td class="tdCourse"><select class="input">
+                            				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name='courseType' required>
                             					<option value="" disabled hidden>course Type</option>
                             					<option>Theory</option>
                             					<option Selected>Practical</option>
@@ -2074,7 +2074,7 @@
                             			<%switch(coursesData.getString("course_group")){
                             			case "Group 1 Core Course":
                             			%>
-                            				<td class="tdCourse"><select class="input">
+                            				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name='courseGroup' required>
                             					<option value="" disabled hidden>course Group</option>
                             					<option selected>Group 1 Core Course</option>
 				                                <option >Group 2 Elective Course</option>
@@ -2086,7 +2086,7 @@
                             			<%break;	
                             			case "Group 2 Elective Course":
                                 			%>
-                                				<td class="tdCourse"><select class="input">
+                                				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name='courseGroup' required>
                                 					<option value="" disabled hidden>course Group</option>
                                 					<option >Group 1 Core Course</option>
     				                                <option selected>Group 2 Elective Course</option>
@@ -2098,7 +2098,7 @@
                                 			<%break;
 	                           			case "Group 3 a)Compulsary Foundation":
 	                               			%>
-	                               				<td class="tdCourse"><select class="input">
+	                               				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name='courseGroup' required>
 	                               					<option value="" disabled hidden>course Group</option>
 	                               					<option >Group 1 Core Course</option>
 	   				                                <option >Group 2 Elective Course</option>
@@ -2110,7 +2110,7 @@
 	                               			<%break;
                                			case "Group 3 b)Elective Foundation":
 	                               			%>
-	                               				<td class="tdCourse"><select class="input">
+	                               				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name='courseGroup' required>
 	                               					<option value="" disabled hidden>course Group</option>
 	                               					<option >Group 1 Core Course</option>
 	   				                                <option >Group 2 Elective Course</option>
@@ -2122,7 +2122,7 @@
 	                               			<%break;
                             			default:
                             				%>
-                            				<td class="tdCourse"><select class="input">
+                            				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name='courseGroup' required>
 	                               					<option value="" disabled hidden>course Group</option>
 	                               					<option >Group 1 Core Course</option>
 	   				                                <option >Group 2 Elective Course</option>
@@ -2133,12 +2133,12 @@
 	                               			</td>
                             			<%} %>
                             			    
-                                            <td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("course_sem")%>"/></td>
-                       						<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_marks")%>"/></td>
-                            				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("min_marks")%>"/></td>
-                            				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_IA")%>"/></td>
-                                            <td><input type="submit" class="btnDelete" id="button12" value="DELETE" onclick="setAction(this.value,'<%=courseCount%>');"></td> 
-                                            <td><input type="submit" class="btnUpdate" id="button14" value="UPDATE" onclick="setAction(this.value,'<%=courseCount%>');"></td> 
+                                            <td class="tdCourse"><input class="inputDigits" name="courseSem" id="courseSe<%=courseCount%><%=i + j%>" value="<%=coursesData.getString("course_sem")%>" onchange="disableButton<%=courseCount%><%=i + j%>()" required/></td>
+                       						<td class="tdCourse"><input class="inputDigits" name="courseMaxMarks" id="courseMaxM<%=courseCount%><%=i + j%>" value="<%=coursesData.getString("max_marks")%>" onchange="disableButton<%=courseCount%><%=i + j%>()" required/></td>
+                            				<td class="tdCourse"><input class="inputDigits" name="courseMinMarks" id="courseMinM<%=courseCount%><%=i + j%>" value="<%=coursesData.getString("min_marks")%>" onchange="disableButton<%=courseCount%><%=i + j%>()" required/></td>
+                            				<td class="tdCourse"><input class="inputDigits" name="courseMaxIA" id="courseMaxI<%=courseCount%><%=i + j%>" value="<%=coursesData.getString("max_IA")%>"/></td>
+                                            <td><input type="submit" class="btnDelete" id="btnDeleteC<%=courseCount%><%=i + j%>" value="DELETE" onclick="setAction(this.value,'<%=courseCount%><%=i + j%>');"></td> 
+                                            <td><input type="submit" class="btnUpdate" value="UPDATE" onclick="setAction(this.value,'<%=courseCount%><%=i + j%>');"></td> 
                             				
                             			<script type="text/javascript">
                             				function setAction(typeAction,courseCount){
@@ -2154,11 +2154,61 @@
                             					
                             				}
                             				
+                            				function disableButton<%=courseCount%><%=i + j%>(){
+                            					document.getElementById("btnDeleteC<%=courseCount%><%=i + j%>").disabled = true;
+                            					
+                            				}
+                            				
+                            				
+        									const editCourseForm<%=courseCount%><%=i + j%> = document.getElementById("editCourseForm<%=courseCount%><%=i + j%>");
+        									const courseCode<%=courseCount%><%=i + j%> = document.getElementById("courseCo<%=courseCount%><%=i + j%>");
+        									const courseName<%=courseCount%><%=i + j%> = document.getElementById("courseN<%=courseCount%><%=i + j%>");
+        									const courseMaxMarks<%=courseCount%><%=i + j%> = document.getElementById("courseMaxM<%=courseCount%><%=i + j%>");
+        									const courseMinMarks<%=courseCount%><%=i + j%> = document.getElementById("courseMinM<%=courseCount%><%=i + j%>");
+        									const courseMaxIA<%=courseCount%><%=i + j%> = document.getElementById("courseMaxI<%=courseCount%><%=i + j%>");
+        									
+        									editCourseForm<%=courseCount%><%=i + j%>.addEventListener('submit',(e)=>{
+        										
+        										var cCode = /^[a-zA-Z]{6}[0-9]{3}$/;
+        										var cName = /^[a-zA-Z]*[\s\#\&\(\)\-\+\.\,\/\\a-zA-Z]*$/;
+        										
+        										if(cCode.test(courseCode<%=courseCount%><%=i + j%>.value) == false){//course code
+        											swal("Invalid Course Code !","Course Code must contain 4 characters at the beginning and 3 digtis at the end 'eg:BCACAC231' (NO SPACES ALLOWED!)","error");
+        											e.preventDefault(); 
+        											
+        										}else if(cName.test(courseName<%=courseCount%><%=i + j%>.value) == false){//course name
+        											swal("Invalid Course Name !","Course Name can contain only letters, spaces and some special characters like '. , /\ () & # - +' ","error");
+        											e.preventDefault();
+        											
+        										}else if(courseName<%=courseCount%><%=i + j%>.value.length > 64){
+        											swal("Invalid Course Name !","Course Name cannnot contain more than 64 Characters","error");
+        											e.preventDefault();
+        											
+        										}else if(parseInt(courseMaxMarks<%=courseCount%><%=i + j%>.value) > 125){//max marks
+        											swal("Invalid Max Marks !","Max Marks cannot be greater than 125 ","error");
+        											e.preventDefault();
+        											
+        										}else if(parseInt(courseMaxMarks<%=courseCount%><%=i + j%>.value) < 25){
+        											swal("Invalid Max Marks !","Max Marks cannot be less than 25 ","error");
+        											e.preventDefault();
+        											
+        										}else if(parseInt(courseMinMarks<%=courseCount%><%=i + j%>.value) > parseInt(courseMaxMarks<%=courseCount%><%=i + j%>.value)){//min marks
+        											swal("Invalid Min Marks !","Min Marks cannot be greater than Max Marks ","error");
+        											e.preventDefault();
+        											
+        										}else if(parseInt(courseMaxIA<%=courseCount%><%=i + j%>.value) > parseInt(courseMinMarks<%=courseCount%><%=i + j%>.value)){//max IA
+        											swal("Invalid Max Internal Assessment Marks !","Internal Assessment Marks cannot be greater than Min Marks ","error");
+        											e.preventDefault();
+        											
+        										}
+        									});
+                            				
                             			</script>
                             			
                             		</tr>    
                             	</table>
                             	<input name="Data" type="hidden" value="course"/>
+                            	<input name="tempCode" type="hidden" value="<%=coursesData.getString("course_code")%>" />
                         	</form> 	
                             <%	 	}
                             	}

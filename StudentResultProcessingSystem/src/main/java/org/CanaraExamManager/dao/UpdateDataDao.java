@@ -177,33 +177,22 @@ public String updateProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 		try {
 			
 			con = DBConnection.createConnection();
-			statement = con.createStatement();	
-				
-				resultSet = statement.executeQuery("SELECT * FROM course WHERE course_code =  '"+courseDataBean.getCourseCode()+"'");
-
-					if(resultSet.next() == false) { //check whether course with that courseCode already exists
 							
-							query = "INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,"
-									+ "min_marks,max_IA,programme_id)"
-									+ "VALUES(?,?,?,?,?,?,?,?,?)";
+							query = "UPDATE course SET course_code = ?,course_name = ?,course_type = ?,course_group = ?,course_sem = ?,max_marks = ?, "
+									+ "min_marks = ?, max_IA = ? WHERE course_code = '"+courseDataBean.getTemp().replaceAll("\\s+"," ").trim()+"'";
 							preparedStatement = con.prepareStatement(query);
 							
-							preparedStatement.setString(1, courseDataBean.getCourseCode().toUpperCase());
-							preparedStatement.setString(2, courseDataBean.getCourseName().toUpperCase());
-							preparedStatement.setString(3, courseDataBean.getCourseType());
-							preparedStatement.setString(4, courseDataBean.getCourseGroup());
-							preparedStatement.setString(5, courseDataBean.getSemester());
-							preparedStatement.setString(6, courseDataBean.getMaxMarks());
-							preparedStatement.setString(7, courseDataBean.getMinMarks());
-							preparedStatement.setString(8, courseDataBean.getMaxIA());
-							preparedStatement.setString(9, courseDataBean.getProgrammeId());
+							preparedStatement.setString(1, (courseDataBean.getCourseCode().toUpperCase()).replaceAll("\\s+"," ").trim());
+							preparedStatement.setString(2, (courseDataBean.getCourseName().toUpperCase()).replaceAll("\\s+"," ").trim());
+							preparedStatement.setString(3, courseDataBean.getCourseType().trim());
+							preparedStatement.setString(4, courseDataBean.getCourseGroup().trim());
+							preparedStatement.setString(5, courseDataBean.getSemester().trim());
+							preparedStatement.setString(6, courseDataBean.getMaxMarks().trim());
+							preparedStatement.setString(7, courseDataBean.getMinMarks().trim());
+							preparedStatement.setString(8, courseDataBean.getMaxIA().trim());
 							
 							preparedStatement.execute();
-						
-					}else {
-						
-						return "Course with the Course Code "+courseDataBean.getCourseCode()+" Already Exists";
-					}
+
 			
 		} catch (Exception e) {
 			return e.getLocalizedMessage();

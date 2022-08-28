@@ -75,10 +75,10 @@ public class UpdateDataServlet extends HttpServlet {
 				
 				ProgrammeCourseClassBean programmeBean = new ProgrammeCourseClassBean();
 				
-				programmeBean.setProgrammeId(request.getParameter("programmeId").trim());//1
-				programmeBean.setProgrammeName(request.getParameter("programmeName").trim());//2
-				programmeBean.setProgrammeDuration(request.getParameter("duration").trim());//3;
-				programmeBean.setSemester(request.getParameter("totalSemester").trim());//4
+				programmeBean.setProgrammeId(request.getParameter("programmeId"));//1
+				programmeBean.setProgrammeName(request.getParameter("programmeName"));//2
+				programmeBean.setProgrammeDuration(request.getParameter("duration"));//3;
+				programmeBean.setSemester(request.getParameter("totalSemester"));//4
 				
 				String dataValidateString = updateDataDao.updateProgrammeData(programmeBean);
 				
@@ -88,16 +88,16 @@ public class UpdateDataServlet extends HttpServlet {
 			}case "course": {
 				
 				ProgrammeCourseClassBean courseDataBean = new ProgrammeCourseClassBean();
-				
-				courseDataBean.setProgrammeId(request.getParameter("programmeIdInCourse").trim());
-				courseDataBean.setCourseCode(request.getParameter("courseCode").trim());//2
-				courseDataBean.setCourseName(request.getParameter("courseName").trim());//3
-				courseDataBean.setCourseType(request.getParameter("courseType").trim());//4
-				courseDataBean.setCourseGroup(request.getParameter("courseGroup").trim());//5
-				courseDataBean.setSemester(request.getParameter("courseSemester").trim());//6
-				courseDataBean.setMaxMarks(request.getParameter("maxMarks").trim());//7
-				courseDataBean.setMinMarks(request.getParameter("minMarks").trim());//8
-				courseDataBean.setMaxIA(request.getParameter("maxIA").trim());//9
+		
+				courseDataBean.setCourseCode(request.getParameter("uniqueId"));//2
+				courseDataBean.setCourseName(request.getParameter("courseName"));//3
+				courseDataBean.setCourseType(request.getParameter("courseType"));//4
+				courseDataBean.setCourseGroup(request.getParameter("courseGroup"));//5
+				courseDataBean.setSemester(request.getParameter("courseSem"));//6
+				courseDataBean.setMaxMarks(request.getParameter("courseMaxMarks"));//7
+				courseDataBean.setMinMarks(request.getParameter("courseMinMarks"));//8
+				courseDataBean.setMaxIA(request.getParameter("courseMaxIA"));//9
+				courseDataBean.setTemp(request.getParameter("tempCode"));
 		
 				String dataValidateString = updateDataDao.updateCourseData(courseDataBean);
 				 
