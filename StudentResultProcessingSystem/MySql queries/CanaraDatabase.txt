@@ -191,20 +191,20 @@ CREATE TABLE first_internal_marks(
 
 #inserting values into first internal table
 
-INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
-VALUES(191132718,"BCACAC231",231,25,8,19,"pass");
+INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,grade,result)
+VALUES(191132718,"BCACAC182",231,25,8,19,"A","pass");
 
-INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
-VALUES(191132718,"BCACAC232",231,25,8,24,"pass");
+INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,grade,result)
+VALUES(191132718,"BCACAC232",231,25,8,24,"A+","pass");
 
-INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
-VALUES(191132718,"BCACAC233",231,25,8,20,"pass");
+INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,grade,result)
+VALUES(191132718,"BCACAC233",231,25,8,20,"A","pass");
 
-INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
-VALUES(191132718,"BCACAP234",231,25,8,21,"pass");
+INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,grade,result)
+VALUES(191132718,"BCACAP234",231,25,8,21,"A","pass");
 
-INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
-VALUES(191132718,"BCACAP235",231,25,8,23,"pass");
+INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,grade,result)
+VALUES(191132718,"BCACAP235",231,25,8,23,"A+","pass");
 
 CREATE TABLE second_internal_marks(
 
@@ -221,20 +221,20 @@ CREATE TABLE second_internal_marks(
 	FOREIGN KEY (programme_id) REFERENCES programme(programme_id)
 );
 
-INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
-VALUES(191132718,"BCACAC231",231,25,8,20,"pass");
+INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,grade,result)
+VALUES(191132718,"BCACAC182",231,25,8,20,"A","pass");
 
-INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
-VALUES(191132718,"BCACAC232",231,25,8,24,"pass");
+INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,grade,result)
+VALUES(191132718,"BCACAC232",231,25,8,24,"A+","pass");
 
-INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
-VALUES(191132718,"BCACAC233",231,25,8,19,"pass");
+INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,grade,result)
+VALUES(191132718,"BCACAC233",231,25,8,19,"A","pass");
 
-INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
-VALUES(191132718,"BCACAP234",231,25,8,22,"pass");
+INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,grade,result)
+VALUES(191132718,"BCACAP234",231,25,8,22,"A","pass");
 
-INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,result)
-VALUES(191132718,"BCACAP235",231,25,8,23,"pass");
+INSERT INTO second_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,grade,result)
+VALUES(191132718,"BCACAP235",231,25,8,23,"A+","pass");
 
 #creating final semester marks table of students
 CREATE TABLE final_marks(

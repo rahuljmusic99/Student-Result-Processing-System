@@ -34,6 +34,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/dashboard.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/login.js"></script>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://kit.fontawesome.com/dd03fdb332.js" crossorigin="anonymous"></script>
@@ -352,8 +353,8 @@
                         <label>Email</label>
                         <input class="int" type="email" readonly>
                         <label>Password</label>
-                        <div class="i"><i class="fa fa-grav"></i></div>
-                        <input class="int" type="password" readonly>
+                        <div class="i"><i class="fa-solid fa-eye-slash" id="show-password" onclick="toggle()"></i></div>
+                        <input class="int" id="password" type="password" readonly>
                         <button class="cp">Change Password</button>
                     </div>
      

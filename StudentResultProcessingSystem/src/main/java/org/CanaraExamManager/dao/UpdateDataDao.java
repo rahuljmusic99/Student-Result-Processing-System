@@ -35,8 +35,8 @@ public class UpdateDataDao {
 											+ "AND B.class_year = "+studentDataBean.getClassYear().trim()+" ");
 				while(resultSet.next()) {
 					
-					programmeId = resultSet.getString("programme_id");
-					classId = resultSet.getString("class_id");
+					programmeId = resultSet.getString("programme_id").trim();
+					classId = resultSet.getString("class_id").trim();
 				}
 				
 					if(programmeId!="" && classId!="") {
@@ -52,22 +52,22 @@ public class UpdateDataDao {
 									+ "WHERE reg_no = "+studentDataBean.getRegNo().trim()+"";
 							preparedStatement = con.prepareStatement(query);
 							
-							preparedStatement.setString(1,studentDataBean.getRegNo());//1
+							preparedStatement.setString(1,studentDataBean.getRegNo().trim());//1
 							preparedStatement.setString(2,studentDataBean.getfirstName().replaceAll("\\s+"," ").trim());//2
 							preparedStatement.setString(3,studentDataBean.getLastName().replaceAll("\\s+"," ").trim());//3
-							preparedStatement.setString(4,studentDataBean.getGender());//4
+							preparedStatement.setString(4,studentDataBean.getGender().trim());//4
 							preparedStatement.setString(5,studentDataBean.getDOB());//5
-							preparedStatement.setString(6,studentDataBean.getEmail());//6
-							preparedStatement.setString(7,studentDataBean.getPhone());//7
+							preparedStatement.setString(6,studentDataBean.getEmail().trim());//6
+							preparedStatement.setString(7,studentDataBean.getPhone().trim());//7
 							preparedStatement.setString(8,studentDataBean.getAddress().replaceAll("\\s+"," ").trim());//8
 							preparedStatement.setString(9,studentDataBean.getCity().replaceAll("\\s+"," ").trim());//9
 							preparedStatement.setString(10,studentDataBean.getDistrict().replaceAll("\\s+"," ").trim());//10
 							preparedStatement.setString(11,studentDataBean.getState().replaceAll("\\s+"," ").trim());//11
-							preparedStatement.setString(12,studentDataBean.getPinCode());//12
+							preparedStatement.setString(12,studentDataBean.getPinCode().trim());//12
 							preparedStatement.setString(13,programmeId);//13
 							preparedStatement.setString(14,classId);//14
-							preparedStatement.setString(15,studentDataBean.getYear());//15
-							preparedStatement.setString(16,studentDataBean.getCurrentSemester());//16
+							preparedStatement.setString(15,studentDataBean.getYear().trim());//15
+							preparedStatement.setString(16,studentDataBean.getCurrentSemester().trim());//16
 							preparedStatement.setString(17,"true");//17
 							
 							preparedStatement.execute();
@@ -99,30 +99,25 @@ public class UpdateDataDao {
 		Connection con = null;
 		String query = "";
 		PreparedStatement preparedStatement = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		
 		
 		try {
 			
 			con = DBConnection.createConnection();
-			statement = con.createStatement();
-				
 				query = "UPDATE staff SET first_name = ?, last_name = ?, gender = ?, email = ?,"
 						+ "phone = ?, address = ?, programme_id = ?, staff_status = ?, staff_id = ?, role = ? "
 						+ "WHERE staff_id = "+staffDataBean.getTemp().trim()+"";
 				preparedStatement = con.prepareStatement(query);
 				
-				preparedStatement.setString(1, staffDataBean.getfirstName());//1
-				preparedStatement.setString(2, staffDataBean.getLastName());//2
-				preparedStatement.setString(3, staffDataBean.getGender());//3
-				preparedStatement.setString(4, staffDataBean.getEmail());//4
-				preparedStatement.setString(5, staffDataBean.getPhone());//5
-				preparedStatement.setString(6, staffDataBean.getAddress());//6
-				preparedStatement.setString(7, staffDataBean.getProgramme());//7
+				preparedStatement.setString(1, staffDataBean.getfirstName().trim());//1
+				preparedStatement.setString(2, staffDataBean.getLastName().trim());//2
+				preparedStatement.setString(3, staffDataBean.getGender().trim());//3
+				preparedStatement.setString(4, staffDataBean.getEmail().trim());//4
+				preparedStatement.setString(5, staffDataBean.getPhone().trim());//5
+				preparedStatement.setString(6, staffDataBean.getAddress().replaceAll("\\s+"," ").trim());//6
+				preparedStatement.setString(7, staffDataBean.getProgramme().trim());//7
 				preparedStatement.setString(8, "true");//8
-				preparedStatement.setString(9, staffDataBean.getStaffId());//9
-				preparedStatement.setString(10, staffDataBean.getRole());
+				preparedStatement.setString(9, staffDataBean.getStaffId().trim());//9
+				preparedStatement.setString(10, staffDataBean.getRole().trim());
 				
 				preparedStatement.execute();
 					
@@ -144,49 +139,26 @@ public String updateProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 		Connection con = null;
 		String query = "";
 		PreparedStatement preparedStatement = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
 		
 		try {
-			
-			con = DBConnection.createConnection();
-			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_id = "+programmeDataBean.getProgrammeId()+"");
-			if(resultSet.next() == false) {//check whether programme with that programme id already exists
-				
-				resultSet = null;
-				resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_name = '"+programmeDataBean.getProgrammeName().toUpperCase()+"'");
-				
-				if(resultSet.next() == false) {
-					
-					query = "INSERT INTO programme(programme_id,programme_name,programme_duration,programme_sem)"
-							+"VALUES(?,?,?,?)";
+				con = DBConnection.createConnection();
+					query = "UPDATE programme SET programme_name = ?, programme_duration = ?, programme_sem = ? "
+							+ "WHERE programme_id = "+programmeDataBean.getProgrammeId().trim()+"";
 					preparedStatement = con.prepareStatement(query);
 					
-					preparedStatement.setString(1, programmeDataBean.getProgrammeId());//1
-					preparedStatement.setString(2, programmeDataBean.getProgrammeName().toUpperCase());
-					preparedStatement.setString(3, programmeDataBean.getProgrammeDuration());
-					preparedStatement.setString(4, programmeDataBean.getSemester());
+					preparedStatement.setString(1, (programmeDataBean.getProgrammeName().toUpperCase()).replaceAll("\\s+"," ").trim());//1
+					preparedStatement.setString(2, programmeDataBean.getProgrammeDuration().trim());//2
+					preparedStatement.setString(3, programmeDataBean.getSemester().trim());//3
 					
 					preparedStatement.execute();
 					
-				}else {
-					System.out.println(programmeDataBean.getProgrammeName());
-					return "Programme with Programme Name "+programmeDataBean.getProgrammeName().toUpperCase()+" Already Exists";
-					
-				}
-				
-			}else {
-				
-				return "Programme with Programme.ID "+programmeDataBean.getProgrammeId()+" Already Exists";
-			}
-					
+						
 		} catch (Exception e) {
 			return e.getLocalizedMessage();
 		}
 		
 		
-		return "SUCCESS";
+		return "SUCCESSUPDATE";
 	}
 
 
@@ -205,33 +177,22 @@ public String updateProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 		try {
 			
 			con = DBConnection.createConnection();
-			statement = con.createStatement();	
-				
-				resultSet = statement.executeQuery("SELECT * FROM course WHERE course_code =  '"+courseDataBean.getCourseCode()+"'");
-
-					if(resultSet.next() == false) { //check whether course with that courseCode already exists
 							
-							query = "INSERT INTO course(course_code,course_name,course_type,course_group,course_sem,max_marks,"
-									+ "min_marks,max_IA,programme_id)"
-									+ "VALUES(?,?,?,?,?,?,?,?,?)";
+							query = "UPDATE course SET course_code = ?,course_name = ?,course_type = ?,course_group = ?,course_sem = ?,max_marks = ?, "
+									+ "min_marks = ?, max_IA = ? WHERE course_code = '"+courseDataBean.getTemp().replaceAll("\\s+"," ").trim()+"'";
 							preparedStatement = con.prepareStatement(query);
 							
-							preparedStatement.setString(1, courseDataBean.getCourseCode().toUpperCase());
-							preparedStatement.setString(2, courseDataBean.getCourseName().toUpperCase());
-							preparedStatement.setString(3, courseDataBean.getCourseType());
-							preparedStatement.setString(4, courseDataBean.getCourseGroup());
-							preparedStatement.setString(5, courseDataBean.getSemester());
-							preparedStatement.setString(6, courseDataBean.getMaxMarks());
-							preparedStatement.setString(7, courseDataBean.getMinMarks());
-							preparedStatement.setString(8, courseDataBean.getMaxIA());
-							preparedStatement.setString(9, courseDataBean.getProgrammeId());
+							preparedStatement.setString(1, (courseDataBean.getCourseCode().toUpperCase()).replaceAll("\\s+"," ").trim());
+							preparedStatement.setString(2, (courseDataBean.getCourseName().toUpperCase()).replaceAll("\\s+"," ").trim());
+							preparedStatement.setString(3, courseDataBean.getCourseType().trim());
+							preparedStatement.setString(4, courseDataBean.getCourseGroup().trim());
+							preparedStatement.setString(5, courseDataBean.getSemester().trim());
+							preparedStatement.setString(6, courseDataBean.getMaxMarks().trim());
+							preparedStatement.setString(7, courseDataBean.getMinMarks().trim());
+							preparedStatement.setString(8, courseDataBean.getMaxIA().trim());
 							
 							preparedStatement.execute();
-						
-					}else {
-						
-						return "Course with the Course Code "+courseDataBean.getCourseCode()+" Already Exists";
-					}
+
 			
 		} catch (Exception e) {
 			return e.getLocalizedMessage();
@@ -261,20 +222,13 @@ public String updateProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 			
 			con = DBConnection.createConnection();
 			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_name = '"+classDataBean.getProgrammeName().toUpperCase()+"'");
+			resultSet = statement.executeQuery("SELECT * FROM programme WHERE programme_name = '"+(classDataBean.getProgrammeName().toUpperCase()).trim()+"'");
 				
-				System.out.println(classDataBean.getProgrammeName());
 				while (resultSet.next()) {
 					
-					programmeId = resultSet.getString("programme_id");
+					programmeId = resultSet.getString("programme_id").trim();
 				}
 				if(programmeId != "") {
-					
-					resultSet = null;
-					resultSet = statement.executeQuery("SELECT * FROM class WHERE class_id =  "+classDataBean.getClassId()+"");
-					
-					
-					if(resultSet.next()==false) { //check whether class with that class ID already exists
 							
 							resultSet = null;
 							resultSet = statement.executeQuery("SELECT * FROM class WHERE class_name = '"+classDataBean.getClassName().toUpperCase()+"' "
@@ -282,14 +236,12 @@ public String updateProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 							
 							if(resultSet.next()==false) {
 								
-								query = "INSERT INTO class(class_id,class_name,programme_id,class_year)"
-										+ "VALUES(?,?,?,?)";
+								query = "UPDATE class SET class_name = ?, programme_id = ?, class_year = ? WHERE class_id = "+classDataBean.getClassId().trim()+"";
 								preparedStatement = con.prepareStatement(query);
 								
-								preparedStatement.setString(1, classDataBean.getClassId());
-								preparedStatement.setString(2, classDataBean.getClassName().toUpperCase());
-								preparedStatement.setString(3, programmeId);
-								preparedStatement.setString(4, classDataBean.getClassYear());
+								preparedStatement.setString(1, (classDataBean.getClassName().toUpperCase()).trim());
+								preparedStatement.setString(2, programmeId);
+								preparedStatement.setString(3, classDataBean.getClassYear().trim());
 							
 								preparedStatement.execute();
 							}else {
@@ -300,15 +252,9 @@ public String updateProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 							
 						}else {
 							
-							return "Class with the Class.ID "+classDataBean.getClassId()+" Already Exists";
+							return "Programme '"+(classDataBean.getProgrammeName().toUpperCase()).trim()+"' 'Programme ID: "+programmeId+"' Already Exists";
 						}
 					
-					
-				}else {
-					
-					return "No Such Programme Exists";
-					
-				}
 				
 			
 		} catch (Exception e) {
@@ -316,6 +262,6 @@ public String updateProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 		}
 		
 		
-		return "SUCCESS";
+		return "SUCCESSUPDATE";
 	}
 }

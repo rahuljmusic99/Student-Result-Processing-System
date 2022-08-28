@@ -46,6 +46,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/dashboard.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/login.js"></script>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="js/pdf.js"></script>
@@ -303,20 +304,31 @@
 		    		  				<%}%>
 	    		  			],
                             backgroundColor: [
-                            	<%for(int j = 7; j > averageFinalMarks.length;j--){
+                            	<%for(int j = bgColor.length - 1; j >= averageFinalMarks.length;j--){
 		    		  				%>
 		    		  				<%="'"+bgColor[j]+"',"%>
 		    		  				<%}%>
                             ],
 	    		  				borderColor:[
-	    		  					<%for(int j = 7; j > averageFinalMarks.length;j--){
+	    		  					<%for(int j = borderColor.length - 1; j >= averageFinalMarks.length;j--){
 	    	    		  				%>
 	    	    		  				<%="'"+borderColor[j]+"',"%>
 	    	    		  				<%}%>
 	    		  				],
 	    		  				borderWidth: 3,
 	    		  		},],
-	    		  	},
+	    		  	},options: {
+	    		        plugins: {
+	    		            title: {
+	    		                display: true,
+	    		                text: 'Internal Performance',
+	    		                padding: {
+	    		                    top: 0,
+	    		                    bottom: 0
+	    		                }
+	    		            }
+	    		        }
+	    		    },
 	    		  });
     		  </script>
     		      
@@ -342,8 +354,8 @@
                         <label>Email</label>
                         <input class="int" type="email" readonly>
                         <label>Password</label>
-                        <div class="i"><i class="fa fa-grav"></i></div>
-                        <input class="int" type="password" readonly>
+                        <div class="i"><i class="fa-solid fa-eye-slash" id="show-password"></i></div>
+                        <input class="int" id="password" type="password" readonly>
                         <button class="cp">Change Password</button>
                     </div>
      

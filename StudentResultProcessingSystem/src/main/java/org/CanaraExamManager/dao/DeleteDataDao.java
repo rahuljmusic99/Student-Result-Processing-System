@@ -83,7 +83,7 @@ public class DeleteDataDao {
 		PreparedStatement preparedStatement = null;
 
 		try {
-			query = "DELETE FROM course WHERE course_code ="+courseDataBean.getCourseCode()+" "
+			query = "DELETE FROM course WHERE course_code ='"+courseDataBean.getCourseCode()+"' "
 					+"AND course_name = '"+courseDataBean.getCourseName()+"'";
 			
 			con = DBConnection.createConnection();
@@ -93,7 +93,7 @@ public class DeleteDataDao {
 			
 			
 		} catch (SQLException e) {
-			return e.getLocalizedMessage();
+			return "Unable to Delete Course "+courseDataBean.getCourseName().trim()+" 'Course Code: "+courseDataBean.getCourseCode().trim()+"' Because it contains Result Data";
 		}
 		
 		return "DELETESUCCESS";

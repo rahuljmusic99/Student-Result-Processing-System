@@ -36,6 +36,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/dashboard.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/login.js"></script>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="js/popup.js"></script>
@@ -43,6 +44,7 @@
         <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'rel='stylesheet'>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
       	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
+      	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
         
     </head> 
     <body>
@@ -90,19 +92,31 @@
  
         <div class="tabs__content" data-tab="2" id="studentDetails">
             <div class="protab"> 
-                
-                
-                <button class="refresh" id="ref" onclick="myFunction()">Refresh page</button>
                 <h4>Student Details Management</h4>
                 <div class="inner__protab">
                     
                 <div class="inner1">
                     <h6 class="left">Students list</h6>
-                    <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
+                    <select class="select3" id="filterProgramme" onchange="changeProgrammeFilter(this.value)">
+                    <option value="" disabled selected hidden>Filter By Programme</option>
+                    <option value="All">All</option>
+                    
+                <%
+                	ResultSet FilterProgramme = loadData.loadProgrammeData();
+                	if(FilterProgramme != null){
+                		while(FilterProgramme.next()){
+                			
+                %>	
+                	<option value="<%=FilterProgramme.getString("programme_id")%>"><%=FilterProgramme.getString("programme_name")%></option>	
+                <%		}
+                	}
+                
+                %>    
+                    </select>
                     <div class="icon"><i class="fa fa-plus-circle" aria-hidden="true"  id="add2" title="Add programme" onclick="myFunction9()"></i></div>
                     </div>
-                <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
-                    <tr >
+                <table border="1" class="tb1" cellspacing="0" padding="10" rules="all" id="studentDataTable">
+                    <tr id="studentHeading">
                       <th>Programme Name</th>
                         <th>Class</th>
                         <th>Class Year</th>
@@ -119,7 +133,7 @@
            					while(studentData.next()){
            						
                     %>
-                    <tr>
+                    <tr class="filterRow<%=studentData.getString("programme_id")%>">
                         <td  class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme name-->
                         <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
                         <td class="td2"><%=studentData.getString("class_year")%></td>
@@ -243,6 +257,21 @@
               			});
               		}
                      
+                      function changeProgrammeFilter(programme){
+                    	  
+                    	 if(programme == "All"){
+                    		 $('#studentDataTable tr').show(); 
+                    	 
+                    	 }else{
+                    		 
+                    		 $(".filterRow"+programme).show();
+                        	 $('#studentDataTable').find('tr').not(".filterRow"+programme).hide();
+                        	 $("#studentHeading").show();
+                    	 }
+                    	 
+                    	  
+                      }
+                      
                     </script>
                     
                 </table>
@@ -413,8 +442,8 @@
 						swal("Invalid First Name !","First Name should have at least 2 Characters","error");
 						e.preventDefault(); 
 					
-					}else if(sFirstName.value.length > 64){
-						swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+					}else if(sFirstName.value.length > 15){
+						swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 						e.preventDefault(); 
 					
 					}else if(startingCaps.test(sFirstName.value) == false){
@@ -429,8 +458,8 @@
 						swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
 						e.preventDefault(); 
 						
-					}else if(sLastName.value.length > 64){
-						swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+					}else if(sLastName.value.length > 15){
+						swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 						e.preventDefault(); 
 					
 					}else if(startingCaps.test(sLastName.value) == false){
@@ -453,8 +482,8 @@
 						swal("Invalid Email !","Please Enter a valid Email address Format","error");
 						e.preventDefault();
 						
-					}else if(sEmail.value.length > 255){
-						swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+					}else if(sEmail.value.length > 25){
+						swal("Invalid Email !","Email Address cannot be more than 25 Characters","error");
 						e.preventDefault();
 						
 					}else if(onlyDigits.test(sPhone.value) == false){//Mobile Number
@@ -477,8 +506,8 @@
 				 		swal("Invalid Address !","Address can only contain Alphabets, Digits, White Spaces, some Special Characters like ' - , . : ; #  and starting Character can only be a Digit or a Capital Alphabet","error");
 						e.preventDefault();
 				 		
-				 	}else if(sAddress.value.length > 255){
-				 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+				 	}else if(sAddress.value.length > 25){
+				 		swal("Invalid Address !","Address cannot be more than 25 Characters","error");
 						e.preventDefault();
 				 		
 				 	}else if(sAddress.value.length < 3){
@@ -513,8 +542,8 @@
 				 		swal("Invalid City !","City can only contain Alphabets, a Single Space after each Word and '-' Character  Eg:'Sangli-Miraj and Kupwad'","error");
 						e.preventDefault();
 				 		
-				 	}else if(sCity.value.length > 64){
-				 		swal("Invalid City !","City cannot contain more than 64 Characters","error");
+				 	}else if(sCity.value.length > 20){
+				 		swal("Invalid City !","City cannot contain more than 20 Characters","error");
 						e.preventDefault();
 				 		
 				 	}else if(districtState.test(sDistrict.value) == false){//District
@@ -529,8 +558,8 @@
 				 		swal("Invalid District !","Starting Alphabet of the District should be capitalized","error");
 						e.preventDefault();
 				 		
-				 	}else if(sDistrict.value.length > 64){
-				 		swal("Invalid District !","District cannot contain more than 64 Characters","error");
+				 	}else if(sDistrict.value.length > 20){
+				 		swal("Invalid District !","District cannot contain more than 20 Characters","error");
 						e.preventDefault();
 						
 				 	}else if(districtState.test(sState.value) == false){//State
@@ -545,8 +574,8 @@
 				 		swal("Invalid State !","Starting Alphabet of the State should be capitalized","error");
 						e.preventDefault();
 				 		
-				 	}else if(sState.value.length > 64){
-				 		swal("Invalid State !","State cannot contain more than 64 Characters","error");
+				 	}else if(sState.value.length > 20){
+				 		swal("Invalid State !","State cannot contain more than 20 Characters","error");
 						e.preventDefault();
 				 	
 				 	}else if(sYof.value > validMaxYear){//Year of Joining
@@ -581,8 +610,8 @@
 				 		swal("Invalid Password !","Password must contain at leat 8 Characters","error");
 						e.preventDefault();
 				 		
-				 	}else if(sPassword.value.length > 64){
-				 		swal("Invalid Password !","Password must not contain more than 64 Characters","error");
+				 	}else if(sPassword.value.length > 25){
+				 		swal("Invalid Password !","Password must not contain more than 25 Characters","error");
 						e.preventDefault();
 				 		
 				 	}
@@ -900,8 +929,8 @@
 						swal("Invalid First Name !","First Name should have at least 2 Characters","error");
 						e.preventDefault(); 
 					
-					}else if(sFirstName2.value.length > 64){
-						swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+					}else if(sFirstName2.value.length > 15){
+						swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 						e.preventDefault(); 
 					
 					}else if(startingCaps.test(sFirstName2.value) == false){
@@ -916,8 +945,8 @@
 						swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
 						e.preventDefault(); 
 						
-					}else if(sLastName2.value.length > 64){
-						swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+					}else if(sLastName2.value.length > 15){
+						swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 						e.preventDefault(); 
 					
 					}else if(startingCaps.test(sLastName2.value) == false){
@@ -940,8 +969,8 @@
 						swal("Invalid Email !","Please Enter a valid Email address Format","error");
 						e.preventDefault();
 						
-					}else if(sEmail2.value.length > 255){
-						swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+					}else if(sEmail2.value.length > 25){
+						swal("Invalid Email !","Email Address cannot be more than 25 Characters","error");
 						e.preventDefault();
 						
 					}else if(onlyDigits.test(sPhone2.value) == false){//Mobile Number
@@ -968,8 +997,8 @@
 						swal("Invalid Address","Address cannot be less than 3 Characters","error");
 						e.preventDefault();
 						
-					}else if(sAddress2.value.length > 255){
-				 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+					}else if(sAddress2.value.length > 25){
+				 		swal("Invalid Address !","Address cannot be more than 25 Characters","error");
 						e.preventDefault();
 				 		
 				 	}else if(onlyDigits.test(sPincode2.value) == false){//Pinclode
@@ -1000,8 +1029,8 @@
 				 		swal("Invalid City !","City can only contain Alphabets, a Single Space after each Word and '-' Character  Eg:'Sangli-Miraj and Kupwad'","error");
 						e.preventDefault();
 				 		
-				 	}else if(sCity2.value.length > 64){
-				 		swal("Invalid City !","City cannot contain more than 64 Characters","error");
+				 	}else if(sCity2.value.length > 20){
+				 		swal("Invalid City !","City cannot contain more than 20 Characters","error");
 						e.preventDefault();
 				 		
 				 	}else if(districtState.test(sDistrict2.value) == false){//District
@@ -1016,8 +1045,8 @@
 				 		swal("Invalid District !","Starting Alphabet of the District should be capitalized","error");
 						e.preventDefault();
 				 		
-				 	}else if(sDistrict2.value.length > 64){
-				 		swal("Invalid District !","District cannot contain more than 64 Characters","error");
+				 	}else if(sDistrict2.value.length > 20){
+				 		swal("Invalid District !","District cannot contain more than 20 Characters","error");
 						e.preventDefault();
 						
 				 	}else if(districtState.test(sState2.value) == false){//State
@@ -1032,8 +1061,8 @@
 				 		swal("Invalid State !","Starting Alphabet of the State should be capitalized","error");
 						e.preventDefault();
 				 		
-				 	}else if(sState2.value.length > 64){
-				 		swal("Invalid State !","State cannot contain more than 64 Characters","error");
+				 	}else if(sState2.value.length > 20){
+				 		swal("Invalid State !","State cannot contain more than 20 Characters","error");
 						e.preventDefault();
 				 	
 				 	}else if(sYof2.value > validMaxYear){//Year of Joining
@@ -1162,9 +1191,6 @@
             
             <div class="tabs__content" data-tab="3" id="staffDetails">
                 <div class="protab"> 
-                    
-                    
-                    <button class="refresh" id="ref" onclick="myFunction()">Refresh page</button>
                     <h4>Staff Details Management</h4>
                     <div class="inner__protab">
                         
@@ -1225,14 +1251,20 @@
                         	document.querySelector('.bg-model11').style.display = 'flex';
                         	document.querySelector('.bg-model11').style.position = 'fixed';
                         	
+                        	var firstName = "<%=staffDataSet.getString("first_name")%>";
+                        	var secondName = "<%=staffDataSet.getString("last_name")%>";
+                        	var staffId = "<%=staffDataSet.getString("staff_id")%>";
+                        	var staffEmail = "<%=staffDataSet.getString("email")%>";
+                        	var staffPhone = "<%=staffDataSet.getString("phone")%>";
+                        	var staffAddress = "<%=staffDataSet.getString("address")%>";
                         	
-                        	document.forms['editStaffForm']['staffFirstName2'].value = "<%=staffDataSet.getString("first_name")%>";
-                        	document.forms['editStaffForm']['staffLastName2'].value = "<%=staffDataSet.getString("last_name")%>";
-                        	document.forms['editStaffForm']['staffId2'].value = "<%=staffDataSet.getString("staff_id")%>";
+                        	document.forms['editStaffForm']['staffFirstName2'].value = firstName;
+                        	document.forms['editStaffForm']['staffLastName2'].value = secondName;
+                        	document.forms['editStaffForm']['staffId2'].value = staffId;
                         	document.forms['editStaffForm']['tempStaffId'].value = "<%=staffDataSet.getString("staff_id")%>";
-                        	document.forms['editStaffForm']['staffEmail2'].value = "<%=staffDataSet.getString("email")%>";
-                        	document.forms['editStaffForm']['staffPhone2'].value = "<%=staffDataSet.getString("phone")%>";
-                        	document.forms['editStaffForm']['staffAddress2'].value = "<%=staffDataSet.getString("address")%>";
+                        	document.forms['editStaffForm']['staffEmail2'].value = staffEmail;
+                        	document.forms['editStaffForm']['staffPhone2'].value = staffPhone;
+                        	document.forms['editStaffForm']['staffAddress2'].value = staffAddress;
                         	document.forms['editStaffForm']['staffPassword2'].value = "<%=staffDataSet.getString("password")%>";
                         	
                         	$("#staffGender2 option[value!='<%=staffDataSet.getString("gender")%>']").removeAttr("selected");
@@ -1241,7 +1273,7 @@
                         	$("#staffProgramme2 option[id!='pro<%=staffDataSet.getString("programme_id")%>']").removeAttr("selected");
                         	$("#staffProgramme2 option[id='pro<%=staffDataSet.getString("programme_id")%>']").attr("selected",true);
                         	
-                        	var role = '<%=staffDataSet.getString("role")%>';
+                        	var role = "<%=staffDataSet.getString("role")%>";
                         	console.log(role);
                         	
                         	if(role == "Internal Auditor"){
@@ -1369,8 +1401,8 @@
 											swal("Invalid First Name !","First Name should have at least 2 Characters","error");
 											e.preventDefault(); 
 										
-										}else if(staffFirstName.value.length > 64){
-											swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+										}else if(staffFirstName.value.length > 15){
+											swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 											e.preventDefault(); 
 										
 										}else if(startingCaps.test(staffFirstName.value) == false){
@@ -1385,8 +1417,8 @@
 											swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
 											e.preventDefault(); 
 											
-										}else if(staffLastName.value.length > 64){
-											swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+										}else if(staffLastName.value.length > 15){
+											swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 											e.preventDefault(); 
 										
 										}else if(startingCaps.test(staffLastName.value) == false){
@@ -1401,8 +1433,8 @@
 											swal("Invalid Email !","Please Enter a valid Email address Format","error");
 											e.preventDefault();
 											
-										}else if(staffEmail.length > 255){
-											swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+										}else if(staffEmail.length > 25){
+											swal("Invalid Email !","Email Address cannot be more than 25 Characters","error");
 											e.preventDefault();
 											
 										}else if(onlyDigits.test(staffPhone.value) == false){//Mobile Number
@@ -1425,8 +1457,8 @@
 									 		swal("Invalid Address !","Address can only contain Alphabets, Digits, White Spaces, some Special Characters like ' - , . : ; #  and starting Character can only be a Digit or a Capital Alphabet","error");
 											e.preventDefault();
 									 		
-									 	}else if(staffAddress.value.length > 255){
-									 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+									 	}else if(staffAddress.value.length > 25){
+									 		swal("Invalid Address !","Address cannot be more than 25 Characters","error");
 											e.preventDefault();
 									 		
 									 	}else if(staffAddress.length < 3){
@@ -1453,8 +1485,8 @@
 									 		swal("Invalid Password !","Password must contain at leat 8 Characters","error");
 											e.preventDefault();
 									 		
-									 	}else if(staffPassword.value.length > 64){
-									 		swal("Invalid Password !","Password must not contain more than 64 Characters","error");
+									 	}else if(staffPassword.value.length > 25){
+									 		swal("Invalid Password !","Password must not contain more than 25 Characters","error");
 											e.preventDefault();
 									 		
 									 	}
@@ -1566,8 +1598,8 @@
 										swal("Invalid First Name !","First Name should have at least 2 Characters","error");
 										e.preventDefault(); 
 									
-									}else if(staffFirstName2.value.length > 64){
-										swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+									}else if(staffFirstName2.value.length > 15){
+										swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 										e.preventDefault(); 
 									
 									}else if(startingCaps.test(staffFirstName2.value) == false){
@@ -1582,8 +1614,8 @@
 										swal("Invalid Last Name !","Last Name can only contain Alphabets","error");
 										e.preventDefault(); 
 										
-									}else if(staffLastName2.value.length > 64){
-										swal("Invalid First Name !","First Name cannot be more than 64 Characters","error");
+									}else if(staffLastName2.value.length > 15){
+										swal("Invalid First Name !","First Name cannot be more than 15 Characters","error");
 										e.preventDefault(); 
 									
 									}else if(startingCaps.test(staffLastName2.value) == false){
@@ -1598,8 +1630,8 @@
 										swal("Invalid Email !","Please Enter a valid Email address Format","error");
 										e.preventDefault();
 										
-									}else if(staffEmail2.length > 255){
-										swal("Invalid Email !","Email Address cannot be more than 255 Characters","error");
+									}else if(staffEmail2.length > 25){
+										swal("Invalid Email !","Email Address cannot be more than 25 Characters","error");
 										e.preventDefault();
 										
 									}else if(onlyDigits.test(staffPhone2.value) == false){//Mobile Number
@@ -1622,8 +1654,8 @@
 								 		swal("Invalid Address !","Address can only contain Alphabets, Digits, White Spaces, some Special Characters like ' - , . : ; #  and starting Character can only be a Digit or a Capital Alphabet","error");
 										e.preventDefault();
 								 		
-								 	}else if(staffAddress2.value.length > 255){
-								 		swal("Invalid Address !","Address cannot be more than 255 Characters","error");
+								 	}else if(staffAddress2.value.length > 25){
+								 		swal("Invalid Address !","Address cannot be more than 25 Characters","error");
 										e.preventDefault();
 								 		
 								 	}else if(staffAddress2.length < 3){
@@ -1643,17 +1675,31 @@
 
             <div class="tabs__content" data-tab="4">
                 <div class="protab"> 
-                    <button class="refresh" id="refProgramme" onclick="refreshProgramme();">Refresh page</button>
                     <h4>Programme Management</h4>
                     <div class="inner__protab">
                         
                     <div class="inner1">
                         <h6 class="left">Programme list</h6>
-                        <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
+                        <select class="select3" onchange="changeProgrammeFilterPro(this.value)">
+                        <option value="" disabled selected hidden>Filter By Programme</option>
+                        <option value="All">All</option>
+                        
+                <%
+                	ResultSet FilterProgrammePro = loadData.loadProgrammeData();
+                	if(FilterProgrammePro != null){
+                		while(FilterProgrammePro.next()){
+                			
+                %>	
+                	<option value="<%=FilterProgrammePro.getString("programme_id")%>"><%=FilterProgrammePro.getString("programme_name")%></option>	
+                <%		}
+                	}
+                
+                %>        
+                        </select>
                         <div class="icon"><i class="fa fa-plus-circle" id="add"  title="Add programme" onclick="myFunction1()"></i></div></div>
                    
-                    <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
-                        <tr class="tb2">
+                    <table border="1" class="tb1" cellspacing="0" padding="10" rules="all" id="programmeDataTable">
+                        <tr class="tb2" id="programmeHeading">
                             <th>Programme Name</th>
                             <th>Semester</th>
                             <th>Courses (subjects)</th>
@@ -1673,7 +1719,7 @@
                         					
                         					ResultSet coursesData = loadData.loadCoursedata(programmeResultSet, i);
                         %>
-                        <tr>
+                        <tr class="filterRowPro<%=programmeResultSet.getString("programme_id")%>">
 							<td id = "<%=programmeResultSet.getString("programme_name")%>"class="td1"><%=programmeResultSet.getString("programme_name")%></td>   <!--Programme name-->
                             <td class="td2"><%=Integer.toString(i)%></td>   <!--Semester-->
                             
@@ -1706,7 +1752,7 @@
 	                        document.getElementById("btn__course<%=i + j%>");
 	                        function insertCourseData<%=i + j%>(){
 	                          document.querySelector('.bg-model1').style.display = 'flex';
-                              document.querySelector('.bg-model1').style.position = 'fixed';document.querySelector('.bg-model').style.position = 'fixed';
+                              document.querySelector('.bg-model1').style.position = 'fixed';
 	                          document.getElementById("programmeNameInCourse").value = "<%=programmeResultSet.getString("programme_name")%>";
 	                          document.getElementById("courseSemester").value = "<%=i%>";
 	                          document.getElementById("programmeIdInCourse").value = "<%=programmeResultSet.getString("programme_id")%>"
@@ -1714,12 +1760,18 @@
 	                        
 	                        document.getElementById("programmeEdit<%=i + j%>");
 	                        function editProgramme<%=i + j%>(){
-	                            document.querySelector('.bg-model13').style.display = 'flex';
+	                        	
+	                        	var programmeId = "<%=programmeResultSet.getString("programme_id")%>";
+	                        	var programmeName = "<%=programmeResultSet.getString("programme_name")%>";
+	                        	var programmeDuration = "<%=programmeResultSet.getString("programme_duration")%>";
+	                        	var programmeSem = "<%=programmeResultSet.getString("programme_sem")%>";
+								
+	                        	document.querySelector('.bg-model13').style.display = 'flex';
 	                            document.querySelector('.bg-model13').style.position = 'fixed';
-	                            document.getElementById("programmeIdInProgramme").value = "<%=programmeResultSet.getString("programme_id")%>";
-	                            document.getElementById("programmeNameInProgramme").value = "<%=programmeResultSet.getString("programme_name")%>";
-	                            document.getElementById("programmeDuration").value = "<%=programmeResultSet.getString("programme_duration")%>";
-	                            document.getElementById("programmeTotalSemesterInProgramme").value = "<%=programmeResultSet.getString("programme_sem")%>";
+	                            document.getElementById("programmeIdInProgramme").value = programmeId;
+	                            document.getElementById("programmeNameInProgramme").value = programmeName;
+	                            document.getElementById("programmeDuration").value = programmeDuration;
+	                            document.getElementById("programmeTotalSemesterInProgramme").value = programmeSem;
 	                            $("#programmeDuration").attr({
 	                                "max" : 10,        // substitute your own
 	                                "min" : <%=programmeResultSet.getString("programme_duration")%>          // values (or variables) here
@@ -1746,6 +1798,23 @@
                         	}	
                            
                         %>
+                        
+                        <script type="text/javascript">
+	                        function changeProgrammeFilterPro(programme){
+	                      	  
+	                       	 if(programme == "All"){
+	                       		 $('#programmeDataTable tr').show(); 
+	                       	 
+	                       	 }else{
+	                       		 
+	                       		 $(".filterRowPro"+programme).show();
+	                           	 $('#programmeDataTable').find('tr').not(".filterRowPro"+programme).hide();
+	                           	 $("#programmeHeading").show();
+	                       	 }
+	                       	 
+	                       	  
+	                         }
+                        </script>
                        
                     </table>
                     <script type="text/javascript">
@@ -1885,8 +1954,8 @@
 											swal("Invalid Programme Name !","Prgramme Name cannot be less than 3 Characters","error");
 											e.preventDefault(); 
 											
-										}else if(programmeName.value.length > 64){
-											swal("Invalid Programme Name !","Prgramme Name cannot be more than 64 Characters","error");
+										}else if(programmeName.value.length > 35){
+											swal("Invalid Programme Name !","Prgramme Name cannot be more than 35 Characters","error");
 											e.preventDefault(); 
 											
 										}else if(parseInt(programmeDuration.value) > 6){//Programme Duration
@@ -2023,9 +2092,8 @@
                         </div>
                         <div class="header12">
                             <h1>Edit Course Data</h1></div>
-                            <form id="editCourseForm<%=i + j%>" action="" method="post">
-                                <table id="editCourseTable<%=i + j%>" border="1" class="tb4">
-                                    <tr>
+                            <table class="tb4">
+                            	<tr>
                                     <th class="tdCourse">Programme<br>Name</th>
                                     <th class="tdCourse" >Course<br> code</th>
                                     <th class="tdCourse" >Course<br> name</th>
@@ -2037,27 +2105,32 @@
                                     <th class="tdCourse">Max<br>IA</th>
                                     <th class="tdCourse">Delete<br>Course</th>
                                     <th class="tdCourse">Update<br>Course</th>
-                                    </tr>
-							<%try{
+                                    </tr>		
+                            </table>
+                            
+                        <%try{
                             	if(coursesData!=null){
                             		
                             		while(coursesData.next()){
                             			courseCount = courseCount + 1;
-                            %>			
+                        %>	
+                                
+                            <form id="editCourseForm<%=courseCount%><%=i + j%>" action="" method="post">
+                                <table id="editCourseTable<%=i + j%>" border="1" class="tb4">
                             		<tr class="input-in">
-                            			<td class="tdCo"><input class="inputprog" id="" value="<%=programmeResultSet2.getString("programme_name")%>"/></td>
-                            			<td class="tdCourse"><input class="inputCourseCode" id="" value="<%=coursesData.getString("course_code")%>"/></td>
-                            			<td class="tdCourse"><input class="input" id="" value="<%=coursesData.getString("course_name")%>"/></td>
+                            			<td class="tdCo"><input class="inputprog" id="" value="<%=programmeResultSet2.getString("programme_name")%>" readonly="readonly"/></td>
+                            			<td class="tdCourse"><input class="inputCourseCode" id="courseCo<%=courseCount%><%=i + j%>"  name="uniqueId" value="<%=coursesData.getString("course_code")%>" onchange="disableButton<%=courseCount%><%=i + j%>()" required/></td>
+                            			<td class="tdCourse"><input class="input" id="courseN<%=courseCount%><%=i + j%>" name="courseName" value="<%=coursesData.getString("course_name")%>" onchange="disableButton<%=courseCount%><%=i + j%>()" required/></td>
                             			<%if(coursesData.getString("course_type").equals("Theory")){
                             			%>
-                            				<td class="tdCourse"><select class="input">
+                            				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name="courseType" required>
                             					<option value="" disabled hidden>course Type</option>
                             					<option selected>Theory</option>
                             					<option>Practical</option>
                             				</select>
                             			</td>
                             			<%}else{%>
-                            				<td class="tdCourse"><select class="input">
+                            				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name='courseType' required>
                             					<option value="" disabled hidden>course Type</option>
                             					<option>Theory</option>
                             					<option Selected>Practical</option>
@@ -2068,7 +2141,7 @@
                             			<%switch(coursesData.getString("course_group")){
                             			case "Group 1 Core Course":
                             			%>
-                            				<td class="tdCourse"><select class="input">
+                            				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name='courseGroup' required>
                             					<option value="" disabled hidden>course Group</option>
                             					<option selected>Group 1 Core Course</option>
 				                                <option >Group 2 Elective Course</option>
@@ -2080,7 +2153,7 @@
                             			<%break;	
                             			case "Group 2 Elective Course":
                                 			%>
-                                				<td class="tdCourse"><select class="input">
+                                				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name='courseGroup' required>
                                 					<option value="" disabled hidden>course Group</option>
                                 					<option >Group 1 Core Course</option>
     				                                <option selected>Group 2 Elective Course</option>
@@ -2092,7 +2165,7 @@
                                 			<%break;
 	                           			case "Group 3 a)Compulsary Foundation":
 	                               			%>
-	                               				<td class="tdCourse"><select class="input">
+	                               				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name='courseGroup' required>
 	                               					<option value="" disabled hidden>course Group</option>
 	                               					<option >Group 1 Core Course</option>
 	   				                                <option >Group 2 Elective Course</option>
@@ -2104,7 +2177,7 @@
 	                               			<%break;
                                			case "Group 3 b)Elective Foundation":
 	                               			%>
-	                               				<td class="tdCourse"><select class="input">
+	                               				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name='courseGroup' required>
 	                               					<option value="" disabled hidden>course Group</option>
 	                               					<option >Group 1 Core Course</option>
 	   				                                <option >Group 2 Elective Course</option>
@@ -2116,7 +2189,7 @@
 	                               			<%break;
                             			default:
                             				%>
-                            				<td class="tdCourse"><select class="input">
+                            				<td class="tdCourse"><select class="input" onchange="disableButton<%=courseCount%><%=i + j%>()" name='courseGroup' required>
 	                               					<option value="" disabled hidden>course Group</option>
 	                               					<option >Group 1 Core Course</option>
 	   				                                <option >Group 2 Elective Course</option>
@@ -2127,26 +2200,83 @@
 	                               			</td>
                             			<%} %>
                             			    
-                                            <td class="tdCourse"><input class="inputDigits" id="" value=""/></td>
-                       						<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_marks")%>"/></td>
-                            				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("min_marks")%>"/></td>
-                            				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_IA")%>"/></td>
-                                            <td><button class="btnDelete" id="button12">Delete</button></td> 
-                                            <td><button class="btnUpdate" id="button14">Update</button></td> 
+                                            <td class="tdCourse"><input class="inputDigits" name="courseSem" id="courseSe<%=courseCount%><%=i + j%>" value="<%=coursesData.getString("course_sem")%>" onchange="disableButton<%=courseCount%><%=i + j%>()" required/></td>
+                       						<td class="tdCourse"><input class="inputDigits" name="courseMaxMarks" id="courseMaxM<%=courseCount%><%=i + j%>" value="<%=coursesData.getString("max_marks")%>" onchange="disableButton<%=courseCount%><%=i + j%>()" required/></td>
+                            				<td class="tdCourse"><input class="inputDigits" name="courseMinMarks" id="courseMinM<%=courseCount%><%=i + j%>" value="<%=coursesData.getString("min_marks")%>" onchange="disableButton<%=courseCount%><%=i + j%>()" required/></td>
+                            				<td class="tdCourse"><input class="inputDigits" name="courseMaxIA" id="courseMaxI<%=courseCount%><%=i + j%>" value="<%=coursesData.getString("max_IA")%>"/></td>
+                                            <td><input type="submit" class="btnDelete" id="btnDeleteC<%=courseCount%><%=i + j%>" value="DELETE" onclick="setAction(this.value,'<%=courseCount%><%=i + j%>');"></td> 
+                                            <td><input type="submit" class="btnUpdate" value="UPDATE" onclick="setAction(this.value,'<%=courseCount%><%=i + j%>');"></td> 
                             				
                             			<script type="text/javascript">
-                            				function deleteCourse<%=courseCount%>(){
-                            					document.forms['deleteForm']['courseCode'].value = "<%=coursesData.getString("course_code")%>";
-                            					document.forms['deleteForm']['courseName'].value = "<%=coursesData.getString("course_name")%>";
+                            				function setAction(typeAction,courseCount){
                             					
+                            					if(typeAction == "DELETE"){
+                            						$("#editCourseForm"+courseCount).attr("action","DeleteDataServlet");
+                       
+                            						
+                            					}else if(typeAction == "UPDATE"){
+                            						$("#editCourseForm"+courseCount).attr("action","UpdateDataServlet");
+                            						
+                            					}
+                            					
+                            				}
+                            				
+                            				function disableButton<%=courseCount%><%=i + j%>(){
+                            					document.getElementById("btnDeleteC<%=courseCount%><%=i + j%>").disabled = true;
                             					
                             				}
                             				
                             				
+        									const editCourseForm<%=courseCount%><%=i + j%> = document.getElementById("editCourseForm<%=courseCount%><%=i + j%>");
+        									const courseCode<%=courseCount%><%=i + j%> = document.getElementById("courseCo<%=courseCount%><%=i + j%>");
+        									const courseName<%=courseCount%><%=i + j%> = document.getElementById("courseN<%=courseCount%><%=i + j%>");
+        									const courseMaxMarks<%=courseCount%><%=i + j%> = document.getElementById("courseMaxM<%=courseCount%><%=i + j%>");
+        									const courseMinMarks<%=courseCount%><%=i + j%> = document.getElementById("courseMinM<%=courseCount%><%=i + j%>");
+        									const courseMaxIA<%=courseCount%><%=i + j%> = document.getElementById("courseMaxI<%=courseCount%><%=i + j%>");
+        									
+        									editCourseForm<%=courseCount%><%=i + j%>.addEventListener('submit',(e)=>{
+        										
+        										var cCode = /^[a-zA-Z]{6}[0-9]{3}$/;
+        										var cName = /^[a-zA-Z]*[\s\#\&\(\)\-\+\.\,\/\\a-zA-Z]*$/;
+        										
+        										if(cCode.test(courseCode<%=courseCount%><%=i + j%>.value) == false){//course code
+        											swal("Invalid Course Code !","Course Code must contain 4 characters at the beginning and 3 digtis at the end 'eg:BCACAC231' (NO SPACES ALLOWED!)","error");
+        											e.preventDefault(); 
+        											
+        										}else if(cName.test(courseName<%=courseCount%><%=i + j%>.value) == false){//course name
+        											swal("Invalid Course Name !","Course Name can contain only letters, spaces and some special characters like '. , /\ () & # - +' ","error");
+        											e.preventDefault();
+        											
+        										}else if(courseName<%=courseCount%><%=i + j%>.value.length > 64){
+        											swal("Invalid Course Name !","Course Name cannnot contain more than 64 Characters","error");
+        											e.preventDefault();
+        											
+        										}else if(parseInt(courseMaxMarks<%=courseCount%><%=i + j%>.value) > 125){//max marks
+        											swal("Invalid Max Marks !","Max Marks cannot be greater than 125 ","error");
+        											e.preventDefault();
+        											
+        										}else if(parseInt(courseMaxMarks<%=courseCount%><%=i + j%>.value) < 25){
+        											swal("Invalid Max Marks !","Max Marks cannot be less than 25 ","error");
+        											e.preventDefault();
+        											
+        										}else if(parseInt(courseMinMarks<%=courseCount%><%=i + j%>.value) > parseInt(courseMaxMarks<%=courseCount%><%=i + j%>.value)){//min marks
+        											swal("Invalid Min Marks !","Min Marks cannot be greater than Max Marks ","error");
+        											e.preventDefault();
+        											
+        										}else if(parseInt(courseMaxIA<%=courseCount%><%=i + j%>.value) > parseInt(courseMinMarks<%=courseCount%><%=i + j%>.value)){//max IA
+        											swal("Invalid Max Internal Assessment Marks !","Internal Assessment Marks cannot be greater than Min Marks ","error");
+        											e.preventDefault();
+        											
+        										}
+        									});
+                            				
                             			</script>
                             			
                             		</tr>    
-                            			
+                            	</table>
+                            	<input name="Data" type="hidden" value="course"/>
+                            	<input name="tempCode" type="hidden" value="<%=coursesData.getString("course_code")%>" />
+                        	</form> 	
                             <%	 	}
                             	}
                             	
@@ -2154,8 +2284,7 @@
                             	e.printStackTrace();
                             	
                             }%> 
-                                </table>
-                        </form> 
+                      
                     </div>
                 </div>
                 <%				
@@ -2175,11 +2304,12 @@
                         <div class="close13" id="close">+</div>
                         <div class="header13">
                             <h1>Edit Programme Data</h1></div>
-                            <form id="editProgrammeForm" action="UpdateDataServlet" method="post">
-                                <input id="programmeIdInProgramme" type="text" placeholder="Programme Id" readonly="readonly">
-                                <input id="programmeNameInProgramme" type="text" placeholder="Programme Name">
-                                <input id="programmeDuration" min="" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Duration(In Years)">
-                                <input id="programmeTotalSemesterInProgramme" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Total Semester">
+                            <form id="editProgrammeForm" action="UpdateDataServlet" method="post" >
+                                <input name="programmeId" id="programmeIdInProgramme" type="text" placeholder="Programme Id" readonly="readonly" required>
+                                <input name="programmeName" id="programmeNameInProgramme" type="text" placeholder="Programme Name" required>
+                                <input name="duration" id="programmeDuration" min="" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Duration(In Years)" required>
+                                <input name="totalSemester" id="programmeTotalSemesterInProgramme" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Total Semester" required>
+                               	<input name="Data" type="hidden" value="programme"/>
                                 <input type="submit" id="button13" value="UPDATE" />
                                 
                                 <script type="text/javascript">
@@ -2207,8 +2337,8 @@
 											swal("Invalid Programme Name !","Prgramme Name cannot be less than 3 Characters","error");
 											e.preventDefault(); 
 											
-										}else if(programmeName2.value.length > 64){
-											swal("Invalid Programme Name !","Prgramme Name cannot be more than 64 Characters","error");
+										}else if(programmeName2.value.length > 35){
+											swal("Invalid Programme Name !","Prgramme Name cannot be more than 35 Characters","error");
 											e.preventDefault(); 
 											
 										}else if(parseInt(programmeDuration2.value) > 6){//Programme Duration
@@ -2220,11 +2350,11 @@
 											e.preventDefault(); 
 											
 										}else if(parseInt(programmeSem2.value) > parseInt(programmeDuration2.value)*2){//Programme Semester
-											swal("Invalid Total Semester !","Total Semester cannot be greater than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
+											swal("Invalid Total Semester !","Total Semester cannot be greater than "+(parseInt(programmeDuration2.value)*2)+" semester(s)","error");
 											e.preventDefault(); 
 											
 										}else if(parseInt(programmeSem2.value) < parseInt(programmeDuration2.value)*2){
-											swal("Invalid Total Semester !","Total Semester cannot be less than "+(parseInt(programmeDuration.value)*2)+" semester(s)","error");
+											swal("Invalid Total Semester !","Total Semester cannot be less than "+(parseInt(programmeDuration2.value)*2)+" semester(s)","error");
 											e.preventDefault(); 
 											
 										}
@@ -2245,10 +2375,24 @@
                        
                    <div class="inner1">
                        <h6 class="left">Class list</h6>
-                       <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
+                       <select class="select3" onchange="changeProgrammeFilterClass(this.value)">
+                       <option value="" disabled selected hidden>Filter By Programme</option>
+                       <option value="All">All</option>
+               <%
+                	ResultSet FilterProgrammeclass = loadData.loadProgrammeData();
+                	if(FilterProgrammeclass != null){
+                		while(FilterProgrammeclass.next()){
+                			
+                %>	
+                	<option value="<%=FilterProgrammeclass.getString("programme_id")%>"><%=FilterProgrammeclass.getString("programme_name")%></option>	
+                <%		}
+                	}
+                
+                %>        
+                       </select>
                        <div class="icon"><i class="fa fa-plus-circle" id="add1" title="Add programme" onclick="myFunction8()"></i></div></div>
-                   <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
-                       <tr >
+                   <table border="1" class="tb1" cellspacing="0" padding="10" rules="all" id="classDataTable">
+                       <tr id="classHeader">
                            <th>Programme Name</th>
                            <th>Class Name</th>
                            <th>Class Year</th>
@@ -2259,25 +2403,60 @@
                        	try{
                        		
                        		ResultSet classesData = loadData.loadOnlyClassData();
+                       		int ci=1;
    	    					while(classesData.next()){
    	    			%>		
    	    	
-                       <tr>
+                       <tr class="filterRowClass<%=classesData.getString("programme_id")%>">
                            <td class="td1"><%=classesData.getString("programme_name")%></td>   <!--Programme name-->
                            <td class="td2"><%=classesData.getString("class_name")%></td>   <!--Semseter-->
                            <td class="td5"><%=classesData.getString("class_year")%></td>
-                           <td class="td3"><div class="circle1" title="Edit Class" id="edit5" onclick="myFunction17()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteClass" class="circle2" title="Delete Class" onclick="deleteClass('<%=classesData.getString("class_id")%>','class','<%=classesData.getString("class_name")+" "+classesData.getString("class_year")+" year"%>')"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
-                       </tr>			
+                           <td class="td3"><div class="circle1" title="Edit Class" id="editClass<%=ci%>" onclick="updateClassData<%=ci%>()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div id="deleteClass" class="circle2" title="Delete Class" onclick="deleteClass('<%=classesData.getString("class_id")%>','class','<%=classesData.getString("class_name")+" "+classesData.getString("class_year")+" year"%>')"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+                       </tr>	
+                       
+                       <script type="text/javascript">
+	                       document.getElementById("editClass<%=ci%>");
+	                       function updateClassData<%=ci%>(){
+	                    	 document.querySelector('.bg-model14').style.display = 'flex';
+	                    	 document.querySelector('.bg-model14').style.position = 'fixed';
+	                    	 
+	                    	 $("#proNameInClass option[id!='cla<%=classesData.getString("programme_id")%>']").removeAttr("selected");
+	                    	 $("#proNameInClass option[id='cla<%=classesData.getString("programme_id")%>']").attr("selected",true);
+	                    	 
+	                    	 var classId = "<%=classesData.getString("class_id")%>";
+	                    	 var className = "<%=classesData.getString("class_name")%>";
+	                    	 var classYear = "<%=classesData.getString("class_year")%>";
+	                    	 
+	                         document.getElementById("cIdInClass").value = classId;
+	                         document.getElementById("cNameInClass").value = className;
+	                         document.getElementById("cYearInClass").value = classYear;
+	                       }
+                       </script>		
 
                        <% 	
-   	    					}
+   	    					ci++;}
                        	}catch(SQLException e){
                        		e.printStackTrace();
                        		
                        	}
                            
                     %>
-                    
+                    	<script type="text/javascript">
+	                        function changeProgrammeFilterClass(programme){
+	                      	  
+	                       	 if(programme == "All"){
+	                       		 $('#classDataTable tr').show(); 
+	                       	 
+	                       	 }else{
+	                       		 
+	                       		 $(".filterRowClass"+programme).show();
+	                           	 $('#classDataTable').find('tr').not(".filterRowClass"+programme).hide();
+	                           	 $("#classHeader").show();
+	                       	 }
+	                       	 
+	                       	  
+	                         }
+                        </script>
                    </table>
                     <script type="text/javascript">
                     	document.getElementById("deleteClass");
@@ -2322,7 +2501,7 @@
                                		while(programmeName.next()){
                                			
                                %>		
-                                           <option><%=programmeName.getString("programme_name")%></option>	
+                                           <option value="<%=programmeName.getString("programme_name")%>"><%=programmeName.getString("programme_name")%></option>	
                                <%	
                                	
                                		}
@@ -2354,7 +2533,6 @@
                                		var duration = 0;
 									function addProgrammeSem(pName){
 										duration = document.getElementById("programme"+pName).value;
-										console.log(duration);
 									}
 									
 									const insertClassForm = document.getElementById("insertClassForm");
@@ -2388,15 +2566,15 @@
 											swal("Invalid Class Name !","Class Name must contain at least 3 letters","error");
 											e.preventDefault();
 											
-										}else if(className.value.length > 64){
-											swal("Invalid Class Name !","Class Name cannot contain more than 64 characters","error");
+										}else if(className.value.length > 10){
+											swal("Invalid Class Name !","Class Name cannot contain more than 10 characters","error");
 											e.preventDefault();
 											
 										}else if(parseInt(classYear.value) > duration){//Class Year
 											swal("Invalid Class Year !","Class Year cannot be greater than "+duration+" year(s)","error");
 											e.preventDefault();
 											
-										}else if(parseInt(classYear.value) < 1){//Class Year
+										}else if(parseInt(classYear.value) < 1){
 											swal("Invalid Class Year !","Class Year cannot be less than 1 year","error");
 											e.preventDefault();
 											
@@ -2413,17 +2591,98 @@
                        <div class="close14" id="close" >+</div>
                        <div class="header14">
                            <h1>Edit Class Data</h1></div>
-                           <form action="">
-                               <select >
+                           <form id="updateClassForm" action="UpdateDataServlet" method="post">
+                               <select name="progNameInClass" id="proNameInClass" onchange="addProgrammeSem2(this.value)" required >
                                <option value="" disabled selected hidden>Select Programme</option>
-                               <option>Bca</option>
-                               <option>Bcom</option>
-                               <option>BBA</option>
+               <%
+               		ResultSet updateClassResultSet = loadData.loadProgrammeData();
+               		if(updateClassResultSet!=null){
+               			while(updateClassResultSet.next()){
+               %>				
+               					<option id="cla<%=updateClassResultSet.getString("programme_id")%>" value="<%=updateClassResultSet.getString("programme_name")%>"><%=updateClassResultSet.getString("programme_name")%></option>
+               <% 		}
+               			
+               		}
+               
+               %>
                                </select>
-                               <input type="text" placeholder="Course Code">
-                               <input type="text" placeholder="Course Name">
-                               <input type="text" placeholder="Year (in digits)">
-                               <button id="button15" >UPDATE</button>
+                               <input id="cIdInClass" name="classId" type="text" placeholder="Class ID" required readonly="readonly">
+                               <input id="cNameInClass" name="className" type="text" placeholder="Class Name" required>
+                               <input id="cYearInClass" name="classYear" type="number" pattern="0+\.[0-9]*[1-9][0-9]*$" placeholder="Class Year (in digits)" required>
+                               <input name="Data" value="class" type="hidden"/>
+                               <input type="submit" id="button15"  value="UPDATE" />
+                               
+                                <%
+                               	try{
+                               		ResultSet programmeName20 = loadData.loadProgrammeData();
+                               		if(programmeName20!=null){
+                               		while(programmeName20.next()){
+                               			
+                               %>		
+                                           <input type="hidden" id="prg<%=programmeName20.getString("programme_name")%>" value="<%=programmeName20.getString("programme_duration")%>"/>	
+                               <%	
+                               	
+                               		}
+                               		}
+                               	}catch(SQLException e){
+                               		e.printStackTrace();
+                               	}
+                               %>
+                               
+                               <script type="text/javascript">
+                               		var duration2 = 0;
+									function addProgrammeSem2(pName){
+										duration2 = document.getElementById("prg"+pName).value;
+									}
+									
+									const updateClassForm = document.getElementById("updateClassForm");
+									const classId2 = document.getElementById("cIdInClass");
+									const className2 = document.getElementById("cNameInClass");
+									const classYear2 = document.getElementById("cYearInClass");
+						
+									updateClassForm.addEventListener('submit', (e)=>{
+										
+										addProgrammeSem2(document.getElementById("proNameInClass").value);
+										
+										var onlyCharactersAndSpaces = /^[a-zA-Z]*[ a-zA-Z]*$/;
+								 		var atLeastThreeLetters = /[A-Za-z]{3,}/;
+										var onlyDigits = /^\d+$/; 
+										
+										if(onlyDigits.test(classId2.value) == false){//Class Id
+											swal("Invalid Class ID !","Class ID can contain only Digits","error");
+											e.preventDefault();
+											
+										}else if(classId2.value.length > 3){
+											swal("Invalid Class ID !","Class ID cannot be more than 3 Digits","error");
+											e.preventDefault();
+											
+										}else if(classId2.value.length < 3){
+											swal("Invalid Class ID !","Class ID cannot be less than 3 Digits","error");
+											e.preventDefault();
+											
+										}else if(onlyCharactersAndSpaces.test(className2.value) == false){//Class Name
+											swal("Invalid Class Name !","Class Name can only contain letters and spaces","error");
+											e.preventDefault();
+											
+										}else if(atLeastThreeLetters.test(className2.value) == false){
+											swal("Invalid Class Name !","Class Name must contain at least 3 letters","error");
+											e.preventDefault();
+											
+										}else if(className2.value.length > 10){
+											swal("Invalid Class Name !","Class Name cannot contain more than 10 characters","error");
+											e.preventDefault();
+											
+										}else if(parseInt(classYear2.value) > duration2){//Class Year
+											swal("Invalid Class Year !","Class Year cannot be greater than "+duration2+" year(s)","error");
+											e.preventDefault();
+											
+										}else if(parseInt(classYear2.value) < 1){
+											swal("Invalid Class Year !","Class Year cannot be less than 1 year","error");
+											e.preventDefault();
+											
+										}
+									});
+							   </script>
                        </form>
                    </div>
                </div>
@@ -2434,7 +2693,6 @@
             
             <div class="tabs__content" data-tab="6">
             <div class="protab"> 
-            <button class="refresh" id="ref" onclick="">Refresh page</button>
             <h4>Student Result Management</h4>
             <div class="inner__protab">
             <div class="inner1"><h6 class="left">Student Result</h6>
@@ -2466,6 +2724,7 @@
             <tr>
                 <th>Programme</th>
                 <th>Class</th>
+                <th>Class Year</th>
                 <th>Student Name</th>
                 <th>Register Number</th>
                 <th>Add Result</th>
@@ -2486,6 +2745,7 @@
            <tr>
               <td class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme -->
               <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
+              <td class="td2"><%=studentData.getString("class_year")%></td>
               <td><%=studentData.getString("first_name") +" "+ studentData.getString("last_name")%></td>   <!--Student Name-->
               <td><%=studentData.getString("reg_no")%></td>   <!--Register number-->
               <td class="td1"><button class="btn__course" id="btn__course<%=i%>" onclick="myFunction4()"><span style="font-size: 16px;">+</span> Add</button></td>  <!--Add Result-->
@@ -2651,8 +2911,8 @@
                         <label>Email</label>
                         <input value="<%=request.getSession(false).getAttribute("adminEmail")%>" class="int" type="email" readonly>
                         <label>Password</label>
-                        <div class="i"><i class="fa fa-grav"></i></div>
-                        <input value="<%=request.getSession(false).getAttribute("adminPassword")%>" class="int" type="password" readonly>
+                        <div class="i"><i class="fa-solid fa-eye-slash" id="show-password" onclick="toggle()"></i></div>
+                        <input id="password" value="<%=request.getSession(false).getAttribute("adminPassword")%>" class="int" type="password" readonly>
                         <button class="cp">Change Password</button>
                     </div>
      

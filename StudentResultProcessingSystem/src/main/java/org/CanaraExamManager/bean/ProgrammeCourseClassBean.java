@@ -21,6 +21,8 @@ public class ProgrammeCourseClassBean {
 	private String className = "";
 	private String classYear = "";
 	
+	private String tempString = "";
+	
 	
 	
 	public void setSemester(String semester) {
@@ -137,5 +139,13 @@ public class ProgrammeCourseClassBean {
 	
 	public String getClassYear() {
 		return this.classYear;
+	}
+	
+	public void setTemp(String tempString) {
+		this.tempString = tempString;
+	}
+	
+	public String getTemp() {
+		return this.tempString;
 	}
 }

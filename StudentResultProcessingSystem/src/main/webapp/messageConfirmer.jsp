@@ -16,7 +16,10 @@
 	
 	String deletionMessage = "" ;
 	deletionMessage = (String) request.getAttribute("deletionMessage");
-
+	
+	String updateMessage = "";
+	updateMessage = (String) request.getAttribute("updateMessage");
+	
 if(insertionMessage != null){ 
 	if(insertionMessage == "SUCCESS"){
 %>		
@@ -132,6 +135,72 @@ if(insertionMessage != null){
 			
 			swal({title: "Sorry",
 				 text: "<%=deletionMessage%>",
+				 icon: "error",
+				 buttons: {
+					 ok: "OK",
+				 },	 
+			})
+			.then((value) => {	
+				if(value == "ok"){
+					document.location.href="admindashboard.jsp";
+				}else{
+					document.location.href="admindashboard.jsp";
+				}
+			});
+		}
+	</script>
+	
+<%		
+	}
+}else if(updateMessage != null){
+	if(updateMessage == "SUCCESSUPDATE"){
+%>		
+	<script type="text/javascript">
+	
+		window.onload=function changeBackground() {
+		   document.body.style.background = 'blue';
+		   successMessage();
+		}
+	
+	</script>	
+	
+	<script type="text/javascript">
+		function successMessage(){
+			
+			swal({title: "Success",
+				 text: "Updated Data Successfully",
+				 icon: "success",
+				 buttons: {
+					 ok: "OK",
+				 },	 
+			})
+			.then((value) => {	
+				if(value == "ok"){
+					document.location.href="admindashboard.jsp";
+				}else{
+					document.location.href="admindashboard.jsp";
+				}
+			});
+		}
+	</script>
+<% 
+
+	}else{
+%>	
+	<script type="text/javascript">
+	
+		window.onload=function changeBackground() {
+		   document.body.style.background = 'red';
+		   errorMessage();
+		}
+	
+	</script>	
+	
+	<script type="text/javascript">
+		function errorMessage(){
+			
+			swal({title: "Sorry",
+				 text: "<%=updateMessage%>",
 				 icon: "error",
 				 buttons: {
 					 ok: "OK",
