@@ -55,6 +55,7 @@ public class DeleteDataServlet extends HttpServlet {
 			}case "course":{
 				ProgrammeCourseClassBean courseDataBean = new ProgrammeCourseClassBean();
 				courseDataBean.setCourseCode(request.getParameter("uniqueId"));
+				courseDataBean.setCourseName(request.getParameter("courseName"));
 				
 				String dataValidateString = deleteDataDao.deleteCourseData(courseDataBean) ;
 				 

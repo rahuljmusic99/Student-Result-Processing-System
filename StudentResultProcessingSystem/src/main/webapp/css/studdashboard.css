@@ -384,7 +384,7 @@ label{
     font-weight: bold;
 }
 
-.fa-grav{
+.fa-eye,.fa-eye-slash{
     position: fixed;
     margin-left: 38rem;
     margin-top: 6px;

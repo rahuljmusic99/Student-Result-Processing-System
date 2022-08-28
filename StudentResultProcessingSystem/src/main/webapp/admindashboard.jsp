@@ -36,6 +36,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/dashboard.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/login.js"></script>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="js/popup.js"></script>
@@ -43,6 +44,7 @@
         <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'rel='stylesheet'>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
       	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
+      	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
         
     </head> 
     <body>
@@ -2050,8 +2052,8 @@
                                 <table id="editCourseTable<%=i + j%>" border="1" class="tb4">
                             		<tr class="input-in">
                             			<td class="tdCo"><input class="inputprog" id="" value="<%=programmeResultSet2.getString("programme_name")%>" readonly="readonly"/></td>
-                            			<td class="tdCourse"><input class="inputCourseCode" id="" value="<%=coursesData.getString("course_code")%>"/></td>
-                            			<td class="tdCourse"><input class="input" id="" value="<%=coursesData.getString("course_name")%>"/></td>
+                            			<td class="tdCourse"><input class="inputCourseCode" id="" readonly="readonly" name="uniqueId" value="<%=coursesData.getString("course_code")%>"/></td>
+                            			<td class="tdCourse"><input class="input" id="" name="courseName" value="<%=coursesData.getString("course_name")%>"/></td>
                             			<%if(coursesData.getString("course_type").equals("Theory")){
                             			%>
                             				<td class="tdCourse"><select class="input">
@@ -2135,22 +2137,28 @@
                        						<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_marks")%>"/></td>
                             				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("min_marks")%>"/></td>
                             				<td class="tdCourse"><input class="inputDigits" id="" value="<%=coursesData.getString("max_IA")%>"/></td>
-                                            <td><input type="submit" class="btnDelete" id="button12" value="DELETE"></td> 
-                                            <td><input type="submit" class="btnUpdate" id="button14" value="UPDATE"></td> 
+                                            <td><input type="submit" class="btnDelete" id="button12" value="DELETE" onclick="setAction(this.value,'<%=courseCount%>');"></td> 
+                                            <td><input type="submit" class="btnUpdate" id="button14" value="UPDATE" onclick="setAction(this.value,'<%=courseCount%>');"></td> 
                             				
                             			<script type="text/javascript">
-                            				function deleteCourse<%=courseCount%>(){
-                            					document.forms['deleteForm']['courseCode'].value = "<%=coursesData.getString("course_code")%>";
-                            					document.forms['deleteForm']['courseName'].value = "<%=coursesData.getString("course_name")%>";
+                            				function setAction(typeAction,courseCount){
                             					
+                            					if(typeAction == "DELETE"){
+                            						$("#editCourseForm"+courseCount).attr("action","DeleteDataServlet");
+                       
+                            						
+                            					}else if(typeAction == "UPDATE"){
+                            						$("#editCourseForm"+courseCount).attr("action","UpdateDataServlet");
+                            						
+                            					}
                             					
                             				}
-                            				
                             				
                             			</script>
                             			
                             		</tr>    
                             	</table>
+                            	<input name="Data" type="hidden" value="course"/>
                         	</form> 	
                             <%	 	}
                             	}
@@ -2752,8 +2760,8 @@
                         <label>Email</label>
                         <input value="<%=request.getSession(false).getAttribute("adminEmail")%>" class="int" type="email" readonly>
                         <label>Password</label>
-                        <div class="i"><i class="fa fa-grav"></i></div>
-                        <input value="<%=request.getSession(false).getAttribute("adminPassword")%>" class="int" type="password" readonly>
+                        <div class="i"><i class="fa-solid fa-eye-slash" id="show-password" onclick="toggle()"></i></div>
+                        <input id="password" value="<%=request.getSession(false).getAttribute("adminPassword")%>" class="int" type="password" readonly>
                         <button class="cp">Change Password</button>
                     </div>
      
