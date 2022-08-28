@@ -97,7 +97,7 @@
                     
                 <div class="inner1">
                     <h6 class="left">Students list</h6>
-                    <select class="select3" id="filterProgramme" onchange="changeProgrammeFilter(this.value)">
+                    <select class="select5" id="filterProgramme" onchange="changeProgrammeFilter(this.value)">
                     <option value="" disabled selected hidden>Filter By Programme</option>
                     <option value="All">All</option>
                     
@@ -113,7 +113,14 @@
                 
                 %>    
                     </select>
-                    <div class="icon"><i class="fa fa-plus-circle" aria-hidden="true"  id="add2" title="Add programme" onclick="myFunction9()"></i></div>
+            
+                   <!------->     
+                        
+                <select class="select4"><option value="" disabled selected hidden>Class</option></select>
+                
+                    <!-------->
+                        
+                    <div class="icon4"><i class="fa fa-plus-circle" aria-hidden="true"  id="add2" title="Add programme" onclick="myFunction9()"></i></div>
                     </div>
                 <table border="1" class="tb1" cellspacing="0" padding="10" rules="all" id="studentDataTable">
                     <tr id="studentHeading">
@@ -1196,7 +1203,17 @@
                         
                     <div class="inner1">
                         <h6 class="left">Staff list</h6>
-                        <div class="icon1"><i class="fa fa-plus-circle" id="add3" title="Add programme" onclick="myFunction12()"></i></div></div>
+                        
+                        
+                        <!------>
+                        
+                        <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
+                        
+                        
+                        <!------->
+                        
+                        
+                        <div class="icon"><i class="fa fa-plus-circle" id="add3" title="Add programme" onclick="myFunction12()"></i></div></div>
                     <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
                         <tr >
                             <th>Programme Name</th>
