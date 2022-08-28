@@ -54,7 +54,7 @@
     </head> 
     <body onload="setupTabs()">
         <div class="tabs">
-            <div class="tabs__sidebar">
+            <div class="tabs__sidebar">`
                 <div class="space"><div class="space4"><img src="css/images/sd.png" class="edu"></div><p>Canara exam manager</p></div>
                 <button class="tabs__button" data-for-tab="4" id="mainprofile">
                 <div class="holder3"></div>
