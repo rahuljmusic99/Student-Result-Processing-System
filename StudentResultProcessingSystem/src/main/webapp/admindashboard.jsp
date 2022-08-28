@@ -97,11 +97,26 @@
                     
                 <div class="inner1">
                     <h6 class="left">Students list</h6>
-                    <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
+                    <select class="select3" id="filterProgramme" onchange="changeProgrammeFilter(this.value)">
+                    <option value="" disabled selected hidden>Filter By Programme</option>
+                    <option value="All">All</option>
+                    
+                <%
+                	ResultSet FilterProgramme = loadData.loadProgrammeData();
+                	if(FilterProgramme != null){
+                		while(FilterProgramme.next()){
+                			
+                %>	
+                	<option value="<%=FilterProgramme.getString("programme_id")%>"><%=FilterProgramme.getString("programme_name")%></option>	
+                <%		}
+                	}
+                
+                %>    
+                    </select>
                     <div class="icon"><i class="fa fa-plus-circle" aria-hidden="true"  id="add2" title="Add programme" onclick="myFunction9()"></i></div>
                     </div>
-                <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
-                    <tr >
+                <table border="1" class="tb1" cellspacing="0" padding="10" rules="all" id="studentDataTable">
+                    <tr id="studentHeading">
                       <th>Programme Name</th>
                         <th>Class</th>
                         <th>Class Year</th>
@@ -118,7 +133,7 @@
            					while(studentData.next()){
            						
                     %>
-                    <tr>
+                    <tr class="filterRow<%=studentData.getString("programme_id")%>">
                         <td  class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme name-->
                         <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
                         <td class="td2"><%=studentData.getString("class_year")%></td>
@@ -242,6 +257,21 @@
               			});
               		}
                      
+                      function changeProgrammeFilter(programme){
+                    	  
+                    	 if(programme == "All"){
+                    		 $('#studentDataTable tr').show(); 
+                    	 
+                    	 }else{
+                    		 
+                    		 $(".filterRow"+programme).show();
+                        	 $('#studentDataTable').find('tr').not(".filterRow"+programme).hide();
+                        	 $("#studentHeading").show();
+                    	 }
+                    	 
+                    	  
+                      }
+                      
                     </script>
                     
                 </table>
@@ -1650,11 +1680,26 @@
                         
                     <div class="inner1">
                         <h6 class="left">Programme list</h6>
-                        <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
+                        <select class="select3" onchange="changeProgrammeFilterPro(this.value)">
+                        <option value="" disabled selected hidden>Filter By Programme</option>
+                        <option value="All">All</option>
+                        
+                <%
+                	ResultSet FilterProgrammePro = loadData.loadProgrammeData();
+                	if(FilterProgrammePro != null){
+                		while(FilterProgrammePro.next()){
+                			
+                %>	
+                	<option value="<%=FilterProgrammePro.getString("programme_id")%>"><%=FilterProgrammePro.getString("programme_name")%></option>	
+                <%		}
+                	}
+                
+                %>        
+                        </select>
                         <div class="icon"><i class="fa fa-plus-circle" id="add"  title="Add programme" onclick="myFunction1()"></i></div></div>
                    
-                    <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
-                        <tr class="tb2">
+                    <table border="1" class="tb1" cellspacing="0" padding="10" rules="all" id="programmeDataTable">
+                        <tr class="tb2" id="programmeHeading">
                             <th>Programme Name</th>
                             <th>Semester</th>
                             <th>Courses (subjects)</th>
@@ -1674,7 +1719,7 @@
                         					
                         					ResultSet coursesData = loadData.loadCoursedata(programmeResultSet, i);
                         %>
-                        <tr>
+                        <tr class="filterRowPro<%=programmeResultSet.getString("programme_id")%>">
 							<td id = "<%=programmeResultSet.getString("programme_name")%>"class="td1"><%=programmeResultSet.getString("programme_name")%></td>   <!--Programme name-->
                             <td class="td2"><%=Integer.toString(i)%></td>   <!--Semester-->
                             
@@ -1753,6 +1798,23 @@
                         	}	
                            
                         %>
+                        
+                        <script type="text/javascript">
+	                        function changeProgrammeFilterPro(programme){
+	                      	  
+	                       	 if(programme == "All"){
+	                       		 $('#programmeDataTable tr').show(); 
+	                       	 
+	                       	 }else{
+	                       		 
+	                       		 $(".filterRowPro"+programme).show();
+	                           	 $('#programmeDataTable').find('tr').not(".filterRowPro"+programme).hide();
+	                           	 $("#programmeHeading").show();
+	                       	 }
+	                       	 
+	                       	  
+	                         }
+                        </script>
                        
                     </table>
                     <script type="text/javascript">
@@ -2313,10 +2375,24 @@
                        
                    <div class="inner1">
                        <h6 class="left">Class list</h6>
-                       <select class="select3"><option value="" disabled selected hidden>Programme</option></select>
+                       <select class="select3" onchange="changeProgrammeFilterClass(this.value)">
+                       <option value="" disabled selected hidden>Filter By Programme</option>
+                       <option value="All">All</option>
+               <%
+                	ResultSet FilterProgrammeclass = loadData.loadProgrammeData();
+                	if(FilterProgrammeclass != null){
+                		while(FilterProgrammeclass.next()){
+                			
+                %>	
+                	<option value="<%=FilterProgrammeclass.getString("programme_id")%>"><%=FilterProgrammeclass.getString("programme_name")%></option>	
+                <%		}
+                	}
+                
+                %>        
+                       </select>
                        <div class="icon"><i class="fa fa-plus-circle" id="add1" title="Add programme" onclick="myFunction8()"></i></div></div>
-                   <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
-                       <tr >
+                   <table border="1" class="tb1" cellspacing="0" padding="10" rules="all" id="classDataTable">
+                       <tr id="classHeader">
                            <th>Programme Name</th>
                            <th>Class Name</th>
                            <th>Class Year</th>
@@ -2331,7 +2407,7 @@
    	    					while(classesData.next()){
    	    			%>		
    	    	
-                       <tr>
+                       <tr class="filterRowClass<%=classesData.getString("programme_id")%>">
                            <td class="td1"><%=classesData.getString("programme_name")%></td>   <!--Programme name-->
                            <td class="td2"><%=classesData.getString("class_name")%></td>   <!--Semseter-->
                            <td class="td5"><%=classesData.getString("class_year")%></td>
@@ -2365,7 +2441,22 @@
                        	}
                            
                     %>
-                    
+                    	<script type="text/javascript">
+	                        function changeProgrammeFilterClass(programme){
+	                      	  
+	                       	 if(programme == "All"){
+	                       		 $('#classDataTable tr').show(); 
+	                       	 
+	                       	 }else{
+	                       		 
+	                       		 $(".filterRowClass"+programme).show();
+	                           	 $('#classDataTable').find('tr').not(".filterRowClass"+programme).hide();
+	                           	 $("#classHeader").show();
+	                       	 }
+	                       	 
+	                       	  
+	                         }
+                        </script>
                    </table>
                     <script type="text/javascript">
                     	document.getElementById("deleteClass");
@@ -2633,6 +2724,7 @@
             <tr>
                 <th>Programme</th>
                 <th>Class</th>
+                <th>Class Year</th>
                 <th>Student Name</th>
                 <th>Register Number</th>
                 <th>Add Result</th>
@@ -2653,6 +2745,7 @@
            <tr>
               <td class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme -->
               <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
+              <td class="td2"><%=studentData.getString("class_year")%></td>
               <td><%=studentData.getString("first_name") +" "+ studentData.getString("last_name")%></td>   <!--Student Name-->
               <td><%=studentData.getString("reg_no")%></td>   <!--Register number-->
               <td class="td1"><button class="btn__course" id="btn__course<%=i%>" onclick="myFunction4()"><span style="font-size: 16px;">+</span> Add</button></td>  <!--Add Result-->

@@ -40,7 +40,7 @@ public class LoadDataDao {
 					+"SELECT * FROM ((student "
 					+"INNER JOIN programme ON student.programme_id = programme.programme_id)"
 					+"INNER JOIN class ON student.class_id = class.class_id)"
-					+"ORDER BY programme.programme_name ASC");
+					+"ORDER BY programme.programme_name ASC, class.class_year ASC, class.class_name ASC");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -114,7 +114,7 @@ public class LoadDataDao {
 					+"SELECT * FROM ((student " 
 					+"INNER JOIN programme ON student.programme_id = programme.programme_id) "
 					+"INNER JOIN class ON student.class_id = class.class_id)"
-					+"ORDER BY programme.programme_name ASC");
+					+"ORDER BY programme.programme_name ASC, class.class_year ASC, class.class_name ASC");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

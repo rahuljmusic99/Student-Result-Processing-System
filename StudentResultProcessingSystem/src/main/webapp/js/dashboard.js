@@ -78,10 +78,4 @@
 				document.forms['deleteDataForm']['Data'].value = Data;
 				
 				document.getElementById("deleteDataForm").submit();
-			}
-			
-
-           
-                    			
-                                			
-			
+			}			
