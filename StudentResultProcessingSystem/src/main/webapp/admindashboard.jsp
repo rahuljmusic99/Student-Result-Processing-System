@@ -92,9 +92,6 @@
  
         <div class="tabs__content" data-tab="2" id="studentDetails">
             <div class="protab"> 
-                
-                
-                <button class="refresh" id="ref" onclick="myFunction()">Refresh page</button>
                 <h4>Student Details Management</h4>
                 <div class="inner__protab">
                     
@@ -1164,9 +1161,6 @@
             
             <div class="tabs__content" data-tab="3" id="staffDetails">
                 <div class="protab"> 
-                    
-                    
-                    <button class="refresh" id="ref" onclick="myFunction()">Refresh page</button>
                     <h4>Staff Details Management</h4>
                     <div class="inner__protab">
                         
@@ -1227,14 +1221,20 @@
                         	document.querySelector('.bg-model11').style.display = 'flex';
                         	document.querySelector('.bg-model11').style.position = 'fixed';
                         	
+                        	var firstName = "<%=staffDataSet.getString("first_name")%>";
+                        	var secondName = "<%=staffDataSet.getString("last_name")%>";
+                        	var staffId = "<%=staffDataSet.getString("staff_id")%>";
+                        	var staffEmail = "<%=staffDataSet.getString("email")%>";
+                        	var staffPhone = "<%=staffDataSet.getString("phone")%>";
+                        	var staffAddress = "<%=staffDataSet.getString("address")%>";
                         	
-                        	document.forms['editStaffForm']['staffFirstName2'].value = "<%=staffDataSet.getString("first_name")%>";
-                        	document.forms['editStaffForm']['staffLastName2'].value = "<%=staffDataSet.getString("last_name")%>";
-                        	document.forms['editStaffForm']['staffId2'].value = "<%=staffDataSet.getString("staff_id")%>";
+                        	document.forms['editStaffForm']['staffFirstName2'].value = firstName;
+                        	document.forms['editStaffForm']['staffLastName2'].value = secondName;
+                        	document.forms['editStaffForm']['staffId2'].value = staffId;
                         	document.forms['editStaffForm']['tempStaffId'].value = "<%=staffDataSet.getString("staff_id")%>";
-                        	document.forms['editStaffForm']['staffEmail2'].value = "<%=staffDataSet.getString("email")%>";
-                        	document.forms['editStaffForm']['staffPhone2'].value = "<%=staffDataSet.getString("phone")%>";
-                        	document.forms['editStaffForm']['staffAddress2'].value = "<%=staffDataSet.getString("address")%>";
+                        	document.forms['editStaffForm']['staffEmail2'].value = staffEmail;
+                        	document.forms['editStaffForm']['staffPhone2'].value = staffPhone;
+                        	document.forms['editStaffForm']['staffAddress2'].value = staffAddress;
                         	document.forms['editStaffForm']['staffPassword2'].value = "<%=staffDataSet.getString("password")%>";
                         	
                         	$("#staffGender2 option[value!='<%=staffDataSet.getString("gender")%>']").removeAttr("selected");
@@ -1243,7 +1243,7 @@
                         	$("#staffProgramme2 option[id!='pro<%=staffDataSet.getString("programme_id")%>']").removeAttr("selected");
                         	$("#staffProgramme2 option[id='pro<%=staffDataSet.getString("programme_id")%>']").attr("selected",true);
                         	
-                        	var role = '<%=staffDataSet.getString("role")%>';
+                        	var role = "<%=staffDataSet.getString("role")%>";
                         	console.log(role);
                         	
                         	if(role == "Internal Auditor"){
@@ -1645,7 +1645,6 @@
 
             <div class="tabs__content" data-tab="4">
                 <div class="protab"> 
-                    <button class="refresh" id="refProgramme" onclick="refreshProgramme();">Refresh page</button>
                     <h4>Programme Management</h4>
                     <div class="inner__protab">
                         
@@ -1716,12 +1715,18 @@
 	                        
 	                        document.getElementById("programmeEdit<%=i + j%>");
 	                        function editProgramme<%=i + j%>(){
-	                            document.querySelector('.bg-model13').style.display = 'flex';
+	                        	
+	                        	var programmeId = "<%=programmeResultSet.getString("programme_id")%>";
+	                        	var programmeName = "<%=programmeResultSet.getString("programme_name")%>";
+	                        	var programmeDuration = "<%=programmeResultSet.getString("programme_duration")%>";
+	                        	var programmeSem = "<%=programmeResultSet.getString("programme_sem")%>";
+								
+	                        	document.querySelector('.bg-model13').style.display = 'flex';
 	                            document.querySelector('.bg-model13').style.position = 'fixed';
-	                            document.getElementById("programmeIdInProgramme").value = "<%=programmeResultSet.getString("programme_id")%>";
-	                            document.getElementById("programmeNameInProgramme").value = "<%=programmeResultSet.getString("programme_name")%>";
-	                            document.getElementById("programmeDuration").value = "<%=programmeResultSet.getString("programme_duration")%>";
-	                            document.getElementById("programmeTotalSemesterInProgramme").value = "<%=programmeResultSet.getString("programme_sem")%>";
+	                            document.getElementById("programmeIdInProgramme").value = programmeId;
+	                            document.getElementById("programmeNameInProgramme").value = programmeName;
+	                            document.getElementById("programmeDuration").value = programmeDuration;
+	                            document.getElementById("programmeTotalSemesterInProgramme").value = programmeSem;
 	                            $("#programmeDuration").attr({
 	                                "max" : 10,        // substitute your own
 	                                "min" : <%=programmeResultSet.getString("programme_duration")%>          // values (or variables) here
@@ -2342,9 +2347,13 @@
 	                    	 $("#proNameInClass option[id!='cla<%=classesData.getString("programme_id")%>']").removeAttr("selected");
 	                    	 $("#proNameInClass option[id='cla<%=classesData.getString("programme_id")%>']").attr("selected",true);
 	                    	 
-	                         document.getElementById("cIdInClass").value = "<%=classesData.getString("class_id")%>";
-	                         document.getElementById("cNameInClass").value = "<%=classesData.getString("class_name")%>";
-	                         document.getElementById("cYearInClass").value = "<%=classesData.getString("class_year")%>";
+	                    	 var classId = "<%=classesData.getString("class_id")%>";
+	                    	 var className = "<%=classesData.getString("class_name")%>";
+	                    	 var classYear = "<%=classesData.getString("class_year")%>";
+	                    	 
+	                         document.getElementById("cIdInClass").value = classId;
+	                         document.getElementById("cNameInClass").value = className;
+	                         document.getElementById("cYearInClass").value = classYear;
 	                       }
                        </script>		
 
@@ -2593,7 +2602,6 @@
             
             <div class="tabs__content" data-tab="6">
             <div class="protab"> 
-            <button class="refresh" id="ref" onclick="">Refresh page</button>
             <h4>Student Result Management</h4>
             <div class="inner__protab">
             <div class="inner1"><h6 class="left">Student Result</h6>
