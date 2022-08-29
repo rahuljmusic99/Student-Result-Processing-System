@@ -344,18 +344,18 @@
                     <div class="holder2">
                     <img src="" class="innerimg">
                     </div>
-                    <p class="name">Deeraj</p>
+                    <p class="name"><%=request.getSession(false).getAttribute("studentName")%></p>
                     </div>
                     <div class="inputs">
                         <label>Name</label>
-                        <input class="int" type="text" readonly>
+                        <input class="int" type="text" value="<%=request.getSession(false).getAttribute("studentName")%>" readonly>
                         <label>Phone</label>
-                        <input class="int" readonly>
+                        <input class="int" value="<%=request.getSession(false).getAttribute("studentPhone")%>"  readonly>
                         <label>Email</label>
-                        <input class="int" type="email" readonly>
+                        <input class="int" type="email" value="<%=request.getSession(false).getAttribute("studentEmail")%>"  readonly>
                         <label>Password</label>
-                        <div class="i"><i class="fa-solid fa-eye-slash" id="show-password"></i></div>
-                        <input class="int" id="password" type="password" readonly>
+                        <div class="i"><i class="fa-solid fa-eye-slash" id="show-password" onclick="toggle()"></i></div>
+                        <input class="int" id="password" type="password" value="<%=request.getSession(false).getAttribute("studentPassword")%>"  readonly>
                         <button class="cp">Change Password</button>
                     </div>
      
