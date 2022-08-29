@@ -1,5 +1,4 @@
-*{
-    margin: 0;
+*{    margin: 0;
     padding: 0;   
 }
 
@@ -18,10 +17,6 @@
     position: fixed;   
 }
 
-.tabs__sidebar::after{
-    
-}
-
 .tabs__button{
     display: block;
     padding: 10px;
@@ -31,7 +26,7 @@
     outline: none;
     cursor: pointer;
     text-align: left;
-    font-family: serif;
+    font-family: 'Poppins', sans-serif;
     font-size:16px;  
     height: 4rem;
 }
@@ -46,7 +41,7 @@
 
 .tabs__button--active{
     font-weight: bold;
-    border-right: 3px solid red;  
+    border-right: 5px solid yellow;  
     background: blue;
     color: #ffffff;
 }
@@ -1742,7 +1737,7 @@ label{
 }
 
 #mainprofile{
-    background-color:cornflowerblue;
+    background-color:white;
     height: 8rem;
     padding-bottom: 3rem;
     border: none;    
@@ -1862,6 +1857,163 @@ label{
     margin-right: 7rem;
     font-weight: 600;
     float: right;
+}
+
+.about{
+    margin: 1rem;
+    margin-bottom: 5rem;
+    padding: 1rem;
+    background-color: #D3D3D3;
+    font-size: 25px;
+}
+
+li a{
+    color: white;
+    text-decoration: none;
+}
+
+.foot{
+    background-color: blue;
+    width: 100%;
+    height: 20rem;
+    display: flex;
+}
+
+
+.footlogo{
+    padding-top: 6rem;
+    width: 9rem;
+    height: 9rem;
+    padding-left: 2rem;
+}
+
+.footpart1{
+    width: 35rem;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 20px;
+}
+
+.footpart2{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 20px;
+    margin-left: 5rem;
+}
+
+.names{
+    list-style: none;
+    font-size: 17px;
+    margin-left: 3rem;
+}
+
+.heads1{
+    padding-bottom: 1.5rem;
+}
+
+.heads2{
+    font-size: 24px;
+    padding-bottom: 1rem;
+}
+
+.pr1{
+    padding-bottom: 0.8rem;
+    font-size: 17px;
+}
+
+.pr2{
+    padding-bottom: 0.6rem;
+    font-weight: 600;
+}
+
+.fa-github{
+    color: white;
+    cursor: pointer;
+}
+
+.web{
+    margin-top: 1rem;
+    display: flex;
+}
+.gb{
+    width: 1.9rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    margin-bottom: -0.7rem;
+    cursor: pointer;
+    transition: 1s;
+    
+}
+
+.fc{
+    width: 1.9rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    margin-left: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 1s;
+   
+}
+
+.ig{
+    width: 1.9rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    margin-left: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 1s;  
+}
+.yt{
+    width: 1.9rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    margin-left: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 1s;
+}
+.fa-globe{
+    padding: 4px;
+    color: white;
+    transition: 0.5s;
+}
+.fa-facebook{
+    padding: 4px;
+    color: white;
+    transition: 0.5s;
+}
+.fa-instagram{
+    padding: 4px;
+    color: white;
+    transition: 0.5s;
+}
+.fa-youtube{
+    padding: 4px;
+    color: white;
+    transition: 0.5s;
+}
+.gb .fa-globe:hover{
+    color: grey;
+    background-color: white;
+    border-radius: 50%;
+}
+.fc .fa-facebook:hover{
+    color: blue;
+    background-color: white;
+    border-radius: 50%;
+}
+.ig .fa-instagram:hover{
+    background-color: white;
+    color: deeppink;
+    border-radius: 50%;
+}
+.yt .fa-youtube:hover{
+   color: red;
+   background-color: white;
+   border-radius: 50%;  
 }
 
 

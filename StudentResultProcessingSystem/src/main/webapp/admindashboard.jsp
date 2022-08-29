@@ -44,6 +44,7 @@
         <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css'rel='stylesheet'>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
       	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
+        <script src="https://kit.fontawesome.com/dd03fdb332.js" crossorigin="anonymous"></script>
       	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
         
     </head> 
@@ -72,19 +73,48 @@
 <!-- ------------------------------------------------------ TAB 1 DASHBOARD ----- ------------------------------------------------------------------------------- -->
         
         <div class="tabs__content" data-tab="1">
-            <div class="protab2">
-               <div class="imgholder"> <img src="css/images/canlogos.png" class="logos"></div>
-                <div class="cardholder">
-                <div class="cards"><span style="color:steelblue;"><p class="head1">TOTAL RESULT PUBLISH</p></span><p class="values">12</p><div class="icon2"><img src="css/images/blackboard.png" class="im"></div></div>
-                <div class="cards"><span style="color:green;"><p class="head1">TOTAL EXAM</p></span><p class="values">12</p><div class="icon2"><img src="css/images/exam.png" class="im"></div></div>
-                <div class="cards"><span style="color:purple;"><p class="head1">TOTAL PROGRAMME</p></span><p class="values">12</p><div class="icon2"><img src="css/images/programme.png" class="im"></div></div>
-                <div class="cards"><span style="color:orange;"><p class="head1">TOTAL COURSE</p></span><p class="values">12</p><div class="icon2"><img src="css/images/course.png" class="im"></div></div>
-                <div class="cards"><span style="color:red;"><p class="head1">TOTAL CLASS</p></span><p class="values">12</p><div class="icon2"><img src="css/images/class.png" class="im"></div></div></div>
-                <div class="cardholder2">
-                <div class="cards2"><span style="color:steelblue;"><p class="head2">STUDENTS</p></span><p class="values2">12</p><div class="icon3"><img src="css/images/graduated.png" class="ims"></div></div>
-                <div class="cards2"><span style="color:steelblue;"><p class="head2">STAFF</p></span><p class="values2">12</p><div class="icon3"><img src="css/images/staffs.png" class="ims"></div></div>
-                </div> 
-            </div>  
+            <div class="imgholder"> <img src="css/images/canlogos.png" class="logos"></div>
+                    <img  src="" id="image">
+                    
+                    <div class="about">
+                    <h3>About Canara College</h3><br>
+                
+                    <p >
+                    Canara College with its noble vision to prepare educationally strong and culturally vibrant students is a prestigious institute for higher learning, well acclaimed to have its deep rooted existence since 1973 with its moral ideals, rich core values and fusion of cultural ethos; pioneered by a great legendary soul, Late Sri Ammembal Subba Rao Pai. It has a glorious history and legacy in the field of imparting value-based, character building education to its aspirants. True to its motto of “Educating for Righteous Life” and philosophy of commitment towards offering quality education at affordable cost, it is located centrally in the coastal educational hub of Mangaluru city. The institution is governed and managed by Canara High School Association, Mangaluru, reaccredited by NAAC and affiliated to Mangalore University.<br><br><br>
+
+                    It offers undergraduate programmes in Commerce (B.Com.), Bachelor of Commerce Professoinal with Coaching for CA and CS, Bachelor of Science [B.Sc. (PCM, PMC and BZC)], Bachelor of Computer Applications (B.C.A.), Bachelor of Business Administration (B.B.A.) and a post graduate programme in Commerce (M.Com.).
+                    </p>
+                    </div>
+                    
+                    
+                    <footer>
+                      <div class="foot">
+                        <img src="css/images/canlogo.png" class="footlogo">
+                        <div class="footpart1">
+                        <h1 class="heads1">CANARA COLLEGE</h1>
+                        <p class="pr2">Address:</p>
+                        <p class="pr1">Mahatma Gandhi-Road Kodialbail, Mangalore-575003, Dakshina Kannada District, Karnataka</p>
+                        <p class="pr1">Phone: 0824-2492366</p>
+                        <p class="pr1">E-mail: <u>cnrcollege@yahoo.com</u></p>
+                        <div class="web"><a href="https://www.canaracollege.com/" target="_blank"><div class="gb"><i class="fa-solid fa-globe"></i></div></a><a href="https://www.facebook.com/canaracollegemangaluru/" target="_blank"><div class="fc"><i class="fa-brands fa-facebook"></i></div></a><a href="https://www.instagram.com/canara.college_official/?hl=en" target="_blank">
+                        <div class="ig"><i class="fa-brands fa-instagram"></i></div></a><a href="https://www.youtube.com/channel/UCtXf_eLGN1nT1dDo1-wk5yg" target="_blank"><div class="yt"><i class="fa-brands fa-youtube"></i></div></a></div>
+                        </div>
+                          
+                        <div class="footpart2">
+                        <h1 class="heads2">Developed By :</h1>
+                        <div class="names">
+                        <li class="pr1"><a href="https://github.com/rahuljmusic99" target="_blank"><i class="fa-brands fa-github"></i>Rahul. J</a></li>
+                        <li class="pr1"><a href="https://github.com/seenuvasan2051" target="_blank"><i class="fa-brands fa-github"></i>Seenu Vasan</a></li>
+                        <li class="pr1"><a href="https://github.com/Deeraj212" target="_blank"><i class="fa-brands fa-github"></i>Deeraj. S</a></li>
+                        </div>
+                        <h1 class="heads2">Under The Guidance of :</h1>
+                        <div class="names">
+                        <li class="pr1">Rakshitha. R</li>
+                        
+                        </div>
+                        </div>
+                      </div>
+                    </footer>          
         </div>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
