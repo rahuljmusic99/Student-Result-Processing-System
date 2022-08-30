@@ -4,4 +4,24 @@
   <welcome-file-list>
     <welcome-file>home.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>AuthenticateOTP</display-name>
+    <servlet-name>AuthenticateOTP</servlet-name>
+    <servlet-class>org.CanaraExamManager.controler.AuthenticateOTP</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthenticateOTP</servlet-name>
+    <url-pattern>/AuthenticateOTP</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResetPasswordServlet</display-name>
+    <servlet-name>ResetPasswordServlet</servlet-name>
+    <servlet-class>org.CanaraExamManager.controler.ResetPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResetPasswordServlet</servlet-name>
+    <url-pattern>/ResetPasswordServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
