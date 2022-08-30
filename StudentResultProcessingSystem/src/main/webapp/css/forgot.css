@@ -78,7 +78,7 @@ input{
     padding-left: 0.5rem;
 }
 
-button{
+.resetbtn{
     display: block;
     width: 18rem;
     height: 2.5rem;
@@ -91,7 +91,7 @@ button{
     color: white;
     cursor: pointer;
 }
-button:hover{
+.resetbtn:hover{
 	background-color: #293e6a;
 }
 a{ 

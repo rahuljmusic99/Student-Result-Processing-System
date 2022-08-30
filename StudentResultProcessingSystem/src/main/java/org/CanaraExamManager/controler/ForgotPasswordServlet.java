@@ -1,5 +1,6 @@
 package org.CanaraExamManager.controler;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,7 +18,7 @@ import org.CanaraExamManager.bean.StudentStaffDataBean;
 import org.CanaraExamManager.dao.ForgotPasswordDao;
 import org.CanaraExamManager.util.EmaiUtility;
 
-@WebServlet("/ForgotPassword")
+@WebServlet("/ForgotPasswordServlet")
 public class ForgotPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,7 +32,8 @@ public class ForgotPasswordServlet extends HttpServlet {
 		String messageString = null;
 		String user = request.getParameter("userData");
 		
-		if(user == "student") {
+		if(user == "student" || user.equals("student")) {
+			System.out.println(emailString);
 			studentStaffDataBean.setEmail(emailString);
 			messageString =  forgotPasswordDao.authenticateStudent(studentStaffDataBean);
 			
@@ -55,9 +57,14 @@ public class ForgotPasswordServlet extends HttpServlet {
 				session.setAttribute("userType", user);
 				
 				response.sendRedirect("");
+				
+			}else {
+				request.setAttribute("errorMessage", messageString);
+				request.setAttribute("userType", user);
+				request.getRequestDispatcher("/forgotpassword.jsp").forward(request, response);
 			}
 			
-		}else if(user == "staff"){
+		}else if(user == "staff" || user.equals("staff")){
 			studentStaffDataBean.setEmail(emailString);
 			messageString =  forgotPasswordDao.authenticateStaff(studentStaffDataBean);
 			
@@ -80,10 +87,16 @@ public class ForgotPasswordServlet extends HttpServlet {
 				session.setAttribute("userMail", studentStaffDataBean.getEmail().trim());
 				session.setAttribute("userType", user);
 				
-				response.sendRedirect("");
+				response.sendRedirect("/home.jsp");
+				
+			}else {
+				
+				request.setAttribute("errorMessage", messageString);
+				request.setAttribute("userType",user);
+				request.getRequestDispatcher("/forgotpassword.jsp").forward(request, response);
 			}
 			
-		}else if(user == "admin") {
+		}else if(user == "admin" || user.equals("admin")) {
 			studentStaffDataBean.setEmail(emailString);
 			messageString =  forgotPasswordDao.authenticateAdmin(studentStaffDataBean);
 			
@@ -107,6 +120,11 @@ public class ForgotPasswordServlet extends HttpServlet {
 				session.setAttribute("userType", user);
 				
 				response.sendRedirect("");
+				
+			}else {
+				request.setAttribute("errorMessage", messageString);
+				request.setAttribute("userType",user);
+				request.getRequestDispatcher("/forgotpassword.jsp").forward(request, response);
 			}
 			
 		}

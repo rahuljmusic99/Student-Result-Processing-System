@@ -35,7 +35,11 @@
                     <span style="color:red"><%=(request.getAttribute("errMessage") == null) ? ""
          										: request.getAttribute("errMessage")%></span><br/>
                     <input type="submit" value="Log In" class="btn"/>
-                    <a href="forgot.jsp"><p class="fp">Forgot password?<p></a>
+                    <input type="hidden" value="admin"/>
+                </form>
+                <form id='forgotPasswordForm' action="forgotpassword.jsp" method="post">
+					<input name="userType" type="hidden" value="admin"/>
+                    <a onclick="redirectForgot();"><p class="fp">Forgot password?<p></a>
                 </form>
                 </div>   
             <section class="header2">
@@ -79,6 +83,10 @@
         		}
         		
         	}
+            
+            function redirectForgot(){
+            	document.getElementById("forgotPasswordForm").submit();
+            }
             
             </script>  
     </body>
