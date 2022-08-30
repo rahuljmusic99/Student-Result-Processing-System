@@ -40,7 +40,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 				otpValue = Integer.parseInt(String.format("%06d", random.nextInt(999999)));
 				
 				try {
-					EmaiUtility.sendEmail(studentStaffDataBean.getEmail(), "CanaraExamManager: OTP To Reset Your Password", 
+					EmaiUtility.sendEmail(studentStaffDataBean.getEmail().trim(), "CanaraExamManager: OTP To Reset Your Password", 
 							"");
 				} catch (AddressException e) {
 
@@ -51,7 +51,8 @@ public class ForgotPasswordServlet extends HttpServlet {
 				}
 				
 				session.setAttribute("otp", otpValue);
-				session.setAttribute("userData", user);
+				session.setAttribute("userMail", studentStaffDataBean.getEmail().trim());
+				session.setAttribute("userType", user);
 				
 				response.sendRedirect("");
 			}
@@ -76,7 +77,8 @@ public class ForgotPasswordServlet extends HttpServlet {
 				}
 				
 				session.setAttribute("otp", otpValue);
-				session.setAttribute("userData", user);
+				session.setAttribute("userMail", studentStaffDataBean.getEmail().trim());
+				session.setAttribute("userType", user);
 				
 				response.sendRedirect("");
 			}
@@ -101,7 +103,8 @@ public class ForgotPasswordServlet extends HttpServlet {
 				}
 				
 				session.setAttribute("otp", otpValue);
-				session.setAttribute("userData", user);
+				session.setAttribute("userMail", studentStaffDataBean.getEmail().trim());
+				session.setAttribute("userType", user);
 				
 				response.sendRedirect("");
 			}
