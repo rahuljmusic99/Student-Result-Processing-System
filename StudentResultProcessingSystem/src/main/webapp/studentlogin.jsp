@@ -36,7 +36,7 @@
                     <span style="color:red"><%=(request.getAttribute("errMessage") == null) ? ""
          										: request.getAttribute("errMessage")%></span><br/>
                     <input type="submit" value="Log In" class="btn"/>
-                    <p class="fp">Forgot password?<p>
+                    <a href="forgot.jsp"><p class="fp">Forgot password?<p></a>
                 </form>
                 </div>   
             <section class="header2">
