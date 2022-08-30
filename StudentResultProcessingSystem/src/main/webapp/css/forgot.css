@@ -102,6 +102,9 @@ a{
     cursor: pointer;
 }
 
+a:hover{
+	color: #4d57ff;
+}
 
 
 

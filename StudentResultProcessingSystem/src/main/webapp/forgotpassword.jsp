@@ -17,9 +17,11 @@
                         <div class="cd3">
                         <p>Forgot Your</p>
                         <p>Password ?</p>
+                        <form action="" method="post">
                         <input placeholder="Email">
-                        <button>Reset Password</button>
+                        <button type="submit">Reset Password</button>
                         <a onclick="">Back To Login</a>
+                        </form>
                         </div>
                     </div>
                 </div>
