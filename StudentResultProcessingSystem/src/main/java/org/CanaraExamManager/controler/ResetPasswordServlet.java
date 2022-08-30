@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-
+@WebServlet("/ResetPassword")
 public class ResetPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
