@@ -81,7 +81,7 @@ input{
 button{
     display: block;
     width: 18rem;
-    height: 2rem;
+    height: 2.5rem;
     margin-bottom: 3rem;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
@@ -91,7 +91,9 @@ button{
     color: white;
     cursor: pointer;
 }
-
+button:hover{
+	background-color: #293e6a;
+}
 a{ 
     font-family: 'Poppins', sans-serif;
     margin-left: 5.5rem;
@@ -100,6 +102,9 @@ a{
     cursor: pointer;
 }
 
+a:hover{
+	color: #4d57ff;
+}
 
 
 
