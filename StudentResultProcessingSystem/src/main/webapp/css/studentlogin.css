@@ -136,6 +136,9 @@ i{
     margin-top: 50px;
     font-size: 18px;      
 }
+a{
+    text-decoration: none;
+}
 
 .fa-eye,.fa-eye-slash{
 	cursor: pointer;
