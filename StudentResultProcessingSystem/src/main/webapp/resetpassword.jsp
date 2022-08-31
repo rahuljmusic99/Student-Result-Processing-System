@@ -1,11 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	if(request.getSession(false).getAttribute("otpStatus")==null){
+	if(request.getSession(false).getAttribute("otpStatus")==null && request.getAttribute("passwordStatus")==null){
 %>	
 <jsp:forward page="/home.jsp"></jsp:forward>			
 <% }
-
+	
+	String message = "";
+	String userType = "";
+	if(request.getAttribute("passwordStatus") != null && request.getAttribute("userType") != null){
+		message = (String)request.getAttribute("passwordStatus");
+		userType = (String)request.getAttribute("userType");
+	}
+	
+	String userTypeSession = "";
+	if(request.getSession(false).getAttribute("userType") != null){
+		userTypeSession = (String)session.getAttribute("userType");
+	}
 %>
 <!DOCTYPE html5>
 <html>
@@ -28,7 +39,7 @@
                         <form id="resetPasswordForm" action="ResetPassword" method="post">
                         <input id="newPassword" type=password>
                         <label>Confirm Password</label>
-                        <input id="confirmPassword" type=password >
+                        <input name="newPassword" id="confirmPassword" type=password >
                         <button class="resetbtn" type="submit">Reset Password</button>
                         <script type="text/javascript">
                         	const resetPasswordForm = document.getElementById("resetPasswordForm");
@@ -75,7 +86,68 @@
                         	});
                         </script>
                         </form>
-                        <a onclick="">Back To Login</a>
+                        <a id="userLocation">Back To Login</a>
+                        <input id="messageInput" type="hidden" value="<%=message%>"/>
+                        <input id="loc" type="hidden" value="<%=userType%>"/>
+                        <input id="loc2" type="hidden" value="<%=userTypeSession%>"/>
+                        <script type="text/javascript">
+                        	window.onload = function(){
+                        		var message = document.getElementById("messageInput").value;
+                            	var userType = document.getElementById("loc").value;
+                            	var userTypeSession = document.getElementById("loc2").value;
+                            	
+                            	if(message !== "" && userType !== ""){
+                            		
+                            		if(message == "SUCCESS"){
+                            			Swal.fire({
+                            				  icon: 'success',
+                            				  title: 'Success',
+                            				  text:'You Password has been Updated Successfully',
+                            				  confirmButtonText: 'OK',
+                            				}).then((result) => {
+                            				  if (result.isConfirmed) {
+                            					  if(userType == "student"){
+                            						  document.getElementById("userLocation").setAttribute("href","studentlogin.jsp");
+                            						  window.location = "studentlogin.jsp";
+                            					  }else if(userType == "staff"){
+                            						  document.getElementById("userLocation").setAttribute("href","stafflogin.jsp");
+                            						  window.location = "stafflogin.jsp";
+                            					  }else if(userType == "admin"){
+                            						  window.location = "stafflogin.jsp";
+                            					  }
+                            					
+                            				  }else{
+                            					  if(userType == "student"){
+                            						  document.getElementById("userLocation").setAttribute("href","studentlogin.jsp");
+                            						  window.location = "studentlogin.jsp";
+                            					  }else if(userType == "staff"){
+                            						  document.getElementById("userLocation").setAttribute("href","stafflogin.jsp");
+                            						  window.location = "stafflogin.jsp";
+                            					  }else if(userType == "admin"){
+                            						  document.getElementById("userLocation").setAttribute("href","adminlogin.jsp");
+                            						  window.location = "stafflogin.jsp";
+                            					  }
+                            				  }
+                            				});
+                            			
+                            		}else{
+                            			Swal.fire('Sorry',message,'error');
+                            		}
+                            		
+                        		}
+                            	if(userTypeSession !== ""){
+                        			if(userTypeSession == "student"){
+              						  document.getElementById("userLocation").setAttribute("href","studentlogin.jsp");
+              					  }else if(userTypeSession == "staff"){
+              						document.getElementById("userLocation").setAttribute("href","stafflogin.jsp");
+              					  }else if(userTypeSession == "admin"){
+              						document.getElementById("userLocation").setAttribute("href","adminlogin.jsp"); 
+                        		  }
+                        		
+                        		}
+                        	}
+                        	
+                        </script>
                         </div>
                     </div>
                 </div>
