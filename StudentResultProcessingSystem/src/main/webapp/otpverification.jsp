@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+	response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+	if((request.getSession(false).getAttribute("otp") == null))
+	{
+%> 
+<jsp:forward page="/home.jsp"></jsp:forward>
+<%} %> 
 <!DOCTYPE html5>
 <html>
     <head>
@@ -14,7 +21,7 @@
                 <div class="cd">
                     <div class="cd2">
                         <div class="cd3">
-                        <form action="home.jsp" id="otpform" data-group-name="digits" data-autosubmit="true" autocomplete="off">
+                        <form action="AuthenticateOTP" method="post" id="otpform" data-group-name="digits" data-autosubmit="true" autocomplete="off">
                         <i class="fa-solid fa-envelope-open-text fa-7x"></i><br/>
                         <label>OTP Verification</label><br/>
                         <label>Enter the OTP Sent to</label><br/>

@@ -1,6 +1,6 @@
 package org.CanaraExamManager.controler;
 
-import jakarta.servlet.RequestDispatcher;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -43,7 +43,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 				
 				try {
 					EmaiUtility.sendEmail(studentStaffDataBean.getEmail().trim(), "CanaraExamManager: OTP To Reset Your Password", 
-							"");
+							"OTP is:"+otpValue+"");
 				} catch (AddressException e) {
 
 					e.printStackTrace();
@@ -56,7 +56,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 				session.setAttribute("userMail", studentStaffDataBean.getEmail().trim());
 				session.setAttribute("userType", user);
 				
-				response.sendRedirect("");
+				response.sendRedirect("otpverification.jsp");
 				
 			}else {
 				request.setAttribute("errorMessage", messageString);
@@ -87,7 +87,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 				session.setAttribute("userMail", studentStaffDataBean.getEmail().trim());
 				session.setAttribute("userType", user);
 				
-				response.sendRedirect("/home.jsp");
+				response.sendRedirect("otpverification.jsp");
 				
 			}else {
 				
@@ -119,7 +119,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 				session.setAttribute("userMail", studentStaffDataBean.getEmail().trim());
 				session.setAttribute("userType", user);
 				
-				response.sendRedirect("");
+				response.sendRedirect("otpverification.jsp");
 				
 			}else {
 				request.setAttribute("errorMessage", messageString);

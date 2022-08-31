@@ -18,18 +18,20 @@ public class AuthenticateOTP extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		
-		int userOtpValue = Integer.parseInt(request.getParameter(""));
+		String userOtpValue = "";
+		for(int i=1; i<=6; i++) {
+			userOtpValue = userOtpValue + request.getParameter("digit-"+i);		
+		}
+	
 		int otpValue = (int)session.getAttribute("otp");
-		
-		if(userOtpValue == otpValue) {
+		if(Integer.parseInt(userOtpValue) == otpValue) {
 			session.setAttribute("otpStatus", "SUCCESS");
-			response.sendRedirect("");
+			response.sendRedirect("changepassword.html");
 			
 		}else {
 
 			request.setAttribute("errorMessage", "Wrog OTP");
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("otpverification.jsp");
 			requestDispatcher.forward(request, response);
 		}
 		
