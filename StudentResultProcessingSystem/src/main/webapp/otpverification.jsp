@@ -19,13 +19,12 @@
             <div class="fpdiv">
                 <h3>Canara Exam Manager</h3>
                 <div class="cd">
-                    <div class="cd2">
-                        <div class="cd3">
+                        <div class="cd1">
                         <form action="AuthenticateOTP" method="post" id="otpform" data-group-name="digits" data-autosubmit="true" autocomplete="off">
                         <i class="fa-solid fa-envelope-open-text fa-7x"></i><br/>
-                        <label>OTP Verification</label><br/>
+                        <label><b>&nbsp;&nbsp;OTP Verification</b></label><br/>
                         <label>Enter the OTP Sent to</label><br/>
-                        <label>rahuljmusic99@gmail.com</label><br/>
+                        <p><b>rahuljmusic99@gmail.com</b></p><br/>
                         <input class="otpinput" type="text" pattern="^[0-9]$" id="digit-1" name="digit-1" data-next="digit-2" required />
 						<input class="otpinput" type="text" pattern="^[0-9]$" id="digit-2" name="digit-2" data-next="digit-3" data-previous="digit-1" required/>
 						<input class="otpinput" type="text" pattern="^[0-9]$" id="digit-3" name="digit-3" data-next="digit-4" data-previous="digit-2" required/>
@@ -33,9 +32,9 @@
 						<input class="otpinput" type="text" pattern="^[0-9]$" id="digit-4" name="digit-4" data-next="digit-5" data-previous="digit-3" required/>
 						<input class="otpinput" type="text" pattern="^[0-9]$" id="digit-5" name="digit-5" data-next="digit-6" data-previous="digit-4" required/>
 						<input class="otpinput" type="text" pattern="^[0-9]$" id="digit-6" name="digit-6" data-previous="digit-5" required/>
-                        <button type="submit">Reset Password</button>
+                        <button type="submit">VERIFY</button>
                         </form>
-                        <a onclick="">Back To Login</a>
+                
                         <script>
                         $('#otpform').find('input').each(function() {
                         	$(this).attr('maxlength', 1);
