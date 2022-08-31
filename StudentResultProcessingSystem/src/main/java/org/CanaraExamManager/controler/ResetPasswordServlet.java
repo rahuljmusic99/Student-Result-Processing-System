@@ -21,7 +21,7 @@ public class ResetPasswordServlet extends HttpServlet {
 		String email = (String)session.getAttribute("userMail");
 		String password = request.getParameter("");
 		
-		if(email != null || !email.equals("") || password !=null || !password.equals("")) {
+		if(email != null ||  password !=null) {
 			
 			if(userType == "student" || userType.equals("student")) {
 				
