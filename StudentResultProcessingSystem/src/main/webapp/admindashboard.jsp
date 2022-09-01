@@ -3175,7 +3175,7 @@
                     <div class="model-content17">
                         <div class="close17" id="close" >+</div>
                         <div class="header17">
-                            <h1>Add Student Result</h1></div>
+                            <h1>Edit Student Result</h1></div>
                              <div class="title__next">
                                  <table>
                                      <tr>
