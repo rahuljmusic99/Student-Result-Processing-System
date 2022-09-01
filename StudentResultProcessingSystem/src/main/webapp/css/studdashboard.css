@@ -27,7 +27,7 @@
     outline: none;
     cursor: pointer;
     text-align: left;
-    font-family: serif;
+    font-family: 'Poppins', sans-serif;
     font-size:16px;  
     height: 4rem;
 }
@@ -42,7 +42,7 @@
 
 .tabs__button--active{
     font-weight: bold;
-    border-right: 3px solid red;  
+    border-left: 5px solid yellow;  
     background: blue;
     color: #ffffff;
 }
@@ -147,10 +147,8 @@ h4{
     height: auto;
     background: #f6f7f5;
     padding-bottom: 1rem;
-    border: 1px solid #dddddd;
-    
+    border: 1px solid #dddddd; 
 }
-
 
 .innermarks{
     width: 1150px;
@@ -158,16 +156,19 @@ h4{
     margin-left: 1.4rem;
     margin-top: 1.5rem;
     box-shadow: 0px 0px 4px 1px; 
-    background: white;
+    border-radius: 10px;
+    background-color: grey;
     padding-bottom: 1rem;
-    padding-top: 1rem;
+    padding-top: 1rem;   
 }
 
 .tb2{
     padding: 1px;
     margin: 10px;
-    border: 1px solid #dddddd;
+    border: 1px solid black;
     width: 1130px;
+    background-color: #dddddd;
+    text-align: center;
 }
 
 .marks1{
@@ -176,7 +177,7 @@ h4{
     width: 21rem;
     align-items: center;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 20px;  
 }
 .marks2{
     text-align: center;
@@ -186,59 +187,84 @@ h4{
     border-radius: 10px;
     font-size: 20px;
 }
-
 .innerdiv{
-    border: 1px solid blue;
     padding: 15px;
     width: 19rem;
-    margin-left: 70px;
+    margin-left: 90px;
     margin-right: 70px;
     transition: 2sec;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    background-color: white;
+
 }
 
 .innerdiv2{
-    border: 1px solid blue;
     padding: 15px;
     width: 19rem;
-    margin-left: 70px;
+    margin-left: 90px;
     margin-right: 70px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    background-color: white;
     
 }
 
 .innerdiv:hover{
    width: 17rem;
-   margin-left: 90px;
-   margin-right: 90px;
-    cursor: pointer;
+   margin-left: 105px;
+   margin-right: 100px;
+   cursor: pointer;
+   color: white;
+   font-weight: 800;
+   transition: 1s  ease-out;
+   background-image: linear-gradient(to right,#8A2387,#E94057);
     
 }
 
 .innerdiv2:hover{
    width: 17rem;
-   margin-left: 90px;
-   margin-right: 90px;
-    cursor: pointer;
+   margin-left: 105px;
+   margin-right: 100px;
+   cursor: pointer;
+   color: white;
+   font-weight: 800;
+    transition: 1s  ease-out;
+   background-image: linear-gradient(to right,#8A2387,#E94057);
 }
-
 
 .make{
     width: 33rem;
+    background-color: lightskyblue; /*#9b7479*/
 }
-
 .head2{
-    font-size: 20px;
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: black;
+    
 }
 
 .chartholder1{
     width: 50rem;
-    margin-left: 12rem;
+    margin-left: 10rem;
+    margin-top:5rem;
     padding-top: 10rem;
+    background-color: lightblue;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 0.5px;
 }
 
 .chartholder2{
-     width: 50rem;
-     margin-left: 10rem;
-     margin-top: 10rem;
+    width: 50rem;
+    margin-left: 10rem;
+    margin-top:5rem;
+    padding-top: 10rem;
+    background-color: lightblue;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 0.5px;
 }
 
 .protab1{
@@ -257,6 +283,12 @@ h4{
     padding-bottom: 1rem;
     border: 1px solid #dddddd;
     margin-bottom: 3rem; 
+    text-align: center;
+}
+
+.protab2 h2{
+    margin-top: 2rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 .protab3{
@@ -264,8 +296,14 @@ h4{
     height: 98%;
     background: #f6f7f5;
     padding-bottom: 1rem;
+    text-align: center;
     border: 1px solid #dddddd;
     margin-top: 3rem;
+}
+
+.protab3 h2{
+    margin-top: 2rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 .inner__protab1{
@@ -373,7 +411,7 @@ label{
 }
 
 #mainprofile{
-    background-color:cornflowerblue;
+    background-color:white;
     height: 8rem;
     padding-bottom: 3rem;
     border: none;   
