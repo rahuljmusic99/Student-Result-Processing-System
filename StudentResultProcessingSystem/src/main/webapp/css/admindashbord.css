@@ -1752,120 +1752,54 @@ label{
     cursor: pointer;
 }
 
-.im{
-    height: 3rem;
-}
-
-.ims{
-    height: 5rem;
-}
 
 .protab2{
     width: 1210px;
     height: 98%;
-    background: whitesmoke;
+    background: grey;
     padding-bottom: 1rem;
     border: 1px solid #dddddd;
     margin-bottom: -1rem; 
 }
 
 .logos{
-    width: 35rem;
-    height: 8rem;
+    width: 23rem;
+    height: 5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .imgholder{
-    margin-left: 20rem;
-    padding-top: 3rem;
-}
-
-.cards{
-    background-color: white;
-    width: 13rem;
-    height: 8rem;
-    margin-bottom: 3px;
-    display: inline-block;
-    margin-left: 1rem;
-    box-shadow: -2px 1px 5px 1px;
-    padding-top: 1rem;
-    border-left: 10px solid blue;
+    margin-left: 25rem;  
     
 }
 
-.cardholder{
-   margin-left: 0.5rem;
-    margin-top: 2rem;
-}
-
-
-.cards2{
-    background-color: white;
-    width: 18rem;
-    height: 10rem;
-    margin-bottom: 3px;
-    display: inline-block;
-    box-shadow: -2px 1px 5px 1px;
-    margin-left: 4rem;
-    border-left: 10px solid darkgray;  
-}
-
-.cardholder2{
-   margin-left: 13rem;
-    margin-top: 4rem;
-}
-
-.head1{
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    text-align: center;
-}
-.head2{
-    margin-top: 6rem;
-    font-size: 25px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    text-align: center;
-    margin-left: 3rem;
-}
-
-.icon2{
-    width: 4rem;
-    height: 4rem;
-    float: right;
-    margin-right: 2rem;
-    margin-top: -2rem;
-}
-.icon3{
-    width: 5rem;
-    height: 6rem;
-    margin-right: 2rem;
-    margin-top: -5.5rem;
-    margin-left: 1rem;
- 
-}
-.values{
-    font-size: 2rem;
-    margin-top: 2rem;
-    margin-left: 0.5rem;
-    font-weight: 600;
-}
-
-.values2{
-    font-size: 3rem;
-    margin-top: -6rem;
-    margin-left: 0.5rem;
-    margin-right: 7rem;
-    font-weight: 600;
-    float: right;
+#image{
+    height: 25rem;
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+    box-shadow: 1px 1px 1px 1px grey;
+    padding-top: 1.5rem;
+    padding-bottom: -3rem;
 }
 
 .about{
     margin: 1rem;
     margin-bottom: 5rem;
-    padding: 1rem;
+    padding: 3rem;
     background-color: #D3D3D3;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.about__p{
+    font-size: 17px;
+}
+
+.about__title{
     font-size: 25px;
+    color:brown;
 }
 
 li a{
