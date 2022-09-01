@@ -4,7 +4,6 @@
 }
 
 .tabs{
-    border:1px solid #cccccc;
     display:flex;
     height: 100%;  
     width: 100%;
@@ -28,7 +27,7 @@
     outline: none;
     cursor: pointer;
     text-align: left;
-    font-family: serif;
+    font-family: 'Poppins', sans-serif;
     font-size:16px;  
     height: 4rem;
 }
@@ -43,7 +42,7 @@
 
 .tabs__button--active{
     font-weight: bold;
-    border-right: 3px solid red;  
+    border-left: 5px solid yellow;  
     background: blue;
     color: #ffffff;
 }
@@ -776,7 +775,7 @@ label{
 }
 
 #mainprofile{
-    background-color:cornflowerblue;
+    background-color:white;
     height: 8rem;
     padding-bottom: 3rem;
     border: none;

@@ -190,12 +190,14 @@
 
            	<div class="tabs__content" data-tab="3">
                 <div class="protab2">
+                    <h2>Semester Performance</h2>
 				<div class="chartholder1">
                   <canvas id="semesterChart" ></canvas> 
 	            </div>
                 </div>
                 
                <div class="protab3">
+                   <h2>Internal Performance</h2>
                <div class="chartholder2">
                 <canvas id="semesterChart2" ></canvas> 
 	           </div>
