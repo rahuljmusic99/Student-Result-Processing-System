@@ -73,7 +73,7 @@
 <!-- ------------------------------------------------------ TAB 1 DASHBOARD ----- ------------------------------------------------------------------------------- -->
         
         <div class="tabs__content" data-tab="1">
-            <div class="imgholder"> <img src="images/canlogos.png" class="logos"></div>
+            <div class="imgholder"> <img src="css/images/canlogos.png" class="logos"></div>
                     <img  src="" id="image">
                     <div class="about">
                     <h3 class="about__title">About</h3><br>
@@ -87,7 +87,7 @@
                 
                     <footer>
                       <div class="foot">
-                        <img src="images/CANARA_ICON.png" class="footlogo">
+                        <img src="css/images/canlogos.png" class="footlogo">
                         <div class="footpart1">
                         <h1 class="heads1">CANARA COLLEGE</h1>
                         <p class="pr2">Address:</p>
