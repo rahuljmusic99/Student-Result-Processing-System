@@ -32,6 +32,7 @@
 						<input class="otpinput" type="text" pattern="^[0-9]$" id="digit-4" name="digit-4" data-next="digit-5" data-previous="digit-3" required/>
 						<input class="otpinput" type="text" pattern="^[0-9]$" id="digit-5" name="digit-5" data-next="digit-6" data-previous="digit-4" required/>
 						<input class="otpinput" type="text" pattern="^[0-9]$" id="digit-6" name="digit-6" data-previous="digit-5" required/>
+                        <span class="errspan"><%=request.getAttribute("errorMessage")==null?"":request.getAttribute("errorMessage")%></span>
                         <button type="submit">VERIFY</button>
                         </form>
                 
@@ -59,7 +60,9 @@
                         		}
                         	});
                         });
-
+						window.onload = function(){
+							document.getElementById("digit-1").focus();
+						}
                         </script>
                         </div>
                     </div>
