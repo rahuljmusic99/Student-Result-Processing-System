@@ -753,8 +753,11 @@ label{
 .holder3{
     width: 5.5rem;
     height: 5rem;
+    margin-left: 4rem;
     margin-top: 0.5rem;
     margin-bottom: 5px;
+    border: 1px solid black;
+    border-radius: 50%;
 }
 
 .innerimg{
@@ -776,9 +779,10 @@ label{
 
 #mainprofile{
     background-color:white;
-    height: 8rem;
+    height: 8.5rem;
     padding-bottom: 3rem;
     border: none;
+    text-align: center;
     
 }
 

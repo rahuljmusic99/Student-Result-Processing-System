@@ -46,6 +46,7 @@
                 <div class="space"><div class="space4"><img src="css/images/sf.png" class="edu"></div><p>Canara exam manager</p></div>
                 <button class="tabs__button" data-for-tab="4" id="mainprofile">
                 <div class="holder3"></div>
+                <p>NAME</p>
                 </button>
                 <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa fa-bullseye"></i>Classes</button>

@@ -1355,12 +1355,8 @@ option{
     display: flex;
     justify-content: center;
     align-items: center;
-    display: none;
-    
-
-    
+    display: none;  
 }
-
 
 .model-content14{
     width: 500px;
@@ -1401,6 +1397,202 @@ option{
 #button15:hover{
     opacity: 0.9;
 }
+
+
+.bg-model15{
+    width: 80%;
+    height:100% ;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    
+}
+
+.model-content15{
+    width: 500px;
+    height: 450px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+}
+
+.model-content15 .header15{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.close15{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.bg-model16{
+    width: 80%;
+    height:100% ;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    display: none;  
+}
+
+
+.model-content16{
+    width: 1100px;
+    height: auto;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    overflow-y: auto;
+}
+
+
+
+.model-content16 .header16{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.close16{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button16{
+   background-color: forestgreen;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    cursor: pointer;
+  
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+#button16:hover{
+    opacity: 0.9;
+}
+
+.bg-model17{
+    width: 80%;
+    height:100% ;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    display: none; 
+}
+
+.model-content17{
+    width: 1100px;
+    height: auto;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    overflow-y: auto;
+}
+
+
+
+.model-content17 .header17{
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.close17{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+#button17{
+   background-color: darkgoldenrod;
+    color: white;
+    padding: 10px;
+    width: 5rem;
+    border: none;
+    float: right;
+    cursor: pointer;
+  
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+#button17:hover{
+    opacity: 0.9;
+}
+
+.title__next{
+    margin-left: 14rem;
+}
+
+.tb9{
+    width: 65rem;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.tb9 input{
+    margin: 0 auto;
+    width: 10rem;
+}
+
+.td10 input{
+    width: 10rem;
+}
+
+.td10 select{
+    width: 10rem;
+}
+
+.td11{
+    margin-left: 1.1rem;
+    margin-top: 1rem;
+}
+.course__name{
+    width: 15rem;
+}
+
+.course__name input{
+    width: 15rem;
+}
+
+.ob__marks input{
+    width: 5rem;
+}
+
+
+
+
+
+
+
 
 select{
     width: 50%;
@@ -1716,8 +1908,11 @@ label{
 .holder3{
     width: 5.5rem;
     height: 5rem;
+    margin-left: 4rem;
     margin-top: 0.5rem;
     margin-bottom: 5px;
+    border: 1px solid black;
+    border-radius: 50%;
 }
 
 .innerimg{
@@ -1739,9 +1934,10 @@ label{
 
 #mainprofile{
     background-color:white;
-    height: 8rem;
+    height: 8.5rem;
     padding-bottom: 3rem;
-    border: none;    
+    border: none; 
+    text-align: center;
 }
 
 .fa-eye,.fa-eye-slash{   
