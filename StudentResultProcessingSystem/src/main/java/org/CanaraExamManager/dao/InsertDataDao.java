@@ -4,10 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 import org.CanaraExamManager.bean.ProgrammeCourseClassBean;
+import org.CanaraExamManager.bean.ResultBean;
 import org.CanaraExamManager.bean.StudentStaffDataBean;
 import org.CanaraExamManager.util.DBConnection;
+
 
 public class InsertDataDao {
 	
@@ -350,6 +351,174 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 					
 				}
 				
+			
+		} catch (Exception e) {
+			return e.getLocalizedMessage();
+		}
+		
+		
+		return "SUCCESS";
+	}
+	
+	
+	public String insertFinalMarks(ResultBean resultBean) {
+		
+		Connection con = null;
+		PreparedStatement statement = null;
+		PreparedStatement statement2 = null;
+		Statement stmt = null;
+		ResultSet resultset = null;
+		try {
+			
+			con = DBConnection.createConnection();
+			stmt = con.createStatement();
+			resultset = stmt.executeQuery("SELECT * FROM final_marks WHERE reg_no = '"+resultBean.getUserName().trim()+"' AND "
+					+ "course_code ='"+resultBean.getCourseCode(0)+"'");
+			if(resultset.next() == false) {
+			
+			for(int i = 0;i<resultBean.getArraySize();i++) {
+				statement = null;
+				String result = "";
+				String grade = "";
+				float gradePoint = 0;
+				float gradePointWeightage = 0;
+				int obtainedMarks = resultBean.getObtainedMarks(i);
+				int internalMarks = resultBean.getIAMarks(i);
+				int maxmarks = resultBean.getMaxMarks(i);
+				int minMarks = resultBean.getMinMarks(i);
+				int maxIA = resultBean.getMaxIA(i);
+				int totalMarks = obtainedMarks + internalMarks;
+				int totalMax = maxmarks + maxIA;
+				if(totalMarks < minMarks) {
+					result = "FAIL";
+				}else {
+					result = "PASS";
+				}
+				
+				if((totalMarks*100/totalMax) >= 95f && (totalMarks*100/totalMax) <= 100f) {
+					grade = "OO+";
+					gradePoint = 10f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else if((totalMarks*100/totalMax) >= 90f && (totalMarks*100/totalMax) <= 94f) {
+					grade = "OO";
+					gradePoint = 9.5f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else if((totalMarks*100/totalMax) >= 85f && (totalMarks*100/totalMax) <= 89f) {
+					grade = "OA+";
+					gradePoint = 9f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else if((totalMarks*100/totalMax) >= 80f && (totalMarks*100/totalMax) <= 84f) {
+					grade = "OA";
+					gradePoint = 8.5f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else if((totalMarks*100/totalMax) >= 75f && (totalMarks*100/totalMax) <= 79f) {
+					grade = "AA+";
+					gradePoint = 8f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else if((totalMarks*100/totalMax) >= 70f && (totalMarks*100/totalMax) <= 74f) {
+					grade = "AA";
+					gradePoint = 7.5f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else if((totalMarks*100/totalMax) >= 65f && (totalMarks*100/totalMax) <= 69f) {
+					grade = "AB+";
+					gradePoint = 7;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else if((totalMarks*100/totalMax) >= 60f && (totalMarks*100/totalMax) <= 64f) {
+					grade = "AB";
+					gradePoint = 6.5f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else if((totalMarks*100/totalMax) >= 55f && (totalMarks*100/totalMax) <= 59f) {
+					grade = "BB+";
+					gradePoint = 6f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else if((totalMarks*100/totalMax) >= 50f && (totalMarks*100/totalMax) <= 54f) {
+					grade = "BB";
+					gradePoint = 5.5f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else if((totalMarks*100/totalMax) >= 45f && (totalMarks*100/totalMax) <= 49f) {
+					grade = "BC";
+					gradePoint = 5f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else if((totalMarks*100/totalMax) >= 40f && (totalMarks*100/totalMax) <= 44f) {
+					grade = "CC";
+					gradePoint = 4.5f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else if((totalMarks*100/totalMax) >= 35f && (totalMarks*100/totalMax) <= 39f) {
+					grade = "PP";
+					gradePoint = 4f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}else{
+					grade = "FF";
+					gradePoint = 0f;
+					if(totalMax > 50) {
+						gradePointWeightage = gradePoint * 2;
+					}else {
+						gradePointWeightage = gradePoint;
+					}
+				}
+				statement = con.prepareStatement("INSERT INTO final_marks(reg_no,course_code,programme_id,obtained_marks,IA_marks,total_marks,grade,credit,grade_point,grade_point_weightage,result)"
+						+ "VALUES('"+resultBean.getUserName().trim()+"','"+resultBean.getCourseCode(i).trim()+"','"+resultBean.getProgrammeId().trim()+"','"+resultBean.getObtainedMarks(i)+"',"
+								+ "'"+resultBean.getIAMarks(i)+"','"+totalMarks+"','"+grade+"','"+resultBean.getCredit(i)+"','"+gradePoint+"','"+gradePointWeightage+"','"+result+"')");
+				statement.execute();
+			}
+				statement2 = con.prepareStatement("INSERT INTO exam_details(reg_no,semester,exam_type,exam_month,exam_year,result_date)VALUES('"+resultBean.getUserName().trim()+"',"
+						+ "'"+resultBean.getSemester()+"','Semester','"+resultBean.getExamMonth().trim()+"','"+resultBean.getExamYear().trim()+"','"+resultBean.getResultDate()+"')");
+				statement2.execute();
+			}else {
+				return "Result Data Already Exists !";
+			}
 			
 		} catch (Exception e) {
 			return e.getLocalizedMessage();

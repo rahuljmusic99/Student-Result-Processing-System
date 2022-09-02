@@ -1,7 +1,6 @@
 package org.CanaraExamManager.dao;
 
 import org.CanaraExamManager.util.DBConnection;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

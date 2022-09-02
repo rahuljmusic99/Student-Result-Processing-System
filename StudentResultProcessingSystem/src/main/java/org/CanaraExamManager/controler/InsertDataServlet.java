@@ -3,16 +3,12 @@ package org.CanaraExamManager.controler;
 import org.CanaraExamManager.bean.*;
 import org.CanaraExamManager.dao.InsertDataDao;
 import org.CanaraExamManager.util.EmaiUtility;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.Date;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
@@ -169,16 +165,38 @@ public class InsertDataServlet extends HttpServlet {
 				
 				
 			}case "finalResult": {
-				
-				
-			}case "firstInternalResult": {
-				
-				
-			}case "secondInternalResult": {
+				int courseCount = Integer.parseInt(request.getParameter("numberOfCourse"));
+				if(courseCount > 1) {
+					ResultBean resultBean = new ResultBean();
+					resultBean.setArraySize(courseCount);
+					resultBean.setUserName((String)request.getParameter("regNo"));
+					resultBean.setProgrammeId((String)request.getParameter("programmeId"));
+					resultBean.setSemester((String)request.getParameter("semester"));
+					resultBean.setExamMonth((String)request.getParameter("examMonth"));
+					resultBean.setExamYear(request.getParameter("examYear"));
+					resultBean.setResultDate(request.getParameter("resultDate"));
+					for(int i = 1;i<=courseCount;i++) {
+						
+						resultBean.setObtainedMarks(Integer.parseInt(request.getParameter("obtained"+i)), i-1);	
+						resultBean.setIAMarks(Integer.parseInt(request.getParameter("ia"+i)), i-1);
+						resultBean.setCredit(Integer.parseInt(request.getParameter("credit"+i)), i-1);
+						resultBean.setMaxMarks(Integer.parseInt(request.getParameter("maxMarks"+i)), i-1);
+						resultBean.setMinMarks(Integer.parseInt(request.getParameter("minMarks"+i)), i-1);
+						resultBean.setCourseCode(request.getParameter("courseCode"+i), i-1);
+						resultBean.setMaxIA(Integer.parseInt(request.getParameter("maxIA"+i)), i-1);
+						
+
+						
+					}
+					String dataValidateString = insertDataDao.insertFinalMarks(resultBean);
+					 
+					request.setAttribute("insertionMessage",dataValidateString);
+					request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
+				}
 				
 				
 			}default:{
-				
+				response.sendRedirect("home.jsp");
 				
 			}
 			

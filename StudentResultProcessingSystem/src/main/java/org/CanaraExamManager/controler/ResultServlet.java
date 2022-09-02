@@ -1,16 +1,13 @@
 package org.CanaraExamManager.controler;
 
-import org.CanaraExamManager.bean.ProgrammeCourseClassBean;
 import org.CanaraExamManager.bean.ResultBean;
 import org.CanaraExamManager.dao.ResultDao;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 import java.sql.ResultSet;
 

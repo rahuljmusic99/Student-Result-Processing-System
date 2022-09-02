@@ -47,7 +47,7 @@
             <h5>Marks Sheet</h5>
             <h6><span style="color: palegoldenrod">Programme:&nbsp;&nbsp;</span><span><%=request.getAttribute("programmeName")%></span></h6>
              <div class="img"><img src="" class="studimg"></div>
-             <div class="right"><h3><br><br><span >Date:&nbsp;</span><span>12-10-2000</span></h3><h4><span>Reg No:&nbsp;</span><span><%=request.getAttribute("registerNo")%></span></h4></div>
+             <div class="right"><h3><br><br><span >Date:&nbsp;</span><span><%=12-03-2020%></span></h3><h4><span>Reg No:&nbsp;</span><span><%=request.getAttribute("registerNo")%></span></h4></div>
              <h2><span style="color: white;">Name:&nbsp;</span><span><%=(String) request.getAttribute("studentName")%></span></h2>
             </div>
             <table class="table1" border="1" cellspacing="0"  rules="" align="center">

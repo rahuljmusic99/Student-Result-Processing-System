@@ -2,12 +2,9 @@ package org.CanaraExamManager.dao;
 
 import java.sql.Blob;
 import java.sql.Connection;
-
 import org.CanaraExamManager.bean.LoginBean;
 import org.CanaraExamManager.bean.StudentStaffDataBean;
 import org.CanaraExamManager.util.DBConnection;
-
-
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -189,9 +186,6 @@ public class LoginDao {
 		
 		return this.secondInternal;
 	}
-	
-	
-	
 	
 
 	public String authenticateStaff(LoginBean loginBean) {

@@ -74,7 +74,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 				
 				try {
 					EmaiUtility.sendEmail(studentStaffDataBean.getEmail(), "CanaraExamManager: OTP To Reset Your Password", 
-							"");
+							"OTP is:"+otpValue+"");
 				} catch (AddressException e) {
 
 					e.printStackTrace();
@@ -106,7 +106,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 				
 				try {
 					EmaiUtility.sendEmail(studentStaffDataBean.getEmail(), "CanaraExamManager: OTP To Reset Your Password", 
-							"");
+							"OTP is:"+otpValue+"");
 				} catch (AddressException e) {
 
 					e.printStackTrace();

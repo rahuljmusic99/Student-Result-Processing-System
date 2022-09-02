@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 import org.CanaraExamManager.bean.ProgrammeCourseClassBean;
 import org.CanaraExamManager.bean.StudentStaffDataBean;
 import org.CanaraExamManager.dao.UpdateDataDao;
@@ -120,17 +119,8 @@ public class UpdateDataServlet extends HttpServlet {
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 				
-			}case "finalResult": {
-				
-				
-			}case "firstInternalResult": {
-				
-				
-			}case "secondInternalResult": {
-				
-				
 			}default:{
-				
+				response.sendRedirect("home.jsp");
 				
 			}
 			

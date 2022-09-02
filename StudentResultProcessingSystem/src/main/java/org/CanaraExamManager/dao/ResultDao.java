@@ -21,11 +21,12 @@ public class ResultDao {
 		try {
 			con = DBConnection.createConnection();
 			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM ((final_marks "
+			resultSet = statement.executeQuery("SELECT * FROM (((final_marks "
 											+ "INNER JOIN course ON final_marks.course_code = course.course_code)"
-											+ "INNER JOIN programme ON final_marks.programme_id = programme.programme_id) "
+											+ "INNER JOIN programme ON final_marks.programme_id = programme.programme_id)"
+											+ "INNER JOIN exam_details ON final_marks.reg_no = exam_details.reg_no) "
 											+ "WHERE final_marks.reg_no = "+userNameString+" "
-											+ "AND course.course_sem = "+semesterString+"");
+											+ "AND course.course_sem = "+semesterString+" AND exam_details.semester = "+semesterString+"");
 												
 		} catch (SQLException e) {
 			e.printStackTrace();

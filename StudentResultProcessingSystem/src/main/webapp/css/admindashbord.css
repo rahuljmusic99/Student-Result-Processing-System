@@ -1466,7 +1466,7 @@ option{
     border-bottom: 1px solid #dddddd;
 }
 
-.close16{
+#close16{
     position: absolute;
     top: 0;
     right: 14px;

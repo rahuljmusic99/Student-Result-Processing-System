@@ -714,16 +714,7 @@
 						    }
 						});
 						
-						var mysem = {};
-						$("select[id='programmeSemDropDown'] > option").each(function() {
-						    if(mysem[this.text]) {
-						        $(this).remove();
-						        $(this).hide();
-						    } else {
-						        mysem[this.text] = this.value;
-						        $(this).hide();
-						    }
-						});
+
 					}
                          	
 					// function to Enable and Disabe dropDown Data in Student Data
@@ -738,9 +729,10 @@
 	       						document.getElementById("programmeSemDropDown").selectedIndex = "0";
 	       						
 	       						
-	       						var programmeSem = document.getElementById(studentProgrammeSelect).value;
+	       						var programmeSem = document.getElementById("p"+studentProgrammeSelect).value;
 	       						var optionsCount = $('#programmeSemDropDown > option').length -1;
-	       						
+	       						console.log(optionsCount);
+	       						console.log(programmeSem);
 	       						if(programmeSem > optionsCount){
 	       							
 	       							for(let i=(optionsCount + 1);i<=(programmeSem);i++){
@@ -2898,7 +2890,7 @@
               <td class="td2"><%=studentData.getString("class_year")%></td>
               <td><%=studentData.getString("first_name") +" "+ studentData.getString("last_name")%></td>   <!--Student Name-->
               <td><%=studentData.getString("reg_no")%></td>   <!--Register number-->
-              <td class="td1"><button class="btn__course" id="btn__course<%=i%>" onclick="myFunction4()"><span style="font-size: 16px;">+</span> Add</button></td>  <!--Add Result-->
+              <td class="td1"><button class="btn__course" id="btn__course<%=i%>" onclick="addResult<%=i%>()"><span style="font-size: 16px;">+</span> Add</button></td>  <!--Add Result-->
               <td class="td2"><button class="btn__edit" id="btn-edit<%=i%>" onclick="viewResult<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Result</button></td> <!--View Result-->
               <td class="td3"><div class="circle1" title="Edit Result" id="circle1" onclick="myFunction6()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Result" id="circle2" onclick="myFunction7()"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
             </tr>
@@ -2965,6 +2957,41 @@
 	            	    	}
 	            	    }
 	            	}
+	            	
+	            	document.getElementById("btn__course<%=i%>");
+	            	function addResult<%=i%>(){
+	            		  document.querySelector('.bg-model15').style.display = 'flex';
+	            		  document.querySelector('.bg-model15').style.position = 'fixed';
+	            		  
+	            		  table = document.getElementById('addResultTable');
+		            	    
+		            	    var rowCount = table.rows.length;
+		            	    for(let i=1; i<=rowCount;i++){
+		            	    table.deleteRow(-1);
+		            	    }
+		            	    	var createRow =  <%=studentData.getInt("semester")%> ;
+		            	    	for(let i= 1;i <= createRow; i++){
+			            	    	
+			            	    	var tr = document.createElement('tr');
+			            	    	tr.setAttribute('class','pop-row');
+			            	    	var td = document.createElement('td');
+			            	    	var div = document.createElement('div');
+			            	    	div.setAttribute('class','pop-div');
+			            	    	var div2 = document.createElement('div');
+			            	    	div2.setAttribute('class','pop-inner2');
+			            	    	div2.setAttribute('id','div'+i);
+			            	    	div2.setAttribute('onclick','addResultTable'+i+"('<%=studentData.getString("programme_id")%>','<%=studentData.getString("first_name")+" "%><%=studentData.getString("last_name")%>','<%=studentData.getString("reg_no")%>','<%=studentData.getString("programme_name")%>','<%=studentData.getString("class_name")+" "%><%=studentData.getString("class_year")+" "%>year',"+(i)+")");
+			            	    	div2.textContent = "Semester "+i;	
+			            	    	
+			            	    	div.appendChild(div2);
+			            	    	td.appendChild(div);
+			            	    	tr.appendChild(td);
+			            	    	table.appendChild(tr);
+			            	    	
+			            	    }
+	            		}
+	            		
+	            		  
             	</script>
 			<% 		
 				i = i + 1;
@@ -3050,12 +3077,7 @@
                            <table border="1" class="tb3">
                              <tr>
                                <th>Semester</th>
-                             </tr>
-                               
-                              <tr class="pop-row">
-                                  <td><div class="pop-div"><div class="pop-inner2" onclick="myFunction21()" id="popdiv2">Semester </div></div></td>
-                               </tr> 
-                                   
+                             </tr>    
                            </table> 
                        </form>
                    </div>
@@ -3083,53 +3105,89 @@
                </div> 
                 
                 
-                
                 <div class="bg-model15">
                     <div class="model-content15">
                         <div class="close15" id="close" >+</div>
                         <div class="header15">
                             <h1>Add Student Result</h1></div>
                             <form action="">
-                                <table border="1" class="tb3">
-                                    <tr>
+                            	<table border="1" class="tb3">
+                            		<tr>
                                     <th>Semester</th>
                                     </tr>
-                                    
-                                    <tr class="pop-row">
-                                        <td><div class="pop-div"><div class="pop-inner2" onclick="myFunction20()" id="popdiv">Semester1</div></div></td>
-                                    </tr>
+                            	</table>
+                                <table border="1" class="tb3" id="addResultTable">
                                 </table>
                         </form>
                     </div>
                 </div>
+    			
+				<%
+                  	try{
+                  		
+                  		ResultSet programmeResultSet20 = loadData.loadProgrammeData();
+                  		if(programmeResultSet20!=null){
+                  			int j = 0;
+                  			int courseCount = 0;
+                  			while(programmeResultSet20.next()){
+                  	
+                  				for(int i=1; i<= programmeResultSet20.getInt("programme_sem"); i++){
+                  					
+                  					ResultSet coursesData20 = loadData.loadCoursedata(programmeResultSet20, i);
+				%>
     
-                <div class="bg-model16">
+                <div class="bg-model16" id="prog<%=programmeResultSet20.getString("programme_id")%><%=i%>">
+                	<input type="hidden" id="resultSName<%=i%>" value="" />
                     <div class="model-content16">
-                        <div class="close16" id="close" >+</div>
+                        <div class="close-result<%=i + j%>" id="close16">+</div>
+							<script>
+						        document.querySelector('.close-result<%=i + j%>').addEventListener('click', function(){
+						        document.getElementById("prog<%=programmeResultSet20.getString("programme_id")%><%=i%>").style.display = 'none';
+						            
+						        });
+					        </script>
                         <div class="header16">
                             <h1>Add Student Result</h1></div>
-                             <div class="title__next">
-                                 <table>
+                             <div class="title__next" id="title<%=programmeResultSet20.getString("programme_id")%><%=i%>">
+                                 <table id="resultTab<%=programmeResultSet20.getString("programme_id")%><%=i%>">
                                      <tr>
                                      <th>Student Name</th>
                                      <th>Reg-no</th>
                                      <th>Programme</th>
                                      <th>Class</th>
-                                     </tr>
-                                     
+                                     <th>Semester</th>
+                                     </tr>      
                                      <tr>
-                                        <td class="td10"><input></td>
-                                        <td class="td10"><input></td>
-                                        <td class="td10"><input></td>
-                                        <td class="td10"><input></td>
+                                        <td class="td10" id="studentNamee<%=i%>"><input id="studentName<%=i%>" readonly="readonly" value=""></td>
+                                        <td class="td10" id="regNoo<%=i%>"><input id="resultSRegNo<%=i%>"name="regNo"readonly="readonly" value=""></td>
+                                        <td class="td10" id="programmee<%=i%>"><input id="resultSProgramme<%=i%>"readonly="readonly" value=""></td>
+                                        <td class="td10" id="classNamee<%=i%>"><input id="resultSClass<%=i%>"readonly="readonly" value=""></td>
+                                        <td class="td10" id="semesterr<%=i%>"><input id="resultSName<%=i%>"name="semester"readonly="readonly" value=""></td>
                                      </tr>
                                  </table>
+                                 <script type="text/javascript">
+                                 	function insertIntoStudentRes<%=programmeResultSet20.getString("programme_id")%><%=i%>(programmeID,studentName,regNo,programme,className,semester){
+   										$("#resultTab<%=programmeResultSet20.getString("programme_id")%><%=i%> tr").each(function(){
+   											$(this).find("#studentNamee<%=i%> input").val(studentName);
+   											$(this).find("#regNoo<%=i%> input").val(regNo);
+   											$(this).find("#programmee<%=i%> input").val(programme);
+   											$(this).find("#classNamee<%=i%> input").val(className);
+   											$(this).find("#semesterr<%=i%> input").val(semester);
+   											
+   										});
+   										document.forms['form<%=programmeResultSet20.getString("programme_id")%><%=i%>']['regNo'].value=regNo;
+   										document.forms['form<%=programmeResultSet20.getString("programme_id")%><%=i%>']['programmeID'].value=programmeID;
+   										document.forms['form<%=programmeResultSet20.getString("programme_id")%><%=i%>']['semesterr'].value=semester;
+                                 	}
+                                 </script>
                              </div>
-                            <form >
+                            <form id="form<%=programmeResultSet20.getString("programme_id")%><%=i%>" action="InsertDataServlet" method="post" >
+                            	<input type="hidden" name="Data" value="finalResult"/>
+                            	<input type="hidden" id="regNo" name="regNo" value=""/>
+                            	<input type="hidden" id="programmeID" name="programmeId" value=""/>
+                            	<input type="hidden" id="semesterr" name="semester" value=""/>
                                 <table  border="1" class="tb9">
                                     <tr>
-                            
-                                    
                                     <th class="tdCourse" >Course name</th>
                                     <th class="tdCourse" >Course code</th>
                                     <th class="tdCourse">Course Type</th>
@@ -3138,35 +3196,109 @@
                                     <th class="tdCourse">Credit</th>
                                     
                                     </tr>
-									
+									 <%try{
+                            			if(coursesData20!=null){
+                            		
+                            			while(coursesData20.next()){
+                            				courseCount = courseCount + 1;
+                        	 		 %>	  
+                        	 		 
                             		<tr>
-                                        <td class="course__name"><input readonly></td>
-                                        <td><input readonly></td>
-                                        <td><input readonly></td>
-                                        <td class="ob__marks"><input type="number"></td>
-                                        <td class="ob__marks"><input type="number"></td>
-                                        <td class="ob__marks"><input type="number"></td>
+                                        <td class="course__name"><input readonly value="<%=coursesData20.getString("course_name")%>" required></td>
+                                        <td><input name="courseCode<%=courseCount%>" value="<%=coursesData20.getString("course_code")%>" readonly></td>
+                                        <td><input value="<%=coursesData20.getString("course_type")%>" readonly></td>
+                                        <td class="ob__marks"><input name="obtained<%=courseCount%>" type="number" required></td>
+                                        <td class="ob__marks"><input name="ia<%=courseCount%>" type="number" required></td>
+                                        <td class="ob__marks"><input name="credit<%=courseCount%>" type="number" required></td>
                                     </tr>
-                                    
-            
+            						 <%  	}
+                            	}
+                            	
+                            }catch(SQLException e){
+                            	e.printStackTrace();
+                            	
+                            }%> 	
                                     <table class="td11">
                                         <tr>
-                                            <td class="td10"><select >
+                                            <td class="td10"><select name="examMonth" required>
                                             <option value="" disabled selected hidden>Exam Month</option>
-                                            <option>Bca</option>
-                                            
+                                            <option>January</option>
+                                            <option>February</option>
+                                            <option>March</option>
+                                            <option>April</option>
+                                            <option>May</option>
+                                            <option>June</option>
+                                            <option>July</option>
+                                            <option>August</option>
+                                            <option>September</option>
+                                            <option>October</option>
+                                            <option>November</option>
+                                            <option>December</option>
                                             </select></td>
-                                            <td class="td10"><input type="number"></td>
-                                            <td class="td10"><input type="date"></td>
+                                            <td class="td10"><input name="examYear" type="number" required></td>
+                                            <td class="td10"><input name="resultDate" type="date" required></td>
                                         </tr>
                                      
                                     </table>
-                                            <button id="button16">ADD</button> 
+                                            <button type="submit" id="button16">ADD</button> 
                                 </table>
+                                <input type="hidden" name="numberOfCourse" value="<%=courseCount%>"/>
+                                <%
+                             	ResultSet coursesData30 = loadData.loadCoursedata(programmeResultSet20, i);
+                             %> 
+                              <%try{
+                            			if(coursesData30!=null){
+                            				courseCount = 0;
+                            			while(coursesData30.next()){
+                            				courseCount = courseCount + 1;
+                        	  %>	
+                        	  <input type="hidden" name="maxMarks<%=courseCount%>" value="<%=coursesData30.getString("max_marks")%>"/>
+                        	  <input type="hidden" name="minMarks<%=courseCount%>" value="<%=coursesData30.getString("min_marks")%>"/>
+                        	  <input type="hidden" name="maxIA<%=courseCount%>" value="<%=coursesData30.getString("max_IA")%>">
+                        	  
+                        	  		 <%  	}
+                            	}
+                            	
+                            }catch(SQLException e){
+                            	e.printStackTrace();
+                            	
+                            }%>   	
                         </form>
                         
                     </div>
                 </div>
+                <%				
+                				courseCount = 0;}
+                				j = j + programmeResultSet20.getInt("programme_sem");//increment j for index
+                			}
+                		}
+                	}catch(SQLException e){
+                		e.printStackTrace();
+                		
+                	}	
+                   
+                %>  
+                
+                <script>
+                <%
+                  for(int i=1; i<=8;i++){
+                
+                %>	
+                		
+                		function addResultTable<%=i%>(programmeID,studentName,regNo,programme,className,semester){
+                			  var progID = programmeID + semester;
+                			  var funcName = "insertIntoStudentRes"+progID;
+                			  console.log(funcName);
+                			  window[funcName](programmeID,studentName,regNo,programme,className,semester);
+                			  document.querySelector('.bg-model15').style.display = 'none';
+                			  document.getElementById('prog'+progID).style.display = 'flex';
+                			  document.getElementById('prog'+progID).style.position = 'fixed';
+                			
+                		}
+                <%
+                  }
+                %>
+                </script>
                 
                 
                 
@@ -3432,11 +3564,6 @@
         });
         </script>
             
-        <script>
-            document.querySelector('.close16').addEventListener('click', function(){
-                document.querySelector('.bg-model16').style.display = 'none';
-            })
-        </script>
             
             <script>
             document.querySelector('.close17').addEventListener('click', function(){

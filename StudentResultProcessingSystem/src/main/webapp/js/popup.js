@@ -59,19 +59,8 @@ function myFunction16(){
     document.querySelector('.bg-model13').style.position = 'fixed';
 }
 
+   
 
-
-document.getElementById("btn__course1");
-function myFunction4(){
-  document.querySelector('.bg-model15').style.display = 'flex';
-  document.querySelector('.bg-model15').style.position = 'fixed';
-}
-     
-document.getElementById("popdiv");
-function myFunction20(){
-  document.querySelector('.bg-model16').style.display = 'flex';
-  document.querySelector('.bg-model16').style.position = 'fixed';
-}
 
 document.getElementById("popdiv2");
 function myFunction21(){
