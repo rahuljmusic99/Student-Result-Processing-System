@@ -2147,6 +2147,42 @@ li a{
    border-radius: 50%;  
 }
 
+.imgin{
+    display: flex;
+}
+
+.studimgholder{
+    width: 6rem;
+    height: 6rem;
+    border: 1px solid grey;
+    border-radius: 50%;
+    margin-left: 19rem;
+    
+    
+}
+
+.simp{
+    border-radius: 50%;
+    height: 5.8rem;
+    width: 6rem;
+}
+
+.addimg{
+    border: 1px solid grey;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    background: white;
+    margin-left: -1rem;
+    margin-top: 4rem;
+    
+}
+
+input[type=file]::file-selector-button{
+    background-color: white;
+    color: white;
+    border: none;
+}
 
 
 

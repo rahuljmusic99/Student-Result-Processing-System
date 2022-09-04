@@ -187,7 +187,7 @@
               <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
               <td><%=studentData.getString("first_name") +" "+ studentData.getString("last_name")%></td>   <!--Student Name-->
               <td><%=studentData.getString("reg_no")%></td>   <!--Register number-->
-              <td class="td1"><button class="btn__course" id="btn__course<%=i%>" onclick="myFunction4()"><span style="font-size: 16px;">+</span> Add</button></td>  <!--Add Result-->
+              <td class="td1"><button class="btn__course" id="btn__course<%=i%>" onclick="myFunction22()"><span style="font-size: 16px;">+</span> Add</button></td>  <!--Add Result-->
               <td class="td2"><button class="btn__edit" id="btn-edit<%=i%>" onclick="viewResult<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Result</button></td> <!--View Result-->
               <td class="td3"><div class="circle1" title="Edit Result" id="circle1" onclick="myFunction6()"><i class="fa fa-pencil" aria-hidden="true"></i></div><div class="circle2" title="Delete Result" id="circle2" onclick="myFunction7()"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
             </tr>
@@ -323,6 +323,179 @@
                         </form>
                     </div>
                 </div>
+                
+                <div class="bg-model7">
+                    <div class="model-content7">
+                        <div class="close7" id="close" >+</div>
+                        <div class="header7">
+                            <h1>Add Internal marks</h1></div>
+                            <form action="">
+                                <table border="1" class="tb3">
+                                    <tr>
+                                    <th colspan="2">Semester</th>
+                                    </tr>
+                                    
+                                    <tr class="pop-row">
+                                        <td><div class="pop-div"><div class="pop-inner" onclick="myFunction23()" id="pop1">Semester1 (internal1)</div></div></td>
+                                        <td><div class="pop-div"><div class="pop-inner" onclick="myFunction24()" id="pop2">Semester1 (internal2)</div></div></td>
+                                    </tr>  
+                                    
+                                </table>
+                            
+                            
+                        </form>
+                    </div>
+                </div>
+                
+                
+                
+                
+            
+                
+                <div class="bg-model5">
+                    <div class="model-content5">
+                        <div class="close5" id="close" >+</div>
+                        <div class="header5">
+                            <h1>Add Student 1st Internal Result</h1></div>
+                             <div class="title__next">
+                                 <table>
+                                     <tr>
+                                     <th>Student Name</th>
+                                     <th>Reg-no</th>
+                                     <th>Programme</th>
+                                     <th>Class</th>
+                                     </tr>
+                                     
+                                     <tr>
+                                        <td class="td10"><input></td>
+                                        <td class="td10"><input></td>
+                                        <td class="td10"><input></td>
+                                        <td class="td10"><input></td>
+                                     </tr>
+                                 </table>
+                        
+                        
+                             </div>
+                        
+                            <form >
+                                <table  border="1" class="tb9">
+                                    <tr>
+                            
+                                    
+                                    <th class="tdCourse" >Course name</th>
+                                    <th class="tdCourse" >Course code</th>
+                                    <th class="tdCourse">Course Type</th>
+                                    <th class="tdCourse">Max Marks</th>
+                                    <th class="tdCourse">Min Marks</th>
+                                    <th class="tdCourse">Obtained Marks</th>
+                                    
+                                    </tr>
+									
+                            		<tr>
+                                        <td class="course__name"><input readonly></td>
+                                        <td><input readonly></td>
+                                        <td><input readonly></td>
+                                        <td class="ob__marks"><input type="number"></td>
+                                        <td class="ob__marks"><input type="number"></td>
+                                        <td class="ob__marks"><input type="number"></td>
+                                    </tr>
+                                    
+                                    
+                
+                                    <table class="td11">
+                                        <tr>
+                                            <td class="td10"><select >
+                                            <option value="" disabled selected hidden>Exam Month</option>
+                                            <option>Bca</option>
+                                            
+                                            </select></td>
+                                            <td class="td10"><input type="number"></td>
+                                            <td class="td10"><input type="date"></td>
+                                        </tr>
+                                     
+                                    </table>
+                                            <button id="button5">ADD</button> 
+                                </table>
+                        </form>
+                        
+                    </div>
+                </div>
+                
+                
+                
+               
+                <div class="bg-model6">
+                    <div class="model-content6">
+                        <div class="close6" id="close" >+</div>
+                        <div class="header6">
+                            <h1>Add Student 2nd Internal Result</h1></div>
+                             <div class="title__next">
+                                 <table>
+                                     <tr>
+                                     <th>Student Name</th>
+                                     <th>Reg-no</th>
+                                     <th>Programme</th>
+                                     <th>Class</th>
+                                     </tr>
+                                     
+                                     <tr>
+                                        <td class="td10"><input></td>
+                                        <td class="td10"><input></td>
+                                        <td class="td10"><input></td>
+                                        <td class="td10"><input></td>
+                                     </tr>
+                                 </table>
+                        
+                        
+                             </div>
+                        
+                            <form >
+                                <table  border="1" class="tb9">
+                                    <tr>
+                            
+                                    
+                                    <th class="tdCourse" >Course name</th>
+                                    <th class="tdCourse" >Course code</th>
+                                    <th class="tdCourse">Course Type</th>
+                                    <th class="tdCourse">Max Marks</th>
+                                    <th class="tdCourse">Min Marks</th>
+                                    <th class="tdCourse">Obtained Marks</th>
+                                    
+                                    </tr>
+									
+                            		<tr>
+                                        <td class="course__name"><input readonly></td>
+                                        <td><input readonly></td>
+                                        <td><input readonly></td>
+                                        <td class="ob__marks"><input type="number"></td>
+                                        <td class="ob__marks"><input type="number"></td>
+                                        <td class="ob__marks"><input type="number"></td>
+                                    </tr>
+                                    
+                                    
+                
+                                    <table class="td11">
+                                        <tr>
+                                            <td class="td10"><select >
+                                            <option value="" disabled selected hidden>Exam Month</option>
+                                            <option>Bca</option>
+                                            
+                                            </select></td>
+                                            <td class="td10"><input type="number"></td>
+                                            <td class="td10"><input type="date"></td>
+                                        </tr>
+                                     
+                                    </table>
+                                            <button id="button6">ADD</button> 
+                                </table>
+                        </form>
+                        
+                    </div>
+                </div>
+
+                
+                
+                
            </div> 
 <!-----------------------------------------------------------Profile----------------------------------------------------------------------------->                         
                           
@@ -467,6 +640,59 @@
         <script>
             document.querySelector('.close4').addEventListener('click', function(){
                 document.querySelector('.bg-model4').style.display = 'none';
+            })
+        </script>
+                    
+                    
+                <script>
+            document.getElementById("btn__course2");
+            function myFunction22(){
+                document.querySelector('.bg-model7').style.display = 'flex';
+                document.querySelector('.bg-model7').style.display = 'fixed';
+                
+            }
+        
+        </script>
+        
+        <script>
+            document.querySelector('.close7').addEventListener('click', function(){
+                document.querySelector('.bg-model7').style.display = 'none';
+            })
+        </script>
+        
+        
+        
+        
+        <script>
+            document.getElementById("pop1");
+            function myFunction23(){
+                document.querySelector('.bg-model5').style.display = 'flex';
+                document.querySelector('.bg-model5').style.display = 'fixed';
+                
+            }
+        
+        </script>
+        
+        <script>
+            document.querySelector('.close5').addEventListener('click', function(){
+                document.querySelector('.bg-model5').style.display = 'none';
+            })
+        </script>
+        
+        
+        <script>
+            document.getElementById("pop2");
+            function myFunction24(){
+                document.querySelector('.bg-model6').style.display = 'flex';
+                document.querySelector('.bg-model6').style.display = 'fixed';
+                
+            }
+        
+        </script>
+        
+        <script>
+            document.querySelector('.close6').addEventListener('click', function(){
+                document.querySelector('.bg-model6').style.display = 'none';
             })
         </script>
     </body>
