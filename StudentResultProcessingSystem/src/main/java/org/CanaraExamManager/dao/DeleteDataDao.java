@@ -2,6 +2,8 @@ package org.CanaraExamManager.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.CanaraExamManager.bean.ProgrammeCourseClassBean;
 import org.CanaraExamManager.bean.StudentStaffDataBean;
@@ -120,21 +122,47 @@ public class DeleteDataDao {
 		return "DELETESUCCESS";
 	}
 	
-	public String deleteFinalResultData() {
+	public String deleteFinalResultData(StudentStaffDataBean studentStaffDataBean) {
 		
 		Connection con = null;
 		String query = "";
 		PreparedStatement preparedStatement = null;
-
+		PreparedStatement preparedStatement2 = null;
+		ResultSet resultSet = null;
+		Statement statement = null;
+		ResultSet resultSet2 = null;
+		Statement statement2 = null;
 		try {
-			query = "DELETE FROM final_marks WHERE reg_no = ";
-			
 			con = DBConnection.createConnection();
-			preparedStatement = con.prepareStatement(query);
+			statement = con.createStatement();
+			statement2 = con.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM COURSE "
+					+ "INNER JOIN final_marks ON course.course_code = final_marks.course_code "
+					+ "WHERE course.course_sem = "+studentStaffDataBean.getCurrentSemester()+" "
+					+ "AND final_marks.reg_no ="+studentStaffDataBean.getRegNo().trim()+" "
+					+ "AND final_marks.programme_id = "+studentStaffDataBean.getProgramme().trim()+"");
 			
-			preparedStatement.execute();
+			resultSet2 = statement2.executeQuery("SELECT * FROM COURSE "
+					+ "INNER JOIN final_marks ON course.course_code = final_marks.course_code "
+					+ "WHERE course.course_sem = "+studentStaffDataBean.getCurrentSemester()+" "
+					+ "AND final_marks.reg_no ="+studentStaffDataBean.getRegNo().trim()+" "
+					+ "AND final_marks.programme_id = "+studentStaffDataBean.getProgramme().trim()+"");
 			
-			
+			if(resultSet2.next() == true) {
+				preparedStatement2 = con.prepareStatement("DELETE FROM exam_details WHERE reg_no = "+studentStaffDataBean.getRegNo()+" "
+						+ "AND semester = "+studentStaffDataBean.getCurrentSemester()+" AND exam_type = 'Semester'");
+				preparedStatement2.execute();
+				while(resultSet.next()) {
+					preparedStatement = null;
+					query = "DELETE FROM final_marks WHERE reg_no = "+resultSet.getString("reg_no")+" "
+							+ "AND course_code = '"+resultSet.getString("course_code")+"'";
+					preparedStatement = con.prepareStatement(query);
+					preparedStatement.execute();
+				}
+	
+			}else {
+				return "Result Data Does not Exists !";
+			}
 		} catch (SQLException e) {
 			return e.getLocalizedMessage();
 		}
@@ -185,4 +213,6 @@ public class DeleteDataDao {
 		
 		return "DELETESUCCESS";
 	}
+	
+	
 }

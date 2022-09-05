@@ -240,6 +240,42 @@ public class InsertDataServlet extends HttpServlet {
 				}
 				
 				
+			}case "secondInternal": {
+				int courseCount = Integer.parseInt(request.getParameter("numberOfCourses"));
+				System.out.println(courseCount);
+				if(courseCount >= 1) {
+					ResultBean resultBean = new ResultBean();
+					resultBean.setArraySize(courseCount);
+					resultBean.setUserName((String)request.getParameter("regNo"));
+					resultBean.setProgrammeId((String)request.getParameter("programmeId"));
+					resultBean.setSemester((String)request.getParameter("semester"));
+					resultBean.setExamMonth((String)request.getParameter("examMonth"));
+					resultBean.setExamYear(request.getParameter("examYear"));
+					resultBean.setResultDate(request.getParameter("resultDate"));
+					int ttCourse = Integer.parseInt(request.getParameter("ttCourse"));
+					int indexCount = 0;
+					System.out.println(ttCourse);
+					for(int i = 1;i<=ttCourse;i++) {
+						
+						System.out.println(request.getParameter("obtained"+i));
+						if(request.getParameter("obtained"+i) != "" || !request.getParameter("obtained"+i).equals("")){
+							resultBean.setObtainedMarks(Integer.parseInt(request.getParameter("obtained"+i)), indexCount);	
+							resultBean.setMaxMarks(Integer.parseInt(request.getParameter("max"+i)), indexCount);
+							resultBean.setMinMarks(Integer.parseInt(request.getParameter("min"+i)), indexCount);
+							resultBean.setCourseCode(request.getParameter("courseCode"+i), indexCount);
+							System.out.println(request.getParameter("courseCode"+i));
+							indexCount++;
+						}
+
+						
+					}
+					String dataValidateString = insertDataDao.insertSecondInternal(resultBean);
+					 
+					request.setAttribute("insertionMessage",dataValidateString);
+					request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
+				}
+				
+				
 			}default:{
 				response.sendRedirect("home.jsp");
 				
