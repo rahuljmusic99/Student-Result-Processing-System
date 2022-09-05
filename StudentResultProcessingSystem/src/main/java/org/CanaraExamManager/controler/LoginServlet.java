@@ -108,6 +108,8 @@ public class LoginServlet extends HttpServlet {
 				session2.setAttribute("staffPhone", loginBean.getPhone());
 				session2.setAttribute("staffEmail", loginBean.getEmail());
 				session2.setAttribute("staffPassword",loginBean.getPassword());
+				session2.setAttribute("staffrole", loginBean.getRole());
+				session2.setAttribute("staffProgramme", loginBean.getProgramme());
 				response.sendRedirect("staffdashboard.jsp");
 			}else {
 				

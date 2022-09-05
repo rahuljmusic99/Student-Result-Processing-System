@@ -4,10 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+import javax.imageio.plugins.tiff.ExifGPSTagSet;
+
 import org.CanaraExamManager.bean.ProgrammeCourseClassBean;
 import org.CanaraExamManager.bean.ResultBean;
 import org.CanaraExamManager.bean.StudentStaffDataBean;
 import org.CanaraExamManager.util.DBConnection;
+import org.eclipse.jdt.internal.compiler.ast.AND_AND_Expression;
 
 
 public class InsertDataDao {
@@ -372,9 +376,13 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 			
 			con = DBConnection.createConnection();
 			stmt = con.createStatement();
-			resultset = stmt.executeQuery("SELECT * FROM final_marks WHERE reg_no = '"+resultBean.getUserName().trim()+"' AND "
-					+ "course_code ='"+resultBean.getCourseCode(0)+"'");
-			if(resultset.next() == false) {
+			for(int i = 0;i<resultBean.getArraySize();i++) {
+				resultset = stmt.executeQuery("SELECT * FROM final_marks WHERE reg_no = '"+resultBean.getUserName().trim()+"' AND "
+						+ "course_code ='"+resultBean.getCourseCode(i)+"'");
+				if(resultset.next() == true) {
+					return "Result Data of Register Number: '"+resultBean.getUserName().trim()+"' '"+resultBean.getSemester()+" semester' with CourseCode: '"+resultBean.getCourseCode(i)+"' Already Exists!";
+				}
+			}
 			
 			for(int i = 0;i<resultBean.getArraySize();i++) {
 				statement = null;
@@ -513,13 +521,20 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 								+ "'"+resultBean.getIAMarks(i)+"','"+totalMarks+"','"+grade+"','"+resultBean.getCredit(i)+"','"+gradePoint+"','"+gradePointWeightage+"','"+result+"')");
 				statement.execute();
 			}
-				statement2 = con.prepareStatement("INSERT INTO exam_details(reg_no,semester,exam_type,exam_month,exam_year,result_date)VALUES('"+resultBean.getUserName().trim()+"',"
-						+ "'"+resultBean.getSemester()+"','Semester','"+resultBean.getExamMonth().trim()+"','"+resultBean.getExamYear().trim()+"','"+resultBean.getResultDate()+"')");
-				statement2.execute();
-			}else {
-				return "Result Data Already Exists !";
-			}
-			
+				resultset = null;
+				resultset = stmt.executeQuery("SELECT * FROM exam_details WHERE reg_no = "+resultBean.getUserName().trim()+" "
+						+ "AND semester = "+resultBean.getSemester()+" AND exam_type = 'Semester'");
+				if(resultset.next() == false) {
+					statement2 = con.prepareStatement("INSERT INTO exam_details(reg_no,semester,exam_type,exam_month,exam_year,result_date)VALUES('"+resultBean.getUserName().trim()+"',"
+							+ "'"+resultBean.getSemester()+"','Semester','"+resultBean.getExamMonth().trim()+"','"+resultBean.getExamYear().trim()+"','"+resultBean.getResultDate()+"')");
+					statement2.execute();
+				}else {
+					statement2 = con.prepareStatement("UPDATE exam_details set reg_no = "+resultBean.getUserName().trim()+" ,semester = "+resultBean.getSemester()+",exam_type = 'Semester',"
+							+ "exam_month = '"+resultBean.getExamMonth().trim()+"',exam_year = "+resultBean.getExamYear()+" ,result_date = '"+resultBean.getResultDate()+"'");
+					statement2.execute();
+					
+				}
+						
 		} catch (Exception e) {
 			return e.getLocalizedMessage();
 		}
@@ -528,5 +543,105 @@ public String insertProgrammeData(ProgrammeCourseClassBean programmeDataBean) {
 		return "SUCCESS";
 	}
 	
-	
+	public String insertFirstInternal(ResultBean resultBean) {
+		
+		Connection con = null;
+		PreparedStatement statement = null;
+		PreparedStatement statement2 = null;
+		Statement stmt = null;
+		ResultSet resultset = null;
+		try {
+			
+			con = DBConnection.createConnection();
+			stmt = con.createStatement();
+			for(int i = 0;i<resultBean.getArraySize();i++) {
+				resultset = stmt.executeQuery("SELECT * FROM first_internal_marks WHERE reg_no = '"+resultBean.getUserName().trim()+"' AND "
+						+ "course_code = '"+resultBean.getCourseCode(i)+"'");
+				if(resultset.next() == true) {
+					return "Result Data of Register Number: '"+resultBean.getUserName().trim()+"' '"+resultBean.getSemester()+" semester' with CourseCode: '"+resultBean.getCourseCode(i)+"' Already Exists!";
+				}
+			}
+			
+			for(int i = 0;i<resultBean.getArraySize();i++) {
+				statement = null;
+				String result = "";
+				String grade = "";
+				int obtainedMarks = resultBean.getObtainedMarks(i);
+				int maxmarks = resultBean.getMaxMarks(i);
+				int minMarks = resultBean.getMinMarks(i);
+				if(obtainedMarks < minMarks) {
+					result = "FAIL";
+				}else {
+					result = "PASS";
+				}
+				
+				if((obtainedMarks*100/maxmarks) >= 95f && (obtainedMarks*100/maxmarks) <= 100f) {
+					grade = "OO+";
+					
+				}else if((obtainedMarks*100/maxmarks) >= 90f && (obtainedMarks*100/maxmarks) <= 94f) {
+					grade = "OO";
+					
+				}else if((obtainedMarks*100/maxmarks) >= 85f && (obtainedMarks*100/maxmarks) <= 89f) {
+					grade = "OA+";
+					
+				}else if((obtainedMarks*100/maxmarks) >= 80f && (obtainedMarks*100/maxmarks) <= 84f) {
+					grade = "OA";
+					
+				}else if((obtainedMarks*100/maxmarks) >= 75f && (obtainedMarks*100/maxmarks) <= 79f) {
+					grade = "AA+";
+					
+				}else if((obtainedMarks*100/maxmarks) >= 70f && (obtainedMarks*100/maxmarks) <= 74f) {
+					grade = "AA";
+					
+				}else if((obtainedMarks*100/maxmarks) >= 65f && (obtainedMarks*100/maxmarks) <= 69f) {
+					grade = "AB+";
+					
+				}else if((obtainedMarks*100/maxmarks) >= 60f && (obtainedMarks*100/maxmarks) <= 64f) {
+					grade = "AB";
+					
+				}else if((obtainedMarks*100/maxmarks) >= 55f && (obtainedMarks*100/maxmarks) <= 59f) {
+					grade = "BB+";
+					
+				}else if((obtainedMarks*100/maxmarks) >= 50f && (obtainedMarks*100/maxmarks) <= 54f) {
+					grade = "BB";
+					
+				}else if((obtainedMarks*100/maxmarks) >= 45f && (obtainedMarks*100/maxmarks) <= 49f) {
+					grade = "BC";
+					
+				}else if((obtainedMarks*100/maxmarks) >= 40f && (obtainedMarks*100/maxmarks) <= 44f) {
+					grade = "CC";
+					
+				}else if((obtainedMarks*100/maxmarks) >= 35f && (obtainedMarks*100/maxmarks) <= 39f) {
+					grade = "PP";
+					
+				}else{
+					grade = "FF";
+					
+				}
+				statement = con.prepareStatement("INSERT INTO first_internal_marks(reg_no,course_code,programme_id,max_marks,min_marks,obtained_marks,grade,result)"
+						+ "VALUES('"+resultBean.getUserName().trim()+"','"+resultBean.getCourseCode(i).trim()+"','"+resultBean.getProgrammeId().trim()+"',"+resultBean.getMaxMarks(i)+""
+								+ ","+resultBean.getMinMarks(i)+","+resultBean.getObtainedMarks(i)+",'"+grade+"','"+result+"')");
+				statement.execute();
+			}
+				resultset = null;
+				resultset = stmt.executeQuery("SELECT * FROM exam_details WHERE reg_no = "+resultBean.getUserName().trim()+" "
+						+ "AND semester = "+resultBean.getSemester()+" AND exam_type = 'FirstInternal'");
+				if(resultset.next() == false) {
+					statement2 = con.prepareStatement("INSERT INTO exam_details(reg_no,semester,exam_type,exam_month,exam_year,result_date)VALUES('"+resultBean.getUserName().trim()+"',"
+							+ "'"+resultBean.getSemester()+"','FirstInternal','"+resultBean.getExamMonth().trim()+"','"+resultBean.getExamYear().trim()+"','"+resultBean.getResultDate()+"')");
+					statement2.execute();
+				}else {
+					statement2 = con.prepareStatement("UPDATE exam_details set reg_no = "+resultBean.getUserName().trim()+" ,semester = "+resultBean.getSemester()+",exam_type = 'FirstInternal',"
+							+ "exam_month = '"+resultBean.getExamMonth().trim()+"',exam_year = "+resultBean.getExamYear()+" ,result_date = '"+resultBean.getResultDate()+"'");
+					statement2.execute();
+					
+				}
+						
+		} catch (Exception e) {
+			return e.getLocalizedMessage();
+		}
+		
+		
+		return "SUCCESS";
+	}
 }
