@@ -170,21 +170,46 @@ public class DeleteDataDao {
 		return "DELETESUCCESS";
 	}
 	
-	public String deletefirstInternalData() {
-		
+	public String deletefirstInternalData(StudentStaffDataBean studentStaffDataBean) {
 		Connection con = null;
 		String query = "";
 		PreparedStatement preparedStatement = null;
-
+		PreparedStatement preparedStatement2 = null;
+		ResultSet resultSet = null;
+		Statement statement = null;
+		ResultSet resultSet2 = null;
+		Statement statement2 = null;
 		try {
-			query = "DELETE FROM first_internal_marks WHERE reg_no = ";
-			
 			con = DBConnection.createConnection();
-			preparedStatement = con.prepareStatement(query);
+			statement = con.createStatement();
+			statement2 = con.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM COURSE "
+					+ "INNER JOIN first_internal_marks ON course.course_code = first_internal_marks.course_code "
+					+ "WHERE course.course_sem = "+studentStaffDataBean.getCurrentSemester()+" "
+					+ "AND first_internal_marks.reg_no ="+studentStaffDataBean.getRegNo().trim()+" "
+					+ "AND first_internal_marks.programme_id = "+studentStaffDataBean.getProgramme().trim()+"");
 			
-			preparedStatement.execute();
+			resultSet2 = statement2.executeQuery("SELECT * FROM COURSE "
+					+ "INNER JOIN first_internal_marks ON course.course_code = first_internal_marks.course_code "
+					+ "WHERE course.course_sem = "+studentStaffDataBean.getCurrentSemester()+" "
+					+ "AND first_internal_marks.reg_no ="+studentStaffDataBean.getRegNo().trim()+" "
+					+ "AND first_internal_marks.programme_id = "+studentStaffDataBean.getProgramme().trim()+"");
 			
-			
+			if(resultSet2.next() == true) {
+				preparedStatement2 = con.prepareStatement("DELETE FROM exam_details WHERE reg_no = "+studentStaffDataBean.getRegNo()+" "
+						+ "AND semester = "+studentStaffDataBean.getCurrentSemester()+" AND exam_type = 'FirstInternal'");
+				preparedStatement2.execute();
+				while(resultSet.next()) {
+					preparedStatement = null;
+					query = "DELETE FROM first_internal_marks WHERE reg_no = "+resultSet.getString("reg_no")+" "
+							+ "AND course_code = '"+resultSet.getString("course_code")+"'";
+					preparedStatement = con.prepareStatement(query);
+					preparedStatement.execute();
+				}
+	
+			}else {
+				return "Result Data Does not Exists !";
+			}
 		} catch (SQLException e) {
 			return e.getLocalizedMessage();
 		}
@@ -192,27 +217,52 @@ public class DeleteDataDao {
 		return "DELETESUCCESS";
 	}
 	
-	public String deleteSecondInternalData() {
+	public String deleteSecondInternalData(StudentStaffDataBean studentStaffDataBean) {
 		
 		Connection con = null;
 		String query = "";
 		PreparedStatement preparedStatement = null;
-
+		PreparedStatement preparedStatement2 = null;
+		ResultSet resultSet = null;
+		Statement statement = null;
+		ResultSet resultSet2 = null;
+		Statement statement2 = null;
 		try {
-			query = "DELETE FROM second_internal_marks WHERE reg_no = ";
-			
 			con = DBConnection.createConnection();
-			preparedStatement = con.prepareStatement(query);
+			statement = con.createStatement();
+			statement2 = con.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM COURSE "
+					+ "INNER JOIN second_internal_marks ON course.course_code = second_internal_marks.course_code "
+					+ "WHERE course.course_sem = "+studentStaffDataBean.getCurrentSemester()+" "
+					+ "AND second_internal_marks.reg_no ="+studentStaffDataBean.getRegNo().trim()+" "
+					+ "AND second_internal_marks.programme_id = "+studentStaffDataBean.getProgramme().trim()+"");
 			
-			preparedStatement.execute();
+			resultSet2 = statement2.executeQuery("SELECT * FROM COURSE "
+					+ "INNER JOIN second_internal_marks ON course.course_code = second_internal_marks.course_code "
+					+ "WHERE course.course_sem = "+studentStaffDataBean.getCurrentSemester()+" "
+					+ "AND second_internal_marks.reg_no ="+studentStaffDataBean.getRegNo().trim()+" "
+					+ "AND second_internal_marks.programme_id = "+studentStaffDataBean.getProgramme().trim()+"");
 			
-			
+			if(resultSet2.next() == true) {
+				preparedStatement2 = con.prepareStatement("DELETE FROM exam_details WHERE reg_no = "+studentStaffDataBean.getRegNo()+" "
+						+ "AND semester = "+studentStaffDataBean.getCurrentSemester()+" AND exam_type = 'SecondInternal'");
+				preparedStatement2.execute();
+				while(resultSet.next()) {
+					preparedStatement = null;
+					query = "DELETE FROM second_internal_marks WHERE reg_no = "+resultSet.getString("reg_no")+" "
+							+ "AND course_code = '"+resultSet.getString("course_code")+"'";
+					preparedStatement = con.prepareStatement(query);
+					preparedStatement.execute();
+				}
+	
+			}else {
+				return "Result Data Does not Exists !";
+			}
 		} catch (SQLException e) {
 			return e.getLocalizedMessage();
 		}
 		
 		return "DELETESUCCESS";
 	}
-	
 	
 }

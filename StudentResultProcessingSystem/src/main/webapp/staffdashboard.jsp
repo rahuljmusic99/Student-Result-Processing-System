@@ -182,7 +182,19 @@ if((request.getSession(false).getAttribute("staff")!= null) )
             	         <input name="userName" type="hidden" value="">
             	         <input name="studentName" type="hidden" value=""/>
             	         <input name="programmeName" type="hidden" value=""/>
-			</form>   
+			</form> 
+			<form action="DeleteDataServlet" method="post" id=deleteResultForm>
+						<input type="hidden" name="Data" value="firstInternal"/>
+            	         <input name="semester" type="hidden" value=""/>
+            	         <input name="userName" type="hidden" value="">
+            	         <input name="programmeId" type="hidden" value=""/>
+			</form>
+			<form action="DeleteDataServlet" method="post" id=deleteResultForm2>
+						<input type="hidden" name="Data" value="secondInternal"/>
+            	         <input name="semester" type="hidden" value=""/>
+            	         <input name="userName" type="hidden" value="">
+            	         <input name="programmeId" type="hidden" value=""/>
+			</form>  
             <table id="showStudentTable" border="1" class="tb1" cellspacing="0" padding="10" rules="all">
             <tr>
                 <th>Programme</th>
@@ -211,7 +223,7 @@ if((request.getSession(false).getAttribute("staff")!= null) )
               <td><%=studentData.getString("reg_no")%></td>   <!--Register number-->
               <td class="td1 addclass"><button class="btn__course" id="btn__course<%=i%>" onclick="addResult<%=i%>()"><span style="font-size: 16px;">+</span> Add</button></td>  <!--Add Result-->
               <td class="td2"><button class="btn__edit" id="btn-edit<%=i%>" onclick="viewResult<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Result</button></td> <!--View Result-->
-              <td class="td3 actionclass"><div class="circle2" title="Delete Result" id="circle2" onclick="myFunction7()"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+              <td class="td3 actionclass"><div class="circle2" title="Delete Result" id="btn-deleteR<%=i%>" onclick="deleteResult<%=i%>()"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
             </tr>
             
             
@@ -322,6 +334,64 @@ if((request.getSession(false).getAttribute("staff")!= null) )
 			            	    	
 			            	    }
 	            		}
+	            	
+	            	document.getElementById("btn-deleteR<%=i%>");
+	            	function deleteResult<%=i%>(){
+	            	    document.querySelector('.bg-model4').style.display = 'flex';
+                        document.querySelector('.bg-model4').style.position = 'fixed';
+	            	    document.forms['deleteResultForm']['userName'].value = "<%=studentData.getString("reg_no")%>";
+	            	    document.forms['deleteResultForm']['programmeId'].value = "<%=studentData.getString("programme_id")%>";
+	            	
+	            	    
+	            	    table = document.getElementById('deleteResultTable');
+	            	    
+	            	    var rowCount = table.rows.length -1;
+	            	    
+	            	    if(rowCount < <%=studentData.getInt("semester")%>){
+	            	    	var createRow =  <%=studentData.getInt("semester")%> - rowCount;
+	            	    	for(let i= 1;i <= createRow; i++){
+		            	    	
+		            	    	var tr = document.createElement('tr');
+		            	    	tr.setAttribute('class','pop-row');
+		            	    	var td = document.createElement('td');
+		            	    	var div = document.createElement('div');
+		            	    	div.setAttribute('class','pop-div');
+		            	    	var div2 = document.createElement('div');
+		            	    	div2.setAttribute('class','pop-inner');
+		            	    	div2.setAttribute('id','div'+i);
+		            	    	div2.setAttribute('onclick','callDeleteServlet'+i+'()');
+		            	    	div2.textContent = "First Internal(Semester "+(rowCount + i);	
+		            	    	
+		            	    	var td2 = document.createElement('td');
+		            	    	var div22 = document.createElement('div');
+		            	    	div22.setAttribute('class','pop-div');
+		            	    	var div23 = document.createElement('div');
+		            	    	div23.setAttribute('class','pop-inner');
+		            	    	div23.setAttribute('id','div'+i);
+		            	    	div23.setAttribute('onclick','callDeleteServlet2'+i+'()');
+		            	    	div23.textContent = "Second InternalSemester "+(rowCount + i);	
+		            	    	
+		            	    	div.appendChild(div2);
+		            	    	div22.appendChild(div23);
+		            	    	td.appendChild(div);
+		            	    	td2.appendChild(div22);
+		            	    	tr.appendChild(td);
+		            	    	tr.appendChild(td2);
+		            	    	table.appendChild(tr);
+		            	  
+		            	    }
+	            	    }
+	            	    
+	            	    
+	            	    if(rowCount > <%=studentData.getInt("semester")%>){
+	            	    	var createRow =  rowCount - <%=studentData.getInt("semester")%>;
+	            	    	for(let i= 1;i <= createRow; i++){
+	            	    		table.deleteRow(-1);
+	            	    	}
+	            	    }
+	            	}
+	            		  
+            	</script>
             	</script>
 			<% 		
 				i = i + 1;
@@ -364,26 +434,6 @@ if((request.getSession(false).getAttribute("staff")!= null) )
                 </form>
                 </div>
                 </div>
-                
-                <div class="bg-model3">
-                    <div class="model-content3">
-                    <div class="close3" id="close" >+</div>
-                    <div class="header3">
-                      <h1>Edit Internal Results</h1></div>
-                        <form action="">
-                            <table border="1" class="tb3">
-                              <tr>
-                                <th>Internals</th>
-                              </tr>
-                                
-                               <tr class="pop-row">
-                                   <td><div class="pop-div"><div class="pop-inner2">Semester </div></div></td>
-                                </tr> 
-                                    
-                            </table> 
-                        </form>
-                    </div>
-                </div>
                  
                 <div class="bg-model4">
                     <div class="model-content4">
@@ -391,20 +441,82 @@ if((request.getSession(false).getAttribute("staff")!= null) )
                         <div class="header4">
                             <h1>Delete Internal Results</h1></div>
                             <form action="">
-                                <table border="1" class="tb3">
+                                <table border="1" class="tb3" id="deleteResultTable">
                                     <tr>
-                                    <th>Internals</th>
-                                    </tr>
-                                    
-                                    <tr class="pop-row">
-                                        <td><div class="pop-div"><div class="pop-inner">Semester1 (internal1)</div></div></td>
-                                        <td><div class="pop-div"><div class="pop-inner">Semester1 (internal2)</div></div></td>
-                                    </tr>  
+                                    <th>First Internal</th>
+                                    <th>Second Internal</th>
+                                    </tr> 
                                     
                                 </table>
                         </form>
                     </div>
                 </div>
+                
+                <%
+                 
+                 	int maxSem2 = 1;
+					ResultSet programmeMaxSem2 = loadData.loadMaxSemester();
+                 	try{
+            		
+					if(programmeMaxSem2!=null){
+                		while(programmeMaxSem2.next()){
+						maxSem2 = programmeMaxSem2.getInt("programme_sem");
+						
+                		}
+					}
+                 	}catch(SQLException e){
+                 		e.printStackTrace();
+                 	}
+                 		for(int i = 1 ;i <= maxSem2; i++){
+				%>         
+                  
+                  <script type="text/javascript">
+                           	
+                   		    
+                           	function callDeleteServlet<%=i%>(){
+                   				
+                           		swal({title: "Warning",
+                     				 text: "Are you shure you want to delete the Student Semester Result of semester : '<%=i%>'",
+                     				 icon: "warning",
+                     				 buttons: {
+                     					 cancel: "No",
+                     					 yes: "Yes",
+                     				 },	 
+                     			})
+                     			.then((value) => {	
+                     				if(value == "yes"){
+
+        	            				document.forms['deleteResultForm']['semester'].value = "<%=i%>";
+        	            				 document.getElementById("deleteResultForm").submit();
+        	            	
+                     				}
+                     			});
+                   				
+                   			}
+                           	
+							function callDeleteServlet2<%=i%>(){
+                   				
+                           		swal({title: "Warning",
+                     				 text: "Are you shure you want to delete the Student Semester Result of semester : '<%=i%>'",
+                     				 icon: "warning",
+                     				 buttons: {
+                     					 cancel: "No",
+                     					 yes: "Yes",
+                     				 },	 
+                     			})
+                     			.then((value) => {	
+                     				if(value == "yes"){
+
+        	            				document.forms['deleteResultForm2']['semester'].value = "<%=i%>";
+        	            				 document.getElementById("deleteResultForm2").submit();
+        	            	
+                     				}
+                     			});
+                   				
+                   			}
+			</script>
+                  
+		<%} %>
                 
                 <div class="bg-model7">
                     <div class="model-content7">
