@@ -48,10 +48,10 @@
                 <div class="holder3"><img src="images/seenu.jpg" class="profimg"></div>
                 <p>NAME</p>
                 </button>
-                <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
-                <button class="tabs__button" data-for-tab="2"><i class="fa fa-bullseye"></i>Classes</button>
-                <button class="tabs__button" data-for-tab="3" ><i class="fa fa-bar-chart"></i>Student Result</button>
-                <button onclick="logoutConfirm();" class="tabs__button"><i class="fa fa-power-off"></i>Logout</button>
+                <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa-solid fa-house-chimney"></i>Dashboard</button>
+                <button class="tabs__button" data-for-tab="2"><i class="fa-solid fa-screen-users"></i>Classes</button>
+                <button class="tabs__button" data-for-tab="3" ><i class="fa-regular fa-clipboard-list-check"></i>Student Result</button>
+                <button onclick="logoutConfirm();" class="tabs__button"><i class="fa-sharp fa-solid fa-right-from-bracket"></i>Logout</button>
             </div>
     
             

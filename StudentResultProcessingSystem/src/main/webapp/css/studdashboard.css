@@ -21,7 +21,7 @@
 .tabs__button{
     display: block;
     padding: 10px;
-    background: #eeeeee;
+    background: whitesmoke;
     width: 100%;
     border: none;
     outline: none;
@@ -42,11 +42,21 @@
 
 .tabs__button--active{
     font-weight: bold;
-    border-left: 5px solid yellow;  
+    border-left: 5px solid cyan;  
     background: blue;
     color: #ffffff;
 }
 
+.tabs__button--active i{
+    color: white;
+    font-size: 1.8rem;
+}
+
+
+i{
+    margin-right: 5px;
+    color: purple;
+}
 .tabs__content{
     padding: 15px;
     font-size: 0.8rem;

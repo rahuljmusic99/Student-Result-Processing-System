@@ -60,13 +60,13 @@
 		    <div class="tabs__sidebar">
 		        <div class="space"><div class="space4"><img src="css/images/ad.png" class="edu"></div><p>Canara exam manager</p></div>
 		        <button class="tabs__button" data-for-tab="7" id="mainprofile"><div class="holder3"><img src="images/seenu.jpg" class="profimg"></div><p>NAME</p></button>
-		        <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
-		        <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Student Details</button>
-		        <button class="tabs__button" data-for-tab="3"><i class="fa fa-graduation-cap"></i>Staff Details</button>
-		        <button class="tabs__button" data-for-tab="4"><i class="fa fa-bar-chart"></i>Programme and courses</button>
-		        <button class="tabs__button" data-for-tab="5"><i class="fa fa-bar-chart"></i>classes</button>
-		        <button class="tabs__button" data-for-tab="6"><i class="fa fa-bullseye"></i>Student Result</button>
-		        <button class="tabs__button" onclick="logoutConfirm();" ><i class="fa fa-power-off"></i>Logout</button>
+		        <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa-solid fa-house-chimney"></i>Dashboard</button>
+		        <button class="tabs__button" data-for-tab="2"><i class="fa-solid fa-users-line"></i>Student Details</button>
+		        <button class="tabs__button" data-for-tab="3"><i class="fa-solid fa-person-chalkboard"></i>Staff Details</button>
+		        <button class="tabs__button" data-for-tab="4"><i class="fa-solid fa-graduation-cap"></i>Programme and courses</button>
+		        <button class="tabs__button" data-for-tab="5"><i class="fa-solid fa-screen-users"></i>classes</button>
+		        <button class="tabs__button" data-for-tab="6"><i class="fa-regular fa-clipboard-list-check"></i>Student Result</button>
+		        <button class="tabs__button" onclick="logoutConfirm();" ><i class="fa-sharp fa-solid fa-right-from-bracket"></i>Logout</button>
 			</div>
 		
 <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->            
