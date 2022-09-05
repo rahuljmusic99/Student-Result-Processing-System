@@ -26,7 +26,8 @@ public class ResultDao {
 											+ "INNER JOIN programme ON final_marks.programme_id = programme.programme_id)"
 											+ "INNER JOIN exam_details ON final_marks.reg_no = exam_details.reg_no) "
 											+ "WHERE final_marks.reg_no = "+userNameString+" "
-											+ "AND course.course_sem = "+semesterString+" AND exam_details.semester = "+semesterString+"");
+											+ "AND course.course_sem = "+semesterString+" AND exam_details.semester = "+semesterString+" "
+											+ "AND exam_details.exam_type ='Semester'");
 												
 		} catch (SQLException e) {
 			e.printStackTrace();

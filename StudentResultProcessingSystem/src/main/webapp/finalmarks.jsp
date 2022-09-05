@@ -25,7 +25,7 @@
 
 	if(resultSet == null){
 %>
-<jsp:forward page="/studdashboard.jsp"></jsp:forward>
+<jsp:forward page="/home.jsp"></jsp:forward>
 <%} %>
     
 <!DOCTYPE html5>

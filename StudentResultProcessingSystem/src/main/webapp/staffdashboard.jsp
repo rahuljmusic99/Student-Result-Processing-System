@@ -1014,11 +1014,9 @@ if((request.getSession(false).getAttribute("staff")!= null) )
                    	int maxSem = 1;
                    	try{
 	                   
-	                    Connection con = DBConnection.createConnection();;
-	 					Statement statement = con.createStatement();
-	 					ResultSet programmeSem = statement.executeQuery(""
-	 						+"SELECT programme_sem from programme "
-	 						+"WHERE programme_sem = (SELECT MAX(programme_sem)FROM programme)LIMIT 1");	
+	                    
+	 					ResultSet programmeSem = loadData.loadMaxSemester();
+	 				
 	             		
 	 					if(programmeSem!=null){
 	                 		while(programmeSem.next()){
