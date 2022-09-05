@@ -4,6 +4,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 
 <%	
 	ResultSet resultSet = (ResultSet) request.getAttribute("firstInternal");
@@ -93,9 +94,9 @@
                     </tr>
 
                     
-                   
+                   <%float average = 0f;try{average = grandTotalObtained * 100 /grandTotalMax;}catch(ArithmeticException e){average = 0f;}%>
                     <tr class="tr2" bgcolor="whitesmoke">
-                    <td colspan="8">&nbsp;Internal Average Percentage:</td>
+                    <td colspan="8">&nbsp;Internal Average Percentage: <%=average%>%</td>
                     </tr>
                 </table>
             
@@ -225,9 +226,9 @@
                         <td></td>
                     </tr>
                     
-                  
+                  	<%float average2 = 0f;try{average2 = grandTotalObtained * 100 /grandTotalMax;}catch(ArithmeticException e){average2 = 0f;}%>
                     <tr class="tr2" bgcolor="whitesmoke">
-                    <td colspan="8">&nbsp;Internal Average Percentage:</td>
+                    <td colspan="8">&nbsp;Internal Average Percentage: <%=average2%>%</td>
                     </tr>
                 </table>
         </div>
