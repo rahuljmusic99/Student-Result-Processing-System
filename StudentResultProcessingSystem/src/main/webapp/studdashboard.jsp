@@ -58,6 +58,7 @@
             <div class="tabs__sidebar">`
                 <div class="space"><div class="space4"><img src="css/images/sd.png" class="edu"></div><p>Canara exam manager</p></div>
                 <button class="tabs__button" data-for-tab="4" id="mainprofile">
+                <i class="fa-solid fa-angle-right"></i>
                 <div class="holder3"><img src="css/images/seenu.jpg" class="profimg"></div>
                 <p>NAME</p>
                 </button>

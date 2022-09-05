@@ -58,6 +58,19 @@ i{
     color: purple;
 }
 
+.fa-angle-right{
+    float: right;
+    margin-top: 3rem;
+    font-size: 25px;
+    color: grey;
+}
+
+
+.tabs__button--active .fa-angle-right{
+    color: grey;
+    transform: rotate(-180deg);
+}
+
 .tabs__content{
     padding: 15px;
     font-size: 0.8rem;
@@ -159,6 +172,7 @@ h3{
     margin: 10px;
     border: 1px solid #dddddd;
     width: 1130px;
+    font-family: 'Poppins', sans-serif;
 }
 
 
@@ -173,7 +187,8 @@ td{
 h4{
     margin-top: 2rem;
     margin-left: 3rem;
-    font-size: 20px;
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .inner1{
@@ -195,7 +210,7 @@ h4{
 
 h6{
     padding: 5px;
-    font-size: 16px;
+    font-size: 20px;
     color: white;
     padding-top: 1rem;
 }
@@ -1917,7 +1932,7 @@ label{
 .holder3{
     width: 5.5rem;
     height: 5.2rem;
-    margin-left: 4rem;
+    margin-left: 4.5rem;
     margin-top: 0.5rem;
     margin-bottom: 5px;
     border-radius: 50%;  
