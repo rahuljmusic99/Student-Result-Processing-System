@@ -35,10 +35,12 @@
     <link rel="stylesheet" href="css/semester.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/dd03fdb332.js" crossorigin="anonymous"></script>
     <script src="js/pdf.js"></script>
 
     </head>
     <body>
+        <a href=""><i class="fa-solid fa-arrow-left"></i></a>
         <button id="btn">Print PDF</button><br>
         <div class="main">
             
@@ -46,6 +48,7 @@
              <h1><span style="color: palegoldenrod">CANARA&nbsp;</span><img src="css/images/canlogo.png" class="logo"><span style="color: palegoldenrod">&nbsp;COLLEGE</span></h1>
             <h5>Marks Sheet</h5>
             <h6><span style="color: palegoldenrod">Programme:&nbsp;&nbsp;</span><span><%=request.getAttribute("programmeName")%></span></h6>
+            <h6><span style="color: palegoldenrod">Choice Based Credit System 3dr semester degree examimation august 2021&nbsp;&nbsp;</span><span>
              <div class="img"><img src="" class="studimg"></div>
              <div class="right"><h3><br><br><span >Date:&nbsp;</span><span><%=12-03-2020%></span></h3><h4><span>Reg No:&nbsp;</span><span><%=request.getAttribute("registerNo")%></span></h4></div>
              <h2><span style="color: white;">Name:&nbsp;</span><span><%=(String) request.getAttribute("studentName")%></span></h2>

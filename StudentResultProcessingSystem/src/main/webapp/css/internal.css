@@ -10,7 +10,7 @@ body{
     margin-left: 4.5rem;
     margin-top: 10px;
     margin-bottom: 3px;
-    background-image: url(images/t1.jpg);
+    background-image: url(images/t4.jpg);
 }
 
 .inner{
@@ -103,9 +103,30 @@ h4{
 }
 
 #btn{
+    padding: 0.5rem;
     background: red;
     border: none;
     color: white;
     font-weight: bold;
     cursor: pointer;
+    float: right;
+    margin: 1rem;
+}
+
+.fa-arrow-left{
+    margin: 1rem;
+    font-size: 25px;   
+}
+
+h5{
+    text-align: center;
+    color: white;
+    margin-left: -2rem;
+    font-size: 25px;
+}
+h6{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-left: -12rem;
 }
