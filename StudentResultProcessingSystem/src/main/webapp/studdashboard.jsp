@@ -338,7 +338,7 @@
                     
                     <div class="holder">
                     <div class="holder2">
-                    <img src="" class="innerimg">
+                    <img src="css/images/seenu.jpg" class="innerimg">
                     </div>
                     <p class="name"><%=request.getSession(false).getAttribute("studentName")%></p>
                     </div>
