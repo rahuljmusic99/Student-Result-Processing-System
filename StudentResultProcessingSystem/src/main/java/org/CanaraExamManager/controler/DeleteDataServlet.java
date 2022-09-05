@@ -72,10 +72,12 @@ public class DeleteDataServlet extends HttpServlet {
 				
 				
 			}case "finalResult":{
-				ProgrammeCourseClassBean classDataBean = new ProgrammeCourseClassBean();
-				classDataBean.setClassId(request.getParameter("userName"));
+				StudentStaffDataBean studentStaffDataBean = new StudentStaffDataBean();
+				studentStaffDataBean.setRegNo(request.getParameter("userName"));
+				studentStaffDataBean.setCurrentSemester(request.getParameter("semester"));
+				studentStaffDataBean.setProgramme(request.getParameter("programmeId"));
 				
-				String dataValidateString = deleteDataDao.deleteClassData(classDataBean) ;
+				String dataValidateString = deleteDataDao.deleteFinalResultData(studentStaffDataBean) ;
 				 
 				request.setAttribute("deletionMessage",dataValidateString);
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
