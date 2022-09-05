@@ -71,6 +71,16 @@ public class DeleteDataServlet extends HttpServlet {
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 				
+			}case "finalResult":{
+				ProgrammeCourseClassBean classDataBean = new ProgrammeCourseClassBean();
+				classDataBean.setClassId(request.getParameter("userName"));
+				
+				String dataValidateString = deleteDataDao.deleteClassData(classDataBean) ;
+				 
+				request.setAttribute("deletionMessage",dataValidateString);
+				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
+				
+				
 			}default:{
 				response.sendRedirect("home.jsp");
 				
