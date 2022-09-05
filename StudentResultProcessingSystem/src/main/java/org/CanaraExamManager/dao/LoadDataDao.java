@@ -120,4 +120,21 @@ public class LoadDataDao {
 		
 		return resultSet;
 	}
+	
+	public ResultSet loadMaxSemester() {
+		ResultSet programmeSem = null;
+		try {
+			Connection con = DBConnection.createConnection();;
+			Statement statement = con.createStatement();
+			programmeSem = statement.executeQuery(""
+				+"SELECT programme_sem from programme "
+				+"WHERE programme_sem = (SELECT MAX(programme_sem)FROM programme)LIMIT 1");	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return programmeSem;
+		
+	} 
 }
