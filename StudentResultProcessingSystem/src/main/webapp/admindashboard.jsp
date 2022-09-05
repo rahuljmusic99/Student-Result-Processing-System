@@ -59,7 +59,7 @@
 		<div class="tabs">
 		    <div class="tabs__sidebar">
 		        <div class="space"><div class="space4"><img src="css/images/ad.png" class="edu"></div><p>Canara exam manager</p></div>
-		        <button class="tabs__button" data-for-tab="7" id="mainprofile"><div class="holder3"></div><p>NAME</p></button>
+		        <button class="tabs__button" data-for-tab="7" id="mainprofile"><div class="holder3"><img src="images/seenu.jpg" class="profimg"></div><p>NAME</p></button>
 		        <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa fa-graduation-cap"></i>Dashboard</button>
 		        <button class="tabs__button" data-for-tab="2"><i class="fa fa-graduation-cap"></i>Student Details</button>
 		        <button class="tabs__button" data-for-tab="3"><i class="fa fa-graduation-cap"></i>Staff Details</button>
@@ -3425,7 +3425,7 @@
                     
                     <div class="holder">
                     <div class="holder2">
-                    <img src="" class="innerimg">
+                    <img src="css/images/seenu.jpg" class="innerimg">
                     </div>
                     <p class="name"><%=request.getSession(false).getAttribute("adminName")%></p>
                     </div>
