@@ -56,7 +56,7 @@ if((request.getSession(false).getAttribute("staff")!= null) )
             <div class="tabs__sidebar">
                 <div class="space"><div class="space4"><img src="css/images/sf.png" class="edu"></div><p>Canara exam manager</p></div>
                 <button class="tabs__button" data-for-tab="4" id="mainprofile">
-                <div class="holder3"><img src="images/seenu.jpg" class="profimg"></div>
+                <div class="holder3"><img src="css/images/seenu.jpg" class="profimg"></div>
                 <p>NAME</p>
                 </button>
                 <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa-solid fa-house-chimney"></i>Dashboard</button>
