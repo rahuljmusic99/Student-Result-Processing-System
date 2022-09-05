@@ -121,7 +121,6 @@ if((request.getSession(false).getAttribute("staff")!= null) )
                         
                     <div class="inner1">
                         <h6 class="left">Class list</h6>
-                        <select class="select3"><option value="" disabled selected hidden>Filter By Class</option></select>
                         </div>
                     <table border="1" class="tb1" cellspacing="0" padding="10" rules="all">
                         <tr >
@@ -414,7 +413,8 @@ if((request.getSession(false).getAttribute("staff")!= null) )
                             <form action="">
                                 <table id=""border="1" class="tb3">
                                     <tr>
-                                    <th colspan="2">Semester</th>
+                                    <th colspan="" class="pushLeft">First Internal</th>
+                                    <th colspan="2" class="pushRight">Second Internal</th>
                                     </tr>
                                  </table> 
                                  <table id="addResultTable">  

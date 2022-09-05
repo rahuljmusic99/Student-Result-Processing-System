@@ -2867,7 +2867,7 @@
             	         <input name="programmeName" type="hidden" value=""/>
 			</form>  
 			<form action="DeleteDataServlet" method="post" id=deleteResultForm>
-						<input name="Data" value="finalResult"/>
+						<input type="hidden" name="Data" value="finalResult"/>
             	         <input name="semester" type="hidden" value=""/>
             	         <input name="userName" type="hidden" value="">
             	         <input name="programmeId" type="hidden" value=""/>
@@ -2903,7 +2903,7 @@
               <td><%=studentData.getString("reg_no")%></td>   <!--Register number-->
               <td class="td1"><button class="btn__course" id="btn__course<%=i%>" onclick="addResult<%=i%>()"><span style="font-size: 16px;">+</span> Add</button></td>  <!--Add Result-->
               <td class="td2"><button class="btn__edit" id="btn-edit<%=i%>" onclick="viewResult<%=i%>()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><br>Result</button></td> <!--View Result-->
-              <td class="td3"><div class="circle2" title="Delete Result" id="btn-deleteR<%=i%>" onclick=""><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
+              <td class="td3"><div class="circle2" title="Delete Result" id="btn-deleteR<%=i%>" onclick="deleteResult<%=i%>()"><i class="fa fa-times" aria-hidden="true"></i></div></td> <!--Action-->
             </tr>
             
             
@@ -3001,18 +3001,15 @@
 			            	    	
 			            	    }
 	            		}
-	            	document.getElementById("btn-edit<%=i%>");
+	            	document.getElementById("btn-deleteR<%=i%>");
 	            	function deleteResult<%=i%>(){
-	            	    document.querySelector('.bg-model2').style.display = 'flex';
-                        document.querySelector('.bg-model2').style.position = 'fixed';
-	            	    document.forms['semesterForm']['userName'].value = "<%=studentData.getString("reg_no")%>";
-	            	    document.forms['internalForm']['userName'].value = "<%=studentData.getString("reg_no")%>";
-	            	    document.forms['semesterForm']['studentName'].value = "<%=studentData.getString("first_name") +" "+studentData.getString("last_name")%>";
-	            	    document.forms['internalForm']['studentName'].value = "<%=studentData.getString("first_name") +" "+studentData.getString("last_name")%>";
-	            	    document.forms['semesterForm']['programmeName'].value = "<%=studentData.getString("programme_name")%>";
-	            	    document.forms['internalForm']['programmeName'].value = "<%=studentData.getString("programme_name")%>";
+	            	    document.querySelector('.bg-model4').style.display = 'flex';
+                        document.querySelector('.bg-model4').style.position = 'fixed';
+	            	    document.forms['deleteResultForm']['userName'].value = "<%=studentData.getString("reg_no")%>";
+	            	    document.forms['deleteResultForm']['programmeId'].value = "<%=studentData.getString("programme_id")%>";
+	            	
 	            	    
-	            	    table = document.getElementById('viewResultTable');
+	            	    table = document.getElementById('deleteResultTable');
 	            	    
 	            	    var rowCount = table.rows.length -1;
 	            	    
@@ -3026,28 +3023,15 @@
 		            	    	var div = document.createElement('div');
 		            	    	div.setAttribute('class','pop-div');
 		            	    	var div2 = document.createElement('div');
-		            	    	div2.setAttribute('class','pop-inner');
+		            	    	div2.setAttribute('class','pop-inner2');
 		            	    	div2.setAttribute('id','div'+i);
-		            	    	div2.setAttribute('onclick','callResultServlet'+i+'()');
+		            	    	div2.setAttribute('onclick','callDeleteServlet'+i+'()');
 		            	    	div2.textContent = "Semester "+(rowCount + i);	
 		            	    	
 		            	    	div.appendChild(div2);
 		            	    	td.appendChild(div);
 		            	    	tr.appendChild(td);
 		            	    	table.appendChild(tr);
-		            	    	
-		            	    	var tdI = document.createElement('td');
-		            	    	var divI = document.createElement('div');
-		            	    	divI.setAttribute('class','pop-div');
-		            	    	var divI2 = document.createElement('div');
-		            	    	divI2.setAttribute('class','pop-inner');
-		            	    	divI2.setAttribute('id','div'+i);
-		            	    	divI2.setAttribute('onclick','callInternalServlet'+i+'()');
-		            	    	divI2.textContent = "Semester "+(rowCount + i);
-		            	    	
-		            	    	divI.appendChild(divI2);
-		            	    	tdI.appendChild(divI);
-		            	    	tr.appendChild(tdI);	
 		            	  
 		            	    }
 	            	    }
@@ -3159,14 +3143,11 @@
                        <div class="header4">
                            <h1>Delete Student Results</h1></div>
                            <form action="">
-                               <table border="1" class="tb3">
+                               <table border="1" class="tb3" id="deleteResultTable">
                                    <tr>
                                    <th>Semester</th>
                                    </tr>
                                    
-                                   <tr class="pop-row">
-                                       <td><div class="pop-div"><div class="pop-inner2">Semester1</div></div></td>
-                                   </tr>  
                                    
                                </table>
                        </form>
@@ -3611,7 +3592,7 @@
             		
 					if(programmeMaxSem2!=null){
                 		while(programmeMaxSem2.next()){
-						maxSem = programmeMaxSem2.getInt("programme_sem");
+						maxSem2 = programmeMaxSem2.getInt("programme_sem");
 						
                 		}
 					}
@@ -3622,13 +3603,26 @@
 		%>         
                   
                   <script type="text/javascript">
-                           	document.getElementById("div<%=i%>");
+                           	
                    		    
                            	function callDeleteServlet<%=i%>(){
-                   						
-                   				document.forms['deleteResultForm']['semester'].value = "<%=i%>";
-                   			    document.getElementById("deleteResultForm").submit();
                    				
+                           		swal({title: "Warning",
+                     				 text: "Are you shure you want to delete the Student Semester Result of semester : '<%=i%>'",
+                     				 icon: "warning",
+                     				 buttons: {
+                     					 cancel: "No",
+                     					 yes: "Yes",
+                     				 },	 
+                     			})
+                     			.then((value) => {	
+                     				if(value == "yes"){
+
+        	            				document.forms['deleteResultForm']['semester'].value = "<%=i%>";
+        	            				 document.getElementById("deleteResultForm").submit();
+        	            	
+                     				}
+                     			});
                    				
                    			}
 			</script>
