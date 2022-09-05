@@ -208,7 +208,7 @@ public class LoginDao {
 			//Statement is used to write queries.
 			statement = con.createStatement();
 			
-			resultset = statement.executeQuery("select staff_id,password,staff_status,first_name,last_name,phone,email from staff");
+			resultset = statement.executeQuery("select staff_id,password,staff_status,first_name,last_name,phone,email,role,programme_id from staff");
 			
 			while(resultset.next()) {
 				
@@ -222,6 +222,8 @@ public class LoginDao {
 					loginBean.setPhone(resultset.getString("phone"));
 					loginBean.setEmail(resultset.getString("email"));
 					loginBean.setPassword(resultset.getString("password"));
+					loginBean.setRole(resultset.getString("role"));
+					loginBean.setProgramme(resultset.getString("programme_id"));
 					return "SUCCESS";//Return SUCCESS if the user credentials match the user credentials in the database
 				}else if(staffStatusString.equals("false")) {
 					

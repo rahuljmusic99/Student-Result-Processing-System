@@ -16,6 +16,7 @@ public class LoginBean {
 	private String className;
 	private String phone;
 	private String email;
+	private String staffRole;
 //	private Blob userImage;
 //	private String userImageString;
 	
@@ -87,6 +88,14 @@ public class LoginBean {
 	
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	public void setRole(String staffRole) {
+		this.staffRole = staffRole;
+	}
+	
+	public String getRole() {
+		return this.staffRole;
 	}
 	
 //	public Blob getUserImage() {

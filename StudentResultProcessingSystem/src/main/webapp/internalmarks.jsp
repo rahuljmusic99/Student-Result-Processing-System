@@ -93,10 +93,7 @@
                     </tr>
 
                     
-                    <tr class="tr1" bgcolor="whitesmoke">
-                        <td colspan="8" >&nbsp;Grand Total(in words):</td>
-                    
-                    </tr >
+                   
                     <tr class="tr2" bgcolor="whitesmoke">
                     <td colspan="8">&nbsp;Internal Average Percentage:</td>
                     </tr>
@@ -228,10 +225,7 @@
                         <td></td>
                     </tr>
                     
-                    <tr class="tr1" bgcolor="whitesmoke">
-                        <td colspan="8" >&nbsp;Grand Total(in words):</td>
-                    
-                    </tr >
+                  
                     <tr class="tr2" bgcolor="whitesmoke">
                     <td colspan="8">&nbsp;Internal Average Percentage:</td>
                     </tr>

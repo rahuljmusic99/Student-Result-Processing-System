@@ -20,6 +20,16 @@
 	String updateMessage = "";
 	updateMessage = (String) request.getAttribute("updateMessage");
 	
+	String user = "";
+	user = (String) session.getAttribute("user");
+	
+	String url = "";
+	if(user == "admin"){
+		url = "admindashboard.jsp";
+	}else if(user == "staff"){
+		url = "staffdashboard.jsp";
+	}
+	
 if(insertionMessage != null){ 
 	if(insertionMessage == "SUCCESS"){
 %>		
@@ -44,9 +54,9 @@ if(insertionMessage != null){
 			})
 			.then((value) => {	
 				if(value == "ok"){
-					document.location.href="admindashboard.jsp";
+					document.location.href="<%=url%>";
 				}else{
-					document.location.href="admindashboard.jsp";
+					document.location.href="<%=url%>";
 				}
 			});
 		}
@@ -76,9 +86,9 @@ if(insertionMessage != null){
 			})
 			.then((value) => {	
 				if(value == "ok"){
-					document.location.href="admindashboard.jsp";
+					document.location.href="<%=url%>";
 				}else{
-					document.location.href="admindashboard.jsp";
+					document.location.href="<%=url%>";
 				}
 			});
 		}
@@ -110,9 +120,9 @@ if(insertionMessage != null){
 			})
 			.then((value) => {	
 				if(value == "ok"){
-					document.location.href="admindashboard.jsp";
+					document.location.href="<%=url%>";
 				}else{
-					document.location.href="admindashboard.jsp";
+					document.location.href="<%=url%>";
 				}
 			});
 		}
@@ -142,9 +152,9 @@ if(insertionMessage != null){
 			})
 			.then((value) => {	
 				if(value == "ok"){
-					document.location.href="admindashboard.jsp";
+					document.location.href="<%=url%>";
 				}else{
-					document.location.href="admindashboard.jsp";
+					document.location.href="<%=url%>";
 				}
 			});
 		}
@@ -176,9 +186,9 @@ if(insertionMessage != null){
 			})
 			.then((value) => {	
 				if(value == "ok"){
-					document.location.href="admindashboard.jsp";
+					document.location.href="<%=url%>";
 				}else{
-					document.location.href="admindashboard.jsp";
+					document.location.href="<%=url%>";
 				}
 			});
 		}
@@ -208,9 +218,9 @@ if(insertionMessage != null){
 			})
 			.then((value) => {	
 				if(value == "ok"){
-					document.location.href="admindashboard.jsp";
+					document.location.href="<%=url%>";
 				}else{
-					document.location.href="admindashboard.jsp";
+					document.location.href="<%=url%>";
 				}
 			});
 		}
