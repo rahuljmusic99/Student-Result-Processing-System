@@ -174,4 +174,23 @@ public class LoadDataDao {
 		
 		return resultSet;
 	}
+	
+	public ResultSet loadParticularClass(String programmeId) {
+		ResultSet resultSet = null;
+		
+		try {
+			Connection con = DBConnection.createConnection();;
+			Statement statement = con.createStatement();
+			resultSet = statement.executeQuery(""
+				+"SELECT * FROM (class " 
+				+"INNER JOIN programme ON class.programme_id = programme.programme_id)"
+				+"WHERE class.programme_id  = "+programmeId+" "
+				+"ORDER BY programme.programme_name ASC");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultSet;
+		
+	}
 }

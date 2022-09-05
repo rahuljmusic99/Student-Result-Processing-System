@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html5>
 <html>
     <head>
@@ -21,7 +22,7 @@
                         <label>Confirm Password</label>
                         <input type=password >
                         <button>Reset Password</button>
-                        <a onclick="">Back To Login</a>
+                        <a onclick="">Back To Dashboard</a>
                         </div>
                     </div>
                 </div>

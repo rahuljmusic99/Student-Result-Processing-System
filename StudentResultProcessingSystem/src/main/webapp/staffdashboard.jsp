@@ -58,7 +58,7 @@ if((request.getSession(false).getAttribute("staff")!= null) )
                 <button class="tabs__button" data-for-tab="4" id="mainprofile">
                 <i class="fa-solid fa-angle-right"></i>
                 <div class="holder3"><img src="css/images/seenu.jpg" class="profimg"></div>
-                <p>NAME</p>
+                <p><%=session.getAttribute("staffName")%></p>
                 </button>
                 <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa-solid fa-house-chimney"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa-sharp fa-solid fa-landmark"></i>Classes</button>
@@ -162,9 +162,20 @@ if((request.getSession(false).getAttribute("staff")!= null) )
             <h4>Student Result Management</h4>
             <div class="inner__protab">
             <div class="inner1"><h6 class="left">Student Result</h6>
-            <select class="select2">
-            <option value="" disabled selected hidden>Class</option>
-            <option>  </option>
+            <select class="select2" id="classFilter" onchange="changeClassFilter(this.value)">
+            <option value="" disabled selected hidden>Filter By Class</option>
+            <option value="All" id="allTheClasses">All Classes</option>
+             <%
+                	ResultSet FilterClass = loadData.loadParticularClass(programmeId);
+                	if(FilterClass != null){
+                		while(FilterClass.next()){
+                			
+             %>	
+            	<option id="<%=FilterClass.getString("class_id")%>" value="<%=FilterClass.getString("class_id")%>"><%=FilterClass.getString("class_name")+" "+FilterClass.getString("class_year")+" year"%></option>
+              <%		}
+                	}
+                
+              %> 
             </select>
             </div>
             
@@ -195,8 +206,8 @@ if((request.getSession(false).getAttribute("staff")!= null) )
             	         <input name="userName" type="hidden" value="">
             	         <input name="programmeId" type="hidden" value=""/>
 			</form>  
-            <table id="showStudentTable" border="1" class="tb1" cellspacing="0" padding="10" rules="all">
-            <tr>
+            <table id="studentDataTable" border="1" class="tb1" cellspacing="0" padding="10" rules="all">
+            <tr id="studentHeading">
                 <th>Programme</th>
                 <th>Class</th>
                 <th>Student Name</th>
@@ -216,7 +227,7 @@ if((request.getSession(false).getAttribute("staff")!= null) )
                 		while(studentData.next()){
                 			
             %>	       
-           <tr>
+           <tr class="filterRow<%=studentData.getString("class_id")%>">
               <td class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme -->
               <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
               <td><%=studentData.getString("first_name") +" "+ studentData.getString("last_name")%></td>   <!--Student Name-->
@@ -341,7 +352,8 @@ if((request.getSession(false).getAttribute("staff")!= null) )
                         document.querySelector('.bg-model4').style.position = 'fixed';
 	            	    document.forms['deleteResultForm']['userName'].value = "<%=studentData.getString("reg_no")%>";
 	            	    document.forms['deleteResultForm']['programmeId'].value = "<%=studentData.getString("programme_id")%>";
-	            	
+	            	    document.forms['deleteResultForm2']['userName'].value = "<%=studentData.getString("reg_no")%>";
+	            	    document.forms['deleteResultForm2']['programmeId'].value = "<%=studentData.getString("programme_id")%>";
 	            	    
 	            	    table = document.getElementById('deleteResultTable');
 	            	    
@@ -413,6 +425,22 @@ if((request.getSession(false).getAttribute("staff")!= null) )
 							});
             		}
             	}
+            	function changeClassFilter(className){
+            		 
+            		 $(".filterRow"+className).show();
+            		 $('#studentDataTable').find('tr').not(".filterRow"+className).hide();
+                	 $("#studentHeading").show();
+            	 	 if(className == "All"){
+            	 		$('#studentDataTable').find('tr').show();
+            	 		$('#classFilter').append($('<option>', {
+             			    value: 1,
+             			    text: 'Filter By Class',
+             			    selected: true,
+             			    disabled: true,
+             			    hidden: true
+             			}));
+            	 	 }
+             }
             </script>
               
             </table>
@@ -1207,14 +1235,6 @@ if((request.getSession(false).getAttribute("staff")!= null) )
                 document.querySelector('.bg-model3').style.display = 'flex';
                 document.querySelector('.bg-model3').style.position = 'fixed'
             }
-        
-        </script>
-        
-        <script>
-            document.querySelector('.close3').addEventListener('click', function(){
-                document.querySelector('.bg-model3').style.display = 'none';
-            })
-        
         
         </script>
         
