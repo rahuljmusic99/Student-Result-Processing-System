@@ -353,7 +353,7 @@
                         <label>Password</label>
                         <div class="i"><i class="fa-solid fa-eye-slash" id="show-password" onclick="toggle()"></i></div>
                         <input class="int" id="password" type="password" value="<%=request.getSession(false).getAttribute("studentPassword")%>"  readonly>
-                        <button class="cp">Change Password</button>
+                        
                     </div>
      
                 </div>

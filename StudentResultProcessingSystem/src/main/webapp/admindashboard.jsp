@@ -3529,7 +3529,7 @@
                         <label>Password</label>
                         <div class="i"><i class="fa-solid fa-eye-slash" id="show-password" onclick="toggle()"></i></div>
                         <input id="password" value="<%=request.getSession(false).getAttribute("adminPassword")%>" class="int" type="password" readonly>
-                        <button class="cp">Change Password</button>
+                        
                     </div>
      
                 </div>

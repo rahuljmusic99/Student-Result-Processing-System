@@ -1001,7 +1001,7 @@ if((request.getSession(false).getAttribute("staff")!= null) )
                         <label>Password</label>
                         <div class="i"><i class="fa-solid fa-eye-slash" id="show-password" onclick="toggle()"></i></div>
                         <input class="int" id="password" type="password" value="<%=request.getSession(false).getAttribute("staffPassword")%>" readonly>
-                        <button class="cp">Change Password</button>
+                        
                     </div>
      
                 </div>
