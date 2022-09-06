@@ -61,7 +61,7 @@
 		        <div class="space"><div class="space4"><img src="css/images/ad.png" class="edu"></div><p>Canara exam manager</p></div>
 		        <button class="tabs__button" data-for-tab="7" id="mainprofile">
                 <i class="fa-solid fa-angle-right"></i> 
-                 <div class="holder3"><img src="css/images/seenu.jpg" class="profimg"></div><p>NAME</p></button>
+                 <div class="holder3"><img src="css/images/faculty.png" class="profimg"></div><p>NAME</p></button>
 		        <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa-solid fa-house-chimney"></i>Dashboard</button>
 		        <button class="tabs__button" data-for-tab="2"><i class="fa-solid fa-users-line"></i>Student Details</button>
 		        <button class="tabs__button" data-for-tab="3"><i class="fa-solid fa-person-chalkboard"></i>Staff Details</button>
@@ -3512,7 +3512,7 @@
                     
                     <div class="holder">
                     <div class="holder2">
-                    <img src="css/images/seenu.jpg" class="innerimg">
+                    <img src="css/images/faculty.png" class="innerimg">
                     </div>
                     <p class="name"><%=request.getSession(false).getAttribute("adminName")%></p>
                     </div>
@@ -3526,7 +3526,7 @@
                         <label>Password</label>
                         <div class="i"><i class="fa-solid fa-eye-slash" id="show-password" onclick="toggle()"></i></div>
                         <input id="password" value="<%=request.getSession(false).getAttribute("adminPassword")%>" class="int" type="password" readonly>
-                        <button class="cp">Change Password</button>
+                        
                     </div>
      
                 </div>
