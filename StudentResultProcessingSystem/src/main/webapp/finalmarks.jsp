@@ -90,11 +90,11 @@
              <h1><span style="color: palegoldenrod">CANARA&nbsp;</span><img src="css/images/canlogo.png" class="logo"><span style="color: palegoldenrod">&nbsp;COLLEGE</span></h1>
             <h5>Marks Sheet</h5>
             <h6><span style="color: palegoldenrod">Programme:&nbsp;&nbsp;</span><span><%=request.getAttribute("programmeName")%></span></h6>
-<<<<<<< HEAD
-            <h6><span style="color: palegoldenrod">Choice Based Credit System <%=semester%> semester degree examimation <%=examMonthString%> <%=examYearString%>&nbsp;&nbsp;</span>
-=======
->>>>>>> 5958d1dcf3027051232a01965e79a3f8b346b40d
-             <div class="img"><img src="" class="studimg"></div>
+
+          
+
+
+             <div class="img"><img src="css/images/faculty.png" class="studimg"></div>
              <div class="right"><h3><br><br><span >Date:&nbsp;</span><span><%=resultDate%></span></h3><h4><span>Reg No:&nbsp;</span><span><%=request.getAttribute("registerNo")%></span></h4></div>
              <h2><span style="color: white;">Name:&nbsp;</span><span><%=(String) request.getAttribute("studentName")%></span></h2>
             </div>

@@ -39,10 +39,9 @@
             <div class="inner">
              <h1><span>CANARA&nbsp;</span><img src="css/images/canlogo.png" class="logo"><span>&nbsp;COLLEGE</span></h1>
              <h5>Marks Sheet</h5>
-             <h6><span style="color: palegoldenrod">Programme:&nbsp;&nbsp;</span><span><%=session.getAttribute("programme")%></span></h6>
-             <div class="img"><img src="" class="studimg"></div>
-             <div class="right"><h3><br><br><span >Date:&nbsp;</span><span>12-10-2000</span></h3><h4><span>Reg No:&nbsp;</span><span><%=session.getAttribute("regNo")%></span></h4></div>
-             <h2><span style="color: white;">Name:&nbsp;</span><span><%=session.getAttribute("studentName")%></span></h2>
+             <h6><span style="color: palegoldenrod">Programme:&nbsp;&nbsp;<%=request.getAttribute("programmeName")%></span><span><%=session.getAttribute("programme")%></span></h6>
+             <div class="img"><img src="css/images/faculty.png" class="studimg"></div>
+             <div class="right"><h3><br><br><span >Date:&nbsp;</span><span><%=request.getAttribute("resulDate")%></span></h3><h4><span>Reg No:&nbsp;</span><span><%=session.getAttribute("regNo")%></span></h4></div>
             </div>
             <table border="1" class="table1" rules="all" align="center"> 
                     <tr bgcolor="#7dace4">

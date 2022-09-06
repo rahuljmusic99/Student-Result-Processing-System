@@ -61,7 +61,7 @@
 		        <div class="space"><div class="space4"><img src="css/images/ad.png" class="edu"></div><p>Canara exam manager</p></div>
 		        <button class="tabs__button" data-for-tab="7" id="mainprofile">
                 <i class="fa-solid fa-angle-right"></i> 
-                 <div class="holder3"><img src="css/images/faculty.png" class="profimg"></div><p>NAME</p></button>
+                 <div class="holder3"><img src="css/images/faculty.png" class="profimg"></div><p><%=request.getSession(false).getAttribute("adminName")%></p></button>
 		        <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa-solid fa-house-chimney"></i>Dashboard</button>
 		        <button class="tabs__button" data-for-tab="2"><i class="fa-solid fa-users-line"></i>Student Details</button>
 		        <button class="tabs__button" data-for-tab="3"><i class="fa-solid fa-person-chalkboard"></i>Staff Details</button>
@@ -806,7 +806,6 @@
                     <div class="close7" id="close" >+</div>
                     <div class="header7">
                         <h1>Student Details</h1></div>
-                         <div class="imgin"><div class="studimgholder"><img src="css/images/seenu.jpg" class="simp"></div></div>
                         <div id="viewStudentDiv">
                             <input type="text" id="sFirstName" placeholder="First Name" class="merge1" readonly="readonly">
                             <input type="text" id="sLastName" placeholder="Last Name" class="merge1" readonly="readonly">
@@ -836,8 +835,8 @@
                     <div class="close8" id="close" >+</div>
                     <div class="header8">
                         <h1>Edit Student Details</h1></div>
-                         <div class="imgin"><div class="studimgholder"><img src="css/images/seenu.jpg" class="simp"></div><input class="addimg" type="file">
-                        </div>
+                        
+                        
                         <form id = "editStudentForm" action="UpdateDataServlet" method="post">
                             <input name="sFirstName" id="stFirstName" type="text" placeholder="First Name" class="merge1" required>
                             <input name="sLastName" id="stLastName"  type="text" placeholder="Last Name" class="merge1" required>
@@ -1433,8 +1432,7 @@
                         <div class="close9" id="close" >+</div>
                         <div class="header9">
                             <h1>Add Staff Details</h1></div>
-                             <div class="imgin"><div class="studimgholder"><img src="css/images/seenu.jpg" class="simp"></div><input class="addimg" type="file">
-                             </div>
+                             
                             <form id="insertStaffDataForm" action="InsertDataServlet" method="post">
                                 <input id="staffFN" name="firstName" type="text" placeholder="First Name" class="merge4" required>
                                 <input id="staffLN" name="lastName" type="text" placeholder="Last Name" class="merge4" required>
@@ -1610,8 +1608,6 @@
                         <div class="close10" id="close" >+</div>
                         <div class="header10">
                             <h1>Staff Details</h1></div>
-                             <div class="imgin"><div class="studimgholder"><img src="css/images/seenu.jpg" class="simp"></div>
-                            </div>
                             <form action="" >
                                 <input id="staffFirstName" type="text" readonly="readonly" placeholder="First Name" class="merge4">
                                 <input id="staffLastName" type="text" readonly="readonly" placeholder="Last Name" class="merge4">
@@ -1633,8 +1629,6 @@
                         <div class="close11" id="close" >+</div>
                         <div id="editStudentDiv" class="header11">
                             <h1>Edit Staff Details</h1></div>
-                             <div class="imgin"><div class="studimgholder"><img src="css/images/seenu.jpg" class="simp"></div><input class="addimg" type="file">
-                             </div>
                             <form id="editStaffForm" action="UpdateDataServlet" method="post">
                                 <input id="staffFirstName2" name="staffFirstName" type="text" placeholder="First Name" class="merge4" required>
                                 <input id="staffLastName2" name="staffLastName" type="text" placeholder="Last Name" class="merge4" required>

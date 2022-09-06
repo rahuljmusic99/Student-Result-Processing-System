@@ -31,12 +31,13 @@ public class InternalServlet extends HttpServlet {
 		
 		if(resultSet==null) {
 			request.setAttribute("internalMarks", "empty");
-			request.setAttribute("userName", userNameString);
-			request.setAttribute("semester", semesterString);
-			request.setAttribute("examMonth", internalDao);
+
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 			
 		}else {
+			request.setAttribute("userName", userNameString);
+			request.setAttribute("semester", semesterString);
+			request.setAttribute("resulDate", resultBean.getResultDate());
 			request.setAttribute("firstInternal", resultSet);
 			request.setAttribute("secondInternal", resultSet2);
 			request.getRequestDispatcher("internalmarks.jsp").forward(request, response);

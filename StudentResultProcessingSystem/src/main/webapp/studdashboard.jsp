@@ -59,13 +59,11 @@
                 <div class="space"><div class="space4"><img src="css/images/sd.png" class="edu"></div><p>Canara exam manager</p></div>
                 <button class="tabs__button" data-for-tab="4" id="mainprofile">
                 <i class="fa-solid fa-angle-right"></i>
-<<<<<<< HEAD
-                <div class="holder3"><img src="css/images/seenu.jpg" class="profimg"></div>
-                <p><%=request.getSession(false).getAttribute("studentName") %></p>
-=======
+
                 <div class="holder3"><img src="css/images/faculty.png" class="profimg"></div>
-                <p>NAME</p>
->>>>>>> 5958d1dcf3027051232a01965e79a3f8b346b40d
+                <p><%=request.getSession(false).getAttribute("studentName") %></p>
+
+
                 </button>
                 <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa-solid fa-house-chimney"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa-regular fa-clipboard"></i>Result</button>

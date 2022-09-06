@@ -15,7 +15,7 @@ body{
 
 .inner{
     width: auto;
-    height: 20rem;
+    height: auto;
     background: #1d1740;
     position: relative;
     margin-top: -34px;
