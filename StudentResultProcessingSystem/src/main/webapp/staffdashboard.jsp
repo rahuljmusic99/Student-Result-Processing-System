@@ -404,7 +404,7 @@ if((request.getSession(false).getAttribute("staff")!= null) )
 	            	}
 	            		  
             	</script>
-            	</script>
+            	
 			<% 		
 				i = i + 1;
                 	}	
@@ -416,7 +416,7 @@ if((request.getSession(false).getAttribute("staff")!= null) )
             	window.onload = function(){
             		var staffRole = "<%=staffRole%>";
             		if(staffRole == "Faculty"){
-            			$("#showStudentTable tr").each(function(){
+            			$("#studentDataTable tr").each(function(){
 								$(this).find(".addclass").hide();
 								$(this).find(".actionclass").hide();
 								$(this).find("#addTitle").hide();

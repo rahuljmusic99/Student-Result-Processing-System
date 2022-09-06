@@ -359,9 +359,6 @@
                     <div class="close6" id="close" >+</div>
                     <div class="header6">
                         <h1>Add Student Data</h1></div>
-                    <div class="imgin"><div class="studimgholder"><img src="css/images/seenu.jpg" class="simp"></div><input class="addimg" type="file">
-                    </div>
-
                          
                         <form id="insertStudentDataForm" action="InsertDataServlet" method="post">
                             <input id="studentFirstName" name="sFirstName" type="text" placeholder="First Name" class="merge1" required>
@@ -2146,7 +2143,7 @@
 									
 									insertCourseForm.addEventListener('submit',(e)=>{
 										
-										var cCode = /^[a-zA-Z]{6}[0-9]{3}$/;
+										var cCode = /^[a-zA-Z]{4,6}[0-9]{3}$/;
 										var cName = /^[a-zA-Z]*[\s\#\&\(\)\-\+\.\,\/\\a-zA-Z]*$/;
 										
 										if(cCode.test(courseCode.value) == false){//course code
@@ -2355,7 +2352,7 @@
         									
         									editCourseForm<%=courseCount%><%=i + j%>.addEventListener('submit',(e)=>{
         										
-        										var cCode = /^[a-zA-Z]{6}[0-9]{3}$/;
+        										var cCode = /^[a-zA-Z]{4,6}[0-9]{3}$/;
         										var cName = /^[a-zA-Z]*[\s\#\&\(\)\-\+\.\,\/\\a-zA-Z]*$/;
         										
         										if(cCode.test(courseCode<%=courseCount%><%=i + j%>.value) == false){//course code
