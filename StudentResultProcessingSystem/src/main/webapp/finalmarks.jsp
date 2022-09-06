@@ -7,7 +7,10 @@
     pageEncoding="UTF-8"%>
 <%	
 	ResultSet resultSet = (ResultSet) request.getAttribute("semesterMarks");
-	
+	String resultDate = (String)request.getAttribute("resultDate");
+	String examMonth = (String)request.getAttribute("examMonth");
+	String examYearString = (String)request.getAttribute("examYear");
+	String semester = (String)request.getAttribute("semester");
 	String studentName = "";
 	String regNo = "";
 	String programmeName = "";
@@ -19,6 +22,45 @@
 	int grandTotalGp = 0;
 	int grandTotalGpw = 0;
 	float grandTotalCp = 0;
+	
+	String examMonthString = "";
+    switch(examMonth.trim()){    
+    case "1":    
+		examMonthString = "January";
+     break; 
+    case "2":    
+    	examMonthString = "February";
+     break; 
+    case "3":    
+    	examMonthString = "March";
+     break;
+    case "4":    
+    	examMonthString = "April";
+     break;
+    case "5":    
+    	examMonthString = "May";
+     break;
+    case "6":    
+    	examMonthString = "June";
+     break;
+    case "7":    
+    	examMonthString = "July";
+     break;
+    case "8":    
+    	examMonthString = "August";
+     break;
+    case "9":    
+    	examMonthString = "September";
+     break;
+    case "10":    
+    	examMonthString = "October";
+     break;
+    case "11":    
+    	examMonthString = "November";
+     break;
+    default:     
+    	examMonthString = "December"; 
+    }    
 	
 //	String base64Image = "data:image/png;base64,";
 //	base64Image	= base64Image + (String)session.getAttribute("userImage");
@@ -48,9 +90,9 @@
              <h1><span style="color: palegoldenrod">CANARA&nbsp;</span><img src="css/images/canlogo.png" class="logo"><span style="color: palegoldenrod">&nbsp;COLLEGE</span></h1>
             <h5>Marks Sheet</h5>
             <h6><span style="color: palegoldenrod">Programme:&nbsp;&nbsp;</span><span><%=request.getAttribute("programmeName")%></span></h6>
-            <h6><span style="color: palegoldenrod">Choice Based Credit System 3dr semester degree examimation august 2021&nbsp;&nbsp;</span>
+            <h6><span style="color: palegoldenrod">Choice Based Credit System <%=semester%> semester degree examimation <%=examMonthString%> <%=examYearString%>&nbsp;&nbsp;</span>
              <div class="img"><img src="" class="studimg"></div>
-             <div class="right"><h3><br><br><span >Date:&nbsp;</span><span><%=12-03-2020%></span></h3><h4><span>Reg No:&nbsp;</span><span><%=request.getAttribute("registerNo")%></span></h4></div>
+             <div class="right"><h3><br><br><span >Date:&nbsp;</span><span><%=resultDate%></span></h3><h4><span>Reg No:&nbsp;</span><span><%=request.getAttribute("registerNo")%></span></h4></div>
              <h2><span style="color: white;">Name:&nbsp;</span><span><%=(String) request.getAttribute("studentName")%></span></h2>
             </div>
             <table class="table1" border="1" cellspacing="0"  rules="" align="center">

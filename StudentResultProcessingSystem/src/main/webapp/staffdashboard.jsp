@@ -229,7 +229,7 @@ if((request.getSession(false).getAttribute("staff")!= null) )
             %>	       
            <tr class="filterRow<%=studentData.getString("class_id")%>">
               <td class="td1"><%=studentData.getString("programme_name")%></td>   <!--Programme -->
-              <td class="td2"><%=studentData.getString("class_name")%></td>   <!--class-->
+              <td class="td2"><%=studentData.getString("class_name")%> <%=studentData.getString("class_year")%> Year 	</td>   <!--class-->
               <td><%=studentData.getString("first_name") +" "+ studentData.getString("last_name")%></td>   <!--Student Name-->
               <td><%=studentData.getString("reg_no")%></td>   <!--Register number-->
               <td class="td1 addclass"><button class="btn__course" id="btn__course<%=i%>" onclick="addResult<%=i%>()"><span style="font-size: 16px;">+</span> Add</button></td>  <!--Add Result-->

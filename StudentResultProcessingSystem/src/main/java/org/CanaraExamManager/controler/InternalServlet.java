@@ -31,6 +31,9 @@ public class InternalServlet extends HttpServlet {
 		
 		if(resultSet==null) {
 			request.setAttribute("internalMarks", "empty");
+			request.setAttribute("userName", userNameString);
+			request.setAttribute("semester", semesterString);
+			request.setAttribute("examMonth", internalDao);
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 			
 		}else {

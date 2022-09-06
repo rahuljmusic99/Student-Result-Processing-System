@@ -8,6 +8,8 @@ import java.sql.Statement;
 import org.CanaraExamManager.bean.ResultBean;
 import org.CanaraExamManager.util.DBConnection;
 
+import jakarta.servlet.http.HttpSession;
+
 public class InternalDao {
 		
 	public ResultSet getFirstInternal(ResultBean resultBean) {
@@ -15,6 +17,12 @@ public class InternalDao {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		ResultSet resultSet2 = null;
+		Statement statement2 = null;
+		
+		String examMonthString = "";
+		String examYearString = "";
+		String resultDateString = "";
 	
 		String userNameString = resultBean.getUserName();
 		String semesterString = resultBean.getSemester();
@@ -26,7 +34,20 @@ public class InternalDao {
 					+ "INNER JOIN programme ON first_internal_marks.programme_id = programme.programme_id) "
 					+ "WHERE first_internal_marks.reg_no = "+userNameString+" "
 					+ "AND course.course_sem = "+semesterString+"");
-												
+			
+			statement2 = con.createStatement();
+			resultSet2 = statement2.executeQuery("SELECT * FROM exam_details where reg_no ="+userNameString+" and semester ="+semesterString+""
+					+ "and exam_type = 'FirstInternal'");
+			
+			while(resultSet2.next()) {
+				examMonthString = resultSet2.getString("exam_month");
+				examYearString = resultSet2.getString("exam_year");
+				resultDateString = resultSet2.getString("result_date");
+			}
+			
+			resultBean.setExamMonth(examMonthString);
+			resultBean.setExamYear(examYearString);
+			resultBean.setResultDate(resultDateString);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			
@@ -39,6 +60,12 @@ public ResultSet getSecondInternal(ResultBean resultBean) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		ResultSet resultSet2 = null;
+		Statement statement2 = null;
+		
+		String examMonthString = "";
+		String examYearString = "";
+		String resultDateString = "";
 	
 		String userNameString = resultBean.getUserName();
 		String semesterString = resultBean.getSemester();
@@ -50,6 +77,20 @@ public ResultSet getSecondInternal(ResultBean resultBean) {
 					+ "INNER JOIN programme ON second_internal_marks.programme_id = programme.programme_id) "
 					+ "WHERE second_internal_marks.reg_no = "+userNameString+" "
 					+ "AND course.course_sem = "+semesterString+"");
+			
+			statement2 = con.createStatement();
+			resultSet2 = statement2.executeQuery("SELECT * FROM exam_details where reg_no ="+userNameString+" and semester ="+semesterString+""
+					+ "and exam_type = 'FirstInternal'");
+			
+			while(resultSet2.next()) {
+				examMonthString = resultSet2.getString("exam_month");
+				examYearString = resultSet2.getString("exam_year");
+				resultDateString = resultSet2.getString("result_date");
+			}
+			
+			resultBean.setUserName(examMonthString);
+			resultBean.setProgrammeId(examYearString);
+			resultBean.setSemester(resultDateString);
 												
 		} catch (SQLException e) {
 			e.printStackTrace();

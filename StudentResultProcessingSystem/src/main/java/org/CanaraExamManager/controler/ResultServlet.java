@@ -33,9 +33,13 @@ public class ResultServlet extends HttpServlet {
 		
 		if(resultSet!=null) {
 			request.setAttribute("semesterMarks", resultSet);
+			request.setAttribute("semester", semesterString);
 			request.setAttribute("studentName", studentNameString);
 			request.setAttribute("registerNo", userNameString);
 			request.setAttribute("programmeName",programmeNameString);
+			request.setAttribute("resultDate", resultBean.getResultDate());
+			request.setAttribute("examMonth", resultBean.getExamMonth());
+			request.setAttribute("examYear", resultBean.getExamYear());
 			request.getRequestDispatcher("finalmarks.jsp").forward(request, response);	
 			
 		}else {

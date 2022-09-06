@@ -60,7 +60,7 @@
                 <button class="tabs__button" data-for-tab="4" id="mainprofile">
                 <i class="fa-solid fa-angle-right"></i>
                 <div class="holder3"><img src="css/images/seenu.jpg" class="profimg"></div>
-                <p>NAME</p>
+                <p><%=request.getSession(false).getAttribute("studentName") %></p>
                 </button>
                 <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa-solid fa-house-chimney"></i>Dashboard</button>
                 <button class="tabs__button" data-for-tab="2"><i class="fa-regular fa-clipboard"></i>Result</button>

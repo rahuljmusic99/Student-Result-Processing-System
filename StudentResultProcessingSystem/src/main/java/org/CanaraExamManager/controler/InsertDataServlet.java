@@ -238,7 +238,7 @@ public class InsertDataServlet extends HttpServlet {
 					request.setAttribute("insertionMessage",dataValidateString);
 					request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				}
-				
+				break;
 				
 			}case "secondInternal": {
 				int courseCount = Integer.parseInt(request.getParameter("numberOfCourses"));
@@ -275,7 +275,7 @@ public class InsertDataServlet extends HttpServlet {
 					request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				}
 				
-				
+				break;
 			}default:{
 				response.sendRedirect("home.jsp");
 				
