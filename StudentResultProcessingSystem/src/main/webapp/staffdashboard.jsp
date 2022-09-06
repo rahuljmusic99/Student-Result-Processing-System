@@ -57,7 +57,7 @@ if((request.getSession(false).getAttribute("staff")!= null) )
                 <div class="space"><div class="space4"><img src="css/images/sf.png" class="edu"></div><p>Canara exam manager</p></div>
                 <button class="tabs__button" data-for-tab="4" id="mainprofile">
                 <i class="fa-solid fa-angle-right"></i>
-                <div class="holder3"><img src="css/images/seenu.jpg" class="profimg"></div>
+                <div class="holder3"><img src="css/images/faculty.png" class="profimg"></div>
                 <p><%=session.getAttribute("staffName")%></p>
                 </button>
                 <button class="tabs__button tabs__button--active" id="tab1" data-for-tab="1"><i class="fa-solid fa-house-chimney"></i>Dashboard</button>
@@ -1127,7 +1127,7 @@ if((request.getSession(false).getAttribute("staff")!= null) )
                     
                     <div class="holder">
                     <div class="holder2">
-                    <img src="css/images/seenu.jpg" class="innerimg">
+                    <img src="css/images/faculty.png" class="innerimg">
                     </div>
                     <p class="name"><%=request.getSession(false).getAttribute("staffName")%></p>
                     </div>
