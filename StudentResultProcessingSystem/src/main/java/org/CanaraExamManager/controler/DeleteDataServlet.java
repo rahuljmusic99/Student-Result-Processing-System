@@ -83,6 +83,30 @@ public class DeleteDataServlet extends HttpServlet {
 				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
 				
 				
+			}case "firstInternal":{
+				StudentStaffDataBean studentStaffDataBean = new StudentStaffDataBean();
+				studentStaffDataBean.setRegNo(request.getParameter("userName"));
+				studentStaffDataBean.setCurrentSemester(request.getParameter("semester"));
+				studentStaffDataBean.setProgramme(request.getParameter("programmeId"));
+				
+				String dataValidateString = deleteDataDao.deletefirstInternalData(studentStaffDataBean) ;
+				 
+				request.setAttribute("deletionMessage",dataValidateString);
+				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
+				
+				
+			}case "secondInternal":{
+				StudentStaffDataBean studentStaffDataBean = new StudentStaffDataBean();
+				studentStaffDataBean.setRegNo(request.getParameter("userName"));
+				studentStaffDataBean.setCurrentSemester(request.getParameter("semester"));
+				studentStaffDataBean.setProgramme(request.getParameter("programmeId"));
+				
+				String dataValidateString = deleteDataDao.deleteSecondInternalData(studentStaffDataBean) ;
+				 
+				request.setAttribute("deletionMessage",dataValidateString);
+				request.getRequestDispatcher("messageConfirmer.jsp").forward(request, response);
+				
+				
 			}default:{
 				response.sendRedirect("home.jsp");
 				

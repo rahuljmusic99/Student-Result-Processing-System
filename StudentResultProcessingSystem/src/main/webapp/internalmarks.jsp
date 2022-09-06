@@ -98,7 +98,7 @@
                     </tr>
 
                     
-                   <%float average = 0f;try{average = grandTotalObtained * 100 /grandTotalMax;}catch(ArithmeticException e){average = 0f;}%>
+                   <%float average = 0f;float average2 = 0f;try{average = grandTotalObtained * 100 /grandTotalMax;}catch(ArithmeticException e){average = 0f;}%>
                     <tr class="tr2" bgcolor="whitesmoke">
                     <td colspan="8">&nbsp;Internal Average Percentage: <%=average%>%</td>
                     </tr>
@@ -151,7 +151,22 @@
                 		 e.printStackTrace();
                  }%>
                  
-                    <%if(grandTotalObtained == 0){
+                    
+                    <tr bgcolor="whitesmoke">
+                        <th colspan="2">Grand Total</th>
+                        <td></td>    
+                        <td><%=grandTotalMax%></td>    		<!--Max total according to number of subjects-->
+                        <td></td>     						<!--Min-->
+                        <td><%=grandTotalObtained%></td>	<!--grand total-->
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    
+                  	<% try{average2 = grandTotalObtained * 100 /grandTotalMax;}catch(ArithmeticException e){average2 = 0f;}%>
+                    <tr class="tr2" bgcolor="whitesmoke">
+                    <td colspan="8">&nbsp;Internal Average Percentage: <%=average2%>%</td>
+                    </tr>
+                    <%if(average <= 0 && average2 <=0){
                     
             			String loginUser = (String) session.getAttribute("user");
             			
@@ -171,6 +186,8 @@
 		               			})
 		               			.then((value) => {	
 		               				if(value == "ok"){
+		               					document.location.href="studdashboard.jsp";
+		               				}else{
 		               					document.location.href="studdashboard.jsp";
 		               				}
 		               			});
@@ -192,6 +209,8 @@
 		               			.then((value) => {	
 		               				if(value == "ok"){
 		               					document.location.href="staffdashboard.jsp";
+		               				}else{
+		               					document.location.href="staffdashboard.jsp";
 		               				}
 		               			});
 		            		}
@@ -212,6 +231,8 @@
 		               			.then((value) => {	
 		               				if(value == "ok"){
 		               					document.location.href="admindashboard.jsp";
+		               				}else{
+		               					document.location.href="admindashboard.jsp";
 		               				}
 		               			});
 		            		}
@@ -220,20 +241,6 @@
             				
             			<% }
                     } %>
-                    <tr bgcolor="whitesmoke">
-                        <th colspan="2">Grand Total</th>
-                        <td></td>    
-                        <td><%=grandTotalMax%></td>    		<!--Max total according to number of subjects-->
-                        <td></td>     						<!--Min-->
-                        <td><%=grandTotalObtained%></td>	<!--grand total-->
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    
-                  	<%float average2 = 0f;try{average2 = grandTotalObtained * 100 /grandTotalMax;}catch(ArithmeticException e){average2 = 0f;}%>
-                    <tr class="tr2" bgcolor="whitesmoke">
-                    <td colspan="8">&nbsp;Internal Average Percentage: <%=average2%>%</td>
-                    </tr>
                 </table>
         </div>
     </body>
